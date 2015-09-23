@@ -9,45 +9,21 @@ let code = window.location.search.slice(6);
 console.log(code);
 if (code.length < 1) {
   window.location.href='https://github.com/login/oauth/authorize?client_id=4e4f2621589085b864d7';
+} else {
+  const postData = {
+    code,
+    client_id: '4e4f2621589085b864d7',
+    client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
+  };
+
+  console.log(postData);
+  (async function(){
+    const res = await axios.post('https://github.com/login/oauth/access_token', postData)
+      .catch(err => {console.log(err);});
+    console.log('hi');
+    console.log(res);
+  })();
 }
-
-const postData = {
-  code,
-  client_id: '4e4f2621589085b864d7',
-  client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
-  redirect_uri:'http://localhost:8080'
-};
-
-console.log(postData);
-(async function(){
-  const res = await axios({
-  // `url` is the server URL that will be used for the request
-  url: 'https://github.com/login/oauth/access_token',
-
-  // `method` is the request method to be used when making the request
-  method: 'post', // default
-
-
-  // `headers` are custom headers to be sent
-headers: {Accept: 'application/json'},
-
-  // `data` is the data to be sent as the request body
-  // Only applicable for request methods 'PUT', 'POST', and 'PATCH'
-  // When no `transformRequest` is set, must be a string, an ArrayBuffer or a hash
-  data: postData,
-
-  // `withCredentials` indicates whether or not cross-site Access-Control requests
-  // should be made using credentials
-  withCredentials: false, // default
-
-  // `responseType` indicates the type of data that the server will respond with
-  // options are 'arraybuffer', 'blob', 'document', 'json', 'text'
-  responseType: 'json', // default
-
-}).catch(err => {console.log(err);});
-  console.log(res);
-})();
-
 
 let data = [];
 
