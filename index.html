@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="./nvd3.css" rel="stylesheet" type="text/css">
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        #chart1, svg {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 600px;
+        }
+        body {
+          margin: 0;
+        }
+        h1 {
+          font-weight: 100;
+          text-transform: uppercase;
+          text-align: center;
+          background-color: rgba(46, 137, 216, 0.88);
+          color: white;
+          padding: 12pt;
+          margin: 0;
+        }
+
+        input {
+          width: 350px;
+          height: 23px;
+          font-size: 15pt;
+          padding: 2pt 2pt;
+        }
+        button {
+          text-decoration: none;
+          text-align: center;
+          font-size: 16pt;
+          background-color: #01A94C;
+          color: white;
+          border-radius: 24pt;
+          padding: 6pt 12pt;
+          cursor: default;
+        }
+    </style>
+</head>
+<body>
+<h1>
+  <input type="text" id="repo" placeholder="twbs/bootstrap" >
+  <button type="button" name="button" >Get star history</button></h1>
+<div id="chart1">
+    <svg></svg>
+</div>
+
+</script>
+  <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
