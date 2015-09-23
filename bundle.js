@@ -70,58 +70,39 @@
 	console.log(code);
 	if (code.length < 1) {
 	  window.location.href = 'https://github.com/login/oauth/authorize?client_id=4e4f2621589085b864d7';
+	} else {
+	  (function () {
+	    var postData = {
+	      code: code,
+	      client_id: '4e4f2621589085b864d7',
+	      client_secret: 'd990379890dd26d973f227304d4c88b10528c76b'
+	    };
+
+	    console.log(postData);
+	    (function callee$1$0() {
+	      var res;
+	      return regeneratorRuntime.async(function callee$1$0$(context$2$0) {
+	        while (1) switch (context$2$0.prev = context$2$0.next) {
+	          case 0:
+	            context$2$0.next = 2;
+	            return regeneratorRuntime.awrap(_axios2['default'].post('https://github.com/login/oauth/access_token', postData)['catch'](function (err) {
+	              console.log(err);
+	            }));
+
+	          case 2:
+	            res = context$2$0.sent;
+
+	            console.log('hi');
+	            console.log(res);
+
+	          case 5:
+	          case 'end':
+	            return context$2$0.stop();
+	        }
+	      }, null, this);
+	    })();
+	  })();
 	}
-
-	var postData = {
-	  code: code,
-	  client_id: '4e4f2621589085b864d7',
-	  client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
-	  redirect_uri: 'http://localhost:8080'
-	};
-
-	console.log(postData);
-	(function callee$0$0() {
-	  var res;
-	  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-	    while (1) switch (context$1$0.prev = context$1$0.next) {
-	      case 0:
-	        context$1$0.next = 2;
-	        return regeneratorRuntime.awrap((0, _axios2['default'])({
-	          // `url` is the server URL that will be used for the request
-	          url: 'https://github.com/login/oauth/access_token',
-
-	          // `method` is the request method to be used when making the request
-	          method: 'post', // default
-
-	          // `headers` are custom headers to be sent
-	          headers: { Accept: 'application/json' },
-
-	          // `data` is the data to be sent as the request body
-	          // Only applicable for request methods 'PUT', 'POST', and 'PATCH'
-	          // When no `transformRequest` is set, must be a string, an ArrayBuffer or a hash
-	          data: postData,
-
-	          // `withCredentials` indicates whether or not cross-site Access-Control requests
-	          // should be made using credentials
-	          withCredentials: false, // default
-
-	          // `responseType` indicates the type of data that the server will respond with
-	          // options are 'arraybuffer', 'blob', 'document', 'json', 'text'
-	          responseType: 'json' })['catch'](function (err) {
-	          console.log(err);
-	        }));
-
-	      case 2:
-	        res = context$1$0.sent;
-
-	        console.log(res);
-
-	      case 4:
-	      case 'end':
-	        return context$1$0.stop();
-	    }
-	  }, null, this);
-	})();
 
 	var data = [];
 
@@ -179,7 +160,6 @@
 	    }
 	  }, null, this);
 	});
-	// default
 
 /***/ },
 /* 1 */
