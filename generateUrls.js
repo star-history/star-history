@@ -16,6 +16,7 @@ export default async function(repo) {
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;
   const res = await axios.get(initUrl, getConfig).catch(e => {
     console.log(e); // throw don't work
+    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
   });
   const link = res.headers.link;
 
