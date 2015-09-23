@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <link href="./nvd3.css" rel="stylesheet" type="text/css">
-    <style>
-        text {
-            font: 12px sans-serif;
-        }
-        svg {
-            display: block;
-        }
-        #chart, svg {
-            margin: 20px;
-            padding: 20pt;
-            width: 800px;
-            height: 600px;
-        }
-        body {
-          margin: 0;
-        }
-        h1 {
-          font-weight: 100;
-          text-transform: uppercase;
-          text-align: center;
-          background-color: rgba(46, 137, 216, 0.88);
-          color: white;
-          padding: 12pt;
-          margin: 0;
-        }
+  <meta charset="utf-8">
+  <link href="./nvd3.css" rel="stylesheet" type="text/css">
+  <style>
+    text {
+      font: 12px sans-serif;
+    }
 
-        input {
-          width: 350px;
-          height: 23px;
-          font-size: 15pt;
-          padding: 2pt 2pt;
-        }
-        button {
-          text-decoration: none;
-          text-align: center;
-          font-size: 16pt;
-          background-color: #01A94C;
-          color: white;
-          border-radius: 24pt;
-          padding: 6pt 12pt;
-          cursor: default;
-        }
-    </style>
+    svg {
+      display: block;
+    }
+
+    #chart,
+    svg {
+      margin: auto;
+      padding-right: 20pt;
+      width: 800px;
+      height: 600px;
+    }
+
+    body {
+      margin: auto;
+      font-size: 15pt;
+    }
+
+    .nav {
+      font-weight: 100;
+      text-transform: uppercase;
+      text-align: center;
+      background-color: rgba(46, 137, 216, 0.88);
+      color: white;
+      padding: 12pt;
+      margin: 0;
+    }
+
+    input {
+      width: 350px;
+      height: 23px;
+      font-size: 15pt;
+      padding: 2pt 2pt;
+    }
+
+    button {
+      text-decoration: none;
+      text-align: center;
+      font-size: 16pt;
+      background-color: #01A94C;
+      color: white;
+      border-radius: 24pt;
+      padding: 6pt 12pt;
+      cursor: default;
+    }
+  </style>
 </head>
-<body>
-<h1>
-  <input type="text" id="repo" placeholder="twbs/bootstrap" >
-  <button type="button" name="button" >Get star history</button></h1>
-<div id="chart">
-    <svg></svg>
-</div>
 
-</script>
+<body>
+  <div class="nav">
+    <form class="theForm">
+      <input type="text" id="repo" placeholder="twbs/bootstrap">
+      <button type="button" name="button">Get star history</button>
+    </form>
+  </div>
+<iframe src="https://ghbtns.com/github-btn.html?user=timqian&repo=star_history&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="30px"></iframe>
+<iframe src="https://ghbtns.com/github-btn.html?user=timqian&repo=star_history&type=fork&count=true" frameborder="0" scrolling="0" width="108px" height="30px"></iframe>
+  <div id="chart">
+    <svg></svg>
+  </div>
+
+  </script>
   <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
