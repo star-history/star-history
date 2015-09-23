@@ -1,7 +1,19 @@
 import d3 from 'd3';
 import nv from 'nvd3';
+import axios from 'axios';
 import getStarHistory from './getStarHistory';
 require("babel-core/polyfill"); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
+
+const getConfig = {
+  params:{
+    client_id: '4e4f2621589085b864d7',
+    redirect_uri: 'http://www.timqian.com/star_history',
+  },
+};
+(async function(){
+  const res = await axios.get('https://github.com/login/oauth/authorize',getConfig).catch(function (err) {console.log(err);});
+})();
+
 
 let data = [];
 

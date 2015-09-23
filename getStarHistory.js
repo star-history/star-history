@@ -24,8 +24,7 @@ export default async function(repo) {
   // console.log(getArray);
 
   const resArray = await Promise.all(getArray).catch(e => {
-    console.log(e); // throw don't work
-    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
+    console.log(e); // throw don't work    
   });
   // console.log(resArray);
 
