@@ -67,36 +67,22 @@
 	__webpack_require__(25); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
 
 	var code = window.location.search.slice(6);
-	console.log(code);
+	console.log(typeof code);
+	if (code.length < 1) {
+	  window.location.href = 'https://github.com/login/oauth/authorize?client_id=4e4f2621589085b864d7';
+	}
 
-	var postConfig = {
-	  params: {
-	    code: code,
-	    client_id: '4e4f2621589085b864d7',
-	    client_secret: 'd990379890dd26d973f227304d4c88b10528c76b'
-	  }
-	};
-	(function callee$0$0() {
-	  var res;
-	  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-	    while (1) switch (context$1$0.prev = context$1$0.next) {
-	      case 0:
-	        context$1$0.next = 2;
-	        return regeneratorRuntime.awrap(_axios2['default'].post('https://github.com/login/oauth/access_token', postConfig)['catch'](function (err) {
-	          console.log(err);
-	        }));
-
-	      case 2:
-	        res = context$1$0.sent;
-
-	        console.log(res);
-
-	      case 4:
-	      case 'end':
-	        return context$1$0.stop();
-	    }
-	  }, null, this);
-	})();
+	// const postConfig = {
+	//   params:{
+	//     code,
+	//     client_id: '4e4f2621589085b864d7',
+	//     client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
+	//   },
+	// };
+	// (async function(){
+	//   const res = await axios.post('https://github.com/login/oauth/access_token',postConfig).catch(function (err) {console.log(err);});
+	//   console.log(res);
+	// })();
 
 	var data = [];
 
