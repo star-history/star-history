@@ -56,11 +56,41 @@
 
 	var _nvd32 = _interopRequireDefault(_nvd3);
 
-	var _getStarHistory = __webpack_require__(3);
+	var _axios = __webpack_require__(3);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _getStarHistory = __webpack_require__(23);
 
 	var _getStarHistory2 = _interopRequireDefault(_getStarHistory);
 
 	__webpack_require__(25); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
+
+	var getConfig = {
+	  params: {
+	    client_id: '4e4f2621589085b864d7',
+	    redirect_uri: 'http://www.timqian.com/star_history'
+	  }
+	};
+	(function callee$0$0() {
+	  var res;
+	  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
+	    while (1) switch (context$1$0.prev = context$1$0.next) {
+	      case 0:
+	        context$1$0.next = 2;
+	        return regeneratorRuntime.awrap(_axios2['default'].get('https://github.com/login/oauth/authorize', getConfig)['catch'](function (err) {
+	          console.log(err);
+	        }));
+
+	      case 2:
+	        res = context$1$0.sent;
+
+	      case 3:
+	      case 'end':
+	        return context$1$0.stop();
+	    }
+	  }, null, this);
+	})();
 
 	var data = [];
 
@@ -22935,106 +22965,25 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _axios = __webpack_require__(4);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _generateUrls = __webpack_require__(24);
-
-	var _generateUrls2 = _interopRequireDefault(_generateUrls);
-
-	var getConfig = {
-	  headers: {
-	    Accept: 'application/vnd.github.v3.star+json'
-	  }
-	};
-
-	/**
-	 * get star history
-	 * @param {sting} repo
-	 * @return {array} history - {[date: ,starNum: ],...}
-	 */
-
-	exports['default'] = function callee$0$0(repo) {
-	  var _ref, samplePageUrls, pageIndexes, getArray, resArray, starHistory;
-
-	  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
-	    while (1) switch (context$1$0.prev = context$1$0.next) {
-	      case 0:
-	        context$1$0.next = 2;
-	        return regeneratorRuntime.awrap((0, _generateUrls2['default'])(repo)['catch'](function (e) {
-	          console.log(e); // throw don't work
-	        }));
-
-	      case 2:
-	        _ref = context$1$0.sent;
-	        samplePageUrls = _ref.samplePageUrls;
-	        pageIndexes = _ref.pageIndexes;
-	        getArray = samplePageUrls.map(function (url) {
-	          return _axios2['default'].get(url, getConfig);
-	        });
-	        context$1$0.next = 8;
-	        return regeneratorRuntime.awrap(Promise.all(getArray)['catch'](function (e) {
-	          console.log(e); // throw don't work
-	        }));
-
-	      case 8:
-	        resArray = context$1$0.sent;
-	        starHistory = pageIndexes.map(function (p, i) {
-	          return {
-	            date: resArray[i].data[0].starred_at.slice(0, 10),
-	            starNum: 30 * (p - 1)
-	          };
-	        });
-
-	        console.log(starHistory);
-
-	        return context$1$0.abrupt('return', starHistory);
-
-	      case 12:
-	      case 'end':
-	        return context$1$0.stop();
-	    }
-	  }, null, this);
-	};
-
-	module.exports = exports['default'];
-
-	// console.log(getArray);
-
-	// console.log(resArray);
+	module.exports = __webpack_require__(4);
 
 /***/ },
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(5);
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
-	var defaults = __webpack_require__(6);
-	var utils = __webpack_require__(7);
-	var deprecatedMethod = __webpack_require__(8);
-	var dispatchRequest = __webpack_require__(9);
-	var InterceptorManager = __webpack_require__(17);
+	var defaults = __webpack_require__(5);
+	var utils = __webpack_require__(6);
+	var deprecatedMethod = __webpack_require__(7);
+	var dispatchRequest = __webpack_require__(8);
+	var InterceptorManager = __webpack_require__(16);
 
 	// Polyfill ES6 Promise if needed
 	(function () {
 	  // webpack is being used to set es6-promise to the native Promise
 	  // for the standalone build. It's necessary to make sure polyfill exists.
-	  var P = __webpack_require__(18);
+	  var P = __webpack_require__(17);
 	  if (P && typeof P.polyfill === 'function') {
 	    P.polyfill();
 	  }
@@ -23097,7 +23046,7 @@
 	axios.all = function (promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(23);
+	axios.spread = __webpack_require__(22);
 
 	// Expose interceptors
 	axios.interceptors = {
@@ -23136,12 +23085,12 @@
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -23194,7 +23143,7 @@
 
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23417,7 +23366,7 @@
 
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23445,7 +23394,7 @@
 
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23462,11 +23411,11 @@
 	    try {
 	      // For browsers use XHR adapter
 	      if (typeof window !== 'undefined') {
-	        __webpack_require__(11)(resolve, reject, config);
+	        __webpack_require__(10)(resolve, reject, config);
 	      }
 	      // For node use HTTP adapter
 	      else if (typeof process !== 'undefined') {
-	        __webpack_require__(11)(resolve, reject, config);
+	        __webpack_require__(10)(resolve, reject, config);
 	      }
 	    } catch (e) {
 	      reject(e);
@@ -23475,10 +23424,10 @@
 	};
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -23575,20 +23524,20 @@
 
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/*global ActiveXObject:true*/
 
-	var defaults = __webpack_require__(6);
-	var utils = __webpack_require__(7);
-	var buildUrl = __webpack_require__(12);
-	var cookies = __webpack_require__(13);
-	var parseHeaders = __webpack_require__(14);
-	var transformData = __webpack_require__(15);
-	var urlIsSameOrigin = __webpack_require__(16);
+	var defaults = __webpack_require__(5);
+	var utils = __webpack_require__(6);
+	var buildUrl = __webpack_require__(11);
+	var cookies = __webpack_require__(12);
+	var parseHeaders = __webpack_require__(13);
+	var transformData = __webpack_require__(14);
+	var urlIsSameOrigin = __webpack_require__(15);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  // Transform request data
@@ -23687,12 +23636,12 @@
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -23745,12 +23694,12 @@
 
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	module.exports = {
 	  write: function write(name, value, expires, path, domain, secure) {
@@ -23788,12 +23737,12 @@
 
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	/**
 	 * Parse headers into an object
@@ -23828,12 +23777,12 @@
 
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	/**
 	 * Transform the data for a request or a response
@@ -23853,12 +23802,12 @@
 
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 	var msie = /(msie|trident)/i.test(navigator.userAgent);
 	var urlParsingNode = document.createElement('a');
 	var originUrl;
@@ -23911,12 +23860,12 @@
 
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(7);
+	var utils = __webpack_require__(6);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -23969,7 +23918,7 @@
 
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, setImmediate, global, module) {/*!
@@ -24108,7 +24057,7 @@
 	    function lib$es6$promise$asap$$attemptVertex() {
 	      try {
 	        var r = require;
-	        var vertx = __webpack_require__(21);
+	        var vertx = __webpack_require__(20);
 	        lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	        return lib$es6$promise$asap$$useVertxTimer();
 	      } catch(e) {
@@ -24933,7 +24882,7 @@
 	    };
 
 	    /* global define:true module:true window: true */
-	    if ("function" === 'function' && __webpack_require__(22)['amd']) {
+	    if ("function" === 'function' && __webpack_require__(21)['amd']) {
 	      !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return lib$es6$promise$umd$$ES6Promise; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof module !== 'undefined' && module['exports']) {
 	      module['exports'] = lib$es6$promise$umd$$ES6Promise;
@@ -24945,13 +24894,13 @@
 	}).call(this);
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(19).setImmediate, (function() { return this; }()), __webpack_require__(20)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(18).setImmediate, (function() { return this; }()), __webpack_require__(19)(module)))
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(10).nextTick;
+	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(9).nextTick;
 	var apply = Function.prototype.apply;
 	var slice = Array.prototype.slice;
 	var immediateIds = {};
@@ -25027,10 +24976,10 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19).setImmediate, __webpack_require__(19).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18).setImmediate, __webpack_require__(18).clearImmediate))
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -25046,20 +24995,20 @@
 
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25092,6 +25041,87 @@
 
 
 /***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _axios = __webpack_require__(3);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _generateUrls = __webpack_require__(24);
+
+	var _generateUrls2 = _interopRequireDefault(_generateUrls);
+
+	var getConfig = {
+	  headers: {
+	    Accept: 'application/vnd.github.v3.star+json'
+	  }
+	};
+
+	/**
+	 * get star history
+	 * @param {sting} repo
+	 * @return {array} history - {[date: ,starNum: ],...}
+	 */
+
+	exports['default'] = function callee$0$0(repo) {
+	  var _ref, samplePageUrls, pageIndexes, getArray, resArray, starHistory;
+
+	  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
+	    while (1) switch (context$1$0.prev = context$1$0.next) {
+	      case 0:
+	        context$1$0.next = 2;
+	        return regeneratorRuntime.awrap((0, _generateUrls2['default'])(repo)['catch'](function (e) {
+	          console.log(e); // throw don't work
+	        }));
+
+	      case 2:
+	        _ref = context$1$0.sent;
+	        samplePageUrls = _ref.samplePageUrls;
+	        pageIndexes = _ref.pageIndexes;
+	        getArray = samplePageUrls.map(function (url) {
+	          return _axios2['default'].get(url, getConfig);
+	        });
+	        context$1$0.next = 8;
+	        return regeneratorRuntime.awrap(Promise.all(getArray)['catch'](function (e) {
+	          console.log(e); // throw don't work  
+	        }));
+
+	      case 8:
+	        resArray = context$1$0.sent;
+	        starHistory = pageIndexes.map(function (p, i) {
+	          return {
+	            date: resArray[i].data[0].starred_at.slice(0, 10),
+	            starNum: 30 * (p - 1)
+	          };
+	        });
+
+	        console.log(starHistory);
+
+	        return context$1$0.abrupt('return', starHistory);
+
+	      case 12:
+	      case 'end':
+	        return context$1$0.stop();
+	    }
+	  }, null, this);
+	};
+
+	module.exports = exports['default'];
+
+	// console.log(getArray);
+
+	// console.log(resArray);
+
+/***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25103,7 +25133,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _axios = __webpack_require__(4);
+	var _axios = __webpack_require__(3);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -25112,7 +25142,7 @@
 	    Accept: 'application/vnd.github.v3.star+json'
 	  }
 	};
-	var sampleNum = 20; // number of requests to do
+	var sampleNum = 15; // number of requests to do
 
 	/**
 	 *	generate Urls and pageNums to be used
@@ -25129,6 +25159,7 @@
 	        context$1$0.next = 3;
 	        return regeneratorRuntime.awrap(_axios2['default'].get(initUrl, getConfig)['catch'](function (e) {
 	          console.log(e); // throw don't work
+	          alert('Sorry, Git API rate limit exceeded for your ip address, please wait for an hour');
 	        }));
 
 	      case 3:
@@ -25159,7 +25190,7 @@
 	            samplePageUrls.push(initUrl + '?page=' + i);
 	          }
 	        } else {
-	          for (i = 1; i <= sampleNum; i++) {
+	          for (i = 1; i < sampleNum; i++) {
 	            pageIndex = Math.round(i / sampleNum * pageNum);
 
 	            pageIndexes.push(pageIndex);
@@ -30073,7 +30104,7 @@
 	  typeof self === "object" ? self : this
 	);
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(10)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(9)))
 
 /***/ }
 /******/ ]);
