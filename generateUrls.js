@@ -5,7 +5,7 @@ const getConfig = {
     Accept: 'application/vnd.github.v3.star+json',
   },
 };
-const sampleNum = 6; // number of requests to do
+const sampleNum = 20; // number of requests to do
 
 /**
  *	generate Urls and pageNums to be used
@@ -36,7 +36,7 @@ console.log(res);
         samplePageUrls.push(initUrl + '?page=' + i);
       }
     } else {
-      for (let i = 1; i < sampleNum; i++) {
+      for (let i = 1; i <= sampleNum; i++) {
         let pageIndex = Math.round(i / sampleNum * pageNum);
         pageIndexes.push(pageIndex);
         samplePageUrls.push(initUrl + '?page=' + pageIndex);

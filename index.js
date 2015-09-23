@@ -1,24 +1,13 @@
 import d3 from 'd3';
 import nv from 'nvd3';
 import getStarHistory from './getStarHistory';
-require("babel-core/polyfill"); //??????????????????没有他会出错
+require("babel-core/polyfill"); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
 
-function flatTestData() {
-  return [{
-    key: "Snakes",
-    values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(d) {
-      var currentDate = new Date();
-      currentDate.setDate(currentDate.getDate() + d);
-      return [currentDate, 0]
-    })
-  }];
-}
-
-let cumulativeTestData = [];
+let data = [];
 
 d3.select("button").on("click", async function() {
   let repo = document.getElementById('repo').value
-  repo = repo == '' ? 'twbs/bootstrap' : repo;
+  repo = repo == '' ? 'petkaantonov/bluebird' : repo;
   console.log(repo);
 
   const starHistory = await getStarHistory(repo).catch(function(err) {
@@ -27,50 +16,37 @@ d3.select("button").on("click", async function() {
   console.log(starHistory);
 
   // 新数据集
-  cumulativeTestData.push({
+  data.push({
     key: repo,
-    values: starHistory.map((item)=>{
-      return [new Date(item.date), item.starNum]
-    })
+    values: starHistory.map((item) => {
+      return {
+        x: new Date(item.date),
+        y: Number(item.starNum)
+      }
+    }),
   });
+  console.log(JSON.stringify(data));
+
   nv.addGraph(function() {
-    var chart = nv.models.cumulativeLineChart()
+    var chart = nv.models.lineChart()
       .useInteractiveGuideline(true)
-      .x(function(d) {
-        return d[0]
-      })
-      .y(function(d) {
-        return d[1] / 100
-      })
-      .color(d3.scale.category10().range())
-      .average(function(d) {
-        return d.mean / 100;
-      })
-      .duration(300)
-      .clipVoronoi(false);
-    chart.dispatch.on('renderEnd', function() {
-      console.log('render complete: cumulative line with guide line');
-    });
+      .color(d3.scale.category10().range());
 
-    chart.xAxis.tickFormat(function(d) {
-      return d3.time.format('%m/%d/%y')(new Date(d))
-    });
+    chart.xAxis
+      .tickFormat(function(d) {
+        return d3.time.format('%x')(new Date(d))
+      });
 
-    chart.yAxis.tickFormat(d3.format(',.1%'));
+    chart.yAxis
+      .axisLabel('Stars')
+      .tickFormat(d3.format('d'));
 
-    d3.select('#chart1 svg')
-      .datum(cumulativeTestData)
+    d3.select('#chart svg')
+      .datum(data)
+      .transition().duration(500)
       .call(chart);
 
-    //TODO: Figure out a good way to do this automatically
     nv.utils.windowResize(chart.update);
-
-    chart.dispatch.on('stateChange', function(e) {
-      nv.log('New State:', JSON.stringify(e));
-    });
-    chart.state.dispatch.on('change', function(state) {
-      nv.log('state', JSON.stringify(state));
-    });
 
     return chart;
   });
