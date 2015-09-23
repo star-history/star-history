@@ -4,14 +4,19 @@ import axios from 'axios';
 import getStarHistory from './getStarHistory';
 require("babel-core/polyfill"); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
 
-const getConfig = {
+let code = window.location.search.slice(6);
+console.log(code);
+
+const postConfig = {
   params:{
+    code,
     client_id: '4e4f2621589085b864d7',
-    redirect_uri: 'http://www.timqian.com/star_history',
+    client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
   },
 };
 (async function(){
-  const res = await axios.get('https://github.com/login/oauth/authorize',getConfig).catch(function (err) {console.log(err);});
+  const res = await axios.post('https://github.com/login/oauth/access_token',postConfig).catch(function (err) {console.log(err);});
+  console.log(res);
 })();
 
 
