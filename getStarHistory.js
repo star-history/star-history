@@ -19,12 +19,15 @@ export default async function(repo) {
   } = await generateUrls(repo).catch(e => {
     console.log(e); // throw don't work
   });
-
+  if (pageIndexes.length < 1) {
+    alert('There is no such repo on github or the repo has less then 30 stars')
+  }
   const getArray = samplePageUrls.map(url => axios.get(url, getConfig));
   // console.log(getArray);
 
   const resArray = await Promise.all(getArray).catch(e => {
-    console.log(e); // throw don't work    
+    console.log(e); // throw don't work
+    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
   });
   // console.log(resArray);
 

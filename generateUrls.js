@@ -5,7 +5,7 @@ const getConfig = {
     Accept: 'application/vnd.github.v3.star+json',
   },
 };
-const sampleNum = 15; // number of requests to do
+const sampleNum = 18; // number of requests to do
 
 /**
  *	generate Urls and pageNums to be used
@@ -15,12 +15,11 @@ const sampleNum = 15; // number of requests to do
 export default async function(repo) {
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;
   const res = await axios.get(initUrl, getConfig).catch(e => {
-    console.log(e); // throw don't work
-    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
+    console.log(e); // throw don't workalert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
   });
   const link = res.headers.link;
 
-console.log(res);
+  console.log(res);
   if (!link) {
     return {
       samplePageUrls: [],
@@ -43,7 +42,7 @@ console.log(res);
         samplePageUrls.push(initUrl + '?page=' + pageIndex);
       }
     }
-console.log(samplePageUrls);
+    console.log(samplePageUrls);
     return {
       samplePageUrls, pageIndexes,
     };
