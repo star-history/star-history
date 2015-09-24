@@ -15,6 +15,9 @@
 
     #chart,
     svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
       margin: auto;
       padding-right: 20pt;
       width: 800px;
@@ -30,7 +33,7 @@
       font-weight: 100;
       text-transform: uppercase;
       text-align: center;
-      background-color: rgba(46, 137, 216, 0.88);
+      background-color: #30A06E;
       color: white;
       padding: 12pt;
       margin: 0;
@@ -60,11 +63,9 @@
 
 <body>
   <div class="nav">
-    <form class="theForm">
       <input type="text" id="repo" placeholder="twbs/bootstrap">
-      <button type="button" name="button">Get star history</button>
-    </form>
-
+      <button type="button" name="button" id="theBtn" >Get star history</button>
+      <img src="loadinfo.net.gif" alt="Loding..." id="theGif" style="display: none;">
   </div>
 <iframe src="https://ghbtns.com/github-btn.html?user=timqian&repo=star_history&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="30px"></iframe>
 <iframe src="https://ghbtns.com/github-btn.html?user=timqian&repo=star_history&type=fork&count=true" frameborder="0" scrolling="0" width="108px" height="30px"></iframe>
