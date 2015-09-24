@@ -16,6 +16,7 @@ export default async function(repo) {
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;
   const res = await axios.get(initUrl, getConfig).catch(e => {
     console.log(e); // throw don't workalert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
+    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
   });
   const link = res.headers.link;
 
@@ -36,8 +37,8 @@ export default async function(repo) {
         samplePageUrls.push(initUrl + '?page=' + i);
       }
     } else {
-      for (let i = 1; i < sampleNum; i++) {
-        let pageIndex = Math.round(i / sampleNum * pageNum);
+      for (let i = 1; i <= sampleNum; i++) {
+        let pageIndex = Math.round(i / sampleNum * pageNum) - 1; //for bootstrap bug
         pageIndexes.push(pageIndex);
         samplePageUrls.push(initUrl + '?page=' + pageIndex);
       }

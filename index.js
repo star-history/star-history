@@ -32,15 +32,15 @@ d3.select("button").on("click", async function() {
   document.getElementById('theGif').style.display = 'inline';
 
   let repo = document.getElementById('repo').value
-  repo = repo == '' ? 'twbs/bootstrap' : repo;
+  repo = repo == '' ? 'torvalds/linux' : repo;
   console.log(repo);
 
   const starHistory = await getStarHistory(repo).catch(function(err) {
     console.log(err);
+    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
   });
   console.log(starHistory);
-  document.getElementById('thebtn').removeAttribute("disabled");
-  document.getElementById('theGif').style.display = 'none';
+
   // 新数据集
   data.push({
     key: repo,
@@ -76,4 +76,8 @@ d3.select("button").on("click", async function() {
 
     return chart;
   });
+
+  document.getElementById('theBtn').removeAttribute("disabled");
+  document.getElementById('theGif').style.display = 'none';
+  console.log('hi');
 });
