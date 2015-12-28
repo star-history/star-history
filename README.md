@@ -1,4 +1,4 @@
-## [The missing star history graph of github projects](http://www.timqian.com/star_history/)
+## [The missing star history graph of github projects](http://www.timqian.com/star-history/)
 
 
 ![](django.png)
