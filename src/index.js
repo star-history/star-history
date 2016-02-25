@@ -1,9 +1,9 @@
+import "babel-polyfill"; // for async/await http://babeljs.io/docs/usage/polyfill/
 import d3 from 'd3';
 import nv from 'nvd3';
 import axios from 'axios';
 import getStarHistory from './getStarHistory';
 
-require("babel-core/polyfill"); //??????????????????没有它会出错  http://babeljs.io/docs/usage/polyfill/
 //
 // let code = window.location.search.slice(6);
 // console.log(code);
