@@ -1,10 +1,9 @@
-## The missing star history graph of github projects
-Site: http://www.timqian.com/star-history/
+#### Site: http://www.timqian.com/star-history/
 
-### examples:
+## Show cases:
 
-meteor vs rails vs django
+### meteor vs rails vs django
 ![](./assects/django.png)
 
-locash vs underscore
+### locash vs underscore
 ![lodash vs underscore](./assects/lodash_underscore.png)
