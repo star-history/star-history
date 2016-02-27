@@ -11,7 +11,7 @@ const getConfig = {
 /**
  * get star history
  * @param {sting} repo
- * @return {array} history - {[date: ,starNum: ],...}
+ * @return {array} history - [{date: ,starNum:}, ...]
  */
 export default async function(repo) {
   const {

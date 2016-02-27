@@ -3,7 +3,7 @@
 ## Show cases:
 
 ### meteor vs rails vs django
-![](./assects/django.png)
+![](./assets/django.png)
 
 ### locash vs underscore
-![lodash vs underscore](./assects/lodash_underscore.png)
+![lodash vs underscore](./assets/lodash_underscore.png)

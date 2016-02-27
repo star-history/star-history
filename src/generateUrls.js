@@ -8,9 +8,9 @@ const getConfig = {
 const sampleNum = 18; // number of requests to do
 
 /**
- *	generate Urls and pageNums to be used
+ * generate Urls and pageNums
  * @param {sting} repo - eg: 'timqian/jsCodeStructure'
- * @return {object} {samplePageUrls, pageIndexes} - urls to be fatched(length <=10) and page indexes
+ * @return {object} {samplePageUrls, pageIndexes} - urls to be fatched and page indexes
  */
 export default async function(repo) {
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;
