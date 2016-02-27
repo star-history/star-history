@@ -1,6 +1,6 @@
 #### Site: http://www.timqian.com/star-history/
 
-### As a chrome extension: https://github.com/timqian/star-history-plugin/
+#### As a chrome extension: https://github.com/timqian/star-history-plugin/
 
 ## Show cases:
 
