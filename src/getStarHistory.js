@@ -31,12 +31,15 @@ export default async function(repo) {
   });
   // console.log(resArray);
 
-  const starHistory = pageIndexes.map((p, i) => {
-    return {
-      date: resArray[i].data[0].starred_at.slice(0, 10),
-      starNum: 30 * (p - 1),
-    };
-  });
+  const starHistory = [].concat.apply([], pageIndexes.map((p, i) => {
+    return resArray[i].data.map((d, j) => {
+      return {
+        date: d.starred_at.slice(0, 10),
+        starNum: 30 * p + j,
+      }
+    });
+  }));
+
   console.log(starHistory);
 
   return starHistory;
