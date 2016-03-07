@@ -15,7 +15,7 @@
   "author": "timqian",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.5.4",
+    "axios": "^0.9.1",
     "babel-polyfill": "^6.5.0",
     "d3": "^3.5.6",
     "nvd3": "^1.8.1"

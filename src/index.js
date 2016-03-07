@@ -1,29 +1,7 @@
 import "babel-polyfill"; // for async/await http://babeljs.io/docs/usage/polyfill/
 import d3 from 'd3';
 import nv from 'nvd3';
-import axios from 'axios';
 import getStarHistory from './getStarHistory';
-
-//
-// let code = window.location.search.slice(6);
-// console.log(code);
-// if (code.length < 1) {
-//   window.location.href='https://github.com/login/oauth/authorize?client_id=4e4f2621589085b864d7';
-// } else {
-//   const postData = {
-//     code,
-//     client_id: '4e4f2621589085b864d7',
-//     client_secret: 'd990379890dd26d973f227304d4c88b10528c76b',
-//   };
-//
-//   console.log(postData);
-//   (async function(){
-//     const res = await axios.post('https://github.com/login/oauth/access_token', postData)
-//       .catch(err => {console.log(err);});
-//     console.log('hi');
-//     console.log(res);
-//   })();
-// }
 
 let data = [];
 
@@ -33,13 +11,10 @@ d3.select("button").on("click", async function() {
 
   let repo = document.getElementById('repo').value
   repo = repo == '' ? 'torvalds/linux' : repo;
-  console.log(repo);
+  /*console.log(repo);*/
 
-  const starHistory = await getStarHistory(repo).catch(function(err) {
-    console.log(err);
-    alert(`Sorry, Git API rate limit exceeded for your ip address, please wait for an hour`);
-  });
-  console.log(starHistory);
+  const starHistory = await getStarHistory(repo).catch(err => { alert(err); });
+  /*console.log(starHistory);*/
 
   // 新数据集
   data.push({
@@ -51,7 +26,7 @@ d3.select("button").on("click", async function() {
       }
     }),
   });
-  console.log(JSON.stringify(data));
+  /*console.log(JSON.stringify(data));*/
 
   nv.addGraph(function() {
     var chart = nv.models.lineChart()
@@ -79,5 +54,5 @@ d3.select("button").on("click", async function() {
 
   document.getElementById('theBtn').removeAttribute("disabled");
   document.getElementById('theGif').style.display = 'none';
-  console.log('hi');
+  /*console.log('hi');*/
 });
