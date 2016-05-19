@@ -7,7 +7,7 @@
 ### meteor vs rails vs django
 ![](./assets/django.png)
 
-### locash vs underscore
+### lodash vs underscore
 ![lodash vs underscore](./assets/lodash_underscore.png)
 
 [![paypal donate][paypal-image]][paypal-url]
