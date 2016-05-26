@@ -13,8 +13,8 @@
 ## Updates
 
 2016-5-26: update mobile view
-![](./assets/phone.png)
 
+<img src="./assets/phone.png" width="400">
 
 [![paypal donate][paypal-image]][paypal-url]
 [paypal-image]: https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif
