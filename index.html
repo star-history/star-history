@@ -48,14 +48,12 @@
       margin:4pt;
     }
 
-    button {
-      text-decoration: none;
+    input[type=submit] {
       text-align: center;
       font-size: 16pt;
       background-color: #01A94C;
       color: white;
       border-radius: 24pt;
-      padding: 6pt 12pt;
       cursor: default;
     }
   </style>
@@ -65,9 +63,11 @@
 
 <body>
   <div class="nav">
-      <input type="text" id="repo" placeholder="torvalds/linux">
-      <button type="button" name="button" id="theBtn" >See star history</button>
-      <img src="./assets/loadinfo.net.gif" alt="Loding..." id="theGif" style="display: none;">
+      <form id="theForm">
+        <input type="text" id="repo" name="repo" placeholder="torvalds/linux">
+        <input type="submit" id="theBtn" value="See star history">
+      </form>
+      <img src="./assets/loadinfo.net.gif" alt="Loading..." id="theGif" style="display: none;">
   </div>
 
   <a class="github-fork-ribbon" href="http://github.com/timqian/star-history" title="Fork me on GitHub">Fork me on GitHub</a>
@@ -81,7 +81,7 @@
   </script>
   <script type="text/javascript" src="./dist/bundle.js" charset="utf-8"></script>
 
-<!--------------------------------Google analytics-->
+<!--Google analytics-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -91,5 +91,5 @@
   ga('create', 'UA-56506279-1', 'auto');
   ga('send', 'pageview');
 </script>
-<!--------------------------------Google analytics-->
+<!--Google analytics-->
 </body>

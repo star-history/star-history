@@ -5,7 +5,11 @@ import getStarHistory from './getStarHistory';
 
 let data = [];
 
-d3.select("button").on("click", async function() {
+document.getElementById('theForm').addEventListener("submit",e=>{
+  e.preventDefault();
+});
+
+d3.select("#theForm").on("submit", async function(e) {
   document.getElementById('theBtn').setAttribute("disabled", "disabled");
   document.getElementById('theGif').style.display = 'inline';
 
