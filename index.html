@@ -48,15 +48,20 @@
       margin:4pt;
     }
 
-    input[type=submit] {
+    #theBtn {
       text-decoration: none;
       text-align: center;
       font-size: 16pt;
       background-color: #01A94C;
       color: white;
       border-radius: 24pt;
-      padding: 6pt 12pt;
+      padding: 6pt 10pt;
       cursor: default;
+    }
+    #theForm {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
     }
   </style>
   <title>Star history</title>
@@ -67,7 +72,7 @@
   <div class="nav">
       <form id="theForm">
         <input type="text" id="repo" name="repo" placeholder="torvalds/linux">
-        <input type="submit" id="theBtn" value="See star history">
+        <button type="submit" id="theBtn" >See star history</button>
       </form>
       <img src="./assets/loadinfo.net.gif" alt="Loading..." id="theGif" style="display: none;">
   </div>
