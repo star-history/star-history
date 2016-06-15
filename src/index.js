@@ -17,7 +17,11 @@ d3.select("#theForm").on("submit", async function(e) {
   repo = repo == '' ? 'torvalds/linux' : repo;
   /*console.log(repo);*/
 
-  const starHistory = await getStarHistory(repo).catch(err => { alert(err); });
+  const starHistory = await getStarHistory(repo).catch(err => {
+    alert(err); 
+    document.getElementById('theBtn').removeAttribute("disabled");
+    document.getElementById('theGif').style.display = 'none';
+  });
   /*console.log(starHistory);*/
 
   // 新数据集
