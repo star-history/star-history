@@ -11,8 +11,11 @@
 ![lodash vs underscore](./assets/lodash_underscore.png)
 
 ## Updates
+- 2016-6-26: Better view for less star repos #28
 
-2016-5-26: update mobile view
+- 2016-6-14: Toggle search by hit enter #26, prevent crash while searching for not existing repo
+
+- 2016-5-26: Update mobile view
 
 <img src="./assets/phone.png" width="400">
 

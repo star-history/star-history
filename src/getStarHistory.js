@@ -83,6 +83,12 @@ async function getStarHistory(repo) {
     };
   });
 
+  const today = new Date()
+  starHistory.push({
+    date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
+    starNum: starHistory[starHistory.length - 1].starNum
+  })
+
   return starHistory;
 }
 
