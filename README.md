@@ -1,14 +1,8 @@
-#### Site: http://www.timqian.com/star-history/
+## Intro
 
-#### As a chrome extension: https://github.com/timqian/star-history-plugin/
+// TODO
 
-## Show cases:
-
-### meteor vs rails vs django
-![](./assets/django.png)
-
-### lodash vs underscore
-![lodash vs underscore](./assets/lodash_underscore.png)
+#### ( As a chrome extension: https://github.com/timqian/star-history-plugin/ )
 
 ## Updates
 
@@ -22,7 +16,14 @@
 
 - 2016-5-26: Update mobile view
 
-<img src="./assets/phone.png" width="400">
+## Show cases:
+
+### meteor vs rails vs django
+![](./assets/django.png)
+
+### lodash vs underscore
+![lodash vs underscore](./assets/lodash_underscore.png)
+
 
 [![paypal donate][paypal-image]][paypal-url]
 [paypal-image]: https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif
