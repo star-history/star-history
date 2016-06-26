@@ -83,6 +83,7 @@ async function getStarHistory(repo) {
     };
   });
 
+ // Better view for less star repos #28
   const today = new Date()
   starHistory.push({
     date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,

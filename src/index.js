@@ -1,20 +1,43 @@
-import "babel-polyfill"; // for async/await http://babeljs.io/docs/usage/polyfill/
-import d3 from 'd3';
-import nv from 'nvd3';
 import getStarHistory from './getStarHistory';
+import draw from './draw';
 
 let data = [];
 
-document.getElementById('theForm').addEventListener("submit",e=>{
-  e.preventDefault();
+// fetch data accoding to hash
+if (location.hash !== '') {
+  const repoArr = location.hash.slice(1).split('&')
+  repoArr.forEach(async repo => {
+    await fetchDataAndDraw(repo);
+  })
+}
+
+document.getElementById('theForm').addEventListener("submit", async event => {
+  event.preventDefault();
+
+  // get repo str (format: 'torvalds/linux')
+  let repo = ''
+  const rawRepoStr = document.getElementById('repo').value;
+  if (rawRepoStr.includes('github.com')) {
+    repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
+  } else {
+    repo = rawRepoStr == '' ? 'torvalds/linux' : rawRepoStr;
+  }
+
+  await fetchDataAndDraw(repo);
+
+  if (location.hash === '') {
+    location.hash += repo;
+  } else if (location.hash.length >=3) { // minimal sample of repo name 'a/b'
+    location.hash += '&' + repo;
+  }
+  
 });
 
-d3.select("#theForm").on("submit", async function(e) {
+
+async function fetchDataAndDraw(repo) {
+
   document.getElementById('theBtn').setAttribute("disabled", "disabled");
   document.getElementById('theGif').style.display = 'inline';
-
-  let repo = document.getElementById('repo').value
-  repo = repo == '' ? 'torvalds/linux' : repo;
 
   const starHistory = await getStarHistory(repo).catch(err => {
     alert(err); 
@@ -22,7 +45,7 @@ d3.select("#theForm").on("submit", async function(e) {
     document.getElementById('theGif').style.display = 'none';
   });
 
-  // 新数据集
+  // new data
   data.push({
     key: repo,
     values: starHistory.map((item) => {
@@ -32,33 +55,9 @@ d3.select("#theForm").on("submit", async function(e) {
       }
     }),
   });
-  /*console.log(JSON.stringify(data));*/
 
-  nv.addGraph(function() {
-    var chart = nv.models.lineChart()
-      .useInteractiveGuideline(true)
-      .color(d3.scale.category10().range());
-
-    chart.xAxis
-      .tickFormat(function(d) {
-        return d3.time.format('%x')(new Date(d))
-      });
-
-    chart.yAxis
-      .axisLabel('Stars')
-      .tickFormat(d3.format('d'));
-
-    d3.select('#chart svg')
-      .datum(data)
-      .transition().duration(500)
-      .call(chart);
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
+  draw(data)
 
   document.getElementById('theBtn').removeAttribute("disabled");
   document.getElementById('theGif').style.display = 'none';
-  /*console.log('hi');*/
-});
+}
