@@ -11,7 +11,7 @@ if (location.hash !== '') {
   })
 }
 
-document.getElementById('theForm').addEventListener("submit", async event => {
+document.getElementById('theForm').addEventListener('submit', async event => {
   event.preventDefault();
 
   // get repo str (format: 'torvalds/linux')
@@ -32,6 +32,12 @@ document.getElementById('theForm').addEventListener("submit", async event => {
   }
   
 });
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  data = []
+  location.hash = ''
+  draw(data)
+})
 
 
 async function fetchDataAndDraw(repo) {

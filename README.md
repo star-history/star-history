@@ -1,14 +1,20 @@
-## Intro
+## Show cases
 
-// TODO
+### lodash vs underscore
+
+http://www.timqian.com/star-history/#lodash/lodash&jashkenas/underscore
+
+![](./assets/lodashUnderscore.png)
 
 #### ( As a chrome extension: https://github.com/timqian/star-history-plugin/ )
 
 ## Updates
 
+- 2016-6-28: Add clear btn
+
 - 2016-6-28: Better view for "many star" repos(use current star number as the last point on the graph)
 
-- 2016-6-26: store repo info into url hash
+- 2016-6-26: Store repo info into url hash
 
 - 2016-6-26: multiple kinds of input styles(eg: github.com/timqian/star-history, ...)
 
@@ -17,14 +23,6 @@
 - 2016-6-14: Toggle search by hit enter #26, prevent crash while searching for not existing repo
 
 - 2016-5-26: Update mobile view
-
-## Show cases:
-
-### meteor vs rails vs django
-![](./assets/django.png)
-
-### lodash vs underscore
-![lodash vs underscore](./assets/lodash_underscore.png)
 
 
 [![paypal donate][paypal-image]][paypal-url]
