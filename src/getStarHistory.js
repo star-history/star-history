@@ -28,10 +28,13 @@ async function generateUrls(repo) {
     throw 'No such repo or netowrk err!';
   });
 
-  /* link Sample (no link when star < 30):
-    <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=2>;
-    rel="next", <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=4>; rel="last"
-  */
+  /** 
+   * link Sample (no link when star < 30):
+   * <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=2>;
+   * rel="next", 
+   * <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=4>; 
+   * rel="last"
+   */
   const link = initRes.headers.link;
 
   if (!link) {
@@ -48,7 +51,7 @@ async function generateUrls(repo) {
     }
   } else {
     for (let i = 1; i <= sampleNum; i++) {
-      let pageIndex = Math.round(i / sampleNum * pageNum) - 1; //for bootstrap bug
+      let pageIndex = Math.round(i / sampleNum * pageNum) - 1; // for bootstrap bug
       pageIndexes.push(pageIndex);
       sampleUrls.push(initUrl + '?page=' + pageIndex);
     }
@@ -72,9 +75,10 @@ async function getStarHistory(repo) {
   // promisese to request sampleUrls
   const getArray = sampleUrls.map(url => axiosGit.get(url));
 
-  const resArray = await Promise.all(getArray).catch(res => {
-    throw 'Github api limit exceeded, Try in the new hour!'
-  });
+  const resArray = await Promise.all(getArray)
+    .catch(res => {
+      throw 'Github api limit exceeded, Try in the new hour!'
+    });
 
   const starHistory = pageIndexes.map((p, i) => {
     return {
@@ -83,11 +87,17 @@ async function getStarHistory(repo) {
     };
   });
 
- // Better view for less star repos #28
+ // Better view for less star repos (#28) and for repos with too much stars (>40000)
   const today = new Date()
+  const resForStarNum = await axios.get(`https://api.github.com/repos/${repo}`)
+    .catch(res => {
+      throw 'Github api limit exceeded, Try in the new hour!'
+    });
+  const starNumToday = resForStarNum.data.stargazers_count;
+
   starHistory.push({
     date: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
-    starNum: starHistory[starHistory.length - 1].starNum
+    starNum: starNumToday
   })
 
   return starHistory;
