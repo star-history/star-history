@@ -1,12 +1,11 @@
-## Show cases
+> As a chrome extension: https://github.com/timqian/star-history-plugin/ 
 
-### lodash vs underscore
 
-http://www.timqian.com/star-history/#lodash/lodash&jashkenas/underscore
+## [Show cases: lodash vs underscore](http://www.timqian.com/star-history/#lodash/lodash&jashkenas/underscore)
+
 
 ![](./assets/lodashUnderscore.png)
 
-#### ( As a chrome extension: https://github.com/timqian/star-history-plugin/ )
 
 ## Updates
 
