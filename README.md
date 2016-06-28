@@ -6,6 +6,8 @@
 
 ## Updates
 
+- 2016-6-28: Better view for "many star" repos(use current star number as the last point on the graph)
+
 - 2016-6-26: store repo info into url hash
 
 - 2016-6-26: multiple kinds of input styles(eg: github.com/timqian/star-history, ...)
