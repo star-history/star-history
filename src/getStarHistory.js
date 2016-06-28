@@ -12,7 +12,7 @@ const axiosGit = axios.create({
   },
 });
 
-const sampleNum = 18; // number of sample requests to do
+const sampleNum = 15; // number of sample requests to do
 
 /**
  * generate Urls and pageNums
