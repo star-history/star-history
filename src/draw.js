@@ -17,7 +17,7 @@ export default function draw(data) {
       });
 
     chart.yAxis
-      .axisLabel('Stars')
+      .axisLabel('Github Stars')
       .tickFormat(d3.format('d'));
 
     d3.select('#chart svg')
