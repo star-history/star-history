@@ -16,8 +16,9 @@ document.getElementById('theForm').addEventListener('submit', async event => {
 
   // get repo str (format: 'torvalds/linux')
   let repo = ''
-  const rawRepoStr = document.getElementById('repo').value;
+  let rawRepoStr = document.getElementById('repo').value;
   if (rawRepoStr.includes('github.com')) {
+    rawRepoStr += '\/'      // make sure url end with /
     repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
   } else {
     repo = rawRepoStr == '' ? 'torvalds/linux' : rawRepoStr;
