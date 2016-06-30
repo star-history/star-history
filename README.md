@@ -9,6 +9,8 @@
 
 ## Updates
 
+- 2016-6-30: Alert to notie
+
 - 2016-6-28: Add clear btn
 
 - 2016-6-28: Better view for "many star" repos(use current star number as the last point on the graph)
