@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
+    "corner-notie": "^1.2.0",
     "d3": "^3.5.6",
     "nvd3": "^1.8.1"
   },

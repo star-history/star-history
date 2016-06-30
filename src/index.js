@@ -1,6 +1,6 @@
 import getStarHistory from './getStarHistory';
 import draw from './draw';
-
+import notie from 'corner-notie'
 let data = [];
 
 // fetch data accoding to hash
@@ -47,7 +47,13 @@ async function fetchDataAndDraw(repo) {
   document.getElementById('theGif').style.display = 'inline';
 
   const starHistory = await getStarHistory(repo).catch(err => {
-    alert(err); 
+    notie(err, {
+      type: 'warning', // info | warning | success | danger
+      autoHide: true,
+      timeout: 3000,
+      position: 'bottom-center',
+      width: 300
+    })
     document.getElementById('theBtn').removeAttribute("disabled");
     document.getElementById('theGif').style.display = 'none';
   });

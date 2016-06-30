@@ -25,7 +25,7 @@ async function generateUrls(repo) {
 
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;   // used to get star infors
   const initRes = await axiosGit.get(initUrl).catch(res => {
-    throw 'No such repo or netowrk err!';
+    throw 'No such repo or netowrk error!';
   });
 
   /** 
