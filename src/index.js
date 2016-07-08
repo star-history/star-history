@@ -37,7 +37,7 @@ document.getElementById('theForm').addEventListener('submit', async event => {
 document.getElementById('clearBtn').addEventListener('click', () => {
   data = []
   location.hash = ''
-  draw(data)
+  document.querySelector('#chart').innerHTML = '<svg></svg>'
 })
 
 
@@ -52,7 +52,7 @@ async function fetchDataAndDraw(repo) {
       autoHide: true,
       timeout: 3000,
       position: 'bottom-center',
-      width: 300
+      width: 250
     })
     document.getElementById('theBtn').removeAttribute("disabled");
     document.getElementById('theGif').style.display = 'none';
