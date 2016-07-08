@@ -52,7 +52,7 @@ async function fetchDataAndDraw(repo) {
       autoHide: true,
       timeout: 3000,
       position: 'bottom-center',
-      width: 250
+      width: 270
     })
     document.getElementById('theBtn').removeAttribute("disabled");
     document.getElementById('theGif').style.display = 'none';
