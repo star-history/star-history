@@ -88,7 +88,7 @@ async function getStarHistory(repo) {
   });
 
  // Better view for less star repos (#28) and for repos with too much stars (>40000)
-  const resForStarNum = await axios.get(`https://api.github.com/repos/${repo}`)
+  const resForStarNum = await axiosGit.get(`https://api.github.com/repos/${repo}`)
     .catch(res => {
       throw 'Github api limit exceeded, Try in the new hour!'
     });
