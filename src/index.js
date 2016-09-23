@@ -44,7 +44,7 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 async function fetchDataAndDraw(repo) {
 
   document.getElementById('theBtn').setAttribute("disabled", "disabled");
-  document.getElementById('theGif').style.display = 'inline';
+  document.getElementById('theGif').style.visibility = 'visible';
 
   const starHistory = await getStarHistory(repo).catch(err => {
     notie(err, {
@@ -55,7 +55,7 @@ async function fetchDataAndDraw(repo) {
       width: 270
     })
     document.getElementById('theBtn').removeAttribute("disabled");
-    document.getElementById('theGif').style.display = 'none';
+    document.getElementById('theGif').style.visibility = 'hidden';
   });
 
   // new data
@@ -72,5 +72,5 @@ async function fetchDataAndDraw(repo) {
   draw(data)
 
   document.getElementById('theBtn').removeAttribute("disabled");
-  document.getElementById('theGif').style.display = 'none';
+  document.getElementById('theGif').style.visibility = 'hidden';
 }
