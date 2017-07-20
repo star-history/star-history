@@ -14,14 +14,14 @@ const axiosGit = axios.create({
 
 const sampleNum = 15; // number of sample requests to do
 
+const range = n => Array.apply(null, {length: 5}).map((_, i) => i + 1);
+
 /**
  * generate Urls and pageNums
  * @param {sting} repo - eg: 'timqian/jsCodeStructure'
  * @return {object} {sampleUrls, pageIndexes} - urls to be fatched(length <=10) and page indexes
  */
 async function generateUrls(repo) {
-  let sampleUrls = [];  // store sampleUrls to be rquested
-  let pageIndexes = [];  // used to calculate total stars for this page
 
   const initUrl = `https://api.github.com/repos/${repo}/stargazers`;   // used to get star infors
   const initRes = await axiosGit.get(initUrl).catch(res => {
@@ -37,25 +37,15 @@ async function generateUrls(repo) {
    */
   const link = initRes.headers.link;
 
-  if (!link) {
-    throw 'Too few stars (less than 30)!';
-  }
+  const pageNum = link ? /next.*?page=(\d*).*?last/.exec(link)[1] : 1; // total page number
 
-  const pageNum = /next.*?page=(\d*).*?last/.exec(link)[1]; // total page number
+  // used to calculate total stars for this page
+  const pageIndexes = pageNum <= sampleNum ?
+    range(pageNum) :
+    range(sampleNum).map(n => Math.round(n / sampleNum * pageNum) - 1); // for bootstrap bug
 
-  // generate { sampleUrls, pageIndexes } accordingly
-  if (pageNum <= sampleNum) {
-    for (let i = 2; i <= pageNum; i++) {
-      pageIndexes.push(i);
-      sampleUrls.push(initUrl + '?page=' + i);
-    }
-  } else {
-    for (let i = 1; i <= sampleNum; i++) {
-      let pageIndex = Math.round(i / sampleNum * pageNum) - 1; // for bootstrap bug
-      pageIndexes.push(pageIndex);
-      sampleUrls.push(initUrl + '?page=' + pageIndex);
-    }
-  }
+  // store sampleUrls to be rquested
+  const sampleUrls = pageIndexes.map(pageIndex => `${initUrl}?page=${pageIndex}`);
 
   console.log("pageIndexes", pageIndexes);
   return { sampleUrls, pageIndexes };
@@ -72,7 +62,8 @@ async function getStarHistory(repo) {
     throw e;
   });
 
-  // promisese to request sampleUrls
+  // promises to request sampleUrls
+
   const getArray = sampleUrls.map(url => axiosGit.get(url));
 
   const resArray = await Promise.all(getArray)
@@ -80,14 +71,47 @@ async function getStarHistory(repo) {
       throw 'Github api limit exceeded, Try in the new hour!'
     });
 
-  const starHistory = pageIndexes.map((p, i) => {
-    return {
-      date: resArray[i].data[0].starred_at.slice(0, 10),
-      starNum: 30 * (p - 1),
-    };
-  });
+  let starHistory = null;
 
- // Better view for less star repos (#28) and for repos with too much stars (>40000)
+  if (pageIndexes[pageIndexes.length - 1] > sampleNum) {
+    starHistory = pageIndexes.map((p, i) => {
+      return {
+        date: resArray[i].data[0].starred_at.slice(0, 10),
+        starNum: 30 * (p - 1),
+      };
+    });
+  } else {
+    // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
+    const starredEvents = resArray.reduce((acc, r) => acc.concat(r.data), []);
+
+    const firstStarredAt = new Date(starredEvents[0].starred_at);
+    const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000*60*60*24);
+
+    const dates = Array.from(new Array(50)).map((_, i) => {
+      const firstStarredAtCopy = new Date(firstStarredAt);
+      firstStarredAtCopy.setDate(firstStarredAtCopy.getDate() + Math.floor((daysSinceRepoCreatedAt / 50) * (i + 1)));
+      return firstStarredAtCopy.toISOString().slice(0, 10);
+    }, []);
+
+    starHistory = dates.map((d, i) => {
+      let starNum = 0;
+      const firstStarredEventAfterDate = starredEvents.find((se, i) => {
+        if (se.starred_at.slice(0, 10) >= d) {
+          starNum = i + 1;
+          return true
+        }
+
+        return false;
+      })
+
+      return firstStarredEventAfterDate && {
+        date: firstStarredEventAfterDate.starred_at.slice(0, 10),
+        starNum: starNum
+      };
+    }).filter(x => x);
+  }
+
+  // Better view for less star repos (#28) and for repos with too much stars (>40000)
   const resForStarNum = await axiosGit.get(`https://api.github.com/repos/${repo}`)
     .catch(res => {
       throw 'Github api limit exceeded, Try in the new hour!'
