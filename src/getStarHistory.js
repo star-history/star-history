@@ -41,14 +41,14 @@ async function generateUrls(repo) {
 
   // used to calculate total stars for this page
   const pageIndexes = pageNum <= sampleNum ?
-    range(pageNum) :
+    range(pageNum).slice(1, pageNum) :
     range(sampleNum).map(n => Math.round(n / sampleNum * pageNum) - 1); // for bootstrap bug
 
   // store sampleUrls to be rquested
   const sampleUrls = pageIndexes.map(pageIndex => `${initUrl}?page=${pageIndex}`);
 
   console.log("pageIndexes", pageIndexes);
-  return { sampleUrls, pageIndexes };
+  return { firstPage: initRes, sampleUrls, pageIndexes };
 }
 
 /**
@@ -58,13 +58,13 @@ async function generateUrls(repo) {
  */
 async function getStarHistory(repo) {
 
-  const { sampleUrls, pageIndexes } = await generateUrls(repo).catch(e => {
+  const { sampleUrls, pageIndexes, firstPage } = await generateUrls(repo).catch(e => {
     throw e;
   });
 
   // promises to request sampleUrls
 
-  const getArray = sampleUrls.map(url => axiosGit.get(url));
+  const getArray = [firstPage].concat(sampleUrls.map(url => axiosGit.get(url)));
 
   const resArray = await Promise.all(getArray)
     .catch(res => {
