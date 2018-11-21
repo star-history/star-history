@@ -26,7 +26,4 @@
 - 2016-5-26: Update mobile view
 
 
-[![paypal donate][paypal-image]][paypal-url]
-
-[paypal-image]: https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif
-[paypal-url]: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=timqian92@qq.com&currency_code=USD&amount=1&return=https://github.com/timqian&item_name=timqian&undefined_quantity=1&no_note=0
+> [Donate with bitcoin][https://getcryptoo.github.io/]
