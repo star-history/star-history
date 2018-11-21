@@ -26,4 +26,4 @@
 - 2016-5-26: Update mobile view
 
 
-> [Donate with bitcoin][https://getcryptoo.github.io/]
+> [Donate with bitcoin](https://getcryptoo.github.io/)
