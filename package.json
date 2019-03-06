@@ -4,23 +4,28 @@
   "description": "The missing star history graph of github projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "startWebsite": "parcel website/index.html",
+    "buildWebsite": "rm -r dist && parcel build website/index.html --no-source-maps",
+    "startExtension": "parcel watch extension/src/index.js -d extension/build",
+    "buildExtension": "rm -r extension/build && parcel build extension/src/index.js -d extension/build --no-source-maps"
   },
   "keywords": [
     "github",
     "star",
     "history"
   ],
+  "browserslist": [
+    "since 2017-06"
+  ],
   "author": "timqian",
   "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^5.8.24",
-    "babel-loader": "^5.3.2",
-    "webpack": "^1.12.1"
-  },
   "dependencies": {
-    "axios": "^0.5.4",
+    "axios": "^0.9.1",
+    "corner-notie": "^1.2.0",
     "d3": "^3.5.6",
     "nvd3": "^1.8.1"
+  },
+  "devDependencies": {
+    "parcel": "^1.11.0"
   }
 }
