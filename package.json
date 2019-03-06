@@ -4,13 +4,18 @@
   "description": "The missing star history graph of github projects",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -d --watch",
-    "build": "webpack -p"
+    "startWebsite": "parcel website/index.html",
+    "buildWebsite": "rm -r dist && parcel build website/index.html --no-source-maps",
+    "startExtension": "parcel watch extension/src/index.js -d extension/build",
+    "buildExtension": "rm -r extension/build && parcel build extension/src/index.js -d extension/build --no-source-maps"
   },
   "keywords": [
     "github",
     "star",
     "history"
+  ],
+  "browserslist": [
+    "since 2017-06"
   ],
   "author": "timqian",
   "license": "MIT",
@@ -21,11 +26,6 @@
     "nvd3": "^1.8.1"
   },
   "devDependencies": {
-    "babel-core": "^6.5.2",
-    "babel-loader": "^6.2.3",
-    "babel-preset-es2015": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "webpack": "^1.12.14"
+    "parcel": "^1.11.0"
   }
 }

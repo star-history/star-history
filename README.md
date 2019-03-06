@@ -1,13 +1,52 @@
-> As a chrome extension: https://github.com/timqian/star-history-plugin/ 
+## [As a website](https://star-history.t9t.io)
 
+![](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
 
-## [Show cases: lodash vs underscore](http://www.timqian.com/star-history/#lodash/lodash&jashkenas/underscore)
+## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
+![](https://raw.githubusercontent.com/timqian/images/master/star-history-extension.gif)
 
-![](./assets/lodashUnderscore.png)
+> Note: You can [load the `./extension` folder to chrome](https://superuser.com/a/247654) to install the extension too.
 
+## Access Token
+
+Star-history use github API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star-history will need your personal access token to unlimit it.
+
+If you don't already have one, [create one](https://github.com/settings/tokens/new), and add to star-history (no scope to your personal data is needed)
+
+## Develop
+
+### Website
+
+```bash
+npm run startWebsite
+```
+
+### Extension
+
+```bash
+npm run buildExtension
+# load the extension folder as unpacked extension into chrome to view it
+```
+
+## Build and Deploy
+
+### Website
+
+```bash
+up deploy production
+```
+
+### Extension
+
+```bash
+npm run buildExtension
+# zip extension folder and publish to chrome web store
+```
 
 ## Updates
+
+- 2019-3-06: Add personal access token; update style; mono repo
 
 - 2016-6-30: Alert to notie
 

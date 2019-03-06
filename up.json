@@ -1,0 +1,17 @@
+{
+  "name": "star-history",
+  "profile": "timConsole",
+  "regions": ["us-east-1"],
+  "type": "static",
+  "static": {
+    "dir": "dist"
+  },
+  "hooks": {
+    "build": "npm run buildWebsite"
+  },
+  "stages": {
+    "production": {
+      "domain": "star-history.t9t.io"
+    }
+  }
+}
