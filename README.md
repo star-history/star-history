@@ -34,6 +34,10 @@ npm run buildExtension
 ### Website
 
 ```bash
+# deploy to dev env
+up
+
+# deploy to star-history.t9t.io
 up deploy production
 ```
 
