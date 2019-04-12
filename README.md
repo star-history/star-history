@@ -1,4 +1,6 @@
-# Star History - The missing star history graph of github repos
+# Star History
+
+The missing star history graph of github repos
 
 [![Join us](https://badgen.net/badge/Join%20the%20community%20of%20t9t.io/Get%20in%20touch/green)](https://t9t.io/#contact)
 
