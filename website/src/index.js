@@ -13,9 +13,7 @@ if (location.hash !== '') {
   });
 }
 
-document.getElementById('theBtn').addEventListener('click', async event => {
-  event.preventDefault();
-
+async function getRepoNameFetchAndDraw() {
   // get repo str (format: 'torvalds/linux')
   let repo = ''
   let rawRepoStr = document.getElementById('repo').value;
@@ -28,6 +26,17 @@ document.getElementById('theBtn').addEventListener('click', async event => {
 
   token = localStorage.getItem('star-history-github-token');
   await fetchDataAndDraw(repo, token);
+}
+
+document.querySelector('#repo').addEventListener('keyup', async (e) => {
+  if (e.keyCode === 13) {
+    await getRepoNameFetchAndDraw();
+  }
+});
+
+document.getElementById('theBtn').addEventListener('click', async event => {
+  event.preventDefault();
+  await getRepoNameFetchAndDraw();
 });
 
 const localToken = localStorage.getItem('star-history-github-token');
@@ -92,7 +101,8 @@ async function fetchDataAndDraw(repo, token) {
 
     if (location.hash === '') {
       location.hash += repo;
-    } else if (location.hash.length >=3) { // minimal sample of repo name 'a/b'
+    } else if (location.hash.length >=3 && !location.hash.includes(repo)) { // minimal sample of repo name 'a/b'
+
       location.hash += '&' + repo;
     }
   } catch (error) {
