@@ -49,7 +49,7 @@ async function getStarHistory(repo, token) {
       range(pageNum).slice(1, pageNum) :
       range(sampleNum).map(n => Math.round(n / sampleNum * pageNum) - 1); // for bootstrap bug
 
-    // store sampleUrls to be rquested
+    // store sampleUrls to be requested
     const sampleUrls = pageIndexes.map(pageIndex => `${initUrl}?page=${pageIndex}`);
 
     console.log("pageIndexes", pageIndexes);
@@ -69,7 +69,7 @@ async function getStarHistory(repo, token) {
   if (pageIndexes[pageIndexes.length - 1] > sampleNum) {
     starHistory = pageIndexes.map((p, i) => {
       return {
-        date: resArray[i].data[0].starred_at.slice(0, 10),
+        date: resArray[i + 1].data[0].starred_at.slice(0, 10),
         starNum: 30 * (p - 1),
       };
     });
