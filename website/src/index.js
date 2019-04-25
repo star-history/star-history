@@ -148,7 +148,7 @@ async function fetchDataAndDraw(repo, token) {
 
 function drawAddTokenBtn(token) {
   let verb = 'Add';
-  if (token != '') {
+  if (token) {
     verb = 'Edit'
   }
   document.getElementById('addTokenBtn').innerHTML = '<strong>' + verb + ' access token</strong>';
