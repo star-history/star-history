@@ -1,24 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="View star history of github repositories" />
+  <meta name="description" content="View star history of GitHub repositories" />
   <link rel="icon" href="./favicon.ico" />
   <link rel="apple-touch-icon" href="./favicon.ico" />
   <link rel="bookmark" href="./favicon.ico" />
   <link rel="shortcut icon" href="./favicon.ico" />
   <link href="./assets/nvd3.css" rel="stylesheet" type="text/css">
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-    crossorigin="anonymous"
-    rel="preload"
-  />
-  <link 
-    rel="stylesheet"
-    rel="preload"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
-  />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"
+    rel="preload" />
+  <link rel="stylesheet" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 
   <style>
     text {
@@ -29,7 +24,7 @@
       display: block;
     }
 
-    #chart{
+    #chart {
       visibility: hidden;
       display: block;
       margin-left: auto;
@@ -50,7 +45,6 @@
       max-width: 800px;
       display: inline-block;
     }
-
   </style>
   <title>Star history</title>
 
@@ -58,53 +52,49 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56506279-5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-56506279-5');
   </script>
-
-
 </head>
 
 <body>
   <!-- Navigation bar -->
   <nav class="navbar is-dark" id="nav">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://t9t.io">
-            <img src="./header.ico" width="28" height="28" />
-          </a>
-          <a class="navbar-item" href="http://github.com/timqian/star-history">
-            <strong>About</strong>
-          </a>
-          <a class="navbar-item" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">
-            <strong>Chrome Extension</strong>
-          </a>
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://t9t.io">
+          <img src="./header.ico" width="28" height="28" />
+        </a>
+        <a class="navbar-item" href="http://github.com/timqian/star-history">
+          <strong>About</strong>
+        </a>
+        <a class="navbar-item" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">
+          <strong>Chrome Extension</strong>
+        </a>
 
-          <div
-            class="navbar-burger burger"
-            data-target="navbarExampleTransparentExample">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
 
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
-          <div class="navbar-end">
-            <a id="addTokenBtn" class="navbar-item">
-              <strong>Add access token</strong>
-              <!-- <span class="icon">
-                <i class="far fa-setting"></i>
-              </span> -->
-            </a>
-          </div>
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a id="addTokenBtn" class="navbar-item">
+            <strong>Add access token</strong>
+            <!-- <span class="icon">
+                  <i class="far fa-setting"></i>
+                </span> -->
+          </a>
         </div>
       </div>
     </div>
+    </div>
   </nav>
-  
+
   <dev class="section">
     <div class="container has-text-centered">
       <div class="search-container">
@@ -121,12 +111,12 @@
         </div>
       </div>
     </div>
-    <br/>
+    <br />
     <div class="container has-text-centered">
       <div id="chart" class="card">
         <svg></svg>
       </div>
-      <br/>
+      <br />
       <div id="button-group" class="buttons is-pulled-right">
         <button id="clearBtn" class="button is-danger">Clear the result</button>
         <button id="shareBtn" class="button is-success">Share the result</button>
@@ -140,25 +130,27 @@
       <hr style="background-color:#dbdbdb; height: 1px" />
       <div style="float:left">
         Build by
-        <a href="https://twitter.com/tim_qian"><span class="tag is-info is-rounded"><strong>@tim_qian</strong></span></a>
+        <a href="https://twitter.com/tim_qian"><span
+            class="tag is-info is-rounded"><strong>@tim_qian</strong></span></a>
       </div>
       <div style="float: right">
 
-        <a
-          class="icon button is-white"
-          href="https://spectrum.chat/t9tio">
-          <i><svg viewBox="0 0 16 16" width="15" height="15"><g fill="#111111"><path d="M0,1.067A1.067,1.067,0,0,1,1.067,0H2A14,14,0,0,1,16,14v.933A1.067,1.067,0,0,1,14.933,16H9.067A1.067,1.067,0,0,1,8,14.933V14A6,6,0,0,0,2,8H1.067A1.067,1.067,0,0,1,0,6.933Z" fill="#111111"></path></g></svg></i>
+        <a class="icon button is-white" href="https://spectrum.chat/t9tio">
+          <i><svg viewBox="0 0 16 16" width="15" height="15">
+              <g fill="#111111">
+                <path
+                  d="M0,1.067A1.067,1.067,0,0,1,1.067,0H2A14,14,0,0,1,16,14v.933A1.067,1.067,0,0,1,14.933,16H9.067A1.067,1.067,0,0,1,8,14.933V14A6,6,0,0,0,2,8H1.067A1.067,1.067,0,0,1,0,6.933Z"
+                  fill="#111111"></path>
+              </g>
+            </svg></i>
         </a>
 
-        <a
-          class="icon button is-white"
-          href="https://twitter.com/t9tio"><i class="fab fa-twitter"></i>
+        <a class="icon button is-white" href="https://twitter.com/t9tio"><i class="fab fa-twitter"></i>
         </a>
 
-        <a
-        class="icon button is-white"
-        href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
-        <i class="fab fa-weixin"></i>
+        <a class="icon button is-white"
+          href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
+          <i class="fab fa-weixin"></i>
         </a>
 
         <a class="icon button is-white" href="mailto:timqian92@qq.com">
@@ -171,28 +163,33 @@
   <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Add github access token</p>
-          <button id="closeModalBtn" class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <p>Star-history use github API to retrieve repository metadata. You may see this page because you have hit the <a href="https://developer.github.com/v3/#rate-limiting">github API rate limit</a>. </p>
-          <br/>
-          <p>Star-history will need your <a href="https://github.com/settings/tokens">personal access token</a> to unlimit it. If you don't already have one, <a href="https://github.com/settings/tokens/new">create one</a>, and paste it into the textbox below (no scope to your personal data is needed)</p>
+      <header class="modal-card-head">
+        <p id="modalCardTitle" class="modal-card-title">Add GitHub access token</p>
+        <button id="closeModalBtn" class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Star-history use GitHub API to retrieve repository metadata. You may see this page because you have hit the
+          <a href="https://developer.github.com/v3/#rate-limiting">GitHub API rate limit</a>. </p>
+        <br />
+        <p>Star-history will need your <a href="https://github.com/settings/tokens">personal access token</a> to unlimit
+          it. If you don't already have one, <a href="https://github.com/settings/tokens/new">create one</a>, and paste
+          it into the textbox below (no scope to your personal data is needed)</p>
 
-          <br/>
+        <br />
 
-          <label class="label">access token (will be stored in your localstorage)</label>
-          <input class="input" id="tokenInput" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b"/>
-          <br/>
-          <br/>
-          <button id="saveTokenBtn" class="button is-success is-pulled-right">Save</button>
-        </section>
-        <!-- <footer class="modal-card-foot"> -->
-        <!-- </footer> -->
-      </div>
+        <label class="label">access token (will be stored in your local storage)</label>
+        <input class="input" id="tokenInput" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b" />
+        <br />
+        <br />
+        <button id="saveTokenBtn" class="button is-success is-pulled-right">Save</button>
+      </section>
+      <!-- <footer class="modal-card-foot"> -->
+      <!-- </footer> -->
+    </div>
     <!-- <button class="modal-close is-large" aria-label="close"></button> -->
   </div>
 
   <script type="text/javascript" src="./src/index.js" charset="utf-8"></script>
 </body>
+
+</html>
