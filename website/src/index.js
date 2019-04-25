@@ -4,6 +4,7 @@ import notie from 'corner-notie'
 let data = [];
 
 let token = localStorage.getItem('star-history-github-token');
+drawAddTokenBtn(token);
 
 // fetch data accoding to hash
 if (location.hash !== '') {
@@ -59,6 +60,7 @@ document.getElementById('saveTokenBtn').addEventListener('click', e => {
   const token = document.getElementById('tokenInput').value;
   localStorage.setItem('star-history-github-token', token);
   document.querySelector('.modal').classList.remove('is-active');
+  drawAddTokenBtn(token);
 });
 
 document.getElementById('clearBtn').addEventListener('click', () => {
@@ -142,6 +144,15 @@ async function fetchDataAndDraw(repo, token) {
   document.getElementById('theBtn').classList.remove('is-loading');
   document.getElementById('button-group').style.visibility = 'visible';
   document.getElementById('chart').style.visibility = 'visible';
+}
+
+function drawAddTokenBtn(token) {
+  let verb = 'Add';
+  if (token != '') {
+    verb = 'Edit'
+  }
+  document.getElementById('addTokenBtn').innerHTML = '<strong>' + verb + ' access token</strong>';
+  document.getElementById('modalCardTitle').innerHTML = verb + ' GitHub access token';
 }
 
 // copy text to clipboard
