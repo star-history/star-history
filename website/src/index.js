@@ -15,14 +15,14 @@ if (location.hash !== '') {
 }
 
 async function getRepoNameFetchAndDraw() {
-  // get repo str (format: 'torvalds/linux')
+  // get repo str (format: 'timqian/star-history')
   let repo = ''
   let rawRepoStr = document.getElementById('repo').value;
   if (rawRepoStr.includes('github.com')) {
     rawRepoStr += '\/'      // make sure url end with /
     repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
   } else {
-    repo = rawRepoStr == '' ? 'torvalds/linux' : rawRepoStr;
+    repo = rawRepoStr == '' ? 'timqian/star-history' : rawRepoStr;
   }
 
   token = localStorage.getItem('star-history-github-token');
@@ -177,3 +177,13 @@ function copyToClipboard(text){
     menu.classList.toggle('is-active');
   });
 })();
+
+
+// for discount message
+document.querySelector('#delete-discount').addEventListener('click', (e) => {
+  window.localStorage.setItem('delete-discount', 'true');
+  document.querySelector('#discount-message').style.display = 'none';
+});
+
+if (window.localStorage.getItem('delete-discount')) document.querySelector('#discount-message').style.display = 'none';
+

@@ -96,11 +96,26 @@
   </nav>
 
   <dev class="section">
-    <div class="container has-text-centered">
+    <div class="container has-text-centered">      
+      <article class="message is-success" id="discount-message">
+        <div class="message-header">
+          <p>Thanks to all my users</p>
+          <button class="delete" aria-label="delete" id="delete-discount"></button>
+        </div>
+        <div class="message-body">
+            star-history got 1k stars on 
+            <a href="https://github.com/timqian/star-history">github</a> 
+            recently. 
+            In celebration of it, the 
+            <a href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">chrome extension</a> is 67% off in the following week($0.99).
+        </div>
+      </article>
+
       <div class="search-container">
+
         <div class="field has-addons">
           <div class="control is-expanded">
-            <input class="input is-dark" type="text" id="repo" name="repo" placeholder="torvalds/linux">
+            <input class="input is-dark" type="text" id="repo" name="repo" placeholder="timqian/star-history">
           </div>
           <p class="control">
             <button class="button is-dark is-outlined" id="theBtn">
@@ -110,6 +125,7 @@
 
         </div>
       </div>
+      
     </div>
     <br />
     <div class="container has-text-centered">
