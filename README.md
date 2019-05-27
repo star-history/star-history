@@ -2,7 +2,7 @@
 
 # Star History
 
-The missing star history graph of github repos
+The missing star history graph of GitHub repos
 
 [![Join us](https://badgen.net/badge/Join%20the%20community%20of%20t9t.io/Get%20in%20touch/green)](https://t9t.io/#contact)
 
@@ -18,7 +18,7 @@ The missing star history graph of github repos
 
 ## Access Token
 
-Star-history use github API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star-history will need your personal access token to unlimit it.
+Star-history use GitHub API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star-history will need your personal access token to unlimit it.
 
 If you don't already have one, [create one](https://github.com/settings/tokens/new), and add to star-history (no scope to your personal data is needed)
 
