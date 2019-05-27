@@ -1,4 +1,4 @@
-> In celebration of 1k stars of this repo. The [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn) is 67% off($0.99).
+> In celebration of 1k stars of this repo. The [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn) is 67% off in the following week ($0.99).
 
 # Star History
 
