@@ -9,11 +9,11 @@
   <link rel="apple-touch-icon" href="./favicon.ico" />
   <link rel="bookmark" href="./favicon.ico" />
   <link rel="shortcut icon" href="./favicon.ico" />
-  <link href="./assets/nvd3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
     integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"
     rel="preload" />
   <link rel="stylesheet" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 
   <style>
     text {
@@ -33,7 +33,7 @@
       padding: 10px;
       max-width: 800px;
       min-width: 70%;
-      height: 75vh;
+      /* height: 75vh; */
     }
 
     #button-group {
@@ -61,14 +61,14 @@
 
 <body>
   <!-- Navigation bar -->
-  <nav class="navbar is-dark" id="nav">
+  <nav class="navbar is-dark" style="z-index: 1">
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://t9t.io">
           <img src="./header.ico" width="28" height="28" />
         </a>
         <a class="navbar-item" href="http://github.com/timqian/star-history">
-          <strong>About</strong>
+          <strong>Github</strong>
         </a>
         <a class="navbar-item" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">
           <strong>Chrome Extension</strong>
@@ -97,22 +97,9 @@
 
   <dev class="section">
     <div class="container has-text-centered">      
-      <article class="message is-success" id="discount-message">
-        <div class="message-header">
-          <p>Thanks to all my users</p>
-          <button class="delete" aria-label="delete" id="delete-discount"></button>
-        </div>
-        <div class="message-body">
-            star-history got 1k stars on 
-            <a href="https://github.com/timqian/star-history">github</a> 
-            recently. 
-            In celebration of this, the 
-            <a href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">chrome extension</a> is 67% off in the following week ($0.99).
-        </div>
-      </article>
+
 
       <div class="search-container">
-
         <div class="field has-addons">
           <div class="control is-expanded">
             <input class="input is-dark" type="text" id="repo" name="repo" placeholder="timqian/star-history">
@@ -127,9 +114,8 @@
       </div>
       
     </div>
-    <br />
     <div class="container has-text-centered">
-      <div id="chart" class="card">
+      <div id="chart">
         <svg></svg>
       </div>
       <br />
@@ -151,24 +137,18 @@
       </div>
       <div style="float: right">
 
-        <a class="icon button is-white" href="https://spectrum.chat/t9tio">
-          <i><svg viewBox="0 0 16 16" width="15" height="15">
-              <g fill="#111111">
-                <path
-                  d="M0,1.067A1.067,1.067,0,0,1,1.067,0H2A14,14,0,0,1,16,14v.933A1.067,1.067,0,0,1,14.933,16H9.067A1.067,1.067,0,0,1,8,14.933V14A6,6,0,0,0,2,8H1.067A1.067,1.067,0,0,1,0,6.933Z"
-                  fill="#111111"></path>
-              </g>
-            </svg></i>
+        <a class="icon button is-white" href="https://github.com/timqian">
+          <i class="fab fa-github"></i>
         </a>
-
-        <a class="icon button is-white" href="https://twitter.com/t9tio"><i class="fab fa-twitter"></i>
+        <a class="icon button is-white" href="https://twitter.com/tim_qian">
+          <i class="fab fa-twitter"></i>
         </a>
-
-        <a class="icon button is-white"
-          href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
+        <a class="icon button is-white" href="https://join.slack.com/t/t9tio/shared_invite/enQtNjgzMzkwMDM0NTE3LTE5ZTUzYjU4Y2I0YzRiZjNkYTkzMzE1ZmM0NDdmYzRlZmMxNGY1MzZlN2EwYjYyNWVlMWY0Nzk2MDBhNWZlY2I">
+          <i class="fab fa-slack"></i>
+        </a>
+        <a class="icon button is-white" href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
           <i class="fab fa-weixin"></i>
         </a>
-
         <a class="icon button is-white" href="mailto:timqian92@qq.com">
           <i class="fas fa-envelope"></i>
         </a>

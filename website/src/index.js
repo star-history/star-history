@@ -1,6 +1,7 @@
 import getStarHistory from '../../core/getStarHistory';
 import draw from './draw';
-import notie from 'corner-notie'
+import notie from 'notie'
+
 let data = [];
 
 let token = localStorage.getItem('star-history-github-token');
@@ -72,13 +73,7 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 document.getElementById('shareBtn').addEventListener('click', (e) => {
   e.preventDefault();
   copyToClipboard(window.location.href);
-  notie('Url copied', {
-    type: 'success', // info | warning | success | danger
-    autoHide: true,
-    timeout: 3000,
-    position: 'bottom-right',
-    width: 270
-  });
+  notie.alert({text:'Url copied', type:'success'});
 })
 
 async function fetchDataAndDraw(repo, token) {
@@ -90,8 +85,8 @@ async function fetchDataAndDraw(repo, token) {
     const starHistory = await getStarHistory(repo, token);
     // new data
     data.push({
-      key: repo,
-      values: starHistory.map((item) => {
+      label: repo,
+      data: starHistory.map((item) => {
         return {
           x: new Date(item.date),
           y: Number(item.starNum)
@@ -110,33 +105,15 @@ async function fetchDataAndDraw(repo, token) {
   } catch (error) {
     console.log(error);
     if (error.status === 403) {
-      notie('GitHub API rate limit exceeded', {
-        type: 'warning', // info | warning | success | danger
-        autoHide: true,
-        timeout: 4000,
-        position: 'bottom-center',
-        width: 270
-      });
+      notie.alert({ text: 'GitHub API rate limit exceeded', type:'warning' });
 
       setTimeout(() => {
         document.querySelector('.modal').classList.add('is-active');
       }, 2500);
     } else if (error.status === 404) {
-      notie('No such repo', {
-        type: 'warning', // info | warning | success | danger
-        autoHide: true,
-        timeout: 3000,
-        position: 'bottom-center',
-        width: 270
-      })
+      notie.alert({text:'No such repo', type:'warning' })
     } else {
-      notie('Some unexpected error happens try again', {
-        type: 'warning', // info | warning | success | danger
-        autoHide: true,
-        timeout: 3000,
-        position: 'bottom-center',
-        width: 270
-      })
+      notie.alert({text:'Some unexpected error happened, try again', type:'warning' })
     }
   }
 
@@ -177,13 +154,3 @@ function copyToClipboard(text){
     menu.classList.toggle('is-active');
   });
 })();
-
-
-// for discount message
-document.querySelector('#delete-discount').addEventListener('click', (e) => {
-  window.localStorage.setItem('delete-discount', 'true');
-  document.querySelector('#discount-message').style.display = 'none';
-});
-
-if (window.localStorage.getItem('delete-discount')) document.querySelector('#discount-message').style.display = 'none';
-

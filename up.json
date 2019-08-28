@@ -6,9 +6,6 @@
   "static": {
     "dir": "dist"
   },
-  "hooks": {
-    "build": "npm run buildWebsite"
-  },
   "stages": {
     "production": {
       "domain": "star-history.t9t.io"

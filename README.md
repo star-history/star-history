@@ -1,4 +1,4 @@
-> In celebration of 1k stars of this repo. The [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn) is 67% off in the following week ($0.99).
+> In celebration of 1k stars of this repo. The [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn) is 67% off ($0.99) now.
 
 # Star History
 
@@ -42,11 +42,8 @@ npm run buildExtension
 ### Website
 
 ```bash
-# deploy to dev env
-up
-
 # deploy to star-history.t9t.io
-up deploy production
+npm run deployWebsite
 ```
 
 ### Extension
@@ -57,6 +54,8 @@ npm run buildExtension
 ```
 
 ## Updates
+
+- 2019-8-28: use [chart.xkcd](https://github.com/timqian/chart.xkcd) to plot the graph
 
 - 2019-3-06: Add personal access token; update style; mono repo
 
@@ -75,6 +74,3 @@ npm run buildExtension
 - 2016-6-14: **Toggle search by hit enter** #26, prevent crash while searching for not existing repo
 
 - 2016-5-26: Update mobile view
-
-
-> [Donate with bitcoin](https://getcryptoo.github.io/)
