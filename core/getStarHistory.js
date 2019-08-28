@@ -13,7 +13,6 @@ const range = n => Array.apply(null, {length: n}).map((_, i) => i + 1);
  * @return {Array} history - eg: [{date: 2015-3-1,starNum: 12}, ...]
  */
 async function getStarHistory(repo, token) {
-
   const axiosGit = axios.create({
     headers: {
       Accept: 'application/vnd.github.v3.star+json',

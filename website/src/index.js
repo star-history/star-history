@@ -103,14 +103,14 @@ async function fetchDataAndDraw(repo, token) {
       location.hash += '&' + repo;
     }
   } catch (error) {
-    console.log(error);
-    if (error.status === 403) {
+    console.dir(error);
+    if (error.response.status === 403) {
       notie.alert({ text: 'GitHub API rate limit exceeded', type:'warning' });
 
       setTimeout(() => {
         document.querySelector('.modal').classList.add('is-active');
       }, 2500);
-    } else if (error.status === 404) {
+    } else if (error.response.status === 404) {
       notie.alert({text:'No such repo', type:'warning' })
     } else {
       notie.alert({text:'Some unexpected error happened, try again', type:'warning' })
