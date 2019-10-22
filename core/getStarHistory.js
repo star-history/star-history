@@ -106,12 +106,9 @@ async function getStarHistory(repo, token) {
   // Better view for less star repos (#28) and for repos with too much stars (>40000)
   const resForStarNum = await axiosGit.get(`https://api.github.com/repos/${repo}`);
   const starNumToday = resForStarNum.data.stargazers_count;
-  const today = new Date()
-  const monthFormat = today.getMonth() + 1 > 10 ? today.getMonth() + 1 : `0${today.getMonth() + 1}`
-  const dateFormat = today.getDate() > 10 ? today.getDate() : `0${today.getDate()}`
-
+  const today = new Date().toISOString().slice(0, 10);
   starHistory.push({
-    date: `${today.getFullYear()}-${monthFormat}-${dateFormat}`,
+    date: today,
     starNum: starNumToday
   })
 
