@@ -69,7 +69,7 @@ async function getStarHistory(repo, token) {
     starHistory = pageIndexes.map((p, i) => {
       return {
         date: resArray[i + 1].data[0].starred_at.slice(0, 10),
-        starNum: 30 * (p - 1),
+        starNum: 30 * ((p === 0 ? 1 : p) - 1), // page 0 also means page 1
       };
     });
   } else {
