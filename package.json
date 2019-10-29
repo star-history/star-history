@@ -26,6 +26,9 @@
     "notie": "^4.3.1"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.6.3",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "parcel": "^1.12.3"
   }
 }
