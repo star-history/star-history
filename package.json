@@ -23,7 +23,9 @@
   "dependencies": {
     "axios": "^0.18.1",
     "chart.xkcd": "^1.0.10",
-    "notie": "^4.3.1"
+    "d3": "^3.5.17",
+    "notie": "^4.3.1",
+    "nvd3": "^1.8.6"
   },
   "devDependencies": {
     "parcel": "^1.12.3"

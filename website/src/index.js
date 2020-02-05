@@ -93,7 +93,7 @@ async function fetchDataAndDraw(repo, token) {
         }
       }),
     });
-  
+    
     draw(data);
 
     if (location.hash === '') {

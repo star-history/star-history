@@ -4,7 +4,7 @@
   "homepage_url": "https://github.com/timqian/star-history-plugin",
   "name": "Star History",
   "description": "A chrome extension showing star history graph of current github repository",
-  "version": "1.4",
+  "version": "1.5",
   "icons": {
     "128": "assets/ico.png"
   },
