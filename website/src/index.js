@@ -3,6 +3,7 @@ import draw from './draw';
 import notie from 'notie'
 
 let data = [];
+const repoList = [];
 
 let token = localStorage.getItem('star-history-github-token');
 drawAddTokenBtn(token);
@@ -24,6 +25,10 @@ async function getRepoNameFetchAndDraw() {
     repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
   } else {
     repo = rawRepoStr == '' ? 'timqian/star-history' : rawRepoStr;
+  }
+
+  if (repoList.includes(repo)) {
+    return;
   }
 
   token = localStorage.getItem('star-history-github-token');
@@ -78,6 +83,8 @@ document.getElementById('shareBtn').addEventListener('click', (e) => {
 
 async function fetchDataAndDraw(repo, token) {
 
+  repoList.add(repo);
+
   document.getElementById('theBtn').setAttribute("disabled", "disabled");
   document.getElementById('theBtn').classList.add('is-loading');
 
@@ -93,7 +100,7 @@ async function fetchDataAndDraw(repo, token) {
         }
       }),
     });
-    
+
     draw(data);
 
     if (location.hash === '') {
