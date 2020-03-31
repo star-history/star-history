@@ -18,16 +18,19 @@ if (location.hash !== '') {
 async function getRepoNameFetchAndDraw() {
   // get repo str (format: 'timqian/star-history')
   let repo = ''
-  let rawRepoStr = document.getElementById('repo').value;
-  if (rawRepoStr.includes('github.com')) {
-    rawRepoStr += '\/'      // make sure url end with /
-    repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
-  } else {
-    repo = rawRepoStr == '' ? 'timqian/star-history' : rawRepoStr;
-  }
+  let rawRepoStrs = document.getElementById('repo').value;
+  await Promise.all(rawRepoStrs.split(',').map(async rawRepoStr => {
+    if (rawRepoStr.includes('github.com')) {
+      rawRepoStr += '\/'      // make sure url end with /
+      repo = /github.com\/(\S*?\/\S*?)[\/#?]/.exec(rawRepoStr)[1];
+    } else {
+      repo = rawRepoStr == '' ? 'timqian/star-history' : rawRepoStr;
+    }
 
-  token = localStorage.getItem('star-history-github-token');
-  await fetchDataAndDraw(repo, token);
+    token = localStorage.getItem('star-history-github-token');
+    await fetchDataAndDraw(repo, token);
+  }))
+
 }
 
 document.querySelector('#repo').addEventListener('keyup', async (e) => {
