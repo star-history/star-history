@@ -17,7 +17,7 @@ if (location.hash !== '') {
 
 async function getRepoNameFetchAndDraw() {
   // get repo str (format: 'timqian/star-history')
-  let repo = ''
+  let repo = '';
   let rawRepoStrs = document.getElementById('repo').value;
   await Promise.all(rawRepoStrs.split(',').map(async rawRepoStr => {
     if (rawRepoStr.includes('github.com')) {
@@ -29,7 +29,7 @@ async function getRepoNameFetchAndDraw() {
 
     token = localStorage.getItem('star-history-github-token');
     await fetchDataAndDraw(repo, token);
-  }))
+  }));
 
 }
 
@@ -96,7 +96,7 @@ async function fetchDataAndDraw(repo, token) {
         }
       }),
     });
-    
+
     draw(data);
 
     if (location.hash === '') {
