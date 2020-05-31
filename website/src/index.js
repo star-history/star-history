@@ -26,6 +26,13 @@ async function getRepoNameFetchAndDraw() {
     repo = rawRepoStr == '' ? 'timqian/star-history' : rawRepoStr;
   }
 
+  for (let item of data) {
+    if (item.label == repo) {
+      notie.alert({ text: 'This repo is already on the chart', type: 'warning' });
+      return;
+    }
+  }
+
   token = localStorage.getItem('star-history-github-token');
   await fetchDataAndDraw(repo, token);
 }
