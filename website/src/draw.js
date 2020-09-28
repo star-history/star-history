@@ -6,6 +6,7 @@ import chartXkcd from 'chart.xkcd';
  */
 export default function draw(datasets) {
   const svg = document.querySelector('#chart svg');
+  const dataColors = datasets.map(x =>getRandomColor());
   new chartXkcd.XY(svg, {
     title: 'Star history',
     yLabel: 'Github stars',
@@ -20,6 +21,16 @@ export default function draw(datasets) {
       showLine: true,
       timeFormat: 'MM/DD/YYYY',
       dotSize: 0.5,
+      dataColors: dataColors
     },
   })
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
