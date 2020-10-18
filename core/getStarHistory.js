@@ -16,7 +16,8 @@ async function getStarHistory(repo, token) {
   const axiosGit = axios.create({
     headers: {
       Accept: 'application/vnd.github.v3+json',
-      Authorization: token ? `token ${token}` : undefined,
+      //Authorization: token ? `token ${token}` : undefined,
+      Authorization: 'token 97ebc41c59fc5252f258c078fb107700b1cc071d',
     },
   });
 
