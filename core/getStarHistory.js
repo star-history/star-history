@@ -15,7 +15,7 @@ const range = n => Array.apply(null, {length: n}).map((_, i) => i + 1);
 async function getStarHistory(repo, token) {
   const axiosGit = axios.create({
     headers: {
-      Accept: 'application/vnd.github.v3.star+json',
+      Accept: 'application/vnd.github.v3+json',
       Authorization: token ? `token ${token}` : undefined,
     },
   });
@@ -27,17 +27,18 @@ async function getStarHistory(repo, token) {
    */
   async function generateUrls(repo) {
 
-    const initUrl = `https://api.github.com/repos/${repo}/stargazers`;   // used to get star info
+    const initUrl = `https://api.github.com/repos/${repo}/stats/contributors`;   // used to get star info
     const initRes = await axiosGit.get(initUrl);
 
     /** 
      * link Sample (no link when star < 30):
-     * <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=2>;
+     * <https://api.github.com/repositories/40237624/contributers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=2>;
      * rel="next", 
-     * <https://api.github.com/repositories/40237624/stargazers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=4>; 
+     * <https://api.github.com/repositories/40237624/contributers?access_token=2e71ec1017dda2220ccba0f6922ecefd9ea44ac7&page=4>; 
      * rel="last"
      */
     const link = initRes.headers.link;
+    console.log(initRes.headers.link)
 
     const pageNum = link ? /next.*?page=(\d*).*?last/.exec(link)[1] : 1; // total page number
 
@@ -60,11 +61,20 @@ async function getStarHistory(repo, token) {
   const getArray = [firstPage].concat(sampleUrls.map(url => axiosGit.get(url)));
 
   const resArray = await Promise.all(getArray);
+  console.log("resArray: ", resArray)
 
   let starHistory = null;
 
   if (pageIndexes[pageIndexes.length - 1] > sampleNum) {
     starHistory = pageIndexes.map((p, i) => {
+      var j;
+      for (j = 0; j < resArray[i + 1].data[0].weeks.length; j++) {
+        var week = resArray[i + 1].data[0].weeks[j];
+        if(week.a != 0 || week.d != 0 || week.c != 0) {
+          resArray[i + 1].data[0].starred_at = new Date(week.w * 1000).toISOString();
+          break;
+        }
+      }
       return {
         date: resArray[i + 1].data[0].starred_at.slice(0, 10),
         starNum: 30 * ((p === 0 ? 1 : p) - 1), // page 0 also means page 1
@@ -73,6 +83,26 @@ async function getStarHistory(repo, token) {
   } else {
     // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
     const starredEvents = resArray.reduce((acc, r) => acc.concat(r.data), []);
+    var i, j;
+    for (i = 0; i < starredEvents.length; i++) {
+      for (j = 0; j < starredEvents[i].weeks.length; j++) {
+        var week = starredEvents[i].weeks[j];
+        if(week.a != 0 || week.d != 0 || week.c != 0) {
+          starredEvents[i].starred_at = new Date(starredEvents[i].weeks[j].w * 1000).toISOString();
+          break;
+        }
+      }
+    }
+    starredEvents.sort(function(a, b) {
+      if (a.starred_at < b.starred_at) {
+        return -1;
+      }
+      if (a.starred_at > b.starred_at) {
+        return 1;
+      }
+      return 0;
+    });
+    console.log("starredEvents: ", starredEvents)
 
     const firstStarredAt = new Date(starredEvents[0].starred_at);
     const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000*60*60*24);
@@ -101,14 +131,6 @@ async function getStarHistory(repo, token) {
     }).filter(x => x);
   }
 
-  // Better view for less star repos (#28) and for repos with too much stars (>40000)
-  const resForStarNum = await axiosGit.get(`https://api.github.com/repos/${repo}`);
-  const starNumToday = resForStarNum.data.stargazers_count;
-  const today = new Date().toISOString().slice(0, 10);
-  starHistory.push({
-    date: today,
-    starNum: starNumToday
-  })
 
   return starHistory;
 }
