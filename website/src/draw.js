@@ -7,8 +7,8 @@ import chartXkcd from 'chart.xkcd';
 export default function draw(datasets) {
   const svg = document.querySelector('#chart svg');
   new chartXkcd.XY(svg, {
-    title: 'Star history',
-    yLabel: 'Github stars',
+    title: 'Contributors history',
+    yLabel: 'Github contributors',
     xLabel: 'Date',
     data: {
       datasets

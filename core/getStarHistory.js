@@ -20,14 +20,33 @@ async function getStarHistory(repo, token) {
     },
   });
 
+  async function generateContributors(repo) {
+
+    const initUrl = `https://api.github.com/repos/${repo}/contributors`;   // used to get star info
+    const initRes = await axiosGit.get(initUrl);
+
+    const link = initRes.headers.link;
+
+    const pageNum = link ? /next.*?page=(\d*).*?last/.exec(link)[1] : 1; // total page number
+
+    // used to calculate total stars for this page
+    const pageIndexesCon = range(pageNum).slice(1, pageNum)
+
+    // store sampleUrls to be requested
+    const sampleUrlsCon = pageIndexesCon.map(pageIndex => `${initUrl}?page=${pageIndex}`);
+
+    console.log("pageIndexes", pageIndexesCon);
+    return { firstPageCon: initRes, sampleUrlsCon, pageIndexesCon };
+  }
+
+
   /**
    * generate Urls and pageNums
    * @param {sting} repo - eg: 'timqian/jsCodeStructure'
-   * @return {object} {sampleUrls, pageIndexes} - urls to be fatched(length <=10) and page indexes
+   * @return {object} {sampleUrls, pageIndexes} - urls to be fetched(length <=10) and page indexes
    */
-  async function generateUrls(repo) {
-
-    const initUrl = `https://api.github.com/repos/${repo}/stats/contributors`;   // used to get star info
+  async function generateUrls(repo, login) {
+    const initUrl = `https://api.github.com/repos/${repo}/commits?author=` + login;   // used to get star info
     const initRes = await axiosGit.get(initUrl);
 
     /** 
@@ -43,94 +62,79 @@ async function getStarHistory(repo, token) {
     const pageNum = link ? /next.*?page=(\d*).*?last/.exec(link)[1] : 1; // total page number
 
     // used to calculate total stars for this page
-    const pageIndexes = pageNum <= sampleNum ?
-      range(pageNum).slice(1, pageNum) :
-      range(sampleNum).map(n => Math.round(n / sampleNum * pageNum) - 1); // for bootstrap bug
+    const pageIndexes = range(pageNum).slice(1, pageNum)
+
+    console.log("pageNum: ", pageNum);
 
     // store sampleUrls to be requested
-    const sampleUrls = pageIndexes.map(pageIndex => `${initUrl}?page=${pageIndex}`);
+    const sampleUrls = pageIndexes.map(pageIndex => `${initUrl}&page=${pageIndex}`);
 
-    console.log("pageIndexes", pageIndexes);
     return { firstPage: initRes, sampleUrls, pageIndexes };
   }
 
-  const { sampleUrls, pageIndexes, firstPage } = await generateUrls(repo);
+  const { sampleUrlsCon, pageIndexesCon, firstPageCon } = await generateContributors(repo);
+  const getArrayCon = [firstPageCon].concat(sampleUrlsCon.map(url => axiosGit.get(url)));
+  const resArrayCon = await Promise.all(getArrayCon);
+  console.log("Contributors: ", resArrayCon);
 
-  // promises to request sampleUrls
-
-  const getArray = [firstPage].concat(sampleUrls.map(url => axiosGit.get(url)));
-
-  const resArray = await Promise.all(getArray);
-  console.log("resArray: ", resArray)
-
-  let starHistory = null;
-
-  if (pageIndexes[pageIndexes.length - 1] > sampleNum) {
-    starHistory = pageIndexes.map((p, i) => {
-      var j;
-      for (j = 0; j < resArray[i + 1].data[0].weeks.length; j++) {
-        var week = resArray[i + 1].data[0].weeks[j];
-        if(week.a != 0 || week.d != 0 || week.c != 0) {
-          resArray[i + 1].data[0].starred_at = new Date(week.w * 1000).toISOString();
-          break;
-        }
-      }
-      return {
-        date: resArray[i + 1].data[0].starred_at.slice(0, 10),
-        starNum: 30 * ((p === 0 ? 1 : p) - 1), // page 0 also means page 1
-      };
-    });
-  } else {
-    // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
-    const starredEvents = resArray.reduce((acc, r) => acc.concat(r.data), []);
-    var i, j;
-    for (i = 0; i < starredEvents.length; i++) {
-      for (j = 0; j < starredEvents[i].weeks.length; j++) {
-        var week = starredEvents[i].weeks[j];
-        if(week.a != 0 || week.d != 0 || week.c != 0) {
-          starredEvents[i].starred_at = new Date(starredEvents[i].weeks[j].w * 1000).toISOString();
-          break;
-        }
-      }
+  var contributors = new Array();
+  for (var i in resArrayCon) {
+    for (var j in resArrayCon[i].data) {
+      contributors.push(resArrayCon[i].data[j].login);
     }
-    starredEvents.sort(function(a, b) {
-      if (a.starred_at < b.starred_at) {
-        return -1;
-      }
-      if (a.starred_at > b.starred_at) {
-        return 1;
-      }
-      return 0;
-    });
-    console.log("starredEvents: ", starredEvents)
-
-    const firstStarredAt = new Date(starredEvents[0].starred_at);
-    const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000*60*60*24);
-
-    const dates = Array.from(new Array(50)).map((_, i) => {
-      const firstStarredAtCopy = new Date(firstStarredAt);
-      firstStarredAtCopy.setDate(firstStarredAtCopy.getDate() + Math.floor((daysSinceRepoCreatedAt / 50) * (i + 1)));
-      return firstStarredAtCopy.toISOString().slice(0, 10);
-    }, []);
-
-    starHistory = dates.map((d, i) => {
-      let starNum = 0;
-      const firstStarredEventAfterDate = starredEvents.find((se, i) => {
-        if (se.starred_at.slice(0, 10) >= d) {
-          starNum = i + 1;
-          return true
-        }
-
-        return false;
-      })
-
-      return firstStarredEventAfterDate && {
-        date: firstStarredEventAfterDate.starred_at.slice(0, 10),
-        starNum: starNum
-      };
-    }).filter(x => x);
   }
+  console.log("ContributorsList: ", contributors);
 
+  var commitTimeList = new Array()
+  for (var i in contributors) {
+    console.log(i, ": Contributor: ", contributors[i]);
+    const { sampleUrls, pageIndexes, firstPage } = await generateUrls(repo, contributors[i]);
+    const getArray = [firstPage].concat(sampleUrls.map(url => axiosGit.get(url)));
+    const resArray = await Promise.all(getArray);
+
+    const lastRes = resArray[resArray.length - 1];
+    try {
+      const firstCommitTime = lastRes.data[lastRes.data.length - 1].commit.author.date;
+      commitTimeList.push(firstCommitTime);
+    } catch (e) {
+      console.log("Not found id");
+      continue
+    }
+  }
+  commitTimeList.sort();
+
+  console.log("firstCommitTime: ", commitTimeList);
+
+  // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
+
+  const firstStarredAt = new Date(commitTimeList[0]);
+  const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000*60*60*24);
+
+  const dates = Array.from(new Array(50)).map((_, i) => {
+    const firstStarredAtCopy = new Date(firstStarredAt);
+    firstStarredAtCopy.setDate(firstStarredAtCopy.getDate() + Math.floor((daysSinceRepoCreatedAt / 50) * (i + 1)));
+    return firstStarredAtCopy.toISOString().slice(0, 10);
+  }, []);
+
+  console.log("dates",dates)
+  var starHistory = dates.map((d, i) => {
+    let starNum = 0;
+    const firstStarredEventAfterDate = commitTimeList.find((se, i) => {
+      if (se.slice(0, 10) >= d) {
+        starNum = i + 1;
+        return true
+      }
+
+      return false;
+    })
+
+    return firstStarredEventAfterDate && {
+      date: firstStarredEventAfterDate.slice(0, 10),
+      starNum: starNum
+    };
+  }).filter(x => x);
+
+  console.log("starHistory",starHistory)
 
   return starHistory;
 }
