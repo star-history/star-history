@@ -4,7 +4,7 @@ import axios from 'axios';
 const sampleNum = 15;
 
 // return [1,2, ..., n]
-const range = n => Array.apply(null, {length: n}).map((_, i) => i + 1);
+const range = n => Array.apply(null, { length: n }).map((_, i) => i + 1);
 
 /**
  * get star history
@@ -16,8 +16,7 @@ async function getStarHistory(repo, token) {
   const axiosGit = axios.create({
     headers: {
       Accept: 'application/vnd.github.v3+json',
-      //Authorization: token ? `token ${token}` : undefined,
-      Authorization: 'token 97ebc41c59fc5252f258c078fb107700b1cc071d',
+      Authorization: token ? `token ${token}` : undefined,
     },
   });
 
@@ -109,7 +108,7 @@ async function getStarHistory(repo, token) {
   // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
 
   const firstStarredAt = new Date(commitTimeList[0]);
-  const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000*60*60*24);
+  const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000 * 60 * 60 * 24);
 
   const dates = Array.from(new Array(50)).map((_, i) => {
     const firstStarredAtCopy = new Date(firstStarredAt);
@@ -117,7 +116,7 @@ async function getStarHistory(repo, token) {
     return firstStarredAtCopy.toISOString().slice(0, 10);
   }, []);
 
-  console.log("dates",dates)
+  console.log("dates", dates)
   var starHistory = dates.map((d, i) => {
     let starNum = 0;
     const firstStarredEventAfterDate = commitTimeList.find((se, i) => {
@@ -135,7 +134,7 @@ async function getStarHistory(repo, token) {
     };
   }).filter(x => x);
 
-  console.log("starHistory",starHistory)
+  console.log("starHistory", starHistory)
 
   return starHistory;
 }
