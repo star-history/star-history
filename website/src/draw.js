@@ -29,8 +29,8 @@ export default function draw(datasets) {
       dotSize: 0.5,
     },
   })
-  chartXkcd.XY['options']['dataColors'] = colorSets;
-  chartXkcd.XY.render();
+  svg['options']['dataColors'] = colorSets;
+  svg.render();
 }
 
 function generateColor() {
