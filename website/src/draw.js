@@ -1,4 +1,5 @@
 import chartXkcd from 'chart.xkcd';
+import { color } from 'd3';
 
 var colorSets = [];
 
@@ -28,6 +29,8 @@ export default function draw(datasets) {
       dotSize: 0.5,
     },
   })
+  chartXkcd.XY['options']['dataColors'] = colorSets;
+  chartXkcd.XY.render();
 }
 
 function generateColor() {
