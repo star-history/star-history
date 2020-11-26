@@ -8,7 +8,9 @@ var colorSets = [];
  */
 export default function draw(datasets) {
   const svg = document.querySelector('#chart svg');
+  console.log('before generate color', colorSets);
   generateColor();
+  console.log('after generate color', colorSets);
   new chartXkcd.XY(svg, {
     title: 'Star history',
     yLabel: 'Github stars',
