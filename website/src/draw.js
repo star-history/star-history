@@ -1,6 +1,6 @@
 import chartXkcd from 'chart.xkcd';
 
-// var colorSets = [];
+var colorSets = [];
 
 /**
  * draw star history graph based on data
@@ -8,10 +8,9 @@ import chartXkcd from 'chart.xkcd';
  */
 export default function draw(datasets) {
   const svg = document.querySelector('#chart svg');
-  // console.log('before generate color', colorSets);
-  const dataColors = datasets.map(x =>getRandomColor());
-  // generateColor();
-  // console.log('after generate color', colorSets);
+  console.log('before generate color', colorSets);
+  generateColor();
+  console.log('after generate color', colorSets);
   new chartXkcd.XY(svg, {
     title: 'Star history',
     yLabel: 'Github stars',
@@ -20,28 +19,19 @@ export default function draw(datasets) {
       datasets
     },    
     options: {
+      dataColors: colorSets,
       xTickCount: 5,
       yTickCount: 5,
       legendPosition: chartXkcd.config.positionType.upLeft,
       showLine: true,
       timeFormat: 'MM/DD/YYYY',
       dotSize: 0.5,
-      dataColors: dataColors,
     },
   })
 }
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF'.split('');
+function generateColor() {
   var color = '#';
-  for (var i = 0; i < 6; i++ ) {
-      color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  color += Math.floor(Math.random()*16777215).toString(16);
+  colorSets.push(color);
 }
-
-// function generateColor() {
-//   var color = '#';
-//   color += Math.floor(Math.random()*16777215).toString(16);
-//   colorSets.push(color);
-// }
