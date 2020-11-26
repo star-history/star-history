@@ -31,5 +31,5 @@ export default function draw(datasets) {
 function generateColor() {
   var color = '#';
   color += Math.floor(Math.random()*16777215).toString(16);
-  colorSets.append(color);
+  colorSets.push(color);
 }
