@@ -111,7 +111,9 @@ async function fetchDataAndDraw(repo, token) {
     }
   } catch (error) {
     console.dir(error);
-    if (error.response.status === 403) {
+    if (error.message === 'Repo has no star history') {
+      notie.alert({text:'This repo has no star history', type:'warning'})
+    } else if (error.response.status === 403) {
       notie.alert({ text: 'GitHub API rate limit exceeded', type:'warning' });
 
       setTimeout(() => {
