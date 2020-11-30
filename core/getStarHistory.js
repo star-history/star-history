@@ -63,6 +63,10 @@ async function getStarHistory(repo, token) {
 
   let starHistory = null;
 
+  if (resArray[0].data === undefined || resArray[0].data.length == 0) {
+    throw new Error('Repo has no star history');
+  }
+
   if (pageIndexes[pageIndexes.length - 1] > sampleNum) {
     starHistory = pageIndexes.map((p, i) => {
       return {

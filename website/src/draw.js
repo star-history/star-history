@@ -1,7 +1,4 @@
 import chartXkcd from 'chart.xkcd';
-import { color } from 'd3';
-
-var colorSets = [];
 
 /**
  * draw star history graph based on data
@@ -9,9 +6,6 @@ var colorSets = [];
  */
 export default function draw(datasets) {
   const svg = document.querySelector('#chart svg');
-  console.log('before generate color', colorSets);
-  generateColor();
-  console.log('after generate color', colorSets);
   new chartXkcd.XY(svg, {
     title: 'Star history',
     yLabel: 'Github stars',
@@ -20,7 +14,6 @@ export default function draw(datasets) {
       datasets
     },    
     options: {
-      dataColors: colorSets,
       xTickCount: 5,
       yTickCount: 5,
       legendPosition: chartXkcd.config.positionType.upLeft,
@@ -29,12 +22,4 @@ export default function draw(datasets) {
       dotSize: 0.5,
     },
   })
-  svg['options']['dataColors'] = colorSets;
-  svg.render();
-}
-
-function generateColor() {
-  var color = '#';
-  color += Math.floor(Math.random()*16777215).toString(16);
-  colorSets.push(color);
 }
