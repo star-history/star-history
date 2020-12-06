@@ -3,7 +3,8 @@ import draw from './draw';
 import notie from 'notie'
 
 let data = [];
-
+let CSVContent = "";
+let csvData = [];
 let token = localStorage.getItem('star-history-github-token');
 drawAddTokenBtn(token);
 
@@ -83,6 +84,12 @@ document.getElementById('shareBtn').addEventListener('click', (e) => {
   notie.alert({text:'Url copied', type:'success'});
 })
 
+document.getElementById('CSVBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  downloadCSV();
+  notie.alert({text:'CSV Downloaded', type:'success'});
+})
+
 async function fetchDataAndDraw(repo, token) {
 
   document.getElementById('theBtn').setAttribute("disabled", "disabled");
@@ -100,7 +107,18 @@ async function fetchDataAndDraw(repo, token) {
         }
       }),
     });
-    console.log(data)
+    //fetch date and starhistory of last added repo into csvData array
+    let dateTimeArr = data[data.length - 1]["data"];
+    for (let i = 0; i < dateTimeArr.length; ++i){
+      let dateTime = []
+      dateTime.push(repo);
+      dateTime.push(dateTimeArr[i]['x'].toString());
+      dateTime.push(String(dateTimeArr[i]['y']));
+      csvData.push(dateTime);
+    }
+    //convert csvData array into format suitable for CSV download
+    CSVContent = csvData.map(row => row.map(item => (typeof item === 'string' && item.indexOf(',') >= 0) ? `"${item}"`: String(item)).join(',')).join('\n');
+
     draw(data);
 
     if (location.hash === '') {
@@ -150,6 +168,15 @@ function copyToClipboard(text){
   document.body.removeChild(dummy);
 }
 
+// download CSV
+// ref: https://stackoverflow.com/questions/18848860/javascript-array-to-csv
+function downloadCSV(){
+  var encodedUri = encodeURI('data:text/csv;charset=utf-8,' + CSVContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', 'star-history.csv');
+  link.click();
+}
 
 // The following code is based off a toggle menu by @Bradcomp
 // source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1
