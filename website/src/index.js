@@ -100,7 +100,7 @@ async function fetchDataAndDraw(repo, token) {
         }
       }),
     });
-    
+    console.log(data)
     draw(data);
 
     if (location.hash === '') {
