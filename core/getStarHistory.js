@@ -105,7 +105,10 @@ async function getStarHistory(repo, token) {
 
   console.log("firstCommitTime: ", commitTimeList);
 
+
   // we have every starredEvent: we can use them to generate 15 (sampleNum) precise points
+  const starredEvents = resArray.reduce((acc, r) => acc.concat(r.data), []);
+
 
   const firstStarredAt = new Date(commitTimeList[0]);
   const daysSinceRepoCreatedAt = Math.round((new Date()) - firstStarredAt) / (1000 * 60 * 60 * 24);
