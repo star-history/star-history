@@ -64,8 +64,14 @@
   <nav class="navbar is-dark" style="z-index: 1">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="http://github.com/yiyiyimu/yiyiyimu/contributor-history">
+        <a class="navbar-item" href="https://t9t.io">
+          <img src="./header.ico" width="28" height="28" />
+        </a>
+        <a class="navbar-item" href="http://github.com/timqian/star-history">
           <strong>Github</strong>
+        </a>
+        <a class="navbar-item" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">
+          <strong>Chrome Extension</strong>
         </a>
 
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
@@ -91,7 +97,11 @@
 
   <dev class="section">
     <div class="container has-text-centered">      
-      <article class="message is-success">
+      <article class="message is-success" id="discount-message">
+        <div class="message-header">
+          <p>Try the chrome extension</p>
+          <button class="delete" aria-label="delete" id="delete-discount"></button>
+        </div>
         <div class="message-body">
             Currently running slow, go to console to get progress.
         </div>
@@ -128,12 +138,26 @@
     <div class="container">
       <hr style="background-color:#dbdbdb; height: 1px" />
       <div style="float:left">
-        Designed by
-        <a href="https://twitter.com/tim_qian"><strong>tim_qian</strong></a>, 
-        modified by 
-        <a href="https://github.com/yiyiyimu"><strong>yiyiyimu</strong></a>
+        Built by
+        <a href="https://twitter.com/tim_qian"><span
+            class="tag is-info is-rounded"><strong>@tim_qian</strong></span></a>
       </div>
       <div style="float: right">
+        <a class="icon button is-white" href="https://github.com/timqian">
+          <i class="fab fa-github"></i>
+        </a>
+        <a class="icon button is-white" href="https://twitter.com/tim_qian">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="icon button is-white" href="https://join.slack.com/t/t9tio/shared_invite/enQtNjgzMzkwMDM0NTE3LTE5ZTUzYjU4Y2I0YzRiZjNkYTkzMzE1ZmM0NDdmYzRlZmMxNGY1MzZlN2EwYjYyNWVlMWY0Nzk2MDBhNWZlY2I">
+          <i class="fab fa-slack"></i>
+        </a>
+        <a class="icon button is-white" href="https://raw.githubusercontent.com/timqian/images/master/3811553342733_.pic.jpg">
+          <i class="fab fa-weixin"></i>
+        </a>
+        <a class="icon button is-white" href="mailto:timqian92@qq.com">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
     </div>
   </footer>
