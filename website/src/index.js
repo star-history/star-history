@@ -163,11 +163,3 @@ function copyToClipboard(text){
     menu.classList.toggle('is-active');
   });
 })();
-
-// for discount message
-document.querySelector('#delete-discount').addEventListener('click', (e) => {
-  window.localStorage.setItem('delete-discount', 'true');
-  document.querySelector('#discount-message').style.display = 'none';
-});
-
-if (window.localStorage.getItem('delete-discount')) document.querySelector('#discount-message').style.display = 'none';
