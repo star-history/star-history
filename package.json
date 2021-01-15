@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "startWebsite": "parcel website/index.html",
-    "buildWebsite": "rm -r dist && parcel build website/index.html --no-source-maps",
+    "buildWebsite": "parcel build website/index.html --no-source-maps",
     "deployWebsite": "npm run buildWebsite && up deploy production",
     "startExtension": "parcel watch extension/src/index.js -d extension/build",
     "buildExtension": "rm -r extension/build && parcel build extension/src/index.js -d extension/build --no-source-maps"
