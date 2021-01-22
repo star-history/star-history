@@ -4,8 +4,6 @@
 
 The missing star history graph of GitHub repos
 
-[![Join us](https://badgen.net/badge/Join%20the%20community%20of%20t9t.io/Get%20in%20touch/green)](https://t9t.io/#contact)
-
 ## [As a website](https://star-history.t9t.io)
 
 ![](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
