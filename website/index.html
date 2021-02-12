@@ -46,6 +46,10 @@
       max-width: 800px;
       display: inline-block;
     }
+    
+    .modal-card-foot {
+      justify-content: flex-end !important;
+    }
   </style>
   <title>Star history</title>
 
@@ -167,13 +171,11 @@
         <br />
 
         <label class="label">access token (will be stored in your local storage)</label>
-        <input class="input" id="tokenInput" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b" />
-        <br />
-        <br />
-        <button id="saveTokenBtn" class="button is-success is-pulled-right">Save</button>
+        <input class="input" id="tokenInput" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b" /><
       </section>
-      <!-- <footer class="modal-card-foot"> -->
-      <!-- </footer> -->
+      <footer class="modal-card-foot">
+        <button id="saveTokenBtn" class="button is-success">Save</button>
+      </footer>
     </div>
     <!-- <button class="modal-close is-large" aria-label="close"></button> -->
   </div>
