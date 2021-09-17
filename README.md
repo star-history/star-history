@@ -4,6 +4,14 @@
 
 The missing star history graph of GitHub repos
 
+## Sponsors
+
+<a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
+
+[Madao](https://madao.me/) | [SecondState - Rust and WebAssembly in Node.js](https://bit.ly/3gfWwps)
+
+[Become a sponsor](https://www.patreon.com/timqian)
+
 ## [As a website](https://star-history.t9t.io)
 
 ![](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
