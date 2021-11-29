@@ -1,6 +1,6 @@
 > [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
-# Star History
+# Star History (www.star-history.com)
 
 The missing star history graph of GitHub repos
 
@@ -8,11 +8,11 @@ The missing star history graph of GitHub repos
 
 <a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
 
-[Madao](https://madao.me/) | [SecondState - Rust and WebAssembly in Node.js](https://bit.ly/3gfWwps)
+[Bytebase.com](https://bytebase.com) is an open source, web-based database schema change and version control tool for teams.
 
-[Become a sponsor](https://www.patreon.com/timqian)
+## [As a website](https://www.star-history.com)
 
-## [As a website](https://star-history.t9t.io)
+**Support comparing multiple repos**
 
 ![](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
 
@@ -48,7 +48,7 @@ npm run buildExtension
 ### Website
 
 ```bash
-# deploy to star-history.t9t.io
+# deploy to www.star-history.com
 npm run deployWebsite
 ```
 
@@ -73,7 +73,7 @@ npm run buildExtension
 
 - 2016-6-26: **Store repo info into url hash**
 
-- 2016-6-26: **multiple kinds of input styles (eg: github.com/timqian/star-history, ...)**
+- 2016-6-26: **multiple kinds of input styles (eg: github.com/bytebase/star-history, ...)**
 
 - 2016-6-26: Better view for less star repos #28
 
