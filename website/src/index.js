@@ -172,6 +172,7 @@ async function fetchDataAndDraw(repo, token) {
   document.getElementById("theBtn").classList.remove("is-loading");
   document.getElementById("button-group").style.visibility = "visible";
   document.getElementById("chart").style.visibility = "visible";
+  document.getElementById("sponsor").style.visibility = "visible";
 }
 
 function drawAddTokenBtn(token) {
