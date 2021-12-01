@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.1",
-    "chart.xkcd": "^1.0.10",
+    "chart.xkcd": "^1.1.0",
     "d3": "^3.5.17",
     "notie": "^4.3.1",
     "nvd3": "^1.8.6"
