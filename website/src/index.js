@@ -136,6 +136,11 @@ async function fetchDataAndDraw(repo, token) {
 
     draw(data);
 
+    // Upon success, we refresh the repo button text and set the repo text field to empty.
+    document.getElementById("theBtn").innerHTML =
+      data.length == 0 ? "View star history" : "Add another repository";
+    document.getElementById("repo").value = "";
+
     if (location.hash === "") {
       location.hash += repo;
     } else if (location.hash.length >= 3 && !location.hash.includes(repo)) {
