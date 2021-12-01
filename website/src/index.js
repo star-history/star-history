@@ -27,6 +27,9 @@ async function getRepoNameFetchAndDraw() {
     repo = rawRepoStr == "" ? "bytebase/star-history" : rawRepoStr;
   }
 
+  // Remove any whitespace. This usually happens when some UI display "org / repo" instead of "org/repo".
+  repo = repo.replace(/\s/g, "");
+
   for (let item of data) {
     if (item.label == repo) {
       notie.alert({
