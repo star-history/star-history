@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.1",
-    "chart.xkcd": "^1.1.0",
+    "chart.xkcd": "^1.0.10",
     "d3": "^3.5.17",
     "notie": "^4.3.1",
     "nvd3": "^1.8.6"
@@ -30,6 +30,6 @@
     "@babel/runtime": "^7.6.3",
     "@babel/core": "^7.6.4",
     "@babel/plugin-transform-runtime": "^7.6.2",
-    "parcel": "^1.12.3"
+    "parcel": "1.12.3"
   }
 }

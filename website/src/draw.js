@@ -48,7 +48,9 @@ export default function draw(datasets) {
       showLine: true,
       timeFormat: "MM/DD/YYYY",
       dotSize: 0.5,
-      dataColors: colors,
+      // Only available in chart.xkcd 1.1, however this version seems to have a bug where xkcd font-family is not properly
+      // applied to the graph
+      // dataColors: colors,
     },
   });
 }
