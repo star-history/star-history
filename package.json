@@ -27,6 +27,9 @@
     "nvd3": "^1.8.6"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.6.3",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "parcel": "^1.12.3"
   }
 }
