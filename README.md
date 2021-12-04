@@ -1,6 +1,6 @@
 > [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
-# Star History (www.star-history.com)
+# Star History (star-history.com)
 
 The missing star history graph of GitHub repos
 
@@ -10,7 +10,7 @@ The missing star history graph of GitHub repos
 
 [Bytebase.com](https://bytebase.com) is an open source, web-based database schema change and version control tool for teams.
 
-## [As a website](https://www.star-history.com)
+## [As a website](https://star-history.com)
 
 **Support comparing multiple repos**
 
