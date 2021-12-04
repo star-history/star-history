@@ -1,6 +1,7 @@
+> [star-history.com](https://star-history.com)
 > [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
-# Star History (star-history.com)
+# Star History
 
 The missing star history graph of GitHub repos
 
