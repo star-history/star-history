@@ -48,7 +48,7 @@ npm run buildExtension
 ### Website
 
 ```bash
-# deploy to www.star-history.com
+# deploy to star-history.com
 npm run deployWebsite
 ```
 
