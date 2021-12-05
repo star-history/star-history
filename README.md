@@ -1,4 +1,4 @@
-[Star history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
+[🧩 Install chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
 # Star History
 
