@@ -1,12 +1,10 @@
-> [star-history.com](https://star-history.com)
->
-> [Star history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
+[Star history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
 # Star History
 
-The missing star history graph of GitHub repos
+[https://star-history.com](https://star-history.com) the missing star history graph of GitHub repos.
 
-## Sponsors
+**Sponsor**
 
 <a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
 
