@@ -1,10 +1,10 @@
-> [star-history chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
+🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
-# Star History (star-history.com)
+# Star History
 
-The missing star history graph of GitHub repos
+[https://star-history.com](https://star-history.com) the missing star history graph of GitHub repos.
 
-## Sponsors
+**Sponsor**
 
 <a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
 
@@ -24,7 +24,7 @@ The missing star history graph of GitHub repos
 
 ## Access Token
 
-star-history.com uses GitHub API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star-history will need your personal access token to unlimit it.
+[star-history.com](https://star-history.com) uses GitHub API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star history will need your personal access token to unlimit it.
 
 If you don't already have one, [create one](https://github.com/settings/tokens/new), and add to star-history (no scope to your personal data is needed)
 
