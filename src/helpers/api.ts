@@ -32,13 +32,23 @@ async function request<T>(config: RequestConfig): Promise<ResponseType<T>> {
     };
   }
 
-  const response = await fetch(url, requestConfig);
-  const responseData = (await response.json()) as T;
-
-  return {
-    response,
-    data: responseData,
-  };
+  return fetch(url, requestConfig)
+    .then(async (response) => {
+      if (response.status >= 400 && response.status < 600) {
+        throw {
+          response,
+          data: null,
+        };
+      }
+      const responseData = (await response.json()) as T;
+      return {
+        response,
+        data: responseData,
+      };
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
 }
 
 namespace api {

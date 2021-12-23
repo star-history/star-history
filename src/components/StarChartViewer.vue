@@ -16,7 +16,6 @@
 import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import api from "../helpers/api";
-import { AppState } from "../store";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
 
@@ -28,13 +27,7 @@ interface State {
       count: number;
     }[]
   >;
-  chartData: {
-    repo: string;
-    starRecords: {
-      date: string;
-      count: number;
-    }[];
-  }[];
+  chartData: RepoStarData[];
   height: number;
 }
 
@@ -72,10 +65,11 @@ export default defineComponent({
           }
         }
       } catch (error) {
-        console.error(error);
+        alert("Request data error.");
       }
       store.commit("setFetchFlag", false);
-      const chartTempData: any[] = [];
+
+      const chartTempData: RepoStarData[] = [];
       for (const [k, v] of state.repoStarDataMap) {
         chartTempData.push({
           repo: k,
@@ -85,8 +79,8 @@ export default defineComponent({
       state.chartData = chartTempData;
     };
 
-    watch(store.state.repos, (repos) => {
-      fetchStarChart(repos);
+    watch(store.state.repos, () => {
+      fetchStarChart(store.state.repos);
     });
 
     return {

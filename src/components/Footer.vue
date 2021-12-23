@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="w-full shrink-0 h-14 mt-6 flex flex-row justify-center items-center bg-white"
+    class="w-full shrink-0 h-14 mt-6 flex flex-row justify-center items-center"
   >
     <div
       class="w-5/6 min-w-2xl max-w-full h-full flex flex-row justify-between items-center border-t"
@@ -33,14 +33,16 @@
             class="text-cyan-700 font-bold hover:opacity-60"
             href="https://bytebase.com"
             target="__blank"
-            >Bytebase</a
-          >, originally built by
+          >
+            Bytebase
+          </a>
+          , originally built by
           <a
             class="bg-cyan-500 text-white p-1 pl-2 pr-2 rounded-l-2xl rounded-r-2xl hover:opacity-60"
             href="https://twitter.com/tim_qian"
           >
-            @tim_qian</a
-          >
+            @tim_qian
+          </a>
         </span>
       </div>
     </div>

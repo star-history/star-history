@@ -4,6 +4,7 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     sourceType: "module",
   },
+  plugins: ["vue", "@typescript-eslint", "prettier"],
   extends: [
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
@@ -11,21 +12,30 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   rules: {
-    "no-empty-pattern": "warn",
-    "no-useless-escape": "warn",
-    "@typescript-eslint/no-empty-interface": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
+    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-namespace": "off",
     "vue/multi-word-component-names": "off",
     "vue/require-default-prop": "off",
-    "@typescript-eslint/no-namespace": "off",
   },
-  ignorePatterns: ["node_modules", "build", "dist", "public"],
+  ignorePatterns: ["node_modules", "dist", "public"],
   overrides: [
     {
-      files: ["./*.js"],
+      files: ["./*.js", "./scripts/*.js"],
       env: {
         node: true,
+      },
+    },
+    {
+      files: ["*.vue"],
+      rules: {
+        "no-undef": "off", // ts(2304)
       },
     },
   ],

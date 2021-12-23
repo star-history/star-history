@@ -1,6 +1,6 @@
 <template>
   <header
-    class="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-zinc-700"
+    class="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-zinc-800"
   >
     <div
       class="w-5/6 min-w-2xl max-w-full flex flex-row justify-between items-center"
@@ -18,8 +18,9 @@
             href="https://github.com/bytebase/star-history"
             data-show-count="true"
             aria-label="Star bytebase/star-history on GitHub"
-            >Star</a
           >
+            Star
+          </a>
         </span>
       </div>
     </div>

@@ -1,11 +1,9 @@
-interface XYDataItem {
-  x: Date;
-  y: number;
-}
-
 interface XYData {
   label: string;
-  data: XYDataItem[];
+  data: {
+    x: Date;
+    y: number;
+  }[];
 }
 
 // legend position
@@ -30,6 +28,7 @@ interface ChartXkcdXYConfig {
     showLine: boolean;
     timeFormat: string;
     dotSize: number;
+    dataColor?: string[];
   };
 }
 

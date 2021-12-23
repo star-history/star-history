@@ -4,9 +4,9 @@
   >
     <p class="font-bold">
       Sponsored by
-      <a class="text-cyan-700" href="https://bytebase.com" target="__blank"
-        >Bytebase</a
-      >
+      <a class="text-cyan-700" href="https://bytebase.com" target="__blank">
+        Bytebase
+      </a>
     </p>
     <p>
       Open source, web-based database schema change and version control for

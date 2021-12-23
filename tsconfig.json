@@ -5,6 +5,7 @@
     "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
+    "isolatedModules": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -13,5 +14,5 @@
     "checkJs": false,
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.vue"]
 }

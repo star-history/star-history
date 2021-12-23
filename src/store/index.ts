@@ -1,11 +1,5 @@
 import { createStore } from "vuex";
 
-export interface AppState {
-  isFetching: boolean;
-  token: string;
-  repos: string[];
-}
-
 const store = createStore({
   state(): AppState {
     return {
@@ -18,6 +12,11 @@ const store = createStore({
     addRepo(state: AppState, repo: string) {
       if (!state.repos.includes(repo)) {
         state.repos.push(repo);
+      }
+    },
+    delRepo(state: AppState, repo: string) {
+      if (state.repos.includes(repo)) {
+        state.repos = state.repos.filter((t) => t !== repo);
       }
     },
     setFetchFlag(state: AppState, isFetching: boolean) {

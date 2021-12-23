@@ -11,14 +11,6 @@
 import ChartXkcd from "chart.xkcd";
 import { defineComponent, onMounted, onUpdated, ref } from "vue";
 
-interface RepoStarData {
-  repo: string;
-  starRecords: {
-    date: string;
-    count: number;
-  }[];
-}
-
 export default defineComponent({
   name: "StarChart",
   props: {
@@ -38,7 +30,7 @@ export default defineComponent({
     const svgEl = ref<SVGSVGElement | null>(null);
 
     const drawStarChart = (repoStarData: RepoStarData[]) => {
-      const data = repoStarData.map((item) => {
+      const datasets: XYData[] = repoStarData.map((item) => {
         const { repo, starRecords } = item;
 
         return {
@@ -56,10 +48,10 @@ export default defineComponent({
         svgEl.value.innerHTML = "";
         new ChartXkcd.XY(svgEl.value, {
           title: "Star history",
-          yLabel: "Github stars",
+          yLabel: "GitHub Stars",
           xLabel: "Date",
           data: {
-            datasets: data as any,
+            datasets,
           },
           options: {
             xTickCount: 5,
@@ -73,7 +65,7 @@ export default defineComponent({
       }
     };
 
-    onMounted(async () => {
+    onMounted(() => {
       if (props.data && props.data.length > 0) {
         drawStarChart(props.data);
       }
