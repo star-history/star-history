@@ -66,13 +66,13 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      if (props.data && props.data.length > 0) {
+      if (props.data) {
         drawStarChart(props.data);
       }
     });
 
     onUpdated(() => {
-      if (props.data && props.data.length > 0) {
+      if (props.data) {
         drawStarChart(props.data);
       }
     });

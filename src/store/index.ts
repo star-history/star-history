@@ -16,8 +16,11 @@ const store = createStore({
     },
     delRepo(state: AppState, repo: string) {
       if (state.repos.includes(repo)) {
-        state.repos = state.repos.filter((t) => t !== repo);
+        state.repos.splice(state.repos.indexOf(repo), 1);
       }
+    },
+    setToken(state: AppState, token: string) {
+      state.token = token;
     },
     setFetchFlag(state: AppState, isFetching: boolean) {
       state.isFetching = isFetching;

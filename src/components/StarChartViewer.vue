@@ -4,11 +4,16 @@
     class="w-full flex grow flex-col justify-center items-center"
   >
     <StarChart
+      v-if="state.chartData.length > 0"
       :width="Math.floor(state.height / 2) * 3"
       :height="Math.floor(state.height / 2) * 2"
       :data="state.chartData"
     ></StarChart>
     <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
+    <TokenSettingDialog
+      v-if="state.showTokenDialog"
+      :destory="hideTokenDialog"
+    ></TokenSettingDialog>
   </div>
 </template>
 
@@ -18,6 +23,7 @@ import { useStore } from "vuex";
 import api from "../helpers/api";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
+import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
   repoStarDataMap: Map<
@@ -29,16 +35,18 @@ interface State {
   >;
   chartData: RepoStarData[];
   height: number;
+  showTokenDialog: boolean;
 }
 
 export default defineComponent({
   name: "StarChartViewer",
-  components: { BytebaseBanner, StarChart },
+  components: { BytebaseBanner, StarChart, TokenSettingDialog },
   setup() {
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
       height: window.innerHeight,
+      showTokenDialog: false,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
@@ -65,18 +73,30 @@ export default defineComponent({
           }
         }
       } catch (error) {
-        alert("Request data error.");
+        state.showTokenDialog = true;
+        return;
       }
       store.commit("setFetchFlag", false);
 
       const chartTempData: RepoStarData[] = [];
-      for (const [k, v] of state.repoStarDataMap) {
-        chartTempData.push({
-          repo: k,
-          starRecords: v,
-        });
+      for (const repo of repos) {
+        const records = state.repoStarDataMap.get(repo);
+        if (records) {
+          chartTempData.push({
+            repo,
+            starRecords: records,
+          });
+        }
+      }
+      if (state.chartData.length > 0) {
+        state.chartData.splice(0, state.chartData.length);
       }
       state.chartData = chartTempData;
+    };
+
+    const hideTokenDialog = () => {
+      state.showTokenDialog = false;
+      fetchStarChart(store.state.repos);
     };
 
     watch(store.state.repos, () => {
@@ -86,6 +106,7 @@ export default defineComponent({
     return {
       state,
       containerElRef,
+      hideTokenDialog,
     };
   },
 });
