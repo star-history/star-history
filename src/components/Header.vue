@@ -1,8 +1,10 @@
 <template>
   <header
-    class="w-full shrink-0 flex flex-row justify-center items-center p-3 bg-zinc-700"
+    class="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-zinc-700"
   >
-    <div class="w-5/6 flex flex-row justify-between items-center">
+    <div
+      class="w-5/6 min-w-2xl max-w-full flex flex-row justify-between items-center"
+    >
       <div class="flex flex-row justify-start items-center">
         <img class="w-6 h-auto mr-4" src="/icon.png" />
         <span class="text-lg font-bold text-white">Star history</span>

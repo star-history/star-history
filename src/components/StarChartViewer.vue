@@ -8,26 +8,7 @@
       :height="Math.floor(state.height / 2) * 2"
       :data="state.chartData"
     ></StarChart>
-
-    <!-- Bytebase -->
-    <div
-      v-if="state.chartData.length > 0"
-      class="w-full mt-8 mb-8 text-sm flex grow flex-col justify-center items-center"
-    >
-      <p class="font-bold h-7">
-        Sponsored by
-        <a class="text-cyan-700" href="https://bytebase.com" target="__blank"
-          >Bytebase</a
-        >
-      </p>
-      <p class="h-7">
-        Open source, web-based database schema change and version control for
-        <span class="font-bold text-cyan-700">Teams</span>
-      </p>
-      <a class="" href="https://bytebase.com/" target="__blank">
-        <img class="w-auto max-w-2xl" src="/bytebase.webp" alt="bytebase" />
-      </a>
-    </div>
+    <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
   </div>
 </template>
 
@@ -36,6 +17,7 @@ import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import api from "../helpers/api";
 import { AppState } from "../store";
+import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
 
 interface State {
@@ -58,7 +40,7 @@ interface State {
 
 export default defineComponent({
   name: "StarChartViewer",
-  components: { StarChart },
+  components: { BytebaseBanner, StarChart },
   setup() {
     const state = reactive<State>({
       repoStarDataMap: new Map(),
@@ -72,18 +54,27 @@ export default defineComponent({
       const containerEl = containerElRef.value;
 
       if (containerEl) {
-        state.height = window.innerHeight - containerEl.offsetTop;
+        state.height = window.innerHeight - containerEl.offsetTop - 24;
         containerEl.style.minHeight = state.height + "px";
       }
     });
 
     const fetchStarChart = async (repos: string[]) => {
-      for (const repo of repos) {
-        if (!state.repoStarDataMap.has(repo)) {
-          const starRecords = await api.getRepoStarRecords(repo);
-          state.repoStarDataMap.set(repo, starRecords);
+      store.commit("setFetchFlag", true);
+      try {
+        for (const repo of repos) {
+          if (!state.repoStarDataMap.has(repo)) {
+            const starRecords = await api.getRepoStarRecords(
+              repo,
+              store.state.token
+            );
+            state.repoStarDataMap.set(repo, starRecords);
+          }
         }
+      } catch (error) {
+        console.error(error);
       }
+      store.commit("setFetchFlag", false);
       const chartTempData: any[] = [];
       for (const [k, v] of state.repoStarDataMap) {
         chartTempData.push({

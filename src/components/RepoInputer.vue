@@ -3,16 +3,17 @@
     <div class="w-full flex flex-row justify-center items-center">
       <div class="w-full flex flex-row justify-center items-center">
         <div
-          class="w-auto grow max-w-2xl mt-12 flex flex-row justify-center items-center border border-zinc-700 rounded border-solid"
+          class="w-auto grow max-w-2xl mt-12 flex flex-row justify-center items-center drop-shadow-lg"
         >
           <input
             v-model="state.repo"
-            class="w-auto grow p-1.5 pl-3 focus:outline-none"
+            class="w-auto grow p-2 pl-4 outline-none border border-zinc-400 rounded-l-lg border-solid"
             type="text"
             placeholder="bytebase/star-history or https://github.com/bytebase/star-history"
           />
           <button
-            class="w-32 p-1.5 border-l outline-0 border-zinc-700 bg-zinc-700 text-white border-solid"
+            class="w-32 p-2 border border-zinc-700 rounded-r-lg border-solid bg-zinc-700 text-white hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60"
+            :disabled="state.isFetching"
             @click="handleAddRepoBtnClick"
           >
             Show Me
@@ -21,7 +22,7 @@
       </div>
     </div>
     <!-- repo list -->
-    <div v-if="false" class="w-full flex flex-row justify-center items-center">
+    <div class="w-full h-14 flex flex-row justify-center items-center">
       <div
         class="w-auto grow max-w-2xl mt-4 flex flex-row justify-center items-center"
       >
@@ -38,12 +39,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, watch } from "vue";
 import { useStore } from "vuex";
 import { AppState } from "../store";
 
 interface State {
   repo: string;
+  isFetching: boolean;
 }
 
 export default defineComponent({
@@ -52,15 +54,25 @@ export default defineComponent({
     const store = useStore<AppState>();
     const state = reactive<State>({
       repo: "",
+      isFetching: false,
     });
 
     const handleAddRepoBtnClick = () => {
+      if (state.isFetching) {
+        return;
+      }
+
       let repo = state.repo;
       if (state.repo === "") {
         repo = "bytebase/star-history";
       }
       store.commit("addRepo", repo);
+      state.repo = "";
     };
+
+    watch(store.state, () => {
+      state.isFetching = store.state.isFetching;
+    });
 
     return {
       state,
