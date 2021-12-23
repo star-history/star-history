@@ -1,51 +1,36 @@
 <template>
-  <h1 class="text-3xl font-bold underline">{{ msg }}</h1>
-  <button type="button" @click="state.count++">
-    count is: {{ state.count }}
-  </button>
+  <header
+    class="w-full shrink-0 flex flex-row justify-center items-center p-3 bg-zinc-700"
+  >
+    <div class="w-5/6 flex flex-row justify-between items-center">
+      <div class="flex flex-row justify-start items-center">
+        <img class="w-6 h-auto mr-4" src="/icon.png" />
+        <span class="text-lg font-bold text-white">Star history</span>
+      </div>
+      <div class="flex flex-row justify-end items-center">
+        <span
+          class="h-6 flex flex-row justify-center items-center mt-1.5 text-blue-400"
+        >
+          <a
+            class="github-button"
+            href="https://github.com/bytebase/star-history"
+            data-show-count="true"
+            aria-label="Star bytebase/star-history on GitHub"
+            >Star</a
+          >
+        </span>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-
-interface State {
-  count: number;
-}
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "HelloWorld",
-  props: {
-    msg: {
-      type: String,
-      default: "",
-    },
-  },
+  name: "Header",
   setup() {
-    const state = reactive<State>({
-      count: 0,
-    });
-
-    return {
-      state,
-    };
+    return {};
   },
 });
 </script>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
-
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>

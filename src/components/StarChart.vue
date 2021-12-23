@@ -1,0 +1,98 @@
+<template>
+  <div
+    class="flex flex-row justify-center items-center"
+    :style="{ width: `${$props.width}px`, height: `${$props.height}px` }"
+  >
+    <svg ref="svgEl" @click="handleSVGElementClick"></svg>
+  </div>
+</template>
+
+<script lang="ts">
+import ChartXkcd from "chart.xkcd";
+import { defineComponent, onMounted, onUpdated, ref } from "vue";
+
+interface RepoStarData {
+  repo: string;
+  starRecords: {
+    date: string;
+    count: number;
+  }[];
+}
+
+export default defineComponent({
+  name: "StarChart",
+  props: {
+    width: {
+      type: Number,
+      default: 600,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
+    data: {
+      type: Object as () => RepoStarData[],
+    },
+  },
+  setup(props) {
+    const svgEl = ref<SVGSVGElement | null>(null);
+
+    const drawStarChart = (repoStarData: RepoStarData[]) => {
+      const data = repoStarData.map((item) => {
+        const { repo, starRecords } = item;
+
+        return {
+          label: repo,
+          data: starRecords.map((item) => {
+            return {
+              x: new Date(item.date),
+              y: Number(item.count),
+            };
+          }),
+        };
+      });
+
+      if (svgEl.value) {
+        svgEl.value.innerHTML = "";
+        new ChartXkcd.XY(svgEl.value, {
+          title: "Star history",
+          yLabel: "Github stars",
+          xLabel: "Date",
+          data: {
+            datasets: data as any,
+          },
+          options: {
+            xTickCount: 5,
+            yTickCount: 5,
+            legendPosition: 1,
+            showLine: true,
+            timeFormat: "MM/DD/YYYY",
+            dotSize: 0.5,
+          },
+        });
+      }
+    };
+
+    onMounted(async () => {
+      if (props.data && props.data.length > 0) {
+        drawStarChart(props.data);
+      }
+    });
+
+    onUpdated(() => {
+      if (props.data && props.data.length > 0) {
+        drawStarChart(props.data);
+      }
+    });
+
+    const handleSVGElementClick = (event: MouseEvent) => {
+      console.log(event);
+    };
+
+    return {
+      svgEl,
+      handleSVGElementClick,
+    };
+  },
+});
+</script>

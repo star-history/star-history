@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
 
   if (mode === "extension") {
     config.root = "./src";
+    config.publicDir = "../public";
     config.build = {
       ...config.build,
       outDir: "../dist",

@@ -3,15 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode browser",
-    "build:ex": "vite build --mode extension && node ./scripts/copyExtFiles.js",
+    "build": "vite build",
+    "build:ext": "vite build --mode extension && node ./scripts/copyExtFiles.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.xkcd": "^1.1.13",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vue": "^3.2.25",
-    "vue-tsc": "^0.29.8"
+    "vue-tsc": "^0.29.8",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.171",

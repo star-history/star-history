@@ -1,7 +1,9 @@
 {
-  "name": "Getting Started Example",
-  "description": "Build an Extension!",
-  "version": "1.0",
+  "name": "Star History",
+  "description": "A chrome extension showing star history graph of current GitHub repository",
+  "homepage_url": "https://github.com/bytebase/star-history-plugin",
+  "author": "bytebase",
+  "version": "2.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "./background.js"
@@ -9,5 +11,6 @@
   "action": {
     "default_popup": "./extension/popup.html"
   },
-  "permissions": ["storage"]
+  "host_permissions": ["https://api.github.com/"],
+  "permissions": ["tabs", "activeTab"]
 }

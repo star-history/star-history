@@ -2,12 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="View and compare star history of GitHub repositories"
+    />
+    <meta
+      name="google-site-verification"
+      content="gWDCNMCQeEt3snNQ8J4NCOmVkz4axYeIp5fH4umVaAs"
+    />
+    <link rel="icon" href="/icon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="bookmark" href="/icon.png" />
+    <link rel="shortcut icon" href="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <title>GitHub Star History</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="./src/main.ts"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer src="/js/html2canvas.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZDH3P2WZ6W"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-ZDH3P2WZ6W");
+    </script>
+    <script
+      defer
+      data-domain="star-history.com"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
   </body>
 </html>
