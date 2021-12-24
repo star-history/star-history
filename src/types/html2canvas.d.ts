@@ -34,6 +34,8 @@ declare namespace Html2Canvas {
 
     /** Whether to attempt to load cross-origin images as CORS served, before reverting back to proxy. */
     useCORS?: boolean;
+
+    scale?: number;
   }
 }
 
@@ -46,7 +48,7 @@ interface Html2CanvasStatic {
    *
    * @param {HTMLElement} element The HTML element which will be rendered to the canvas. Use the root element to render the entire window.
    */
-  (element: HTMLElement): void;
+  (element: HTMLElement): Promise<HTMLCanvasElement>;
   /**
    * Renders an HTML element to a canvas so that a screenshot can be generated.
    *
@@ -56,7 +58,10 @@ interface Html2CanvasStatic {
    * @param {HTMLElement} element The HTML element which will be rendered to the canvas. Use the root element to render the entire window.
    * @param {Html2CanvasOptions} options The options object that controls how the element will be rendered.
    */
-  (element: HTMLElement, options: Html2Canvas.Html2CanvasOptions): void;
+  (
+    element: HTMLElement,
+    options: Html2Canvas.Html2CanvasOptions
+  ): Promise<HTMLCanvasElement>;
 }
 
 declare let html2canvas: Html2CanvasStatic;

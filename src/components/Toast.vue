@@ -30,20 +30,24 @@ export default defineComponent({
     bgColor() {
       switch (this.$props.type) {
         case "normal":
-          return "";
+          return "bg-black";
         case "warn":
           return "bg-orange-500";
+        case "succeed":
+          return "bg-green-800";
       }
-      return "";
+      return "bg-black";
     },
     textColor() {
       switch (this.$props.type) {
         case "normal":
-          return "";
+          return "text-white";
         case "warn":
           return "text-white";
+        case "succeed":
+          return "text-white";
       }
-      return "";
+      return "text-white";
     },
   },
 });

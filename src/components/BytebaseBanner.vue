@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-full mt-8 mb-8 leading-8 flex grow flex-col justify-center items-center"
-  >
+  <div class="w-full leading-8 flex grow flex-col justify-center items-center">
     <p class="font-bold">
       Sponsored by
       <a class="text-cyan-700" href="https://bytebase.com" target="__blank">

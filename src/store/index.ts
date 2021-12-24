@@ -4,11 +4,20 @@ import { storage } from "../helpers/storage";
 const store = createStore({
   state(): AppState {
     const { accessTokenCache } = storage.get(["accessTokenCache"]);
+    const hash = window.location.hash.slice(1);
+    const hashParams = hash.split("&");
+    const repos: string[] = [];
+
+    for (const p of hashParams) {
+      if (p.startsWith("repos=")) {
+        repos.push(...p.slice(6).split(","));
+      }
+    }
 
     return {
       isFetching: false,
       token: accessTokenCache || "",
-      repos: [],
+      repos: repos,
     };
   },
   mutations: {

@@ -15,6 +15,7 @@ function show(message: string, type: string, duration = 2000) {
   }, duration);
 }
 
+// NOTE: Just for mocking alert and only for this project.
 namespace toast {
   export function succeed(message: string, duration = 2000) {
     return show(message, "succeed", duration);

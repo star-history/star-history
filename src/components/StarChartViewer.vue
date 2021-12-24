@@ -1,7 +1,7 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-full flex grow flex-col justify-center items-center"
+    class="relative w-fit p-4 pt-0 flex grow flex-col justify-center items-center self-center"
   >
     <div
       v-if="state.isFetching"
@@ -20,12 +20,30 @@
       :height="Math.floor(state.height / 2) * 2"
       :data="state.chartData"
     ></StarChart>
-    <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
-    <TokenSettingDialog
-      v-if="state.showTokenDialog"
-      :destory="hideTokenDialog"
-    ></TokenSettingDialog>
   </div>
+  <div
+    v-if="state.chartData.length > 0"
+    class="relative mt-6 mb-6 w-auto m-auto border-b p-2 drop-shadow flex grow flex-row justify-center items-center"
+  >
+    <span>Share with:</span>
+    <span
+      class="border ml-2 rounded-md p-1 pl-3 pr-3 cursor-pointer hover:border-black"
+      @click="handleCopyLinkBtnClick"
+    >
+      <i class="fas fa-link"></i> Link
+    </span>
+    <span
+      class="border ml-2 rounded-md p-1 pl-3 pr-3 cursor-pointer hover:border-black"
+      @click="handleGenerateImageBtnClick"
+    >
+      <i class="far fa-image"></i> Image
+    </span>
+  </div>
+  <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
+  <TokenSettingDialog
+    v-if="state.showTokenDialog"
+    :destory="hideTokenDialog"
+  ></TokenSettingDialog>
 </template>
 
 <script lang="ts">
@@ -33,6 +51,7 @@ import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
+import utils from "../helpers/utils";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
@@ -72,6 +91,10 @@ export default defineComponent({
         state.height = window.innerHeight - containerEl.offsetTop - 24;
         containerEl.style.minHeight = state.height + "px";
       }
+
+      if (store.state.repos.length > 0) {
+        fetchStarChart(store.state.repos);
+      }
     });
 
     const fetchStarChart = async (repos: string[]) => {
@@ -87,12 +110,12 @@ export default defineComponent({
             state.repoStarDataMap.set(repo, starRecords);
           } catch (error: any) {
             if (error?.response?.status === 404) {
-              toast.warn("Repo not found");
+              toast.warn(`Repo ${repo} not found`);
             } else if (error?.response?.status === 403) {
               toast.warn("GitHub API rate limit exceeded");
               state.showTokenDialog = true;
             } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-              toast.warn("Repo has no star history");
+              toast.warn(`Repo ${repo} has no star history`);
             } else {
               toast.warn("Request failed, please retry later");
             }
@@ -125,6 +148,26 @@ export default defineComponent({
       fetchStarChart(store.state.repos);
     };
 
+    const handleCopyLinkBtnClick = async () => {
+      await utils.copyTextToClipboard(window.location.href);
+      toast.succeed("Copy succeed");
+    };
+
+    const handleGenerateImageBtnClick = () => {
+      if (containerElRef.value) {
+        html2canvas(containerElRef.value, {
+          scale: window.devicePixelRatio * 2,
+        }).then((canvas) => {
+          // NOTE: download it, and the ImageViewer is WIP.
+          location.href = canvas.toDataURL();
+          const link = document.createElement("a");
+          link.download = "star-history.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    };
+
     watch(store.state.repos, (repos) => {
       fetchStarChart(repos);
     });
@@ -133,6 +176,8 @@ export default defineComponent({
       state,
       containerElRef,
       hideTokenDialog,
+      handleCopyLinkBtnClick,
+      handleGenerateImageBtnClick,
     };
   },
 });

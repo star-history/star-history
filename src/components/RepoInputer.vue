@@ -12,8 +12,10 @@
             placeholder="bytebase/star-history or https://github.com/bytebase/star-history"
           />
           <button
-            class="w-32 p-2 border border-zinc-800 rounded-r-lg border-solid bg-zinc-800 text-white hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60"
-            :disabled="state.isFetching"
+            :class="
+              'w-32 p-2 border border-zinc-800 rounded-r-lg border-solid bg-zinc-800 text-white hover:opacity-80 ' +
+              (state.isFetching ? 'cursor-wait !opacity-60' : '')
+            "
             @click="handleAddRepoBtnClick"
           >
             Show Me
@@ -22,14 +24,14 @@
       </div>
     </div>
     <!-- repo list -->
-    <div class="w-full h-14 flex flex-row justify-center items-center">
+    <div class="w-full h-14 mt-4 flex flex-row justify-center items-center">
       <div
-        class="w-auto grow max-w-2xl mt-4 flex flex-row justify-center items-center"
+        class="w-auto grow max-w-2xl flex flex-row justify-center items-center"
       >
         <div
           v-for="item of state.repos"
           :key="item"
-          class="w-auto flex flex-row justify-center items-center border rounded-md border-solid p-1 pl-2 pr-2 mr-3 cursor-pointer last:mr-0 hover:line-through"
+          class="w-auto flex flex-row justify-center items-center border rounded-md border-solid border-zinc-400 p-1 pl-2 pr-2 mr-3 cursor-pointer last:mr-0 hover:line-through hover:opacity-60"
           @click="handleRepoItemClick(item)"
         >
           {{ item }}
@@ -40,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, watch } from "vue";
+import { defineComponent, onMounted, reactive, watch } from "vue";
 import { useStore } from "vuex";
 import { githubRepoUrlReg } from "../helpers/consts";
 
@@ -58,6 +60,14 @@ export default defineComponent({
       repo: "",
       repos: [],
       isFetching: false,
+    });
+
+    onMounted(() => {
+      let hash = "";
+      if (store.state.repos.length > 0) {
+        hash = `#repos=${store.state.repos.join(",")}`;
+      }
+      window.location.hash = hash;
     });
 
     const handleAddRepoBtnClick = () => {
@@ -89,6 +99,13 @@ export default defineComponent({
     watch(store.state, () => {
       state.isFetching = store.state.isFetching;
       state.repos = store.state.repos;
+
+      // handle location change right here
+      let hash = "";
+      if (store.state.repos.length > 0) {
+        hash = `#repos=${store.state.repos.join(",")}`;
+      }
+      window.location.hash = hash;
     });
 
     return {
