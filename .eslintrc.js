@@ -27,15 +27,18 @@ module.exports = {
   ignorePatterns: ["node_modules", "dist", "public"],
   overrides: [
     {
-      files: ["./*.js", "./scripts/*.js"],
+      files: ["./**/*.js"],
       env: {
         node: true,
+      },
+      rules: {
+        "no-undef": "off",
       },
     },
     {
       files: ["*.vue"],
       rules: {
-        "no-undef": "off", // ts(2304)
+        "no-undef": "off",
       },
     },
   ],

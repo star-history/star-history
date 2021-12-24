@@ -32,6 +32,7 @@
 import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 import { useStore } from "vuex";
 import api from "../helpers/api";
+import toast from "../helpers/toast";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
@@ -86,14 +87,14 @@ export default defineComponent({
             state.repoStarDataMap.set(repo, starRecords);
           } catch (error: any) {
             if (error?.response?.status === 404) {
-              alert("Repo not found");
+              toast.warn("Repo not found");
             } else if (error?.response?.status === 403) {
-              alert("GitHub API rate limit exceeded");
+              toast.warn("GitHub API rate limit exceeded");
               state.showTokenDialog = true;
             } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-              alert("Repo has no star history");
+              toast.warn("Repo has no star history");
             } else {
-              alert("Request failed, please retry later");
+              toast.warn("Request failed, please retry later");
             }
             store.commit("delRepo", repo);
             return;
