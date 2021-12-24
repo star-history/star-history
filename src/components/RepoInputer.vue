@@ -42,6 +42,7 @@
 <script lang="ts">
 import { defineComponent, reactive, watch } from "vue";
 import { useStore } from "vuex";
+import { githubRepoUrlReg } from "../helpers/consts";
 
 interface State {
   repo: string;
@@ -64,11 +65,20 @@ export default defineComponent({
         return;
       }
 
-      let repo = state.repo;
-      if (state.repo === "") {
-        repo = "bytebase/star-history";
+      const repos = state.repo || "bytebase/star-history";
+      for (const repo of repos.split(" ")) {
+        if (githubRepoUrlReg.test(repo)) {
+          const regResult = githubRepoUrlReg.exec(repo);
+          if (regResult) {
+            const str = regResult[1];
+            if (str) {
+              store.commit("addRepo", str);
+              continue;
+            }
+          }
+        }
+        store.commit("addRepo", repo);
       }
-      store.commit("addRepo", repo);
       state.repo = "";
     };
 

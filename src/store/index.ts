@@ -1,10 +1,13 @@
 import { createStore } from "vuex";
+import { storage } from "../helpers/storage";
 
 const store = createStore({
   state(): AppState {
+    const { accessTokenCache } = storage.get(["accessTokenCache"]);
+
     return {
       isFetching: false,
-      token: "",
+      token: accessTokenCache || "",
       repos: [],
     };
   },

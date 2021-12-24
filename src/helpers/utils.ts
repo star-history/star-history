@@ -1,7 +1,7 @@
 namespace utils {
   export function range(from: number, to: number): number[] {
     const r: number[] = [];
-    for (let i = from; i < to; i++) {
+    for (let i = from; i <= to; i++) {
       r.push(i);
     }
     return r;

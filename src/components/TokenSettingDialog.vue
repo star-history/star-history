@@ -68,6 +68,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import { useStore } from "vuex";
+import { storage } from "../helpers/storage";
 
 interface State {
   token: string;
@@ -88,6 +89,13 @@ export default defineComponent({
 
     const handleSaveTokenBtnClick = () => {
       store.commit("setToken", state.token);
+      storage.set({
+        accessTokenCache: state.token,
+      });
+
+      if (props.destory) {
+        props.destory();
+      }
     };
 
     const handleCloseBtnClick = () => {

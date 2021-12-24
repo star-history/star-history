@@ -72,12 +72,12 @@ namespace api {
   }
 
   export async function getRepoStarRecords(repo: string, token = "") {
-    const { response } = await getRepoStargazers(repo, token);
+    const patchRes = await getRepoStargazers(repo, token);
 
-    const headerLink = response.headers.get("link") ?? "";
+    const headerLink = patchRes.response.headers.get("link") || "";
     const MAX_REQUEST_AMOUNT = 15;
 
-    let pageCount = 0;
+    let pageCount = 1;
     const regResult = /next.*?page=(\d*).*?last/.exec(headerLink);
 
     if (regResult) {
@@ -86,45 +86,64 @@ namespace api {
       }
     }
 
-    if (pageCount === 0) {
+    if (pageCount === 1 && patchRes?.data?.length === 0) {
       throw {
-        response,
+        response: patchRes.response,
         data: [],
       };
     }
 
     const requestPages: number[] = [];
     if (pageCount < MAX_REQUEST_AMOUNT) {
-      requestPages.push(...utils.range(1, pageCount));
+      requestPages.push(...utils.range(2, pageCount));
     } else {
-      let i = 1;
-      while (i < pageCount) {
+      let i = 2;
+      while (i <= pageCount) {
         requestPages.push(i);
         i += Math.round(pageCount / MAX_REQUEST_AMOUNT);
       }
     }
 
-    const resArray = await Promise.all(
-      requestPages.map((page) => {
-        return getRepoStargazers(repo, token, page);
-      })
-    );
+    const resArray = [
+      patchRes,
+      ...(await Promise.all(
+        requestPages.map((page) => {
+          return getRepoStargazers(repo, token, page);
+        })
+      )),
+    ];
 
-    const starRecords: {
-      date: string;
-      count: number;
-    }[] = [];
+    const starRecordsMap: Map<string, number> = new Map();
 
-    resArray.map((res, index) => {
-      const { data } = res;
-      if (data.length > 0) {
-        const starRecord = data[0];
-        starRecords.push({
-          date: utils.getDateString(starRecord.starred_at),
-          count: 30 * requestPages[index],
-        });
+    requestPages.unshift(1);
+
+    if (requestPages.length < MAX_REQUEST_AMOUNT) {
+      const starRecordsData: {
+        starred_at: string;
+      }[] = [];
+      resArray.map((res) => {
+        const { data } = res;
+        starRecordsData.push(...data);
+      });
+      for (let i = 0; i < starRecordsData.length; ) {
+        starRecordsMap.set(
+          utils.getDateString(starRecordsData[i].starred_at),
+          i + 1
+        );
+        i += Math.floor(starRecordsData.length / MAX_REQUEST_AMOUNT) || 1;
       }
-    });
+    } else {
+      resArray.map((res, index) => {
+        const { data } = res;
+        if (data.length > 0) {
+          const starRecord = data[0];
+          starRecordsMap.set(
+            utils.getDateString(starRecord.starred_at),
+            30 * (requestPages[index] - 1)
+          );
+        }
+      });
+    }
 
     const { data } = await request<{ stargazers_count: number }>({
       method: "GET",
@@ -135,9 +154,18 @@ namespace api {
       },
     });
 
-    starRecords.push({
-      date: utils.getDateString(Date.now()),
-      count: data.stargazers_count,
+    starRecordsMap.set(utils.getDateString(Date.now()), data.stargazers_count);
+
+    const starRecords: {
+      date: string;
+      count: number;
+    }[] = [];
+
+    starRecordsMap.forEach((v, k) => {
+      starRecords.push({
+        date: k,
+        count: v,
+      });
     });
 
     return starRecords;
