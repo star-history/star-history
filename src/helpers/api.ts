@@ -52,30 +52,47 @@ async function request<T>(config: RequestConfig): Promise<ResponseType<T>> {
 }
 
 namespace api {
-  export async function getRepoStarRecords(repo: string, token = "") {
-    const getGithubRepoStar = (repo: string, page = 1, token = "") => {
-      return request<{ starred_at: string }[]>({
-        method: "GET",
-        url: `https://api.github.com/repos/${repo}/stargazers?page=${page}`,
-        headers: {
-          Accept: "application/vnd.github.v3.star+json",
-          Authorization: token ? `token ${token}` : "",
-        },
-      });
-    };
+  export async function getRepoStargazers(
+    repo: string,
+    token = "",
+    page?: number
+  ) {
+    let url = `https://api.github.com/repos/${repo}/stargazers`;
+    if (page !== undefined) {
+      url = `${url}?page=${page}`;
+    }
+    return request<{ starred_at: string }[]>({
+      method: "GET",
+      url,
+      headers: {
+        Accept: "application/vnd.github.v3.star+json",
+        Authorization: token ? `token ${token}` : "",
+      },
+    });
+  }
 
-    const { response } = await getGithubRepoStar(repo, 1, token);
+  export async function getRepoStarRecords(repo: string, token = "") {
+    const { response } = await getRepoStargazers(repo, token);
 
     const headerLink = response.headers.get("link") ?? "";
     const MAX_REQUEST_AMOUNT = 15;
 
-    let pageCount = 1;
+    let pageCount = 0;
     const regResult = /next.*?page=(\d*).*?last/.exec(headerLink);
+
     if (regResult) {
       if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
         pageCount = Number(regResult[1]);
       }
     }
+
+    if (pageCount === 0) {
+      throw {
+        response,
+        data: [],
+      };
+    }
+
     const requestPages: number[] = [];
     if (pageCount < MAX_REQUEST_AMOUNT) {
       requestPages.push(...utils.range(1, pageCount));
@@ -89,7 +106,7 @@ namespace api {
 
     const resArray = await Promise.all(
       requestPages.map((page) => {
-        return getGithubRepoStar(repo, page, token);
+        return getRepoStargazers(repo, token, page);
       })
     );
 

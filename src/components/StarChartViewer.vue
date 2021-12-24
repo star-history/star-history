@@ -1,8 +1,19 @@
 <template>
   <div
     ref="containerElRef"
-    class="w-full flex grow flex-col justify-center items-center"
+    class="relative w-full flex grow flex-col justify-center items-center"
   >
+    <div
+      v-if="state.isFetching"
+      class="absolute flex justify-center items-center z-10 top-0"
+      :style="{
+        width: `${Math.floor(state.height / 2) * 3}px`,
+        height: `${Math.floor(state.height / 2) * 2}px`,
+      }"
+    >
+      <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
+      <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
+    </div>
     <StarChart
       v-if="state.chartData.length > 0"
       :width="Math.floor(state.height / 2) * 3"
@@ -34,8 +45,9 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
-  height: number;
   showTokenDialog: boolean;
+  isFetching: boolean;
+  height: number;
 }
 
 export default defineComponent({
@@ -45,8 +57,9 @@ export default defineComponent({
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
-      height: window.innerHeight,
       showTokenDialog: false,
+      isFetching: false,
+      height: window.innerHeight,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
@@ -61,21 +74,33 @@ export default defineComponent({
     });
 
     const fetchStarChart = async (repos: string[]) => {
+      state.isFetching = true;
       store.commit("setFetchFlag", true);
-      try {
-        for (const repo of repos) {
-          if (!state.repoStarDataMap.has(repo)) {
+      for (const repo of repos) {
+        if (!state.repoStarDataMap.has(repo)) {
+          try {
             const starRecords = await api.getRepoStarRecords(
               repo,
               store.state.token
             );
             state.repoStarDataMap.set(repo, starRecords);
+          } catch (error: any) {
+            if (error?.response?.status === 404) {
+              alert("Repo not found");
+            } else if (error?.response?.status === 403) {
+              alert("GitHub API rate limit exceeded");
+              state.showTokenDialog = true;
+            } else if (Array.isArray(error?.data) && error.data?.length === 0) {
+              alert("Repo has no star history");
+            } else {
+              alert("Request failed, please retry later");
+            }
+            store.commit("delRepo", repo);
+            return;
           }
         }
-      } catch (error) {
-        state.showTokenDialog = true;
-        return;
       }
+      state.isFetching = false;
       store.commit("setFetchFlag", false);
 
       const chartTempData: RepoStarData[] = [];
@@ -99,8 +124,8 @@ export default defineComponent({
       fetchStarChart(store.state.repos);
     };
 
-    watch(store.state.repos, () => {
-      fetchStarChart(store.state.repos);
+    watch(store.state.repos, (repos) => {
+      fetchStarChart(repos);
     });
 
     return {
