@@ -6,6 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        dark: "RGB(54, 54, 54)",
+        light: "RGB(245, 245, 245)",
+      },
+      maxWidth: {
+        "800px": "800px",
+      },
+      height: {
+        "52px": "52px",
+      },
       spacing: {
         112: "28rem",
         128: "32rem",
@@ -13,6 +23,9 @@ module.exports = {
         160: "40rem",
         176: "44rem",
         192: "48rem",
+      },
+      boxShadow: {
+        focus: "0 0 0 0.125em rgb(54 54 54 / 25%)",
       },
     },
   },

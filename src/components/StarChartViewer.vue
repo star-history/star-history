@@ -1,45 +1,40 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-fit p-4 pt-0 flex grow flex-col justify-center items-center self-center"
+    class="relative w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl p-4 pt-0 flex flex-col justify-center items-center"
   >
     <div
       v-if="state.isFetching"
-      class="absolute flex justify-center items-center z-10 top-0"
-      :style="{
-        width: `${Math.floor(state.height / 2) * 3}px`,
-        height: `${Math.floor(state.height / 2) * 2}px`,
-      }"
+      class="absolute w-full h-full flex justify-center items-center z-10 top-0"
     >
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
     </div>
     <StarChart
       v-if="state.chartData.length > 0"
-      :width="Math.floor(state.height / 2) * 3"
-      :height="Math.floor(state.height / 2) * 2"
+      classname="w-full h-auto"
       :data="state.chartData"
     ></StarChart>
   </div>
   <div
     v-if="state.chartData.length > 0"
-    class="relative mt-6 mb-6 w-auto m-auto border-b p-2 drop-shadow flex grow flex-row justify-center items-center"
+    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl flex flex-row justify-end items-center"
   >
-    <span>Share with:</span>
     <span
-      class="border ml-2 rounded-md p-1 pl-3 pr-3 cursor-pointer hover:border-black"
+      class="shadow-inner ml-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-light opacity-90 hover:opacity-100"
       @click="handleCopyLinkBtnClick"
     >
-      <i class="fas fa-link"></i> Link
+      Copy Link
     </span>
     <span
-      class="border ml-2 rounded-md p-1 pl-3 pr-3 cursor-pointer hover:border-black"
+      class="shadow-inner ml-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-light opacity-90 hover:opacity-100"
       @click="handleGenerateImageBtnClick"
     >
-      <i class="far fa-image"></i> Image
+      Download Image
     </span>
   </div>
   <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
+  <div class="grow shrink-0"></div>
   <TokenSettingDialog
     v-if="state.showTokenDialog"
     :destory="hideTokenDialog"
@@ -67,7 +62,6 @@ interface State {
   chartData: RepoStarData[];
   showTokenDialog: boolean;
   isFetching: boolean;
-  height: number;
 }
 
 export default defineComponent({
@@ -79,7 +73,6 @@ export default defineComponent({
       chartData: [],
       showTokenDialog: false,
       isFetching: false,
-      height: window.innerHeight,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
@@ -88,8 +81,7 @@ export default defineComponent({
       const containerEl = containerElRef.value;
 
       if (containerEl) {
-        state.height = window.innerHeight - containerEl.offsetTop - 24;
-        containerEl.style.minHeight = state.height + "px";
+        containerEl.style.minHeight = (containerEl.clientWidth / 3) * 2 + "px";
       }
 
       if (store.state.repos.length > 0) {

@@ -1,7 +1,8 @@
 <template>
   <div
-    class="flex flex-row justify-center items-center select-none"
-    :style="{ width: `${$props.width}px`, height: `${$props.height}px` }"
+    :class="
+      'flex flex-row justify-center items-center select-none ' + classname
+    "
   >
     <svg ref="svgEl" @click="handleSVGElementClick"></svg>
   </div>
@@ -14,13 +15,9 @@ import { defineComponent, onMounted, onUpdated, ref } from "vue";
 export default defineComponent({
   name: "StarChart",
   props: {
-    width: {
-      type: Number,
-      default: 600,
-    },
-    height: {
-      type: Number,
-      default: 400,
+    classname: {
+      type: String,
+      default: "",
     },
     data: {
       type: Object as () => RepoStarData[],

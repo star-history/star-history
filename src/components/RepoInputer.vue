@@ -1,37 +1,33 @@
 <template>
   <div class="w-full shrink-0 flex flex-col justify-start items-center">
-    <div class="w-full flex flex-row justify-center items-center">
-      <div class="w-full flex flex-row justify-center items-center">
-        <div
-          class="w-auto grow max-w-2xl mt-12 flex flex-row justify-center items-center drop-shadow-lg"
-        >
-          <input
-            v-model="state.repo"
-            class="w-auto grow p-2 pl-4 outline-none border border-zinc-400 rounded-l-lg border-solid"
-            type="text"
-            placeholder="bytebase/star-history or https://github.com/bytebase/star-history"
-          />
-          <button
-            :class="
-              'w-32 p-2 border border-zinc-800 rounded-r-lg border-solid bg-zinc-800 text-white hover:opacity-80 ' +
-              (state.isFetching ? 'cursor-wait !opacity-60' : '')
-            "
-            @click="handleAddRepoBtnClick"
-          >
-            Show Me
-          </button>
-        </div>
-      </div>
+    <div
+      class="w-full px-3 max-w-2xl mt-12 flex flex-row justify-center items-center"
+    >
+      <input
+        v-model="state.repo"
+        class="w-auto h-9 shrink grow px-2 text-dark shadow-inner outline-none border border-dark rounded-l border-solid placeholder:text-gray-300 focus:shadow-focus"
+        type="text"
+        placeholder="bytebase/star-history or https://github.com/bytebase/star-history"
+      />
+      <button
+        :class="
+          'h-9 pl-4 pr-4 whitespace-nowrap w-auto border border-dark border-l-0 rounded-r border-solid text-dark hover:bg-dark hover:text-light ' +
+          (state.isFetching ? 'cursor-wait !opacity-60' : '')
+        "
+        @click="handleAddRepoBtnClick"
+      >
+        View star history
+      </button>
     </div>
     <!-- repo list -->
     <div class="w-full h-14 mt-4 flex flex-row justify-center items-center">
       <div
-        class="w-auto grow max-w-2xl flex flex-row justify-center items-center"
+        class="w-full px-3 max-w-2xl flex flex-row justify-center items-center"
       >
         <div
           v-for="item of state.repos"
           :key="item"
-          class="w-auto flex flex-row justify-center items-center border rounded-md border-solid border-zinc-400 p-1 pl-2 pr-2 mr-3 cursor-pointer last:mr-0 hover:line-through hover:opacity-60"
+          class="w-auto flex flex-row justify-center items-center border rounded border-solid border-zinc-400 p-1 pl-2 pr-2 mr-3 cursor-pointer last:mr-0 hover:line-through hover:opacity-60"
           @click="handleRepoItemClick(item)"
         >
           {{ item }}

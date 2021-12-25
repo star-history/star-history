@@ -1,17 +1,19 @@
 <template>
-  <div class="w-full leading-8 flex grow flex-col justify-center items-center">
-    <p class="font-bold">
+  <div
+    class="w-full px-3 max-w-2xl mx-auto flex flex-col justify-center items-center"
+  >
+    <p class="font-bold mb-4">
       Sponsored by
-      <a class="text-cyan-700" href="https://bytebase.com" target="__blank">
+      <a class="text-blue-500" href="https://bytebase.com" target="__blank">
         Bytebase
       </a>
     </p>
-    <p>
+    <p class="mb-2">
       Open source, web-based database schema change and version control for
-      <span class="font-bold text-cyan-700 underline">Teams</span>
+      <span class="font-bold text-blue-500 underline">Teams</span>
     </p>
-    <a class="mt-2 shadow-xl" href="https://bytebase.com/" target="__blank">
-      <img class="w-auto max-w-2xl" src="/bytebase.webp" alt="bytebase" />
+    <a class="mt-2" href="https://bytebase.com/" target="__blank">
+      <img class="w-auto max-w-full" src="/bytebase.webp" alt="bytebase" />
     </a>
   </div>
 </template>
