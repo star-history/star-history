@@ -2,7 +2,7 @@
 
 # Star History
 
-[https://star-history.com](https://star-history.com) the missing star history graph of GitHub repos.
+[https://star-history.com](https://star-history.com) the missing GitHub star history graph of GitHub repos.
 
 **Sponsor**
 

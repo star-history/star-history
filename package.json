@@ -1,7 +1,7 @@
 {
   "name": "star_history",
   "version": "1.0.0",
-  "description": "The missing star history graph of github projects",
+  "description": "The missing GitHub star history graph of GitHub projects",
   "main": "index.js",
   "scripts": {
     "startWebsite": "parcel website/index.html",
