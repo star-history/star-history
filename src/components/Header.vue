@@ -3,20 +3,33 @@
     class="w-full h-52px shrink-0 flex flex-row justify-center items-center bg-dark text-light"
   >
     <div
-      class="w-full pr-4 md:w-5/6 md:pr-0 lg:max-w-7xl h-full flex flex-row justify-between items-center"
+      class="w-full md:w-5/6 md:pr-0 lg:max-w-7xl h-full flex flex-row justify-between items-center"
     >
       <div class="h-full flex flex-row justify-start items-center">
         <a
-          class="h-full flex flex-row justify-center items-center p-3 m-1 hover:bg-black"
+          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           href="/"
-          ><img class="w-7 h-auto" src="/icon.png"
-        /></a>
-        <span class="font-bold text-white">Star history</span>
+        >
+          <img class="w-7 h-auto m-2" src="/icon.png" />
+        </a>
+        <a
+          class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
+          href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
+        >
+          <span class="font-bold text-light">Chrome Extension</span>
+          <img class="w-6 h-auto ml-2" src="/icons/free.svg" />
+        </a>
       </div>
-      <div class="flex flex-row justify-end items-center">
-        <span class="h-6 flex flex-row justify-center items-center mt-1.5">
+      <div class="h-full hidden md:flex flex-row justify-end items-center">
+        <span
+          class="h-full flex flex-row justify-center items-center cursor-pointer font-bold mr-2 px-3 hover:bg-zinc-800"
+          @click="handleSetTokenBtnClick"
+        >
+          {{ token ? "Edit" : "Add" }} Access Token
+        </span>
+        <span class="h-6 flex flex-row justify-center items-center mt-1">
           <a
-            class="github-button"
+            class="github-button -mt-1"
             href="https://github.com/bytebase/star-history"
             data-show-count="true"
             aria-label="Star bytebase/star-history on GitHub"
@@ -25,17 +38,85 @@
           </a>
         </span>
       </div>
+      <div class="h-full flex md:hidden flex-row justify-end items-center">
+        <span
+          class="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-bold text-light hover:bg-zinc-800"
+          @click="handleToggleDropMenuBtnClick"
+        >
+          <span
+            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+              state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'
+            }`"
+          ></span>
+          <span
+            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+              state.showDropMenu ? 'hidden' : ''
+            }`"
+          ></span>
+          <span
+            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+              state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'
+            }`"
+          ></span>
+        </span>
+      </div>
     </div>
   </header>
+  <div
+    :class="`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${
+      state.showDropMenu ? 'flex' : 'hidden'
+    }`"
+  >
+    <span
+      class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-bold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
+      @click="handleSetTokenBtnClick"
+    >
+      {{ token ? "Edit" : "Add" }} Access Token
+    </span>
+    <span class="h-12 px-3 w-full flex flex-row justify-start items-center">
+      <a
+        class="github-button -mt-1"
+        href="https://github.com/bytebase/star-history"
+        data-show-count="true"
+        aria-label="Star bytebase/star-history on GitHub"
+      >
+        Star
+      </a>
+    </span>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
+import { useStore } from "vuex";
+import { showSetTokenDialog } from "./TokenSettingDialog.vue";
+
+interface State {
+  showDropMenu: boolean;
+}
 
 export default defineComponent({
   name: "Header",
   setup() {
-    return {};
+    const store = useStore();
+    const state = reactive<State>({
+      showDropMenu: false,
+    });
+
+    const handleSetTokenBtnClick = () => {
+      showSetTokenDialog();
+    };
+
+    const handleToggleDropMenuBtnClick = () => {
+      state.showDropMenu = !state.showDropMenu;
+    };
+
+    return {
+      state,
+      token: store.state.token,
+      handleSetTokenBtnClick,
+      handleToggleDropMenuBtnClick,
+    };
   },
 });
 </script>

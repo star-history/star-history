@@ -18,27 +18,29 @@
   </div>
   <div
     v-if="state.chartData.length > 0"
-    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl flex flex-row justify-end items-center"
+    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl flex flex-row flex-wrap justify-end items-center"
   >
     <span
-      class="shadow-inner ml-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-light opacity-90 hover:opacity-100"
+      class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
       @click="handleCopyLinkBtnClick"
     >
       Copy Link
     </span>
     <span
-      class="shadow-inner ml-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-light opacity-90 hover:opacity-100"
+      class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
       @click="handleGenerateImageBtnClick"
     >
       Download Image
     </span>
+    <span
+      class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
+      @click="handleExportAsCSVBtnClick"
+    >
+      Export as CSV
+    </span>
   </div>
   <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
   <div class="grow shrink-0"></div>
-  <TokenSettingDialog
-    v-if="state.showTokenDialog"
-    :destory="hideTokenDialog"
-  ></TokenSettingDialog>
 </template>
 
 <script lang="ts">
@@ -49,7 +51,7 @@ import toast from "../helpers/toast";
 import utils from "../helpers/utils";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
-import TokenSettingDialog from "./TokenSettingDialog.vue";
+import { showSetTokenDialog } from "./TokenSettingDialog.vue";
 
 interface State {
   repoStarDataMap: Map<
@@ -60,18 +62,16 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
-  showTokenDialog: boolean;
   isFetching: boolean;
 }
 
 export default defineComponent({
   name: "StarChartViewer",
-  components: { BytebaseBanner, StarChart, TokenSettingDialog },
+  components: { BytebaseBanner, StarChart },
   setup() {
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
-      showTokenDialog: false,
       isFetching: false,
     });
     const store = useStore<AppState>();
@@ -105,7 +105,7 @@ export default defineComponent({
               toast.warn(`Repo ${repo} not found`);
             } else if (error?.response?.status === 403) {
               toast.warn("GitHub API rate limit exceeded");
-              state.showTokenDialog = true;
+              showSetTokenDialog();
             } else if (Array.isArray(error?.data) && error.data?.length === 0) {
               toast.warn(`Repo ${repo} has no star history`);
             } else {
@@ -135,11 +135,6 @@ export default defineComponent({
       state.chartData = chartTempData;
     };
 
-    const hideTokenDialog = () => {
-      state.showTokenDialog = false;
-      fetchStarChart(store.state.repos);
-    };
-
     const handleCopyLinkBtnClick = async () => {
       await utils.copyTextToClipboard(window.location.href);
       toast.succeed("Copy succeed");
@@ -150,7 +145,6 @@ export default defineComponent({
         html2canvas(containerElRef.value, {
           scale: window.devicePixelRatio * 2,
         }).then((canvas) => {
-          // NOTE: download it, and the ImageViewer is WIP.
           location.href = canvas.toDataURL();
           const link = document.createElement("a");
           link.download = "star-history.png";
@@ -160,6 +154,29 @@ export default defineComponent({
       }
     };
 
+    const handleExportAsCSVBtnClick = () => {
+      let CSVContent = "";
+      for (const d of state.chartData) {
+        const temp: any[] = [];
+        for (const i of d.starRecords) {
+          temp.push([d.repo, new Date(i.date), i.count]);
+        }
+        CSVContent += temp
+          .map((item) =>
+            typeof item === "string" && item.indexOf(",") >= 0
+              ? `"${item}"`
+              : String(item)
+          )
+          .join("\n");
+        CSVContent += "\n";
+      }
+      const encodedUri = encodeURI("data:text/csv;charset=utf-8," + CSVContent);
+      const link = document.createElement("a");
+      link.download = "star-history.csv";
+      link.href = encodedUri;
+      link.click();
+    };
+
     watch(store.state.repos, (repos) => {
       fetchStarChart(repos);
     });
@@ -167,9 +184,9 @@ export default defineComponent({
     return {
       state,
       containerElRef,
-      hideTokenDialog,
       handleCopyLinkBtnClick,
       handleGenerateImageBtnClick,
+      handleExportAsCSVBtnClick,
     };
   },
 });

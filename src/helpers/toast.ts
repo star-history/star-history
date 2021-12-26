@@ -1,18 +1,22 @@
 import { createApp } from "vue";
 import Toast from "../components/Toast.vue";
 
-function show(message: string, type: string, duration = 2000) {
+function show(message: string, type: string, duration: number) {
   const tempDiv = document.createElement("div");
   document.body.appendChild(tempDiv);
+  const cbs = {
+    destory: () => {
+      app.unmount();
+      tempDiv.remove();
+    },
+  };
   const app = createApp(Toast, {
     message,
     type,
+    duration,
+    destory: cbs.destory,
   });
   app.mount(tempDiv);
-  setTimeout(() => {
-    app.unmount();
-    tempDiv.remove();
-  }, duration);
 }
 
 // NOTE: Just for mocking alert and only for this project.
