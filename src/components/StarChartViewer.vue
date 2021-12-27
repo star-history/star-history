@@ -1,7 +1,7 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl p-4 pt-0 flex flex-col justify-center items-center"
+    class="relative w-full h-auto px-3 mx-auto max-w-800px 2xl:max-w-4xl p-4 pt-0 flex flex-col"
   >
     <div
       v-if="isFetching"
@@ -17,8 +17,12 @@
     ></StarChart>
     <!-- watermark -->
     <div
-      v-if="state.isGeneratingImage"
-      class="absolute right-6 bottom-6"
+      v-if="state.chartData.length > 0"
+      :class="`absolute bottom-4 right-8 w-full leading-8 text-right text-gray-500 text-lg ${
+        // There are something does not work right in the output sceenshot with html2canvas,
+        // and I will write a toImage function with canvas in the future updates.
+        state.isGeneratingImage ? 'mb-2' : ''
+      }`"
       style="font-family: xkcd"
     >
       star-history.com
@@ -161,7 +165,6 @@ export default defineComponent({
           html2canvas(containerElRef.value, {
             scale: window.devicePixelRatio * 2,
           }).then((canvas) => {
-            location.href = canvas.toDataURL();
             const link = document.createElement("a");
             link.download = "star-history.png";
             link.href = canvas.toDataURL();
