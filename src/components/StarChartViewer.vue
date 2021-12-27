@@ -4,7 +4,7 @@
     class="relative w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl p-4 pt-0 flex flex-col justify-center items-center"
   >
     <div
-      v-if="state.isFetching"
+      v-if="isFetching"
       class="absolute w-full h-full flex justify-center items-center z-10 top-0"
     >
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, watch } from "vue";
-import { useStore } from "vuex";
+import { mapState, useStore } from "vuex";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -62,7 +62,6 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
-  isFetching: boolean;
 }
 
 export default defineComponent({
@@ -72,7 +71,6 @@ export default defineComponent({
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
-      isFetching: false,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
@@ -90,7 +88,6 @@ export default defineComponent({
     });
 
     const fetchStarChart = async (repos: string[]) => {
-      state.isFetching = true;
       store.commit("setFetchFlag", true);
       for (const repo of repos) {
         if (!state.repoStarDataMap.has(repo)) {
@@ -116,7 +113,6 @@ export default defineComponent({
           }
         }
       }
-      state.isFetching = false;
       store.commit("setFetchFlag", false);
 
       const chartTempData: RepoStarData[] = [];
@@ -189,5 +185,10 @@ export default defineComponent({
       handleExportAsCSVBtnClick,
     };
   },
+  computed: mapState({
+    isFetching(state: AppState) {
+      return state.isFetching;
+    },
+  }),
 });
 </script>

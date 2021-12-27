@@ -14,7 +14,7 @@
       <button
         :class="
           'h-9 pl-4 pr-4 whitespace-nowrap w-auto border border-dark border-l-0 rounded-r border-solid text-dark hover:bg-dark hover:text-light ' +
-          (state.isFetching ? 'cursor-wait !opacity-60' : '')
+          (isFetching ? 'cursor-wait !opacity-60' : '')
         "
         @click="handleAddRepoBtnClick"
       >
@@ -27,7 +27,7 @@
         class="w-full max-w-2xl flex flex-row flex-wrap justify-center items-center"
       >
         <div
-          v-for="item of state.repos"
+          v-for="item of repos"
           :key="item"
           class="leading-8 px-3 pl-4 mb-2 text-dark rounded-2xl flex flex-row justify-center items-center border border-dark shadow-inner mr-3 last:mr-0"
         >
@@ -50,13 +50,11 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref, watch } from "vue";
-import { useStore } from "vuex";
+import { mapState, useStore } from "vuex";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 
 interface State {
   repo: string;
-  repos: string[];
-  isFetching: boolean;
 }
 
 export default defineComponent({
@@ -65,8 +63,6 @@ export default defineComponent({
     const store = useStore<AppState>();
     const state = reactive<State>({
       repo: "",
-      repos: [],
-      isFetching: false,
     });
     const inputElRef = ref<HTMLInputElement | null>(null);
 
@@ -79,7 +75,7 @@ export default defineComponent({
     });
 
     const handleAddRepoBtnClick = () => {
-      if (state.isFetching) {
+      if (store.state.isFetching) {
         return;
       }
 
@@ -115,9 +111,6 @@ export default defineComponent({
     };
 
     watch(store.state, () => {
-      state.isFetching = store.state.isFetching;
-      state.repos = store.state.repos;
-
       // handle location change right here
       let hash = "";
       if (store.state.repos.length > 0) {
@@ -134,6 +127,14 @@ export default defineComponent({
       handleInputerPasted,
     };
   },
+  computed: mapState({
+    isFetching(state: AppState) {
+      return state.isFetching;
+    },
+    repos(state: AppState) {
+      return state.repos;
+    },
+  }),
 });
 </script>
 
