@@ -21,6 +21,7 @@
           <a
             class="text-blue-500"
             href="https://developer.github.com/v3/#rate-limiting"
+            target="_blank"
           >
             GitHub API rate limit </a
           >.
@@ -28,13 +29,18 @@
         <br />
         <p>
           Star-history will need your
-          <a class="text-blue-500" href="https://github.com/settings/tokens"
-            >personal access token</a
+          <a
+            class="text-blue-500"
+            href="https://github.com/settings/tokens"
+            target="_blank"
           >
+            personal access token
+          </a>
           to unlimit it. If you don't already have one,
           <a
             class="text-blue-500"
             href="https://github.com/settings/tokens/new"
+            target="_blank"
           >
             create one
           </a>
@@ -69,22 +75,17 @@
 import { defineComponent, reactive } from "vue";
 import { useStore } from "vuex";
 import { storage } from "../helpers/storage";
-import Dialog, { showDialog } from "./Dialog.vue";
+import Dialog from "./Dialog.vue";
 
 interface State {
   token: string;
 }
 
-const TokenSettingDialog = defineComponent({
+export default defineComponent({
   name: "TokenSettingDialog",
   components: { Dialog },
-  props: {
-    destory: {
-      type: Function,
-      default: () => undefined,
-    },
-  },
-  setup(props) {
+  emits: ["close"],
+  setup(_, { emit }) {
     const store = useStore<AppState>();
     const state = reactive<State>({
       token: store.state.token,
@@ -94,14 +95,10 @@ const TokenSettingDialog = defineComponent({
       storage.set({
         accessTokenCache: state.token,
       });
-      if (props.destory) {
-        props.destory();
-      }
+      emit("close");
     };
     const handleCloseBtnClick = () => {
-      if (props.destory) {
-        props.destory();
-      }
+      emit("close");
     };
     return {
       state,
@@ -111,10 +108,4 @@ const TokenSettingDialog = defineComponent({
     };
   },
 });
-
-export const showSetTokenDialog = () => {
-  showDialog({ classname: "" }, TokenSettingDialog as any);
-};
-
-export default TokenSettingDialog;
 </script>

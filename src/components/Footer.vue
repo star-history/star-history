@@ -12,18 +12,21 @@
         <a
           class="ml-3 text-lg hover:opacity-60"
           href="https://twitter.com/StarHistoryHQ"
+          target="_blank"
         >
           <i class="fab fa-twitter"></i>
         </a>
         <a
           class="ml-3 text-lg hover:opacity-60"
           href="mailto:star@bytebase.com"
+          target="_blank"
         >
           <i class="fas fa-envelope"></i>
         </a>
         <a
           class="mx-3 text-lg hover:opacity-60"
           href="https://github.com/bytebase/star-history"
+          target="_blank"
         >
           <i class="fab fa-github"></i>
         </a>
@@ -36,7 +39,7 @@
           <a
             class="text-blue-500 font-bold hover:opacity-60"
             href="https://bytebase.com"
-            target="__blank"
+            target="_blank"
           >
             Bytebase
           </a>
@@ -44,6 +47,7 @@
           <a
             class="bg-blue-400 font-bold text-white p-1 pl-2 pr-2 rounded-l-2xl rounded-r-2xl hover:opacity-60"
             href="https://twitter.com/tim_qian"
+            target="_blank"
           >
             @tim_qian
           </a>

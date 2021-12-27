@@ -10,10 +10,9 @@
 </template>
 
 <script lang="ts">
-import { createApp, DefineComponent, defineComponent } from "vue";
-import store from "../store";
+import { defineComponent, onMounted, onUnmounted } from "vue";
 
-const Dialog = defineComponent({
+export default defineComponent({
   name: "Dialog",
   props: {
     classname: {
@@ -22,31 +21,15 @@ const Dialog = defineComponent({
     },
   },
   setup() {
+    onMounted(() => {
+      document.body.classList.add("overflow-hidden");
+    });
+
+    onUnmounted(() => {
+      document.body.classList.remove("overflow-hidden");
+    });
+
     return {};
   },
 });
-
-export function showDialog<T extends Record<string, unknown>>(
-  config: T,
-  Component: DefineComponent<any>
-) {
-  document.body.classList.add("overflow-hidden");
-
-  const cbs = {
-    destory: () => {
-      document.body.classList.remove("overflow-hidden");
-      app.unmount();
-      tempDiv.remove();
-    },
-  };
-  const tempDiv = document.createElement("div");
-  document.body.appendChild(tempDiv);
-  const app = createApp(Component, {
-    ...config,
-    ...cbs,
-  });
-  app.use(store).mount(tempDiv);
-}
-
-export default Dialog;
 </script>

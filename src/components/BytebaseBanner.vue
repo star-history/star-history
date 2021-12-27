@@ -4,7 +4,7 @@
   >
     <p class="font-bold mb-4">
       Sponsored by
-      <a class="text-blue-500" href="https://bytebase.com" target="__blank">
+      <a class="text-blue-500" href="https://bytebase.com" target="_blank">
         Bytebase
       </a>
     </p>
@@ -12,7 +12,7 @@
       Open source, web-based database schema change and version control for
       <span class="font-bold text-blue-500 underline">Teams</span>
     </p>
-    <a class="mt-2" href="https://bytebase.com/" target="__blank">
+    <a class="mt-2" href="https://bytebase.com/" target="_blank">
       <img class="w-auto max-w-full" src="/bytebase.webp" alt="bytebase" />
     </a>
   </div>

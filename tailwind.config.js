@@ -27,6 +27,9 @@ module.exports = {
       boxShadow: {
         focus: "0 0 0 0.125em rgb(54 54 54 / 25%)",
       },
+      zIndex: {
+        100: "100",
+      },
     },
   },
   plugins: [],

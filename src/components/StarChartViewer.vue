@@ -15,32 +15,46 @@
       classname="w-full h-auto"
       :data="state.chartData"
     ></StarChart>
+    <!-- watermark -->
+    <div
+      v-if="state.isGeneratingImage"
+      class="absolute right-6 bottom-6"
+      style="font-family: xkcd"
+    >
+      star-history.com
+    </div>
   </div>
   <div
     v-if="state.chartData.length > 0"
-    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-800px 2xl:max-w-4xl flex flex-row flex-wrap justify-end items-center"
+    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-end items-center"
   >
-    <span
+    <button
+      :class="`shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600 ${
+        state.isGeneratingImage ? 'bg-green-600 cursor-not-allowed' : ''
+      }`"
+      @click="handleGenerateImageBtnClick"
+    >
+      Download Image
+    </button>
+    <button
       class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
       @click="handleCopyLinkBtnClick"
     >
       Copy Link
-    </span>
-    <span
-      class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
-      @click="handleGenerateImageBtnClick"
-    >
-      Download Image
-    </span>
-    <span
+    </button>
+    <button
       class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
       @click="handleExportAsCSVBtnClick"
     >
       Export as CSV
-    </span>
+    </button>
   </div>
   <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
   <div class="grow shrink-0"></div>
+  <TokenSettingDialog
+    v-if="state.showSetTokenDialog"
+    @close="handleSetTokenDialogClose"
+  />
 </template>
 
 <script lang="ts">
@@ -51,7 +65,7 @@ import toast from "../helpers/toast";
 import utils from "../helpers/utils";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarChart from "./StarChart.vue";
-import { showSetTokenDialog } from "./TokenSettingDialog.vue";
+import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
   repoStarDataMap: Map<
@@ -62,26 +76,24 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
+  isGeneratingImage: boolean;
+  showSetTokenDialog: boolean;
 }
 
 export default defineComponent({
   name: "StarChartViewer",
-  components: { BytebaseBanner, StarChart },
+  components: { BytebaseBanner, StarChart, TokenSettingDialog },
   setup() {
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
+      isGeneratingImage: false,
+      showSetTokenDialog: false,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
 
     onMounted(() => {
-      const containerEl = containerElRef.value;
-
-      if (containerEl) {
-        containerEl.style.minHeight = (containerEl.clientWidth / 3) * 2 + "px";
-      }
-
       if (store.state.repos.length > 0) {
         fetchStarChart(store.state.repos);
       }
@@ -102,11 +114,14 @@ export default defineComponent({
               toast.warn(`Repo ${repo} not found`);
             } else if (error?.response?.status === 403) {
               toast.warn("GitHub API rate limit exceeded");
-              showSetTokenDialog();
+              state.showSetTokenDialog = true;
+            } else if (error?.response?.status === 401) {
+              toast.warn("Access Token Unauthorized");
+              state.showSetTokenDialog = true;
             } else if (Array.isArray(error?.data) && error.data?.length === 0) {
               toast.warn(`Repo ${repo} has no star history`);
             } else {
-              toast.warn("Request failed, please retry later");
+              toast.warn("Some unexpected error happened, try again later");
             }
             store.commit("delRepo", repo);
             return;
@@ -133,21 +148,28 @@ export default defineComponent({
 
     const handleCopyLinkBtnClick = async () => {
       await utils.copyTextToClipboard(window.location.href);
-      toast.succeed("Copy succeed");
+      toast.succeed("Link copied");
     };
 
     const handleGenerateImageBtnClick = () => {
-      if (containerElRef.value) {
-        html2canvas(containerElRef.value, {
-          scale: window.devicePixelRatio * 2,
-        }).then((canvas) => {
-          location.href = canvas.toDataURL();
-          const link = document.createElement("a");
-          link.download = "star-history.png";
-          link.href = canvas.toDataURL();
-          link.click();
-        });
+      if (state.isGeneratingImage) {
+        return;
       }
+      state.isGeneratingImage = true;
+      setTimeout(() => {
+        if (containerElRef.value) {
+          html2canvas(containerElRef.value, {
+            scale: window.devicePixelRatio * 2,
+          }).then((canvas) => {
+            location.href = canvas.toDataURL();
+            const link = document.createElement("a");
+            link.download = "star-history.png";
+            link.href = canvas.toDataURL();
+            link.click();
+            state.isGeneratingImage = false;
+          });
+        }
+      });
     };
 
     const handleExportAsCSVBtnClick = () => {
@@ -171,6 +193,11 @@ export default defineComponent({
       link.download = "star-history.csv";
       link.href = encodedUri;
       link.click();
+      toast.succeed("CSV Downloaded");
+    };
+
+    const handleSetTokenDialogClose = () => {
+      state.showSetTokenDialog = false;
     };
 
     watch(store.state.repos, (repos) => {
@@ -183,6 +210,7 @@ export default defineComponent({
       handleCopyLinkBtnClick,
       handleGenerateImageBtnClick,
       handleExportAsCSVBtnClick,
+      handleSetTokenDialogClose,
     };
   },
   computed: mapState({

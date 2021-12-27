@@ -1,2 +1,7 @@
 @tailwind base;
 @tailwind utilities;
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+}

@@ -9,12 +9,14 @@
         <a
           class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           href="/"
+          target="_blank"
         >
           <img class="w-7 h-auto m-2" src="/icon.png" />
         </a>
         <a
           class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
           href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
+          target="_blank"
         >
           <span class="font-bold text-light">Chrome Extension</span>
           <img class="w-6 h-auto ml-2" src="/icons/free.svg" />
@@ -31,6 +33,7 @@
           <a
             class="github-button -mt-1"
             href="https://github.com/bytebase/star-history"
+            target="_blank"
             data-show-count="true"
             aria-label="Star bytebase/star-history on GitHub"
           >
@@ -79,31 +82,43 @@
         href="https://github.com/bytebase/star-history"
         data-show-count="true"
         aria-label="Star bytebase/star-history on GitHub"
+        target="_blank"
       >
         Star
       </a>
     </span>
   </div>
+  <TokenSettingDialog
+    v-if="state.showSetTokenDialog"
+    @close="handleSetTokenDialogClose"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
 import { mapState } from "vuex";
-import { showSetTokenDialog } from "./TokenSettingDialog.vue";
+import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
   showDropMenu: boolean;
+  showSetTokenDialog: boolean;
 }
 
 export default defineComponent({
   name: "Header",
+  components: { TokenSettingDialog },
   setup() {
     const state = reactive<State>({
       showDropMenu: false,
+      showSetTokenDialog: false,
     });
 
     const handleSetTokenBtnClick = () => {
-      showSetTokenDialog();
+      state.showSetTokenDialog = true;
+    };
+
+    const handleSetTokenDialogClose = () => {
+      state.showSetTokenDialog = false;
     };
 
     const handleToggleDropMenuBtnClick = () => {
@@ -114,6 +129,7 @@ export default defineComponent({
       state,
       handleSetTokenBtnClick,
       handleToggleDropMenuBtnClick,
+      handleSetTokenDialogClose,
     };
   },
   computed: mapState({

@@ -69,7 +69,7 @@ export default defineComponent({
     onMounted(() => {
       let hash = "";
       if (store.state.repos.length > 0) {
-        hash = `#repos=${store.state.repos.join(",")}`;
+        hash = `#${store.state.repos.join("&")}`;
       }
       window.location.hash = hash;
     });
@@ -114,7 +114,7 @@ export default defineComponent({
       // handle location change right here
       let hash = "";
       if (store.state.repos.length > 0) {
-        hash = `#repos=${store.state.repos.join(",")}`;
+        hash = `#${store.state.repos.join("&")}`;
       }
       window.location.hash = hash;
     });
