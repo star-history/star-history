@@ -7,19 +7,18 @@
     >
       <div class="h-full flex flex-row justify-start items-center">
         <a
-          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
           href="/"
-          target="_blank"
         >
-          <img class="w-7 h-auto m-2" src="/icon.png" />
+          <img class="w-7 h-auto" src="/icon.png" />
+          <span class="font-bold text-light pl-3">Star history</span>
         </a>
         <a
-          class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
-          href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
+          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          href="https://twitter.com/StarHistoryHQ"
           target="_blank"
         >
-          <span class="font-bold text-light">Chrome Extension</span>
-          <img class="w-6 h-auto ml-2" src="/icons/free.svg" />
+          <i class="fab fa-twitter text-2xl"></i>
         </a>
       </div>
       <div class="h-full hidden md:flex flex-row justify-end items-center">

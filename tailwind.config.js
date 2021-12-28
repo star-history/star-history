@@ -13,8 +13,14 @@ module.exports = {
       maxWidth: {
         "800px": "800px",
       },
+      minWidth: {
+        "600px": "600px",
+      },
       height: {
         "52px": "52px",
+      },
+      minHeight: {
+        "400px": "400px",
       },
       spacing: {
         112: "28rem",

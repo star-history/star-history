@@ -26,6 +26,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.1.1",
+    "html-to-image": "^1.9.0",
     "postcss": "^8.4.5",
     "prettier": "^2.4.1"
   }

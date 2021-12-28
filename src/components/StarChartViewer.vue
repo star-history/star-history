@@ -1,7 +1,7 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-full h-auto px-3 mx-auto max-w-800px 2xl:max-w-4xl p-4 pt-0 flex flex-col"
+    class="relative w-full h-auto self-center min-w-600px max-w-800px min-h-400px 2xl:max-w-4xl p-4 pt-0 flex flex-col"
   >
     <div
       v-if="isFetching"
@@ -18,13 +18,10 @@
     <!-- watermark -->
     <div
       v-if="state.chartData.length > 0"
-      :class="`absolute bottom-4 right-8 w-full leading-8 text-right text-gray-500 text-lg ${
-        // There are something does not work right in the output sceenshot with html2canvas,
-        // and I will write a toImage function with canvas in the future updates.
-        state.isGeneratingImage ? 'mb-2' : ''
-      }`"
-      style="font-family: xkcd"
+      :class="`w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center`"
+      style="font-family: 'xkcd', serif"
     >
+      <img class="w-5 h-auto mr-2" src="/icon.png" />
       star-history.com
     </div>
   </div>
@@ -62,8 +59,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref, watch } from "vue";
-import { mapState, useStore } from "vuex";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+} from "vue";
+import { useStore } from "vuex";
+import { toPng } from "html-to-image";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -144,9 +149,6 @@ export default defineComponent({
           });
         }
       }
-      if (state.chartData.length > 0) {
-        state.chartData.splice(0, state.chartData.length);
-      }
       state.chartData = chartTempData;
     };
 
@@ -162,14 +164,17 @@ export default defineComponent({
       state.isGeneratingImage = true;
       setTimeout(() => {
         if (containerElRef.value) {
-          html2canvas(containerElRef.value, {
-            scale: window.devicePixelRatio * 2,
-          }).then((canvas) => {
+          toPng(containerElRef.value, {
+            pixelRatio: window.devicePixelRatio * 2,
+            skipFonts: true,
+            backgroundColor: "#ffffff",
+          }).then((dataUrl) => {
             const link = document.createElement("a");
             link.download = "star-history.png";
-            link.href = canvas.toDataURL();
+            link.href = dataUrl;
             link.click();
             state.isGeneratingImage = false;
+            toast.succeed("Image Downloaded");
           });
         }
       });
@@ -203,23 +208,24 @@ export default defineComponent({
       state.showSetTokenDialog = false;
     };
 
-    watch(store.state.repos, (repos) => {
-      fetchStarChart(repos);
-    });
+    watch(
+      () => store.state.repos,
+      () => {
+        fetchStarChart(store.state.repos);
+      }
+    );
 
     return {
       state,
       containerElRef,
+      isFetching: computed(() => {
+        return store.state.isFetching;
+      }),
       handleCopyLinkBtnClick,
       handleGenerateImageBtnClick,
       handleExportAsCSVBtnClick,
       handleSetTokenDialogClose,
     };
   },
-  computed: mapState({
-    isFetching(state: AppState) {
-      return state.isFetching;
-    },
-  }),
 });
 </script>

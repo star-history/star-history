@@ -18,11 +18,16 @@ const store = createStore({
       if (!state.repos.includes(repo)) {
         state.repos.push(repo);
       }
+      state.repos = [...state.repos];
     },
     delRepo(state: AppState, repo: string) {
       if (state.repos.includes(repo)) {
         state.repos.splice(state.repos.indexOf(repo), 1);
       }
+      state.repos = [...state.repos];
+    },
+    clearAll(state: AppState) {
+      state.repos = [];
     },
     setToken(state: AppState, token: string) {
       state.token = token;

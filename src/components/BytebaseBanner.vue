@@ -4,7 +4,11 @@
   >
     <p class="font-bold mb-4">
       Sponsored by
-      <a class="text-blue-500" href="https://bytebase.com" target="_blank">
+      <a
+        class="text-blue-500 hover:opacity-80"
+        href="https://bytebase.com"
+        target="_blank"
+      >
         Bytebase
       </a>
     </p>

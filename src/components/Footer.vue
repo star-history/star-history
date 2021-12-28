@@ -10,34 +10,37 @@
       >
         <span class="">The missing GitHub star history graph</span>
         <a
-          class="ml-3 text-lg hover:opacity-60"
-          href="https://twitter.com/StarHistoryHQ"
-          target="_blank"
-        >
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a
-          class="ml-3 text-lg hover:opacity-60"
+          class="ml-3 text-lg hover:opacity-80"
           href="mailto:star@bytebase.com"
           target="_blank"
         >
           <i class="fas fa-envelope"></i>
         </a>
         <a
-          class="mx-3 text-lg hover:opacity-60"
+          class="ml-3 text-lg hover:opacity-80"
           href="https://github.com/bytebase/star-history"
           target="_blank"
         >
           <i class="fab fa-github"></i>
         </a>
+        <span></span>
+        <a
+          class="h-full flex flex-row justify-center items-center ml-3 hover:opacity-80"
+          href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
+          target="_blank"
+        >
+          <i class="fab fa-chrome text-lg mr-2"></i>
+          <span class="font-bold">Chrome Extension</span>
+          <img class="w-5 h-auto ml-2" src="/icons/free.svg" />
+        </a>
       </div>
       <div
-        class="text-sm leading-8 flex flex-row flex-nowrap justify-end items-center"
+        class="text-xs leading-8 flex flex-row flex-nowrap justify-end items-center"
       >
         <span class="">
           Sponsored by
           <a
-            class="text-blue-500 font-bold hover:opacity-60"
+            class="text-blue-500 font-bold hover:opacity-80"
             href="https://bytebase.com"
             target="_blank"
           >
@@ -45,7 +48,7 @@
           </a>
           , originally built by
           <a
-            class="bg-blue-400 font-bold text-white p-1 pl-2 pr-2 rounded-l-2xl rounded-r-2xl hover:opacity-60"
+            class="bg-blue-400 text-white p-1 pl-2 pr-2 rounded-l-2xl rounded-r-2xl hover:opacity-80"
             href="https://twitter.com/tim_qian"
             target="_blank"
           >
