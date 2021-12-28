@@ -1,6 +1,8 @@
 {
-  "name": "star-history",
-  "version": "0.0.0",
+  "name": "star_history",
+  "version": "1.0.0",
+  "description": "The missing GitHub star history graph of GitHub projects",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
