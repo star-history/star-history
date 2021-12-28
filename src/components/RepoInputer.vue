@@ -1,7 +1,7 @@
 <template>
   <div class="w-full shrink-0 flex flex-col justify-start items-center">
     <div
-      class="w-full md:max-w-2xl px-4 mt-12 flex flex-row justify-center items-center"
+      class="w-full max-w-3xl 2xl:max-w-4xl px-4 mt-12 flex flex-row justify-center items-center"
     >
       <input
         ref="inputElRef"
@@ -10,7 +10,7 @@
         type="text"
         :placeholder="
           repos.length > 0
-            ? '...add another repository'
+            ? '...add next repository'
             : 'bytebase/star-history or https://github.com/bytebase/star-history'
         "
         @paste="handleInputerPasted"

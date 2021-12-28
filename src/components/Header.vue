@@ -11,20 +11,19 @@
           href="/"
         >
           <img class="w-7 h-auto" src="/icon.png" />
-          <span class="font-bold text-light pl-3">Star history</span>
         </a>
-        <span class="mx-1">/</span>
         <a
           class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
           href="https://twitter.com/StarHistoryHQ"
           target="_blank"
         >
-          <i class="fab fa-twitter text-2xl"></i>
+          <span class="text-light font-semibold pr-3">Follow us on</span>
+          <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
       </div>
       <div class="h-full hidden md:flex flex-row justify-end items-center">
         <span
-          class="h-full flex flex-row justify-center items-center cursor-pointer font-bold mr-2 px-3 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center cursor-pointer font-semibold mr-2 px-3 hover:bg-zinc-800"
           @click="handleSetTokenBtnClick"
         >
           {{ token ? "Edit" : "Add" }} Access Token
@@ -43,7 +42,7 @@
       </div>
       <div class="h-full flex md:hidden flex-row justify-end items-center">
         <span
-          class="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-bold text-light hover:bg-zinc-800"
+          class="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
           @click="handleToggleDropMenuBtnClick"
         >
           <span
@@ -71,7 +70,7 @@
     }`"
   >
     <span
-      class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-bold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
+      class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
       @click="handleSetTokenBtnClick"
     >
       {{ token ? "Edit" : "Add" }} Access Token
