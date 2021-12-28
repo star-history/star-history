@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Star History</title>
+  <link href="./assets/nvd3.css" rel="stylesheet" type="text/css">
+  <style>
+    h2 {
+      background-position: top center;
+    }
+
+    #container {
+      width: 430px;
+      height: 300px;
+    }
+
+    #chart,
+    svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding-right: 20pt;
+      width: 400px;
+      height: 300px;
+    }
+
+    #theGif {
+      position: absolute;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      top: 150px;
+      left: 46%;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    #setting-ico {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    #setting-div {
+      position: absolute;
+      right: 25px;
+      top: 40px;
+      width: 150px;
+      height: 90px;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      box-shadow: 0 2px 2px #ddd;
+    }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #ccc;
+    }
+
+    #token-input {
+      width: 143px;
+    }
+
+    #setting-save-btn {
+      float: right;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Star History</h2>
+  <div id="container">
+    <div id="chart">
+      <svg></svg>
+    </div>
+    <img src="./assets/loadinfo.net.gif" alt="Loding..." id="theGif">
+  </div>
+  <a href="https://github.com/bytebase/star-history" style="position: absolute; bottom: 2px; left:5px;">
+    Source code
+  </a>
+  <a href="https://star-history.com" style="position: absolute; bottom: 2px; right:5px;">
+    Open in website
+  </a>
+  <div>
+    <img id="setting-ico" src="./assets/cog-solid.svg" />
+    <div id="setting-div" style="visibility: hidden;">
+      <p><strong>Access Token</strong> <a href="https://github.com/bytebase/star-history#access-token">(?)</a></p>
+      <input id="token-input" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b" />
+      <p><button id="setting-save-btn">Save change</button></p>
+    </div>
+  </div>
+  <script src="./build/index.js"></script>
+</body>
+
+</html>
