@@ -5,7 +5,13 @@ const store = createStore({
   state(): AppState {
     const { accessTokenCache } = storage.get(["accessTokenCache"]);
     const hash = window.location.hash.slice(1);
-    const repos = hash.split("&").filter((i) => Boolean(i));
+    const rawRepos = hash.split("&").filter((i) => Boolean(i));
+    const repos: string[] = [];
+    for (const repo of rawRepos) {
+      if (!repos.includes(repo)) {
+        repos.push(repo);
+      }
+    }
 
     return {
       isFetching: false,
