@@ -1,0 +1,1 @@
+import xkcd from '../xkcd';

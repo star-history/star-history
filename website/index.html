@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="View and compare GitHub star history of GitHub repositories" />
+  <meta name="google-site-verification" content="gWDCNMCQeEt3snNQ8J4NCOmVkz4axYeIp5fH4umVaAs" />
+  <link rel="icon" href="./favicon.ico" />
+  <link rel="apple-touch-icon" href="./favicon.ico" />
+  <link rel="bookmark" href="./favicon.ico" />
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"
+    rel="preload" />
+  <link rel="stylesheet" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+
+  <style>
+    text {
+      font: 12px sans-serif;
+    }
+
+    svg {
+      display: block;
+    }
+
+    #chart {
+      visibility: hidden;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin: auto;
+      padding: 10px;
+      max-width: 800px;
+      min-width: 70%;
+      min-height: 50vh;
+      /* height: 75vh; */
+    }
+
+    #button-group {
+      visibility: hidden;
+    }
+
+    #sponsor {
+      visibility: hidden;
+    }
+
+    .search-container {
+      min-width: 70%;
+      max-width: 800px;
+      display: inline-block;
+    }
+
+    .modal-card-foot {
+      justify-content: flex-end !important;
+    }
+  </style>
+  <title>GitHub Star History</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDH3P2WZ6W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZDH3P2WZ6W');
+  </script>
+  <script defer data-domain="star-history.com" src="https://plausible.io/js/plausible.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar is-dark" style="z-index: 1">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="./favicon.ico" width="28" height="28" />
+        </a>
+        <a class="navbar-item" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn">
+          <strong>Chrome Extension</strong>
+          &nbsp;
+          <svg height="1.5rem" width="1.5rem" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 469.333 469.333"
+            style="enable-background:new 0 0 469.333 469.333;" xml:space="preserve">
+            <path style="fill:#303C42;" d="M451.125,222.708L250.292,21.875C236.396,7.979,217.167,0,197.5,0H42.667C19.146,0,0,19.135,0,42.667
+         V197.49c0,19.938,7.771,38.688,21.875,52.802l200.833,200.833c11.75,11.74,27.375,18.208,43.958,18.208
+         c16.583,0,32.208-6.469,43.958-18.208l140.5-140.5c11.75-11.729,18.208-27.344,18.208-43.958
+         C469.333,250.052,462.875,234.438,451.125,222.708z" />
+            <path style="fill:#f26065;" d="M436.042,238.188L235.208,37.354c-9.917-9.927-23.667-15.625-37.708-15.625H42.667
+         c-11.771,0-21.333,9.573-21.333,21.333v154.823c0,14.24,5.542,27.635,15.625,37.719l200.833,200.833
+         c15.458,15.417,42.292,15.417,57.75,0l140.5-140.5C443.75,288.229,448,277.979,448,267.063
+         C448,256.146,443.75,245.896,436.042,238.188z" />
+            <path style="opacity:0.1;enable-background:new    ;" d="M436.042,263.938l-140.5,140.5c-15.458,15.417-42.292,15.417-57.75,0
+         L36.958,203.604c-10.083-10.083-15.625-23.479-15.625-37.719v32c0,14.24,5.542,27.635,15.625,37.719l200.833,200.833
+         c15.458,15.417,42.292,15.417,57.75,0l140.5-140.5C443.75,288.229,448,277.979,448,267.063c0-5.599-1.152-11.005-3.281-16
+         C442.697,255.807,439.797,260.182,436.042,263.938z" />
+            <g>
+              <path style="fill:#303C42;" d="M251.271,266.354c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125
+           c4.167-4.167,4.167-10.917,0-15.083l-15.087-15.087l15.087-15.09l22.625,22.635c4.167,4.167,10.917,4.167,15.083,0
+           c4.167-4.167,4.167-10.917,0-15.083l-30.167-30.177c-2-2-4.708-3.125-7.542-3.125c-2.833,0-5.542,1.125-7.542,3.125l-60.333,60.344
+           c-4.167,4.167-4.167,10.917,0,15.083l30.167,30.167c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125
+           c4.167-4.167,4.167-10.917,0-15.083l-22.625-22.625l15.082-15.085L251.271,266.354z" />
+              <path style="fill:#303C42;" d="M334.229,258.813c-4.167-4.167-10.917-4.167-15.083,0l-60.333,60.333
+           c-4.167,4.167-4.167,10.917,0,15.083l30.167,30.177c2.083,2.083,4.813,3.125,7.542,3.125s5.458-1.042,7.542-3.125
+           c4.167-4.167,4.167-10.917,0-15.083l-22.625-22.635l15.083-15.083l15.083,15.083c2.083,2.083,4.813,3.125,7.542,3.125
+           s5.458-1.042,7.542-3.125c4.167-4.167,4.167-10.917,0-15.083l-15.083-15.083l15.083-15.083l22.625,22.625
+           c4.167,4.167,10.917,4.167,15.083,0c4.167-4.167,4.167-10.917,0-15.083L334.229,258.813z" />
+              <path style="fill:#303C42;" d="M138.125,148.802c2.729,0,5.458-1.042,7.542-3.125c4.167-4.167,4.167-10.917,0-15.083
+           l-15.083-15.091l15.083-15.086l22.625,22.625c4.167,4.167,10.917,4.167,15.083,0c4.167-4.167,4.167-10.917,0-15.083l-30.167-30.167
+           c-4-4-11.083-4-15.083,0l-30.151,30.156c0,0-0.01,0.005-0.016,0.01s-0.005,0.01-0.005,0.01l-30.161,30.167
+           c-4.167,4.167-4.167,10.917,0,15.083c2.083,2.083,4.813,3.125,7.542,3.125s5.458-1.042,7.542-3.125l22.626-22.63l15.082,15.089
+           C132.667,147.76,135.396,148.802,138.125,148.802z" />
+              <path style="fill:#303C42;" d="M207.771,207.792c7.896-0.417,15.25-3.698,20.875-9.323c12.479-12.479,12.479-32.771,0-45.25
+           l-15.083-15.083c-4.167-4.167-10.917-4.167-15.083,0l-29.896,29.885c-0.104,0.094-0.208,0.188-0.292,0.281
+           c-0.104,0.094-0.188,0.188-0.271,0.292l-29.896,29.875c-4.167,4.167-4.167,10.917,0,15.083c4.167,4.167,10.917,4.167,15.083,0
+           l22.625-22.625l7.563,7.531c4.146,4.167,4.146,10.938,0,15.094l-15.104,15.094c-4.167,4.156-4.167,10.917,0,15.083
+           c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125l15.104-15.094
+           C204.25,222.854,207.354,215.385,207.771,207.792z M206.021,160.76l7.542,7.542c4.167,4.156,4.167,10.927,0,15.083
+           c-2.021,2.01-4.688,3.125-7.542,3.125H206c-2.833,0-5.5-1.104-7.521-3.135l-7.542-7.531L206.021,160.76z" />
+            </g>
+            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-68.6995" y1="619.0278" x2="-46.1882"
+              y2="608.5307" gradientTransform="matrix(21.3333 0 0 -21.3333 1430.1112 13315.2227)">
+              <stop offset="0" style="stop-color:#FFFFFF;stop-opacity:0.2" />
+              <stop offset="1" style="stop-color:#FFFFFF;stop-opacity:0" />
+            </linearGradient>
+            <path style="fill:url(#SVGID_1_);" d="M451.125,222.708L250.292,21.875C236.396,7.979,217.167,0,197.5,0H42.667
+         C19.146,0,0,19.135,0,42.667V197.49c0,19.938,7.771,38.688,21.875,52.802l200.833,200.833c11.75,11.74,27.375,18.208,43.958,18.208
+         c16.583,0,32.208-6.469,43.958-18.208l140.5-140.5c11.75-11.729,18.208-27.344,18.208-43.958
+         C469.333,250.052,462.875,234.438,451.125,222.708z" />
+          </svg>
+
+        </a>
+
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-end">
+          <a id="addTokenBtn" class="navbar-item">
+            <strong>Add access token</strong>
+            <!-- <span class="icon">
+                  <i class="far fa-setting"></i>
+                </span> -->
+          </a>
+          <div class="navbar-item" style="margin-top: 4px">
+            <a class="github-button" href="https://github.com/bytebase/star-history"
+              data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="medium"
+              data-show-count="true" aria-label="Star star-history on GitHub">Star</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="container has-text-centered">
+      <div class="search-container">
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input class="input is-dark" type="text" id="repo" name="repo"
+              placeholder="bytebase/star-history or https://github.com/bytebase/star-history">
+          </div>
+          <p class="control">
+            <button class="button is-dark is-outlined" id="theBtn">
+              View star history
+            </button>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="container">
+      <div id="chart">
+        <svg></svg>
+      </div>
+      <br />
+      <div id="button-group" class="buttons is-pulled-right">
+        <button id="clearBtn" class="button is-danger">Clear the result</button>
+        <button id="shareBtn" class="button is-success">Share the result</button>
+        <button id="CSVBtn" class="button is-success">Export as CSV</button>
+      </div>
+    </div>
+  </div>
+  <div id="sponsor" style="margin-top: 32px">
+    <div class="container has-text-centered">
+      <strong>
+        Sponsored by <a href="https://bytebase.com" target="__blank">Bytebase</a>
+      </strong>
+      <div>Open source, web-based database
+        schema change
+        and version control
+        for <strong><span
+            style="color: #2563EB; box-shadow: rgb(255, 255, 255) 0px -0.166667em 0px 0px inset, rgb(186, 230, 253) 0px -0.333333em 0px 0px inset;">TEAMS</span></strong>.
+      </div>
+    </div>
+    <div class="container has-text-centered" style="margin-top: 10px">
+      <a class="" href="https://bytebase.com/" target="__blank">
+        <img style="padding-left: 10px; padding-right: 10px" src="./assets/bytebase.webp" width="700px"
+          alt="bytebase" />
+      </a>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <footer style="background-color:white;">
+    <div class="container">
+      <hr style="background-color:#dbdbdb; height: 1px" />
+      <div style="float:left; margin-bottom: 4px;">
+        <h1>The missing GitHub star history graph</h1>
+      </div>
+      <div style="float:left; margin-left: 8px;">
+        <a class="icon button is-white" href="https://twitter.com/StarHistoryHQ">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="icon button is-white" href="mailto:star@bytebase.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a class="icon button is-white" href="https://github.com/bytebase/star-history">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div style="float: right">
+        <span style="font-size: small;">
+          Sponsored by <a href="https://bytebase.com" target="__blank"><strong>Bytebase</strong></a>,
+          originally built by
+          <a href="https://twitter.com/tim_qian"><span
+              class="tag is-info is-rounded"><strong>@tim_qian</strong></span></a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p id="modalCardTitle" class="modal-card-title">Add GitHub access token</p>
+        <button id="closeModalBtn" class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Star-history use GitHub API to retrieve repository metadata. You may see this page because you have hit the
+          <a href="https://developer.github.com/v3/#rate-limiting">GitHub API rate limit</a>.
+        </p>
+        <br />
+        <p>Star-history will need your <a href="https://github.com/settings/tokens">personal access token</a> to unlimit
+          it. If you don't already have one, <a href="https://github.com/settings/tokens/new">create one</a>, and paste
+          it into the textbox below (no scope to your personal data is needed)</p>
+
+        <br />
+
+        <label class="label">access token (will be stored in your local storage)</label>
+        <input class="input" id="tokenInput" placeholder="90c6b8218dae4122b07b4a0fae252c619a08941b" />
+      </section>
+      <footer class="modal-card-foot">
+        <button id="saveTokenBtn" class="button is-success">Save</button>
+      </footer>
+    </div>
+    <!-- <button class="modal-close is-large" aria-label="close"></button> -->
+  </div>
+
+  <script type="text/javascript" src="./src/index.js" charset="utf-8"></script>
+</body>
+
+</html>
