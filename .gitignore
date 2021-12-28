@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
 dist
-.cache
-extension.zip
+dist-ssr
+*.local

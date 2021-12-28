@@ -14,11 +14,11 @@
 
 **Support comparing multiple repos**
 
-![](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
+![web-demo](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
 
 ## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-![](https://raw.githubusercontent.com/timqian/images/master/star-history-extension.gif)
+![extension-demo](https://raw.githubusercontent.com/timqian/images/master/star-history-extension.gif)
 
 > Note: You can [load the `./extension` folder to chrome](https://superuser.com/a/247654) to install the extension too.
 
