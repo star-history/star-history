@@ -95,27 +95,20 @@ namespace api {
 
     const requestPages: number[] = [];
     if (pageCount < MAX_REQUEST_AMOUNT) {
-      requestPages.push(...utils.range(2, pageCount));
+      requestPages.push(...utils.range(1, pageCount));
     } else {
-      let i = 2;
-      while (i <= pageCount) {
-        requestPages.push(i);
-        i += Math.round(pageCount / MAX_REQUEST_AMOUNT);
-      }
+      utils.range(1, MAX_REQUEST_AMOUNT).map((i) => {
+        requestPages.push(Math.round((i * pageCount) / MAX_REQUEST_AMOUNT) - 1);
+      });
     }
 
-    const resArray = [
-      patchRes,
-      ...(await Promise.all(
-        requestPages.map((page) => {
-          return getRepoStargazers(repo, token, page);
-        })
-      )),
-    ];
+    const resArray = await Promise.all(
+      requestPages.map((page) => {
+        return getRepoStargazers(repo, token, page);
+      })
+    );
 
     const starRecordsMap: Map<string, number> = new Map();
-
-    requestPages.unshift(1);
 
     if (requestPages.length < MAX_REQUEST_AMOUNT) {
       const starRecordsData: {
@@ -133,8 +126,7 @@ namespace api {
         i += Math.floor(starRecordsData.length / MAX_REQUEST_AMOUNT) || 1;
       }
     } else {
-      resArray.map((res, index) => {
-        const { data } = res;
+      resArray.map(({ data }, index) => {
         if (data.length > 0) {
           const starRecord = data[0];
           starRecordsMap.set(

@@ -13,6 +13,7 @@
           <img class="w-7 h-auto" src="/icon.png" />
           <span class="font-bold text-light pl-3">Star history</span>
         </a>
+        <span class="mx-1">/</span>
         <a
           class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
           href="https://twitter.com/StarHistoryHQ"
@@ -46,17 +47,17 @@
           @click="handleToggleDropMenuBtnClick"
         >
           <span
-            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
               state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'
             }`"
           ></span>
           <span
-            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
               state.showDropMenu ? 'hidden' : ''
             }`"
           ></span>
           <span
-            :class="`w-4 transition-all border-t-2 absolute top-1/2 ${
+            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
               state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'
             }`"
           ></span>

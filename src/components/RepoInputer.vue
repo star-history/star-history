@@ -10,7 +10,7 @@
         type="text"
         :placeholder="
           repos.length > 0
-            ? '...Add more repo'
+            ? '...add another repository'
             : 'bytebase/star-history or https://github.com/bytebase/star-history'
         "
         @paste="handleInputerPasted"
@@ -35,10 +35,10 @@
         <div
           v-for="item of repos"
           :key="item"
-          class="leading-8 px-3 mb-2 text-dark rounded flex flex-row justify-center items-center border mr-3 last:mr-0"
+          class="leading-8 px-3 pr-2 mb-2 text-dark rounded flex flex-row justify-center items-center border mr-3 last:mr-0"
         >
           <a
-            class="mr-2 hover:underline cursor-pointer"
+            class="mr-1 hover:underline cursor-pointer"
             :href="`https://github.com/${item}`"
             target="_blank"
           >
@@ -53,7 +53,7 @@
           </span>
         </div>
         <button
-          class="leading-8 mb-2 text-dark hover:bg-gray-100 hover:text-black px-3 rounded border border-transparent"
+          class="leading-8 mb-2 text-black hover:bg-gray-100 px-3 rounded border border-transparent"
           @click="handleClearAllRepoBtnClick"
         >
           Clear all

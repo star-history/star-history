@@ -3,6 +3,7 @@
     <Header></Header>
     <RepoInputer></RepoInputer>
     <StarChartViewer></StarChartViewer>
+    <div class="grow"></div>
     <Footer></Footer>
   </div>
 </template>

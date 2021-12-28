@@ -51,7 +51,6 @@
     </button>
   </div>
   <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
-  <div class="grow shrink-0"></div>
   <TokenSettingDialog
     v-if="state.showSetTokenDialog"
     @close="handleSetTokenDialogClose"
