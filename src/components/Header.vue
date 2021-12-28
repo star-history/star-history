@@ -94,8 +94,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-import { mapState } from "vuex";
+import { computed, defineComponent, reactive } from "vue";
+import { useStore } from "vuex";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
@@ -107,6 +107,7 @@ export default defineComponent({
   name: "Header",
   components: { TokenSettingDialog },
   setup() {
+    const store = useStore<AppState>();
     const state = reactive<State>({
       showDropMenu: false,
       showSetTokenDialog: false,
@@ -126,15 +127,13 @@ export default defineComponent({
 
     return {
       state,
+      token: computed(() => {
+        return store.state.token;
+      }),
       handleSetTokenBtnClick,
       handleToggleDropMenuBtnClick,
       handleSetTokenDialogClose,
     };
   },
-  computed: mapState({
-    token(state: AppState) {
-      return state.token;
-    },
-  }),
 });
 </script>

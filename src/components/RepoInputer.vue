@@ -151,13 +151,16 @@ export default defineComponent({
       store.commit("clearAll");
     };
 
-    watch(store.state, () => {
-      let hash = "";
-      if (store.state.repos.length > 0) {
-        hash = `#${store.state.repos.join("&")}`;
+    watch(
+      () => store.state.repos,
+      () => {
+        let hash = "";
+        if (store.state.repos.length > 0) {
+          hash = `#${store.state.repos.join("&")}`;
+        }
+        window.location.hash = hash;
       }
-      window.location.hash = hash;
-    });
+    );
 
     return {
       state,

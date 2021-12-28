@@ -72,8 +72,8 @@ export default defineComponent({
       }
     });
 
-    const handleSVGElementClick = (event: MouseEvent) => {
-      console.log(event);
+    const handleSVGElementClick = () => {
+      // Maybe we can capture the clicked svg element to expand chart functions.
     };
 
     return {

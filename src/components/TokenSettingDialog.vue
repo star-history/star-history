@@ -1,7 +1,7 @@
 <template>
   <Dialog>
     <div
-      class="w-160 max-w-full h-auto flex flex-col justify-start items-start bg-white rounded-md"
+      class="w-640px max-w-full h-auto flex flex-col justify-start items-start bg-white rounded-md"
     >
       <header
         class="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg"
