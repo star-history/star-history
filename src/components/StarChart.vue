@@ -3,7 +3,7 @@
     class="flex flex-col justify-center items-center select-none"
     :class="classname"
   >
-    <svg ref="svgEl" @click="handleSVGElementClick"></svg>
+    <svg ref="svgElRef" @click="handleSVGElementClick"></svg>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const svgEl = ref<SVGSVGElement | null>(null);
+    const svgElRef = ref<SVGSVGElement | null>(null);
 
     const drawStarChart = (repoStarData: RepoStarData[]) => {
       const datasets: XYData[] = repoStarData.map((item) => {
@@ -40,9 +40,9 @@ export default defineComponent({
         };
       });
 
-      if (svgEl.value) {
-        svgEl.value.innerHTML = "";
-        new ChartXkcd.XY(svgEl.value, {
+      if (svgElRef.value) {
+        svgElRef.value.innerHTML = "";
+        new ChartXkcd.XY(svgElRef.value, {
           title: "Star history",
           yLabel: "GitHub Stars",
           xLabel: "Date",
@@ -78,7 +78,7 @@ export default defineComponent({
     };
 
     return {
-      svgEl,
+      svgElRef,
       handleSVGElementClick,
     };
   },

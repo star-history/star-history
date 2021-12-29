@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind utilities;
 
+@font-face {
+  font-family: "xkcd";
+  src: url("/fonts/xkcd.ttf");
+}
+
 html,
 body {
   font-family: "Inter", sans-serif;

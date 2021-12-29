@@ -34,6 +34,23 @@ namespace utils {
       console.warn("Copy to clipboard failed, methods not supports.");
     }
   }
+
+  export function convertSVGToDataURL(svgElement: SVGSVGElement) {
+    const xml = new XMLSerializer().serializeToString(svgElement);
+    const url = encodeURIComponent(xml);
+    return `data:image/svg+xml;charset=utf-8,${url}`;
+  }
+
+  export function waitImageLoaded(image: HTMLImageElement): Promise<void> {
+    return new Promise((resolve, reject) => {
+      image.onload = () => {
+        resolve();
+      };
+      image.onerror = () => {
+        reject("Image load failed");
+      };
+    });
+  }
 }
 
 export default utils;

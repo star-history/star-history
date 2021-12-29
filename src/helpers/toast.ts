@@ -30,6 +30,9 @@ namespace toast {
   export function warn(message: string, duration = 2000) {
     return show(message, "warn", duration);
   }
+  export function error(message: string, duration = 2000) {
+    return show(message, "error", duration);
+  }
 }
 
 export default toast;

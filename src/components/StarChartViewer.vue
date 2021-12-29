@@ -79,7 +79,6 @@ import {
   watch,
 } from "vue";
 import { useStore } from "vuex";
-import { toPng } from "html-to-image";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -171,13 +170,23 @@ export default defineComponent({
       toast.succeed("Link copied");
     };
 
-    const handleGenerateImageBtnClick = () => {
+    const handleGenerateImageBtnClick = async () => {
       if (state.isGeneratingImage) {
         return;
       }
 
-      let destoryGeneratingToast: (() => void) | undefined = undefined;
+      const svgElement = containerElRef.value?.querySelector("svg");
 
+      if (!svgElement || !containerElRef.value) {
+        toast.warn("Chart element not found, please try later");
+        return;
+      }
+
+      state.isGeneratingImage = true;
+
+      let destoryGeneratingToast = () => {
+        // do nth
+      };
       setTimeout(() => {
         if (state.isGeneratingImage) {
           const cbs = toast.warn(
@@ -188,26 +197,63 @@ export default defineComponent({
         }
       }, 2000);
 
-      state.isGeneratingImage = true;
-      setTimeout(() => {
-        if (containerElRef.value) {
-          toPng(containerElRef.value, {
-            pixelRatio: window.devicePixelRatio * 2,
-            skipFonts: true,
-            backgroundColor: "#ffffff",
-          }).then((dataUrl) => {
-            const link = document.createElement("a");
-            link.download = "star-history.png";
-            link.href = dataUrl;
-            link.click();
-            state.isGeneratingImage = false;
-            if (destoryGeneratingToast) {
-              destoryGeneratingToast();
-            }
-            toast.succeed("Image Downloaded");
-          });
+      try {
+        const { clientWidth, clientHeight } = svgElement;
+        const canvas = document.createElement("canvas");
+        const scale = Math.floor(window.devicePixelRatio * 2);
+        canvas.width = (clientWidth + 20) * scale;
+        canvas.height = (clientHeight + 30) * scale;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          toast.warn("Get canvas context failed.");
+          return;
         }
-      });
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // draw chart image
+        const chartDataURL = utils.convertSVGToDataURL(svgElement);
+        const chartImage = new Image();
+        chartImage.src = chartDataURL;
+        await utils.waitImageLoaded(chartImage);
+        ctx.drawImage(
+          chartImage,
+          10 * scale,
+          10 * scale,
+          clientWidth * scale,
+          clientHeight * scale
+        );
+        // draw website link text
+        ctx.font = `${16 * scale}px xkcd`;
+        ctx.fillStyle = "#6b7280";
+        ctx.fillText(
+          "star-history.com",
+          (clientWidth - 130) * scale,
+          (clientHeight + 10) * scale
+        );
+        // draw star image
+        const starImage = new Image();
+        starImage.src = "/icon.png";
+        await utils.waitImageLoaded(starImage);
+        ctx.drawImage(
+          starImage,
+          (clientWidth - 155) * scale,
+          (clientHeight - 5) * scale,
+          20 * scale,
+          20 * scale
+        );
+
+        const link = document.createElement("a");
+        link.download = "star-history.png";
+        link.href = canvas.toDataURL();
+        link.click();
+        state.isGeneratingImage = false;
+        destoryGeneratingToast();
+        toast.succeed("Image Downloaded");
+      } catch (error) {
+        console.error(error);
+        toast.error("Generate image failed");
+      }
     };
 
     const handleExportAsCSVBtnClick = () => {
