@@ -37,14 +37,19 @@ namespace utils {
 
   export function convertSVGToDataURL(svgElement: SVGSVGElement) {
     const xml = new XMLSerializer().serializeToString(svgElement);
-    const url = encodeURIComponent(xml);
-    return `data:image/svg+xml;charset=utf-8,${url}`;
+    const encodedData = window.btoa(xml);
+    return `data:image/svg+xml;base64,${encodedData}`;
   }
 
   export function waitImageLoaded(image: HTMLImageElement): Promise<void> {
+    image.loading = "eager";
+
     return new Promise((resolve, reject) => {
       image.onload = () => {
-        resolve();
+        // NOTE: There is image loading problem in Safari, fix it with some trick
+        setTimeout(() => {
+          resolve();
+        }, 200);
       };
       image.onerror = () => {
         reject("Image load failed");
