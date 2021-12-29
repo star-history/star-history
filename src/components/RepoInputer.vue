@@ -97,7 +97,7 @@ export default defineComponent({
         return;
       }
 
-      for (const rawRepo of rawRepos.split(" ")) {
+      for (const rawRepo of rawRepos.split(",")) {
         let repo = rawRepo;
         if (GITHUB_REPO_URL_REG.test(repo)) {
           const regResult = GITHUB_REPO_URL_REG.exec(repo);
@@ -134,7 +134,7 @@ export default defineComponent({
         event.preventDefault();
         const text = event.clipboardData
           .getData("text")
-          .replace(/(\r\n|\n|\r)/gm, "");
+          .replace(/(?:\r\n|\r|\n| )/g, "");
         const value = state.repo;
         const prevStr = value.slice(
           0,

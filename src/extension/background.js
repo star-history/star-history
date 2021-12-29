@@ -1,3 +1,4 @@
+// Write the background code right here
 let color = "#3aa757";
 
 chrome.runtime.onInstalled.addListener(() => {
