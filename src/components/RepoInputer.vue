@@ -17,10 +17,8 @@
         @keydown="handleInputerKeyDown"
       />
       <button
-        :class="
-          'h-9 pl-4 pr-4 whitespace-nowrap w-auto border border-dark border-l-0 rounded-r border-solid text-dark hover:bg-dark hover:text-light ' +
-          (isFetching ? 'cursor-wait !opacity-60' : '')
-        "
+        class="h-9 pl-4 pr-4 whitespace-nowrap w-auto border border-dark border-l-0 rounded-r border-solid text-dark hover:bg-dark hover:text-light"
+        :class="isFetching ? 'cursor-wait !opacity-60' : ''"
         @click="handleAddRepoBtnClick"
       >
         View star history
@@ -81,6 +79,12 @@ export default defineComponent({
       repo: "",
     });
     const inputElRef = ref<HTMLInputElement | null>(null);
+    const isFetching = computed(() => {
+      return store.state.isFetching;
+    });
+    const repos = computed(() => {
+      return store.state.repos;
+    });
 
     const handleAddRepoBtnClick = () => {
       if (store.state.isFetching) {
@@ -165,12 +169,8 @@ export default defineComponent({
     return {
       state,
       inputElRef,
-      isFetching: computed(() => {
-        return store.state.isFetching;
-      }),
-      repos: computed(() => {
-        return store.state.repos;
-      }),
+      isFetching,
+      repos,
       handleAddRepoBtnClick,
       handleRepoItemClick,
       handleInputerPasted,

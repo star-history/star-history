@@ -13,7 +13,7 @@ type StorageKey = keyof StorageData;
 /**
  * storage helper
  */
-export namespace storage {
+namespace storage {
   export function get(keys: StorageKey[]): Partial<StorageData> {
     const data: Partial<StorageData> = {};
 
@@ -53,3 +53,5 @@ export namespace storage {
     }
   }
 }
+
+export default storage;

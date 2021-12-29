@@ -1,9 +1,10 @@
 <template>
   <div
-    :class="`fixed z-100 top-0 left-0 transition-all duration-1000 w-full py-5 h-auto flex flex-row justify-center items-center drop-shadow-md ${bgColor} ${state.classname}`"
+    class="fixed z-100 top-0 left-0 transition-all duration-1000 w-full py-5 h-auto flex flex-row justify-center items-center drop-shadow-md"
+    :class="`${bgColor} ${state.classname}`"
     @click="handleToastClick"
   >
-    <p :class="'text-2xl ' + textColor">{{ message }}</p>
+    <p class="text-2xl" :class="textColor">{{ message }}</p>
   </div>
 </template>
 
@@ -73,14 +74,6 @@ export default defineComponent({
       return "bg-black";
     },
     textColor() {
-      switch (this.$props.type) {
-        case "normal":
-          return "text-white";
-        case "warn":
-          return "text-white";
-        case "succeed":
-          return "text-white";
-      }
       return "text-white";
     },
   },

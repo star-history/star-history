@@ -1,6 +1,7 @@
 <template>
   <div
-    :class="`flex flex-col justify-center items-center select-none ${classname}`"
+    class="flex flex-col justify-center items-center select-none"
+    :class="classname"
   >
     <svg ref="svgEl" @click="handleSVGElementClick"></svg>
   </div>

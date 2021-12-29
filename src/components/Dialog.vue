@@ -1,9 +1,7 @@
 <template>
   <div
-    :class="
-      'fixed w-full px-3 md:px-0 h-full flex flex-col justify-center items-center bg-black bg-opacity-60 z-50 top-0 left-0 ' +
-      classname
-    "
+    class="fixed w-full px-3 md:px-0 h-full flex flex-col justify-center items-center bg-black bg-opacity-60 z-50 top-0 left-0"
+    :class="classname"
   >
     <slot></slot>
   </div>

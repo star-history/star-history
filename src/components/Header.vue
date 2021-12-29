@@ -46,28 +46,24 @@
           @click="handleToggleDropMenuBtnClick"
         >
           <span
-            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
-              state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'
-            }`"
+            class="w-4 transition-all h-px bg-light absolute top-1/2"
+            :class="state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'"
           ></span>
           <span
-            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
-              state.showDropMenu ? 'hidden' : ''
-            }`"
+            class="w-4 transition-all h-px bg-light absolute top-1/2"
+            :class="state.showDropMenu ? 'hidden' : ''"
           ></span>
           <span
-            :class="`w-4 transition-all h-px bg-light absolute top-1/2 ${
-              state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'
-            }`"
+            class="w-4 transition-all h-px bg-light absolute top-1/2"
+            :class="state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'"
           ></span>
         </span>
       </div>
     </div>
   </header>
   <div
-    :class="`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${
-      state.showDropMenu ? 'flex' : 'hidden'
-    }`"
+    class="`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b"
+    :class="state.showDropMenu ? 'flex' : 'hidden'"
   >
     <span
       class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
@@ -112,6 +108,9 @@ export default defineComponent({
       showDropMenu: false,
       showSetTokenDialog: false,
     });
+    const token = computed(() => {
+      return store.state.token;
+    });
 
     const handleSetTokenBtnClick = () => {
       state.showSetTokenDialog = true;
@@ -127,9 +126,7 @@ export default defineComponent({
 
     return {
       state,
-      token: computed(() => {
-        return store.state.token;
-      }),
+      token,
       handleSetTokenBtnClick,
       handleToggleDropMenuBtnClick,
       handleSetTokenDialogClose,

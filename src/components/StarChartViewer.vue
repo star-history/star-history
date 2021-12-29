@@ -18,7 +18,7 @@
     <!-- watermark -->
     <div
       v-if="state.chartData.length > 0"
-      :class="`w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500`"
+      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
       style="font-family: 'xkcd', serif"
     >
       <img class="w-5 h-auto mr-1" src="/icon.png" />
@@ -41,9 +41,8 @@
     </div>
     <div class="flex flex-row justify-end items-center mb-2">
       <button
-        :class="`shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600 ${
-          state.isGeneratingImage ? 'bg-green-600 cursor-not-allowed' : ''
-        }`"
+        class="`shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
+        :class="state.isGeneratingImage ? 'bg-green-600 cursor-wait' : ''"
         @click="handleGenerateImageBtnClick"
       >
         Download Image
@@ -113,6 +112,9 @@ export default defineComponent({
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
+    const isFetching = computed(() => {
+      return store.state.isFetching;
+    });
 
     onMounted(() => {
       if (store.state.repos.length > 0) {
@@ -230,9 +232,7 @@ export default defineComponent({
     return {
       state,
       containerElRef,
-      isFetching: computed(() => {
-        return store.state.isFetching;
-      }),
+      isFetching,
       handleCopyLinkBtnClick,
       handleGenerateImageBtnClick,
       handleExportAsCSVBtnClick,

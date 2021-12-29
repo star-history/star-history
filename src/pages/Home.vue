@@ -1,9 +1,9 @@
 <template>
   <div class="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
-    <Header></Header>
-    <RepoInputer></RepoInputer>
-    <StarChartViewer></StarChartViewer>
-    <Footer></Footer>
+    <Header />
+    <RepoInputer />
+    <StarChartViewer />
+    <Footer />
   </div>
 </template>
 
