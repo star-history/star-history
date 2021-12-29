@@ -4,32 +4,33 @@
   "description": "The missing GitHub star history graph of GitHub projects",
   "main": "index.js",
   "scripts": {
-    "startWebsite": "parcel website/index.html",
-    "buildWebsite": "parcel build website/index.html --no-source-maps",
-    "startExtension": "parcel watch extension/src/index.js -d extension/build",
-    "buildExtension": "rm -r extension/build && parcel build extension/src/index.js -d extension/build --no-source-maps"
+    "dev": "vite",
+    "build": "vite build",
+    "build:ext": "vite build --mode extension && node ./scripts/copyExtFiles.js"
   },
-  "keywords": [
-    "github",
-    "star",
-    "history"
-  ],
-  "browserslist": [
-    "since 2017-06"
-  ],
-  "author": "timqian",
-  "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.1",
-    "chart.xkcd": "^1.0.10",
-    "d3": "^3.5.17",
-    "notie": "^4.3.1",
-    "nvd3": "^1.8.6"
+    "chart.xkcd": "^1.1.13",
+    "html-to-image": "^1.9.0",
+    "tailwindcss": "^3.0.7",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue": "^3.2.25",
+    "vue-router": "4",
+    "vue-tsc": "^0.29.8",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.6.3",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "parcel": "1.12.3"
+    "@types/chrome": "^0.0.171",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.1.1",
+    "postcss": "^8.4.5",
+    "prettier": "^2.4.1"
   }
 }
