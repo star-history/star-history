@@ -175,6 +175,19 @@ export default defineComponent({
       if (state.isGeneratingImage) {
         return;
       }
+
+      let destoryGeneratingToast: (() => void) | undefined = undefined;
+
+      setTimeout(() => {
+        if (state.isGeneratingImage) {
+          const cbs = toast.warn(
+            `<i class="fas fa-spinner animate-spin text-2xl mr-3"></i>Generating image`,
+            -1
+          );
+          destoryGeneratingToast = cbs.destory;
+        }
+      }, 2000);
+
       state.isGeneratingImage = true;
       setTimeout(() => {
         if (containerElRef.value) {
@@ -188,6 +201,9 @@ export default defineComponent({
             link.href = dataUrl;
             link.click();
             state.isGeneratingImage = false;
+            if (destoryGeneratingToast) {
+              destoryGeneratingToast();
+            }
             toast.succeed("Image Downloaded");
           });
         }
