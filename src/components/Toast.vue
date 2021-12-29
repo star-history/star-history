@@ -4,7 +4,7 @@
     :class="`${bgColor} ${state.classname}`"
     @click="handleToastClick"
   >
-    <p class="text-2xl" :class="textColor">{{ message }}</p>
+    <p class="text-2xl" :class="textColor" v-html="message"></p>
   </div>
 </template>
 
@@ -42,12 +42,20 @@ export default defineComponent({
     });
 
     onMounted(() => {
+      if (props.duration < 0) {
+        return;
+      }
+
       setTimeout(() => {
         destoryToast();
       }, props.duration);
     });
 
     const destoryToast = () => {
+      if (props.duration < 0) {
+        return;
+      }
+
       state.classname = "-top-full";
       setTimeout(() => {
         if (props.destory) {
