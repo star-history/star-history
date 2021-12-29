@@ -20,7 +20,7 @@ namespace utils {
     const month = d.getMonth() + 1;
     const date = d.getDate();
 
-    return `${year}-${month}-${date}`;
+    return `${year}/${month}/${date}`;
   }
 
   export async function copyTextToClipboard(text: string) {
