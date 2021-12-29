@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound.vue";
 // NOTE: hide for this version
 // import Blog from "../pages/Blog.vue";
 
+// WIP
 const routes = [
   {
     path: "/",

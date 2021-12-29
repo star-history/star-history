@@ -7,6 +7,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+// WIP
 export default defineComponent({
   name: "Blog",
 });
