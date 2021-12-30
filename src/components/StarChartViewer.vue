@@ -27,11 +27,11 @@
   </div>
   <div
     v-if="state.chartData.length > 0"
-    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center"
+    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-end"
   >
     <div class="flex flex-row justify-start items-center mb-2">
       <a
-        class="h-full flex flex-row justify-center items-center hover:opacity-80 underline underline-offset-2 decoration-dark"
+        class="h-full flex flex-row justify-center items-center leading-8 hover:opacity-80 underline underline-offset-2 mb-2 decoration-dark"
         href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
         target="_blank"
       >
@@ -39,31 +39,35 @@
         <span class="text-dark">Get Chrome Extension</span>
       </a>
     </div>
-    <div class="flex flex-row justify-end items-center mb-2">
+    <div class="flex flex-row flex-wrap justify-end items-center mb-2">
       <button
-        class="`shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
-        :class="state.isGeneratingImage ? 'bg-green-600 cursor-wait' : ''"
+        class="shadow-inner ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark hover:bg-gray-200"
+        :class="state.isGeneratingImage ? 'bg-gray-200 cursor-wait' : ''"
         @click="handleGenerateImageBtnClick"
       >
-        Download Image
+        <i class="fas fa-download"></i>
+        Image
       </button>
       <button
-        class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
-        @click="handleShareToTwitterBtnClick"
-      >
-        Share to Twitter
-      </button>
-      <!-- <button
-        class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
+        class="shadow-inner ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark hover:bg-gray-200"
         @click="handleCopyLinkBtnClick"
       >
-        Copy Link
-      </button> -->
+        <i class="far fa-copy"></i>
+        Link
+      </button>
       <button
-        class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
+        class="shadow-inner ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark hover:bg-gray-200"
         @click="handleExportAsCSVBtnClick"
       >
-        Export as CSV
+        <i class="fas fa-download"></i>
+        CSV
+      </button>
+      <button
+        class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-600 border border-transparent text-white hover:bg-green-700"
+        @click="handleShareToTwitterBtnClick"
+      >
+        <i class="fab fa-twitter"></i>
+        Share to Twitter
       </button>
     </div>
   </div>
@@ -299,10 +303,36 @@ export default defineComponent({
       toast.succeed("CSV Downloaded");
     };
 
-    const handleShareToTwitterBtnClick = () => {
-      const tweetShareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        window.location.href
-      )}&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
+    const handleShareToTwitterBtnClick = async () => {
+      if (store.state.repos.length === 0) {
+        toast.error("No repo found");
+        return;
+      }
+
+      const starhistoryLink = encodeURIComponent(window.location.href);
+      let text = "";
+      let url = starhistoryLink;
+      if (store.state.repos.length === 1) {
+        const repo = store.state.repos[0];
+        let starCount = 99;
+        try {
+          const { data } = await api.getRepoStargazersCount(
+            repo,
+            store.state.token
+          );
+          starCount = data.stargazers_count;
+        } catch (error) {
+          // use default star count 99
+        }
+        text = `${
+          starCount < 1000 ? starCount : (starCount / 1000).toFixed(1) + "K 🌟 "
+        } Thank you🙏%0A${starhistoryLink}%0A%0A`;
+        url = `github.com/${repo}`;
+      } else {
+        text = store.state.repos.join(" with ") + "%0A%0A";
+      }
+      text += url;
+      const tweetShareLink = `https://twitter.com/intent/tweet?text=${text}%0A&hashtags=starhistory,GitHub,OpenSource%0A&via=StarHistoryHQ`;
       const link = document.createElement("a");
       link.href = tweetShareLink;
       link.target = "_blank";

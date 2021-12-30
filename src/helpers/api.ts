@@ -71,6 +71,17 @@ namespace api {
     });
   }
 
+  export async function getRepoStargazersCount(repo: string, token = "") {
+    return request<{ stargazers_count: number }>({
+      method: "GET",
+      url: `https://api.github.com/repos/${repo}`,
+      headers: {
+        Accept: "application/vnd.github.v3.star+json",
+        Authorization: token ? `token ${token}` : "",
+      },
+    });
+  }
+
   export async function getRepoStarRecords(repo: string, token = "") {
     const patchRes = await getRepoStargazers(repo, token);
 
@@ -137,14 +148,7 @@ namespace api {
       });
     }
 
-    const { data } = await request<{ stargazers_count: number }>({
-      method: "GET",
-      url: `https://api.github.com/repos/${repo}`,
-      headers: {
-        Accept: "application/vnd.github.v3.star+json",
-        Authorization: token ? `token ${token}` : "",
-      },
-    });
+    const { data } = await getRepoStargazersCount(repo, token);
 
     starRecordsMap.set(utils.getDateString(Date.now()), data.stargazers_count);
 
