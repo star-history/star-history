@@ -31,12 +31,17 @@
   >
     <div class="flex flex-row justify-start items-center mb-2">
       <a
-        class="h-full flex flex-row justify-center items-center mr-1 hover:opacity-80 underline underline-offset-2 decoration-dark"
+        class="h-full flex flex-row justify-center items-center hover:opacity-80 underline underline-offset-2 decoration-dark"
         href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
         target="_blank"
       >
         <img class="w-5 h-auto mr-1" src="/icons/free.svg" />
         <span class="text-dark">Get Chrome Extension</span>
+      </a>
+      <a
+        :href="state.tweetShareLink"
+        class="twitter-share-button mx-2 underline underline-offset-2 decoration-dark hover:opacity-80"
+        ><span class="text-dark">Share to Twitter</span>
       </a>
     </div>
     <div class="flex flex-row justify-end items-center mb-2">
@@ -95,6 +100,7 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
+  tweetShareLink: string;
   isGeneratingImage: boolean;
   showSetTokenDialog: boolean;
 }
@@ -106,6 +112,7 @@ export default defineComponent({
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
+      tweetShareLink: "",
       isGeneratingImage: false,
       showSetTokenDialog: false,
     });
@@ -119,7 +126,20 @@ export default defineComponent({
       if (store.state.repos.length > 0) {
         fetchStarChart(store.state.repos);
       }
+      state.tweetShareLink = `https://twitter.com/intent/tweet?url=${
+        window.location.href
+      }&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
     });
+
+    watch(
+      () => store.state.repos,
+      () => {
+        fetchStarChart(store.state.repos);
+        state.tweetShareLink = `https://twitter.com/intent/tweet?url=${
+          window.location.href
+        }&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
+      }
+    );
 
     const fetchStarChart = async (repos: string[]) => {
       store.commit("setFetchFlag", true);
@@ -289,13 +309,6 @@ export default defineComponent({
     const handleSetTokenDialogClose = () => {
       state.showSetTokenDialog = false;
     };
-
-    watch(
-      () => store.state.repos,
-      () => {
-        fetchStarChart(store.state.repos);
-      }
-    );
 
     return {
       state,
