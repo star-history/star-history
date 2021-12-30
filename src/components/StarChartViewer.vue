@@ -38,11 +38,6 @@
         <img class="w-5 h-auto mr-1" src="/icons/free.svg" />
         <span class="text-dark">Get Chrome Extension</span>
       </a>
-      <a
-        :href="state.tweetShareLink"
-        class="twitter-share-button mx-2 underline underline-offset-2 decoration-dark hover:opacity-80"
-        ><span class="text-dark">Share to Twitter</span>
-      </a>
     </div>
     <div class="flex flex-row justify-end items-center mb-2">
       <button
@@ -54,10 +49,16 @@
       </button>
       <button
         class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
+        @click="handleShareToTwitterBtnClick"
+      >
+        Share to Twitter
+      </button>
+      <!-- <button
+        class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
         @click="handleCopyLinkBtnClick"
       >
         Copy Link
-      </button>
+      </button> -->
       <button
         class="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-500 text-white hover:bg-green-600"
         @click="handleExportAsCSVBtnClick"
@@ -100,7 +101,6 @@ interface State {
     }[]
   >;
   chartData: RepoStarData[];
-  tweetShareLink: string;
   isGeneratingImage: boolean;
   showSetTokenDialog: boolean;
 }
@@ -112,7 +112,6 @@ export default defineComponent({
     const state = reactive<State>({
       repoStarDataMap: new Map(),
       chartData: [],
-      tweetShareLink: "",
       isGeneratingImage: false,
       showSetTokenDialog: false,
     });
@@ -126,18 +125,12 @@ export default defineComponent({
       if (store.state.repos.length > 0) {
         fetchStarChart(store.state.repos);
       }
-      state.tweetShareLink = `https://twitter.com/intent/tweet?url=${
-        window.location.href
-      }&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
     });
 
     watch(
       () => store.state.repos,
       () => {
         fetchStarChart(store.state.repos);
-        state.tweetShareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-          window.location.href
-        )}&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
       }
     );
 
@@ -306,6 +299,16 @@ export default defineComponent({
       toast.succeed("CSV Downloaded");
     };
 
+    const handleShareToTwitterBtnClick = () => {
+      const tweetShareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+        window.location.href
+      )}&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
+      const link = document.createElement("a");
+      link.href = tweetShareLink;
+      link.target = "_blank";
+      link.click();
+    };
+
     const handleSetTokenDialogClose = () => {
       state.showSetTokenDialog = false;
     };
@@ -315,6 +318,7 @@ export default defineComponent({
       containerElRef,
       isFetching,
       handleCopyLinkBtnClick,
+      handleShareToTwitterBtnClick,
       handleGenerateImageBtnClick,
       handleExportAsCSVBtnClick,
       handleSetTokenDialogClose,
