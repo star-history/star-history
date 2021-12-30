@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "chart.xkcd": "^1.1.13",
-    "html-to-image": "^1.9.0",
     "tailwindcss": "^3.0.7",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",

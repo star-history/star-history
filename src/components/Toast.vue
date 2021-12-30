@@ -78,6 +78,8 @@ export default defineComponent({
           return "bg-orange-400";
         case "succeed":
           return "bg-green-600";
+        case "error":
+          return "bg-red-600";
       }
       return "bg-black";
     },

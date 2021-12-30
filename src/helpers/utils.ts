@@ -13,14 +13,22 @@ namespace utils {
     return d.getTime();
   }
 
-  export function getDateString(t: Date | number | string): string {
+  export function getDateString(
+    t: Date | number | string,
+    format = "yyyy/MM/dd"
+  ): string {
     const d = new Date(getTimeStampByDate(t));
 
     const year = d.getFullYear();
     const month = d.getMonth() + 1;
     const date = d.getDate();
 
-    return `${year}/${month}/${date}`;
+    const formatedString = format
+      .replace("yyyy", String(year))
+      .replace("MM", String(month))
+      .replace("dd", String(date));
+
+    return formatedString;
   }
 
   export async function copyTextToClipboard(text: string) {
@@ -33,6 +41,28 @@ namespace utils {
     } else {
       console.warn("Copy to clipboard failed, methods not supports.");
     }
+  }
+
+  export function convertSVGToDataURL(svgElement: SVGSVGElement) {
+    const xml = new XMLSerializer().serializeToString(svgElement);
+    const encodedData = window.btoa(xml);
+    return `data:image/svg+xml;base64,${encodedData}`;
+  }
+
+  export function waitImageLoaded(image: HTMLImageElement): Promise<void> {
+    image.loading = "eager";
+
+    return new Promise((resolve, reject) => {
+      image.onload = () => {
+        // NOTE: There is image loading problem in Safari, fix it with some trick
+        setTimeout(() => {
+          resolve();
+        }, 200);
+      };
+      image.onerror = () => {
+        reject("Image load failed");
+      };
+    });
   }
 }
 
