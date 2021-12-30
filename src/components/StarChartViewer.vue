@@ -135,9 +135,9 @@ export default defineComponent({
       () => store.state.repos,
       () => {
         fetchStarChart(store.state.repos);
-        state.tweetShareLink = `https://twitter.com/intent/tweet?url=${
+        state.tweetShareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
           window.location.href
-        }&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
+        )}&text=${store.state.repos.join(",+")}&hashtags=starhistory`;
       }
     );
 
