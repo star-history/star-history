@@ -244,7 +244,10 @@ export default defineComponent({
         );
 
         const link = document.createElement("a");
-        link.download = "star-history.png";
+        link.download = `star-history-${utils.getDateString(
+          Date.now(),
+          "yyyyMMdd"
+        )}.png`;
         link.href = canvas.toDataURL();
         link.click();
         state.isGeneratingImage = false;
@@ -274,7 +277,10 @@ export default defineComponent({
       }
       const encodedUri = encodeURI("data:text/csv;charset=utf-8," + CSVContent);
       const link = document.createElement("a");
-      link.download = "star-history.csv";
+      link.download = `star-history-${utils.getDateString(
+        Date.now(),
+        "yyyyMMdd"
+      )}.csv`;
       link.href = encodedUri;
       link.click();
       toast.succeed("CSV Downloaded");

@@ -13,14 +13,22 @@ namespace utils {
     return d.getTime();
   }
 
-  export function getDateString(t: Date | number | string): string {
+  export function getDateString(
+    t: Date | number | string,
+    format = "yyyy/MM/dd"
+  ): string {
     const d = new Date(getTimeStampByDate(t));
 
     const year = d.getFullYear();
     const month = d.getMonth() + 1;
     const date = d.getDate();
 
-    return `${year}/${month}/${date}`;
+    const formatedString = format
+      .replace("yyyy", String(year))
+      .replace("MM", String(month))
+      .replace("dd", String(date));
+
+    return formatedString;
   }
 
   export async function copyTextToClipboard(text: string) {
