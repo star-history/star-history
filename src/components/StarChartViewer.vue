@@ -315,7 +315,8 @@ export default defineComponent({
 
       if (repos.length === 1) {
         const repo = repos[0];
-        let starCount = 99;
+        let starCount = 0;
+
         try {
           const { data } = await api.getRepoStargazersCount(
             repo,
@@ -323,11 +324,18 @@ export default defineComponent({
           );
           starCount = data.stargazers_count;
         } catch (error) {
-          // use default star count 99
+          // do nth
         }
-        text = `${
-          starCount < 1000 ? starCount : (starCount / 1000).toFixed(1) + "K ⭐️"
-        } Thank you!🙏%0A${starhistoryLink}%0A%0A`;
+
+        let starText = "";
+        if (starCount > 0) {
+          starText = `${
+            starCount < 1000
+              ? starCount
+              : (starCount / 1000).toFixed(1) + "K ⭐️ "
+          }`;
+        }
+        text = `${starText}Thank you!🙏%0A${starhistoryLink}%0A%0A`;
       } else {
         text = repos.join(" vs ") + "%0A%0A";
       }
