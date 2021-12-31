@@ -107,10 +107,17 @@ export default defineComponent({
     watch(
       () => store.state.repos,
       () => {
+        for (const r of state.repos) {
+          if (!store.state.repos.includes(r.name)) {
+            state.repos.splice(state.repos.indexOf(r), 1);
+          }
+        }
+
         let hash = "";
         if (store.state.repos.length > 0) {
           hash = `#${store.state.repos.join("&")}`;
         }
+        // Sync location hash only right here
         window.location.hash = hash;
       }
     );
