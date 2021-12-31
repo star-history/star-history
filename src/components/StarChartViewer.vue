@@ -67,7 +67,7 @@
         @click="handleShareToTwitterBtnClick"
       >
         <i class="relative -bottom-px fab fa-twitter"></i>
-        Share to Twitter
+        Share on Twitter
       </button>
     </div>
   </div>

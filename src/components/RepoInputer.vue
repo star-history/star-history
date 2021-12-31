@@ -108,7 +108,7 @@ export default defineComponent({
       () => store.state.repos,
       () => {
         for (const r of state.repos) {
-          if (!store.state.repos.includes(r.name)) {
+          if (r.visible && !store.state.repos.includes(r.name)) {
             state.repos.splice(state.repos.indexOf(r), 1);
           }
         }
