@@ -1,7 +1,7 @@
 interface XYData {
   label: string;
   data: {
-    x: Date;
+    x: Date | number;
     y: number;
   }[];
 }
@@ -14,27 +14,34 @@ interface XYData {
 // Reference: https://github.com/timqian/chart.xkcd/blob/master/src/config.js
 type LegendPosition = 1 | 2 | 3 | 4;
 
-interface ChartXkcdXYConfig {
+interface BaseConfig {
   title: string;
   xLabel: string;
   yLabel: string;
-  data: {
-    datasets: XYData[];
-  };
-  options: {
+  data: any;
+  options: Partial<{
     xTickCount: number;
     yTickCount: number;
     legendPosition: LegendPosition;
     showLine: boolean;
     timeFormat: string;
+    isDuration: boolean;
     dotSize: number;
     dataColor?: string[];
-  };
+  }>;
 }
 
-declare module "chart.xkcd" {
+interface XYChartData {
+  datasets: XYData[];
+}
+
+interface XYChartConfig extends BaseConfig {
+  data: XYChartData;
+}
+
+declare namespace chartXkcd {
   class XY {
-    constructor(svg: SVGElement, config: ChartXkcdXYConfig);
+    constructor(svg: SVGElement, config: XYChartConfig);
   }
   // ...
 }

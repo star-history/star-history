@@ -10,14 +10,17 @@
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
     </div>
-    <StarChart
-      v-if="state.chartData.length > 0"
+    <StarXYChart
+      v-if="state.chartData"
       classname="w-full h-auto"
-      :data="state.chartData"
-    ></StarChart>
+      :data="state.chartData as XYChartData"
+      :time-format="state.chartMode === 'Time' ? 'MM/DD/YYYY' : undefined"
+      :is-duration="state.chartMode === 'Duration' ? true : false"
+    />
+
     <!-- watermark -->
     <div
-      v-if="state.chartData.length > 0"
+      v-if="state.chartData"
       class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
       style="font-family: 'xkcd', serif"
     >
@@ -26,8 +29,8 @@
     </div>
   </div>
   <div
-    v-if="state.chartData.length > 0"
-    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-end"
+    v-if="state.chartData"
+    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center"
   >
     <div class="flex flex-row justify-start items-center mb-2">
       <a
@@ -40,6 +43,13 @@
       </a>
     </div>
     <div class="flex flex-row flex-wrap justify-end items-center mb-2">
+      <button
+        class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
+        :class="state.isGeneratingImage ? 'bg-gray-200 cursor-wait' : ''"
+        @click="handleToggleChartBtnClick"
+      >
+        Align timeline
+      </button>
       <button
         class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
         :class="state.isGeneratingImage ? 'bg-gray-200 cursor-wait' : ''"
@@ -72,7 +82,7 @@
     </div>
   </div>
   <div class="grow"></div>
-  <BytebaseBanner v-if="state.chartData.length > 0"></BytebaseBanner>
+  <BytebaseBanner v-if="state.chartData"></BytebaseBanner>
   <TokenSettingDialog
     v-if="state.showSetTokenDialog"
     @close="handleSetTokenDialogClose"
@@ -93,10 +103,11 @@ import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
 import BytebaseBanner from "./BytebaseBanner.vue";
-import StarChart from "./StarChart.vue";
+import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
+  chartMode: "Time" | "Duration";
   repoStarDataMap: Map<
     string,
     {
@@ -104,18 +115,23 @@ interface State {
       count: number;
     }[]
   >;
-  chartData: RepoStarData[];
+  chartData: XYChartData | undefined;
   isGeneratingImage: boolean;
   showSetTokenDialog: boolean;
 }
 
 export default defineComponent({
   name: "StarChartViewer",
-  components: { BytebaseBanner, StarChart, TokenSettingDialog },
+  components: {
+    BytebaseBanner,
+    StarXYChart,
+    TokenSettingDialog,
+  },
   setup() {
     const state = reactive<State>({
+      chartMode: "Time",
       repoStarDataMap: new Map(),
-      chartData: [],
+      chartData: undefined,
       isGeneratingImage: false,
       showSetTokenDialog: false,
     });
@@ -127,18 +143,18 @@ export default defineComponent({
 
     onMounted(() => {
       if (store.state.repos.length > 0) {
-        fetchStarChart(store.state.repos);
+        fetchReposStarData(store.state.repos);
       }
     });
 
     watch(
       () => store.state.repos,
       () => {
-        fetchStarChart(store.state.repos);
+        fetchReposStarData(store.state.repos);
       }
     );
 
-    const fetchStarChart = async (repos: string[]) => {
+    const fetchReposStarData = async (repos: string[]) => {
       store.commit("setFetchFlag", true);
       for (const repo of repos) {
         if (!state.repoStarDataMap.has(repo)) {
@@ -169,17 +185,60 @@ export default defineComponent({
       }
       store.commit("setFetchFlag", false);
 
-      const chartTempData: RepoStarData[] = [];
-      for (const repo of repos) {
+      const reposStarData: RepoStarData[] = [];
+      for (const repo of store.state.repos) {
         const records = state.repoStarDataMap.get(repo);
         if (records) {
-          chartTempData.push({
+          reposStarData.push({
             repo,
             starRecords: records,
           });
         }
       }
-      state.chartData = chartTempData;
+      generateChartData(reposStarData);
+    };
+
+    const generateChartData = (reposStarData: RepoStarData[]) => {
+      if (state.chartMode === "Time") {
+        const datasets: XYData[] = reposStarData.map((item) => {
+          const { repo, starRecords } = item;
+
+          return {
+            label: repo,
+            data: starRecords.map((item) => {
+              return {
+                x: new Date(item.date),
+                y: Number(item.count),
+              };
+            }),
+          };
+        });
+        state.chartData = {
+          datasets,
+        } as XYChartData;
+      } else if (state.chartMode === "Duration") {
+        const datasets: XYData[] = reposStarData.map((item) => {
+          const { repo, starRecords } = item;
+
+          let started = starRecords[0].date;
+
+          return {
+            label: repo,
+            data: starRecords.map((item) => {
+              return {
+                x:
+                  utils.getTimeStampByDate(new Date(item.date)) -
+                  utils.getTimeStampByDate(new Date(started)),
+                y: Number(item.count),
+              };
+            }),
+          };
+        });
+        state.chartData = {
+          datasets,
+        } as XYChartData;
+      }
+      console.log(state.chartData);
     };
 
     const handleCopyLinkBtnClick = async () => {
@@ -278,20 +337,24 @@ export default defineComponent({
 
     const handleExportAsCSVBtnClick = () => {
       let CSVContent = "";
-      for (const d of state.chartData) {
-        const temp: any[] = [];
-        for (const i of d.starRecords) {
-          temp.push([d.repo, new Date(i.date), i.count]);
+      for (const repo of store.state.repos) {
+        const records = state.repoStarDataMap.get(repo);
+        if (records) {
+          const temp: any[] = [];
+          for (const i of records) {
+            temp.push([repo, new Date(i.date), i.count]);
+          }
+          CSVContent += temp
+            .map((item) =>
+              typeof item === "string" && item.indexOf(",") >= 0
+                ? `"${item}"`
+                : String(item)
+            )
+            .join("\n");
+          CSVContent += "\n";
         }
-        CSVContent += temp
-          .map((item) =>
-            typeof item === "string" && item.indexOf(",") >= 0
-              ? `"${item}"`
-              : String(item)
-          )
-          .join("\n");
-        CSVContent += "\n";
       }
+
       const encodedUri = encodeURI("data:text/csv;charset=utf-8," + CSVContent);
       const link = document.createElement("a");
       link.download = `star-history-${utils.getDateString(
@@ -351,6 +414,11 @@ export default defineComponent({
       link.click();
     };
 
+    const handleToggleChartBtnClick = () => {
+      state.chartMode = state.chartMode === "Time" ? "Duration" : "Time";
+      fetchReposStarData(store.state.repos);
+    };
+
     const handleSetTokenDialogClose = () => {
       state.showSetTokenDialog = false;
     };
@@ -364,6 +432,7 @@ export default defineComponent({
       handleGenerateImageBtnClick,
       handleExportAsCSVBtnClick,
       handleSetTokenDialogClose,
+      handleToggleChartBtnClick,
     };
   },
 });

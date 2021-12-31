@@ -8,53 +8,39 @@
 </template>
 
 <script lang="ts">
-import ChartXkcd from "chart.xkcd";
 import { defineComponent, onMounted, onUpdated, ref } from "vue";
 
 export default defineComponent({
-  name: "StarChart",
+  name: "StarXYChart",
   props: {
     classname: {
       type: String,
       default: "",
     },
     data: {
-      type: Object as () => RepoStarData[],
+      type: Object as () => XYChartData,
     },
+    timeFormat: String,
+    isDuration: Boolean,
   },
   setup(props) {
     const svgElRef = ref<SVGSVGElement | null>(null);
 
-    const drawStarChart = (repoStarData: RepoStarData[]) => {
-      const datasets: XYData[] = repoStarData.map((item) => {
-        const { repo, starRecords } = item;
-
-        return {
-          label: repo,
-          data: starRecords.map((item) => {
-            return {
-              x: new Date(item.date),
-              y: Number(item.count),
-            };
-          }),
-        };
-      });
-
+    const drawStarChart = (data: XYChartData) => {
       if (svgElRef.value) {
         svgElRef.value.innerHTML = "";
-        new ChartXkcd.XY(svgElRef.value, {
+        new chartXkcd.XY(svgElRef.value, {
           title: "Star history",
           yLabel: "GitHub Stars",
           xLabel: "Date",
-          data: {
-            datasets,
-          },
+          data,
           options: {
             xTickCount: 5,
             yTickCount: 5,
             legendPosition: 1,
             showLine: true,
-            timeFormat: "MM/DD/YYYY",
+            timeFormat: props.timeFormat,
+            isDuration: props.isDuration,
             dotSize: 0.5,
           },
         });
