@@ -32,8 +32,8 @@ const store = createStore({
       }
       state.repos = [...state.repos];
     },
-    clearAll(state: AppState) {
-      state.repos = [];
+    setRepos(state: AppState, repos: string[]) {
+      state.repos = repos;
     },
     setToken(state: AppState, token: string) {
       state.token = token;

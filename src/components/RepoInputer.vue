@@ -9,7 +9,7 @@
         class="w-auto h-9 shrink grow px-2 text-dark shadow-inner outline-none border border-dark rounded-l border-solid placeholder:text-gray-300 focus:shadow-focus"
         type="text"
         :placeholder="
-          repos.length > 0
+          state.repos.length > 0
             ? '...add next repository'
             : 'bytebase/star-history or https://github.com/bytebase/star-history'
         "
@@ -27,24 +27,24 @@
     <!-- repo list -->
     <div class="w-full mt-4 flex flex-row justify-center items-center">
       <div
-        v-if="repos.length > 0"
+        v-if="state.repos.length > 0"
         class="w-full max-w-2xl flex flex-row flex-wrap justify-center items-center"
       >
         <div
-          v-for="item of repos"
-          :key="item"
+          v-for="item of state.repos"
+          :key="item.name"
           class="leading-8 px-3 pr-2 mb-2 text-dark rounded flex flex-row justify-center items-center border mr-3 last:mr-0"
         >
-          <a
-            class="mr-1 hover:underline cursor-pointer"
-            :href="`https://github.com/${item}`"
-            target="_blank"
+          <span
+            class="mr-1 cursor-pointer hover:line-through select-none"
+            :class="item.visible ? '' : 'line-through text-gray-400'"
+            @click="handleToggleRepoItemVisible(item.name)"
           >
-            {{ item }}
-          </a>
+            {{ item.name }}
+          </span>
           <span
             class="relative w-5 h-5 flex flex-row justify-center items-center cursor-pointer hover:opacity-60"
-            @click="handleRepoItemClick(item)"
+            @click="handleDeleteRepoBtnClick(item.name)"
           >
             <span class="w-3 rotate-45 h-px bg-black absolute top-1/2"></span>
             <span class="w-3 -rotate-45 h-px bg-black absolute top-1/2"></span>
@@ -62,13 +62,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, watch } from "vue";
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+} from "vue";
 import { useStore } from "vuex";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 
 interface State {
   repo: string;
+  repos: {
+    name: string;
+    visible: boolean;
+  }[];
 }
 
 export default defineComponent({
@@ -77,14 +88,32 @@ export default defineComponent({
     const store = useStore<AppState>();
     const state = reactive<State>({
       repo: "",
+      repos: [],
     });
     const inputElRef = ref<HTMLInputElement | null>(null);
     const isFetching = computed(() => {
       return store.state.isFetching;
     });
-    const repos = computed(() => {
-      return store.state.repos;
+
+    onMounted(() => {
+      state.repos = store.state.repos.map((r) => {
+        return {
+          name: r,
+          visible: true,
+        };
+      });
     });
+
+    watch(
+      () => store.state.repos,
+      () => {
+        let hash = "";
+        if (store.state.repos.length > 0) {
+          hash = `#${store.state.repos.join("&")}`;
+        }
+        window.location.hash = hash;
+      }
+    );
 
     const handleAddRepoBtnClick = () => {
       if (store.state.isFetching) {
@@ -109,24 +138,59 @@ export default defineComponent({
             repo = regResult[1];
           }
         }
-        if (store.state.repos.includes(repo)) {
-          toast.warn(`Repo ${repo} is already on the chart`);
-          continue;
+        if (!repo.includes("/")) {
+          repo += `/${repo}`;
         }
+        for (const r of state.repos) {
+          if (r.name === repo) {
+            if (r.visible) {
+              toast.warn(`Repo ${repo} is already on the chart`);
+            } else {
+              r.visible = true;
+              store.commit(
+                "setRepos",
+                state.repos.filter((r) => r.visible).map((r) => r.name)
+              );
+            }
+            state.repo = "";
+            return;
+          }
+        }
+        state.repos.push({
+          name: repo,
+          visible: true,
+        });
         store.commit("addRepo", repo);
       }
       state.repo = "";
     };
 
-    const handleRepoItemClick = (repo: string) => {
+    const handleToggleRepoItemVisible = (repo: string) => {
+      for (const r of state.repos) {
+        if (r.name === repo) {
+          r.visible = !r.visible;
+          break;
+        }
+      }
+      store.commit(
+        "setRepos",
+        state.repos.filter((r) => r.visible).map((r) => r.name)
+      );
+    };
+
+    const handleDeleteRepoBtnClick = (repo: string) => {
+      for (const r of state.repos) {
+        if (r.name === repo) {
+          state.repos.splice(state.repos.indexOf(r), 1);
+          break;
+        }
+      }
       store.commit("delRepo", repo);
     };
 
-    const handleInputerKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        handleAddRepoBtnClick();
-      }
+    const handleClearAllRepoBtnClick = () => {
+      state.repos = [];
+      store.commit("setRepos", []);
     };
 
     const handleInputerPasted = async (event: ClipboardEvent) => {
@@ -151,30 +215,22 @@ export default defineComponent({
       }
     };
 
-    const handleClearAllRepoBtnClick = () => {
-      store.commit("clearAll");
-    };
-
-    watch(
-      () => store.state.repos,
-      () => {
-        let hash = "";
-        if (store.state.repos.length > 0) {
-          hash = `#${store.state.repos.join("&")}`;
-        }
-        window.location.hash = hash;
+    const handleInputerKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleAddRepoBtnClick();
       }
-    );
+    };
 
     return {
       state,
       inputElRef,
       isFetching,
-      repos,
       handleAddRepoBtnClick,
-      handleRepoItemClick,
-      handleInputerPasted,
+      handleToggleRepoItemVisible,
+      handleDeleteRepoBtnClick,
       handleClearAllRepoBtnClick,
+      handleInputerPasted,
       handleInputerKeyDown,
     };
   },
