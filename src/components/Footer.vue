@@ -1,5 +1,5 @@
 <template>
-  <footer
+  <div
     class="relative w-full shrink-0 h-auto mt-6 flex flex-col justify-end items-center"
   >
     <div
@@ -54,5 +54,5 @@
         </span>
       </div>
     </div>
-  </footer>
+  </div>
 </template>
