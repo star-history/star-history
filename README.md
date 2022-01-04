@@ -14,7 +14,7 @@
 
 **Support comparing multiple repos**
 
-![web-demo](https://raw.githubusercontent.com/timqian/images/master/star-history.gif)
+![web-demo](https://raw.githubusercontent.com/bytebase/star-history/master/public/star-history.gif)
 
 ## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
