@@ -1,5 +1,9 @@
 import { axisBottom, axisLeft, AxisScale } from "d3-axis";
 import { D3Selection } from "../types";
+import getFormatTimeline, {
+  DurationUnitType,
+  getTimestampFormatUnit,
+} from "./getFormatTimeline";
 
 interface DrawXAxisConfig {
   xScale: AxisScale<number | Date>;
@@ -7,7 +11,7 @@ interface DrawXAxisConfig {
   moveDown: number;
   fontFamily: string;
   stroke: string;
-  tickFormat?: (t: string | number) => string;
+  isDuration?: boolean;
 }
 
 export const drawXAxis = (
@@ -18,35 +22,37 @@ export const drawXAxis = (
     moveDown,
     fontFamily,
     stroke,
-    tickFormat,
+    isDuration,
   }: DrawXAxisConfig
 ) => {
-  if (tickFormat) {
-    const xAxisTickSet = new Set();
-    selection
-      .append("g")
-      .attr("transform", `translate(0,${moveDown})`)
-      .call(
-        axisBottom(xScale)
-          .tickSize(0)
-          .tickPadding(6)
-          .ticks(tickCount)
-          .tickFormat((d) => {
-            const tickStr = tickFormat(Number(d));
-            // if (xAxisTickSet.has(tickStr)) {
-            //   tickStr = '';
-            // }
-            xAxisTickSet.add(tickStr);
-            console.log(d, tickStr);
-            return tickStr;
-          })
-      );
-  } else {
-    selection
-      .append("g")
-      .attr("transform", `translate(0,${moveDown})`)
-      .call(axisBottom(xScale).tickSize(0).tickPadding(6).ticks(tickCount));
+  const xAxisGenerator = axisBottom(xScale)
+    .tickSize(0)
+    .tickPadding(6)
+    .ticks(tickCount);
+
+  if (isDuration) {
+    let index = 1;
+    let type: DurationUnitType | undefined = undefined;
+    xAxisGenerator.tickFormat((d) => {
+      const timestamp = Number(d);
+      const tickAmount = selection.selectAll(".xaxis > .tick").nodes().length;
+      index++;
+      if (timestamp === 0 || (tickAmount >= 7 && index % 2 === 0)) {
+        return " ";
+      }
+      if (!type) {
+        type = getTimestampFormatUnit(timestamp);
+      }
+
+      return getFormatTimeline(timestamp, type);
+    });
   }
+
+  selection
+    .append("g")
+    .attr("class", "xaxis")
+    .attr("transform", `translate(0,${moveDown})`)
+    .call(xAxisGenerator);
 
   selection
     .selectAll(".domain")
@@ -54,7 +60,7 @@ export const drawXAxis = (
     .style("stroke", stroke);
 
   selection
-    .selectAll(".tick > text")
+    .selectAll(".xaxis > .tick > text")
     .style("font-family", fontFamily)
     .style("font-size", "16")
     .style("fill", stroke);
@@ -73,6 +79,7 @@ export const drawYAxis = (
 ) => {
   selection
     .append("g")
+    .attr("class", "yaxis")
     .call(axisLeft(yScale).tickSize(1).tickPadding(10).ticks(tickCount, "s"));
 
   selection
@@ -81,7 +88,7 @@ export const drawYAxis = (
     .style("stroke", stroke);
 
   selection
-    .selectAll(".tick > text")
+    .selectAll(".yaxis > .tick > text")
     .style("font-family", fontFamily)
     .style("font-size", "16")
     .style("fill", stroke);

@@ -13,7 +13,9 @@ import addFilter from "./utils/addFilter";
 import addFont from "./utils/addFont";
 import { drawTitle, drawXLabel, drawYLabel } from "./utils/drawLabels";
 import drawLegend from "./utils/drawLegend";
-import getDurationFormatString from "./utils/getDurationFormatString";
+import getFormatTimeline, {
+  getTimestampFormatUnit,
+} from "./utils/getFormatTimeline";
 import { D3Selection } from "./types";
 
 const colors = [
@@ -109,236 +111,223 @@ const XYChart = (
 
   const filter = "url(#xkcdify)";
   const fontFamily = options.fontFamily || "xkcd";
-  const svgClientWidth = svg.parentElement?.clientWidth || 0;
+  const clientWidth = svg.parentElement?.clientWidth || 800;
+  const clientHeight = Math.min((clientWidth * 2) / 3, window.innerHeight);
 
   const d3Selection = select(svg)
     .style("stroke-width", 3)
     .style("font-family", fontFamily)
     .style("background", options.backgroundColor)
-    .attr("width", svgClientWidth)
-    .attr(
-      "height",
-      Math.min((svgClientWidth * 2) / 3, window.innerHeight)
-    ) as D3Selection;
+    .attr("width", clientWidth)
+    .attr("height", clientHeight) as D3Selection;
   d3Selection.selectAll("*").remove();
 
   const chart = d3Selection
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const width =
-    (d3Selection.attr("width") as unknown as number) -
-    margin.left -
-    margin.right;
-  const height =
-    (d3Selection.attr("height") as unknown as number) -
-    margin.top -
-    margin.bottom;
   addFont(d3Selection);
   addFilter(d3Selection);
 
-  const render = () => {
-    if (title) {
-      drawTitle(d3Selection, title, options.strokeColor);
-    }
-    if (xLabel) {
-      drawXLabel(d3Selection, xLabel, options.strokeColor);
-    }
-    if (yLabel) {
-      drawYLabel(d3Selection, yLabel, options.strokeColor);
-    }
+  if (title) {
+    drawTitle(d3Selection, title, options.strokeColor);
+  }
+  if (xLabel) {
+    drawXLabel(d3Selection, xLabel, options.strokeColor);
+  }
+  if (yLabel) {
+    drawYLabel(d3Selection, yLabel, options.strokeColor);
+  }
 
-    const tooltip = new ToolTip({
-      selection: d3Selection,
-      title: "",
-      items: [
-        { color: "red", text: "weweyang" },
-        { color: "blue", text: "timqian" },
-      ],
-      position: { x: 60, y: 60, type: "down_right" },
-      strokeColor: options.strokeColor,
-      backgroundColor: options.backgroundColor,
-    });
+  const tooltip = new ToolTip({
+    selection: d3Selection,
+    title: "",
+    items: [],
+    position: { x: 60, y: 60, type: "up_left" },
+    strokeColor: options.strokeColor,
+    backgroundColor: options.backgroundColor,
+  });
 
-    if (options.timeFormat) {
-      data.datasets.forEach((dataset) => {
-        dataset.data.forEach((d) => {
-          d.x = dayjs(d.x) as any;
-        });
+  if (options.timeFormat) {
+    data.datasets.forEach((dataset) => {
+      dataset.data.forEach((d) => {
+        d.x = dayjs(d.x) as any;
       });
-    }
-
-    const allData: XYPoint[] = [];
-    data.datasets.map((d) => allData.push(...d.data));
-
-    const allDataX = allData.map((d) => d.x);
-    const allDataY = allData.map((d) => d.y);
-
-    let xScale: AxisScale<number | Date> = scaleLinear()
-      .domain([0, Math.max(...allDataX.map((d) => Number(d)))])
-      .range([0, width]);
-
-    if (options.timeFormat) {
-      xScale = scaleTime()
-        .domain([
-          Math.min(...allDataX.map((d) => Number(d))),
-          Math.max(...allDataX.map((d) => Number(d))),
-        ])
-        .range([0, width]);
-    }
-
-    if (options.isDuration) {
-      xScale = scaleLinear()
-        .domain([0, Math.max(...allDataX.map((d) => Number(d)))])
-        .range([0, width]);
-    }
-
-    const yScale = scaleLinear()
-      .domain([Math.min(...allDataY), Math.max(...allDataY)])
-      .range([height, 0]);
-
-    const graphPart = chart.append("g").attr("pointer-events", "all");
-
-    // axis
-    drawXAxis(graphPart, {
-      xScale,
-      tickCount: options.xTickCount === undefined ? 5 : options.xTickCount,
-      moveDown: height,
-      fontFamily: fontFamily,
-      stroke: options.strokeColor,
-      tickFormat: options.isDuration
-        ? (d) => (d <= 0 ? " " : getDurationFormatString(Number(d)))
-        : undefined,
     });
-    drawYAxis(graphPart, {
-      yScale,
-      tickCount: options.yTickCount === undefined ? 5 : options.yTickCount,
-      fontFamily: fontFamily,
-      stroke: options.strokeColor,
-    });
+  }
 
-    // lines
-    if (options.showLine) {
-      const drawLine = line<XYPoint>()
-        .x((d) => xScale(d.x) || 0)
-        .y((d) => yScale(d.y))
-        .curve(curveMonotoneX);
+  const allData: XYPoint[] = [];
+  data.datasets.map((d) => allData.push(...d.data));
 
-      graphPart
-        .selectAll(".xkcd-chart-xyline")
-        .data(data.datasets)
-        .enter()
-        .append("path")
-        .attr("class", "xkcd-chart-xyline")
-        .attr("d", (d) => drawLine(d.data))
-        .attr("fill", "none")
-        .attr("stroke", (_, i) => options.dataColors[i])
-        .attr("filter", filter);
-    }
+  const allXData = allData.map((d) => d.x);
+  const allYData = allData.map((d) => d.y);
 
-    // dots
-    const dotInitSize =
-      3.5 * (options.dotSize === undefined ? 1 : options.dotSize);
-    const dotHoverSize =
-      6 * (options.dotSize === undefined ? 1 : options.dotSize);
-    graphPart
-      .selectAll(".xkcd-chart-xycircle-group")
+  const chartWidth = clientWidth - margin.left - margin.right;
+  const chartHeight = clientHeight - margin.top - margin.bottom;
+
+  let xScale: AxisScale<number | Date> = scaleLinear()
+    .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+    .range([0, chartWidth]);
+
+  if (options.timeFormat) {
+    xScale = scaleTime()
+      .domain([
+        Math.min(...allXData.map((d) => Number(d))),
+        Math.max(...allXData.map((d) => Number(d))),
+      ])
+      .range([0, chartWidth]);
+  }
+
+  if (options.isDuration) {
+    xScale = scaleLinear()
+      .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+      .range([0, chartWidth]);
+  }
+
+  const yScale = scaleLinear()
+    .domain([Math.min(...allYData), Math.max(...allYData)])
+    .range([chartHeight, 0]);
+
+  const svgChart = chart.append("g").attr("pointer-events", "all");
+
+  // draw axis
+  drawXAxis(svgChart, {
+    xScale,
+    tickCount: options.xTickCount,
+    moveDown: chartHeight,
+    fontFamily: fontFamily,
+    stroke: options.strokeColor,
+    isDuration: options.isDuration,
+  });
+  drawYAxis(svgChart, {
+    yScale,
+    tickCount: options.yTickCount,
+    fontFamily: fontFamily,
+    stroke: options.strokeColor,
+  });
+
+  // draw lines
+  if (options.showLine) {
+    const drawLine = line<XYPoint>()
+      .x((d) => xScale(d.x) || 0)
+      .y((d) => yScale(d.y))
+      .curve(curveMonotoneX);
+
+    svgChart
+      .selectAll(".xkcd-chart-xyline")
       .data(data.datasets)
       .enter()
-      .append("g")
-      .attr("class", ".xkcd-chart-xycircle-group")
-      .attr("filter", filter)
-      .attr("xy-group-index", (_, i) => i)
-      .selectAll(".xkcd-chart-xycircle-circle")
-      .data((dataset) => dataset.data)
-      .enter()
-      .append("circle")
-      .style("stroke", (_, i, nodes) => {
-        // FIXME: here I want to pass xyGroupIndex down to the circles by reading parent attrs
-        // It might have perfomance issue with a large dataset, not sure there are better ways
-        const xyGroupIndex = Number(
-          select(nodes[i].parentElement).attr("xy-group-index")
-        );
-        return options.dataColors[xyGroupIndex];
-      })
-      .style("fill", (_, i, nodes) => {
-        const xyGroupIndex = Number(
-          select(nodes[i].parentElement).attr("xy-group-index")
-        );
-        return options.dataColors[xyGroupIndex];
-      })
-      .attr("r", dotInitSize)
-      .attr("cx", (d) => xScale(d.x) || 0)
-      .attr("cy", (d) => yScale(d.y))
-      .attr("pointer-events", "all")
-      .on("mouseover", (event, d) => {
-        const node = event.target as Element;
-        const i = Array.from(node.parentElement?.childNodes || []).indexOf(
-          node
-        );
-        const xyGroupIndex = Number(
-          select(node.parentElement).attr("xy-group-index")
-        );
-        select(node).attr("r", dotHoverSize);
+      .append("path")
+      .attr("class", "xkcd-chart-xyline")
+      .attr("d", (d) => drawLine(d.data))
+      .attr("fill", "none")
+      .attr("stroke", (_, i) => options.dataColors[i])
+      .attr("filter", filter);
+  }
 
-        const tipX = (xScale(d.x) || 0) + margin.left + 5;
-        const tipY = yScale(d.y) + margin.top + 5;
-        let tooltipPositionType = "down_right";
-        if (tipX > width / 2 && tipY < height / 2) {
-          tooltipPositionType = "down_left";
-        } else if (tipX > width / 2 && tipY > height / 2) {
-          tooltipPositionType = "up_left";
-        } else if (tipX < width / 2 && tipY > height / 2) {
-          tooltipPositionType = "up_right";
-        }
-        let title = `${data.datasets[xyGroupIndex].data[i].x}`;
-        if (options.timeFormat) {
-          title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
-            options.timeFormat
-          );
-        }
-        if (options.isDuration) {
-          title = getDurationFormatString(
-            Number(data.datasets[xyGroupIndex].data[i].x)
-          );
-        }
+  // draw dots
+  const dotInitSize =
+    3.5 * (options.dotSize === undefined ? 1 : options.dotSize);
+  const dotHoverSize =
+    6 * (options.dotSize === undefined ? 1 : options.dotSize);
+  svgChart
+    .selectAll(".xkcd-chart-xycircle-group")
+    .data(data.datasets)
+    .enter()
+    .append("g")
+    .attr("class", ".xkcd-chart-xycircle-group")
+    .attr("filter", filter)
+    .attr("xy-group-index", (_, i) => i)
+    .selectAll(".xkcd-chart-xycircle-circle")
+    .data((dataset) => dataset.data)
+    .enter()
+    .append("circle")
+    .style("stroke", (_, i, nodes) => {
+      const xyGroupIndex = Number(
+        select(nodes[i].parentElement).attr("xy-group-index")
+      );
+      return options.dataColors[xyGroupIndex];
+    })
+    .style("fill", (_, i, nodes) => {
+      const xyGroupIndex = Number(
+        select(nodes[i].parentElement).attr("xy-group-index")
+      );
+      return options.dataColors[xyGroupIndex];
+    })
+    .attr("r", dotInitSize)
+    .attr("cx", (d) => xScale(d.x) || 0)
+    .attr("cy", (d) => yScale(d.y))
+    .attr("pointer-events", "all")
+    .on("mouseover", (event, d) => {
+      const node = event.target as Element;
+      const i = Array.from(node.parentElement?.childNodes || []).indexOf(node);
+      const xyGroupIndex = Number(
+        select(node.parentElement).attr("xy-group-index")
+      );
+      select(node).attr("r", dotHoverSize);
 
-        tooltip.update({
-          title,
-          items: [
-            {
-              color: options.dataColors[xyGroupIndex],
-              text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
-            },
-          ],
-          position: {
-            x: tipX,
-            y: tipY,
-            type: tooltipPositionType,
+      const tipX = (xScale(d.x) || 0) + margin.left + 5;
+      const tipY = yScale(d.y) + margin.top + 5;
+      let tooltipPositionType = "down_right";
+      if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
+        tooltipPositionType = "down_left";
+      } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
+        tooltipPositionType = "up_left";
+      } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
+        tooltipPositionType = "up_right";
+      }
+      let title = `${data.datasets[xyGroupIndex].data[i].x}`;
+      if (options.timeFormat) {
+        title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
+          options.timeFormat
+        );
+      }
+      if (options.isDuration) {
+        const type = getTimestampFormatUnit(
+          Number(
+            data.datasets[xyGroupIndex].data[1].x ||
+              data.datasets[xyGroupIndex].data[i].x
+          )
+        );
+        title = getFormatTimeline(
+          Number(data.datasets[xyGroupIndex].data[i].x),
+          type
+        );
+      }
+
+      tooltip.update({
+        title,
+        items: [
+          {
+            color: options.dataColors[xyGroupIndex],
+            text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
           },
-        });
-        tooltip.show();
-      })
-      .on("mouseout", (event) => {
-        const node = event.target as Element;
-        select(node).attr("r", dotInitSize);
-        tooltip.hide();
+        ],
+        position: {
+          x: tipX,
+          y: tipY,
+          type: tooltipPositionType,
+        },
       });
-
-    // Legend
-    const legendItems = data.datasets.map((dataset, i) => ({
-      color: options.dataColors[i] || "",
-      text: dataset.label,
-    }));
-
-    drawLegend(graphPart, {
-      items: legendItems,
-      strokeColor: options.strokeColor,
-      backgroundColor: options.backgroundColor,
+      tooltip.show();
+    })
+    .on("mouseout", (event) => {
+      const node = event.target as Element;
+      select(node).attr("r", dotInitSize);
+      tooltip.hide();
     });
-  };
 
-  render();
+  // Legend
+  const legendItems = data.datasets.map((dataset, i) => ({
+    color: options.dataColors[i] || "",
+    text: dataset.label,
+  }));
+
+  drawLegend(svgChart, {
+    items: legendItems,
+    strokeColor: options.strokeColor,
+    backgroundColor: options.backgroundColor,
+  });
 };
 
 export default XYChart;
