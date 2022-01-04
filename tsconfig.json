@@ -11,6 +11,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "checkJs": false,
     "lib": ["esnext", "dom"]
   },

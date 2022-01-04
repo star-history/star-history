@@ -13,9 +13,10 @@
     <StarXYChart
       v-if="state.chartData"
       classname="w-full h-auto"
-      :data="state.chartData as XYChartData"
-      :time-format="state.chartMode === 'Time' ? 'MM/DD/YYYY' : undefined"
-      :is-duration="state.chartMode === 'Duration' ? true : false"
+      :data="state.chartData"
+      :chart-mode="state.chartMode"
+      :time-format="state.chartMode === 'Date' ? 'MM/DD/YYYY' : undefined"
+      :is-duration="state.chartMode === 'Timeline' ? true : false"
     />
 
     <!-- watermark -->
@@ -102,12 +103,13 @@ import { useStore } from "vuex";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
+import { XYChartData, XYData } from "../packages/xy-chart";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
-  chartMode: "Time" | "Duration";
+  chartMode: "Date" | "Timeline";
   repoStarDataMap: Map<
     string,
     {
@@ -129,7 +131,7 @@ export default defineComponent({
   },
   setup() {
     const state = reactive<State>({
-      chartMode: "Time",
+      chartMode: "Date",
       repoStarDataMap: new Map(),
       chartData: undefined,
       isGeneratingImage: false,
@@ -199,7 +201,7 @@ export default defineComponent({
     };
 
     const generateChartData = (reposStarData: RepoStarData[]) => {
-      if (state.chartMode === "Time") {
+      if (state.chartMode === "Date") {
         const datasets: XYData[] = reposStarData.map((item) => {
           const { repo, starRecords } = item;
 
@@ -216,7 +218,7 @@ export default defineComponent({
         state.chartData = {
           datasets,
         } as XYChartData;
-      } else if (state.chartMode === "Duration") {
+      } else if (state.chartMode === "Timeline") {
         const datasets: XYData[] = reposStarData.map((item) => {
           const { repo, starRecords } = item;
 
@@ -238,7 +240,6 @@ export default defineComponent({
           datasets,
         } as XYChartData;
       }
-      console.log(state.chartData);
     };
 
     const handleCopyLinkBtnClick = async () => {
@@ -415,7 +416,7 @@ export default defineComponent({
     };
 
     const handleToggleChartBtnClick = () => {
-      state.chartMode = state.chartMode === "Time" ? "Duration" : "Time";
+      state.chartMode = state.chartMode === "Date" ? "Timeline" : "Date";
       fetchReposStarData(store.state.repos);
     };
 

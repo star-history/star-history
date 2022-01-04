@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUpdated, ref } from "vue";
+import XYChart, { XYChartData } from "../../packages/xy-chart";
 
 export default defineComponent({
   name: "StarXYChart",
@@ -20,6 +21,7 @@ export default defineComponent({
     data: {
       type: Object as () => XYChartData,
     },
+    chartMode: String,
     timeFormat: String,
     isDuration: Boolean,
   },
@@ -29,21 +31,22 @@ export default defineComponent({
     const drawStarChart = (data: XYChartData) => {
       if (svgElRef.value) {
         svgElRef.value.innerHTML = "";
-        new chartXkcd.XY(svgElRef.value, {
-          title: "Star history",
-          yLabel: "GitHub Stars",
-          xLabel: "Date",
-          data,
-          options: {
-            xTickCount: 5,
-            yTickCount: 5,
-            legendPosition: 1,
-            showLine: true,
+
+        XYChart(
+          svgElRef.value,
+          {
+            title: "Star history",
+            xLabel: props.chartMode === "Timeline" ? "Timeline" : "Date",
+            yLabel: "GitHub Stars",
+            data: {
+              datasets: data.datasets,
+            },
+          },
+          {
             timeFormat: props.timeFormat,
             isDuration: props.isDuration,
-            dotSize: 0.5,
-          },
-        });
+          }
+        );
       }
     };
 
