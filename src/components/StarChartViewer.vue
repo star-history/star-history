@@ -10,6 +10,19 @@
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
     </div>
+    <div class="absolute top-0 right-1 p-2 flex flex-row">
+      <div
+        class="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer text-dark hover:bg-gray-100"
+        @click="handleToggleChartBtnClick"
+      >
+        <input
+          class="mr-2"
+          type="checkbox"
+          :checked="state.chartMode === 'Timeline'"
+        />
+        Align timeline
+      </div>
+    </div>
     <StarXYChart
       v-if="state.chartData"
       classname="w-full h-auto"
@@ -44,13 +57,6 @@
       </a>
     </div>
     <div class="flex flex-row flex-wrap justify-end items-center mb-2">
-      <button
-        class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
-        :class="state.isGeneratingImage ? 'bg-gray-200 cursor-wait' : ''"
-        @click="handleToggleChartBtnClick"
-      >
-        Align timeline
-      </button>
       <button
         class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
         :class="state.isGeneratingImage ? 'bg-gray-200 cursor-wait' : ''"
@@ -197,7 +203,12 @@ export default defineComponent({
           });
         }
       }
-      generateChartData(reposStarData);
+
+      if (reposStarData.length === 0) {
+        state.chartData = undefined;
+      } else {
+        generateChartData(reposStarData);
+      }
     };
 
     const generateChartData = (reposStarData: RepoStarData[]) => {
