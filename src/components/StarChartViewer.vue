@@ -276,7 +276,9 @@ export default defineComponent({
       const svgElement = containerElRef.value
         ?.querySelector("svg")
         ?.cloneNode(true) as SVGSVGElement;
-      svgElement.querySelectorAll(".dot").forEach((d) => d.remove());
+      svgElement
+        .querySelectorAll(".chart-tooltip-dot")
+        .forEach((d) => d.remove());
       svgElement.setAttribute("class", "fixed -z-10");
       document.body.append(svgElement);
 

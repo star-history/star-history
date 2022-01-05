@@ -241,7 +241,7 @@ const XYChart = (
     .data((dataset) => dataset.data)
     .enter()
     .append("circle")
-    .attr("class", "dot")
+    .attr("class", "chart-tooltip-dot")
     .style("stroke", (_, i, nodes) => {
       const xyGroupIndex = Number(
         select(nodes[i].parentElement).attr("xy-group-index")
