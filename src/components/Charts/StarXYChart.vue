@@ -17,9 +17,9 @@ import { defineComponent, onMounted, onUpdated, ref } from "vue";
 // 2. It's difficult/not possible to debug and customize;
 //
 // The advantages of the new one:
-// 1. Writing in TypeScript originally;
-// 2. Debuggable of the inside of chart;
-// 3. It's customizing totally.
+// 1. Writing in native TypeScript;
+// 2. Easy to debug chart internal;
+// 3. Totally customizable.
 import XYChart, { XYChartData } from "../../packages/xy-chart";
 
 export default defineComponent({
