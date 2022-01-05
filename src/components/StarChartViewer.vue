@@ -273,7 +273,14 @@ export default defineComponent({
         return;
       }
 
-      const svgElement = containerElRef.value?.querySelector("svg");
+      const svgElement = containerElRef.value
+        ?.querySelector("svg")
+        ?.cloneNode(true) as SVGSVGElement;
+      svgElement
+        .querySelectorAll(".chart-tooltip-dot")
+        .forEach((d) => d.remove());
+      svgElement.setAttribute("class", "fixed -z-10");
+      document.body.append(svgElement);
 
       if (!svgElement || !containerElRef.value) {
         toast.warn("Chart element not found, please try later");
@@ -355,6 +362,7 @@ export default defineComponent({
         console.error(error);
         toast.error("Generate image failed");
       }
+      svgElement.remove();
     };
 
     const handleExportAsCSVBtnClick = () => {
