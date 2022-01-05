@@ -9,8 +9,17 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUpdated, ref } from "vue";
-// NOTE: For customizing multi mode chart: base on create date or timeline, we have rewrited the chart.xkcd's XY chart with TypeScript.
-// refer to chart.xkcd: https://github.com/timqian/chart.xkcd
+// For customizing multi mode chart: base on create date or timeline, we have rewrited the chart.xkcd's XY chart with TypeScript.
+// Here are some reasons about this motivation.
+//
+// The shortcomings of the old chart.xkcd (project link: https://github.com/timqian/chart.xkcd):
+// 1. The X axis label string could be only formatted date or raw text;
+// 2. It's difficult/not possible to debug and customize;
+//
+// The advantages of the new one:
+// 1. Writing in TypeScript originally;
+// 2. Debuggable of the inside of chart;
+// 3. It's customizing totally.
 import XYChart, { XYChartData } from "../../packages/xy-chart";
 
 export default defineComponent({
