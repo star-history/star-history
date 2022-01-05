@@ -211,6 +211,12 @@ export default defineComponent({
       if (reposStarData.length === 0) {
         state.chartData = undefined;
       } else {
+        reposStarData.sort((d1, d2) => {
+          return (
+            Math.max(...d2.starRecords.map((s) => s.count)) -
+            Math.max(...d1.starRecords.map((s) => s.count))
+          );
+        });
         generateChartData(reposStarData);
       }
     };
