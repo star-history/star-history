@@ -25,7 +25,6 @@ export default defineComponent({
     },
     chartMode: String,
     timeFormat: String,
-    isDuration: Boolean,
   },
   setup(props) {
     const svgElRef = ref<SVGSVGElement | null>(null);
@@ -45,8 +44,7 @@ export default defineComponent({
             },
           },
           {
-            timeFormat: props.timeFormat,
-            isDuration: props.isDuration,
+            xTickLabelType: props.chartMode === "Date" ? "Date" : "Number",
           }
         );
       }

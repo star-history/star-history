@@ -11,26 +11,19 @@ interface DrawXAxisConfig {
   moveDown: number;
   fontFamily: string;
   stroke: string;
-  isDuration?: boolean;
+  type: "Date" | "Number";
 }
 
 export const drawXAxis = (
   selection: D3Selection,
-  {
-    xScale,
-    tickCount,
-    moveDown,
-    fontFamily,
-    stroke,
-    isDuration,
-  }: DrawXAxisConfig
+  { xScale, tickCount, moveDown, fontFamily, stroke, type }: DrawXAxisConfig
 ) => {
   const xAxisGenerator = axisBottom(xScale)
     .tickSize(0)
     .tickPadding(6)
     .ticks(tickCount);
 
-  if (isDuration) {
+  if (type === "Number") {
     let index = 1;
     let type: DurationUnitType | undefined = undefined;
     xAxisGenerator.tickFormat((d) => {

@@ -58,9 +58,11 @@ export interface XYChartConfig {
   data: XYChartData;
 }
 
+type XTickLabelType = "Date" | "Number";
+
 export interface XYChartOptions {
-  timeFormat?: string;
-  isDuration?: boolean;
+  xTickLabelType: XTickLabelType;
+  dateFormat?: string;
 
   xTickCount: number;
   yTickCount: number;
@@ -74,14 +76,16 @@ export interface XYChartOptions {
 
 const getDefaultOptions = (): XYChartOptions => {
   return {
-    showLine: true,
-    dotSize: 0.5,
+    xTickLabelType: "Date",
+    dateFormat: "MM/DD/YYYY",
     xTickCount: 5,
     yTickCount: 5,
+    showLine: true,
+    dotSize: 0.5,
     dataColors: colors,
     fontFamily: "xkcd",
-    strokeColor: "black",
     backgroundColor: "white",
+    strokeColor: "black",
   };
 };
 
@@ -148,7 +152,7 @@ const XYChart = (
     backgroundColor: options.backgroundColor,
   });
 
-  if (options.timeFormat) {
+  if (options.xTickLabelType === "Date") {
     data.datasets.forEach((dataset) => {
       dataset.data.forEach((d) => {
         d.x = dayjs(d.x) as any;
@@ -165,20 +169,15 @@ const XYChart = (
   const chartWidth = clientWidth - margin.left - margin.right;
   const chartHeight = clientHeight - margin.top - margin.bottom;
 
-  let xScale: AxisScale<number | Date> = scaleLinear()
-    .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+  // NOTE: Xaxis with date type(default)
+  let xScale: AxisScale<number | Date> = scaleTime()
+    .domain([
+      Math.min(...allXData.map((d) => Number(d))),
+      Math.max(...allXData.map((d) => Number(d))),
+    ])
     .range([0, chartWidth]);
 
-  if (options.timeFormat) {
-    xScale = scaleTime()
-      .domain([
-        Math.min(...allXData.map((d) => Number(d))),
-        Math.max(...allXData.map((d) => Number(d))),
-      ])
-      .range([0, chartWidth]);
-  }
-
-  if (options.isDuration) {
+  if (options.xTickLabelType === "Number") {
     xScale = scaleLinear()
       .domain([0, Math.max(...allXData.map((d) => Number(d)))])
       .range([0, chartWidth]);
@@ -197,7 +196,7 @@ const XYChart = (
     moveDown: chartHeight,
     fontFamily: fontFamily,
     stroke: options.strokeColor,
-    isDuration: options.isDuration,
+    type: options.xTickLabelType,
   });
   drawYAxis(svgChart, {
     yScale,
@@ -276,13 +275,12 @@ const XYChart = (
       } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
         tooltipPositionType = "up_right";
       }
-      let title = `${data.datasets[xyGroupIndex].data[i].x}`;
-      if (options.timeFormat) {
-        title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
-          options.timeFormat
-        );
-      }
-      if (options.isDuration) {
+
+      // NOTE: tooltip title with date type(default)
+      let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
+        options.dateFormat
+      );
+      if (options.xTickLabelType === "Number") {
         const type = getTimestampFormatUnit(
           Number(
             data.datasets[xyGroupIndex].data[1].x ||
@@ -317,7 +315,7 @@ const XYChart = (
       tooltip.hide();
     });
 
-  // Legend
+  // draw legend
   const legendItems = data.datasets.map((dataset, i) => ({
     color: options.dataColors[i] || "",
     text: dataset.label,

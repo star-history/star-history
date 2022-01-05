@@ -31,8 +31,6 @@
       classname="w-full h-auto"
       :data="state.chartData"
       :chart-mode="chartMode"
-      :time-format="chartMode === 'Date' ? 'MM/DD/YYYY' : undefined"
-      :is-duration="chartMode === 'Timeline' ? true : false"
     />
 
     <!-- watermark -->
