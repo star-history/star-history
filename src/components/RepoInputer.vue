@@ -105,7 +105,7 @@ export default defineComponent({
     });
 
     watch(
-      () => store.state.repos,
+      () => [store.state.repos, store.state.chartMode],
       () => {
         for (const r of state.repos) {
           if (r.visible && !store.state.repos.includes(r.name)) {
@@ -115,7 +115,7 @@ export default defineComponent({
 
         let hash = "";
         if (store.state.repos.length > 0) {
-          hash = `#${store.state.repos.join("&")}`;
+          hash = `#${store.state.repos.join("&")}&${store.state.chartMode}`;
         }
         // Sync location hash only right here
         window.location.hash = hash;

@@ -5,11 +5,17 @@ const store = createStore({
   state(): AppState {
     const { accessTokenCache } = storage.get(["accessTokenCache"]);
     const hash = window.location.hash.slice(1);
-    const rawRepos = hash.split("&").filter((i) => Boolean(i));
+    const params = hash.split("&").filter((i) => Boolean(i));
     const repos: string[] = [];
-    for (const repo of rawRepos) {
-      if (!repos.includes(repo)) {
-        repos.push(repo);
+    let chartMode: ChartMode = "Date";
+
+    for (const value of params) {
+      if (value === "Date" || value === "Timeline") {
+        chartMode = value;
+        continue;
+      }
+      if (!repos.includes(value)) {
+        repos.push(value);
       }
     }
 
@@ -17,6 +23,7 @@ const store = createStore({
       isFetching: false,
       token: accessTokenCache || "",
       repos: repos,
+      chartMode: chartMode,
     };
   },
   mutations: {
@@ -38,8 +45,11 @@ const store = createStore({
     setToken(state: AppState, token: string) {
       state.token = token;
     },
-    setFetchFlag(state: AppState, isFetching: boolean) {
+    setIsFetching(state: AppState, isFetching: boolean) {
       state.isFetching = isFetching;
+    },
+    setChartMode(state: AppState, chartMode: ChartMode) {
+      state.chartMode = chartMode;
     },
   },
 });
