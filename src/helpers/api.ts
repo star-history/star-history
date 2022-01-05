@@ -111,6 +111,9 @@ namespace api {
       utils.range(1, MAX_REQUEST_AMOUNT).map((i) => {
         requestPages.push(Math.round((i * pageCount) / MAX_REQUEST_AMOUNT) - 1);
       });
+      if (!requestPages.includes(1)) {
+        requestPages.unshift(1);
+      }
     }
 
     const resArray = await Promise.all(
