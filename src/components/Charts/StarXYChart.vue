@@ -9,6 +9,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUpdated, ref } from "vue";
+// NOTE: For customizing multi mode chart: base on create date or timeline, we have rewrited the chart.xkcd's XY chart with TypeScript.
+// refer to chart.xkcd: https://github.com/timqian/chart.xkcd
 import XYChart, { XYChartData } from "../../packages/xy-chart";
 
 export default defineComponent({
