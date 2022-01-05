@@ -10,15 +10,18 @@
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
     </div>
-    <div class="absolute top-0 right-1 p-2 flex flex-row">
+    <div
+      v-if="state.chartData"
+      class="absolute top-0 right-1 p-2 flex flex-row"
+    >
       <div
-        class="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer text-dark hover:bg-gray-100"
+        class="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer text-dark select-none hover:bg-gray-100"
         @click="handleToggleChartBtnClick"
       >
         <input
           class="mr-2"
           type="checkbox"
-          :checked="state.chartMode === 'Timeline'"
+          :checked="chartMode === 'Timeline'"
         />
         Align timeline
       </div>
@@ -27,9 +30,9 @@
       v-if="state.chartData"
       classname="w-full h-auto"
       :data="state.chartData"
-      :chart-mode="state.chartMode"
-      :time-format="state.chartMode === 'Date' ? 'MM/DD/YYYY' : undefined"
-      :is-duration="state.chartMode === 'Timeline' ? true : false"
+      :chart-mode="chartMode"
+      :time-format="chartMode === 'Date' ? 'MM/DD/YYYY' : undefined"
+      :is-duration="chartMode === 'Timeline' ? true : false"
     />
 
     <!-- watermark -->
@@ -148,6 +151,9 @@ export default defineComponent({
     const isFetching = computed(() => {
       return store.state.isFetching;
     });
+    const chartMode = computed(() => {
+      return store.state.chartMode;
+    });
 
     onMounted(() => {
       if (store.state.repos.length > 0) {
@@ -163,7 +169,7 @@ export default defineComponent({
     );
 
     const fetchReposStarData = async (repos: string[]) => {
-      store.commit("setFetchFlag", true);
+      store.commit("setIsFetching", true);
       for (const repo of repos) {
         if (!state.repoStarDataMap.has(repo)) {
           try {
@@ -191,7 +197,7 @@ export default defineComponent({
           }
         }
       }
-      store.commit("setFetchFlag", false);
+      store.commit("setIsFetching", false);
 
       const reposStarData: RepoStarData[] = [];
       for (const repo of store.state.repos) {
@@ -212,7 +218,7 @@ export default defineComponent({
     };
 
     const generateChartData = (reposStarData: RepoStarData[]) => {
-      if (state.chartMode === "Date") {
+      if (chartMode.value === "Date") {
         const datasets: XYData[] = reposStarData.map((item) => {
           const { repo, starRecords } = item;
 
@@ -229,7 +235,7 @@ export default defineComponent({
         state.chartData = {
           datasets,
         } as XYChartData;
-      } else if (state.chartMode === "Timeline") {
+      } else if (chartMode.value === "Timeline") {
         const datasets: XYData[] = reposStarData.map((item) => {
           const { repo, starRecords } = item;
 
@@ -427,7 +433,10 @@ export default defineComponent({
     };
 
     const handleToggleChartBtnClick = () => {
-      state.chartMode = state.chartMode === "Date" ? "Timeline" : "Date";
+      store.commit(
+        "setChartMode",
+        chartMode.value === "Date" ? "Timeline" : "Date"
+      );
       fetchReposStarData(store.state.repos);
     };
 
@@ -439,6 +448,7 @@ export default defineComponent({
       state,
       containerElRef,
       isFetching,
+      chartMode,
       handleCopyLinkBtnClick,
       handleShareToTwitterBtnClick,
       handleGenerateImageBtnClick,
