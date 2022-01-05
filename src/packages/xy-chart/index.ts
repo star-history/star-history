@@ -234,13 +234,14 @@ const XYChart = (
     .data(data.datasets)
     .enter()
     .append("g")
-    .attr("class", ".xkcd-chart-xycircle-group")
+    .attr("class", "xkcd-chart-xycircle-group")
     .attr("filter", filter)
     .attr("xy-group-index", (_, i) => i)
     .selectAll(".xkcd-chart-xycircle-circle")
     .data((dataset) => dataset.data)
     .enter()
     .append("circle")
+    .attr("class", "dot")
     .style("stroke", (_, i, nodes) => {
       const xyGroupIndex = Number(
         select(nodes[i].parentElement).attr("xy-group-index")

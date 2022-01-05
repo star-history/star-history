@@ -1,5 +1,9 @@
 import { axisBottom, axisLeft, AxisScale } from "d3-axis";
 import { D3Selection } from "../types";
+import getFormatNumber, {
+  getNumberFormatUnit,
+  NumberUnitType,
+} from "./getFormatNumber";
 import getFormatTimeline, {
   DurationUnitType,
   getTimestampFormatUnit,
@@ -70,10 +74,23 @@ export const drawYAxis = (
   selection: D3Selection,
   { yScale, tickCount, fontFamily, stroke }: DrawYAxisConfig
 ) => {
-  selection
-    .append("g")
-    .attr("class", "yaxis")
-    .call(axisLeft(yScale).tickSize(1).tickPadding(10).ticks(tickCount, "s"));
+  let type: NumberUnitType | undefined = undefined;
+  const yAxisGenerator = axisLeft(yScale)
+    .tickSize(1)
+    .tickPadding(10)
+    .ticks(tickCount, "s")
+    .tickFormat((d) => {
+      if (d === 0) {
+        return " ";
+      }
+      if (!type) {
+        type = getNumberFormatUnit(d);
+      }
+
+      return getFormatNumber(d, type);
+    });
+
+  selection.append("g").attr("class", "yaxis").call(yAxisGenerator);
 
   selection
     .selectAll(".domain")

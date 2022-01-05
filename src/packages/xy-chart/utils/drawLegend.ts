@@ -18,6 +18,7 @@ const drawLegend = (
   const textLayer = legend.append("svg");
 
   items.forEach((item, i) => {
+    // draw color dot
     textLayer
       .append("rect")
       .style("fill", item.color)
@@ -28,7 +29,7 @@ const drawLegend = (
       .attr("filter", "url(#xkcdify)")
       .attr("x", 15)
       .attr("y", 17 + 20 * i);
-
+    // draw text
     textLayer
       .append("text")
       .style("font-size", "15")
@@ -38,36 +39,32 @@ const drawLegend = (
       .text(item.text);
   });
 
-  const bbox = textLayer.node()?.getBBox();
+  // NOTE: get the correct width and height after textLayer rendered
+  setTimeout(() => {
+    const bbox = textLayer.node()?.getBoundingClientRect();
+    if (!bbox) {
+      console.error("bbox get null in drawLegend");
+      return;
+    }
 
-  if (!bbox) {
-    console.error("bbox get null in drawLegend");
-    return;
-  }
+    const backgroundWidth = bbox.width + 15;
+    const backgroundHeight = bbox.height + 10;
 
-  const backgroundWidth = bbox.width + 15;
-  const backgroundHeight = bbox.height + 10;
-
-  const legendX = 0;
-  const legendY = 0;
-
-  // add background
-  backgroundLayer
-    .append("rect")
-    .style("fill", backgroundColor)
-    .attr("fill-opacity", 0.85)
-    .attr("stroke", strokeColor)
-    .attr("stroke-width", 2)
-    .attr("rx", 5)
-    .attr("ry", 5)
-    .attr("filter", "url(#xkcdify)")
-    .attr("width", backgroundWidth)
-    .attr("height", backgroundHeight)
-    .attr("x", 8)
-    .attr("y", 5);
-
-  // get legend
-  legend.attr("x", legendX).attr("y", legendY);
+    // add background
+    backgroundLayer
+      .append("rect")
+      .style("fill", backgroundColor)
+      .attr("fill-opacity", 0.85)
+      .attr("stroke", strokeColor)
+      .attr("stroke-width", 2)
+      .attr("rx", 5)
+      .attr("ry", 5)
+      .attr("filter", "url(#xkcdify)")
+      .attr("width", backgroundWidth)
+      .attr("height", backgroundHeight)
+      .attr("x", 8)
+      .attr("y", 5);
+  }, 0);
 };
 
 export default drawLegend;
