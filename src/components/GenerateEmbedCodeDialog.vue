@@ -39,42 +39,35 @@
           >, and paste it into the textbox below (no scope to your personal data
           is needed).
         </p>
-        <br />
-        <p class="leading-8">
+        <p class="leading-8 mt-4">
           <span class="text-red-600">*</span> Access Token
+        </p>
+        <p class="rounded-md font-bold text-sm text-red-600">
+          Please do not give ANY SCOPE PERMISSION to the token. If you did,
+          someone could use this to access your personal data.
         </p>
         <input
           v-model="state.token"
           class="w-full outline-none border mt-2 shadow-inner p-2 rounded-md focus:shadow-focus"
           type="text"
         />
-        <br />
-        <p class="font-bold leading-8">Codes</p>
-        <div
-          class="relative w-full h-auto border mt-2 p-4 rounded-md shadow-inner"
-        >
-          <p class="font-mono break-all text-gray-600">{{ state.embedCode }}</p>
-        </div>
-        <p class="mt-2 leading-8 text-dark">
-          Usage: Copy and paste the code into your blog or website.
+        <p class="leading-8 mt-4 mb-1">
+          Copy and paste the below codes into your blog or website
         </p>
+        <div
+          class="relative w-full h-auto border px-4 py-3 rounded-md shadow-inner"
+        >
+          <p class="font-mono break-all text-gray-600 text-sm">
+            {{ state.embedCode }}
+          </p>
+          <button
+            class="absolute bottom-2 right-2 px-4 leading-10 rounded-md bg-green-600 shadow-inner text-light hover:bg-green-700"
+            @click="handleCopyBtnClick"
+          >
+            Copy
+          </button>
+        </div>
       </main>
-      <footer
-        class="w-full flex flex-row justify-end bg-gray-100 items-center p-4 pr-5 border-t rounded-b-md"
-      >
-        <button
-          class="px-4 leading-10 rounded-md text-dark mr-2 hover:bg-gray-300"
-          @click="handleCloseBtnClick"
-        >
-          Close
-        </button>
-        <button
-          class="px-4 leading-10 rounded-md bg-green-600 shadow-inner text-light hover:bg-green-700"
-          @click="handleCopyBtnClick"
-        >
-          Copy
-        </button>
-      </footer>
     </div>
   </Dialog>
 </template>
@@ -105,7 +98,7 @@ export default defineComponent({
     onMounted(() => {
       state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
         window.location.origin
-      }/embed/?secret=${btoa(state.token)}#${store.state.repos.join(
+      }/embed?secret=${btoa(state.token)}#${store.state.repos.join(
         "&"
       )}&Date" frameBorder="0"></iframe>`;
     });
@@ -115,7 +108,7 @@ export default defineComponent({
       () => {
         state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
           window.location.origin
-        }/embed/?secret=${btoa(state.token)}#${store.state.repos.join(
+        }/embed?secret=${btoa(state.token)}#${store.state.repos.join(
           "&"
         )}&Date" frameBorder="0"></iframe>`;
       }

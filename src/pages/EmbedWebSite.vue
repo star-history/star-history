@@ -16,20 +16,21 @@
       :data="state.chartData"
       :chart-mode="state.chartMode"
     />
-    <div
+    <a
       v-if="state.chartData"
       class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-600 cursor-pointer hover:text-dark"
       style="font-family: 'xkcd', serif"
-      @click="handleWaterMarkClick"
+      :href="starHistoryLink"
+      target="_blank"
     >
       <img class="w-5 h-auto mr-1" src="/icon.png" />
       star-history.com
-    </div>
+    </a>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref } from "vue";
+import { computed, defineComponent, onMounted, reactive, ref } from "vue";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -58,6 +59,11 @@ export default defineComponent({
       repos: [],
     });
     const containerElRef = ref<HTMLDivElement | null>(null);
+    const starHistoryLink = computed(() => {
+      return `https://star-history.com/#${state.repos.join("&")}&${
+        state.chartMode
+      }`;
+    });
 
     onMounted(() => {
       if (!containerElRef.value) {
@@ -68,7 +74,7 @@ export default defineComponent({
         .querySelector("#app")
         ?.setAttribute(
           "style",
-          "position: absolute;width:100%;height:100%;top:0;left:0;background-color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;"
+          "position:absolute;width:100%;height:100%;top:0;left:0;background-color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;"
         );
       const bounding = containerElRef.value.getBoundingClientRect();
       let width = Math.min(bounding.width, bounding.height * 1.5);
@@ -190,20 +196,10 @@ export default defineComponent({
       }
     };
 
-    const handleWaterMarkClick = () => {
-      const starHistoryLink = `https://star-history.com/#${state.repos.join(
-        "&"
-      )}&${state.chartMode}`;
-      const link = document.createElement("a");
-      link.href = starHistoryLink;
-      link.target = "_blank";
-      link.click();
-    };
-
     return {
       state,
+      starHistoryLink,
       containerElRef,
-      handleWaterMarkClick,
     };
   },
 });
