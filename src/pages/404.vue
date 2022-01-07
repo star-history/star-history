@@ -9,8 +9,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-// WIP
 export default defineComponent({
-  name: "NotFound",
+  name: "404",
 });
 </script>
