@@ -36,11 +36,10 @@
             target="_blank"
           >
             create one</a
-          >, and paste it into the textbox below (<b
-            >no scope to your personal data is needed</b
-          >).
+          >, and paste it into the textbox below (no scope to your personal data
+          is needed).
         </p>
-        <div class="w-full py-2 flex flex-row justify-start items-center">
+        <div class="w-full py-4 flex flex-row justify-start items-center">
           <span class="w-16 text-right pr-2">Token: </span>
           <input
             v-model="state.token"
@@ -54,7 +53,7 @@
           >
           If you did, someone could use this to access your personal data.
         </p>
-        <div class="w-full py-2 flex flex-row justify-start items-center">
+        <div class="w-full py-3 flex flex-row justify-start items-center">
           <span class="w-16 text-right pr-2">Width: </span>
           <input
             v-model="state.width"
@@ -64,7 +63,7 @@
           />
           <span>px</span>
         </div>
-        <div class="w-full py-2 flex flex-row justify-start items-center">
+        <div class="w-full py-3 flex flex-row justify-start items-center">
           <span class="w-16 text-right pr-2">Height: </span>
           <input
             v-model="state.height"
@@ -74,9 +73,8 @@
           />
           <span>px</span>
         </div>
-        <br />
-        <p class="my-2">Codes:</p>
-        <div class="relative w-full h-auto border p-4 rounded">
+        <p class="w-16 text-right pr-2 leading-8">Codes:</p>
+        <div class="relative w-full h-auto border p-4 pb-6 rounded">
           <p class="font-mono break-all text-gray-600">{{ state.embedCode }}</p>
           <button
             class="absolute bottom-2 right-2 pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-light hover:bg-green-600"
@@ -151,7 +149,8 @@ export default defineComponent({
         toast.warn("Please input the token");
         return;
       }
-      utils.copyTextToClipboard(state.embedCode.replaceAll("\n", " "));
+
+      utils.copyTextToClipboard(state.embedCode);
       toast.succeed("Embed code copied");
     };
 
