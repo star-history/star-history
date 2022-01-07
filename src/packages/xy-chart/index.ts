@@ -115,8 +115,8 @@ const XYChart = (
 
   const filter = "url(#xkcdify)";
   const fontFamily = options.fontFamily || "xkcd";
-  const clientWidth = svg.parentElement?.clientWidth || 800;
-  const clientHeight = Math.min((clientWidth * 2) / 3, window.innerHeight);
+  const clientWidth = svg.parentElement?.clientWidth || 600;
+  const clientHeight = (clientWidth * 2) / 3;
 
   const d3Selection = select(svg)
     .style("stroke-width", 3)

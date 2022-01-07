@@ -20,7 +20,7 @@
           see this page because you have hit the
           <a
             class="text-blue-500"
-            href="https://developer.github.com/v3/#rate-limiting"
+            href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api"
             target="_blank"
           >
             GitHub API rate limit </a
@@ -34,9 +34,8 @@
             href="https://github.com/settings/tokens"
             target="_blank"
           >
-            personal access token
-          </a>
-          to unlimit it. If you don't already have one,
+            personal access token </a
+          >to unlimit it. If you don't already have one,
           <a
             class="text-blue-500"
             href="https://github.com/settings/tokens/new"
