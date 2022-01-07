@@ -1,7 +1,9 @@
 <template>
-  <div
+  <a
     ref="containerElRef"
     class="relative w-full h-full min-w-600px min-h-400px p-4 pt-0 flex flex-col bg-white"
+    :href="starHistoryLink"
+    target="_blank"
   >
     <div
       v-if="state.isFetching"
@@ -16,17 +18,15 @@
       :data="state.chartData"
       :chart-mode="state.chartMode"
     />
-    <a
+    <p
       v-if="state.chartData"
-      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-600 cursor-pointer hover:text-dark"
+      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-600"
       style="font-family: 'xkcd', serif"
-      :href="starHistoryLink"
-      target="_blank"
     >
       <img class="w-5 h-auto mr-1" src="/icon.png" />
       star-history.com
-    </a>
-  </div>
+    </p>
+  </a>
 </template>
 
 <script lang="ts">
