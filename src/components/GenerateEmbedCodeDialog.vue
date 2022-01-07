@@ -55,7 +55,7 @@
           Copy and paste the below codes into your blog or website
         </p>
         <div
-          class="relative w-full h-auto border px-4 py-3 rounded-md shadow-inner"
+          class="relative w-full h-auto border px-4 py-3 pb-14 rounded-md shadow-inner"
         >
           <p class="font-mono break-all text-gray-600 text-sm">
             {{ state.embedCode }}
