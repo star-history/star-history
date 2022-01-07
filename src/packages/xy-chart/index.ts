@@ -133,16 +133,6 @@ const XYChart = (
   addFont(d3Selection);
   addFilter(d3Selection);
 
-  if (title) {
-    drawTitle(d3Selection, title, options.strokeColor);
-  }
-  if (xLabel) {
-    drawXLabel(d3Selection, xLabel, options.strokeColor);
-  }
-  if (yLabel) {
-    drawYLabel(d3Selection, yLabel, options.strokeColor);
-  }
-
   const tooltip = new ToolTip({
     selection: d3Selection,
     title: "",
@@ -188,6 +178,28 @@ const XYChart = (
     .range([chartHeight, 0]);
 
   const svgChart = chart.append("g").attr("pointer-events", "all");
+
+  if (title) {
+    drawTitle(d3Selection, title, options.strokeColor);
+  }
+  if (xLabel) {
+    drawXLabel(d3Selection, xLabel, options.strokeColor);
+  }
+  if (yLabel) {
+    const maxYData = Math.max(...allYData);
+    let offsetY = 24;
+    // dynamic offset Y label
+    if (maxYData > 100000) {
+      offsetY = 2;
+    } else if (maxYData > 10000) {
+      offsetY = 8;
+    } else if (maxYData > 1000) {
+      offsetY = 12;
+    } else if (maxYData > 100) {
+      offsetY = 20;
+    }
+    drawYLabel(d3Selection, yLabel, options.strokeColor, offsetY);
+  }
 
   // draw axis
   drawXAxis(svgChart, {

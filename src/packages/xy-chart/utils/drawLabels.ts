@@ -34,7 +34,8 @@ export const drawXLabel = (
 export const drawYLabel = (
   seletion: D3Selection,
   text: string,
-  color: string
+  color: string,
+  offsetY = 6
 ) => {
   seletion
     .append("text")
@@ -44,7 +45,7 @@ export const drawYLabel = (
     .style("font-size", 17)
     .style("fill", color)
     .text(text)
-    .attr("y", 6)
+    .attr("y", offsetY)
     .call((f) => {
       const textLength = f.node()?.getComputedTextLength() || 24;
       f.attr(
