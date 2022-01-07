@@ -136,6 +136,7 @@ export default defineComponent({
 
       if (reposStarData.length === 0) {
         state.chartData = undefined;
+        toastWarn(`No repo found`);
       } else {
         reposStarData.sort((d1, d2) => {
           return (
