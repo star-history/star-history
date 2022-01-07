@@ -75,6 +75,13 @@
       </button>
       <button
         class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
+        @click="handleGenEmbedCodeDialogBtnClick"
+      >
+        <i class="fas fa-code"></i>
+        Embed
+      </button>
+      <button
+        class="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
         @click="handleCopyLinkBtnClick"
       >
         <i class="far fa-copy"></i>
@@ -95,6 +102,10 @@
     v-if="state.showSetTokenDialog"
     @close="handleSetTokenDialogClose"
   />
+  <GenerateEmbedCodeDialog
+    v-if="state.showGenEmbedCodeDialog"
+    @close="handleGenEmbedCodeDialogClose"
+  />
 </template>
 
 <script lang="ts">
@@ -114,6 +125,7 @@ import { XYChartData, XYData } from "../packages/xy-chart";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
+import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";
 
 interface State {
   chartMode: "Date" | "Timeline";
@@ -127,12 +139,14 @@ interface State {
   chartData: XYChartData | undefined;
   isGeneratingImage: boolean;
   showSetTokenDialog: boolean;
+  showGenEmbedCodeDialog: boolean;
 }
 
 export default defineComponent({
   name: "StarChartViewer",
   components: {
     BytebaseBanner,
+    GenerateEmbedCodeDialog,
     StarXYChart,
     TokenSettingDialog,
   },
@@ -143,6 +157,7 @@ export default defineComponent({
       chartData: undefined,
       isGeneratingImage: false,
       showSetTokenDialog: false,
+      showGenEmbedCodeDialog: false,
     });
     const store = useStore<AppState>();
     const containerElRef = ref<HTMLDivElement | null>(null);
@@ -444,6 +459,14 @@ export default defineComponent({
       link.click();
     };
 
+    const handleGenEmbedCodeDialogBtnClick = () => {
+      state.showGenEmbedCodeDialog = true;
+    };
+
+    const handleGenEmbedCodeDialogClose = () => {
+      state.showGenEmbedCodeDialog = false;
+    };
+
     const handleToggleChartBtnClick = () => {
       store.commit(
         "setChartMode",
@@ -467,6 +490,8 @@ export default defineComponent({
       handleExportAsCSVBtnClick,
       handleSetTokenDialogClose,
       handleToggleChartBtnClick,
+      handleGenEmbedCodeDialogBtnClick,
+      handleGenEmbedCodeDialogClose,
     };
   },
 });
