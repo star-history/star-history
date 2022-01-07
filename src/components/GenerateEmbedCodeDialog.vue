@@ -39,54 +39,42 @@
           >, and paste it into the textbox below (no scope to your personal data
           is needed).
         </p>
-        <div class="w-full py-4 flex flex-row justify-start items-center">
-          <span class="w-16 text-right pr-2">Token: </span>
-          <input
-            v-model="state.token"
-            class="border w-96 px-3 leading-8 rounded"
-            type="text"
-          />
-        </div>
-        <p>
-          <span class="font-bold text-red-600"
-            >PLEASE DO NOT GIVE ANY SCOPE PERMISSION TO THE TOKEN.</span
-          >
-          If you did, someone could use this to access your personal data.
+        <br />
+        <p class="leading-8">
+          <span class="text-red-600">*</span> Access Token
         </p>
-        <div class="w-full py-3 flex flex-row justify-start items-center">
-          <span class="w-16 text-right pr-2">Width: </span>
-          <input
-            v-model="state.width"
-            min="600"
-            class="border w-24 px-3 mr-1 leading-8 rounded"
-            type="number"
-          />
-          <span>px</span>
-        </div>
-        <div class="w-full py-3 flex flex-row justify-start items-center">
-          <span class="w-16 text-right pr-2">Height: </span>
-          <input
-            v-model="state.height"
-            min="400"
-            class="border w-24 px-3 mr-1 leading-8 rounded"
-            type="number"
-          />
-          <span>px</span>
-        </div>
-        <p class="w-16 text-right pr-2 leading-8">Codes:</p>
-        <div class="relative w-full h-auto border p-4 pb-6 rounded">
+        <input
+          v-model="state.token"
+          class="w-full outline-none border mt-2 shadow-inner p-2 rounded-md focus:shadow-focus"
+          type="text"
+        />
+        <br />
+        <p class="font-bold leading-8">Codes</p>
+        <div
+          class="relative w-full h-auto border mt-2 p-4 rounded-md shadow-inner"
+        >
           <p class="font-mono break-all text-gray-600">{{ state.embedCode }}</p>
-          <button
-            class="absolute bottom-2 right-2 pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-light hover:bg-green-600"
-            @click="handleCopyBtnClick"
-          >
-            Copy
-          </button>
         </div>
-        <p class="my-2 text-dark">
+        <p class="mt-2 leading-8 text-dark">
           Usage: Copy and paste the code into your blog or website.
         </p>
       </main>
+      <footer
+        class="w-full flex flex-row justify-end bg-gray-100 items-center p-4 pr-5 border-t rounded-b-md"
+      >
+        <button
+          class="px-4 leading-10 rounded-md text-dark mr-2 hover:bg-gray-300"
+          @click="handleCloseBtnClick"
+        >
+          Close
+        </button>
+        <button
+          class="px-4 leading-10 rounded-md bg-green-600 shadow-inner text-light hover:bg-green-700"
+          @click="handleCopyBtnClick"
+        >
+          Copy
+        </button>
+      </footer>
     </div>
   </Dialog>
 </template>
@@ -101,8 +89,6 @@ import Dialog from "./Dialog.vue";
 interface State {
   embedCode: string;
   token: string;
-  width: number;
-  height: number;
 }
 
 export default defineComponent({
@@ -114,33 +100,24 @@ export default defineComponent({
     const state = reactive<State>({
       embedCode: "",
       token: store.state.token,
-      width: 600,
-      height: 400,
     });
 
     onMounted(() => {
-      state.embedCode = `<iframe width="${state.width}" height="${
-        state.height
-      }" src="${window.location.origin}/embed/?secret=${btoa(
-        state.token
-      )}#${store.state.repos.join("&")}&Date" frameBorder="0"></iframe>`;
+      state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
+        window.location.origin
+      }/embed/?secret=${btoa(state.token)}#${store.state.repos.join(
+        "&"
+      )}&Date" frameBorder="0"></iframe>`;
     });
 
     watch(
-      () => [state.token, state.width, state.height],
+      () => [state.token],
       () => {
-        if (!state.width || state.width < 600) {
-          state.width = 600;
-        }
-        if (!state.height || state.height < 400) {
-          state.height = 400;
-        }
-
-        state.embedCode = `<iframe width="${state.width}" height="${
-          state.height
-        }" src="${window.location.origin}/embed/?secret=${btoa(
-          state.token
-        )}#${store.state.repos.join("&")}&Date" frameBorder="0"></iframe>`;
+        state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
+          window.location.origin
+        }/embed/?secret=${btoa(state.token)}#${store.state.repos.join(
+          "&"
+        )}&Date" frameBorder="0"></iframe>`;
       }
     );
 
