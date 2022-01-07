@@ -2,47 +2,55 @@
   <div class="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
     <Header />
     <section
-      class="w-full px-4 md:w-5/6 lg:max-w-7xl h-full flex flex-col justify-start items-center self-center"
+      class="w-full px-4 md:w-5/6 lg:max-w-7xl min-h-full h-auto flex flex-col justify-start items-center self-center"
     >
-      <p class="pt-8">Star History Blog</p>
+      <p
+        class="mt-12 p-8 text-4xl font-bold text-dark"
+        style="font-family: 'xkcd'"
+      >
+        Star History Blog
+      </p>
       <!-- Featured posts -->
-      <div class="w-full mt-12 flex flex-col justify-start items-start">
-        <router-link
+      <div class="w-full mt-8 flex flex-col justify-start items-start">
+        <div
           v-for="post in state.featuredPosts"
           :key="post.slug"
-          :to="{ path: `/blog/${post.slug}` }"
-          class="w-full h-auto flex flex-col border mb-4"
+          class="w-full h-auto flex flex-col border rounded-md mb-6 shadow-lg"
         >
-          <img
-            class="h-60 w-full flex-shrink-0 object-cover"
-            :src="post.feature_image || ''"
-            :alt="post.feature_image_alt || ''"
-          />
-          <div class="w-full p-6 flex flex-col justify-start">
-            <div class="w-full flex flex-row justify-start items-center">
-              <span
-                v-for="tag in post.tags"
-                :key="tag.id"
-                class="items-center px-3 py-0.5 mr-2 rounded-full text-sm font-medium"
-              >
-                {{ tag.name }}
-              </span>
-            </div>
+          <router-link :to="{ path: `/blog/${post.slug}` }">
+            <img
+              class="h-60 w-full flex-shrink-0 object-cover rounded-t-md"
+              :src="post.feature_image || ''"
+              :alt="post.feature_image_alt || ''"
+            />
+          </router-link>
+          <div class="w-full p-6 py-4 flex flex-col justify-start">
             <div class="mt-2 w-full flex flex-col justify-start items-start">
-              <p class="text-xl font-semibold text-dark">
-                {{ post.title }}
-              </p>
+              <router-link :to="{ path: `/blog/${post.slug}` }">
+                <p class="text-xl font-semibold text-dark">
+                  {{ post.title }}
+                </p>
+              </router-link>
               <p class="mt-3 text-base text-gray-500">
                 {{ post.excerpt }}
               </p>
+              <div class="w-full mt-2 flex flex-row justify-start items-center">
+                <span
+                  v-for="tag in post.tags"
+                  :key="tag.id"
+                  class="items-center py-1 mr-3 rounded-full text-sm text-gray-500"
+                >
+                  # {{ tag.name }}
+                </span>
+              </div>
             </div>
-            <div class="mt-6 flex flex-row justify-start items-center">
+            <div class="mt-3 flex flex-row justify-start items-center">
               <img
                 class="w-10 h-auto object-cover rounded-full flex-shrink-0"
                 :src="post.authors![0].profile_image || ''"
                 alt=""
               />
-              <div class="ml-3 flex flex-col justify-center items-start">
+              <div class="ml-2 flex flex-col justify-center items-start">
                 <p class="text-sm font-medium text-gray-900">
                   {{ post.authors![0].name || "" }}
                 </p>
@@ -65,37 +73,36 @@
               </div>
             </div>
           </div>
-        </router-link>
+        </div>
       </div>
       <!-- Normal posts -->
       <div class="w-full flex flex-col justify-start items-start grow mb-16">
-        <router-link
+        <div
           v-for="post in state.posts"
           :key="post.slug"
-          :to="{ path: `/blog/${post.slug}` }"
-          class="w-full h-auto flex flex-row justify-between border mb-4"
+          class="w-full h-auto flex flex-col-reverse justify-start lg:flex-row lg:justify-between border rounded-md mb-4"
         >
-          <div class="p-6 flex flex-col justify-start items-start shrink">
+          <div class="p-6 pr-4 w-full flex flex-col justify-start items-start">
             <div class="w-full flex flex-col justify-start items-start">
-              <p class="text-xl font-semibold text-dark">
-                {{ post.title }}
-              </p>
-              <p
-                class="mt-3 text-base text-gray-500"
-                style="word-break: break-word"
-              >
+              <router-link :to="{ path: `/blog/${post.slug}` }">
+                <p class="text-xl font-semibold text-dark">
+                  {{ post.title }}
+                </p>
+              </router-link>
+              <p class="w-full mt-3 text-base text-gray-500 break-words">
                 {{ post.excerpt }}
               </p>
             </div>
+            <div class="grow"></div>
             <div
-              class="mt-6 mb-2 w-full flex flex-row justify-start items-center"
+              class="mt-4 mb-2 w-full flex flex-row justify-start items-center"
             >
               <span
                 v-for="tag in post.tags"
                 :key="tag.id"
-                class="items-center px-3 py-0.5 mr-2 rounded-full text-sm font-medium"
+                class="items-center py-0.5 mr-3 rounded-full text-sm text-gray-500"
               >
-                {{ tag.name }}
+                # {{ tag.name }}
               </span>
             </div>
             <div class="flex flex-row justify-start items-center">
@@ -126,11 +133,24 @@
             </div>
           </div>
           <img
-            class="shrink-0 h-auto max-h-full w-auto max-w-xs p-2 object-cover"
+            v-if="post.feature_image"
+            class="shrink-0 w-full h-60 object-cover rounded-t-md lg:w-auto lg:h-auto lg:max-h-full lg:max-w-xs lg:m-2 lg:rounded-md"
             :src="post.feature_image || ''"
             :alt="post.feature_image_alt || ''"
           />
-        </router-link>
+        </div>
+      </div>
+      <div
+        v-if="
+          !state.isLoading &&
+          state.featuredPosts.length + state.posts.length === 0
+        "
+        class="w-full h-10 flex flex-col justify-center items-center"
+      >
+        <p class="text-center leading-8 text-lg text-dark font-medium">
+          Oops, no article found. <br />
+          Wait a moment please, I'm calling our excellent writer.
+        </p>
       </div>
     </section>
     <div class="grow py-6"></div>
@@ -141,12 +161,12 @@
 <script lang="ts">
 import { PostOrPage } from "@tryghost/content-api";
 import { defineComponent, onMounted, reactive } from "vue";
-import { useRoute } from "vue-router";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import api from "../helpers/api";
 
 interface State {
+  isLoading: boolean;
   featuredPosts: PostOrPage[];
   posts: PostOrPage[];
 }
@@ -156,26 +176,26 @@ export default defineComponent({
   components: { Footer, Header },
   setup: () => {
     const state = reactive<State>({
+      isLoading: true,
       featuredPosts: [],
       posts: [],
     });
-    const currentRoute = useRoute();
-    console.log(currentRoute.name);
 
     onMounted(async () => {
       try {
-        const posts = await api.getPosts();
+        const tags = ["StarHistory"];
+        const posts = await api.getPosts(tags);
         for (const p of posts) {
           if (p.featured) {
             state.featuredPosts.push(p);
           } else {
-            // TODO: Filter post with tags?
             state.posts.push(p);
           }
         }
       } catch (error) {
         // do nth
       }
+      state.isLoading = false;
     });
 
     return {

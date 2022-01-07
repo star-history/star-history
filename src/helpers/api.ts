@@ -178,12 +178,19 @@ namespace api {
     version: "v3",
   });
 
-  export async function getPosts(page?: number): Promise<PostOrPage[]> {
+  export async function getPosts(
+    tagList?: string[],
+    page?: number
+  ): Promise<PostOrPage[]> {
     const params: Params = {
       limit: "all",
       include: ["tags", "authors"],
       order: "published_at DESC",
     };
+
+    if (tagList && tagList.length > 0) {
+      params.filter = `tag:[${tagList.join(", ")}]`;
+    }
 
     if (page) {
       params.page = page;
