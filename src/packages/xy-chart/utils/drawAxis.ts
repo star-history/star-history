@@ -77,7 +77,7 @@ export const drawYAxis = (
   let type: NumberUnitType | undefined = undefined;
   const yAxisGenerator = axisLeft(yScale)
     .tickSize(1)
-    .tickPadding(10)
+    .tickPadding(6)
     .ticks(tickCount, "s")
     .tickFormat((d) => {
       if (d === 0) {
