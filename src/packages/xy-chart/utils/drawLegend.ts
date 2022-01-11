@@ -33,12 +33,12 @@ const drawLegend = (
       .attr("rx", 2)
       .attr("ry", 2)
       .attr("filter", "url(#xkcdify)")
-      .attr("x", 15)
+      .attr("x", 5 + legendPadding)
       .attr("y", 17 + xkcdCharHeight * i);
     // draw text
     textLayer
       .append("text")
-      .style("font-size", "15")
+      .style("font-size", "15px")
       .style("fill", strokeColor)
       .attr("x", colorBlockWidth + 12)
       .attr("y", 17 + xkcdCharHeight * i + 8)
