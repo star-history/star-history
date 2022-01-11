@@ -59,7 +59,7 @@ export const drawXAxis = (
   selection
     .selectAll(".xaxis > .tick > text")
     .style("font-family", fontFamily)
-    .style("font-size", "16")
+    .style("font-size", "16px")
     .style("fill", stroke);
 };
 
@@ -100,6 +100,6 @@ export const drawYAxis = (
   selection
     .selectAll(".yaxis > .tick > text")
     .style("font-family", fontFamily)
-    .style("font-size", "16")
+    .style("font-size", "16px")
     .style("fill", stroke);
 };

@@ -92,7 +92,7 @@ class ToolTip {
 
     this.tipTitle = this.svg
       .append("text")
-      .style("font-size", 15)
+      .style("font-size", "15px")
       .style("font-weight", "bold")
       .style("fill", this.strokeColor)
       .attr("x", 15)
@@ -163,7 +163,7 @@ class ToolTip {
 
     svg
       .append("text")
-      .style("font-size", "15")
+      .style("font-size", "15px")
       .style("fill", this.strokeColor)
       .attr("x", 15 + 12)
       .attr("y", 37 + 20 * i + 8)

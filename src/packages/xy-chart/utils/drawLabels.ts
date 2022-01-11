@@ -7,7 +7,7 @@ export const drawTitle = (
 ) => {
   seletion
     .append("text")
-    .style("font-size", "20")
+    .style("font-size", "20px")
     .style("font-weight", "bold")
     .style("fill", color)
     .attr("x", "50%")
@@ -23,7 +23,7 @@ export const drawXLabel = (
 ) => {
   seletion
     .append("text")
-    .style("font-size", 17)
+    .style("font-size", "17px")
     .style("fill", color)
     .attr("x", "50%")
     .attr("y", ((seletion.attr("height") as unknown as number) || 10) - 10)
@@ -42,7 +42,7 @@ export const drawYLabel = (
     .attr("text-anchor", "end")
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .style("font-size", 17)
+    .style("font-size", "17px")
     .style("fill", color)
     .text(text)
     .attr("y", offsetY)
