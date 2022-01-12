@@ -47,8 +47,11 @@ const drawLegend = (
     maxTextLength = Math.max(item.text.length, maxTextLength);
   });
 
-  const backgroundWidth =
-    maxTextLength * xkcdCharWidth + colorBlockWidth + legendPadding;
+  const bboxWidth = textLayer.node()?.getBBox().width ?? 0;
+  const backgroundWidth = Math.max(
+    bboxWidth + 15,
+    maxTextLength * xkcdCharWidth + colorBlockWidth + legendPadding
+  );
   const backgroundHeight = items.length * xkcdCharHeight + legendPadding;
 
   // add background
