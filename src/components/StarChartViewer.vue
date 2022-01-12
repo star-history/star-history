@@ -437,7 +437,7 @@ export default defineComponent({
               : (starCount / 1000).toFixed(1) + "K ⭐️ "
           }`;
         }
-        text = `${starText}Thank you!🙏%0A${starhistoryLink}%0A%0A`;
+        text = `${starText}Thank you! 🙏%0A${starhistoryLink}%0A%0A`;
       } else {
         text = repos.join(" vs ") + "%0A%0A";
       }
