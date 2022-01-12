@@ -74,9 +74,9 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, watch } from "vue";
-import { useStore } from "vuex";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
+import useAppStore from "../store";
 import Dialog from "./Dialog.vue";
 
 interface State {
@@ -89,16 +89,16 @@ export default defineComponent({
   components: { Dialog },
   emits: ["close"],
   setup(_, { emit }) {
-    const store = useStore<AppState>();
+    const store = useAppStore();
     const state = reactive<State>({
       embedCode: "",
-      token: store.state.token,
+      token: store.token,
     });
 
     onMounted(() => {
       state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
         window.location.origin
-      }/embed?secret=${btoa(state.token)}#${store.state.repos.join(
+      }/embed?secret=${btoa(state.token)}#${store.repos.join(
         "&"
       )}&Date" frameBorder="0"></iframe>`;
     });
@@ -108,7 +108,7 @@ export default defineComponent({
       () => {
         state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
           window.location.origin
-        }/embed?secret=${btoa(state.token)}#${store.state.repos.join(
+        }/embed?secret=${btoa(state.token)}#${store.repos.join(
           "&"
         )}&Date" frameBorder="0"></iframe>`;
       }

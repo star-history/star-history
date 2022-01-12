@@ -70,9 +70,9 @@ import {
   ref,
   watch,
 } from "vue";
-import { useStore } from "vuex";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
+import useAppStore from "../store";
 
 interface State {
   repo: string;
@@ -85,18 +85,18 @@ interface State {
 export default defineComponent({
   name: "RepoInputer",
   setup() {
-    const store = useStore<AppState>();
+    const store = useAppStore();
     const state = reactive<State>({
       repo: "",
       repos: [],
     });
     const inputElRef = ref<HTMLInputElement | null>(null);
     const isFetching = computed(() => {
-      return store.state.isFetching;
+      return store.isFetching;
     });
 
     onMounted(() => {
-      state.repos = store.state.repos.map((r) => {
+      state.repos = store.repos.map((r) => {
         return {
           name: r,
           visible: true,
@@ -105,17 +105,17 @@ export default defineComponent({
     });
 
     watch(
-      () => [store.state.repos, store.state.chartMode],
+      () => [store.repos, store.chartMode],
       () => {
         for (const r of state.repos) {
-          if (r.visible && !store.state.repos.includes(r.name)) {
+          if (r.visible && !store.repos.includes(r.name)) {
             state.repos.splice(state.repos.indexOf(r), 1);
           }
         }
 
         let hash = "";
-        if (store.state.repos.length > 0) {
-          hash = `#${store.state.repos.join("&")}&${store.state.chartMode}`;
+        if (store.repos.length > 0) {
+          hash = `#${store.repos.join("&")}&${store.chartMode}`;
         }
         // Sync location hash only right here
         window.location.hash = hash;
@@ -123,12 +123,12 @@ export default defineComponent({
     );
 
     const handleAddRepoBtnClick = () => {
-      if (store.state.isFetching) {
+      if (store.isFetching) {
         return;
       }
 
       let rawRepos = state.repo;
-      if (rawRepos === "" && store.state.repos.length === 0) {
+      if (rawRepos === "" && store.repos.length === 0) {
         rawRepos = "bytebase/star-history";
       }
 
@@ -154,8 +154,7 @@ export default defineComponent({
               toast.warn(`Repo ${repo} is already on the chart`);
             } else {
               r.visible = true;
-              store.commit(
-                "setRepos",
+              store.setRepos(
                 state.repos.filter((r) => r.visible).map((r) => r.name)
               );
             }
@@ -167,7 +166,7 @@ export default defineComponent({
           name: repo,
           visible: true,
         });
-        store.commit("addRepo", repo);
+        store.addRepo(repo);
       }
       state.repo = "";
     };
@@ -179,10 +178,7 @@ export default defineComponent({
           break;
         }
       }
-      store.commit(
-        "setRepos",
-        state.repos.filter((r) => r.visible).map((r) => r.name)
-      );
+      store.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name));
     };
 
     const handleDeleteRepoBtnClick = (repo: string) => {
@@ -192,12 +188,12 @@ export default defineComponent({
           break;
         }
       }
-      store.commit("delRepo", repo);
+      store.delRepo(repo);
     };
 
     const handleClearAllRepoBtnClick = () => {
       state.repos = [];
-      store.commit("setRepos", []);
+      store.setRepos([]);
     };
 
     const handleInputerPasted = async (event: ClipboardEvent) => {

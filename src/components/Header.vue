@@ -91,7 +91,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive } from "vue";
-import { useStore } from "vuex";
+import useAppStore from "../store";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
@@ -103,13 +103,13 @@ export default defineComponent({
   name: "Header",
   components: { TokenSettingDialog },
   setup() {
-    const store = useStore<AppState>();
+    const store = useAppStore();
     const state = reactive<State>({
       showDropMenu: false,
       showSetTokenDialog: false,
     });
     const token = computed(() => {
-      return store.state.token;
+      return store.token;
     });
 
     const handleSetTokenBtnClick = () => {

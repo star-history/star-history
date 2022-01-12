@@ -72,8 +72,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { useStore } from "vuex";
 import storage from "../helpers/storage";
+import useAppStore from "../store";
 import Dialog from "./Dialog.vue";
 
 interface State {
@@ -85,13 +85,13 @@ export default defineComponent({
   components: { Dialog },
   emits: ["close"],
   setup(_, { emit }) {
-    const store = useStore<AppState>();
+    const store = useAppStore();
     const state = reactive<State>({
-      token: store.state.token,
+      token: store.token,
     });
 
     const handleSaveTokenBtnClick = () => {
-      store.commit("setToken", state.token);
+      store.setToken(state.token);
       storage.set({
         accessTokenCache: state.token,
       });
@@ -104,7 +104,7 @@ export default defineComponent({
 
     return {
       state,
-      tokenCache: store.state.token,
+      tokenCache: store.token,
       handleSaveTokenBtnClick,
       handleCloseBtnClick,
     };
