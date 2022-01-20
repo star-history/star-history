@@ -1,8 +1,10 @@
-import { createStore } from "vuex";
+import { createPinia, defineStore } from "pinia";
 import storage from "../helpers/storage";
 
-const store = createStore({
-  state(): AppState {
+export const piniaInstance = createPinia();
+
+const useAppStore = defineStore("appStore", {
+  state: (): AppState => {
     const { accessTokenCache } = storage.get(["accessTokenCache"]);
     const hash = window.location.hash.slice(1);
     const params = hash.split("&").filter((i) => Boolean(i));
@@ -26,32 +28,32 @@ const store = createStore({
       chartMode: chartMode,
     };
   },
-  mutations: {
-    addRepo(state: AppState, repo: string) {
-      if (!state.repos.includes(repo)) {
-        state.repos.push(repo);
+  actions: {
+    addRepo(repo: string) {
+      if (!this.repos.includes(repo)) {
+        this.repos.push(repo);
       }
-      state.repos = [...state.repos];
+      this.repos = [...this.repos];
     },
-    delRepo(state: AppState, repo: string) {
-      if (state.repos.includes(repo)) {
-        state.repos.splice(state.repos.indexOf(repo), 1);
+    delRepo(repo: string) {
+      if (this.repos.includes(repo)) {
+        this.repos.splice(this.repos.indexOf(repo), 1);
       }
-      state.repos = [...state.repos];
+      this.repos = [...this.repos];
     },
-    setRepos(state: AppState, repos: string[]) {
-      state.repos = repos;
+    setRepos(repos: string[]) {
+      this.repos = repos;
     },
-    setToken(state: AppState, token: string) {
-      state.token = token;
+    setToken(token: string) {
+      this.token = token;
     },
-    setIsFetching(state: AppState, isFetching: boolean) {
-      state.isFetching = isFetching;
+    setIsFetching(isFetching: boolean) {
+      this.isFetching = isFetching;
     },
-    setChartMode(state: AppState, chartMode: ChartMode) {
-      state.chartMode = chartMode;
+    setChartMode(chartMode: ChartMode) {
+      this.chartMode = chartMode;
     },
   },
 });
 
-export default store;
+export default useAppStore;

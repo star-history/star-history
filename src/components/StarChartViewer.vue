@@ -117,7 +117,6 @@ import {
   ref,
   watch,
 } from "vue";
-import { useStore } from "vuex";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -126,6 +125,7 @@ import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";
+import useAppStore from "../store";
 
 interface State {
   chartMode: "Date" | "Timeline";
@@ -159,37 +159,34 @@ export default defineComponent({
       showSetTokenDialog: false,
       showGenEmbedCodeDialog: false,
     });
-    const store = useStore<AppState>();
+    const store = useAppStore();
     const containerElRef = ref<HTMLDivElement | null>(null);
     const isFetching = computed(() => {
-      return store.state.isFetching;
+      return store.isFetching;
     });
     const chartMode = computed(() => {
-      return store.state.chartMode;
+      return store.chartMode;
     });
 
     onMounted(() => {
-      if (store.state.repos.length > 0) {
-        fetchReposStarData(store.state.repos);
+      if (store.repos.length > 0) {
+        fetchReposStarData(store.repos);
       }
     });
 
     watch(
-      () => store.state.repos,
+      () => store.repos,
       () => {
-        fetchReposStarData(store.state.repos);
+        fetchReposStarData(store.repos);
       }
     );
 
     const fetchReposStarData = async (repos: string[]) => {
-      store.commit("setIsFetching", true);
+      store.setIsFetching(true);
       for (const repo of repos) {
         if (!state.repoStarDataMap.has(repo)) {
           try {
-            const starRecords = await api.getRepoStarRecords(
-              repo,
-              store.state.token
-            );
+            const starRecords = await api.getRepoStarRecords(repo, store.token);
             state.repoStarDataMap.set(repo, starRecords);
           } catch (error: any) {
             if (error?.response?.status === 404) {
@@ -205,15 +202,15 @@ export default defineComponent({
             } else {
               toast.warn("Some unexpected error happened, try again later");
             }
-            store.commit("delRepo", repo);
+            store.delRepo(repo);
             return;
           }
         }
       }
-      store.commit("setIsFetching", false);
+      store.setIsFetching(false);
 
       const reposStarData: RepoStarData[] = [];
-      for (const repo of store.state.repos) {
+      for (const repo of store.repos) {
         const records = state.repoStarDataMap.get(repo);
         if (records) {
           reposStarData.push({
@@ -382,7 +379,7 @@ export default defineComponent({
 
     const handleExportAsCSVBtnClick = () => {
       let CSVContent = "";
-      for (const repo of store.state.repos) {
+      for (const repo of store.repos) {
         const records = state.repoStarDataMap.get(repo);
         if (records) {
           const temp: any[] = [];
@@ -412,7 +409,7 @@ export default defineComponent({
     };
 
     const handleShareToTwitterBtnClick = async () => {
-      const repos = store.state.repos;
+      const repos = store.repos;
       if (repos.length === 0) {
         toast.error("No repo found");
         return;
@@ -426,10 +423,7 @@ export default defineComponent({
         let starCount = 0;
 
         try {
-          const { data } = await api.getRepoStargazersCount(
-            repo,
-            store.state.token
-          );
+          const { data } = await api.getRepoStargazersCount(repo, store.token);
           starCount = data.stargazers_count;
         } catch (error) {
           // do nth
@@ -443,7 +437,7 @@ export default defineComponent({
               : (starCount / 1000).toFixed(1) + "K ⭐️ "
           }`;
         }
-        text = `${starText}Thank you!🙏%0A${starhistoryLink}%0A%0A`;
+        text = `${starText}Thank you! 🙏%0A${starhistoryLink}%0A%0A`;
       } else {
         text = repos.join(" vs ") + "%0A%0A";
       }
@@ -468,11 +462,8 @@ export default defineComponent({
     };
 
     const handleToggleChartBtnClick = () => {
-      store.commit(
-        "setChartMode",
-        chartMode.value === "Date" ? "Timeline" : "Date"
-      );
-      fetchReposStarData(store.state.repos);
+      store.setChartMode(chartMode.value === "Date" ? "Timeline" : "Date");
+      fetchReposStarData(store.repos);
     };
 
     const handleSetTokenDialogClose = () => {

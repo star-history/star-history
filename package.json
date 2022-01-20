@@ -11,13 +11,13 @@
   "dependencies": {
     "d3": "^7.2.1",
     "dayjs": "^1.10.7",
+    "pinia": "^2.0.9",
     "tailwindcss": "^3.0.7",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vue": "^3.2.25",
     "vue-router": "4",
-    "vue-tsc": "^0.29.8",
-    "vuex": "^4.0.2"
+    "vue-tsc": "^0.29.8"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.171",
