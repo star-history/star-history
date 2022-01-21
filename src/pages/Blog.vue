@@ -51,6 +51,7 @@
           v-for="tag in state.post?.tags"
           :key="tag.id"
           class="items-center px-3 py-0.5 mr-2 rounded-full text-base"
+          :class="tag.name === 'StarHistory' ? 'hidden' : ''"
         >
           # {{ tag.name }}
         </span>
