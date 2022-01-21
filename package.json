@@ -9,6 +9,7 @@
     "build:ext": "vite build --mode extension && node ./scripts/copyExtFiles.js"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.3.1",
     "@tailwindcss/typography": "^0.5.0",
     "@tryghost/content-api": "^1.5.16",
     "d3": "^7.2.1",

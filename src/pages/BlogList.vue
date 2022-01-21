@@ -31,7 +31,7 @@
                   {{ post.title }}
                 </p>
               </router-link>
-              <p class="mt-3 text-base text-gray-500">
+              <p class="mt-3 text-base text-gray-500 line-clamp-3">
                 {{ post.excerpt }}
               </p>
               <div class="w-full mt-2 flex flex-row justify-start items-center">
@@ -89,7 +89,9 @@
                   {{ post.title }}
                 </p>
               </router-link>
-              <p class="w-full mt-3 text-base text-gray-500 break-words">
+              <p
+                class="w-full mt-3 text-base text-gray-500 break-words line-clamp-3"
+              >
                 {{ post.excerpt }}
               </p>
             </div>
@@ -148,12 +150,12 @@
         class="w-full h-10 flex flex-col justify-center items-center"
       >
         <p class="text-center leading-8 text-lg text-dark font-medium">
-          Oops, no article found. <br />
-          Wait a moment please, I'm calling our excellent writer.
+          Oops! No article found.
         </p>
       </div>
     </section>
     <div class="grow py-6"></div>
+    <SubscribeSection />
     <Footer />
   </div>
 </template>
@@ -164,6 +166,7 @@ import { defineComponent, onMounted, reactive } from "vue";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import api from "../helpers/api";
+import SubscribeSection from "../components/SubscribeSection.vue";
 
 interface State {
   isLoading: boolean;
@@ -173,7 +176,7 @@ interface State {
 
 export default defineComponent({
   name: "BlogList",
-  components: { Footer, Header },
+  components: { Footer, Header, SubscribeSection },
   setup: () => {
     const state = reactive<State>({
       isLoading: true,

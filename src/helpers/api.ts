@@ -219,6 +219,23 @@ namespace api {
         throw err;
       });
   }
+
+  export async function subscribeBlog(email: string) {
+    return fetch(
+      "https://newsletter.bytebase.com/members/api/send-magic-link/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          name: "",
+          requestSrc: "bytebase.com",
+        }),
+      }
+    );
+  }
 }
 
 export default api;

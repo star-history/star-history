@@ -19,6 +19,7 @@
       </div>
       <!-- author information -->
       <div
+        v-show="state.post"
         class="w-full mt-8 mb-2 max-w-6xl px-2 flex flex-row items-center justify-center text-sm text-gray-900 font-semibold tracking-wide uppercase"
       >
         <img
@@ -58,8 +59,17 @@
         class="w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl"
         v-html="state.post?.html"
       ></div>
+      <div
+        v-if="!state.isLoading && state.post === undefined"
+        class="w-full h-10 flex flex-col justify-center items-center"
+      >
+        <p class="text-center leading-8 text-lg text-dark font-medium">
+          Oops! No article found.
+        </p>
+      </div>
     </div>
     <div class="grow my-6"></div>
+    <SubscribeSection />
     <Footer />
   </div>
 </template>
@@ -71,16 +81,20 @@ import { useRoute } from "vue-router";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import api from "../helpers/api";
+import SubscribeSection from "../components/SubscribeSection.vue";
 
 interface State {
+  isLoading: boolean;
   post?: PostOrPage;
 }
 
 export default defineComponent({
   name: "Blog",
-  components: { Footer, Header },
+  components: { Footer, Header, SubscribeSection },
   setup: () => {
-    const state = reactive<State>({});
+    const state = reactive<State>({
+      isLoading: true,
+    });
     const currentRoute = useRoute();
 
     onMounted(async () => {
@@ -96,6 +110,8 @@ export default defineComponent({
       } catch (error) {
         // do nth
       }
+
+      state.isLoading = false;
     });
 
     return {
