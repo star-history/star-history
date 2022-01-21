@@ -188,11 +188,17 @@ export default defineComponent({
       try {
         const tags = ["StarHistory"];
         const posts = await api.getPosts(tags);
-        for (const p of posts) {
-          if (p.featured) {
-            state.featuredPosts.push(p);
+
+        for (const post of posts) {
+          const formatedPost = {
+            ...post,
+            tags: post.tags?.filter((t) => t.name !== "StarHistory"),
+          };
+
+          if (formatedPost.featured) {
+            state.featuredPosts.push(formatedPost);
           } else {
-            state.posts.push(p);
+            state.posts.push(formatedPost);
           }
         }
       } catch (error) {

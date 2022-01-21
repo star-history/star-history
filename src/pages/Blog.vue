@@ -51,7 +51,6 @@
           v-for="tag in state.post?.tags"
           :key="tag.id"
           class="items-center px-3 py-0.5 mr-2 rounded-full text-base"
-          :class="tag.name === 'StarHistory' ? 'hidden' : ''"
         >
           # {{ tag.name }}
         </span>
@@ -120,7 +119,12 @@ export default defineComponent({
 
       try {
         const post = await api.getPostDetailBySlug(blogSlug);
-        state.post = post;
+        const formatedPost = {
+          ...post,
+          tags: post.tags?.filter((t) => t.name !== "StarHistory"),
+        };
+
+        state.post = formatedPost;
       } catch (error) {
         // do nth
       }
