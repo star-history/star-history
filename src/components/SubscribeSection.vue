@@ -7,7 +7,7 @@
         Never miss a thing
       </h2>
       <p class="mt-2 text-lg text-gray-500">
-        Get touch with everything about open source.
+        Subscribe to our newsletter about open source
       </p>
     </div>
     <div class="mt-4">

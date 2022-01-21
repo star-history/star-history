@@ -66,6 +66,19 @@
         <p class="text-center leading-8 text-lg text-dark font-medium">
           Oops! No article found.
         </p>
+        <p class="text-center leading-8 text-lg text-dark font-medium">
+          <router-link
+            class="mt-3 flex flex-row justify-center items-center"
+            to="/blog"
+          >
+            <button
+              class="w-full px-4 py-2 h-full text-base rounded-md bg-gray-400 shadow-inner text-light hover:bg-gray-500"
+            >
+              <i class="fas fa-chevron-left mr-1"></i>
+              Back to blog list
+            </button>
+          </router-link>
+        </p>
       </div>
     </div>
     <div class="grow my-6"></div>
