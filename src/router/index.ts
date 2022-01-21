@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import EmbedWebSite from "../pages/EmbedWebSite.vue";
+import Blog from "../pages/Blog.vue";
+import BlogList from "../pages/BlogList.vue";
 import Home from "../pages/Home.vue";
-import NotFound from "../pages/NotFound.vue";
+import NotFound from "../pages/404.vue";
 
 const routes = [
   {
@@ -15,8 +17,18 @@ const routes = [
     component: EmbedWebSite,
   },
   {
+    path: "/blog",
+    name: "blog-list",
+    component: BlogList,
+  },
+  {
+    path: "/blog/:blogSlug",
+    name: "blog-detail",
+    component: Blog,
+  },
+  {
     path: "/:pathMatch(.*)*",
-    name: "not_found",
+    name: "404",
     component: NotFound,
   },
 ];

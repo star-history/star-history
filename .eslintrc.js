@@ -21,9 +21,10 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-namespace": "off",
+    "vue/no-v-html": "off",
     "vue/multi-word-component-names": "off",
-    "vue/require-default-prop": "off",
     "vue/one-component-per-file": "off",
+    "vue/require-default-prop": "off",
   },
   ignorePatterns: ["node_modules", "dist", "public"],
   overrides: [
