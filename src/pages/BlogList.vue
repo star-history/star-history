@@ -163,7 +163,7 @@
         </div>
       </div>
     </section>
-    <SubscribeSection v-if="!state.isLoading" />
+    <SubscribeSection v-if="!state.isLoading" class="mt-4 mb-8" />
     <Footer />
   </div>
 </template>
