@@ -72,8 +72,8 @@
   </Dialog>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, reactive, watch } from "vue";
+<script lang="ts" setup>
+import { onMounted, reactive, watch } from "vue";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
 import useAppStore from "../store";
@@ -84,55 +84,44 @@ interface State {
   token: string;
 }
 
-export default defineComponent({
-  name: "GenerateEmbedCodeDialog",
-  components: { Dialog },
-  emits: ["close"],
-  setup(_, { emit }) {
-    const store = useAppStore();
-    const state = reactive<State>({
-      embedCode: "",
-      token: store.token,
-    });
+const emit = defineEmits(["close"]);
 
-    onMounted(() => {
-      state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
-        window.location.origin
-      }/embed?secret=${btoa(state.token)}#${store.repos.join(
-        "&"
-      )}&Date" frameBorder="0"></iframe>`;
-    });
-
-    watch(
-      () => [state.token],
-      () => {
-        state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
-          window.location.origin
-        }/embed?secret=${btoa(state.token)}#${store.repos.join(
-          "&"
-        )}&Date" frameBorder="0"></iframe>`;
-      }
-    );
-
-    const handleCopyBtnClick = () => {
-      if (state.token === "") {
-        toast.warn("Please input the token");
-        return;
-      }
-
-      utils.copyTextToClipboard(state.embedCode);
-      toast.succeed("Embed code copied");
-    };
-
-    const handleCloseBtnClick = () => {
-      emit("close");
-    };
-
-    return {
-      state,
-      handleCloseBtnClick,
-      handleCopyBtnClick,
-    };
-  },
+const store = useAppStore();
+const state = reactive<State>({
+  embedCode: "",
+  token: store.token,
 });
+
+onMounted(() => {
+  state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
+    window.location.origin
+  }/embed?secret=${btoa(state.token)}#${store.repos.join(
+    "&"
+  )}&Date" frameBorder="0"></iframe>`;
+});
+
+watch(
+  () => [state.token],
+  () => {
+    state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
+      window.location.origin
+    }/embed?secret=${btoa(state.token)}#${store.repos.join(
+      "&"
+    )}&Date" frameBorder="0"></iframe>`;
+  }
+);
+
+const handleCopyBtnClick = () => {
+  if (state.token === "") {
+    toast.warn("Please input the token");
+    return;
+  }
+
+  utils.copyTextToClipboard(state.embedCode);
+  toast.succeed("Embed code copied");
+};
+
+const handleCloseBtnClick = () => {
+  emit("close");
+};
 </script>

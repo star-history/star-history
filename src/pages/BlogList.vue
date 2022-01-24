@@ -168,9 +168,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { PostOrPage } from "@tryghost/content-api";
-import { defineComponent, onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import api from "../helpers/api";
@@ -182,43 +182,33 @@ interface State {
   posts: PostOrPage[];
 }
 
-export default defineComponent({
-  name: "BlogList",
-  components: { Footer, Header, SubscribeSection },
-  setup: () => {
-    const state = reactive<State>({
-      isLoading: true,
-      featuredPosts: [],
-      posts: [],
-    });
+const state = reactive<State>({
+  isLoading: true,
+  featuredPosts: [],
+  posts: [],
+});
 
-    onMounted(async () => {
-      try {
-        const tags = ["StarHistory"];
-        const posts = await api.getPosts(tags);
+onMounted(async () => {
+  try {
+    const tags = ["StarHistory"];
+    const posts = await api.getPosts(tags);
 
-        for (const post of posts) {
-          const formatedPost = {
-            ...post,
-            tags: post.tags?.filter((t) => t.name !== "StarHistory"),
-          };
+    for (const post of posts) {
+      const formatedPost = {
+        ...post,
+        tags: post.tags?.filter((t) => t.name !== "StarHistory"),
+      };
 
-          if (formatedPost.featured) {
-            state.featuredPosts.push(formatedPost);
-          } else {
-            state.posts.push(formatedPost);
-          }
-        }
-      } catch (error) {
-        // do nth
+      if (formatedPost.featured) {
+        state.featuredPosts.push(formatedPost);
+      } else {
+        state.posts.push(formatedPost);
       }
+    }
+  } catch (error) {
+    // do nth
+  }
 
-      state.isLoading = false;
-    });
-
-    return {
-      state,
-    };
-  },
+  state.isLoading = false;
 });
 </script>

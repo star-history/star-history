@@ -70,8 +70,8 @@
   </Dialog>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
+<script lang="ts" setup>
+import { computed, reactive } from "vue";
 import storage from "../helpers/storage";
 import useAppStore from "../store";
 import Dialog from "./Dialog.vue";
@@ -80,34 +80,26 @@ interface State {
   token: string;
 }
 
-export default defineComponent({
-  name: "TokenSettingDialog",
-  components: { Dialog },
-  emits: ["close"],
-  setup(_, { emit }) {
-    const store = useAppStore();
-    const state = reactive<State>({
-      token: store.token,
-    });
+const emit = defineEmits(["close"]);
 
-    const handleSaveTokenBtnClick = () => {
-      store.setToken(state.token);
-      storage.set({
-        accessTokenCache: state.token,
-      });
-      emit("close");
-    };
-
-    const handleCloseBtnClick = () => {
-      emit("close");
-    };
-
-    return {
-      state,
-      tokenCache: store.token,
-      handleSaveTokenBtnClick,
-      handleCloseBtnClick,
-    };
-  },
+const store = useAppStore();
+const state = reactive<State>({
+  token: store.token,
 });
+
+const tokenCache = computed(() => {
+  return store.token;
+});
+
+const handleSaveTokenBtnClick = () => {
+  store.setToken(state.token);
+  storage.set({
+    accessTokenCache: state.token,
+  });
+  emit("close");
+};
+
+const handleCloseBtnClick = () => {
+  emit("close");
+};
 </script>

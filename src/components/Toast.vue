@@ -8,84 +8,75 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, reactive } from "vue";
+<script lang="ts" setup>
+import { computed, onMounted, reactive } from "vue";
 import { ANIMATION_DURATION } from "../helpers/consts";
 
 interface State {
   classname: string;
 }
 
-export default defineComponent({
-  name: "Toast",
-  props: {
-    message: {
-      type: String,
-      default: "",
-    },
-    type: {
-      type: String,
-      default: "normal",
-    },
-    duration: {
-      type: Number,
-      default: 2000,
-    },
-    destory: {
-      type: Function,
-      default: () => undefined,
-    },
+const props = defineProps({
+  message: {
+    type: String,
+    default: "",
   },
-  setup(props) {
-    const state = reactive<State>({
-      classname: "",
-    });
-
-    onMounted(() => {
-      if (props.duration < 0) {
-        return;
-      }
-
-      setTimeout(() => {
-        destoryToast();
-      }, props.duration);
-    });
-
-    const destoryToast = () => {
-      if (props.duration < 0) {
-        return;
-      }
-
-      state.classname = "-top-full";
-      setTimeout(() => {
-        if (props.destory) {
-          props.destory();
-        }
-      }, ANIMATION_DURATION);
-    };
-
-    return {
-      state,
-      handleToastClick: destoryToast,
-    };
+  type: {
+    type: String,
+    default: "normal",
   },
-  computed: {
-    bgColor() {
-      switch (this.$props.type) {
-        case "normal":
-          return "bg-black";
-        case "warn":
-          return "bg-orange-400";
-        case "succeed":
-          return "bg-green-600";
-        case "error":
-          return "bg-red-600";
-      }
-      return "bg-black";
-    },
-    textColor() {
-      return "text-white";
-    },
+  duration: {
+    type: Number,
+    default: 2000,
+  },
+  destory: {
+    type: Function,
+    default: () => undefined,
   },
 });
+
+const state = reactive<State>({
+  classname: "",
+});
+
+const bgColor = computed(() => {
+  switch (props.type) {
+    case "normal":
+      return "bg-black";
+    case "warn":
+      return "bg-orange-400";
+    case "succeed":
+      return "bg-green-600";
+    case "error":
+      return "bg-red-600";
+  }
+  return "bg-black";
+});
+
+const textColor = "text-white";
+
+onMounted(() => {
+  if (props.duration < 0) {
+    return;
+  }
+
+  setTimeout(() => {
+    destoryToast();
+  }, props.duration);
+});
+
+const destoryToast = () => {
+  if (props.duration < 0) {
+    return;
+  }
+
+  state.classname = "-top-full";
+  setTimeout(() => {
+    if (props.destory) {
+      props.destory();
+    }
+  }, ANIMATION_DURATION);
+};
+
+const handleToastClick = destoryToast;
 </script>
