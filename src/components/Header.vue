@@ -95,8 +95,8 @@
   />
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, reactive } from "vue";
+<script lang="ts" setup>
+import { computed, reactive } from "vue";
 import useAppStore from "../store";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
@@ -105,38 +105,25 @@ interface State {
   showSetTokenDialog: boolean;
 }
 
-export default defineComponent({
-  name: "Header",
-  components: { TokenSettingDialog },
-  setup() {
-    const store = useAppStore();
-    const state = reactive<State>({
-      showDropMenu: false,
-      showSetTokenDialog: false,
-    });
-    const token = computed(() => {
-      return store.token;
-    });
-
-    const handleSetTokenBtnClick = () => {
-      state.showSetTokenDialog = true;
-    };
-
-    const handleSetTokenDialogClose = () => {
-      state.showSetTokenDialog = false;
-    };
-
-    const handleToggleDropMenuBtnClick = () => {
-      state.showDropMenu = !state.showDropMenu;
-    };
-
-    return {
-      state,
-      token,
-      handleSetTokenBtnClick,
-      handleToggleDropMenuBtnClick,
-      handleSetTokenDialogClose,
-    };
-  },
+const store = useAppStore();
+const state = reactive<State>({
+  showDropMenu: false,
+  showSetTokenDialog: false,
 });
+
+const token = computed(() => {
+  return store.token;
+});
+
+const handleSetTokenBtnClick = () => {
+  state.showSetTokenDialog = true;
+};
+
+const handleSetTokenDialogClose = () => {
+  state.showSetTokenDialog = false;
+};
+
+const handleToggleDropMenuBtnClick = () => {
+  state.showDropMenu = !state.showDropMenu;
+};
 </script>

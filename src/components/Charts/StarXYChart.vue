@@ -7,8 +7,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, onUpdated, ref } from "vue";
+<script lang="ts" setup>
+import { onMounted, onUpdated, ref } from "vue";
 // For customizing multi mode chart: base on create date or timeline, we have rewrited the chart.xkcd's XY chart with TypeScript.
 // Here are some reasons about this motivation.
 //
@@ -22,63 +22,54 @@ import { defineComponent, onMounted, onUpdated, ref } from "vue";
 // 3. Totally customizable.
 import XYChart, { XYChartData } from "../../packages/xy-chart";
 
-export default defineComponent({
-  name: "StarXYChart",
-  props: {
-    classname: {
-      type: String,
-      default: "",
-    },
-    data: {
-      type: Object as () => XYChartData,
-    },
-    chartMode: String,
-    timeFormat: String,
+const props = defineProps({
+  classname: {
+    type: String,
+    default: "",
   },
-  setup(props) {
-    const svgElRef = ref<SVGSVGElement | null>(null);
-
-    const drawStarChart = (data: XYChartData) => {
-      if (svgElRef.value) {
-        svgElRef.value.innerHTML = "";
-
-        XYChart(
-          svgElRef.value,
-          {
-            title: "Star history",
-            xLabel: props.chartMode === "Timeline" ? "Timeline" : "Date",
-            yLabel: "GitHub Stars",
-            data: {
-              datasets: data.datasets,
-            },
-          },
-          {
-            xTickLabelType: props.chartMode === "Date" ? "Date" : "Number",
-          }
-        );
-      }
-    };
-
-    onMounted(() => {
-      if (props.data) {
-        drawStarChart(props.data);
-      }
-    });
-
-    onUpdated(() => {
-      if (props.data) {
-        drawStarChart(props.data);
-      }
-    });
-
-    const handleSVGElementClick = () => {
-      // Maybe we can capture the clicked svg element to expand chart functions.
-    };
-
-    return {
-      svgElRef,
-      handleSVGElementClick,
-    };
+  data: {
+    type: Object as () => XYChartData,
   },
+  chartMode: String,
+  timeFormat: String,
 });
+
+const svgElRef = ref<SVGSVGElement | null>(null);
+
+const drawStarChart = (data: XYChartData) => {
+  if (svgElRef.value) {
+    svgElRef.value.innerHTML = "";
+
+    XYChart(
+      svgElRef.value,
+      {
+        title: "Star history",
+        xLabel: props.chartMode === "Timeline" ? "Timeline" : "Date",
+        yLabel: "GitHub Stars",
+        data: {
+          datasets: data.datasets,
+        },
+      },
+      {
+        xTickLabelType: props.chartMode === "Date" ? "Date" : "Number",
+      }
+    );
+  }
+};
+
+onMounted(() => {
+  if (props.data) {
+    drawStarChart(props.data);
+  }
+});
+
+onUpdated(() => {
+  if (props.data) {
+    drawStarChart(props.data);
+  }
+});
+
+const handleSVGElementClick = () => {
+  // Maybe we can capture the clicked svg element to expand chart functions.
+};
 </script>

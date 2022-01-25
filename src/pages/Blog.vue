@@ -114,9 +114,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { PostOrPage } from "@tryghost/content-api";
-import { defineComponent, onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
@@ -128,40 +128,30 @@ interface State {
   post?: PostOrPage;
 }
 
-export default defineComponent({
-  name: "Blog",
-  components: { Footer, Header, SubscribeSection },
-  setup: () => {
-    const state = reactive<State>({
-      isLoading: true,
-    });
-    const currentRoute = useRoute();
+const state = reactive<State>({
+  isLoading: true,
+});
+const currentRoute = useRoute();
 
-    onMounted(async () => {
-      const blogSlug = currentRoute.params.blogSlug as string;
+onMounted(async () => {
+  const blogSlug = currentRoute.params.blogSlug as string;
 
-      if (!blogSlug) {
-        return;
-      }
+  if (!blogSlug) {
+    return;
+  }
 
-      try {
-        const post = await api.getPostDetailBySlug(blogSlug);
-        const formatedPost = {
-          ...post,
-          tags: post.tags?.filter((t) => t.name !== "StarHistory"),
-        };
-
-        state.post = formatedPost;
-      } catch (error) {
-        // do nth
-      }
-
-      state.isLoading = false;
-    });
-
-    return {
-      state,
+  try {
+    const post = await api.getPostDetailBySlug(blogSlug);
+    const formatedPost = {
+      ...post,
+      tags: post.tags?.filter((t) => t.name !== "StarHistory"),
     };
-  },
+
+    state.post = formatedPost;
+  } catch (error) {
+    // do nth
+  }
+
+  state.isLoading = false;
 });
 </script>

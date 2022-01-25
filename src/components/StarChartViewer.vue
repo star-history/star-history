@@ -108,15 +108,8 @@
   />
 </template>
 
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-} from "vue";
+<script lang="ts" setup>
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -142,348 +135,320 @@ interface State {
   showGenEmbedCodeDialog: boolean;
 }
 
-export default defineComponent({
-  name: "StarChartViewer",
-  components: {
-    BytebaseBanner,
-    GenerateEmbedCodeDialog,
-    StarXYChart,
-    TokenSettingDialog,
-  },
-  setup() {
-    const state = reactive<State>({
-      chartMode: "Date",
-      repoStarDataMap: new Map(),
-      chartData: undefined,
-      isGeneratingImage: false,
-      showSetTokenDialog: false,
-      showGenEmbedCodeDialog: false,
-    });
-    const store = useAppStore();
-    const containerElRef = ref<HTMLDivElement | null>(null);
-    const isFetching = computed(() => {
-      return store.isFetching;
-    });
-    const chartMode = computed(() => {
-      return store.chartMode;
-    });
+const state = reactive<State>({
+  chartMode: "Date",
+  repoStarDataMap: new Map(),
+  chartData: undefined,
+  isGeneratingImage: false,
+  showSetTokenDialog: false,
+  showGenEmbedCodeDialog: false,
+});
+const store = useAppStore();
 
-    onMounted(() => {
-      if (store.repos.length > 0) {
-        fetchReposStarData(store.repos);
-      }
-    });
+const containerElRef = ref<HTMLDivElement | null>(null);
 
-    watch(
-      () => store.repos,
-      () => {
-        fetchReposStarData(store.repos);
+const isFetching = computed(() => {
+  return store.isFetching;
+});
+const chartMode = computed(() => {
+  return store.chartMode;
+});
+
+onMounted(() => {
+  if (store.repos.length > 0) {
+    fetchReposStarData(store.repos);
+  }
+});
+
+watch(
+  () => store.repos,
+  () => {
+    fetchReposStarData(store.repos);
+  }
+);
+
+const fetchReposStarData = async (repos: string[]) => {
+  store.setIsFetching(true);
+  for (const repo of repos) {
+    if (!state.repoStarDataMap.has(repo)) {
+      try {
+        const starRecords = await api.getRepoStarRecords(repo, store.token);
+        state.repoStarDataMap.set(repo, starRecords);
+      } catch (error: any) {
+        if (error?.response?.status === 404) {
+          toast.warn(`Repo ${repo} not found`);
+        } else if (error?.response?.status === 403) {
+          toast.warn("GitHub API rate limit exceeded");
+          state.showSetTokenDialog = true;
+        } else if (error?.response?.status === 401) {
+          toast.warn("Access Token Unauthorized");
+          state.showSetTokenDialog = true;
+        } else if (Array.isArray(error?.data) && error.data?.length === 0) {
+          toast.warn(`Repo ${repo} has no star history`);
+        } else {
+          toast.warn("Some unexpected error happened, try again later");
+        }
+        store.delRepo(repo);
+        return;
       }
+    }
+  }
+  store.setIsFetching(false);
+
+  const reposStarData: RepoStarData[] = [];
+  for (const repo of store.repos) {
+    const records = state.repoStarDataMap.get(repo);
+    if (records) {
+      reposStarData.push({
+        repo,
+        starRecords: records,
+      });
+    }
+  }
+
+  if (reposStarData.length === 0) {
+    state.chartData = undefined;
+  } else {
+    reposStarData.sort((d1, d2) => {
+      return (
+        Math.max(...d2.starRecords.map((s) => s.count)) -
+        Math.max(...d1.starRecords.map((s) => s.count))
+      );
+    });
+    generateChartData(reposStarData);
+  }
+};
+
+const generateChartData = (reposStarData: RepoStarData[]) => {
+  if (chartMode.value === "Date") {
+    const datasets: XYData[] = reposStarData.map((item) => {
+      const { repo, starRecords } = item;
+
+      return {
+        label: repo,
+        data: starRecords.map((item) => {
+          return {
+            x: new Date(item.date),
+            y: Number(item.count),
+          };
+        }),
+      };
+    });
+    state.chartData = {
+      datasets,
+    } as XYChartData;
+  } else if (chartMode.value === "Timeline") {
+    const datasets: XYData[] = reposStarData.map((item) => {
+      const { repo, starRecords } = item;
+
+      let started = starRecords[0].date;
+
+      return {
+        label: repo,
+        data: starRecords.map((item) => {
+          return {
+            x:
+              utils.getTimeStampByDate(new Date(item.date)) -
+              utils.getTimeStampByDate(new Date(started)),
+            y: Number(item.count),
+          };
+        }),
+      };
+    });
+    state.chartData = {
+      datasets,
+    } as XYChartData;
+  }
+};
+
+const handleCopyLinkBtnClick = async () => {
+  await utils.copyTextToClipboard(window.location.href);
+  toast.succeed("Link copied");
+};
+
+const handleGenerateImageBtnClick = async () => {
+  if (state.isGeneratingImage) {
+    return;
+  }
+
+  const svgElement = containerElRef.value
+    ?.querySelector("svg")
+    ?.cloneNode(true) as SVGSVGElement;
+  svgElement.querySelectorAll(".chart-tooltip-dot").forEach((d) => d.remove());
+  svgElement.setAttribute("class", "fixed -z-10");
+  document.body.append(svgElement);
+
+  if (!svgElement || !containerElRef.value) {
+    toast.warn("Chart element not found, please try later");
+    return;
+  }
+
+  state.isGeneratingImage = true;
+
+  let destoryGeneratingToast = () => {
+    // do nth
+  };
+  setTimeout(() => {
+    if (state.isGeneratingImage) {
+      const cbs = toast.warn(
+        `<i class="fas fa-spinner animate-spin text-2xl mr-3"></i>Generating image`,
+        -1
+      );
+      destoryGeneratingToast = cbs.destory;
+    }
+  }, 2000);
+
+  try {
+    const { clientWidth, clientHeight } = svgElement;
+    const canvas = document.createElement("canvas");
+    const scale = Math.floor(window.devicePixelRatio * 2);
+    canvas.width = (clientWidth + 20) * scale;
+    canvas.height = (clientHeight + 30) * scale;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      toast.warn("Get canvas context failed.");
+      return;
+    }
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // draw chart image
+    const chartDataURL = utils.convertSVGToDataURL(svgElement);
+    const chartImage = new Image();
+    chartImage.src = chartDataURL;
+    await utils.waitImageLoaded(chartImage);
+    ctx.drawImage(
+      chartImage,
+      10 * scale,
+      10 * scale,
+      clientWidth * scale,
+      clientHeight * scale
+    );
+    // draw website link text
+    ctx.font = `${16 * scale}px xkcd`;
+    ctx.fillStyle = "#6b7280";
+    ctx.fillText(
+      "star-history.com",
+      (clientWidth - 130) * scale,
+      (clientHeight + 10) * scale
+    );
+    // draw star image
+    const starImage = new Image();
+    starImage.src = "/icon.png";
+    await utils.waitImageLoaded(starImage);
+    ctx.drawImage(
+      starImage,
+      (clientWidth - 155) * scale,
+      (clientHeight - 5) * scale,
+      20 * scale,
+      20 * scale
     );
 
-    const fetchReposStarData = async (repos: string[]) => {
-      store.setIsFetching(true);
-      for (const repo of repos) {
-        if (!state.repoStarDataMap.has(repo)) {
-          try {
-            const starRecords = await api.getRepoStarRecords(repo, store.token);
-            state.repoStarDataMap.set(repo, starRecords);
-          } catch (error: any) {
-            if (error?.response?.status === 404) {
-              toast.warn(`Repo ${repo} not found`);
-            } else if (error?.response?.status === 403) {
-              toast.warn("GitHub API rate limit exceeded");
-              state.showSetTokenDialog = true;
-            } else if (error?.response?.status === 401) {
-              toast.warn("Access Token Unauthorized");
-              state.showSetTokenDialog = true;
-            } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-              toast.warn(`Repo ${repo} has no star history`);
-            } else {
-              toast.warn("Some unexpected error happened, try again later");
-            }
-            store.delRepo(repo);
-            return;
-          }
-        }
+    const link = document.createElement("a");
+    link.download = `star-history-${utils.getDateString(
+      Date.now(),
+      "yyyyMMdd"
+    )}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
+    state.isGeneratingImage = false;
+    destoryGeneratingToast();
+    toast.succeed("Image Downloaded");
+  } catch (error) {
+    console.error(error);
+    toast.error("Generate image failed");
+  }
+  svgElement.remove();
+};
+
+const handleExportAsCSVBtnClick = () => {
+  let CSVContent = "";
+  for (const repo of store.repos) {
+    const records = state.repoStarDataMap.get(repo);
+    if (records) {
+      const temp: any[] = [];
+      for (const i of records) {
+        temp.push([repo, new Date(i.date), i.count]);
       }
-      store.setIsFetching(false);
+      CSVContent += temp
+        .map((item) =>
+          typeof item === "string" && item.indexOf(",") >= 0
+            ? `"${item}"`
+            : String(item)
+        )
+        .join("\n");
+      CSVContent += "\n";
+    }
+  }
 
-      const reposStarData: RepoStarData[] = [];
-      for (const repo of store.repos) {
-        const records = state.repoStarDataMap.get(repo);
-        if (records) {
-          reposStarData.push({
-            repo,
-            starRecords: records,
-          });
-        }
-      }
+  const encodedUri = encodeURI("data:text/csv;charset=utf-8," + CSVContent);
+  const link = document.createElement("a");
+  link.download = `star-history-${utils.getDateString(
+    Date.now(),
+    "yyyyMMdd"
+  )}.csv`;
+  link.href = encodedUri;
+  link.click();
+  toast.succeed("CSV Downloaded");
+};
 
-      if (reposStarData.length === 0) {
-        state.chartData = undefined;
-      } else {
-        reposStarData.sort((d1, d2) => {
-          return (
-            Math.max(...d2.starRecords.map((s) => s.count)) -
-            Math.max(...d1.starRecords.map((s) => s.count))
-          );
-        });
-        generateChartData(reposStarData);
-      }
-    };
+const handleShareToTwitterBtnClick = async () => {
+  const repos = store.repos;
+  if (repos.length === 0) {
+    toast.error("No repo found");
+    return;
+  }
 
-    const generateChartData = (reposStarData: RepoStarData[]) => {
-      if (chartMode.value === "Date") {
-        const datasets: XYData[] = reposStarData.map((item) => {
-          const { repo, starRecords } = item;
+  const starhistoryLink = encodeURIComponent(window.location.href);
+  let text = "";
 
-          return {
-            label: repo,
-            data: starRecords.map((item) => {
-              return {
-                x: new Date(item.date),
-                y: Number(item.count),
-              };
-            }),
-          };
-        });
-        state.chartData = {
-          datasets,
-        } as XYChartData;
-      } else if (chartMode.value === "Timeline") {
-        const datasets: XYData[] = reposStarData.map((item) => {
-          const { repo, starRecords } = item;
+  if (repos.length === 1) {
+    const repo = repos[0];
+    let starCount = 0;
 
-          let started = starRecords[0].date;
+    try {
+      const { data } = await api.getRepoStargazersCount(repo, store.token);
+      starCount = data.stargazers_count;
+    } catch (error) {
+      // do nth
+    }
 
-          return {
-            label: repo,
-            data: starRecords.map((item) => {
-              return {
-                x:
-                  utils.getTimeStampByDate(new Date(item.date)) -
-                  utils.getTimeStampByDate(new Date(started)),
-                y: Number(item.count),
-              };
-            }),
-          };
-        });
-        state.chartData = {
-          datasets,
-        } as XYChartData;
-      }
-    };
+    let starText = "";
+    if (starCount > 0) {
+      starText = `${
+        starCount < 1000 ? starCount : (starCount / 1000).toFixed(1) + "K ⭐️ "
+      }`;
+    }
+    text = `${starText}Thank you! 🙏%0A${starhistoryLink}%0A%0A`;
+  } else {
+    text = repos.join(" vs ") + "%0A%0A";
+  }
 
-    const handleCopyLinkBtnClick = async () => {
-      await utils.copyTextToClipboard(window.location.href);
-      toast.succeed("Link copied");
-    };
+  const addtionLink =
+    repos.length === 1 ? `github.com/${repos[0]}` : starhistoryLink;
+  text += `${addtionLink}%0A%0A`;
+  text += `${encodeURIComponent("#starhistory #GitHub #OpenSource ")}`;
+  const tweetShareLink = `https://twitter.com/intent/tweet?text=${text}%0A&via=StarHistoryHQ`;
+  const link = document.createElement("a");
+  link.href = tweetShareLink;
+  link.target = "_blank";
+  link.click();
+};
 
-    const handleGenerateImageBtnClick = async () => {
-      if (state.isGeneratingImage) {
-        return;
-      }
+const handleGenEmbedCodeDialogBtnClick = () => {
+  state.showGenEmbedCodeDialog = true;
+};
 
-      const svgElement = containerElRef.value
-        ?.querySelector("svg")
-        ?.cloneNode(true) as SVGSVGElement;
-      svgElement
-        .querySelectorAll(".chart-tooltip-dot")
-        .forEach((d) => d.remove());
-      svgElement.setAttribute("class", "fixed -z-10");
-      document.body.append(svgElement);
+const handleGenEmbedCodeDialogClose = () => {
+  state.showGenEmbedCodeDialog = false;
+};
 
-      if (!svgElement || !containerElRef.value) {
-        toast.warn("Chart element not found, please try later");
-        return;
-      }
+const handleToggleChartBtnClick = () => {
+  store.setChartMode(chartMode.value === "Date" ? "Timeline" : "Date");
+  fetchReposStarData(store.repos);
+};
 
-      state.isGeneratingImage = true;
-
-      let destoryGeneratingToast = () => {
-        // do nth
-      };
-      setTimeout(() => {
-        if (state.isGeneratingImage) {
-          const cbs = toast.warn(
-            `<i class="fas fa-spinner animate-spin text-2xl mr-3"></i>Generating image`,
-            -1
-          );
-          destoryGeneratingToast = cbs.destory;
-        }
-      }, 2000);
-
-      try {
-        const { clientWidth, clientHeight } = svgElement;
-        const canvas = document.createElement("canvas");
-        const scale = Math.floor(window.devicePixelRatio * 2);
-        canvas.width = (clientWidth + 20) * scale;
-        canvas.height = (clientHeight + 30) * scale;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) {
-          toast.warn("Get canvas context failed.");
-          return;
-        }
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // draw chart image
-        const chartDataURL = utils.convertSVGToDataURL(svgElement);
-        const chartImage = new Image();
-        chartImage.src = chartDataURL;
-        await utils.waitImageLoaded(chartImage);
-        ctx.drawImage(
-          chartImage,
-          10 * scale,
-          10 * scale,
-          clientWidth * scale,
-          clientHeight * scale
-        );
-        // draw website link text
-        ctx.font = `${16 * scale}px xkcd`;
-        ctx.fillStyle = "#6b7280";
-        ctx.fillText(
-          "star-history.com",
-          (clientWidth - 130) * scale,
-          (clientHeight + 10) * scale
-        );
-        // draw star image
-        const starImage = new Image();
-        starImage.src = "/icon.png";
-        await utils.waitImageLoaded(starImage);
-        ctx.drawImage(
-          starImage,
-          (clientWidth - 155) * scale,
-          (clientHeight - 5) * scale,
-          20 * scale,
-          20 * scale
-        );
-
-        const link = document.createElement("a");
-        link.download = `star-history-${utils.getDateString(
-          Date.now(),
-          "yyyyMMdd"
-        )}.png`;
-        link.href = canvas.toDataURL();
-        link.click();
-        state.isGeneratingImage = false;
-        destoryGeneratingToast();
-        toast.succeed("Image Downloaded");
-      } catch (error) {
-        console.error(error);
-        toast.error("Generate image failed");
-      }
-      svgElement.remove();
-    };
-
-    const handleExportAsCSVBtnClick = () => {
-      let CSVContent = "";
-      for (const repo of store.repos) {
-        const records = state.repoStarDataMap.get(repo);
-        if (records) {
-          const temp: any[] = [];
-          for (const i of records) {
-            temp.push([repo, new Date(i.date), i.count]);
-          }
-          CSVContent += temp
-            .map((item) =>
-              typeof item === "string" && item.indexOf(",") >= 0
-                ? `"${item}"`
-                : String(item)
-            )
-            .join("\n");
-          CSVContent += "\n";
-        }
-      }
-
-      const encodedUri = encodeURI("data:text/csv;charset=utf-8," + CSVContent);
-      const link = document.createElement("a");
-      link.download = `star-history-${utils.getDateString(
-        Date.now(),
-        "yyyyMMdd"
-      )}.csv`;
-      link.href = encodedUri;
-      link.click();
-      toast.succeed("CSV Downloaded");
-    };
-
-    const handleShareToTwitterBtnClick = async () => {
-      const repos = store.repos;
-      if (repos.length === 0) {
-        toast.error("No repo found");
-        return;
-      }
-
-      const starhistoryLink = encodeURIComponent(window.location.href);
-      let text = "";
-
-      if (repos.length === 1) {
-        const repo = repos[0];
-        let starCount = 0;
-
-        try {
-          const { data } = await api.getRepoStargazersCount(repo, store.token);
-          starCount = data.stargazers_count;
-        } catch (error) {
-          // do nth
-        }
-
-        let starText = "";
-        if (starCount > 0) {
-          starText = `${
-            starCount < 1000
-              ? starCount
-              : (starCount / 1000).toFixed(1) + "K ⭐️ "
-          }`;
-        }
-        text = `${starText}Thank you! 🙏%0A${starhistoryLink}%0A%0A`;
-      } else {
-        text = repos.join(" vs ") + "%0A%0A";
-      }
-
-      const addtionLink =
-        repos.length === 1 ? `github.com/${repos[0]}` : starhistoryLink;
-      text += `${addtionLink}%0A%0A`;
-      text += `${encodeURIComponent("#starhistory #GitHub #OpenSource ")}`;
-      const tweetShareLink = `https://twitter.com/intent/tweet?text=${text}%0A&via=StarHistoryHQ`;
-      const link = document.createElement("a");
-      link.href = tweetShareLink;
-      link.target = "_blank";
-      link.click();
-    };
-
-    const handleGenEmbedCodeDialogBtnClick = () => {
-      state.showGenEmbedCodeDialog = true;
-    };
-
-    const handleGenEmbedCodeDialogClose = () => {
-      state.showGenEmbedCodeDialog = false;
-    };
-
-    const handleToggleChartBtnClick = () => {
-      store.setChartMode(chartMode.value === "Date" ? "Timeline" : "Date");
-      fetchReposStarData(store.repos);
-    };
-
-    const handleSetTokenDialogClose = () => {
-      state.showSetTokenDialog = false;
-    };
-
-    return {
-      state,
-      containerElRef,
-      isFetching,
-      chartMode,
-      handleCopyLinkBtnClick,
-      handleShareToTwitterBtnClick,
-      handleGenerateImageBtnClick,
-      handleExportAsCSVBtnClick,
-      handleSetTokenDialogClose,
-      handleToggleChartBtnClick,
-      handleGenEmbedCodeDialogBtnClick,
-      handleGenEmbedCodeDialogClose,
-    };
-  },
-});
+const handleSetTokenDialogClose = () => {
+  state.showSetTokenDialog = false;
+};
 </script>

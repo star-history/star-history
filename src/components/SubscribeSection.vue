@@ -40,29 +40,19 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script lang="ts" setup>
+import { ref } from "vue";
 import api from "../helpers/api";
 
-export default defineComponent({
-  setup() {
-    const email = ref("");
-    const subscribed = ref(false);
+const email = ref("");
+const subscribed = ref(false);
 
-    const handleSubscribeBtnClick = async () => {
-      try {
-        await api.subscribeBlog(email.value);
-      } catch (error) {
-        // do nth
-      }
-      subscribed.value = true;
-    };
-
-    return {
-      email,
-      subscribed,
-      handleSubscribeBtnClick,
-    };
-  },
-});
+const handleSubscribeBtnClick = async () => {
+  try {
+    await api.subscribeBlog(email.value);
+  } catch (error) {
+    // do nth
+  }
+  subscribed.value = true;
+};
 </script>
