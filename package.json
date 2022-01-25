@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:ext": "vite build --mode extension && node ./scripts/copyExtFiles.js"
+    "build:ext": "vite build --mode extension"
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.3.1",

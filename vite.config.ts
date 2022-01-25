@@ -1,8 +1,10 @@
 import { defineConfig, UserConfigExport } from "vite";
 import vue from "@vitejs/plugin-vue";
+import generateSitemap from "./scripts/generateSitemap";
+import copyExtensionFiles from "./scripts/copyExtensionFiles";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   const config: UserConfigExport = {
     plugins: [vue()],
     build: {
@@ -25,6 +27,12 @@ export default defineConfig(({ mode }) => {
         },
       },
     };
+
+    if (command === "build") {
+      copyExtensionFiles();
+    }
+  } else {
+    generateSitemap();
   }
 
   return config;
