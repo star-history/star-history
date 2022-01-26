@@ -14,7 +14,9 @@
           @click="handleCloseBtnClick"
         ></i>
       </header>
-      <main class="w-full flex flex-col justify-start items-start p-4 pr-5">
+      <main
+        class="w-full flex flex-col justify-start items-start p-4 pr-5 text-base"
+      >
         <p>
           Star-history use GitHub API to retrieve repository metadata. You may
           see this page because you have hit the
@@ -60,7 +62,7 @@
         class="w-full flex flex-row justify-end bg-gray-100 items-center p-4 pr-5 border-t rounded-b-md"
       >
         <button
-          class="pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-light hover:bg-green-600"
+          class="pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-light text-base hover:bg-green-600"
           @click="handleSaveTokenBtnClick"
         >
           Save
