@@ -30,7 +30,10 @@ const props = defineProps({
   data: {
     type: Object as () => XYChartData,
   },
-  chartMode: String,
+  chartMode: {
+    type: String,
+    default: "Date",
+  },
   timeFormat: String,
 });
 
