@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full h-full w-600px max-w-800px min-h-400px pt-0 flex flex-col justify-start items-center"
+    class="relative w-full h-full w-600px pt-0 flex flex-col justify-start items-center"
   >
     <div class="w-full p-2 px-4 flex flex-row justify-between items-center">
       <div class="flex flex-row justify-start items-center">
@@ -14,7 +14,7 @@
           {{ token ? "Edit" : "Add" }} Access Token
         </span>
         <span
-          class="h-full flex flex-row justify-center text-sm items-center cursor-pointer ml-2 hover:opacity-70"
+          class="h-full flex flex-row justify-center text-sm items-center cursor-pointer ml-3 hover:opacity-70"
           @click="handleOpenInWebsiteBtnClick"
         >
           Open in Website
@@ -38,7 +38,7 @@
     </div>
     <div
       v-if="state.isLoading"
-      class="absolute w-full h-full flex justify-center items-center z-10 top-0"
+      class="absolute w-full h-full top-0 left-0 flex justify-center items-center z-10"
     >
       <svg
         aria-hidden="true"
@@ -64,17 +64,32 @@
     </div>
     <div
       v-else-if="state.chartData"
-      class="w-full flex flex-col justify-center items-center"
+      class="w-full px-2 flex flex-col justify-center items-center"
     >
       <StarXYChart classname="w-full h-auto" :data="state.chartData" />
       <!-- watermark -->
-      <div
-        class="w-full h-8 -mt-6 pr-2 flex flex-row text-base justify-end items-center text-gray-500"
+    </div>
+    <div
+      class="absolute left-0 bottom-1 w-full h-8 px-4 flex flex-row text-base justify-between items-center"
+    >
+      <span class="flex flex-row justify-start items-center">
+        <a
+          class="github-button"
+          href="https://github.com/bytebase/star-history"
+          data-show-count="true"
+          aria-label="Star bytebase/star-history on GitHub"
+          target="_blank"
+        >
+          Star
+        </a>
+      </span>
+      <span
+        class="h-full mb-1 flex flex-row justify-start items-center text-gray-500"
         style="font-family: 'xkcd', serif"
       >
         <img class="w-5 h-auto mr-1" src="/icon.png" />
         star-history.com
-      </div>
+      </span>
     </div>
   </div>
   <TokenSettingDialog
