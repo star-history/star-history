@@ -416,7 +416,8 @@ const handleShareToTwitterBtnClick = async () => {
     let starText = "";
     if (starCount > 0) {
       starText = `${
-        starCount < 1000 ? starCount : (starCount / 1000).toFixed(1) + "K ⭐️ "
+        (starCount < 1000 ? starCount : (starCount / 1000).toFixed(1) + "K") +
+        " ⭐️ "
       }`;
     }
     text = `${starText}Thank you! 🙏%0A${starhistoryLink}%0A%0A`;
