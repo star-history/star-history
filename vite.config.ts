@@ -6,8 +6,8 @@ import generateSitemap from "./scripts/generateSitemap";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  // Control the building behavior and make its first step is to empty the output folder.
-  // To make sure the other script can works right.
+  // Control the building behavior and make its first step to empty the output folder.
+  // This is to make sure the other script can work right.
   emptyOutDir();
 
   const config: UserConfigExport = {
