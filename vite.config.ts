@@ -1,15 +1,16 @@
 import { defineConfig, UserConfigExport } from "vite";
 import vue from "@vitejs/plugin-vue";
-import generateSitemap from "./scripts/generateSitemap";
 import copyExtensionFiles from "./scripts/copyExtensionFiles";
+import emptyOutDir from "./scripts/emptyOutDir";
+import generateSitemap from "./scripts/generateSitemap";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
+  emptyOutDir();
+
   const config: UserConfigExport = {
     plugins: [vue()],
-    build: {
-      emptyOutDir: true,
-    },
+    build: {},
   };
 
   if (mode === "extension") {
