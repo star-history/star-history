@@ -128,27 +128,25 @@ const token = computed(() => {
   return store.token;
 });
 
-onMounted(() => {
-  chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
-    const tab = tabs[0];
-    const url = tab.url + "/";
+onMounted(async () => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const url = tab.url + "/";
 
-    try {
-      const result = /github.com\/(\S+?\/\S+?)\//.exec(url);
-      if (result) {
-        state.repo = result[1];
-        await fetchReposStarData([state.repo]);
-      }
-    } catch (err) {
-      // do nth
+  try {
+    const result = /github.com\/(\S+?\/\S+?)\//.exec(url);
+    if (result) {
+      state.repo = result[1];
+      await fetchReposStarData([state.repo]);
     }
+  } catch (err) {
+    // do nth
+  }
 
-    if (!state.repo) {
-      state.message = "No repo found";
-    }
+  if (!state.repo) {
+    state.message = "No repo found";
+  }
 
-    state.isLoading = false;
-  });
+  state.isLoading = false;
 });
 
 const fetchReposStarData = async (repos: string[]) => {
