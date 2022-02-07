@@ -100,11 +100,11 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive } from "vue";
+import { XYChartData, XYData } from "xy-chart";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 import TokenSettingDialog from "../components/TokenSettingDialog.vue";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
-import { XYChartData, XYData } from "../packages/xy-chart";
 import useAppStore from "../store";
 
 interface State {

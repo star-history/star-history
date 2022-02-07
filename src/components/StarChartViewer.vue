@@ -110,10 +110,10 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch } from "vue";
+import { XYChartData, XYData } from "xy-chart";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
-import { XYChartData, XYData } from "../packages/xy-chart";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
