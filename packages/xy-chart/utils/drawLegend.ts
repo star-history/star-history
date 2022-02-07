@@ -47,7 +47,12 @@ const drawLegend = (
     maxTextLength = Math.max(item.text.length, maxTextLength);
   });
 
-  const bboxWidth = textLayer.node()?.getBBox().width ?? 0;
+  let bboxWidth = 0;
+  // Because of there is no `getBBox` method in nodejs env,
+  // we have to use it after validate function existed.
+  if (textLayer.node()?.getBBox) {
+    bboxWidth = textLayer.node()?.getBBox().width as number;
+  }
   const backgroundWidth = Math.max(
     bboxWidth + 15,
     maxTextLength * xkcdCharWidth + colorBlockWidth + legendPadding

@@ -35,7 +35,9 @@ export default defineConfig(({ command, mode }) => {
       copyExtensionFiles();
     }
   } else {
-    generateSitemap();
+    if (command === "build") {
+      generateSitemap();
+    }
   }
 
   return config;

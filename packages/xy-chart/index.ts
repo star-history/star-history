@@ -1,11 +1,7 @@
-import {
-  AxisScale,
-  curveMonotoneX,
-  line,
-  scaleLinear,
-  scaleTime,
-  select,
-} from "d3";
+import { scaleLinear, scaleTime } from "d3-scale";
+import { select } from "d3-selection";
+import { line, curveMonotoneX } from "d3-shape";
+import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
 import ToolTip from "./components/ToolTip";
 import { drawXAxis, drawYAxis } from "./utils/drawAxis";
@@ -272,15 +268,11 @@ const XYChart = (
       .attr("cx", (d) => xScale(d.x) || 0)
       .attr("cy", (d) => yScale(d.y))
       .attr("pointer-events", "all")
-      .on("mouseover", (event, d) => {
-        const node = event.target as Element;
-        const i = Array.from(node.parentElement?.childNodes || []).indexOf(
-          node
-        );
+      .on("mouseover", (d, i, nodes) => {
         const xyGroupIndex = Number(
-          select(node.parentElement).attr("xy-group-index")
+          select(nodes[i].parentElement).attr("xy-group-index")
         );
-        select(node).attr("r", dotHoverSize);
+        select(nodes[i]).attr("r", dotHoverSize);
 
         const tipX = (xScale(d.x) || 0) + margin.left + 5;
         const tipY = yScale(d.y) + margin.top + 5;
@@ -326,9 +318,8 @@ const XYChart = (
         });
         tooltip.show();
       })
-      .on("mouseout", (event) => {
-        const node = event.target as Element;
-        select(node).attr("r", dotInitSize);
+      .on("mouseout", (_, i, nodes) => {
+        select(nodes[i]).attr("r", dotInitSize);
         tooltip.hide();
       });
   }
