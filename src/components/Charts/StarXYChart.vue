@@ -20,7 +20,7 @@ import { onMounted, onUpdated, ref } from "vue";
 // 1. Writing in native TypeScript;
 // 2. Easy to debug chart internal;
 // 3. Totally customizable.
-import XYChart, { XYChartData } from "xy-chart";
+import XYChart, { XYChartData } from "../../../packages/xy-chart";
 
 const props = defineProps({
   classname: {

@@ -31,7 +31,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref } from "vue";
-import { XYChartData, XYData } from "xy-chart";
+import { XYChartData, XYData } from "../../packages/xy-chart";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";

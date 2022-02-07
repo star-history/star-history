@@ -100,7 +100,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive } from "vue";
-import { XYChartData, XYData } from "xy-chart";
+import { XYChartData, XYData } from "../../packages/xy-chart";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 import TokenSettingDialog from "../components/TokenSettingDialog.vue";
 import api from "../helpers/api";
