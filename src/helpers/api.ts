@@ -1,58 +1,8 @@
+import axios from "axios";
 import GhostContentAPI, { Params, PostOrPage } from "@tryghost/content-api";
 import utils from "./utils";
 
-type ResponseType<T = unknown> = {
-  response: Response;
-  data: T;
-};
-
-type RequestConfig = {
-  method: string;
-  url: string;
-  data?: any;
-  headers?: HeadersInit;
-};
-
 const PER_PAGE = 30;
-
-async function request<T>(config: RequestConfig): Promise<ResponseType<T>> {
-  const { method, url, data } = config;
-  const requestConfig: RequestInit = {
-    method,
-  };
-
-  if (data !== undefined) {
-    requestConfig.headers = {
-      "Content-Type": "application/json",
-    };
-    requestConfig.body = JSON.stringify(data);
-  }
-
-  if (config.headers) {
-    requestConfig.headers = {
-      ...requestConfig.headers,
-      ...config.headers,
-    };
-  }
-
-  return fetch(url, requestConfig)
-    .then(async (response) => {
-      if (response.status >= 400 && response.status < 600) {
-        throw {
-          response,
-          data: null,
-        };
-      }
-      const responseData = (await response.json()) as T;
-      return {
-        response,
-        data: responseData,
-      };
-    })
-    .catch((error) => {
-      return Promise.reject(error);
-    });
-}
 
 namespace api {
   export async function getRepoStargazers(
@@ -65,9 +15,7 @@ namespace api {
     if (page !== undefined) {
       url = `${url}&page=${page}`;
     }
-    return request<{ starred_at: string }[]>({
-      method: "GET",
-      url,
+    return axios.get(url, {
       headers: {
         Accept: "application/vnd.github.v3.star+json",
         Authorization: token ? `token ${token}` : "",
@@ -76,9 +24,7 @@ namespace api {
   }
 
   export async function getRepoStargazersCount(repo: string, token = "") {
-    return request<{ stargazers_count: number }>({
-      method: "GET",
-      url: `https://api.github.com/repos/${repo}`,
+    return axios.get(`https://api.github.com/repos/${repo}`, {
       headers: {
         Accept: "application/vnd.github.v3.star+json",
         Authorization: token ? `token ${token}` : "",
@@ -89,7 +35,7 @@ namespace api {
   export async function getRepoStarRecords(repo: string, token = "") {
     const patchRes = await getRepoStargazers(repo, token);
 
-    const headerLink = patchRes.response.headers.get("link") || "";
+    const headerLink = patchRes.headers["link"] || "";
     const MAX_REQUEST_AMOUNT = 15;
 
     let pageCount = 1;
@@ -103,7 +49,7 @@ namespace api {
 
     if (pageCount === 1 && patchRes?.data?.length === 0) {
       throw {
-        response: patchRes.response,
+        status: patchRes.status,
         data: [],
       };
     }
@@ -224,10 +170,9 @@ namespace api {
   }
 
   export async function subscribeBlog(email: string) {
-    return fetch(
+    return axios.post(
       "https://newsletter.bytebase.com/members/api/send-magic-link/",
       {
-        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
