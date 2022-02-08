@@ -2,6 +2,16 @@ import { XYChartData, XYData } from "../../packages/xy-chart";
 import api from "./api";
 import utils from "./utils";
 
+type ChartMode = "Date" | "Timeline";
+
+interface RepoStarData {
+  repo: string;
+  starRecords: {
+    date: string;
+    count: number;
+  }[];
+}
+
 export const getReposStarData = async (
   repos: string[],
   token = ""
