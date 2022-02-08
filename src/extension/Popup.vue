@@ -100,10 +100,10 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive } from "vue";
-import { XYChartData, XYData } from "../../packages/xy-chart";
+import { XYChartData } from "../../packages/xy-chart";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 import TokenSettingDialog from "../components/TokenSettingDialog.vue";
-import api from "../helpers/api";
+import { convertStarDataToChartData, getReposStarData } from "../helpers/chart";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
 
@@ -150,34 +150,24 @@ onMounted(async () => {
 });
 
 const fetchReposStarData = async (repos: string[]) => {
-  state.isLoading = true;
+  store.setIsFetching(true);
   const reposStarData: RepoStarData[] = [];
 
-  for (const repo of repos) {
-    try {
-      const starRecords = await api.getRepoStarRecords(repo, store.token);
-      reposStarData.push({
-        repo,
-        starRecords: starRecords,
-      });
-    } catch (error: any) {
-      if (error?.response?.status === 404) {
-        state.message = `Repo ${repo} not found`;
-      } else if (error?.response?.status === 403) {
-        toast.warn("GitHub API rate limit exceeded");
-        state.showSetTokenDialog = true;
-      } else if (error?.response?.status === 401) {
-        toast.warn("Access Token Unauthorized");
-        state.showSetTokenDialog = true;
-      } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-        state.message = `Repo ${repo} has no star history`;
-      } else {
-        state.message = "Some unexpected error happened, try again later";
-      }
-      return;
+  try {
+    const data = await getReposStarData(repos, store.token);
+    for (const d of data) {
+      reposStarData.push(d);
+    }
+  } catch (error: any) {
+    toast.warn(error.message);
+
+    if (error.status === 401 || error.status === 403) {
+      state.showSetTokenDialog = true;
+    } else if (error.status === 404 || error.status === 501) {
+      store.delRepo(error.repo);
     }
   }
-  state.isLoading = false;
+  store.setIsFetching(false);
 
   if (reposStarData.length === 0) {
     state.chartData = undefined;
@@ -188,28 +178,8 @@ const fetchReposStarData = async (repos: string[]) => {
         Math.max(...d1.starRecords.map((s) => s.count))
       );
     });
-    generateChartData(reposStarData);
+    state.chartData = convertStarDataToChartData(reposStarData, "Date");
   }
-};
-
-const generateChartData = (reposStarData: RepoStarData[]) => {
-  const datasets: XYData[] = reposStarData.map((item) => {
-    const { repo, starRecords } = item;
-
-    return {
-      label: repo,
-      data: starRecords.map((item) => {
-        return {
-          x: new Date(item.date),
-          y: Number(item.count),
-        };
-      }),
-    };
-  });
-
-  state.chartData = {
-    datasets,
-  } as XYChartData;
 };
 
 const handleShowTokenDialog = () => {

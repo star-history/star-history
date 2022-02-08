@@ -110,7 +110,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch } from "vue";
-import { XYChartData, XYData } from "../../packages/xy-chart";
+import { XYChartData } from "../../packages/xy-chart";
 import api from "../helpers/api";
 import toast from "../helpers/toast";
 import utils from "../helpers/utils";
@@ -119,6 +119,7 @@ import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";
 import useAppStore from "../store";
+import { convertStarDataToChartData, getReposStarData } from "../helpers/chart";
 
 interface State {
   chartMode: "Date" | "Timeline";
@@ -169,42 +170,37 @@ watch(
 
 const fetchReposStarData = async (repos: string[]) => {
   store.setIsFetching(true);
+  const reposStarData: RepoStarData[] = [];
+  const nodataRepos: string[] = [];
+
   for (const repo of repos) {
-    if (!state.repoStarDataMap.has(repo)) {
-      try {
-        const starRecords = await api.getRepoStarRecords(repo, store.token);
-        state.repoStarDataMap.set(repo, starRecords);
-      } catch (error: any) {
-        if (error?.response?.status === 404) {
-          toast.warn(`Repo ${repo} not found`);
-        } else if (error?.response?.status === 403) {
-          toast.warn("GitHub API rate limit exceeded");
-          state.showSetTokenDialog = true;
-        } else if (error?.response?.status === 401) {
-          toast.warn("Access Token Unauthorized");
-          state.showSetTokenDialog = true;
-        } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-          toast.warn(`Repo ${repo} has no star history`);
-        } else {
-          toast.warn("Some unexpected error happened, try again later");
-        }
-        store.delRepo(repo);
-        return;
-      }
+    const cacheData = state.repoStarDataMap.get(repo);
+
+    if (cacheData) {
+      reposStarData.push({
+        repo,
+        starRecords: cacheData,
+      });
+    } else {
+      nodataRepos.push(repo);
+    }
+  }
+  try {
+    const data = await getReposStarData(nodataRepos, store.token);
+    for (const d of data) {
+      state.repoStarDataMap.set(d.repo, d.starRecords);
+      reposStarData.push(d);
+    }
+  } catch (error: any) {
+    toast.warn(error.message);
+
+    if (error.status === 401 || error.status === 403) {
+      state.showSetTokenDialog = true;
+    } else if (error.status === 404 || error.status === 501) {
+      store.delRepo(error.repo);
     }
   }
   store.setIsFetching(false);
-
-  const reposStarData: RepoStarData[] = [];
-  for (const repo of store.repos) {
-    const records = state.repoStarDataMap.get(repo);
-    if (records) {
-      reposStarData.push({
-        repo,
-        starRecords: records,
-      });
-    }
-  }
 
   if (reposStarData.length === 0) {
     state.chartData = undefined;
@@ -215,49 +211,10 @@ const fetchReposStarData = async (repos: string[]) => {
         Math.max(...d1.starRecords.map((s) => s.count))
       );
     });
-    generateChartData(reposStarData);
-  }
-};
-
-const generateChartData = (reposStarData: RepoStarData[]) => {
-  if (chartMode.value === "Date") {
-    const datasets: XYData[] = reposStarData.map((item) => {
-      const { repo, starRecords } = item;
-
-      return {
-        label: repo,
-        data: starRecords.map((item) => {
-          return {
-            x: new Date(item.date),
-            y: Number(item.count),
-          };
-        }),
-      };
-    });
-    state.chartData = {
-      datasets,
-    } as XYChartData;
-  } else if (chartMode.value === "Timeline") {
-    const datasets: XYData[] = reposStarData.map((item) => {
-      const { repo, starRecords } = item;
-
-      let started = starRecords[0].date;
-
-      return {
-        label: repo,
-        data: starRecords.map((item) => {
-          return {
-            x:
-              utils.getTimeStampByDate(new Date(item.date)) -
-              utils.getTimeStampByDate(new Date(started)),
-            y: Number(item.count),
-          };
-        }),
-      };
-    });
-    state.chartData = {
-      datasets,
-    } as XYChartData;
+    state.chartData = convertStarDataToChartData(
+      reposStarData,
+      chartMode.value
+    );
   }
 };
 
