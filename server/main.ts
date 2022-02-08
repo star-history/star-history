@@ -69,4 +69,6 @@ app.on("error", (err) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(8080);
+app.listen(8080, () => {
+  console.log(`app listening on port ${8080}!`);
+});
