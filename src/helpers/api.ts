@@ -13,7 +13,7 @@ type RequestConfig = {
   headers?: HeadersInit;
 };
 
-const PER_PAGE = 100;
+const PER_PAGE = 30;
 
 async function request<T>(config: RequestConfig): Promise<ResponseType<T>> {
   const { method, url, data } = config;
