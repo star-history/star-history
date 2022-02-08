@@ -48,7 +48,7 @@ const drawLegend = (
   });
 
   let bboxWidth = 0;
-  // Because of there is no `getBBox` method in nodejs env,
+  // Because there is no `getBBox` method in nodejs env,
   // we have to use it after validate function existed.
   if (textLayer.node()?.getBBox) {
     bboxWidth = textLayer.node()?.getBBox().width as number;

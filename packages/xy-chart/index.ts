@@ -123,12 +123,12 @@ const XYChart = (
     .attr("height", clientHeight) as D3Selection;
   d3Selection.selectAll("*").remove();
 
+  addFont(d3Selection);
+  addFilter(d3Selection);
+
   const chart = d3Selection
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  addFont(d3Selection);
-  addFilter(d3Selection);
 
   const tooltip = new ToolTip({
     selection: d3Selection,
