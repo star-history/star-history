@@ -93,7 +93,7 @@ namespace api {
     const MAX_REQUEST_AMOUNT = 15;
 
     let pageCount = 1;
-    const regResult = /next.*page=(\d*).*?last/.exec(headerLink);
+    const regResult = /next.*&page=(\d*).*last/.exec(headerLink);
 
     if (regResult) {
       if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
