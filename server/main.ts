@@ -24,7 +24,7 @@ router.get("/", async (ctx) => {
   const repos = `${ctx.query["repos"]}`.split(",");
   const type = `${ctx.query["type"]}`;
 
-  const token = atob(secretToken);
+  const token = Buffer.from(secretToken, "base64").toString();
   if (token === "") {
     // do nth
   }
