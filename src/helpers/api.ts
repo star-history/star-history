@@ -13,6 +13,8 @@ type RequestConfig = {
   headers?: HeadersInit;
 };
 
+const PER_PAGE = 30;
+
 async function request<T>(config: RequestConfig): Promise<ResponseType<T>> {
   const { method, url, data } = config;
   const requestConfig: RequestInit = {
@@ -58,9 +60,10 @@ namespace api {
     token = "",
     page?: number
   ) {
-    let url = `https://api.github.com/repos/${repo}/stargazers`;
+    let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${PER_PAGE}`;
+
     if (page !== undefined) {
-      url = `${url}?page=${page}`;
+      url = `${url}&page=${page}`;
     }
     return request<{ starred_at: string }[]>({
       method: "GET",
@@ -90,7 +93,7 @@ namespace api {
     const MAX_REQUEST_AMOUNT = 15;
 
     let pageCount = 1;
-    const regResult = /next.*?page=(\d*).*?last/.exec(headerLink);
+    const regResult = /next.*&page=(\d*).*last/.exec(headerLink);
 
     if (regResult) {
       if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
@@ -146,7 +149,7 @@ namespace api {
           const starRecord = data[0];
           starRecordsMap.set(
             utils.getDateString(starRecord.starred_at),
-            30 * (requestPages[index] - 1)
+            PER_PAGE * (requestPages[index] - 1)
           );
         }
       });
