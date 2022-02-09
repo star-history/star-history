@@ -110,16 +110,20 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch } from "vue";
+import useAppStore from "../store";
 import { XYChartData } from "../../packages/xy-chart";
-import api from "../helpers/api";
+import utils from "../../common/utils";
+import {
+  convertStarDataToChartData,
+  getReposStarData,
+} from "../../common/chart";
+import api from "../../common/api";
 import toast from "../helpers/toast";
-import utils from "../helpers/utils";
+import { RepoStarData } from "../../types/chart";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";
-import useAppStore from "../store";
-import { convertStarDataToChartData, getReposStarData } from "../helpers/chart";
 
 interface State {
   chartMode: "Date" | "Timeline";

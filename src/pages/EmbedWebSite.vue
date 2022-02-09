@@ -31,10 +31,14 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref } from "vue";
+import { ChartMode, RepoStarData } from "../../types/chart";
 import { XYChartData } from "../../packages/xy-chart";
+import {
+  convertStarDataToChartData,
+  getReposStarData,
+} from "../../common/chart";
 import toast from "../helpers/toast";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
-import { convertStarDataToChartData, getReposStarData } from "../helpers/chart";
 
 const toastWarn = (message: string) => {
   toast.warn(message, -1);

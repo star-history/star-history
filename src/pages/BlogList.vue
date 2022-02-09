@@ -171,9 +171,9 @@
 <script lang="ts" setup>
 import { PostOrPage } from "@tryghost/content-api";
 import { onMounted, reactive } from "vue";
+import { getPosts } from "../helpers/ghost";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import api from "../helpers/api";
 import SubscribeSection from "../components/SubscribeSection.vue";
 
 interface State {
@@ -191,7 +191,7 @@ const state = reactive<State>({
 onMounted(async () => {
   try {
     const tags = ["StarHistory"];
-    const posts = await api.getPosts(tags);
+    const posts = await getPosts(tags);
 
     for (const post of posts) {
       const formatedPost = {

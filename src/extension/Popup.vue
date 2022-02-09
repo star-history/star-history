@@ -103,9 +103,13 @@ import { computed, onMounted, reactive } from "vue";
 import { XYChartData } from "../../packages/xy-chart";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 import TokenSettingDialog from "../components/TokenSettingDialog.vue";
-import { convertStarDataToChartData, getReposStarData } from "../helpers/chart";
+import {
+  convertStarDataToChartData,
+  getReposStarData,
+} from "../../common/chart";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
+import { RepoStarData } from "../../types/chart";
 
 interface State {
   isLoading: boolean;

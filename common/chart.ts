@@ -1,16 +1,7 @@
-import { XYChartData, XYData } from "../../packages/xy-chart";
+import { XYChartData, XYData } from "../packages/xy-chart";
+import { ChartMode, RepoStarData } from "../types/chart";
 import api from "./api";
 import utils from "./utils";
-
-type ChartMode = "Date" | "Timeline";
-
-interface RepoStarData {
-  repo: string;
-  starRecords: {
-    date: string;
-    count: number;
-  }[];
-}
 
 export const getReposStarData = async (
   repos: string[],

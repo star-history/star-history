@@ -42,14 +42,14 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import api from "../helpers/api";
+import { subscribeBlog } from "../helpers/ghost";
 
 const email = ref("");
 const subscribed = ref(false);
 
 const handleSubscribeBtnClick = async () => {
   try {
-    await api.subscribeBlog(email.value);
+    await subscribeBlog(email.value);
   } catch (error) {
     // do nth
   }

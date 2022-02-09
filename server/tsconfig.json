@@ -10,7 +10,5 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },
-  "include": [
-    "."
-  ]
+  "include": ["./*.ts", "../common/*.ts", "../packages/**/*.ts", "../types/*.ts"]
 }

@@ -2,7 +2,7 @@
   "name": "sh-server",
   "version": "0.0.1",
   "scripts": {
-    "start": "npx ts-node main.ts",
+    "dev": "npx ts-node main.ts",
     "build": "tsc --project ./"
   },
   "dependencies": {

@@ -2,11 +2,8 @@ import Koa from "koa";
 import Router from "koa-router";
 import { JSDOM } from "jsdom";
 import XYChart from "../packages/xy-chart";
-import {
-  convertStarDataToChartData,
-  getReposStarData,
-} from "../src/helpers/chart";
-import api from "../src/helpers/api";
+import { convertStarDataToChartData, getReposStarData } from "../common/chart";
+import api from "../common/api";
 import { repoStarDataCache } from "./cache";
 
 const replaceSVGContentFilterWithCamelcase = (svgContent: string): string => {
@@ -77,7 +74,7 @@ router.get("/svg", async (ctx) => {
       });
       reposStarData.push(d);
     }
-  } catch (error) {
+  } catch (error: any) {
     const status = error.status || 400;
     const message =
       error.message || "Some unexpected error happened, try again later";
@@ -96,6 +93,12 @@ router.get("/svg", async (ctx) => {
   const svg = dom.window.document.createElement(
     "svg"
   ) as unknown as SVGSVGElement;
+
+  if (!dom || !body || !svg) {
+    ctx.throw(500, `Failed to mock dom with JSDOM`);
+    return;
+  }
+
   body.append(svg);
   svg.setAttribute("width", "600");
   svg.setAttribute("height", "400");
