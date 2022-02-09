@@ -15,6 +15,7 @@ const replaceSVGContentFilterWithCamelcase = (svgContent: string): string => {
     `<filter xmlns="http://www.w3.org/2000/svg" id="xkcdify" filterUnits="userSpaceOnUse" x="-5" y="-5" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise"/><feDisplacementMap scale="5" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise"/></filter>`
   );
 };
+const chartTypes = ["Date", "Timeline"];
 
 const app = new Koa();
 const router = new Router();
@@ -24,7 +25,16 @@ const router = new Router();
 router.get("/svg", async (ctx) => {
   const secretToken = `${ctx.query["secret"]}`;
   const repos = `${ctx.query["repos"]}`.split(",");
-  const type = `${ctx.query["type"]}`;
+  let type = `${ctx.query["type"]}`;
+
+  if (!chartTypes.includes(type)) {
+    type = "Date";
+  }
+
+  if (repos.length === 0) {
+    ctx.throw(400, "Repos required");
+    return;
+  }
 
   const token = Buffer.from(secretToken, "base64").toString();
   if (token === "") {
