@@ -13,10 +13,11 @@ const drawLegend = (
   selection: D3Selection,
   { items, strokeColor, backgroundColor }: DrawLegendConfig
 ) => {
-  const legendPadding = 10;
+  const legendXPadding = 7;
+  const legendYPadding = 6;
   const xkcdCharWidth = 7;
   const xkcdCharHeight = 20;
-  const colorBlockWidth = 15;
+  const colorBlockWidth = 8;
 
   const legend = selection.append("svg");
   const backgroundLayer = legend.append("svg");
@@ -28,36 +29,37 @@ const drawLegend = (
     textLayer
       .append("rect")
       .style("fill", item.color)
-      .attr("width", 8)
-      .attr("height", 8)
+      .attr("width", colorBlockWidth)
+      .attr("height", colorBlockWidth)
       .attr("rx", 2)
       .attr("ry", 2)
       .attr("filter", "url(#xkcdify)")
-      .attr("x", 5 + legendPadding)
+      .attr("x", 8 + legendXPadding)
       .attr("y", 17 + xkcdCharHeight * i);
     // draw text
     textLayer
       .append("text")
       .style("font-size", "15px")
       .style("fill", strokeColor)
-      .attr("x", colorBlockWidth + 12)
+      .attr("x", 8 + legendXPadding + colorBlockWidth + 6)
       .attr("y", 17 + xkcdCharHeight * i + 8)
       .text(item.text);
 
     maxTextLength = Math.max(item.text.length, maxTextLength);
   });
 
-  let bboxWidth = 0;
+  let bboxWidth =
+    maxTextLength * (xkcdCharWidth + 0.5) + colorBlockWidth + legendXPadding;
   // Because there is no `getBBox` method in nodejs env,
   // we have to use it after validate function existed.
   if (textLayer.node()?.getBBox) {
     bboxWidth = textLayer.node()?.getBBox().width as number;
   }
   const backgroundWidth = Math.max(
-    bboxWidth + 15,
-    maxTextLength * xkcdCharWidth + colorBlockWidth + legendPadding
+    bboxWidth + legendXPadding * 2,
+    maxTextLength * xkcdCharWidth + colorBlockWidth + legendXPadding * 2 + 6
   );
-  const backgroundHeight = items.length * xkcdCharHeight + legendPadding;
+  const backgroundHeight = items.length * xkcdCharHeight + legendYPadding * 2;
 
   // add background
   backgroundLayer

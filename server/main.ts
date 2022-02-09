@@ -29,38 +29,46 @@ router.get("/", async (ctx) => {
     // do nth
   }
 
-  const repoStarData = await getReposStarData(repos, token);
-  const chartData = convertStarDataToChartData(
-    repoStarData,
-    type as "Date" | "Timeline"
-  );
+  try {
+    const repoStarData = await getReposStarData(repos, token);
+    const chartData = convertStarDataToChartData(
+      repoStarData,
+      type as "Date" | "Timeline"
+    );
 
-  const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
-  const body = dom.window.document.querySelector("body");
-  const svg = dom.window.document.createElement("svg");
-  body.append(svg);
-  svg.setAttribute("width", "600");
-  svg.setAttribute("height", "400");
-  svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
+    const body = dom.window.document.querySelector("body");
+    const svg = dom.window.document.createElement(
+      "svg"
+    ) as unknown as SVGSVGElement;
+    body.append(svg);
+    svg.setAttribute("width", "600");
+    svg.setAttribute("height", "400");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
-  XYChart(
-    svg as any,
-    {
-      title: "Star history",
-      xLabel: type === "Timeline" ? "Timeline" : "Date",
-      yLabel: "GitHub Stars",
-      data: chartData,
-      showDots: false,
-    },
-    {
-      xTickLabelType: type === "Date" ? "Date" : "Number",
-    }
-  );
-  const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
-  svg.remove();
+    XYChart(
+      svg,
+      {
+        title: "Star history",
+        xLabel: type === "Timeline" ? "Timeline" : "Date",
+        yLabel: "GitHub Stars",
+        data: chartData,
+        showDots: false,
+      },
+      {
+        xTickLabelType: type === "Date" ? "Date" : "Number",
+      }
+    );
+    const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
 
-  ctx.type = "image/svg+xml;charset=utf-8";
-  ctx.body = svgContent;
+    ctx.type = "image/svg+xml;charset=utf-8";
+    ctx.set("cache-control", "public, max-age=86400");
+    ctx.set("date", `${new Date()}`);
+    ctx.set("expires", `${new Date()}`);
+    ctx.body = svgContent;
+  } catch (error) {
+    // todo
+  }
 });
 
 app.on("error", (err) => {
