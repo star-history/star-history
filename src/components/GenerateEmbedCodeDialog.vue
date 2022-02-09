@@ -51,40 +51,9 @@
           class="w-full outline-none border mt-2 shadow-inner p-2 rounded-md focus:shadow-focus"
           type="text"
         />
-        <div
-          class="w-full h-auto flex flex-row justify-between items-center mt-4 mb-2"
-        >
-          <span class="leading-8">
-            Copy and paste the below codes into your
-            {{
-              state.embedType === "SVG" ? "GitHub readme" : "blog or website"
-            }}
-          </span>
-          <div
-            class="h-auto flex flex-row justify-center items-center text-sm cursor-pointer"
-          >
-            <span
-              class="px-2 py-1 rounded-l-md border border-r-0 shadow-inner"
-              :class="
-                state.embedType === 'SVG'
-                  ? 'bg-green-600 text-light border-green-600'
-                  : ''
-              "
-              @click="() => (state.embedType = 'SVG')"
-              >Markdown</span
-            >
-            <span
-              class="px-2 py-1 rounded-r-md border border-l-0 shadow-inner"
-              :class="
-                state.embedType === 'IFRAME'
-                  ? 'bg-green-600 text-light border-green-600'
-                  : ''
-              "
-              @click="() => (state.embedType = 'IFRAME')"
-              >HTML</span
-            >
-          </div>
-        </div>
+        <p class="leading-8 mt-4 mb-1">
+          Copy and paste the below codes into your blog or website
+        </p>
         <div
           class="relative w-full h-auto border px-4 py-3 pb-14 rounded-md shadow-inner"
         >
@@ -113,7 +82,6 @@ import Dialog from "./Dialog.vue";
 interface State {
   embedCode: string;
   token: string;
-  embedType: "SVG" | "IFRAME";
 }
 
 const emit = defineEmits(["close"]);
@@ -122,22 +90,15 @@ const store = useAppStore();
 const state = reactive<State>({
   embedCode: "",
   token: store.token,
-  embedType: "SVG",
 });
 
 const generateEmbedCode = () => {
   const secret = btoa(state.token);
-  if (state.embedType === "SVG") {
-    state.embedCode = `[![Star history chart](https://sh-svg.onrender.com/svg?secret=${secret}&repos=${store.repos.join(
-      ","
-    )}&type=${store.chartMode})](${window.location.href})`;
-  } else {
-    state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
-      window.location.origin
-    }/embed?secret=${secret}#${store.repos.join("&")}&${
-      store.chartMode
-    }" frameBorder="0"></iframe>`;
-  }
+  state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
+    window.location.origin
+  }/embed?secret=${secret}#${store.repos.join("&")}&${
+    store.chartMode
+  }" frameBorder="0"></iframe>`;
 };
 
 onMounted(() => {
@@ -145,7 +106,7 @@ onMounted(() => {
 });
 
 watch(
-  () => [state.token, state.embedType],
+  () => [state.token],
   () => {
     generateEmbedCode();
   }
