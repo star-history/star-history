@@ -20,15 +20,16 @@ const app = new Koa();
 const router = new Router();
 
 // Example request link:
-// /?secret=Z2hwXzlNNXNhbXJGU29nWE5uRW15NXQ2MFo1dVRGdXZnaDBOV0Q4Rg==&repos=bytebase/bytebase&type=Date
-router.get("/", async (ctx) => {
+// /svg?secret=Z2hwXzlNNXNhbXJGU29nWE5uRW15NXQ2MFo1dVRGdXZnaDBOV0Q4Rg==&repos=bytebase/bytebase&type=Date
+router.get("/svg", async (ctx) => {
   const secretToken = `${ctx.query["secret"]}`;
   const repos = `${ctx.query["repos"]}`.split(",");
   const type = `${ctx.query["type"]}`;
 
   const token = Buffer.from(secretToken, "base64").toString();
   if (token === "") {
-    // do nth
+    ctx.throw(400, "GitHub personal access token required");
+    return;
   }
 
   const reposStarData = [];
@@ -67,7 +68,12 @@ router.get("/", async (ctx) => {
       reposStarData.push(d);
     }
   } catch (error) {
-    // todo
+    const status = error.status || 400;
+    const message =
+      error.message || "Some unexpected error happened, try again later";
+
+    ctx.throw(status, message);
+    return;
   }
 
   const chartData = convertStarDataToChartData(
@@ -85,19 +91,25 @@ router.get("/", async (ctx) => {
   svg.setAttribute("height", "400");
   svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
-  XYChart(
-    svg,
-    {
-      title: "Star history",
-      xLabel: type === "Timeline" ? "Timeline" : "Date",
-      yLabel: "GitHub Stars",
-      data: chartData,
-      showDots: false,
-    },
-    {
-      xTickLabelType: type === "Date" ? "Date" : "Number",
-    }
-  );
+  try {
+    XYChart(
+      svg,
+      {
+        title: "Star history",
+        xLabel: type === "Timeline" ? "Timeline" : "Date",
+        yLabel: "GitHub Stars",
+        data: chartData,
+        showDots: false,
+      },
+      {
+        xTickLabelType: type === "Date" ? "Date" : "Number",
+      }
+    );
+  } catch (error) {
+    ctx.throw(500, `Failed to generate chart, err: ${error}`);
+    return;
+  }
+
   const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
 
   ctx.type = "image/svg+xml;charset=utf-8";
