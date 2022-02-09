@@ -24,12 +24,14 @@ namespace api {
   }
 
   export async function getRepoStargazersCount(repo: string, token = "") {
-    return axios.get(`https://api.github.com/repos/${repo}`, {
+    const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
       headers: {
         Accept: "application/vnd.github.v3.star+json",
         Authorization: token ? `token ${token}` : "",
       },
     });
+
+    return data.stargazers_count;
   }
 
   export async function getRepoStarRecords(repo: string, token = "") {
@@ -101,9 +103,8 @@ namespace api {
       });
     }
 
-    const { data } = await getRepoStargazersCount(repo, token);
-
-    starRecordsMap.set(utils.getDateString(Date.now()), data.stargazers_count);
+    const starAmount = await getRepoStargazersCount(repo, token);
+    starRecordsMap.set(utils.getDateString(Date.now()), starAmount);
 
     const starRecords: {
       date: string;
