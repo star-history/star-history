@@ -33,11 +33,14 @@ namespace api {
     return data.stargazers_count;
   }
 
-  export async function getRepoStarRecords(repo: string, token = "") {
+  export async function getRepoStarRecords(
+    repo: string,
+    token: string,
+    maxRequestAmount: number
+  ) {
     const patchRes = await getRepoStargazers(repo, token);
 
     const headerLink = patchRes.headers["link"] || "";
-    const MAX_REQUEST_AMOUNT = 15;
 
     let pageCount = 1;
     const regResult = /next.*&page=(\d*).*last/.exec(headerLink);
@@ -56,11 +59,11 @@ namespace api {
     }
 
     const requestPages: number[] = [];
-    if (pageCount < MAX_REQUEST_AMOUNT) {
+    if (pageCount < maxRequestAmount) {
       requestPages.push(...utils.range(1, pageCount));
     } else {
-      utils.range(1, MAX_REQUEST_AMOUNT).map((i) => {
-        requestPages.push(Math.round((i * pageCount) / MAX_REQUEST_AMOUNT) - 1);
+      utils.range(1, maxRequestAmount).map((i) => {
+        requestPages.push(Math.round((i * pageCount) / maxRequestAmount) - 1);
       });
       if (!requestPages.includes(1)) {
         requestPages.unshift(1);
@@ -75,7 +78,7 @@ namespace api {
 
     const starRecordsMap: Map<string, number> = new Map();
 
-    if (requestPages.length < MAX_REQUEST_AMOUNT) {
+    if (requestPages.length < maxRequestAmount) {
       const starRecordsData: {
         starred_at: string;
       }[] = [];
@@ -88,7 +91,7 @@ namespace api {
           utils.getDateString(starRecordsData[i].starred_at),
           i + 1
         );
-        i += Math.floor(starRecordsData.length / MAX_REQUEST_AMOUNT) || 1;
+        i += Math.floor(starRecordsData.length / maxRequestAmount) || 1;
       }
     } else {
       resArray.map(({ data }, index) => {

@@ -3,15 +3,22 @@ import { ChartMode, RepoStarData } from "../types/chart";
 import api from "./api";
 import utils from "./utils";
 
+const MAX_REQUEST_AMOUNT = 15;
+
 export const getReposStarData = async (
   repos: string[],
-  token = ""
+  token = "",
+  maxRequestAmount = MAX_REQUEST_AMOUNT
 ): Promise<RepoStarData[]> => {
   const repoStarDataCacheMap = new Map();
 
   for (const repo of repos) {
     try {
-      const starRecords = await api.getRepoStarRecords(repo, token);
+      const starRecords = await api.getRepoStarRecords(
+        repo,
+        token,
+        maxRequestAmount
+      );
       repoStarDataCacheMap.set(repo, starRecords);
     } catch (error: any) {
       let message = "";

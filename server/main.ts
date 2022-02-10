@@ -56,7 +56,9 @@ router.get("/svg", async (ctx) => {
   }
 
   try {
-    const data = await getReposStarData(nodataRepos, token);
+    // We can reduce the request count by setting maxRequestAmount,
+    // now the value is the same as the frontend: `15`.
+    const data = await getReposStarData(nodataRepos, token, 15);
     for (const d of data) {
       repoStarDataCache.set(d.repo, {
         starRecords: d.starRecords,
