@@ -75,7 +75,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, watch } from "vue";
 import toast from "../helpers/toast";
-import utils from "../helpers/utils";
+import utils from "../../common/utils";
 import useAppStore from "../store";
 import Dialog from "./Dialog.vue";
 
@@ -92,22 +92,23 @@ const state = reactive<State>({
   token: store.token,
 });
 
-onMounted(() => {
+const generateEmbedCode = () => {
+  const secret = btoa(state.token);
   state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
     window.location.origin
-  }/embed?secret=${btoa(state.token)}#${store.repos.join(
-    "&"
-  )}&Date" frameBorder="0"></iframe>`;
+  }/embed?secret=${secret}#${store.repos.join("&")}&${
+    store.chartMode
+  }" frameBorder="0"></iframe>`;
+};
+
+onMounted(() => {
+  generateEmbedCode();
 });
 
 watch(
   () => [state.token],
   () => {
-    state.embedCode = `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${
-      window.location.origin
-    }/embed?secret=${btoa(state.token)}#${store.repos.join(
-      "&"
-    )}&Date" frameBorder="0"></iframe>`;
+    generateEmbedCode();
   }
 );
 

@@ -118,9 +118,9 @@
 import { PostOrPage } from "@tryghost/content-api";
 import { onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
+import { getPostDetailBySlug } from "../helpers/ghost";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import api from "../helpers/api";
 import SubscribeSection from "../components/SubscribeSection.vue";
 
 interface State {
@@ -141,7 +141,7 @@ onMounted(async () => {
   }
 
   try {
-    const post = await api.getPostDetailBySlug(blogSlug);
+    const post = await getPostDetailBySlug(blogSlug);
     const formatedPost = {
       ...post,
       tags: post.tags?.filter((t) => t.name !== "StarHistory"),

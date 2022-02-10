@@ -1,6 +1,6 @@
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-import api from "../src/helpers/api";
+import { getPosts } from "../src/helpers/ghost";
 
 interface Route {
   url: string;
@@ -24,14 +24,14 @@ const staticRoutes: Route[] = [
 
 const getBlogsRoutes = async (): Promise<Route[]> => {
   const tags = ["StarHistory"];
-  const posts = await api.getPosts(tags);
+  const posts = await getPosts(tags);
 
   const blogRoutes: Route[] = [];
 
   for (const post of posts) {
     blogRoutes.push({
       url: `/blog/${post.slug}`,
-      name: post.title,
+      name: post.title || "",
     });
   }
 
@@ -44,7 +44,7 @@ const generateSitemap = async () => {
   routes.push(...blogRoutes);
   const baseUrl = "https://star-history.com";
 
-  const routeXMLTags = [];
+  const routeXMLTags: string[] = [];
   for (const route of routes) {
     routeXMLTags.push(`<url>
   <loc>${baseUrl}${route.url}</loc>
