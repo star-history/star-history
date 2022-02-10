@@ -31,10 +31,13 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref } from "vue";
-import api from "../helpers/api";
+import { ChartMode, RepoStarData } from "../../types/chart";
+import { XYChartData } from "../../packages/xy-chart";
+import {
+  convertStarDataToChartData,
+  getReposStarData,
+} from "../../common/chart";
 import toast from "../helpers/toast";
-import utils from "../helpers/utils";
-import { XYChartData, XYData } from "../packages/xy-chart";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 
 const toastWarn = (message: string) => {
@@ -111,34 +114,19 @@ onMounted(() => {
 const fetchReposStarData = async (repos: string[], token: string) => {
   state.isFetching = true;
   const reposStarData: RepoStarData[] = [];
-
-  for (const repo of repos) {
-    try {
-      const starRecords = await api.getRepoStarRecords(repo, token);
-      reposStarData.push({
-        repo,
-        starRecords,
-      });
-    } catch (error: any) {
-      if (error?.response?.status === 404) {
-        toastWarn(`Repo ${repo} not found`);
-      } else if (error?.response?.status === 403) {
-        toastWarn("GitHub API rate limit exceeded");
-      } else if (error?.response?.status === 401) {
-        toastWarn("Access Token Unauthorized");
-      } else if (Array.isArray(error?.data) && error.data?.length === 0) {
-        toastWarn(`Repo ${repo} has no star history`);
-      } else {
-        toastWarn("Some unexpected error happened, try again later");
-      }
-      return;
+  try {
+    const data = await getReposStarData(repos, token);
+    for (const d of data) {
+      reposStarData.push(d);
     }
+  } catch (error: any) {
+    toastWarn(error.message);
+    return;
   }
   state.isFetching = false;
 
   if (reposStarData.length === 0) {
     state.chartData = undefined;
-    toastWarn(`No repo found`);
   } else {
     reposStarData.sort((d1, d2) => {
       return (
@@ -146,49 +134,10 @@ const fetchReposStarData = async (repos: string[], token: string) => {
         Math.max(...d1.starRecords.map((s) => s.count))
       );
     });
-    generateChartData(reposStarData);
-  }
-};
-
-const generateChartData = (reposStarData: RepoStarData[]) => {
-  if (state.chartMode === "Date") {
-    const datasets: XYData[] = reposStarData.map((item) => {
-      const { repo, starRecords } = item;
-
-      return {
-        label: repo,
-        data: starRecords.map((item) => {
-          return {
-            x: new Date(item.date),
-            y: Number(item.count),
-          };
-        }),
-      };
-    });
-    state.chartData = {
-      datasets,
-    } as XYChartData;
-  } else if (state.chartMode === "Timeline") {
-    const datasets: XYData[] = reposStarData.map((item) => {
-      const { repo, starRecords } = item;
-
-      let started = starRecords[0].date;
-
-      return {
-        label: repo,
-        data: starRecords.map((item) => {
-          return {
-            x:
-              utils.getTimeStampByDate(new Date(item.date)) -
-              utils.getTimeStampByDate(new Date(started)),
-            y: Number(item.count),
-          };
-        }),
-      };
-    });
-    state.chartData = {
-      datasets,
-    } as XYChartData;
+    state.chartData = convertStarDataToChartData(
+      reposStarData,
+      state.chartMode
+    );
   }
 };
 </script>

@@ -1,11 +1,7 @@
-import {
-  AxisScale,
-  curveMonotoneX,
-  line,
-  scaleLinear,
-  scaleTime,
-  select,
-} from "d3";
+import { scaleLinear, scaleTime } from "d3-scale";
+import { select } from "d3-selection";
+import { line, curveMonotoneX } from "d3-shape";
+import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
 import ToolTip from "./components/ToolTip";
 import { drawXAxis, drawYAxis } from "./utils/drawAxis";
@@ -56,6 +52,7 @@ export interface XYChartConfig {
   xLabel: string;
   yLabel: string;
   data: XYChartData;
+  showDots: boolean;
 }
 
 type XTickLabelType = "Date" | "Number";
@@ -91,7 +88,7 @@ const getDefaultOptions = (): XYChartOptions => {
 
 const XYChart = (
   svg: SVGSVGElement,
-  { title, xLabel, yLabel, data: { datasets } }: XYChartConfig,
+  { title, xLabel, yLabel, data: { datasets }, showDots }: XYChartConfig,
   intialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
@@ -126,12 +123,12 @@ const XYChart = (
     .attr("height", clientHeight) as D3Selection;
   d3Selection.selectAll("*").remove();
 
+  addFont(d3Selection);
+  addFilter(d3Selection);
+
   const chart = d3Selection
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  addFont(d3Selection);
-  addFilter(d3Selection);
 
   const tooltip = new ToolTip({
     selection: d3Selection,
@@ -236,97 +233,96 @@ const XYChart = (
       .attr("filter", filter);
   }
 
-  // draw dots
-  const dotInitSize =
-    3.5 * (options.dotSize === undefined ? 1 : options.dotSize);
-  const dotHoverSize =
-    6 * (options.dotSize === undefined ? 1 : options.dotSize);
-  svgChart
-    .selectAll(".xkcd-chart-xycircle-group")
-    .data(data.datasets)
-    .enter()
-    .append("g")
-    .attr("class", "xkcd-chart-xycircle-group")
-    .attr("filter", filter)
-    .attr("xy-group-index", (_, i) => i)
-    .selectAll(".xkcd-chart-xycircle-circle")
-    .data((dataset) => dataset.data)
-    .enter()
-    .append("circle")
-    .attr("class", "chart-tooltip-dot")
-    .style("stroke", (_, i, nodes) => {
-      const xyGroupIndex = Number(
-        select(nodes[i].parentElement).attr("xy-group-index")
-      );
-      return options.dataColors[xyGroupIndex];
-    })
-    .style("fill", (_, i, nodes) => {
-      const xyGroupIndex = Number(
-        select(nodes[i].parentElement).attr("xy-group-index")
-      );
-      return options.dataColors[xyGroupIndex];
-    })
-    .attr("r", dotInitSize)
-    .attr("cx", (d) => xScale(d.x) || 0)
-    .attr("cy", (d) => yScale(d.y))
-    .attr("pointer-events", "all")
-    .on("mouseover", (event, d) => {
-      const node = event.target as Element;
-      const i = Array.from(node.parentElement?.childNodes || []).indexOf(node);
-      const xyGroupIndex = Number(
-        select(node.parentElement).attr("xy-group-index")
-      );
-      select(node).attr("r", dotHoverSize);
-
-      const tipX = (xScale(d.x) || 0) + margin.left + 5;
-      const tipY = yScale(d.y) + margin.top + 5;
-      let tooltipPositionType = "down_right";
-      if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
-        tooltipPositionType = "down_left";
-      } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
-        tooltipPositionType = "up_left";
-      } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
-        tooltipPositionType = "up_right";
-      }
-
-      // NOTE: tooltip title with date type(default)
-      let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
-        options.dateFormat
-      );
-      if (options.xTickLabelType === "Number") {
-        const type = getTimestampFormatUnit(
-          Number(
-            data.datasets[xyGroupIndex].data[1].x ||
-              data.datasets[xyGroupIndex].data[i].x
-          )
+  if (showDots) {
+    // draw dots
+    const dotInitSize =
+      3.5 * (options.dotSize === undefined ? 1 : options.dotSize);
+    const dotHoverSize =
+      6 * (options.dotSize === undefined ? 1 : options.dotSize);
+    svgChart
+      .selectAll(".xkcd-chart-xycircle-group")
+      .data(data.datasets)
+      .enter()
+      .append("g")
+      .attr("class", "xkcd-chart-xycircle-group")
+      .attr("filter", filter)
+      .attr("xy-group-index", (_, i) => i)
+      .selectAll(".xkcd-chart-xycircle-circle")
+      .data((dataset) => dataset.data)
+      .enter()
+      .append("circle")
+      .attr("class", "chart-tooltip-dot")
+      .style("stroke", (_, i, nodes) => {
+        const xyGroupIndex = Number(
+          select(nodes[i].parentElement).attr("xy-group-index")
         );
-        title = getFormatTimeline(
-          Number(data.datasets[xyGroupIndex].data[i].x),
-          type
+        return options.dataColors[xyGroupIndex];
+      })
+      .style("fill", (_, i, nodes) => {
+        const xyGroupIndex = Number(
+          select(nodes[i].parentElement).attr("xy-group-index")
         );
-      }
+        return options.dataColors[xyGroupIndex];
+      })
+      .attr("r", dotInitSize)
+      .attr("cx", (d) => xScale(d.x) || 0)
+      .attr("cy", (d) => yScale(d.y))
+      .attr("pointer-events", "all")
+      .on("mouseover", (d, i, nodes) => {
+        const xyGroupIndex = Number(
+          select(nodes[i].parentElement).attr("xy-group-index")
+        );
+        select(nodes[i]).attr("r", dotHoverSize);
 
-      tooltip.update({
-        title,
-        items: [
-          {
-            color: options.dataColors[xyGroupIndex],
-            text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
+        const tipX = (xScale(d.x) || 0) + margin.left + 5;
+        const tipY = yScale(d.y) + margin.top + 5;
+        let tooltipPositionType = "down_right";
+        if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
+          tooltipPositionType = "down_left";
+        } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
+          tooltipPositionType = "up_left";
+        } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
+          tooltipPositionType = "up_right";
+        }
+
+        // NOTE: tooltip title with date type(default)
+        let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
+          options.dateFormat
+        );
+        if (options.xTickLabelType === "Number") {
+          const type = getTimestampFormatUnit(
+            Number(
+              data.datasets[xyGroupIndex].data[1].x ||
+                data.datasets[xyGroupIndex].data[i].x
+            )
+          );
+          title = getFormatTimeline(
+            Number(data.datasets[xyGroupIndex].data[i].x),
+            type
+          );
+        }
+
+        tooltip.update({
+          title,
+          items: [
+            {
+              color: options.dataColors[xyGroupIndex],
+              text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
+            },
+          ],
+          position: {
+            x: tipX,
+            y: tipY,
+            type: tooltipPositionType,
           },
-        ],
-        position: {
-          x: tipX,
-          y: tipY,
-          type: tooltipPositionType,
-        },
+        });
+        tooltip.show();
+      })
+      .on("mouseout", (_, i, nodes) => {
+        select(nodes[i]).attr("r", dotInitSize);
+        tooltip.hide();
       });
-      tooltip.show();
-    })
-    .on("mouseout", (event) => {
-      const node = event.target as Element;
-      select(node).attr("r", dotInitSize);
-      tooltip.hide();
-    });
+  }
 
   // draw legend
   const legendItems = data.datasets.map((dataset, i) => ({

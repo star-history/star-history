@@ -1,7 +1,15 @@
 import { createPinia, defineStore } from "pinia";
 import storage from "../helpers/storage";
+import { ChartMode } from "../../types/chart";
 
 export const piniaInstance = createPinia();
+
+interface AppState {
+  isFetching: boolean;
+  token: string;
+  repos: string[];
+  chartMode: ChartMode;
+}
 
 const useAppStore = defineStore("appStore", {
   state: (): AppState => {
