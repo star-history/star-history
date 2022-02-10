@@ -88,11 +88,6 @@ const startServer = async () => {
       return;
     }
 
-    const chartData = convertStarDataToChartData(
-      reposStarData,
-      type as "Date" | "Timeline"
-    );
-
     const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
     const body = dom.window.document.querySelector("body");
     const svg = dom.window.document.createElement(
@@ -122,7 +117,7 @@ const startServer = async () => {
           title: "Star history",
           xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
-          data: chartData,
+          data: convertStarDataToChartData(reposStarData, type),
           showDots: false,
         },
         {
@@ -139,10 +134,11 @@ const startServer = async () => {
 
     const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
 
+    const now = new Date();
     ctx.type = "image/svg+xml;charset=utf-8";
-    ctx.set("cache-control", "public, max-age=86400");
-    ctx.set("date", `${new Date()}`);
-    ctx.set("expires", `${new Date()}`);
+    ctx.set("cache-control", "no-cache");
+    ctx.set("date", `${now}`);
+    ctx.set("expires", `${now}`);
     ctx.body = svgContent;
   });
 
