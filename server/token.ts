@@ -21,10 +21,18 @@ export const initTokenFromEnv = async () => {
       console.error(`token is unusable: ${token}`);
     }
   }
+
+  if (savedTokens.length === 0) {
+    console.error("No token");
+    exit(-1);
+  }
+
+  console.log(`Usable token amount: ${savedTokens.length}`);
 };
 
 export const getNextToken = () => {
   const currentIndex = index;
+
   index++;
   if (index >= savedTokens.length) {
     index = 0;
