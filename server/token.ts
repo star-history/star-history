@@ -1,9 +1,10 @@
 import { env, exit } from "process";
+import api from "../common/api";
 
-let savedTokens: string[] = [];
+const savedTokens: string[] = [];
 let index = 0;
 
-export const initTokenFromEnv = () => {
+export const initTokenFromEnv = async () => {
   const envTokenString = env.TOKEN;
   if (!envTokenString) {
     console.error("Token not found");
@@ -11,7 +12,15 @@ export const initTokenFromEnv = () => {
   }
 
   const tokens = envTokenString.split(",");
-  savedTokens = tokens;
+  // Check token usable
+  for (const token of tokens) {
+    try {
+      await api.getRepoStargazersCount("bytebase/star-history", token);
+      savedTokens.push(token);
+    } catch (error) {
+      console.error(`token is unusable: ${token}`);
+    }
+  }
 };
 
 export const getNextToken = () => {
