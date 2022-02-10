@@ -1,12 +1,18 @@
+import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
 import { JSDOM } from "jsdom";
 import XYChart from "../packages/xy-chart";
-import { convertStarDataToChartData, getReposStarData } from "../common/chart";
+import {
+  convertStarDataToChartData,
+  DEFAULT_MAX_REQUEST_AMOUNT,
+  getReposStarData,
+} from "../common/chart";
 import api from "../common/api";
-import { repoStarDataCache } from "./cache";
+import { getRepoStarDataCache, setRepoStarDataCache } from "./cache";
 import { replaceSVGContentFilterWithCamelcase } from "./utils";
 import { getNextToken, initTokenFromEnv } from "./token";
+import { ChartMode } from "../types/chart";
 
 const startServer = async () => {
   await initTokenFromEnv();
@@ -15,17 +21,17 @@ const startServer = async () => {
   const router = new Router();
 
   // Example request link:
-  // /svg?secret=Z2hwXzlNNXNhbXJGU29nWE5uRW15NXQ2MFo1dVRGdXZnaDBOV0Q4Rg==&repos=bytebase/bytebase&type=Date
+  // /svg?repos=bytebase/star-history&type=Date
   router.get("/svg", async (ctx) => {
     const repos = `${ctx.query["repos"]}`.split(",");
-    let type = `${ctx.query["type"]}`;
+    let type = `${ctx.query["type"]}` as ChartMode;
 
     if (!["Date", "Timeline"].includes(type)) {
       type = "Date";
     }
 
     if (repos.length === 0) {
-      ctx.throw(400, "Repos required");
+      ctx.throw(400, `${http.STATUS_CODES[400]}: Repos required`);
       return;
     }
 
@@ -34,10 +40,11 @@ const startServer = async () => {
     const nodataRepos = [];
 
     for (const repo of repos) {
-      const cacheData = repoStarDataCache.get(repo);
+      const cacheData = getRepoStarDataCache(repo);
 
       if (cacheData) {
         try {
+          // Get the real-time repo star amount. If its value equal the cache, use the cached data.
           const starAmount = await api.getRepoStargazersCount(repo, token);
 
           if (starAmount === cacheData.starAmount) {
@@ -45,34 +52,39 @@ const startServer = async () => {
               repo,
               starRecords: cacheData.starRecords,
             });
-          } else {
-            nodataRepos.push(repo);
+            continue;
           }
         } catch (error) {
-          nodataRepos.push(repo);
+          console.error(error);
         }
-      } else {
-        nodataRepos.push(repo);
       }
+
+      nodataRepos.push(repo);
     }
 
     try {
-      // We can reduce the request count by setting maxRequestAmount,
-      // now the value is the same as the frontend: `15`.
-      const data = await getReposStarData(nodataRepos, token, 15);
+      // We can reduce the request amount by setting maxRequestAmount,
+      // the value is the same as the frontend.
+      const data = await getReposStarData(
+        nodataRepos,
+        token,
+        DEFAULT_MAX_REQUEST_AMOUNT
+      );
       for (const d of data) {
-        repoStarDataCache.set(d.repo, {
+        setRepoStarDataCache(d.repo, {
           starRecords: d.starRecords,
           starAmount: d.starRecords[d.starRecords.length - 1].count,
+          lastUsedAt: Date.now(),
         });
         reposStarData.push(d);
       }
     } catch (error: any) {
+      console.error("Failed to request data, error: ", error);
       const status = error.status || 400;
       const message =
         error.message || "Some unexpected error happened, try again later";
 
-      ctx.throw(status, message);
+      ctx.throw(status, `${http.STATUS_CODES[status]}: ${message}`);
       return;
     }
 
@@ -88,13 +100,19 @@ const startServer = async () => {
     ) as unknown as SVGSVGElement;
 
     if (!dom || !body || !svg) {
-      ctx.throw(500, `Failed to mock dom with JSDOM`);
+      ctx.throw(
+        500,
+        `${http.STATUS_CODES[500]}: Failed to mock dom with JSDOM`
+      );
       return;
     }
 
     body.append(svg);
-    svg.setAttribute("width", "600");
-    svg.setAttribute("height", "400");
+
+    const defaultSVGWidth = "600";
+    const defaultSVGHeight = "400";
+    svg.setAttribute("width", defaultSVGWidth);
+    svg.setAttribute("height", defaultSVGHeight);
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
     try {
@@ -102,7 +120,7 @@ const startServer = async () => {
         svg,
         {
           title: "Star history",
-          xLabel: type === "Timeline" ? "Timeline" : "Date",
+          xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
           data: chartData,
           showDots: false,
@@ -112,7 +130,10 @@ const startServer = async () => {
         }
       );
     } catch (error) {
-      ctx.throw(500, `Failed to generate chart, err: ${error}`);
+      ctx.throw(
+        500,
+        `${http.STATUS_CODES[500]}: Failed to generate chart, ${error}`
+      );
       return;
     }
 
