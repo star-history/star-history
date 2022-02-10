@@ -52,7 +52,7 @@ const repoText = computed(() => {
 const embedCode = computed(() => {
   return `## Star History
 
-[![Star History Chart](https://sh-svg.onrender.com/svg?repos=${store.repos.join(
+[![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
     ","
   )}&type=${store.chartMode})](${window.location.href})
 `;
