@@ -5,14 +5,10 @@ import XYChart from "../packages/xy-chart";
 import { convertStarDataToChartData, getReposStarData } from "../common/chart";
 import api from "../common/api";
 import { repoStarDataCache } from "./cache";
+import { replaceSVGContentFilterWithCamelcase } from "./utils";
+import { getNextToken, initTokenFromEnv } from "./token";
 
-const replaceSVGContentFilterWithCamelcase = (svgContent: string): string => {
-  return svgContent.replace(
-    /<filter (.*?)>(.*?)<\/filter>/g,
-    `<filter xmlns="http://www.w3.org/2000/svg" id="xkcdify" filterUnits="userSpaceOnUse" x="-5" y="-5" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise"/><feDisplacementMap scale="5" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise"/></filter>`
-  );
-};
-const chartTypes = ["Date", "Timeline"];
+initTokenFromEnv();
 
 const app = new Koa();
 const router = new Router();
@@ -20,11 +16,10 @@ const router = new Router();
 // Example request link:
 // /svg?secret=Z2hwXzlNNXNhbXJGU29nWE5uRW15NXQ2MFo1dVRGdXZnaDBOV0Q4Rg==&repos=bytebase/bytebase&type=Date
 router.get("/svg", async (ctx) => {
-  const secretToken = `${ctx.query["secret"]}`;
   const repos = `${ctx.query["repos"]}`.split(",");
   let type = `${ctx.query["type"]}`;
 
-  if (!chartTypes.includes(type)) {
+  if (!["Date", "Timeline"].includes(type)) {
     type = "Date";
   }
 
@@ -33,12 +28,7 @@ router.get("/svg", async (ctx) => {
     return;
   }
 
-  const token = Buffer.from(secretToken, "base64").toString();
-  if (token === "") {
-    ctx.throw(400, "GitHub personal access token required");
-    return;
-  }
-
+  const token = getNextToken();
   const reposStarData = [];
   const nodataRepos = [];
 
