@@ -1,15 +1,15 @@
 import axios from "axios";
 import utils from "./utils";
 
-const PER_PAGE = 30;
+const DEFAULT_PER_PAGE = 30;
 
 namespace api {
   export async function getRepoStargazers(
     repo: string,
-    token = "",
+    token?: string,
     page?: number
   ) {
-    let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${PER_PAGE}`;
+    let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${DEFAULT_PER_PAGE}`;
 
     if (page !== undefined) {
       url = `${url}&page=${page}`;
@@ -22,7 +22,7 @@ namespace api {
     });
   }
 
-  export async function getRepoStargazersCount(repo: string, token = "") {
+  export async function getRepoStargazersCount(repo: string, token?: string) {
     const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
       headers: {
         Accept: "application/vnd.github.v3.star+json",
@@ -99,7 +99,7 @@ namespace api {
           const starRecord = data[0];
           starRecordsMap.set(
             utils.getDateString(starRecord.starred_at),
-            PER_PAGE * (requestPages[index] - 1)
+            DEFAULT_PER_PAGE * (requestPages[index] - 1)
           );
         }
       });

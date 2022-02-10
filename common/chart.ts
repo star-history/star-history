@@ -3,12 +3,12 @@ import { ChartMode, RepoStarData } from "../types/chart";
 import api from "./api";
 import utils from "./utils";
 
-const MAX_REQUEST_AMOUNT = 15;
+export const DEFAULT_MAX_REQUEST_AMOUNT = 15;
 
 export const getReposStarData = async (
   repos: string[],
   token = "",
-  maxRequestAmount = MAX_REQUEST_AMOUNT
+  maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT
 ): Promise<RepoStarData[]> => {
   const repoStarDataCacheMap = new Map();
 
