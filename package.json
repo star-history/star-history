@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:server": "yarn && cd server && yarn && yarn build",
     "build:ext": "vite build --mode extension"
   },
   "dependencies": {

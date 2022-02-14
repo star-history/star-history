@@ -9,10 +9,11 @@ import {
   getReposStarData,
 } from "../common/chart";
 import api from "../common/api";
-import { getRepoStarDataCache, setRepoStarDataCache } from "./cache";
+import cache from "./cache";
 import { replaceSVGContentFilterWithCamelcase } from "./utils";
 import { getNextToken, initTokenFromEnv } from "./token";
 import { ChartMode } from "../types/chart";
+import { CHART_TYPES } from "./const";
 
 const startServer = async () => {
   await initTokenFromEnv();
@@ -26,12 +27,12 @@ const startServer = async () => {
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
 
-    if (!["Date", "Timeline"].includes(type)) {
+    if (!CHART_TYPES.includes(type)) {
       type = "Date";
     }
 
     if (repos.length === 0) {
-      ctx.throw(400, `${http.STATUS_CODES[400]}: Repos required`);
+      ctx.throw(400, `${http.STATUS_CODES[400]}: Repo name required`);
       return;
     }
 
@@ -40,9 +41,9 @@ const startServer = async () => {
     const nodataRepos = [];
 
     for (const repo of repos) {
-      const cacheData = getRepoStarDataCache(repo);
+      if (cache.has(repo)) {
+        const cacheData = cache.get(repo);
 
-      if (cacheData) {
         try {
           // Get the real-time repo star amount. If its value equal the cache, use the cached data.
           const starAmount = await api.getRepoStargazersCount(repo, token);
@@ -64,17 +65,16 @@ const startServer = async () => {
 
     try {
       // We can reduce the request amount by setting maxRequestAmount,
-      // the value is the same as the frontend.
+      // the default value is the same as frontend.
       const data = await getReposStarData(
         nodataRepos,
         token,
         DEFAULT_MAX_REQUEST_AMOUNT
       );
       for (const d of data) {
-        setRepoStarDataCache(d.repo, {
+        cache.set(d.repo, {
           starRecords: d.starRecords,
           starAmount: d.starRecords[d.starRecords.length - 1].count,
-          lastUsedAt: Date.now(),
         });
         reposStarData.push(d);
       }
