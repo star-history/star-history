@@ -19,7 +19,7 @@ const options = {
   // based on the monthly visit count with `o/pv-star`.
   max: 20000,
   // max cache memory cost bytes: about 24Mb.
-  maxSize: 24 * 1048 * 1048,
+  maxSize: 24 * 1024 * 1024,
   // calc cache size with its bytes.
   sizeCalculation: (value: RepoStarData) => {
     return utils.calcBytes(value);
