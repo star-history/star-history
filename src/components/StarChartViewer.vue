@@ -368,8 +368,7 @@ const handleShareToTwitterBtnClick = async () => {
     let starCount = 0;
 
     try {
-      const { data } = await api.getRepoStargazersCount(repo, store.token);
-      starCount = data.stargazers_count;
+      starCount = await api.getRepoStargazersCount(repo, store.token);
     } catch (error) {
       // do nth
     }
