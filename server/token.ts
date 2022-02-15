@@ -32,8 +32,6 @@ export const initTokenFromEnv = async () => {
 
 // Get the next token for requests.
 export const getNextToken = () => {
-  const currentIndex = index;
-  index = (currentIndex + 1) % savedTokens.length;
-
-  return savedTokens[currentIndex];
+  index = (index + 1) % savedTokens.length;
+  return savedTokens[index];
 };

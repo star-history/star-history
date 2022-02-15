@@ -15,10 +15,11 @@ interface RepoStarData {
 }
 
 const options = {
-  // the number of most recently used items to keep.
-  max: 2048,
-  // max cache memory cost bytes: 2Mb.
-  maxSize: 2 * 1024 * 1024,
+  // the number of most recently used items to keep,
+  // based on the monthly visit count with `o/pv-star`.
+  max: 20000,
+  // max cache memory cost bytes: about 24Mb.
+  maxSize: 24 * 1048 * 1048,
   // calc cache size with its bytes.
   sizeCalculation: (value: RepoStarData) => {
     return utils.calcBytes(value);
