@@ -1,8 +1,11 @@
 🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
+
 # Star History
 
 [https://star-history.com](https://star-history.com) the missing GitHub star history graph of GitHub repos.
+
+[![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
 
 **Sponsor**
 
