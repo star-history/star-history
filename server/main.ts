@@ -47,30 +47,32 @@ const startServer = async () => {
       }
     }
 
-    const token = await getNextToken();
+    if (nodataRepos.length > 0) {
+      const token = getNextToken();
 
-    try {
-      const data = await getReposStarData(
-        nodataRepos,
-        token,
-        MAX_REQUEST_AMOUNT
-      );
+      try {
+        const data = await getReposStarData(
+          nodataRepos,
+          token,
+          MAX_REQUEST_AMOUNT
+        );
 
-      for (const d of data) {
-        cache.set(d.repo, {
-          starRecords: d.starRecords,
-          starAmount: d.starRecords[d.starRecords.length - 1].count,
-        });
-        reposStarData.push(d);
+        for (const d of data) {
+          cache.set(d.repo, {
+            starRecords: d.starRecords,
+            starAmount: d.starRecords[d.starRecords.length - 1].count,
+          });
+          reposStarData.push(d);
+        }
+      } catch (error: any) {
+        console.error("Failed to request data, error: ", error);
+        const status = error.status || 400;
+        const message =
+          error.message || "Some unexpected error happened, try again later";
+
+        ctx.throw(status, `${http.STATUS_CODES[status]}: ${message}`);
+        return;
       }
-    } catch (error: any) {
-      console.error("Failed to request data, error: ", error);
-      const status = error.status || 400;
-      const message =
-        error.message || "Some unexpected error happened, try again later";
-
-      ctx.throw(status, `${http.STATUS_CODES[status]}: ${message}`);
-      return;
     }
 
     const dom = new JSDOM(`<!DOCTYPE html><body></body>`);

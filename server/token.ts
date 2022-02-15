@@ -1,13 +1,8 @@
 import { env, exit } from "process";
-import { EventEmitter } from "events";
 import api from "../common/api";
 
 const savedTokens: string[] = [];
 let index = 0;
-
-// simple mutex lock with EventEmitter.
-const ee = new EventEmitter();
-let lock = false;
 
 export const initTokenFromEnv = async () => {
   const envTokenString = env.TOKEN;
@@ -36,17 +31,9 @@ export const initTokenFromEnv = async () => {
 };
 
 // Get the next token for requests.
-export const getNextToken = async (): Promise<string> => {
-  return new Promise((resolve) => {
-    if (lock) {
-      ee.once("ready", getNextToken);
-    } else {
-      lock = true;
-      const currentIndex = index;
-      index = (currentIndex + 1) % savedTokens.length;
-      resolve(savedTokens[currentIndex]);
-      lock = false;
-      ee.emit("ready");
-    }
-  });
+export const getNextToken = () => {
+  const currentIndex = index;
+  index = (currentIndex + 1) % savedTokens.length;
+
+  return savedTokens[currentIndex];
 };

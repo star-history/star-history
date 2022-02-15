@@ -1,5 +1,5 @@
 import LRUCache from "lru-cache";
-import { MAX_REQUEST_AMOUNT } from "./const";
+import utils from "../common/utils";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.
@@ -17,12 +17,11 @@ interface RepoStarData {
 const options = {
   // the number of most recently used items to keep.
   max: 2048,
-  // track the items total size.
-  maxSize: 2048 * MAX_REQUEST_AMOUNT,
-  // the most resource-consuming is star record list, so its length could be used for the data size.
-  // usually its length should be less then MAX_REQUEST_AMOUNT.
+  // max cache memory cost bytes: 2Mb.
+  maxSize: 2 * 1024 * 1024,
+  // calc cache size with its bytes.
   sizeCalculation: (value: RepoStarData) => {
-    return value.starRecords.length;
+    return utils.calcBytes(value);
   },
   // max 6 hours to live.
   ttl: 1000 * 60 * 60 * 6,
