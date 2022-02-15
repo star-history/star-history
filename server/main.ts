@@ -3,17 +3,12 @@ import Koa from "koa";
 import Router from "koa-router";
 import { JSDOM } from "jsdom";
 import XYChart from "../packages/xy-chart";
-import {
-  convertStarDataToChartData,
-  DEFAULT_MAX_REQUEST_AMOUNT,
-  getReposStarData,
-} from "../common/chart";
-import api from "../common/api";
+import { convertStarDataToChartData, getReposStarData } from "../common/chart";
 import cache from "./cache";
 import { replaceSVGContentFilterWithCamelcase } from "./utils";
 import { getNextToken, initTokenFromEnv } from "./token";
 import { ChartMode } from "../types/chart";
-import { CHART_TYPES } from "./const";
+import { CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const";
 
 const startServer = async () => {
   await initTokenFromEnv();
@@ -36,41 +31,31 @@ const startServer = async () => {
       return;
     }
 
-    const token = getNextToken();
     const reposStarData = [];
     const nodataRepos = [];
 
     for (const repo of repos) {
-      if (cache.has(repo)) {
-        const cacheData = cache.get(repo);
+      const cacheData = cache.get(repo);
 
-        try {
-          // Get the real-time repo star amount. If its value equal the cache, use the cached data.
-          const starAmount = await api.getRepoStargazersCount(repo, token);
-
-          if (starAmount === cacheData.starAmount) {
-            reposStarData.push({
-              repo,
-              starRecords: cacheData.starRecords,
-            });
-            continue;
-          }
-        } catch (error) {
-          console.error(error);
-        }
+      if (cacheData) {
+        reposStarData.push({
+          repo,
+          starRecords: cacheData.starRecords,
+        });
+      } else {
+        nodataRepos.push(repo);
       }
-
-      nodataRepos.push(repo);
     }
 
+    const token = await getNextToken();
+
     try {
-      // We can reduce the request amount by setting maxRequestAmount,
-      // the default value is the same as frontend.
       const data = await getReposStarData(
         nodataRepos,
         token,
-        DEFAULT_MAX_REQUEST_AMOUNT
+        MAX_REQUEST_AMOUNT
       );
+
       for (const d of data) {
         cache.set(d.repo, {
           starRecords: d.starRecords,
