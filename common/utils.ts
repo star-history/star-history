@@ -64,6 +64,30 @@ namespace utils {
       };
     });
   }
+
+  export function calcBytes(d: any): number {
+    let bytes = 0;
+
+    if (typeof d === "number") {
+      bytes += 8;
+    } else if (typeof d === "string") {
+      bytes += d.length * 2;
+    } else if (typeof d === "boolean") {
+      bytes += 1;
+    } else if (typeof d === "object") {
+      if (Array.isArray(d)) {
+        for (const i of d) {
+          bytes += calcBytes(i);
+        }
+      } else {
+        for (const k in d) {
+          bytes += calcBytes(d[k]);
+        }
+      }
+    }
+
+    return bytes;
+  }
 }
 
 export default utils;

@@ -96,6 +96,7 @@
       </button>
     </div>
   </div>
+  <EmbedMarkdownSection v-if="state.chartData"></EmbedMarkdownSection>
   <div class="grow"></div>
   <BytebaseBanner v-if="state.chartData"></BytebaseBanner>
   <TokenSettingDialog
@@ -124,6 +125,7 @@ import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";
+import EmbedMarkdownSection from "./EmbedMarkdownSection.vue";
 
 interface State {
   chartMode: "Date" | "Timeline";
