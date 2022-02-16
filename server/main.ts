@@ -79,7 +79,7 @@ const startServer = async () => {
           error.message || "Some unexpected error happened, try again later";
 
         if (status === 404) {
-          logger.info("Failed to request data", error);
+          // do nth, repo from user not found.
         } else {
           logger.error("Failed to request data", error);
         }
