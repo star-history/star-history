@@ -8,7 +8,7 @@ const createLogger = () => {
   // Remove the logger file, ignoring any errors.
   try {
     fs.unlinkSync(logFilename);
-  } catch (ex) {
+  } catch (error) {
     // do nth
   }
 
