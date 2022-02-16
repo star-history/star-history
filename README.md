@@ -1,6 +1,5 @@
 🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
 
-
 # Star History
 
 [https://star-history.com](https://star-history.com) the missing GitHub star history graph of GitHub repos.
@@ -17,13 +16,11 @@
 
 **Support comparing multiple repos**
 
-![web-demo](https://raw.githubusercontent.com/bytebase/star-history/master/public/star-history.gif)
+<img width="800px" src="https://user-images.githubusercontent.com/24653555/154239111-37d8abf4-86bc-475d-8eef-ba4360af6844.gif" />
 
 ## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-![extension-demo](https://raw.githubusercontent.com/timqian/images/master/star-history-extension.gif)
-
-> Note: You can [load the `./extension` folder to chrome](https://superuser.com/a/247654) to install the extension too.
+<img width="800px" src="https://user-images.githubusercontent.com/24653555/154238843-b17a22c8-8adf-4a2e-9c9a-f4d45206c1f9.gif" />
 
 ## Access Token
 
@@ -61,25 +58,3 @@ npm run deployWebsite
 npm run buildExtension
 # zip extension folder and publish to chrome web store
 ```
-
-## Updates
-
-- 2019-8-28: use [chart.xkcd](https://github.com/timqian/chart.xkcd) to plot the graph
-
-- 2019-3-06: Add personal access token; update style; mono repo
-
-- 2016-6-30: Alert to notie
-
-- 2016-6-28: Add clear btn
-
-- 2016-6-28: Better view for "many star" repos (use current star number as the last point on the graph)
-
-- 2016-6-26: **Store repo info into url hash**
-
-- 2016-6-26: **multiple kinds of input styles (eg: github.com/bytebase/star-history, ...)**
-
-- 2016-6-26: Better view for less star repos #28
-
-- 2016-6-14: **Toggle search by hit enter** #26, prevent crash while searching for not existing repo
-
-- 2016-5-26: Update mobile view
