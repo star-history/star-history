@@ -1,11 +1,11 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-full h-auto self-center min-w-600px max-w-800px min-h-400px 2xl:max-w-4xl p-4 pt-0 flex flex-col"
+    class="relative w-full h-auto self-center max-w-800px 2xl:max-w-4xl sm:p-4 pt-0"
   >
     <div
       v-if="isFetching"
-      class="absolute w-full h-full flex justify-center items-center z-10 top-0"
+      class="absolute w-full h-full min-h-400px flex justify-center items-center z-10 top-0"
     >
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
@@ -32,16 +32,6 @@
       :data="state.chartData"
       :chart-mode="chartMode"
     />
-
-    <!-- watermark -->
-    <div
-      v-if="state.chartData"
-      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
-      style="font-family: 'xkcd', serif"
-    >
-      <img class="w-5 h-auto mr-1" src="/icon.png" />
-      star-history.com
-    </div>
   </div>
   <div
     v-if="state.chartData"

@@ -18,14 +18,6 @@
       :data="state.chartData"
       :chart-mode="state.chartMode"
     />
-    <p
-      v-if="state.chartData"
-      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-600"
-      style="font-family: 'xkcd', serif"
-    >
-      <img class="w-5 h-auto mr-1" src="/icon.png" />
-      star-history.com
-    </p>
   </a>
 </template>
 
