@@ -17,7 +17,7 @@ export const getChartWidthWithSize = (size: string) => {
   } else if (size === "laptop") {
     return 800;
   } else if (size === "desktop") {
-    return 100;
+    return 1000;
   } else {
     return 600;
   }
