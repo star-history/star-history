@@ -1,5 +1,3 @@
-🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
-
 # Star History
 
 [https://star-history.com](https://star-history.com) the missing GitHub star history graph of GitHub repos.
@@ -12,49 +10,66 @@
 
 [Bytebase.com](https://bytebase.com) is an open source, web-based database schema change and version control tool for teams.
 
-## [As a website](https://star-history.com)
+## ✨ Features
 
-**Support comparing multiple repos**
+- Unique sketch xkcd feeling chart;
+- One-click generation of high-quality image for chart;
+- Support multiple chart view mode based on date or timeline;
+- Embed the real-time chart into GitHub readme or other websites;
+- And various useful functions:
+  - toggle repo visibility;
+  - shortcut to input repo;
+  - share on twitter quickly;
+  - support input multiple repos;
+  - ...wait for you finding out
 
-<img width="800px" src="https://user-images.githubusercontent.com/24653555/154239111-37d8abf4-86bc-475d-8eef-ba4360af6844.gif" />
+## 🌠 Screenshots
 
-## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
+<a href="https://star-history.com"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154277513-62771f05-f408-486c-88fc-bb104e4b1261.gif" />
+</a>
 
-<img width="800px" src="https://user-images.githubusercontent.com/24653555/154238843-b17a22c8-8adf-4a2e-9c9a-f4d45206c1f9.gif" />
+### [🧩 Also available as free chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-## Access Token
+<a href="https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154291891-fb297858-c93a-4c56-bc00-a1620304b8ca.png" /></a>
 
-[star-history.com](https://star-history.com) uses GitHub API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star history will need your personal access token to unlimit it.
+## 💪 Contributions are welcome
 
-If you don't already have one, [create one](https://github.com/settings/tokens/new), and add to star-history (no scope to your personal data is needed)
+Many of the above features come from the users engaging with us by issues and PRs. If you
 
-## Develop
+### Prerequisites
 
-### Website
+- Node.js
+- Yarn
 
-```bash
-npm run startWebsite
-```
+### Steps
 
-### Extension
+1. Initial dependencies:
 
-```bash
-npm run buildExtension
-# load the extension folder as unpacked extension into chrome to view it
-```
+   ```shell
+   yarn
+   ```
 
-## Build and Deploy
+2. Start main website develop:
 
-### Website
+   ```shell
+   yarn dev
+   ```
 
-```bash
-# deploy to star-history.com
-npm run deployWebsite
-```
+   The frontend will be served at http://localhost:3000.
 
-### Extension
+3. Start extension develop:
 
-```bash
-npm run buildExtension
-# zip extension folder and publish to chrome web store
-```
+   ```shell
+   yarn build:ext
+   ```
+
+   Then unpack the `./dist` folder to chrome extension page;
+
+4. Start SVG server develop:
+
+   ```shell
+   cd server
+   yarn && yarn dev
+   ```
+
+   The API server will be served at http://localhost:8080.
