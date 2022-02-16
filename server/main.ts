@@ -5,10 +5,13 @@ import { JSDOM } from "jsdom";
 import XYChart from "../packages/xy-chart";
 import { convertStarDataToChartData, getReposStarData } from "../common/chart";
 import cache from "./cache";
-import { replaceSVGContentFilterWithCamelcase } from "./utils";
+import {
+  getChartWidthWithSize,
+  replaceSVGContentFilterWithCamelcase,
+} from "./utils";
 import { getNextToken, initTokenFromEnv } from "./token";
 import { ChartMode } from "../types/chart";
-import { CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const";
+import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const";
 
 const startServer = async () => {
   await initTokenFromEnv();
@@ -21,9 +24,14 @@ const startServer = async () => {
   router.get("/svg", async (ctx) => {
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
+    let size = `${ctx.query["size"]}`;
 
     if (!CHART_TYPES.includes(type)) {
       type = "Date";
+    }
+
+    if (!CHART_SIZES.includes(size)) {
+      size = "laptop";
     }
 
     if (repos.length === 0) {
@@ -90,11 +98,6 @@ const startServer = async () => {
     }
 
     body.append(svg);
-
-    const defaultSVGWidth = "600";
-    const defaultSVGHeight = "400";
-    svg.setAttribute("width", defaultSVGWidth);
-    svg.setAttribute("height", defaultSVGHeight);
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
     try {
@@ -109,6 +112,7 @@ const startServer = async () => {
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
+          chartWidth: getChartWidthWithSize(size),
         }
       );
     } catch (error) {

@@ -3,7 +3,6 @@ import utils from "../common/utils";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.
- *
  * Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
  */
 interface RepoStarData {
@@ -14,6 +13,7 @@ interface RepoStarData {
   starAmount: number;
 }
 
+// Actually, we don't need LRU, but the memory control.
 const options = {
   // the number of most recently used items to keep,
   // based on the monthly visit count with `o/pv-star`.

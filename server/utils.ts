@@ -10,3 +10,15 @@ export const replaceSVGContentFilterWithCamelcase = (
     `<filter xmlns="http://www.w3.org/2000/svg" id="xkcdify" filterUnits="userSpaceOnUse" x="-5" y="-5" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise"/><feDisplacementMap scale="5" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise"/></filter>`
   );
 };
+
+export const getChartWidthWithSize = (size: string) => {
+  if (size === "mobile") {
+    return 600;
+  } else if (size === "laptop") {
+    return 800;
+  } else if (size === "desktop") {
+    return 1000;
+  } else {
+    return 600;
+  }
+};
