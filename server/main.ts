@@ -98,6 +98,7 @@ const startServer = async () => {
     }
 
     body.append(svg);
+    svg.setAttribute("width", `${getChartWidthWithSize(size)}`);
     svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
 
     try {
@@ -112,7 +113,6 @@ const startServer = async () => {
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
-          chartWidth: getChartWidthWithSize(size),
         }
       );
     } catch (error) {

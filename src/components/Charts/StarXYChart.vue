@@ -1,9 +1,21 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center select-none"
+    class="w-full h-auto min-h-400px flex flex-col justify-start items-start overflow-x-auto select-none"
     :class="classname"
   >
-    <svg ref="svgElRef" @click="handleSVGElementClick"></svg>
+    <svg
+      ref="svgElRef"
+      class="w-full min-w-600px min-h-400px"
+      @click="handleSVGElementClick"
+    ></svg>
+    <!-- watermark -->
+    <div
+      class="w-full min-w-600px h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
+      style="font-family: 'xkcd', serif"
+    >
+      <img class="w-5 h-auto mr-1" src="/icon.png" />
+      star-history.com
+    </div>
   </div>
 </template>
 

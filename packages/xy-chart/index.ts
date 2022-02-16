@@ -60,7 +60,6 @@ type XTickLabelType = "Date" | "Number";
 export interface XYChartOptions {
   xTickLabelType: XTickLabelType;
   dateFormat?: string;
-  chartWidth?: number;
 
   xTickCount: number;
   yTickCount: number;
@@ -114,7 +113,7 @@ const XYChart = (
   const filter = "url(#xkcdify)";
   const fontFamily = options.fontFamily || "xkcd";
   const clientWidth =
-    options.chartWidth || svg.parentElement?.clientWidth || 600;
+    Number(svg.clientWidth || svg.getAttribute("width") || "") || 600;
   const clientHeight = (clientWidth * 2) / 3;
 
   const d3Selection = select(svg)
