@@ -2,6 +2,7 @@ import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
 import { JSDOM } from "jsdom";
+import logger from "./logger";
 import XYChart from "../packages/xy-chart";
 import { convertStarDataToChartData, getReposStarData } from "../common/chart";
 import cache from "./cache";
@@ -73,12 +74,18 @@ const startServer = async () => {
           reposStarData.push(d);
         }
       } catch (error: any) {
-        console.error("Failed to request data, error: ", error);
         const status = error.status || 400;
         const message =
           error.message || "Some unexpected error happened, try again later";
 
-        ctx.throw(status, `${http.STATUS_CODES[status]}: ${message}`);
+        if (status === 404) {
+          // do nth, repo from user not found.
+        } else {
+          logger.error("Failed to request data", error);
+        }
+
+        ctx.status = status;
+        ctx.message = `${http.STATUS_CODES[status]}: ${message}`;
         return;
       }
     }
@@ -134,13 +141,13 @@ const startServer = async () => {
   });
 
   app.on("error", (err) => {
-    console.error("server error: ", err);
+    logger.error("server error: ", err);
   });
 
   app.use(router.routes()).use(router.allowedMethods());
 
   app.listen(8080, () => {
-    console.log(`app listening on port ${8080}!`);
+    logger.info(`server running on port ${8080}`);
   });
 };
 

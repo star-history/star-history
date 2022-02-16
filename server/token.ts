@@ -1,14 +1,15 @@
-import { env, exit } from "process";
+import * as process from "process";
+import logger from "./logger";
 import api from "../common/api";
 
 const savedTokens: string[] = [];
 let index = 0;
 
 export const initTokenFromEnv = async () => {
-  const envTokenString = env.TOKEN;
+  const envTokenString = process.env.TOKEN;
   if (!envTokenString) {
-    console.error("Token not found");
-    exit(-1);
+    logger.error("Token not found");
+    process.exit(-1);
   }
 
   const tokenList = envTokenString.split(",");
@@ -18,16 +19,16 @@ export const initTokenFromEnv = async () => {
       await api.getRepoStargazersCount("bytebase/star-history", token);
       savedTokens.push(token);
     } catch (error) {
-      console.error(`token ${token} is unusable, error: ${error}`);
+      logger.error(`Token ${token} is unusable`, error);
     }
   }
 
   if (savedTokens.length === 0) {
-    console.error("No usable token");
-    exit(-1);
+    logger.error("No usable token");
+    process.exit(-1);
   }
 
-  console.log(`Usable token amount: ${savedTokens.length}`);
+  logger.info(`Usable token amount: ${savedTokens.length}`);
 };
 
 // Get the next token for requests.
