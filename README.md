@@ -1,5 +1,4 @@
-🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn)
-
+🧩 [Also available as chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
 # Star History
 
@@ -7,79 +6,80 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
 
+👀 BTW, this is a real live chart as same as below icons.
+
+<p>
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/bytebase/star-history" />
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/bytebase/star-history" />
+  <img alt="GitHub Watchers" src="https://img.shields.io/github/watchers/bytebase/star-history" />
+</p>
+
 **Sponsor**
 
 <a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
 
 [Bytebase.com](https://bytebase.com) is an open source, web-based database schema change and version control tool for teams.
 
-## [As a website](https://star-history.com)
+## ✨ Features
 
-**Support comparing multiple repos**
+- Unique sketch xkcd feeling chart;
+- One-click generation of high-quality image for chart;
+- Support multiple chart view mode based on date or timeline;
+- Embed the real-time chart into GitHub readme or other websites (like the one we embed here on the top);
+- And various useful functions:
+  - toggle repo visibility;
+  - shortcut to input repo;
+  - share on twitter quickly;
+  - support input multiple repos;
+  - ...wait for you finding out
 
-![web-demo](https://raw.githubusercontent.com/bytebase/star-history/master/public/star-history.gif)
+## 🌠 Screenshots
 
-## [As an extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
+<a href="https://star-history.com"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154391264-312b448b-f851-41bf-bb8d-4c21ec6795b6.gif" />
+</a>
 
-![extension-demo](https://raw.githubusercontent.com/timqian/images/master/star-history-extension.gif)
+### [Free chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-> Note: You can [load the `./extension` folder to chrome](https://superuser.com/a/247654) to install the extension too.
+<a href="https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154391326-61b65d8f-3f9f-4432-b773-5988be75b0ea.png" /></a>
 
-## Access Token
+## 🏗 Development
 
-[star-history.com](https://star-history.com) uses GitHub API to retrieve repository metadata. When user exceed the rate [limit of unauthenticated requests](https://developer.github.com/v3/#rate-limiting). Star history will need your personal access token to unlimit it.
+star-history is built with a modern tech stack: Vue + Vite + TailwindCSS.
 
-If you don't already have one, [create one](https://github.com/settings/tokens/new), and add to star-history (no scope to your personal data is needed)
+### Prerequisites
 
-## Develop
+- [Node.js](https://nodejs.org/en/download/)
+- [Yarn](https://yarnpkg.com/)
 
-### Website
+### Install dependencies
 
-```bash
-npm run startWebsite
+```shell
+yarn
 ```
 
-### Extension
+### Start with your interest
 
-```bash
-npm run buildExtension
-# load the extension folder as unpacked extension into chrome to view it
-```
+- **Main website** is the homepage of star-history with most of useful features and blogs about open source.
 
-## Build and Deploy
+  ```shell
+  yarn dev
+  ```
 
-### Website
+  The website will be served at http://localhost:3000.
 
-```bash
-# deploy to star-history.com
-npm run deployWebsite
-```
+- **Chrome extension** supports the basic chart viewer as a free additional product.
 
-### Extension
+  ```shell
+  yarn build:ext
+  ```
 
-```bash
-npm run buildExtension
-# zip extension folder and publish to chrome web store
-```
+  Load the built `./dist` folder as unpacked project to chrome extensions page.
 
-## Updates
+- **API server** is an experimental feature. It's mainly used to generate chart SVG image file that can be embeded into GitHub readme.
 
-- 2019-8-28: use [chart.xkcd](https://github.com/timqian/chart.xkcd) to plot the graph
+  ```shell
+  cd server
+  yarn && yarn dev
+  ```
 
-- 2019-3-06: Add personal access token; update style; mono repo
-
-- 2016-6-30: Alert to notie
-
-- 2016-6-28: Add clear btn
-
-- 2016-6-28: Better view for "many star" repos (use current star number as the last point on the graph)
-
-- 2016-6-26: **Store repo info into url hash**
-
-- 2016-6-26: **multiple kinds of input styles (eg: github.com/bytebase/star-history, ...)**
-
-- 2016-6-26: Better view for less star repos #28
-
-- 2016-6-14: **Toggle search by hit enter** #26, prevent crash while searching for not existing repo
-
-- 2016-5-26: Update mobile view
+  The API server will be running on http://localhost:8080.
