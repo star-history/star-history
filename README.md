@@ -25,51 +25,51 @@
 
 ## 🌠 Screenshots
 
-<a href="https://star-history.com"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154277513-62771f05-f408-486c-88fc-bb104e4b1261.gif" />
+<a href="https://star-history.com"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154391264-312b448b-f851-41bf-bb8d-4c21ec6795b6.gif" />
 </a>
 
 ### [🧩 Also available as free chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-<a href="https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154291891-fb297858-c93a-4c56-bc00-a1620304b8ca.png" /></a>
+<a href="https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn"><img width="800px" src="https://user-images.githubusercontent.com/24653555/154391326-61b65d8f-3f9f-4432-b773-5988be75b0ea.png" /></a>
 
-## 💪 Contributions are welcome
+## 🏗 Development
 
-Many of the above features come from the users engaging with us by issues and PRs. If you
+star-history is built with a modern tech stack: Vue + Vite + TailwindCSS.
 
 ### Prerequisites
 
-- Node.js
-- Yarn
+- [Node.js](https://nodejs.org/en/download/)
+- [Yarn](https://yarnpkg.com/)
 
-### Steps
+### Install dependencies
 
-1. Initial dependencies:
+```shell
+yarn
+```
 
-   ```shell
-   yarn
-   ```
+### Start with your interest
 
-2. Start main website develop:
+- **Main website** is the homepage of star-history with most of useful features and blogs about open source.
 
-   ```shell
-   yarn dev
-   ```
+  ```shell
+  yarn dev
+  ```
 
-   The frontend will be served at http://localhost:3000.
+  The website will be served at http://localhost:3000.
 
-3. Start extension develop:
+- **Chrome extension** supports the basic chart viewer as a free additional product.
 
-   ```shell
-   yarn build:ext
-   ```
+  ```shell
+  yarn build:ext
+  ```
 
-   Then unpack the `./dist` folder to chrome extension page;
+  Load the built `./dist` folder as unpacked project to chrome extensions page.
 
-4. Start SVG server develop:
+- **API server** is an experimental feature. It's mainly used to generate chart SVG image file that can be embeded into GitHub readme.
 
-   ```shell
-   cd server
-   yarn && yarn dev
-   ```
+  ```shell
+  cd server
+  yarn && yarn dev
+  ```
 
-   The API server will be served at http://localhost:8080.
+  The API server will be running on http://localhost:8080.
