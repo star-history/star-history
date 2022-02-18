@@ -6,13 +6,11 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
 
-👀 BTW, this is a real live chart as same as below icons.
+👆 this is a live chart with the following code:
 
-<p>
-  <img alt="GitHub stars" src="https://img.shields.io/github/stars/bytebase/star-history" />
-  <img alt="GitHub forks" src="https://img.shields.io/github/forks/bytebase/star-history" />
-  <img alt="GitHub Watchers" src="https://img.shields.io/github/watchers/bytebase/star-history" />
-</p>
+```markdown
+[![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
+```
 
 **Sponsor**
 
