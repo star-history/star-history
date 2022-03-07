@@ -22,9 +22,14 @@ const routes = [
     component: () => import("../pages/Blog.vue"),
   },
   {
-    path: "/:pathMatch(.*)*",
+    path: "/404",
     name: "404",
     component: () => import("../pages/404.vue"),
+  },
+  {
+    path: "/:pathList(.*)*",
+    name: "dynamic-path-matcher",
+    component: () => import("../pages/DynamicPathMatcher.vue"),
   },
 ];
 
