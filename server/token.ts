@@ -8,7 +8,7 @@ const ENV_PATH_IN_RENDER = "./token.env";
 // For local dev, you need to pass the ENVPATH value in env variables.
 // e.g. ENVPATH=PATH_TO_YOUR_FILE yarn dev
 // For production, we set a token.env file in render.com,
-// and copy of the file is store in bytebase/secret repo on GitHub.
+// and the copy of the file is stored at https://github.com/bytebase/secret/tree/master/token/star-history.
 const envFilePath = process.env.ENVPATH || ENV_PATH_IN_RENDER;
 
 const savedTokens: string[] = [];
