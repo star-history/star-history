@@ -3,11 +3,14 @@ import * as process from "process";
 import logger from "./logger";
 import api from "../common/api";
 
+// All secret files in render are available to load by absolute path at /etc/secrets/<filename>.
+const ENV_PATH_IN_RENDER = "/etc/secrets/token.env";
+
 const savedTokens: string[] = [];
 let index = 0;
 
 export const initTokenFromEnv = async () => {
-  const envFilePath = process.env.ENVPATH || "/etc/secrets/.env";
+  const envFilePath = process.env.ENVPATH || ENV_PATH_IN_RENDER;
   const envTokenString = fs.readFileSync(envFilePath).toString();
   if (!envTokenString) {
     logger.error("Token not found");
