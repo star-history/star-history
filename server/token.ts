@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import * as process from "process";
 import logger from "./logger";
 import api from "../common/api";
@@ -6,7 +7,8 @@ const savedTokens: string[] = [];
 let index = 0;
 
 export const initTokenFromEnv = async () => {
-  const envTokenString = process.env.TOKEN;
+  const envFilePath = process.env.ENVPATH || "/etc/secrets/.env";
+  const envTokenString = fs.readFileSync(envFilePath).toString();
   if (!envTokenString) {
     logger.error("Token not found");
     process.exit(-1);
