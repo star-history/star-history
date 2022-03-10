@@ -14,7 +14,7 @@ export const initTokenFromEnv = async () => {
     process.exit(-1);
   }
 
-  const tokenList = envTokenString.split(",");
+  const tokenList = envTokenString.split(/\r?\n/);
   // Call GitHub API to check token usability
   for (const token of tokenList) {
     try {
