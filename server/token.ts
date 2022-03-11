@@ -1,18 +1,31 @@
+import * as fs from "fs";
 import * as process from "process";
 import logger from "./logger";
 import api from "../common/api";
+
+// Token env file path in render.com: All secret files you create are available to read at the root of your repo.
+const ENV_PATH_IN_RENDER = "./token.env";
+// For local dev, you need to pass the ENVPATH value in env variables.
+// e.g. ENVPATH=PATH_TO_YOUR_FILE yarn dev
+// For production, we set a token.env file in render.com,
+// and the copy of the file is stored at https://github.com/bytebase/secret/tree/master/token/star-history.
+const envFilePath = process.env.ENVPATH || ENV_PATH_IN_RENDER;
 
 const savedTokens: string[] = [];
 let index = 0;
 
 export const initTokenFromEnv = async () => {
-  const envTokenString = process.env.TOKEN;
+  if (!fs.existsSync(envFilePath)) {
+    logger.error("Token file not found with path ", envFilePath);
+    process.exit(-1);
+  }
+  const envTokenString = fs.readFileSync(envFilePath).toString();
   if (!envTokenString) {
     logger.error("Token not found");
     process.exit(-1);
   }
 
-  const tokenList = envTokenString.split(",");
+  const tokenList = envTokenString.split(/\r?\n/);
   // Call GitHub API to check token usability
   for (const token of tokenList) {
     try {
