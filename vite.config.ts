@@ -21,12 +21,9 @@ export default defineConfig(({ command, mode }) => {
     config.build = {
       ...config.build,
       outDir: "../dist",
-      terserOptions: {
-        mangle: false,
-      },
       rollupOptions: {
         input: {
-          popup: "./extension/popup.html",
+          popup: "./src/extension/popup.html",
         },
       },
     };

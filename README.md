@@ -47,12 +47,12 @@ star-history is built with a modern tech stack: Vue + Vite + TailwindCSS.
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/download/)
-- [Yarn](https://yarnpkg.com/)
+- [pnpm](https://pnpm.io/)
 
 ### Install dependencies
 
 ```shell
-yarn
+pnpm i
 ```
 
 ### Start with your interest
@@ -60,7 +60,7 @@ yarn
 - **Main website** is the homepage of star-history with most of useful features and blogs about open source.
 
   ```shell
-  yarn dev
+  pnpm dev
   ```
 
   The website will be served at http://localhost:3000.
@@ -68,7 +68,7 @@ yarn
 - **Chrome extension** supports the basic chart viewer as a free additional product.
 
   ```shell
-  yarn build:ext
+  pnpm build:ext
   ```
 
   Load the built `./dist` folder as unpacked project to chrome extensions page.
@@ -77,7 +77,7 @@ yarn
 
   ```shell
   cd server
-  yarn && yarn dev
+  pnpm i && pnpm dev
   ```
 
   The API server will be running on http://localhost:8080.
