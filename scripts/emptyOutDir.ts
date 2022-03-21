@@ -1,11 +1,11 @@
-import { existsSync, mkdirSync, rmdirSync } from "fs";
+import { existsSync, mkdirSync, rmSync } from "fs";
 import { resolve } from "path";
 
 const emptyOutDir = () => {
   try {
     const distPath = resolve(__dirname, "../dist");
     if (existsSync(distPath)) {
-      rmdirSync(distPath, {
+      rmSync(distPath, {
         recursive: true,
       });
     }
