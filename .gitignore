@@ -4,3 +4,4 @@ dist
 dist-ssr
 *.local
 *.env
+.pnpm-debug.log
