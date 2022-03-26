@@ -1,12 +1,14 @@
 <template>
-  <div class="w-full shrink-0 flex flex-col justify-start items-center">
+  <div
+    class="w-full px-3 sm:px-0 shrink-0 flex flex-col justify-start items-center"
+  >
     <div
-      class="w-full max-w-3xl 2xl:max-w-4xl px-4 mt-12 flex flex-row justify-center items-center"
+      class="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-12 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded"
     >
       <input
         ref="inputElRef"
         v-model="state.repo"
-        class="w-auto h-9 shrink grow px-2 text-dark shadow-inner outline-none border border-dark rounded-l border-solid placeholder:text-gray-300 focus:shadow-focus"
+        class="w-auto h-9 px-2 grow shrink text-dark outline-none rounded rounded-r-none placeholder:text-gray-300 focus:shadow-focus"
         type="text"
         :placeholder="
           state.repos.length > 0
@@ -17,8 +19,8 @@
         @keydown="handleInputerKeyDown"
       />
       <button
-        class="h-9 pl-4 pr-4 whitespace-nowrap w-auto border border-dark border-l-0 rounded-r border-solid text-dark hover:bg-dark hover:text-light"
-        :class="isFetching ? 'cursor-wait !opacity-60' : ''"
+        class="h-9 pl-4 pr-4 whitespace-nowrap w-auto text-dark border-l border-dark hover:bg-dark hover:text-light"
+        :class="isFetching ? 'cursor-wait' : ''"
         @click="handleAddRepoBtnClick"
       >
         View star history
