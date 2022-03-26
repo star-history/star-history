@@ -74,7 +74,7 @@ export interface XYChartOptions {
 const getDefaultOptions = (): XYChartOptions => {
   return {
     xTickLabelType: "Date",
-    dateFormat: "MM/DD/YYYY",
+    dateFormat: "MMM DD, YYYY",
     xTickCount: 5,
     yTickCount: 5,
     showLine: true,
