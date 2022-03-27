@@ -29,6 +29,7 @@ import {
   convertStarDataToChartData,
   getReposStarData,
 } from "../../common/chart";
+import { MIN_CHART_WIDTH } from "../helpers/consts";
 import toast from "../helpers/toast";
 import StarXYChart from "../components/Charts/StarXYChart.vue";
 
@@ -69,8 +70,8 @@ onMounted(() => {
     );
   const bounding = containerElRef.value.getBoundingClientRect();
   let width = Math.min(bounding.width, bounding.height * 1.5);
-  if (width < 600) {
-    width = 600;
+  if (width < MIN_CHART_WIDTH) {
+    width = MIN_CHART_WIDTH;
   }
   const height = width / 1.5;
   containerElRef.value.style.width = `${width}px`;

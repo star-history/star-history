@@ -1,11 +1,11 @@
 <template>
   <div
     ref="containerElRef"
-    class="relative w-full h-auto self-center max-w-800px 2xl:max-w-4xl sm:p-4 pt-0"
+    class="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0"
   >
     <div
       v-if="isFetching"
-      class="absolute w-full h-full min-h-400px flex justify-center items-center z-10 top-0"
+      class="absolute w-full h-full flex justify-center items-center z-10 top-0"
     >
       <div class="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
@@ -15,7 +15,7 @@
       class="absolute top-0 right-1 p-2 flex flex-row"
     >
       <div
-        class="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer text-dark select-none hover:bg-gray-100"
+        class="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
         @click="handleToggleChartBtnClick"
       >
         <input

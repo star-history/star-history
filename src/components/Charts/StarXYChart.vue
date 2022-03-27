@@ -1,16 +1,17 @@
 <template>
   <div
-    class="w-full h-auto min-h-400px flex flex-col justify-start items-start overflow-x-auto select-none"
-    :class="classname"
+    ref="chartContainerElRef"
+    class="w-full h-auto origin-top-left min-w-600px flex flex-col justify-start items-start overflow-x-auto select-none"
+    :class="`${classname}`"
   >
     <svg
       ref="svgElRef"
-      class="w-full min-w-600px min-h-400px"
+      class="w-full h-full"
       @click="handleSVGElementClick"
     ></svg>
     <!-- watermark -->
     <div
-      class="w-full min-w-600px h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
+      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
       style="font-family: 'xkcd', serif"
     >
       <img class="w-5 h-auto mr-1" src="/icon.png" />
@@ -33,6 +34,7 @@ import { onMounted, onUpdated, ref } from "vue";
 // 2. Easy to debug chart internal;
 // 3. Totally customizable.
 import XYChart, { XYChartData } from "../../../packages/xy-chart";
+import { MIN_CHART_WIDTH } from "../../helpers/consts";
 
 const props = defineProps({
   classname: {
@@ -49,7 +51,8 @@ const props = defineProps({
   timeFormat: String,
 });
 
-const svgElRef = ref<SVGSVGElement | null>(null);
+const chartContainerElRef = ref<HTMLDivElement>();
+const svgElRef = ref<SVGSVGElement>();
 
 const drawStarChart = (data: XYChartData) => {
   if (svgElRef.value) {
@@ -76,6 +79,22 @@ const drawStarChart = (data: XYChartData) => {
 onMounted(() => {
   if (props.data) {
     drawStarChart(props.data);
+  }
+
+  // Scale chart to a suitable mobile view.
+  if (window.innerWidth < MIN_CHART_WIDTH) {
+    if (chartContainerElRef.value) {
+      const scaleRate = window.innerWidth / MIN_CHART_WIDTH;
+      chartContainerElRef.value.style.marginTop = "8px";
+      chartContainerElRef.value.style.transform = `scale(${scaleRate})`;
+
+      if (chartContainerElRef.value.parentElement) {
+        chartContainerElRef.value.parentElement.style.minHeight = "0";
+        chartContainerElRef.value.parentElement.style.height = `${
+          chartContainerElRef.value.clientHeight * scaleRate + 16
+        }px`;
+      }
+    }
   }
 });
 

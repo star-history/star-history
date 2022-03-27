@@ -10,17 +10,8 @@ module.exports = {
         dark: "RGB(54, 54, 54)",
         light: "RGB(245, 245, 245)",
       },
-      maxWidth: {
-        "800px": "800px",
-      },
       minWidth: {
         "600px": "600px",
-      },
-      width: {
-        "640px": "640px",
-      },
-      height: {
-        "52px": "52px",
       },
       minHeight: {
         "400px": "400px",
@@ -30,6 +21,16 @@ module.exports = {
       },
       zIndex: {
         100: "100",
+      },
+      spacing: {
+        52: "13rem",
+        112: "28rem",
+        128: "32rem",
+        152: "38rem",
+        160: "40rem",
+        176: "44rem",
+        192: "48rem",
+        208: "52rem",
       },
     },
   },
