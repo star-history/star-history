@@ -131,6 +131,10 @@ const handleAddRepoBtnClick = () => {
     return;
   }
 
+  rawRepos = rawRepos.map(rawRepo => {
+    return rawRepo.split('#')[0];
+  });
+
   for (const rawRepo of rawRepos.split(",")) {
     let repo = rawRepo;
     if (GITHUB_REPO_URL_REG.test(repo)) {
