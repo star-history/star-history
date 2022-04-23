@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-full px-3 sm:px-0 shrink-0 flex flex-col justify-start items-center"
-  >
+  <div class="w-full px-3 shrink-0 flex flex-col justify-start items-center">
     <div
       class="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-12 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded"
     >
