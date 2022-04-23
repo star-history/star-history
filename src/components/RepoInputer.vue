@@ -65,6 +65,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch } from "vue";
+import { first } from "lodash-es";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
@@ -131,12 +132,12 @@ const handleAddRepoBtnClick = () => {
     return;
   }
 
-  rawRepos = rawRepos.map(rawRepo => {
-    return rawRepo.split('#')[0];
-  });
-
   for (const rawRepo of rawRepos.split(",")) {
-    let repo = rawRepo;
+    let repo = first(rawRepo.split("#"));
+    if (!repo) {
+      continue;
+    }
+
     if (GITHUB_REPO_URL_REG.test(repo)) {
       const regResult = GITHUB_REPO_URL_REG.exec(repo);
       if (regResult && regResult[1]) {
