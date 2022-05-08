@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-3xl mx-auto flex flex-col justify-center items-center"
+    class="w-full px-3 max-w-3xl mx-auto flex flex-col justify-center items-center"
   >
     <p class="mb-2 font-semibold">
       Sponsored by

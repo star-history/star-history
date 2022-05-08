@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-full px-3 sm:px-0 shrink-0 flex flex-col justify-start items-center"
-  >
+  <div class="w-full px-3 shrink-0 flex flex-col justify-start items-center">
     <div
       class="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-12 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded"
     >
@@ -65,6 +63,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted, reactive, ref, watch } from "vue";
+import { first } from "lodash-es";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
@@ -131,12 +130,12 @@ const handleAddRepoBtnClick = () => {
     return;
   }
 
-  rawRepos = rawRepos.map(rawRepo => {
-    return rawRepo.split('#')[0];
-  });
-
   for (const rawRepo of rawRepos.split(",")) {
-    let repo = rawRepo;
+    let repo = first(rawRepo.split("#"));
+    if (!repo) {
+      continue;
+    }
+
     if (GITHUB_REPO_URL_REG.test(repo)) {
       const regResult = GITHUB_REPO_URL_REG.exec(repo);
       if (regResult && regResult[1]) {
