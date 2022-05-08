@@ -34,6 +34,11 @@
         </a>
       </div>
       <div
+        class="text-sm leading-8 flex flex-row flex-wrap justify-start items-center underline text-blue-700 hover:opacity-80"
+      >
+        <a href="https://dbcost.com" target="_blank"> DB Cost </a>
+      </div>
+      <div
         class="text-xs leading-8 flex flex-row flex-nowrap justify-end items-center"
       >
         <span class="text-gray-600">
