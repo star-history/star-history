@@ -3,7 +3,8 @@
     class="w-full h-auto mb-16 px-3 mx-auto max-w-4xl flex flex-col justify-start items-center"
   >
     <p class="leading-8 mb-3">
-      Add the real-time chart to {{ repoText }}
+      🌟 Show real-time chart on
+      {{ repoText }}
       <a
         v-if="singleRepo"
         class="font-mono font-bold underline text-blue-500 hover:opacity-80"
@@ -12,17 +13,22 @@
         >README.md</a
       >
       <span v-else class="font-mono font-bold text-gray-500">README.md</span>
-      with the following code:
+      with the following code (<a
+        class="font-mono font-bold underline text-blue-500 hover:opacity-80"
+        :href="`https://github.com/bytebase/bytebase#star-history`"
+        target="_blank"
+        >example</a
+      >):
     </p>
     <div class="w-full bg-gray-100 text-dark rounded-md shadow">
       <pre class="w-full p-4 font-mono break-all whitespace-pre-wrap text-sm">{{
         embedCode
       }}</pre>
       <p
-        class="w-full text-center py-4 bg-gray-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-gray-700"
+        class="w-full text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
         @click="handleCopyBtnClick"
       >
-        Copy
+        Copy to GitHub README.md
       </p>
     </div>
   </div>
