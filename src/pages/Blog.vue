@@ -8,7 +8,7 @@
       <i class="fas fa-spinner animate-spin text-4xl z-10"></i>
     </div>
     <div
-      v-else-if="state.post === undefined"
+      v-else-if="state.blog === undefined"
       class="w-full h-10 flex flex-col justify-center items-center"
     >
       <p class="text-center leading-8 text-lg text-dark font-medium">
@@ -34,30 +34,28 @@
     >
       <img
         class="hidden md:block w-auto max-w-full object-scale-down"
-        :src="state.post?.feature_image || ''"
-        :alt="state.post?.feature_image_alt || ''"
+        :src="state.blog.featureImage || ''"
       />
       <!-- title -->
       <div
         class="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center"
       >
         <h1 class="leading-16">
-          {{ state.post?.title }}
+          {{ state.blog.title }}
         </h1>
       </div>
       <!-- author information -->
       <div
-        v-show="state.post"
         class="w-full mt-8 mb-2 max-w-6xl px-2 flex flex-row items-center justify-center text-sm text-gray-900 font-semibold tracking-wide uppercase"
       >
-        <img
-          class="h-8 w-auto rounded-full mr-2"
-          :src="state.post?.authors![0].profile_image || ''"
-        />{{ state.post?.authors![0].name }}
-        <div class="ml-2 flex space-x-1 text-gray-500">
-          <time :datetime="state.post?.published_at || ''">
+        <div class="flex space-x-1 text-gray-500">
+          <span class="text-gray-900">
+            {{ state.blog.author }}
+          </span>
+          <span aria-hidden="true"> &middot; </span>
+          <time :datetime="state.blog.publishedDate">
             {{
-              new Date(state.post?.published_at || "").toLocaleString(
+              new Date(state.blog.publishedDate || "").toLocaleString(
                 "default",
                 {
                   year: "numeric",
@@ -68,27 +66,15 @@
             }}
           </time>
           <span aria-hidden="true"> &middot; </span>
-          <span> {{ state.post?.reading_time }} min read </span>
+          <span> {{ state.blog.readingTime }} </span>
         </div>
       </div>
-      <!-- blog tags -->
       <div
-        class="mb-8 w-full max-w-6xl flex flex-row justify-center items-center"
-      >
-        <span
-          v-for="tag in state.post?.tags"
-          :key="tag.id"
-          class="items-center px-3 py-0.5 mr-2 rounded-full text-base"
-        >
-          # {{ tag.name }}
-        </span>
-      </div>
-      <div
-        class="w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl"
-        v-html="state.post?.html"
+        class="blog-content-container w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl"
+        v-html="state.parsedBlogHTML"
       ></div>
       <div
-        v-if="!state.isLoading && state.post === undefined"
+        v-if="!state.isLoading && state.blog === undefined"
         class="w-full h-10 flex flex-col justify-center items-center"
       >
         <p class="text-center leading-8 text-lg text-dark font-medium">
@@ -115,17 +101,18 @@
 </template>
 
 <script lang="ts" setup>
-import { PostOrPage } from "@tryghost/content-api";
+import { marked } from "marked";
 import { onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
-import { getPostDetailBySlug } from "../helpers/ghost";
+import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import SubscribeSection from "../components/SubscribeSection.vue";
 
 interface State {
   isLoading: boolean;
-  post?: PostOrPage;
+  blog?: Blog;
+  parsedBlogHTML?: string;
 }
 
 const state = reactive<State>({
@@ -135,23 +122,26 @@ const currentRoute = useRoute();
 
 onMounted(async () => {
   const blogSlug = currentRoute.params.blogSlug as string;
-
-  if (!blogSlug) {
+  const blogListRes = await fetch("/blog/data.json");
+  const blogList = (await blogListRes.json()) as Blog[];
+  const blog = blogList.find((blog) => blog.slug === blogSlug);
+  if (!blog) {
     return;
   }
 
-  try {
-    const post = await getPostDetailBySlug(blogSlug);
-    const formatedPost = {
-      ...post,
-      tags: post.tags?.filter((t) => t.name !== "StarHistory"),
-    };
-
-    state.post = formatedPost;
-  } catch (error) {
-    // do nth
-  }
-
+  const contentRes = await fetch(`/blog/${blogSlug}.md`);
+  const content = await contentRes.text();
+  state.blog = {
+    ...blog,
+    readingTime: utils.calcReadingTime(content),
+  };
+  state.parsedBlogHTML = marked.parse(content);
   state.isLoading = false;
 });
 </script>
+
+<style>
+.blog-content-container > h1 {
+  display: none !important;
+}
+</style>

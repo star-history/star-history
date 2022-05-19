@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Add a live star-history chart to your GitHub README",
+    "slug": "add-a-live-star-history-chart-to-your-github-readme",
+    "author": "Steven",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history-in-github-readme.png",
+    "publishedDate": "2022-03-21T09:39:06.000Z",
+    "excerpt": "Now we support embedding a live star history chart into your GitHub README. This feature is quite handy. A snippet would appear after querying the repository from our star-history.com main page; the only thing you need to do is simply copy that snippet into your GitHub README markdown file."
+  },
+  {
+    "title": "Introducing the new star-history.com",
+    "slug": "introducing-the-new-star-history-com",
+    "author": "Steven",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history.png",
+    "publishedDate": "2022-01-21T09:13:05.000Z",
+    "excerpt": "After a month of hard work, we are happy to introduce you to the new star-history.com. It has been rebuilt using a modern tech stack while keeping the original sketching / xkcd feel. Besides, we have added several highly requested features..."
+  }
+]

@@ -1,6 +1,5 @@
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
-import { getPosts } from "../src/helpers/ghost";
 
 interface Route {
   url: string;
@@ -23,15 +22,15 @@ const staticRoutes: Route[] = [
 ];
 
 const getBlogsRoutes = async (): Promise<Route[]> => {
-  const tags = ["StarHistory"];
-  const posts = await getPosts(tags);
+  const rawdata = readFileSync(resolve(__dirname, "../public/blog/data.json"));
+  const blogs = JSON.parse(rawdata.toString());
 
   const blogRoutes: Route[] = [];
 
-  for (const post of posts) {
+  for (const blog of blogs) {
     blogRoutes.push({
-      url: `/blog/${post.slug}`,
-      name: post.title || "",
+      url: `/blog/${blog.slug}`,
+      name: blog.title,
     });
   }
 
