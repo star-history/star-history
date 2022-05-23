@@ -76,7 +76,7 @@
               console.error("Segment snippet included twice.");
           else {
             analytics.invoked = !0;
-            // NOTE: we only need the identify method to save subscriber email.
+            // NOTE: we only need the identify method to save subscriber's email.
             analytics.methods = ["identify"];
             analytics.factory = function (e) {
               return function () {
