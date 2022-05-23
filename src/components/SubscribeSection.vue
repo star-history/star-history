@@ -42,16 +42,16 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { subscribeBlog } from "../helpers/ghost";
 
 const email = ref("");
 const subscribed = ref(false);
 
 const handleSubscribeBtnClick = async () => {
-  try {
-    await subscribeBlog(email.value);
-  } catch (error) {
-    // do nth
+  const analytics = (window as any).analytics;
+  if (analytics) {
+    analytics.identify({
+      email: email.value,
+    });
   }
   subscribed.value = true;
 };
