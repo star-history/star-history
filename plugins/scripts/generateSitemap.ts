@@ -22,7 +22,9 @@ const staticRoutes: Route[] = [
 ];
 
 const getBlogsRoutes = async (): Promise<Route[]> => {
-  const rawdata = readFileSync(resolve(__dirname, "../public/blog/data.json"));
+  const rawdata = readFileSync(
+    resolve(__dirname, "../../public/blog/data.json")
+  );
   const blogs = JSON.parse(rawdata.toString());
 
   const blogRoutes: Route[] = [];
@@ -55,7 +57,7 @@ const generateSitemap = async () => {
 ${routeXMLTags.join("\n")}
 </urlset>`;
 
-  writeFileSync(resolve(__dirname, "../public/sitemap.xml"), xml);
+  writeFileSync(resolve(__dirname, "../../public/sitemap.xml"), xml);
 };
 
 export default generateSitemap;
