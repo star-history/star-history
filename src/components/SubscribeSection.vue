@@ -12,8 +12,8 @@
     </div>
     <div class="mt-4">
       <div v-if="subscribed" class="text-lg font-semibold text-green-600">
-        <span class="text-2xl mr-2">🙌</span> Now check {{ email }} to confirm
-        the subscription.
+        <span class="text-2xl mr-2">🎉</span>You've successfully subscribed to
+        our newsletter.
       </div>
       <form v-else class="sm:flex" @submit.prevent="handleSubscribeBtnClick">
         <label for="email-address" class="sr-only">Email address</label>
@@ -46,7 +46,7 @@ import { ref } from "vue";
 const email = ref("");
 const subscribed = ref(false);
 
-const handleSubscribeBtnClick = async () => {
+const handleSubscribeBtnClick = () => {
   const analytics = (window as any).analytics;
   if (analytics) {
     analytics.identify({
