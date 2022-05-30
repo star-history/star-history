@@ -19,7 +19,7 @@
         </p>
         <ol class="list-decimal pl-5 mt-3">
           <li class="mb-2">
-            <p>Copy the raw markdown sentence</p>
+            <p>Copy the raw markdown string below</p>
             <div
               class="relative w-full h-auto border mt-2 px-4 py-3 rounded-md shadow-inner"
             >
