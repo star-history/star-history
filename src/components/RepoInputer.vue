@@ -1,7 +1,21 @@
 <template>
   <div class="w-full px-3 shrink-0 flex flex-col justify-start items-center">
     <div
-      class="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-12 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded"
+      class="mt-4 flex flex-row justify-center items-center flex-wrap"
+      :style="`visibility: ${store.repos.length > 0 ? 'visible' : 'hidden'}`"
+    >
+      <div class="text-gray-700 text-sm">
+        <span class="text-lg">👉</span> Add this <b>LIVE chart</b> to your
+        GitHub README
+      </div>
+      <span
+        class="ml-3 px-2 py-1 text-sm cursor-pointer rounded bg-green-600 text-white shadow hover:bg-green-700"
+        @click="state.showEmbedChartGuideDialog = true"
+        >Show me How</span
+      >
+    </div>
+    <div
+      class="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded"
     >
       <input
         ref="inputElRef"
@@ -58,6 +72,11 @@
         </button>
       </div>
     </div>
+    <!-- embed chart guide dialog -->
+    <EmbedChartGuideDialog
+      v-if="state.showEmbedChartGuideDialog"
+      @close="state.showEmbedChartGuideDialog = false"
+    />
   </div>
 </template>
 
@@ -67,6 +86,7 @@ import { first } from "lodash-es";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
+import EmbedChartGuideDialog from "./EmbedChartGuideDialog.vue";
 
 interface State {
   repo: string;
@@ -74,12 +94,14 @@ interface State {
     name: string;
     visible: boolean;
   }[];
+  showEmbedChartGuideDialog: boolean;
 }
 
 const store = useAppStore();
 const state = reactive<State>({
   repo: "",
   repos: [],
+  showEmbedChartGuideDialog: false,
 });
 
 const inputElRef = ref<HTMLInputElement | null>(null);
