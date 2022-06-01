@@ -6,6 +6,5 @@ interface Blog {
   featureImage: string;
   publishedDate: string;
   excerpt: string;
-
   readingTime: string;
 }

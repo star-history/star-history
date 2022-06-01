@@ -4,8 +4,6 @@
 interface StorageData {
   // access token cache
   accessTokenCache: string;
-  // searched repo cache, use to show search history
-  repoHistory: string[];
 }
 
 type StorageKey = keyof StorageData;

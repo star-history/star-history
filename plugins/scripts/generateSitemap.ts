@@ -26,7 +26,6 @@ const getBlogsRoutes = async (): Promise<Route[]> => {
     resolve(__dirname, "../../public/blog/data.json")
   );
   const blogs = JSON.parse(rawdata.toString());
-
   const blogRoutes: Route[] = [];
 
   for (const blog of blogs) {
@@ -44,8 +43,8 @@ const generateSitemap = async () => {
   const blogRoutes = await getBlogsRoutes();
   routes.push(...blogRoutes);
   const baseUrl = "https://star-history.com";
-
   const routeXMLTags: string[] = [];
+
   for (const route of routes) {
     routeXMLTags.push(`<url>
   <loc>${baseUrl}${route.url}</loc>

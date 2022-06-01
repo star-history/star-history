@@ -85,6 +85,7 @@ const handleCopyBtnClick = () => {
   utils.copyTextToClipboard(embedCode.value);
   toast.succeed("Embed markdown code copied");
 };
+
 const handleCloseBtnClick = () => {
   emit("close");
 };
