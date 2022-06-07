@@ -1,11 +1,11 @@
 import { D3Selection } from "../types";
 
 export const drawTitle = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
   color: string
 ) => {
-  seletion
+  selection
     .append("text")
     .style("font-size", "20px")
     .style("font-weight", "bold")
@@ -17,27 +17,27 @@ export const drawTitle = (
 };
 
 export const drawXLabel = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
   color: string
 ) => {
-  seletion
+  selection
     .append("text")
     .style("font-size", "17px")
     .style("fill", color)
     .attr("x", "50%")
-    .attr("y", ((seletion.attr("height") as unknown as number) || 10) - 10)
+    .attr("y", ((selection.attr("height") as unknown as number) || 10) - 10)
     .attr("text-anchor", "middle")
     .text(text);
 };
 
 export const drawYLabel = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
   color: string,
   offsetY = 6
 ) => {
-  seletion
+  selection
     .append("text")
     .attr("text-anchor", "end")
     .attr("dy", ".75em")
@@ -57,7 +57,7 @@ export const drawYLabel = (
       f.attr(
         "x",
         0 -
-          ((seletion.attr("height") as unknown as number) || 10) / 2 +
+          ((selection.attr("height") as unknown as number) || 10) / 2 +
           textLength / 2
       );
     });
