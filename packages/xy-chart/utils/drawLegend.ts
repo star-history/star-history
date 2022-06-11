@@ -4,6 +4,7 @@ interface DrawLegendConfig {
   items: {
     color: string;
     text: string;
+    logo: string;
   }[];
   strokeColor: string;
   backgroundColor: string;
@@ -18,6 +19,7 @@ const drawLegend = (
   const xkcdCharWidth = 7;
   const xkcdCharHeight = 20;
   const colorBlockWidth = 8;
+  const logoSize = 14;
 
   const legend = selection.append("svg");
   const backgroundLayer = legend.append("svg");
@@ -36,12 +38,44 @@ const drawLegend = (
       .attr("filter", "url(#xkcdify)")
       .attr("x", 8 + legendXPadding)
       .attr("y", 17 + xkcdCharHeight * i);
+    const shouldDrawLogo =
+      items.filter((i) => i.text.split("/")[0] !== items[0].text.split("/")[0])
+        .length !== 0;
+    // If any of the repos has a different owner from others, draw logo before legend.
+    if (shouldDrawLogo) {
+      textLayer
+        .append("defs")
+        .append("clipPath")
+        .attr("id", `clip-circle-title-${item.text}`)
+        .append("circle")
+        .attr("r", logoSize / 2)
+        .attr(
+          "cx",
+          8 + legendXPadding + colorBlockWidth + legendXPadding + logoSize / 2
+        )
+        .attr("cy", 17 + xkcdCharHeight * i - 4 + logoSize / 2);
+      textLayer
+        .append("image")
+        .attr("x", 8 + legendXPadding + colorBlockWidth + legendXPadding)
+        .attr("y", 17 + xkcdCharHeight * i - 4)
+        .attr("height", logoSize)
+        .attr("width", logoSize)
+        .attr("xlink:href", item.logo)
+        .attr("clip-path", `url(#clip-circle-title-${item.text})`);
+    }
     // draw text
     textLayer
       .append("text")
       .style("font-size", "15px")
       .style("fill", strokeColor)
-      .attr("x", 8 + legendXPadding + colorBlockWidth + 6)
+      .attr(
+        "x",
+        8 +
+          legendXPadding +
+          colorBlockWidth +
+          (shouldDrawLogo ? legendXPadding + logoSize : 0) +
+          6
+      )
       .attr("y", 17 + xkcdCharHeight * i + 8)
       .text(item.text);
 

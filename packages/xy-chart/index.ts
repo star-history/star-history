@@ -40,6 +40,7 @@ interface XYPoint {
 
 export interface XYData {
   label: string;
+  logo: string;
   data: XYPoint[];
 }
 
@@ -178,7 +179,16 @@ const XYChart = (
   const svgChart = chart.append("g").attr("pointer-events", "all");
 
   if (title) {
-    drawTitle(d3Selection, title, options.strokeColor);
+    if (
+      datasets.filter(
+        (d) => d.label.split("/")[0] !== datasets[0].label.split("/")[0]
+      ).length === 0
+    ) {
+      // If each repo has the same owner, show logo before graph title.
+      drawTitle(d3Selection, title, datasets[0].logo, options.strokeColor);
+    } else {
+      drawTitle(d3Selection, title, "", options.strokeColor);
+    }
   }
   if (xLabel) {
     drawXLabel(d3Selection, xLabel, options.strokeColor);
@@ -329,6 +339,7 @@ const XYChart = (
   const legendItems = data.datasets.map((dataset, i) => ({
     color: options.dataColors[i] || "",
     text: dataset.label,
+    logo: dataset.logo,
   }));
 
   drawLegend(svgChart, {

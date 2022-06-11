@@ -3,6 +3,7 @@ import { D3Selection } from "../types";
 export const drawTitle = (
   selection: D3Selection,
   text: string,
+  logoURL: string,
   color: string
 ) => {
   selection
@@ -14,6 +15,22 @@ export const drawTitle = (
     .attr("y", 30)
     .attr("text-anchor", "middle")
     .text(text);
+  selection
+    .append("defs")
+    .append("clipPath")
+    .attr("id", "clip-circle-title")
+    .append("circle")
+    .attr("r", 11)
+    .attr("cx", "39.5%")
+    .attr("cy", 12 + 11);
+  selection
+    .append("image")
+    .attr("x", "38%")
+    .attr("y", 12)
+    .attr("height", 22)
+    .attr("width", 22)
+    .attr("xlink:href", logoURL)
+    .attr("clip-path", "url(#clip-circle-title)");
 };
 
 export const drawXLabel = (

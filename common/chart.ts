@@ -67,8 +67,50 @@ export const getReposStarData = async (
   });
 };
 
+export const getReposLogoUrl = async (
+  repos: string[],
+  token = ""
+): Promise<{ repo: string; logo: string }[]> => {
+  const repoLogos: { repo: string; logo: string }[] = [];
+
+  for (const repo of repos) {
+    try {
+      const logo = await api.getRepoLogoUrl(repo, token);
+      repoLogos.push({ repo, logo });
+    } catch (error: any) {
+      let message = "";
+      let status = 500;
+
+      if (error?.response?.status === 404) {
+        message = `Repo ${repo} not found`;
+        status = 404;
+      } else if (error?.response?.status === 403) {
+        message = "GitHub API rate limit exceeded";
+        status = 403;
+      } else if (error?.response?.status === 401) {
+        message = "Access Token Unauthorized";
+        status = 401;
+      } else if (Array.isArray(error?.data) && error.data?.length === 0) {
+        message = `Repo ${repo} has no star history`;
+        status = 501;
+      } else {
+        message = "Some unexpected error happened, try again later";
+      }
+
+      return Promise.reject({
+        message,
+        status,
+        repo,
+      });
+    }
+  }
+
+  return repoLogos;
+};
+
 export const convertStarDataToChartData = (
   reposStarData: RepoStarData[],
+  reposLogoUrl: { repo: string; logo: string }[],
   chartMode: ChartMode
 ): XYChartData => {
   if (chartMode === "Date") {
@@ -77,6 +119,7 @@ export const convertStarDataToChartData = (
 
       return {
         label: repo,
+        logo: reposLogoUrl.find((l) => l.repo === repo)?.logo as string,
         data: starRecords.map((item) => {
           return {
             x: new Date(item.date),
@@ -97,6 +140,7 @@ export const convertStarDataToChartData = (
 
       return {
         label: repo,
+        logo: reposLogoUrl.find((l) => l.repo === repo)?.logo as string,
         data: starRecords.map((item) => {
           return {
             x:

@@ -122,6 +122,21 @@ namespace api {
 
     return starRecords;
   }
+
+  export async function getRepoLogoUrl(
+    repo: string,
+    token?: string
+  ): Promise<string> {
+    const owner = repo.split("/")[0];
+    const { data } = await axios.get(`https://api.github.com/users/${owner}`, {
+      headers: {
+        Accept: "application/vnd.github.v3.star+json",
+        Authorization: token ? `token ${token}` : "",
+      },
+    });
+
+    return data.avatar_url;
+  }
 }
 
 export default api;

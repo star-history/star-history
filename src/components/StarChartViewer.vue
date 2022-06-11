@@ -107,6 +107,7 @@ import utils from "../../common/utils";
 import {
   convertStarDataToChartData,
   getReposStarData,
+  getReposLogoUrl,
 } from "../../common/chart";
 import api from "../../common/api";
 import toast from "../helpers/toast";
@@ -119,12 +120,15 @@ import EmbedMarkdownSection from "./EmbedMarkdownSection.vue";
 
 interface State {
   chartMode: "Date" | "Timeline";
-  repoStarDataMap: Map<
+  repoCacheMap: Map<
     string,
     {
-      date: string;
-      count: number;
-    }[]
+      starData: {
+        date: string;
+        count: number;
+      }[];
+      logoUrl: string;
+    }
   >;
   chartData: XYChartData | undefined;
   isGeneratingImage: boolean;
@@ -134,7 +138,7 @@ interface State {
 
 const state = reactive<State>({
   chartMode: "Date",
-  repoStarDataMap: new Map(),
+  repoCacheMap: new Map(),
   chartData: undefined,
   isGeneratingImage: false,
   showSetTokenDialog: false,
@@ -153,39 +157,55 @@ const chartMode = computed(() => {
 
 onMounted(() => {
   if (store.repos.length > 0) {
-    fetchReposStarData(store.repos);
+    fetchReposData(store.repos);
   }
 });
 
 watch(
   () => store.repos,
   () => {
-    fetchReposStarData(store.repos);
+    fetchReposData(store.repos);
   }
 );
 
-const fetchReposStarData = async (repos: string[]) => {
+const fetchReposData = async (repos: string[]) => {
   store.setIsFetching(true);
   const reposStarData: RepoStarData[] = [];
-  const nodataRepos: string[] = [];
+  const notCachedRepos: string[] = [];
+  const reposLogo: Record<"repo" | "logo", string>[] = [];
 
   for (const repo of repos) {
-    const cacheData = state.repoStarDataMap.get(repo);
+    const cachedRepo = state.repoCacheMap.get(repo);
 
-    if (cacheData) {
+    if (cachedRepo) {
       reposStarData.push({
         repo,
-        starRecords: cacheData,
+        starRecords: cachedRepo.starData,
+      });
+      reposLogo.push({
+        repo,
+        logo: cachedRepo.logoUrl,
       });
     } else {
-      nodataRepos.push(repo);
+      notCachedRepos.push(repo);
     }
   }
   try {
-    const data = await getReposStarData(nodataRepos, store.token);
+    const data = await getReposStarData(notCachedRepos, store.token);
     for (const d of data) {
-      state.repoStarDataMap.set(d.repo, d.starRecords);
+      state.repoCacheMap.set(d.repo, {
+        starData: d.starRecords,
+        logoUrl: state.repoCacheMap.get(d.repo)?.logoUrl ?? "",
+      });
       reposStarData.push(d);
+    }
+    const logoUrl = await getReposLogoUrl(notCachedRepos, store.token);
+    for (const l of logoUrl) {
+      state.repoCacheMap.set(l.repo, {
+        starData: state.repoCacheMap.get(l.repo)?.starData ?? [],
+        logoUrl: l.logo,
+      });
+      reposLogo.push(l);
     }
   } catch (error: any) {
     toast.warn(error.message);
@@ -209,6 +229,7 @@ const fetchReposStarData = async (repos: string[]) => {
     });
     state.chartData = convertStarDataToChartData(
       reposStarData,
+      reposLogo,
       chartMode.value
     );
   }
@@ -228,6 +249,14 @@ const handleGenerateImageBtnClick = async () => {
     ?.querySelector("svg")
     ?.cloneNode(true) as SVGSVGElement;
   svgElement.querySelectorAll(".chart-tooltip-dot").forEach((d) => d.remove());
+  // convert images from url href to data url href
+  for (const i of Array.from(svgElement.querySelectorAll("image"))) {
+    const url = i.getAttribute("href");
+    if (url) {
+      const dataUrl = await utils.getBase64Image(url);
+      i.setAttribute("href", dataUrl);
+    }
+  }
   svgElement.setAttribute("class", "fixed -z-10");
   document.body.append(svgElement);
 
@@ -317,7 +346,7 @@ const handleGenerateImageBtnClick = async () => {
 const handleExportAsCSVBtnClick = () => {
   let CSVContent = "";
   for (const repo of store.repos) {
-    const records = state.repoStarDataMap.get(repo);
+    const records = state.repoCacheMap.get(repo)?.starData;
     if (records) {
       const temp: any[] = [];
       for (const i of records) {
@@ -398,7 +427,7 @@ const handleGenEmbedCodeDialogClose = () => {
 
 const handleToggleChartBtnClick = () => {
   store.setChartMode(chartMode.value === "Date" ? "Timeline" : "Date");
-  fetchReposStarData(store.repos);
+  fetchReposData(store.repos);
 };
 
 const handleSetTokenDialogClose = () => {

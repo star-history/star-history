@@ -1,3 +1,4 @@
+import toast from "../src/helpers/toast";
 namespace utils {
   export function range(from: number, to: number): number[] {
     const r: number[] = [];
@@ -104,6 +105,32 @@ namespace utils {
 
     const count = Math.ceil(wordAmount / wordsPerMinute);
     return `${count} min read`;
+  }
+
+  export function getBase64Image(url: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.setAttribute("crossOrigin", "anonymous");
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          toast.warn("Get canvas context failed.");
+          return;
+        }
+        ctx.drawImage(img, 0, 0);
+        const dataURL = canvas.toDataURL("image/png");
+        resolve(dataURL);
+      };
+
+      img.onerror = function () {
+        reject("The image could not be loaded.");
+      };
+    });
   }
 }
 
