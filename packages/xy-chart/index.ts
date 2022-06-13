@@ -91,11 +91,11 @@ const getDefaultOptions = (): XYChartOptions => {
 const XYChart = (
   svg: SVGSVGElement,
   { title, xLabel, yLabel, data: { datasets }, showDots }: XYChartConfig,
-  intialOptions: Partial<XYChartOptions>
+  initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
     ...getDefaultOptions(),
-    ...intialOptions,
+    ...initialOptions,
   };
 
   if (title) {
