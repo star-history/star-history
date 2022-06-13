@@ -1,4 +1,3 @@
-import toast from "../src/helpers/toast";
 namespace utils {
   export function range(from: number, to: number): number[] {
     const r: number[] = [];
@@ -119,7 +118,7 @@ namespace utils {
         canvas.height = img.height;
         const ctx = canvas.getContext("2d");
         if (!ctx) {
-          toast.warn("Get canvas context failed.");
+          reject("Get canvas context failed.");
           return;
         }
         ctx.drawImage(img, 0, 0);

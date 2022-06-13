@@ -3,6 +3,7 @@ import { select } from "d3-selection";
 import { line, curveMonotoneX } from "d3-shape";
 import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
+import { uniqBy } from "lodash-es";
 import ToolTip from "./components/ToolTip";
 import { drawXAxis, drawYAxis } from "./utils/drawAxis";
 import addFilter from "./utils/addFilter";
@@ -179,12 +180,8 @@ const XYChart = (
   const svgChart = chart.append("g").attr("pointer-events", "all");
 
   if (title) {
-    if (
-      datasets.filter(
-        (d) => d.label.split("/")[0] !== datasets[0].label.split("/")[0]
-      ).length === 0
-    ) {
-      // If each repo has the same owner, show logo before graph title.
+    if (uniqBy(datasets, (d) => d.label.split("/")[0]).length === 1) {
+      // If all repos have only one unique owner, show logo before graph title.
       drawTitle(d3Selection, title, datasets[0].logo, options.strokeColor);
     } else {
       drawTitle(d3Selection, title, "", options.strokeColor);

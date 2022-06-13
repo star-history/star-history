@@ -1,4 +1,5 @@
 import { D3Selection } from "../types";
+import { uniqBy } from "lodash-es";
 
 interface DrawLegendConfig {
   items: {
@@ -39,9 +40,8 @@ const drawLegend = (
       .attr("x", 8 + legendXPadding)
       .attr("y", 17 + xkcdCharHeight * i);
     const shouldDrawLogo =
-      items.filter((i) => i.text.split("/")[0] !== items[0].text.split("/")[0])
-        .length !== 0;
-    // If any of the repos has a different owner from others, draw logo before legend.
+      uniqBy(items, (i) => i.text.split("/")[0]).length > 1;
+    // If repos have more than one unique owner, draw logo before legend.
     if (shouldDrawLogo) {
       textLayer
         .append("defs")
