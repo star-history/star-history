@@ -104,14 +104,10 @@ import { computed, onMounted, reactive, ref, watch } from "vue";
 import useAppStore from "../store";
 import { XYChartData } from "../../packages/xy-chart";
 import utils from "../../common/utils";
-import {
-  convertStarDataToChartData,
-  getReposStarData,
-  getReposLogoUrl,
-} from "../../common/chart";
+import { convertDataToChartData, getRepoData } from "../../common/chart";
 import api from "../../common/api";
 import toast from "../helpers/toast";
-import { RepoStarData } from "../../types/chart";
+import { RepoData } from "../../types/chart";
 import BytebaseBanner from "./BytebaseBanner.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
@@ -170,42 +166,34 @@ watch(
 
 const fetchReposData = async (repos: string[]) => {
   store.setIsFetching(true);
-  const reposStarData: RepoStarData[] = [];
   const notCachedRepos: string[] = [];
-  const reposLogo: Record<"repo" | "logo", string>[] = [];
+  const repoData: RepoData[] = [];
 
   for (const repo of repos) {
     const cachedRepo = state.repoCacheMap.get(repo);
 
     if (cachedRepo) {
-      reposStarData.push({
+      repoData.push({
         repo,
         starRecords: cachedRepo.starData,
-      });
-      reposLogo.push({
-        repo,
-        logo: cachedRepo.logoUrl,
+        logoUrl: cachedRepo.logoUrl,
       });
     } else {
       notCachedRepos.push(repo);
     }
   }
   try {
-    const data = await getReposStarData(notCachedRepos, store.token);
-    for (const d of data) {
-      state.repoCacheMap.set(d.repo, {
-        starData: d.starRecords,
-        logoUrl: state.repoCacheMap.get(d.repo)?.logoUrl ?? "",
+    const data = await getRepoData(notCachedRepos, store.token);
+    for (const { repo, starRecords, logoUrl } of data) {
+      state.repoCacheMap.set(repo, {
+        starData: starRecords,
+        logoUrl,
       });
-      reposStarData.push(d);
-    }
-    const logoUrl = await getReposLogoUrl(notCachedRepos, store.token);
-    for (const l of logoUrl) {
-      state.repoCacheMap.set(l.repo, {
-        starData: state.repoCacheMap.get(l.repo)?.starData ?? [],
-        logoUrl: l.logo,
+      repoData.push({
+        repo,
+        starRecords,
+        logoUrl,
       });
-      reposLogo.push(l);
     }
   } catch (error: any) {
     toast.warn(error.message);
@@ -218,20 +206,16 @@ const fetchReposData = async (repos: string[]) => {
   }
   store.setIsFetching(false);
 
-  if (reposStarData.length === 0) {
+  if (repoData.length === 0) {
     state.chartData = undefined;
   } else {
-    reposStarData.sort((d1, d2) => {
+    repoData.sort((d1, d2) => {
       return (
         Math.max(...d2.starRecords.map((s) => s.count)) -
         Math.max(...d1.starRecords.map((s) => s.count))
       );
     });
-    state.chartData = convertStarDataToChartData(
-      reposStarData,
-      reposLogo,
-      chartMode.value
-    );
+    state.chartData = convertDataToChartData(repoData, chartMode.value);
   }
 };
 

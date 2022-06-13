@@ -7,3 +7,12 @@ export interface RepoStarData {
     count: number;
   }[];
 }
+
+export interface RepoData {
+  repo: string;
+  starRecords: {
+    date: string;
+    count: number;
+  }[];
+  logoUrl: string;
+}
