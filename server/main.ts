@@ -4,7 +4,7 @@ import Router from "koa-router";
 import { JSDOM } from "jsdom";
 import logger from "./logger";
 import XYChart from "../packages/xy-chart";
-import { convertStarDataToChartData, getReposStarData } from "../common/chart";
+import { convertDataToChartData, getRepoData } from "../common/chart";
 import cache from "./cache";
 import {
   getChartWidthWithSize,
@@ -40,16 +40,17 @@ const startServer = async () => {
       return;
     }
 
-    const reposStarData = [];
+    const repoData = [];
     const nodataRepos = [];
 
     for (const repo of repos) {
       const cacheData = cache.get(repo);
 
       if (cacheData) {
-        reposStarData.push({
+        repoData.push({
           repo,
           starRecords: cacheData.starRecords,
+          logoUrl: cacheData.logoUrl,
         });
       } else {
         nodataRepos.push(repo);
@@ -60,18 +61,15 @@ const startServer = async () => {
       const token = getNextToken();
 
       try {
-        const data = await getReposStarData(
-          nodataRepos,
-          token,
-          MAX_REQUEST_AMOUNT
-        );
+        const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
 
         for (const d of data) {
           cache.set(d.repo, {
             starRecords: d.starRecords,
             starAmount: d.starRecords[d.starRecords.length - 1].count,
+            logoUrl: d.logoUrl,
           });
-          reposStarData.push(d);
+          repoData.push(d);
         }
       } catch (error: any) {
         const status = error.status || 400;
@@ -115,11 +113,12 @@ const startServer = async () => {
           title: "Star history",
           xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
-          data: convertStarDataToChartData(reposStarData, type),
+          data: convertDataToChartData(repoData, type),
           showDots: false,
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
+          serverWidth: getChartWidthWithSize(size),
         }
       );
     } catch (error) {

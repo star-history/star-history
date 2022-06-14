@@ -4,8 +4,22 @@ export const drawTitle = (
   selection: D3Selection,
   text: string,
   logoURL: string,
-  color: string
+  color: string,
+  serverWidth?: number
 ) => {
+  let logoX: string | number = "38%",
+    clipX: string | number = "39.5%";
+  if (selection.node()?.getBoundingClientRect()) {
+    logoX =
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 94;
+    clipX =
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 83;
+  }
+  if (serverWidth) {
+    logoX = serverWidth * 0.5 - 94;
+    clipX = serverWidth * 0.5 - 83;
+  }
+
   selection
     .append("text")
     .style("font-size", "20px")
@@ -16,16 +30,17 @@ export const drawTitle = (
     .attr("text-anchor", "middle")
     .text(text);
   selection
+    .append("svg")
     .append("defs")
     .append("clipPath")
     .attr("id", "clip-circle-title")
     .append("circle")
     .attr("r", 11)
-    .attr("cx", "39.5%")
+    .attr("cx", clipX)
     .attr("cy", 12 + 11);
   selection
     .append("image")
-    .attr("x", "38%")
+    .attr("x", logoX)
     .attr("y", 12)
     .attr("height", 22)
     .attr("width", 22)

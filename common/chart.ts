@@ -181,10 +181,8 @@ export const getRepoData = async (
   });
 };
 
-// legacy conversion function left for the extension
 export const convertStarDataToChartData = (
   reposStarData: RepoStarData[],
-  reposLogoUrl: { repo: string; logo: string }[],
   chartMode: ChartMode
 ): XYChartData => {
   if (chartMode === "Date") {
@@ -193,7 +191,7 @@ export const convertStarDataToChartData = (
 
       return {
         label: repo,
-        logo: reposLogoUrl.find((l) => l.repo === repo)?.logo as string,
+        logo: "",
         data: starRecords.map((item) => {
           return {
             x: new Date(item.date),
@@ -214,7 +212,7 @@ export const convertStarDataToChartData = (
 
       return {
         label: repo,
-        logo: reposLogoUrl.find((l) => l.repo === repo)?.logo as string,
+        logo: "",
         data: starRecords.map((item) => {
           return {
             x:

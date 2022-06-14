@@ -3,7 +3,7 @@ import { select } from "d3-selection";
 import { line, curveMonotoneX } from "d3-shape";
 import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
-import { uniqBy } from "lodash-es";
+import { uniq } from "lodash";
 import ToolTip from "./components/ToolTip";
 import { drawXAxis, drawYAxis } from "./utils/drawAxis";
 import addFilter from "./utils/addFilter";
@@ -71,6 +71,8 @@ export interface XYChartOptions {
   fontFamily: string;
   backgroundColor: string;
   strokeColor: string;
+
+  serverWidth?: number;
 }
 
 const getDefaultOptions = (): XYChartOptions => {
@@ -180,11 +182,23 @@ const XYChart = (
   const svgChart = chart.append("g").attr("pointer-events", "all");
 
   if (title) {
-    if (uniqBy(datasets, (d) => d.label.split("/")[0]).length === 1) {
+    if (uniq(datasets.map((d) => d.label.split("/")[0])).length === 1) {
       // If all repos have only one unique owner, show logo before graph title.
-      drawTitle(d3Selection, title, datasets[0].logo, options.strokeColor);
+      drawTitle(
+        d3Selection,
+        title,
+        datasets[0].logo,
+        options.strokeColor,
+        options.serverWidth
+      );
     } else {
-      drawTitle(d3Selection, title, "", options.strokeColor);
+      drawTitle(
+        d3Selection,
+        title,
+        "",
+        options.strokeColor,
+        options.serverWidth
+      );
     }
   }
   if (xLabel) {

@@ -1,5 +1,5 @@
 import { D3Selection } from "../types";
-import { uniqBy } from "lodash-es";
+import { uniq } from "lodash";
 
 interface DrawLegendConfig {
   items: {
@@ -26,6 +26,9 @@ const drawLegend = (
   const backgroundLayer = legend.append("svg");
   const textLayer = legend.append("svg");
   let maxTextLength = 0;
+  // If repos have more than one unique owner, draw logo before legend.
+  const shouldDrawLogo =
+    uniq(items.map((i) => i.text.split("/")[0])).length > 1;
 
   items.forEach((item, i) => {
     // draw color dot
@@ -39,9 +42,6 @@ const drawLegend = (
       .attr("filter", "url(#xkcdify)")
       .attr("x", 8 + legendXPadding)
       .attr("y", 17 + xkcdCharHeight * i);
-    const shouldDrawLogo =
-      uniqBy(items, (i) => i.text.split("/")[0]).length > 1;
-    // If repos have more than one unique owner, draw logo before legend.
     if (shouldDrawLogo) {
       textLayer
         .append("defs")
@@ -91,7 +91,11 @@ const drawLegend = (
   }
   const backgroundWidth = Math.max(
     bboxWidth + legendXPadding * 2,
-    maxTextLength * xkcdCharWidth + colorBlockWidth + legendXPadding * 2 + 6
+    maxTextLength * xkcdCharWidth +
+      colorBlockWidth +
+      legendXPadding * 2 +
+      6 +
+      (shouldDrawLogo ? legendXPadding + logoSize : 0)
   );
   const backgroundHeight = items.length * xkcdCharHeight + legendYPadding * 2;
 
