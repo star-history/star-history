@@ -79,18 +79,18 @@ export const drawYLabel = (
     .text(text)
     .attr("y", offsetY)
     .call((f) => {
-      const defaultTextLength = 24;
+      const defaultTextLength = 100;
       let textLength = defaultTextLength;
       // Because there is no `getComputedTextLength` method in nodejs env,
       // we have to use it after validate function existed.
       if (f.node()?.getComputedTextLength) {
         textLength = f.node()?.getComputedTextLength() as number;
       }
-      f.attr(
-        "x",
-        0 -
-          ((selection.attr("height") as unknown as number) || 10) / 2 +
-          textLength / 2
+
+      const offsetX = Math.floor(
+        textLength / 2 -
+          ((selection.attr("height") as unknown as number) || 10) / 2
       );
+      f.attr("x", offsetX);
     });
 };
