@@ -72,7 +72,7 @@ export interface XYChartOptions {
   backgroundColor: string;
   strokeColor: string;
 
-  serverWidth?: number;
+  chartWidth?: number;
 }
 
 const getDefaultOptions = (): XYChartOptions => {
@@ -189,7 +189,7 @@ const XYChart = (
         title,
         datasets[0].logo,
         options.strokeColor,
-        options.serverWidth
+        options.chartWidth
       );
     } else {
       drawTitle(
@@ -197,7 +197,7 @@ const XYChart = (
         title,
         "",
         options.strokeColor,
-        options.serverWidth
+        options.chartWidth
       );
     }
   }

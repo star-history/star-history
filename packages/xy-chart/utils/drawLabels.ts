@@ -5,7 +5,7 @@ export const drawTitle = (
   text: string,
   logoURL: string,
   color: string,
-  serverWidth?: number
+  chartWidth?: number
 ) => {
   let logoX: string | number = "38%",
     clipX: string | number = "39.5%";
@@ -15,9 +15,9 @@ export const drawTitle = (
     clipX =
       (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 83;
   }
-  if (serverWidth) {
-    logoX = serverWidth * 0.5 - 94;
-    clipX = serverWidth * 0.5 - 83;
+  if (chartWidth) {
+    logoX = chartWidth * 0.5 - 94;
+    clipX = chartWidth * 0.5 - 83;
   }
 
   selection

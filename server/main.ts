@@ -118,7 +118,7 @@ const startServer = async () => {
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
-          serverWidth: getChartWidthWithSize(size),
+          chartWidth: getChartWidthWithSize(size),
         }
       );
     } catch (error) {
