@@ -38,14 +38,16 @@ export const drawTitle = (
     .attr("r", 11)
     .attr("cx", clipX)
     .attr("cy", 12 + 11);
-  selection
-    .append("image")
-    .attr("x", logoX)
-    .attr("y", 12)
-    .attr("height", 22)
-    .attr("width", 22)
-    .attr("xlink:href", logoURL)
-    .attr("clip-path", "url(#clip-circle-title)");
+  if (logoURL) {
+    selection
+      .append("image")
+      .attr("x", logoX)
+      .attr("y", 12)
+      .attr("height", 22)
+      .attr("width", 22)
+      .attr("href", logoURL)
+      .attr("clip-path", "url(#clip-circle-title)");
+  }
 };
 
 export const drawXLabel = (
