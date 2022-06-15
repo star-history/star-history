@@ -3,6 +3,7 @@ import { select } from "d3-selection";
 import { line, curveMonotoneX } from "d3-shape";
 import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
+import { uniq } from "lodash";
 import ToolTip from "./components/ToolTip";
 import { drawXAxis, drawYAxis } from "./utils/drawAxis";
 import addFilter from "./utils/addFilter";
@@ -40,6 +41,7 @@ interface XYPoint {
 
 export interface XYData {
   label: string;
+  logo: string;
   data: XYPoint[];
 }
 
@@ -69,6 +71,8 @@ export interface XYChartOptions {
   fontFamily: string;
   backgroundColor: string;
   strokeColor: string;
+
+  chartWidth?: number;
 }
 
 const getDefaultOptions = (): XYChartOptions => {
@@ -89,11 +93,11 @@ const getDefaultOptions = (): XYChartOptions => {
 const XYChart = (
   svg: SVGSVGElement,
   { title, xLabel, yLabel, data: { datasets }, showDots }: XYChartConfig,
-  intialOptions: Partial<XYChartOptions>
+  initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
     ...getDefaultOptions(),
-    ...intialOptions,
+    ...initialOptions,
   };
 
   if (title) {
@@ -178,7 +182,24 @@ const XYChart = (
   const svgChart = chart.append("g").attr("pointer-events", "all");
 
   if (title) {
-    drawTitle(d3Selection, title, options.strokeColor);
+    if (uniq(datasets.map((d) => d.label.split("/")[0])).length === 1) {
+      // If all repos have only one unique owner, show logo before graph title.
+      drawTitle(
+        d3Selection,
+        title,
+        datasets[0].logo,
+        options.strokeColor,
+        options.chartWidth
+      );
+    } else {
+      drawTitle(
+        d3Selection,
+        title,
+        "",
+        options.strokeColor,
+        options.chartWidth
+      );
+    }
   }
   if (xLabel) {
     drawXLabel(d3Selection, xLabel, options.strokeColor);
@@ -329,6 +350,7 @@ const XYChart = (
   const legendItems = data.datasets.map((dataset, i) => ({
     color: options.dataColors[i] || "",
     text: dataset.label,
+    logo: dataset.logo,
   }));
 
   drawLegend(svgChart, {

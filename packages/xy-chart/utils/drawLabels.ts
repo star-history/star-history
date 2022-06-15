@@ -1,11 +1,26 @@
 import { D3Selection } from "../types";
 
 export const drawTitle = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
-  color: string
+  logoURL: string,
+  color: string,
+  chartWidth?: number
 ) => {
-  seletion
+  let logoX: string | number = "38%",
+    clipX: string | number = "39.5%";
+  if (selection.node()?.getBoundingClientRect()) {
+    logoX =
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 94;
+    clipX =
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 83;
+  }
+  if (chartWidth) {
+    logoX = chartWidth * 0.5 - 94;
+    clipX = chartWidth * 0.5 - 83;
+  }
+
+  selection
     .append("text")
     .style("font-size", "20px")
     .style("font-weight", "bold")
@@ -14,30 +29,47 @@ export const drawTitle = (
     .attr("y", 30)
     .attr("text-anchor", "middle")
     .text(text);
+  selection
+    .append("svg")
+    .append("defs")
+    .append("clipPath")
+    .attr("id", "clip-circle-title")
+    .append("circle")
+    .attr("r", 11)
+    .attr("cx", clipX)
+    .attr("cy", 12 + 11);
+  selection
+    .append("image")
+    .attr("x", logoX)
+    .attr("y", 12)
+    .attr("height", 22)
+    .attr("width", 22)
+    .attr("xlink:href", logoURL)
+    .attr("clip-path", "url(#clip-circle-title)");
 };
 
 export const drawXLabel = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
   color: string
 ) => {
-  seletion
+  selection
     .append("text")
     .style("font-size", "17px")
     .style("fill", color)
     .attr("x", "50%")
-    .attr("y", ((seletion.attr("height") as unknown as number) || 10) - 10)
+    .attr("y", ((selection.attr("height") as unknown as number) || 10) - 10)
     .attr("text-anchor", "middle")
     .text(text);
 };
 
 export const drawYLabel = (
-  seletion: D3Selection,
+  selection: D3Selection,
   text: string,
   color: string,
   offsetY = 6
 ) => {
-  seletion
+  selection
     .append("text")
     .attr("text-anchor", "end")
     .attr("dy", ".75em")
@@ -57,7 +89,7 @@ export const drawYLabel = (
       f.attr(
         "x",
         0 -
-          ((seletion.attr("height") as unknown as number) || 10) / 2 +
+          ((selection.attr("height") as unknown as number) || 10) / 2 +
           textLength / 2
       );
     });

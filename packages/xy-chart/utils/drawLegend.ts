@@ -1,9 +1,11 @@
 import { D3Selection } from "../types";
+import { uniq } from "lodash";
 
 interface DrawLegendConfig {
   items: {
     color: string;
     text: string;
+    logo: string;
   }[];
   strokeColor: string;
   backgroundColor: string;
@@ -18,11 +20,15 @@ const drawLegend = (
   const xkcdCharWidth = 7;
   const xkcdCharHeight = 20;
   const colorBlockWidth = 8;
+  const logoSize = 14;
 
   const legend = selection.append("svg");
   const backgroundLayer = legend.append("svg");
   const textLayer = legend.append("svg");
   let maxTextLength = 0;
+  // If repos have more than one unique owner, draw logo before legend.
+  const shouldDrawLogo =
+    uniq(items.map((i) => i.text.split("/")[0])).length > 1;
 
   items.forEach((item, i) => {
     // draw color dot
@@ -36,12 +42,40 @@ const drawLegend = (
       .attr("filter", "url(#xkcdify)")
       .attr("x", 8 + legendXPadding)
       .attr("y", 17 + xkcdCharHeight * i);
+    if (shouldDrawLogo) {
+      textLayer
+        .append("defs")
+        .append("clipPath")
+        .attr("id", `clip-circle-title-${item.text}`)
+        .append("circle")
+        .attr("r", logoSize / 2)
+        .attr(
+          "cx",
+          8 + legendXPadding + colorBlockWidth + legendXPadding + logoSize / 2
+        )
+        .attr("cy", 17 + xkcdCharHeight * i - 4 + logoSize / 2);
+      textLayer
+        .append("image")
+        .attr("x", 8 + legendXPadding + colorBlockWidth + legendXPadding)
+        .attr("y", 17 + xkcdCharHeight * i - 4)
+        .attr("height", logoSize)
+        .attr("width", logoSize)
+        .attr("xlink:href", item.logo)
+        .attr("clip-path", `url(#clip-circle-title-${item.text})`);
+    }
     // draw text
     textLayer
       .append("text")
       .style("font-size", "15px")
       .style("fill", strokeColor)
-      .attr("x", 8 + legendXPadding + colorBlockWidth + 6)
+      .attr(
+        "x",
+        8 +
+          legendXPadding +
+          colorBlockWidth +
+          (shouldDrawLogo ? legendXPadding + logoSize : 0) +
+          6
+      )
       .attr("y", 17 + xkcdCharHeight * i + 8)
       .text(item.text);
 
@@ -57,7 +91,11 @@ const drawLegend = (
   }
   const backgroundWidth = Math.max(
     bboxWidth + legendXPadding * 2,
-    maxTextLength * xkcdCharWidth + colorBlockWidth + legendXPadding * 2 + 6
+    maxTextLength * xkcdCharWidth +
+      colorBlockWidth +
+      legendXPadding * 2 +
+      6 +
+      (shouldDrawLogo ? legendXPadding + logoSize : 0)
   );
   const backgroundHeight = items.length * xkcdCharHeight + legendYPadding * 2;
 
