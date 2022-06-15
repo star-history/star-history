@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 /**
  * In nodejs, the filter element from d3 will auto-transfrom its attributes to lower case with unfound reason.
  * So we have to replace it with camel case string.
@@ -22,3 +24,11 @@ export const getChartWidthWithSize = (size: string) => {
     return 600;
   }
 };
+
+export async function getBase64Image(url: string): Promise<string> {
+  const imageUrlData = await fetch(url);
+  const buffer = await imageUrlData.arrayBuffer();
+  const stringifiedBuffer = Buffer.from(buffer).toString("base64");
+  const contentType = imageUrlData.headers.get("content-type");
+  return `data:${contentType};base64,${stringifiedBuffer}`;
+}

@@ -10,6 +10,7 @@
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
     "lru-cache": "^7.3.1",
+    "node-fetch": "2",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",
     "winston": "^3.6.0"

@@ -60,7 +60,7 @@ const drawLegend = (
         .attr("y", 17 + xkcdCharHeight * i - 4)
         .attr("height", logoSize)
         .attr("width", logoSize)
-        .attr("xlink:href", item.logo)
+        .attr("href", item.logo)
         .attr("clip-path", `url(#clip-circle-title-${item.text})`);
     }
     // draw text
