@@ -1,1 +1,1 @@
-# Chrome extension for Star history
+# Chrome extension for Star History
