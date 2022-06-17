@@ -124,8 +124,13 @@ const XYChart = (
     .style("stroke-width", 3)
     .style("font-family", fontFamily)
     .style("background", options.backgroundColor)
-    .attr("width", clientWidth)
-    .attr("height", clientHeight) as D3Selection;
+    .attr("width", clientWidth <= 600 ? 600 : "100%")
+    .attr("height", clientHeight)
+    .attr(
+      "viewBox",
+      `0 0 ${clientWidth <= 600 ? 600 : clientWidth} ${clientHeight}`
+    )
+    .attr("preserveAspectRatio", "xMidYMid meet") as D3Selection;
   d3Selection.selectAll("*").remove();
 
   addFont(d3Selection);
