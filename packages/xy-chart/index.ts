@@ -60,6 +60,7 @@ export interface XYChartConfig {
 type XTickLabelType = "Date" | "Number";
 
 export interface XYChartOptions {
+  envType: "browser" | "node";
   xTickLabelType: XTickLabelType;
   dateFormat?: string;
 
@@ -71,12 +72,12 @@ export interface XYChartOptions {
   fontFamily: string;
   backgroundColor: string;
   strokeColor: string;
-
   chartWidth?: number;
 }
 
 const getDefaultOptions = (): XYChartOptions => {
   return {
+    envType: "node",
     xTickLabelType: "Date",
     dateFormat: "MMM DD, YYYY",
     xTickCount: 5,
@@ -125,7 +126,17 @@ const XYChart = (
     .style("font-family", fontFamily)
     .style("background", options.backgroundColor)
     .attr("width", clientWidth)
-    .attr("height", clientHeight) as D3Selection;
+    .attr("height", clientHeight)
+    .attr("preserveAspectRatio", "xMidYMid meet") as D3Selection;
+  if (options.envType === "browser") {
+    // If in browser, be more responsive.
+    d3Selection
+      .attr("width", clientWidth <= 600 ? 600 : "100%")
+      .attr(
+        "viewBox",
+        `0 0 ${clientWidth <= 600 ? 600 : clientWidth} ${clientHeight}`
+      );
+  }
   d3Selection.selectAll("*").remove();
 
   addFont(d3Selection);

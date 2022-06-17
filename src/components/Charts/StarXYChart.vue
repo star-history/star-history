@@ -71,6 +71,7 @@ const drawStarChart = (data: XYChartData) => {
       },
       {
         xTickLabelType: props.chartMode === "Date" ? "Date" : "Number",
+        envType: "browser",
       }
     );
   }

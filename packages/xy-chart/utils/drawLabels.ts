@@ -11,13 +11,13 @@ export const drawTitle = (
     clipX: string | number = "39.5%";
   if (selection.node()?.getBoundingClientRect()) {
     logoX =
-      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 94;
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 84;
     clipX =
-      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 83;
+      (selection.node()?.getBoundingClientRect().width as number) * 0.5 - 73;
   }
   if (chartWidth) {
-    logoX = chartWidth * 0.5 - 94;
-    clipX = chartWidth * 0.5 - 83;
+    logoX = chartWidth * 0.5 - 84;
+    clipX = chartWidth * 0.5 - 73;
   }
 
   selection

@@ -265,11 +265,13 @@ const handleGenerateImageBtnClick = async () => {
   }, 2000);
 
   try {
-    const { clientWidth, clientHeight } = svgElement;
+    // Get image's width and height from the container, because the svg's width is set to 100%
+    const { width: imgWidth, height: imgHeight } =
+      containerElRef.value.getBoundingClientRect();
     const canvas = document.createElement("canvas");
     const scale = Math.floor(window.devicePixelRatio * 2);
-    canvas.width = (clientWidth + 20) * scale;
-    canvas.height = (clientHeight + 30) * scale;
+    canvas.width = (imgWidth + 20) * scale;
+    canvas.height = (imgHeight + 30) * scale;
     const ctx = canvas.getContext("2d");
     if (!ctx) {
       toast.warn("Get canvas context failed.");
@@ -287,16 +289,16 @@ const handleGenerateImageBtnClick = async () => {
       chartImage,
       10 * scale,
       10 * scale,
-      clientWidth * scale,
-      clientHeight * scale
+      imgWidth * scale,
+      imgHeight * scale
     );
     // draw website link text
     ctx.font = `${16 * scale}px xkcd`;
     ctx.fillStyle = "#6b7280";
     ctx.fillText(
       "star-history.com",
-      (clientWidth - 130) * scale,
-      (clientHeight + 10) * scale
+      (imgWidth - 130) * scale,
+      (imgHeight + 10) * scale
     );
     // draw star image
     const starImage = new Image();
@@ -304,8 +306,8 @@ const handleGenerateImageBtnClick = async () => {
     await utils.waitImageLoaded(starImage);
     ctx.drawImage(
       starImage,
-      (clientWidth - 155) * scale,
-      (clientHeight - 5) * scale,
+      (imgWidth - 155) * scale,
+      (imgHeight - 5) * scale,
       20 * scale,
       20 * scale
     );
