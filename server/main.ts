@@ -1,6 +1,7 @@
 import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
+import cors from "@koa/cors";
 import { JSDOM } from "jsdom";
 import logger from "./logger";
 import XYChart from "../packages/xy-chart";
@@ -19,6 +20,7 @@ const startServer = async () => {
   await initTokenFromEnv();
 
   const app = new Koa();
+  app.use(cors());
   const router = new Router();
 
   // Example request link:
