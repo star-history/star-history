@@ -6,6 +6,7 @@
     "build": "tsc --project ./"
   },
   "dependencies": {
+    "@koa/cors": "^3.3.0",
     "jsdom": "^19.0.0",
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
@@ -19,6 +20,7 @@
     "@types/jsdom": "^16.2.14",
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "@types/koa__cors": "^3.3.0",
     "@types/lru-cache": "^5.1.1",
     "@types/node": "^17.0.43"
   }

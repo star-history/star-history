@@ -1,9 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@koa/cors': ^3.3.0
   '@types/jsdom': ^16.2.14
   '@types/koa': ^2.13.4
   '@types/koa-router': ^7.4.4
+  '@types/koa__cors': ^3.3.0
   '@types/lru-cache': ^5.1.1
   '@types/node': ^17.0.43
   jsdom: ^19.0.0
@@ -16,6 +18,7 @@ specifiers:
   winston: ^3.6.0
 
 dependencies:
+  '@koa/cors': 3.3.0
   jsdom: 19.0.0
   koa: 2.13.4
   koa-router: 10.1.1
@@ -29,6 +32,7 @@ devDependencies:
   '@types/jsdom': 16.2.14
   '@types/koa': 2.13.4
   '@types/koa-router': 7.4.4
+  '@types/koa__cors': 3.3.0
   '@types/lru-cache': 5.1.1
   '@types/node': 17.0.43
 
@@ -57,6 +61,13 @@ packages:
       colorspace: 1.1.4
       enabled: 2.0.0
       kuler: 2.0.0
+    dev: false
+
+  /@koa/cors/3.3.0:
+    resolution: {integrity: sha512-lzlkqLlL5Ond8jb6JLnVVDmD2OPym0r5kvZlMgAWiS9xle+Q5ulw1T358oW+RVguxUkANquZQz82i/STIRmsqQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      vary: 1.1.2
     dev: false
 
   /@tootallnate/once/2.0.0:
@@ -172,6 +183,12 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 17.0.43
+    dev: true
+
+  /@types/koa__cors/3.3.0:
+    resolution: {integrity: sha512-FUN8YxcBakIs+walVe3+HcNP+Bxd0SB8BJHBWkglZ5C1XQWljlKcEFDG/dPiCIqwVCUbc5X0nYDlH62uEhdHMA==}
+    dependencies:
+      '@types/koa': 2.13.4
     dev: true
 
   /@types/lru-cache/5.1.1:
