@@ -4,7 +4,7 @@
 
 # :sparkles: Star History :sparkles:
 
-[**Star-history.com**](https://star-history.com), **THE missing GitHub star history graph of GitHub repos.**
+[**Star-history.com**](https://star-history.com), **The missing GitHub star history graph of GitHub repos.**
 
 [![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
 
