@@ -164,9 +164,16 @@ const handleAddRepoBtnClick = () => {
         repo = regResult[1];
       }
     }
-    if (!repo.includes("/")) {
-      repo += `/${repo}`;
+
+    const valueList = repo.split("/");
+    if (valueList.length === 1) {
+      // Auto-complete repo name. e.g. bytebase -> bytebase/bytebase
+      repo = `${valueList[0]}/${repo}`;
+    } else if (valueList.length >= 2) {
+      // Remove additional chars. e.g. bytebase/bytebase/123 -> bytebase/bytebase
+      repo = `${valueList[0]}/${valueList[1]}`;
     }
+
     for (const r of state.repos) {
       if (r.name === repo) {
         if (r.visible) {
