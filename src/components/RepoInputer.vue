@@ -153,8 +153,14 @@ const handleAddRepoBtnClick = () => {
   }
 
   for (const rawRepo of rawRepos.split(",")) {
-    let repo = head(rawRepo.split("#"));
-    if (!repo) {
+    let repo = "";
+
+    // Match repo name from github repo links. e.g. https://github.com/bytebase/star-history/issues -> bytebase/star-history
+    if (GITHUB_REPO_URL_REG.test(rawRepo)) {
+      repo = (rawRepo.match(GITHUB_REPO_URL_REG) as string[])[1];
+    }
+    repo = head(rawRepo.split("#")) as string;
+    if (repo === "") {
       continue;
     }
 
