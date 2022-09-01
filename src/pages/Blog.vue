@@ -95,7 +95,7 @@
         </p>
       </div>
     </div>
-    <SubscribeSection v-if="!state.isLoading" class="mt-32 mb-8" />
+    <BytebaseBanner v-if="!state.isLoading" class="mt-32 mb-8"></BytebaseBanner>
     <Footer />
   </div>
 </template>
@@ -107,7 +107,7 @@ import { useRoute } from "vue-router";
 import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import SubscribeSection from "../components/SubscribeSection.vue";
+import BytebaseBanner from "../components/BytebaseBanner.vue";
 
 interface State {
   isLoading: boolean;

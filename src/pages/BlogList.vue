@@ -123,7 +123,7 @@
         </div>
       </div>
     </section>
-    <SubscribeSection v-if="!state.isLoading" class="mt-4 mb-8" />
+    <BytebaseBanner v-if="!state.isLoading" class="mb-8"></BytebaseBanner>
     <Footer />
   </div>
 </template>
@@ -133,7 +133,7 @@ import { onMounted, reactive } from "vue";
 import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import SubscribeSection from "../components/SubscribeSection.vue";
+import BytebaseBanner from "../components/BytebaseBanner.vue";
 
 interface State {
   isLoading: boolean;
