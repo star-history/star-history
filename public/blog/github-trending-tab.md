@@ -25,7 +25,7 @@ star-history.com runs a Twitter account [@StartHistoryHQ](https://twitter.com/st
 
 ![star-history](/blog/assets/github-trending-tab/star-history.webp)
 
-Some people DMed us asking if we use a bot to find those repos. Actually, we curate each repo manually, and GitHub Trending Tab is our primary source to find those repos. For us, the Trending Tab serves as a starting point. We review the list every day and pick 1 or 2 interesting repos. Without GitHub Trending, finding the needles in the haystack would require much more effort.
+Some people DMed us asking if we use a bot to find those repos. Actually, we curate each repo manually, and GitHub Trending Tab is one of our primary sources to find those repos. For us, the Trending Tab serves as a starting point. We review the list every day and pick 1 or 2 interesting repos. Without GitHub Trending, finding the needles in the haystack would require much more effort.
 
 As someone promoting others’ repositories daily, we can sense the strong feelings around GitHub Trending. Because we often see people get excited about us promoting their open source projects, imagine how excited it would be if their projects show up on the GitHub Trending Tab. 
 
