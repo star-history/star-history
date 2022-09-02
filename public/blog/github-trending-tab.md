@@ -9,6 +9,7 @@ For open source projects, showing up on the GitHub Trending Tab is a braggable m
 ![throw.gif](/blog/assets/github-trending-tab/hn.webp)
 
 For such a popular industry leaderboard, it’s always a challenge to be fair and pick the top N repos most people are happy with. And fair is even more subjective in the developer world.
+
 * Go vs. Rust?
 * React vs. Vue?
 * MySQL vs. PostgreSQL?
