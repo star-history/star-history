@@ -1,5 +1,14 @@
 [
   {
+    "title": "Re: GitHub's plan to remove Trending tab",
+    "slug": "github-trending-tab",
+    "author": "Tianzhou",
+    "featured": true,
+    "featureImage": "/blog/assets/github-trending-tab/github-trending-tab.webp",
+    "publishedDate": "2022-09-02T09:50:06.000Z",
+    "excerpt": "Our take on GitHub's intention to deprecate GitHub Trending Tab."
+  },
+  {
     "title": "Add a live star-history chart to your GitHub README",
     "slug": "add-a-live-star-history-chart-to-your-github-readme",
     "author": "Steven",
