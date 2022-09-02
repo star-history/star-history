@@ -2,11 +2,11 @@
 
 When I learned GitHub’s plan to remove the Trending tab. My immediate reaction was:
 
-![throw.gif](/blog/assets/github-trending-tab/throw.gif)
+![throw](/blog/assets/github-trending-tab/throw.gif)
 
 For open source projects, showing up on the GitHub Trending Tab is a braggable milestone. As someone from the [HN](https://news.ycombinator.com/item?id=32681319) suggests, the Trending Tab sets on many developer’s bookmark bar:
 
-![hn.webp](/blog/assets/github-trending-tab/hn.webp)
+![hn](/blog/assets/github-trending-tab/hn.webp)
 
 For such a popular industry leaderboard, it’s always a challenge to be fair and pick the top N repos most people are happy with. And fair is even more subjective in the developer world.
 
