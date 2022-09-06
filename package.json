@@ -12,7 +12,7 @@
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.1",
-    "axios": "^0.26.0",
+    "axios": "^0.27.0",
     "d3-axis": "^1.0.12",
     "d3-scale": "^3.2.0",
     "d3-selection": "^1.4.1",
