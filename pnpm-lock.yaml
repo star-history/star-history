@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@tailwindcss/line-clamp': ^0.3.1
+  '@tailwindcss/line-clamp': ^0.4.0
   '@tailwindcss/typography': ^0.5.1
   '@types/chrome': 0.0.171
   '@types/d3-axis': 1.0.16
@@ -39,7 +39,7 @@ specifiers:
   vue-tsc: ^0.31.2
 
 dependencies:
-  '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.23
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.0.23
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
   axios: 0.26.1
   d3-axis: 1.0.12
@@ -189,8 +189,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@tailwindcss/line-clamp/0.3.1_tailwindcss@3.0.23:
-    resolution: {integrity: sha512-pNr0T8LAc3TUx/gxCfQZRe9NB2dPEo/cedPHzUGIPxqDMhgjwNm6jYxww4W5l0zAsAddxr+XfZcqttGiFDgrGg==}
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.0.23:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:

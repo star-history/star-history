@@ -10,7 +10,7 @@
     "build:extension": "vite build --mode extension"
   },
   "dependencies": {
-    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.1",
     "axios": "^0.26.0",
     "d3-axis": "^1.0.12",
