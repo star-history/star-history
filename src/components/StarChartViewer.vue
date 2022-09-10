@@ -88,7 +88,7 @@
   </div>
   <EmbedMarkdownSection v-if="state.chartData"></EmbedMarkdownSection>
   <div class="grow"></div>
-  <BytebaseBanner v-if="state.chartData"></BytebaseBanner>
+  <BytebaseBanner />
   <TokenSettingDialog
     v-if="state.showSetTokenDialog"
     @close="handleSetTokenDialogClose"
