@@ -6,7 +6,7 @@ specifiers:
   '@types/chrome': 0.0.196
   '@types/d3-axis': 3.0.1
   '@types/d3-scale': 3.3.2
-  '@types/d3-selection': 1.4.3
+  '@types/d3-selection': 3.0.3
   '@types/d3-shape': 1.3.8
   '@types/lodash': 4.14.185
   '@types/marked': 4.0.7
@@ -19,7 +19,7 @@ specifiers:
   axios: ^0.27.0
   d3-axis: ^3.0.0
   d3-scale: ^3.2.0
-  d3-selection: ^1.4.1
+  d3-selection: ^3.0.0
   d3-shape: ^1.3.7
   dayjs: ^1.10.7
   eslint: 8.23.1
@@ -44,7 +44,7 @@ dependencies:
   axios: 0.27.2
   d3-axis: 3.0.0
   d3-scale: 3.3.0
-  d3-selection: 1.4.2
+  d3-selection: 3.0.0
   d3-shape: 1.3.7
   dayjs: 1.11.0
   lodash: 4.17.21
@@ -61,7 +61,7 @@ devDependencies:
   '@types/chrome': 0.0.196
   '@types/d3-axis': 3.0.1
   '@types/d3-scale': 3.3.2
-  '@types/d3-selection': 1.4.3
+  '@types/d3-selection': 3.0.3
   '@types/d3-shape': 1.3.8
   '@types/lodash': 4.14.185
   '@types/marked': 4.0.7
@@ -202,7 +202,7 @@ packages:
   /@types/d3-axis/3.0.1:
     resolution: {integrity: sha512-zji/iIbdd49g9WN0aIsGcwcTBUkgLsCSwB+uH+LPVDAiKWENMtI3cJEWt+7/YYwelMoZmbBfzA3qCdrZ2XFNnw==}
     dependencies:
-      '@types/d3-selection': 1.4.3
+      '@types/d3-selection': 3.0.3
     dev: true
 
   /@types/d3-path/1.0.9:
@@ -215,8 +215,8 @@ packages:
       '@types/d3-time': 2.1.1
     dev: true
 
-  /@types/d3-selection/1.4.3:
-    resolution: {integrity: sha512-GjKQWVZO6Sa96HiKO6R93VBE8DUW+DDkFpIMf9vpY5S78qZTlRRSNUsHr/afDpF7TvLDV7VxrUFOWW7vdIlYkA==}
+  /@types/d3-selection/3.0.3:
+    resolution: {integrity: sha512-Mw5cf6nlW1MlefpD9zrshZ+DAWL4IQ5LnWfRheW6xwsdaWOb6IRRu2H7XPAQcyXEx1D7XQWgdoKR83ui1/HlEA==}
     dev: true
 
   /@types/d3-shape/1.3.8:
@@ -882,8 +882,9 @@ packages:
       d3-time-format: 3.0.0
     dev: false
 
-  /d3-selection/1.4.2:
-    resolution: {integrity: sha512-SJ0BqYihzOjDnnlfyeHT0e30k0K1+5sR3d5fNueCNeuhZTnGw4M4o8mqJchSwgKMXCNFo+e2VTChiSJ0vYtXkg==}
+  /d3-selection/3.0.0:
+    resolution: {integrity: sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /d3-shape/1.3.7:
