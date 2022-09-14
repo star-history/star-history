@@ -40,7 +40,7 @@
     "@typescript-eslint/eslint-plugin": "5.36.2",
     "@typescript-eslint/parser": "5.36.2",
     "@vitejs/plugin-vue": "2.3.4",
-    "@vue/eslint-config-typescript": "9.1.0",
+    "@vue/eslint-config-typescript": "11.0.1",
     "autoprefixer": "10.4.10",
     "eslint": "8.23.1",
     "eslint-config-prettier": "8.5.0",
