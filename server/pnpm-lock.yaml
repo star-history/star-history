@@ -14,7 +14,7 @@ specifiers:
   lru-cache: 7.14.0
   node-fetch: 2.6.7
   ts-node: 10.9.1
-  typescript: 4.8.2
+  typescript: 4.8.3
   winston: 3.8.2
 
 dependencies:
@@ -24,8 +24,8 @@ dependencies:
   koa-router: 10.1.1
   lru-cache: 7.14.0
   node-fetch: 2.6.7
-  ts-node: 10.9.1_vxrnv5tlr43u5xabofdb6zoswy
-  typescript: 4.8.2
+  ts-node: 10.9.1_rb7lfb2dlgdf5f7m6mcvvespxa
+  typescript: 4.8.3
   winston: 3.8.2
 
 devDependencies:
@@ -969,7 +969,7 @@ packages:
     resolution: {integrity: sha512-XrHUvV5HpdLmIj4uVMxHggLbFSZYIn7HEWsqePZcI50pco+MPqJ50wMGY794X7AOOhxOBAjbkqfAbEe/QMp2Lw==}
     dev: false
 
-  /ts-node/10.9.1_vxrnv5tlr43u5xabofdb6zoswy:
+  /ts-node/10.9.1_rb7lfb2dlgdf5f7m6mcvvespxa:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -995,7 +995,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 4.8.2
+      typescript: 4.8.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: false
@@ -1020,8 +1020,8 @@ packages:
       mime-types: 2.1.35
     dev: false
 
-  /typescript/4.8.2:
-    resolution: {integrity: sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==}
+  /typescript/4.8.3:
+    resolution: {integrity: sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: false
