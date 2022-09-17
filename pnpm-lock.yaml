@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@tailwindcss/line-clamp': ^0.4.0
   '@tailwindcss/typography': ^0.5.1
-  '@types/chrome': 0.0.196
+  '@types/chrome': 0.0.197
   '@types/d3-axis': 3.0.1
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
@@ -58,7 +58,7 @@ dependencies:
   vue-tsc: 0.40.8_typescript@4.6.2
 
 devDependencies:
-  '@types/chrome': 0.0.196
+  '@types/chrome': 0.0.197
   '@types/d3-axis': 3.0.1
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
@@ -192,8 +192,8 @@ packages:
       tailwindcss: 3.0.23_6b4luod745iryv24jvdbvzbbsa
     dev: false
 
-  /@types/chrome/0.0.196:
-    resolution: {integrity: sha512-LAjGIQYC0wyiYu6lVT03dBrHBfYTMsM8EmNfQ+UdZipGZe8OUiir6weoa9oQoBw3T3RLzBCp9m904T+rFtpPAg==}
+  /@types/chrome/0.0.197:
+    resolution: {integrity: sha512-m1NfS5bOjaypyqQfaX6CxmJodZVcvj5+Mt/K94EBHkflYjPNmXHAzbxfifdLMa0YM3PDyOxohoTS5ug/e6p5jA==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.8
