@@ -15,7 +15,7 @@ specifiers:
   '@typescript-eslint/parser': 5.38.1
   '@vitejs/plugin-vue': 2.3.4
   '@vue/eslint-config-typescript': 9.1.0
-  autoprefixer: 10.4.12
+  autoprefixer: 10.4.13
   axios: ^1.0.0
   d3-axis: ^3.0.0
   d3-scale: ^4.0.0
@@ -50,7 +50,7 @@ dependencies:
   lodash: 4.17.21
   marked: 4.0.16
   pinia: 2.0.12_5bgd5bbqiynntouprdo6x2bjeu
-  tailwindcss: 3.0.23_xkowlklhtk6sfvtndbucb3hfiy
+  tailwindcss: 3.0.23_lycaqaeny3mp632atgvyvqdgwe
   typescript: 4.6.2
   vite: 2.8.6
   vue: 3.2.31
@@ -70,7 +70,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.38.1_znsan5ntfzyzwrqtg45l4b6tbm
   '@vitejs/plugin-vue': 2.3.4_vite@2.8.6+vue@3.2.31
   '@vue/eslint-config-typescript': 9.1.0_dvvcga7b4rpmqbfh2s4hgpvjiy
-  autoprefixer: 10.4.12_postcss@8.4.18
+  autoprefixer: 10.4.13_postcss@8.4.18
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-plugin-prettier: 4.2.1_aniwkeyvlpmwkidetuytnokvcm
@@ -174,7 +174,7 @@ packages:
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.0.23_xkowlklhtk6sfvtndbucb3hfiy
+      tailwindcss: 3.0.23_lycaqaeny3mp632atgvyvqdgwe
     dev: false
 
   /@tailwindcss/typography/0.5.2_tailwindcss@3.0.23:
@@ -185,7 +185,7 @@ packages:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
-      tailwindcss: 3.0.23_xkowlklhtk6sfvtndbucb3hfiy
+      tailwindcss: 3.0.23_lycaqaeny3mp632atgvyvqdgwe
     dev: false
 
   /@types/chrome/0.0.200:
@@ -679,15 +679,15 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: false
 
-  /autoprefixer/10.4.12_postcss@8.4.18:
-    resolution: {integrity: sha512-WrCGV9/b97Pa+jtwf5UGaRjgQIg7OK3D06GnoYoZNcG1Xb8Gt3EfuKjlhh9i/VtT16g6PYjZ69jdJ2g8FxSC4Q==}
+  /autoprefixer/10.4.13_postcss@8.4.18:
+    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001407
+      caniuse-lite: 1.0.30001427
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -740,7 +740,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001407
+      caniuse-lite: 1.0.30001427
       electron-to-chromium: 1.4.256
       node-releases: 2.0.6
       update-browserslist-db: 1.0.9_browserslist@4.21.4
@@ -754,8 +754,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /caniuse-lite/1.0.30001407:
-    resolution: {integrity: sha512-4ydV+t4P7X3zH83fQWNDX/mQEzYomossfpViCOx9zHBSMV+rIe3LFqglHHtVyvNl1FhTNxPxs3jei82iqOW04w==}
+  /caniuse-lite/1.0.30001427:
+    resolution: {integrity: sha512-lfXQ73oB9c8DP5Suxaszm+Ta2sr/4tf8+381GkIm1MLj/YdLf+rEDyDSRCzeltuyTVGm+/s18gdZ0q+Wmp8VsQ==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -2045,7 +2045,7 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /tailwindcss/3.0.23_xkowlklhtk6sfvtndbucb3hfiy:
+  /tailwindcss/3.0.23_lycaqaeny3mp632atgvyvqdgwe:
     resolution: {integrity: sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -2054,7 +2054,7 @@ packages:
       postcss: ^8.0.9
     dependencies:
       arg: 5.0.1
-      autoprefixer: 10.4.12_postcss@8.4.18
+      autoprefixer: 10.4.13_postcss@8.4.18
       chalk: 4.1.2
       chokidar: 3.5.3
       color-name: 1.1.4
