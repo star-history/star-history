@@ -167,31 +167,20 @@ watch(
 const fetchReposData = async (repos: string[]) => {
   store.setIsFetching(true);
   const notCachedRepos: string[] = [];
-  const repoData: RepoData[] = [];
 
   for (const repo of repos) {
     const cachedRepo = state.repoCacheMap.get(repo);
 
-    if (cachedRepo) {
-      repoData.push({
-        repo,
-        starRecords: cachedRepo.starData,
-        logoUrl: cachedRepo.logoUrl,
-      });
-    } else {
+    if (!cachedRepo) {
       notCachedRepos.push(repo);
     }
   }
+
   try {
     const data = await getRepoData(notCachedRepos, store.token);
     for (const { repo, starRecords, logoUrl } of data) {
       state.repoCacheMap.set(repo, {
         starData: starRecords,
-        logoUrl,
-      });
-      repoData.push({
-        repo,
-        starRecords,
         logoUrl,
       });
     }
@@ -206,15 +195,19 @@ const fetchReposData = async (repos: string[]) => {
   }
   store.setIsFetching(false);
 
+  const repoData: RepoData[] = [];
+  for (const repo of repos) {
+    const cachedRepo = state.repoCacheMap.get(repo);
+    repoData.push({
+      repo,
+      starRecords: cachedRepo!.starData,
+      logoUrl: cachedRepo!.logoUrl,
+    });
+  }
+
   if (repoData.length === 0) {
     state.chartData = undefined;
   } else {
-    repoData.sort((d1, d2) => {
-      return (
-        Math.max(...d2.starRecords.map((s) => s.count)) -
-        Math.max(...d1.starRecords.map((s) => s.count))
-      );
-    });
     state.chartData = convertDataToChartData(repoData, chartMode.value);
   }
 };
