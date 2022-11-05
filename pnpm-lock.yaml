@@ -8,7 +8,7 @@ specifiers:
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
-  '@types/lodash': 4.14.187
+  '@types/lodash': 4.14.188
   '@types/marked': 4.0.7
   '@types/node': 18.11.9
   '@typescript-eslint/eslint-plugin': 5.42.0
@@ -63,7 +63,7 @@ devDependencies:
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
-  '@types/lodash': 4.14.187
+  '@types/lodash': 4.14.188
   '@types/marked': 4.0.7
   '@types/node': 18.11.9
   '@typescript-eslint/eslint-plugin': 5.42.0_wv3i54dz7odryfb4wu6wg5x63e
@@ -243,8 +243,8 @@ packages:
     resolution: {integrity: sha512-BLO9bBq59vW3fxCpD4o0N4U+DXsvwvIcl+jofw0frQo/GrBFC+/jRZj1E7kgp6dvTyNmA4y6JCV5Id/r3mNP5A==}
     dev: true
 
-  /@types/lodash/4.14.187:
-    resolution: {integrity: sha512-MrO/xLXCaUgZy3y96C/iOsaIqZSeupyTImKClHunL5GrmaiII2VwvWmLBu2hwa0Kp0sV19CsyjtrTc/Fx8rg/A==}
+  /@types/lodash/4.14.188:
+    resolution: {integrity: sha512-zmEmF5OIM3rb7SbLCFYoQhO4dGt2FRM9AMkxvA3LaADOF1n8in/zGJlWji9fmafLoNyz+FoL6FE0SLtGIArD7w==}
     dev: true
 
   /@types/marked/4.0.7:
