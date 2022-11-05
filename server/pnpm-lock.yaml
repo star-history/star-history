@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@koa/cors': 3.4.1
+  '@koa/cors': 3.4.3
   '@types/jsdom': 20.0.0
   '@types/koa': 2.13.5
   '@types/koa-router': 7.4.4
@@ -18,7 +18,7 @@ specifiers:
   winston: 3.8.2
 
 dependencies:
-  '@koa/cors': 3.4.1
+  '@koa/cors': 3.4.3
   jsdom: 20.0.0
   koa: 2.13.4
   koa-router: 12.0.0
@@ -74,8 +74,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@koa/cors/3.4.1:
-    resolution: {integrity: sha512-/sG9NlpGZ/aBpnRamIlGs+wX+C/IJ5DodNK7iPQIVCG4eUQdGeshGhWQ6JCi7tpnD9sCtFXcS04iTimuaJfh4Q==}
+  /@koa/cors/3.4.3:
+    resolution: {integrity: sha512-WPXQUaAeAMVaLTEFpoq3T2O1C+FstkjJnDQqy95Ck1UdILajsRhu6mhJ8H2f4NFPRBoCNN+qywTJfq/gGki5mw==}
     engines: {node: '>= 8.0.0'}
     dependencies:
       vary: 1.1.2
