@@ -15,19 +15,10 @@
           Bytebase
         </a></span
       >
-      <iframe
-        class="absolute -right-40"
-        src="https://ghbtns.com/github-btn.html?user=bytebase&repo=bytebase&type=star&count=true"
-        frameborder="0"
-        scrolling="0"
-        width="150"
-        height="20"
-        title="GitHub"
-      ></iframe>
     </p>
     <p class="mb-2 text-lg text-gray-600">
-      Safer and faster database change and version control for
-      <span class="font-bold">Teams</span>
+      Database CI/CD and DevOps for
+      <span class="font-bold">Developers</span> and <span class="font-bold">DBAs</span>
     </p>
     <a
       class="mt-2 hover:opacity-80"
