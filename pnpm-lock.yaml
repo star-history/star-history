@@ -10,7 +10,7 @@ specifiers:
   '@types/d3-shape': 3.1.0
   '@types/lodash': 4.14.191
   '@types/marked': 4.0.7
-  '@types/node': 18.11.9
+  '@types/node': 18.11.10
   '@typescript-eslint/eslint-plugin': 5.42.0
   '@typescript-eslint/parser': 5.42.0
   '@vitejs/plugin-vue': 2.3.4
@@ -65,7 +65,7 @@ devDependencies:
   '@types/d3-shape': 3.1.0
   '@types/lodash': 4.14.191
   '@types/marked': 4.0.7
-  '@types/node': 18.11.9
+  '@types/node': 18.11.10
   '@typescript-eslint/eslint-plugin': 5.42.0_wv3i54dz7odryfb4wu6wg5x63e
   '@typescript-eslint/parser': 5.42.0_znsan5ntfzyzwrqtg45l4b6tbm
   '@vitejs/plugin-vue': 2.3.4_vite@2.8.6+vue@3.2.31
@@ -251,8 +251,8 @@ packages:
     resolution: {integrity: sha512-eEAhnz21CwvKVW+YvRvcTuFKNU9CV1qH+opcgVK3pIMI6YZzDm6gc8o2vHjldFk6MGKt5pueSB7IOpvpx5Qekw==}
     dev: true
 
-  /@types/node/18.11.9:
-    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+  /@types/node/18.11.10:
+    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
     dev: true
 
   /@types/parse-json/4.0.0:
