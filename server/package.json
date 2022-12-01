@@ -22,6 +22,6 @@
     "@types/koa-router": "7.4.4",
     "@types/koa__cors": "3.3.0",
     "@types/lru-cache": "7.10.9",
-    "@types/node": "18.11.9"
+    "@types/node": "18.11.10"
   }
 }

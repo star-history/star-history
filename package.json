@@ -36,7 +36,7 @@
     "@types/d3-shape": "3.1.0",
     "@types/lodash": "4.14.191",
     "@types/marked": "4.0.7",
-    "@types/node": "18.11.9",
+    "@types/node": "18.11.10",
     "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
     "@vitejs/plugin-vue": "2.3.4",
