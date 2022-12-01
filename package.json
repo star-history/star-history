@@ -34,7 +34,7 @@
     "@types/d3-scale": "4.0.2",
     "@types/d3-selection": "1.4.3",
     "@types/d3-shape": "3.1.0",
-    "@types/lodash": "4.14.188",
+    "@types/lodash": "4.14.191",
     "@types/marked": "4.0.7",
     "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "5.42.0",
