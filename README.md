@@ -20,7 +20,7 @@
 
 **Sponsor** 👇
 
-<a href="https://bytebase.com/"> <img height="80px" src="https://i.v2ex.co/3VSATzOl.png" /> </a>
+<a href="https://bytebase.com/"><img src="https://raw.githubusercontent.com/bytebase/star-history/main/public/bytebase.webp" /></a>
 
 [Bytebase.com](https://bytebase.com) is an **`open source`**, **web-based database schema change and version control tool** for teams.
 
