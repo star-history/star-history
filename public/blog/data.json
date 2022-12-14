@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | December 2022",
+    "slug": "star-history-monthly-pick-202212",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history-monthly-pick-202212/star-history-202212.webp",
+    "publishedDate": "2022-12-14T09:50:06.000Z",
+    "excerpt": "A few open-source projects for December 2022, picked by the Star History team."
+  },
+  {
     "title": "Re: GitHub's plan to remove Trending tab",
     "slug": "github-trending-tab",
     "author": "Tianzhou",
