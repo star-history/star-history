@@ -20,7 +20,7 @@ Each month, we will select some of these projects and make a collection. DM us i
 
 ![memos star history](/blog/assets/star-history-monthly-pick-202212/star-history-20221214-memos.webp)
 
-memos is a lightweight notebook/knowledge base that supports private deployments to quickly jot down your ideas, and also supports recording and sharing like a circle of friends (Twitter).
+memos is a lightweight notebook/knowledge base that supports private deployments to quickly jot down your ideas, and also supports recording and sharing like Twitter.
 
 It has a rich and active community with many third-party tools contributed by community users, including: 
 
@@ -67,6 +67,5 @@ From the [internal design doc](https://greptime.com/blogs/2022-12-08-GreptimeDB-
 DuckDB is an analytical database with an SQLite-like architecture that can run and analyze data in a running process. MotherDuck, which recently [announced $47.5 million in Series A funding](https://www.bytebase.com/blog/motherduck-from-sqlite-to-the-docker-for-data), is based on DuckDB.
 
 ![what's duckdb](/blog/assets/star-history-monthly-pick-202212/whats-duckdb.webp)
-
 
 Well that's it for now folks, see you next month!
