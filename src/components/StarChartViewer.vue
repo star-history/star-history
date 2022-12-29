@@ -35,20 +35,6 @@
   </div>
   <div
     v-if="state.chartData"
-    class="w-auto mx-auto my-2 flex flex-row justify-center items-center flex-wrap px-4 py-2 border rounded-full shadow"
-  >
-    <div class="text-gray-700 text-sm">
-      <span class="text-lg">👉</span> Add this <b>LIVE chart</b> to your GitHub
-      README
-    </div>
-    <span
-      class="ml-3 px-2 py-1 text-sm cursor-pointer rounded bg-green-600 text-white shadow hover:bg-green-700"
-      @click="state.showEmbedChartGuideDialog = true"
-      >Show me How</span
-    >
-  </div>
-  <div
-    v-if="state.chartData"
     class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center"
   >
     <div class="flex flex-row justify-start items-center mb-2">
