@@ -4,7 +4,7 @@ specifiers:
   '@tailwindcss/line-clamp': ^0.4.0
   '@tailwindcss/typography': ^0.5.1
   '@types/chrome': 0.0.206
-  '@types/d3-axis': 3.0.1
+  '@types/d3-axis': 3.0.2
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
@@ -59,7 +59,7 @@ dependencies:
 
 devDependencies:
   '@types/chrome': 0.0.206
-  '@types/d3-axis': 3.0.1
+  '@types/d3-axis': 3.0.2
   '@types/d3-scale': 4.0.2
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
@@ -195,8 +195,8 @@ packages:
       '@types/har-format': 1.2.8
     dev: true
 
-  /@types/d3-axis/3.0.1:
-    resolution: {integrity: sha512-zji/iIbdd49g9WN0aIsGcwcTBUkgLsCSwB+uH+LPVDAiKWENMtI3cJEWt+7/YYwelMoZmbBfzA3qCdrZ2XFNnw==}
+  /@types/d3-axis/3.0.2:
+    resolution: {integrity: sha512-uGC7DBh0TZrU/LY43Fd8Qr+2ja1FKmH07q2FoZFHo1eYl8aj87GhfVoY1saJVJiq24rp1+wpI6BvQJMKgQm8oA==}
     dependencies:
       '@types/d3-selection': 1.4.3
     dev: true
