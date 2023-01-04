@@ -1,11 +1,11 @@
 [
   {
-    "title": "Star History Yearly Pick | Top Front-end Projects 2022",
+    "title": "Star History Yearly Pick 2022 | Front-end",
     "slug": "yearly-pick-frontend-2022",
     "author": "Mila",
     "featured": true,
-    "featureImage": "/blog/assets/yearly-pick-frontend/star-history-frontend.webp",
-    "publishedDate": "2023-1-4T09:50:06.000Z",
+    "featureImage": "/blog/assets/yearly-pick-frontend-2022/star-history-frontend-2022.webp",
+    "publishedDate": "2023-01-04T09:50:06.000Z",
     "excerpt": "As a proper goodbye to 2022, Star History picks some of the most interesting open-source front-end projects in 2022."
   }, 
   {
