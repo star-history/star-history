@@ -45,7 +45,7 @@ Remix, a full-stack web framework based on TypeScript and React, was officially 
 
 The use of the slogan “Say goodbye to Spinnageddon” on [their official website](https://remix.run/) is genuinely awe-inspiring. 👋
 
-![remix-spin](/blog/assets/yearly-pick-frontend-2022/remix-spin.webp)
+![remix-spin](/blog/assets/yearly-pick-frontend-2022/spinning-cat.webp)
 
 ## Markdoc
 
@@ -132,4 +132,4 @@ Their previous site is pretty. The new site is fire.
 
 ![vite-old](/blog/assets/yearly-pick-frontend-2022/vite-old.webp)
 
-That’s it for the top front-end projects, stay tuned for the next round-up, where we will be looking at data & infrastructure tools that shone bright in 2022!
+That’s it for the top front-end projects. Stay tuned for the next round-up, where we will be looking at data & infrastructure tools that shone bright in 2022. DM us [@StarHistoryHQ](https://twitter.com/StarHistoryHQ) if you have any good project suggestions! 🤓
