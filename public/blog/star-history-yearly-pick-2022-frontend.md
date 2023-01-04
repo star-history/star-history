@@ -4,7 +4,7 @@ As a proper goodbye to 2022, Star History looks at some of the most interesting 
 
 In today’s post, we are covering front-end projects.
 
-*Note: The following ranking is not in any particular order.
+*Note: The following ranking is in alphabetical order.
 
 ## Bun
 
@@ -94,7 +94,7 @@ https://github.com/tailwindlabs/tailwindcss
 
 ![tailwind](/blog/assets/yearly-pick-frontend-2022/tailwind.webp)
 
-Tailwind CSS is a CSS framework toolset, and we use Tailwind for [bytebase.com](https://www.bytebase.com/). Whether it's colors or spacing, proportions, or fonts, Tailwind comes with defaults that are ready to use out of the box, but they can also be customized.
+Tailwind CSS is a CSS framework toolset. Whether it's colors or spacing, proportions, or fonts, Tailwind comes with defaults that are ready to use out of the box, but they can also be customized.
 
 ![tailwind-colors](/blog/assets/yearly-pick-frontend-2022/tailwind-colors.webp)
 
