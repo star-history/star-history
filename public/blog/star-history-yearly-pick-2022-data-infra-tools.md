@@ -26,13 +26,15 @@ While the aforementioned Buf targets the API schema, [Bytebase](https://github.c
 
 - Like how GitHub/GitLab manages code changes, Bytebase provides a GUI to manage database changes.
 - Like Figma for designer team collaboration, Bytebase helps DevOps teams collaborate on database management.
-- Like  how Terraform defines Infrastructure-as-Code, Bytebase aims to build Database-as-Code.
+- Like how Terraform defines Infrastructure-as-Code, Bytebase aims to build Database-as-Code.
 
 ![bytebase-site](/blog/assets/yearly-pick-data-infra-tools-2022/bytebase-site.webp)
 
 Bytebase is a Database CI/CD tool (Database-as-Code) for DevOps teams, built for developers and DBAs, and the first (and at the time of this post, only) [Database CI/CD solution to be included in the CNCF Landscape](https://www.bytebase.com/blog/cncf-landscape).
 
 The mascots Byte and Base (originated from Bytebase's B, and the shape of a database, respectively) are also adorable.
+
+![byte-base](/blog/assets/yearly-pick-data-infra-tools-2022/byte-base.gif)
 
 ## Casdoor
 
