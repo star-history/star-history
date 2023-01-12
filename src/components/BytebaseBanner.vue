@@ -18,7 +18,8 @@
     </p>
     <p class="mb-2 text-lg text-gray-600">
       Database CI/CD and DevOps for
-      <span class="font-bold">Developers</span> and <span class="font-bold">DBAs</span>
+      <span class="font-bold">Developers</span> and
+      <span class="font-bold">DBAs</span>
     </p>
     <a
       class="mt-2 hover:opacity-80"

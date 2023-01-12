@@ -97,6 +97,8 @@
     </div>
     <BytebaseBanner v-if="!state.isLoading" class="mt-32 mb-8"></BytebaseBanner>
     <Footer />
+
+    <BytebaseFixedBanner />
   </div>
 </template>
 
@@ -108,6 +110,7 @@ import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import BytebaseBanner from "../components/BytebaseBanner.vue";
+import BytebaseFixedBanner from "../components/BytebaseFixedBanner.vue";
 
 interface State {
   isLoading: boolean;
