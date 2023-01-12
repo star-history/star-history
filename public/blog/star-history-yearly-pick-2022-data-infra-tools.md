@@ -22,7 +22,7 @@ Buf closed a $68M Series B at the end of 2021 and has kept a low profile for all
 
 ![bytebase](/blog/assets/yearly-pick-data-infra-tools-2022/bytebase.webp)
 
-While the aforementioned Buf targets the API schema, [Bytebase](https://github.com/bytebase/bytebase) targets the database schema hidden behind the API. While there are a number of commercial/open-source database engines on the market, there are only a few tools around to ensure reliable database schema changes. To this day, most engineering teams continue to connect directly to production databases to change data. 💥
+While the aforementioned Buf targets the API schema, [Bytebase](https://github.com/bytebase/bytebase) targets the database schema hidden behind the API. While there are a number of commercial/open-source database engines on the market, there are only a few tools around to ensure reliable database schema changes. To this day, many engineering teams continue to connect directly to production databases to change data. 💥
 
 - Like how GitHub/GitLab manages code changes, Bytebase provides a GUI to manage database changes.
 - Like Figma for designer team collaboration, Bytebase helps DevOps teams collaborate on database management.
@@ -130,17 +130,17 @@ Tier has a top-level design for how to implement pricing that allows for changes
 
 ![tier-priceops](/blog/assets/yearly-pick-data-infra-tools-2022/tier-priceops.webp)
 
-This time around, Star History is highlighting some relatively lesser-known projects that are on the rise. We see that the **Data & Infra & Tools** section can be divided into two main categories:
+For Star History, our goal is to discover interesting and inspiring projects. The aforementioned projects are not household names in the open-source community (yet), but each has great potential since they are tackling genuine issues with novel ideas. We see that the **Data & Infra & DevTools** section can be divided into two main categories:
 
-- Vertical innovation: database engines being the most popular direction, such as DuckDB and Neon.
+- Vertical innovation: database engines being the most popular segment, such as DuckDB and Neon.
 - Horizontal unification and standardization:
   - Buf for API development.
   - Bytebase for database development.
   - Casdoor for authentication sources.
   - Dagger for pipeline deployments.
-  - Meltano for large database platforms.
+  - Meltano for data platforms.
   - Opa for policy configurations.
-  - Steampipe for accessing cloud resources under different cloud providers.
+  - Steampipe for accessing cloud resources across different cloud providers.
   - Tier for SaaS pricing infrastructure.
 
 We are sure these projects will perform in the coming years and we can’t wait to see what’s next for them.
