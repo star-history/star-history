@@ -21,7 +21,8 @@
         alt="bytebase"
       />
       <p class="mt-2 text-xs">
-        Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB
+        Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB,
+        MongoDB and Spanner
       </p>
     </a>
     <a
