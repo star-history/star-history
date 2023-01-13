@@ -29,7 +29,7 @@
       href="mailto:star@bytebase.com?subject=I'm interested in sponsoring star-history.com"
       target="_blank"
       class="w-full mt-2 p-2 text-center bg-gray-50 text-xs leading-6 text-gray-400 rounded hover:underline hover:text-blue-600"
-      >Your logo<br class="xl:hidden" />(Become Sponsor)</a
+      >Your logo</a
     >
   </div>
 </template>
