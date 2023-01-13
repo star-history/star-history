@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full px-3 max-w-4xl mx-auto flex flex-col justify-center items-center"
+    class="w-full px-3 max-w-4xl mx-auto flex lg:hidden flex-col justify-center items-center"
   >
     <p
       class="relative flex flex-row justify-center items-center mb-2 font-semibold"
