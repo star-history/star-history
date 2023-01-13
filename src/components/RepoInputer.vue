@@ -74,6 +74,8 @@
         </button>
       </div>
     </div>
+
+    <SponsorBanner />
   </div>
 </template>
 
@@ -83,6 +85,7 @@ import { head } from "lodash";
 import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 import useAppStore from "../store";
+import SponsorBanner from "./SponsorBanner.vue";
 
 interface State {
   repo: string;

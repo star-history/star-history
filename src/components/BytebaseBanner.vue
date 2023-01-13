@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full px-3 max-w-4xl mx-auto flex flex-col justify-center items-center"
+    class="w-full px-3 max-w-4xl mx-auto flex lg:hidden flex-col justify-center items-center"
   >
     <p
       class="relative flex flex-row justify-center items-center mb-2 font-semibold"
@@ -18,7 +18,8 @@
     </p>
     <p class="mb-2 text-lg text-gray-600">
       Database CI/CD and DevOps for
-      <span class="font-bold">Developers</span> and <span class="font-bold">DBAs</span>
+      <span class="font-bold">Developers</span> and
+      <span class="font-bold">DBAs</span>
     </p>
     <a
       class="mt-2 hover:opacity-80"

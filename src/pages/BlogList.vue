@@ -125,6 +125,8 @@
     </section>
     <BytebaseBanner v-if="!state.isLoading" class="mb-8"></BytebaseBanner>
     <Footer />
+
+    <SponsorBanner />
   </div>
 </template>
 
@@ -134,6 +136,7 @@ import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import BytebaseBanner from "../components/BytebaseBanner.vue";
+import SponsorBanner from "../components/SponsorBanner.vue";
 
 interface State {
   isLoading: boolean;
