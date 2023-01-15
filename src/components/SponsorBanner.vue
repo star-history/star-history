@@ -12,7 +12,7 @@
     </div>
     <a
       class="relative flex flex-col bg-gray-50 p-2 rounded justify-center items-center text-zinc-600 hover:opacity-80 hover:text-blue-600 hover:underline"
-      href="https://bytebase.com/"
+      href="https://bytebase.com?source=console"
       target="_blank"
     >
       <img

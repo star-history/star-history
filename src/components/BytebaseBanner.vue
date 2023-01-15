@@ -23,7 +23,7 @@
     </p>
     <a
       class="mt-2 hover:opacity-80"
-      href="https://bytebase.com/"
+      href="https://bytebase.com?source=console"
       target="_blank"
     >
       <img class="w-auto max-w-full" src="/bytebase.webp" alt="bytebase" />
