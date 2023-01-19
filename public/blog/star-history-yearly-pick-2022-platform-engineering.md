@@ -20,13 +20,13 @@ Spotify developed Backstage to avoid the confusion of tools at high growth rates
 
 In 2020, 280+ Spotify engineering teams were [already using Backstage](https://backstage.io/blog/2020/03/16/announcing-backstage) to manage 2000+ backend services, 300+ websites, and 200+ mobile features.
 
-[Backstage Wrapped 2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022) (is the title a tribute to Spofity's annual Wrapped tho) mentioned that they gained 75 public users in the past year and now have 600+ users, proving that there really is no limit to the future of Backstage.
+[Backstage Wrapped 2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022) (is the title a tribute to Spotify's annual Wrapped tho) mentioned that they gained 75 public users in the past year and now have 600+ users, proving that there really is no limit to the future of Backstage.
 
 ## Elasticsearch
 
 ![elastic](/blog/assets/yearly-pick-platform-engineering-2022/elastic.webp)
 
-[Elasticsearch](https://github.com/elastic/elasticsearch) is a real-time distributed storage, search, and analytics engine, the first version was released in 2010 and based on Apache Lucene. In 2022, Elastic announced [Elastic 8.0](https://www.elastic.co/blog/whats-new-elastic-8-0-0), and it has gotten faster, simpler, and more scalable. They are also not slow in expanding the product: they are gradually enhancing the performance of [Elastic Cloud](https://www.elastic.co/blog/looking-back-at-2022-elastic-year-in-review) and adding the hottest keyword in their Roadmap: [Stateless Elasticsearch](https://www.elastic.co/blog/stateless-your-new-state-of-find-with-elasticsearch), which makes the service stateless and enables the elastic cloud platform.
+[Elasticsearch](https://github.com/elastic/elasticsearch) is a real-time distributed storage, search, and analytics engine, the first version was released in 2010 and based on [Apache Lucene](https://github.com/apache/lucene). In 2022, Elastic announced [Elastic 8.0](https://www.elastic.co/blog/whats-new-elastic-8-0-0), and it has gotten faster, simpler, and more scalable. They are also not slow in expanding the product: they are gradually enhancing the performance of [Elastic Cloud](https://www.elastic.co/blog/looking-back-at-2022-elastic-year-in-review) and adding the hottest keyword in their Roadmap: [Stateless Elasticsearch](https://www.elastic.co/blog/stateless-your-new-state-of-find-with-elasticsearch), which makes the service stateless and enables the elastic cloud platform.
 
 ![elastic-architecture](/blog/assets/yearly-pick-platform-engineering-2022/elastic-architecture.webp)
 
