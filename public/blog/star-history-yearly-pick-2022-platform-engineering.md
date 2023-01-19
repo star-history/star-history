@@ -140,4 +140,4 @@ Now you have a fully private and deployable platform engineering system, but is 
 - Configuration platform (application configurations, feature flags)
 - Database development platform (for database change & query management)
 
-Sidenote: if you are interested in database development platforms, we’d recommend [Bytebase](https://www.bytebase.com/). As for the other items, DM [@StarHistoryHQ](https://twitter.com/StarHistoryHQ) on Twitter and we can provide recommendations ;)
+Sidenote: if you are interested in database development platforms, we’d recommend [Bytebase](https://www.bytebase.com/). As for the other items, DM us [@StarHistoryHQ](https://twitter.com/StarHistoryHQ) and we can provide recommendations ;)
