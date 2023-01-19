@@ -1,26 +1,27 @@
 # Star History Yearly Pick 2022 | Platform Engineering
 
-In general, developers want to have as little to do infrastructure as possible, while organizations want to have control over their infrastructure. Thus, Platform Engineering emerged to remove barriers between developers and infrastructure and unify developers through automation.
+From [What is platform engineering](https://platformengineering.org/blog/what-is-platform-engineering):
+> Platform engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era
 
 Platform Engineering continues to rise in popularity in 2022 and is also featured in the [Gartner Hype Cycle for Software Engineering 2022](https://www.gartner.com/en/articles/what-s-new-in-the-2022-gartner-hype-cycle-for-emerging-technologies) report.
 
 ![gartner-report](/blog/assets/yearly-pick-platform-engineering-2022/gartner-report.webp)
 
-In this post, Star History picks out 10 open-source projects in the category Platform Engineering.
+In this post, Star History picks out 10 open-source projects that served as the building blocks for Platform Engineering.
 
 ## Backstage
 
 ![backstage](/blog/assets/yearly-pick-platform-engineering-2022/backstage.webp)
 
-[Backstage](https://github.com/backstage/backstage), a Software Catalog and Developer Platform created by Spotify, is a developer portal tool that unifies an organization's tools, services, applications, data and documentation into a single, consistent user interface, enabling developers to Easily create, manage and explore software so that developers can focus on building applications rather than reinventing the button over and over again.
+[Backstage](https://github.com/backstage/backstage), a Software Catalog and Developer Platform created by Spotify, is a developer portal that unifies an organization's tools, services, applications, data and documentation into a single, consistent user interface, enabling developers to easily create, manage and explore software so that developers can focus on building applications rather than reinventing the button over and over again.
 
-Spotify developed Backstage to avoid the confusion of tools at high growth rates, hoping it would help engineers work more efficiently, and it was open sourced in 2020 and became a CNCF incubation project in early 2022.
+Spotify developed Backstage to help engineering organizations to manage the complexity of growing systems, and it was open sourced in 2020 and became a CNCF incubation project in early 2022.
 
 ![backstage-dashboard](/blog/assets/yearly-pick-platform-engineering-2022/backstage-dashboard.webp)
 
 In 2020, 280+ Spotify engineering teams were [already using Backstage](https://backstage.io/blog/2020/03/16/announcing-backstage) to manage 2000+ backend services, 300+ websites, and 200+ mobile features.
 
-[Backstage Wrapped 2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022) (is the title a tribute to Spotify's annual Wrapped tho) mentioned that they gained 75 public users in the past year and now have 600+ users, proving that there really is no limit to the future of Backstage.
+[Backstage Wrapped 2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022) (is the title a homage to Spotify's annual Wrapped tho) mentioned that they gained 75 public users in the past year and now have 600+ users, proving that there really is a strong need for Backstage.
 
 ## Elasticsearch
 
@@ -36,17 +37,17 @@ But of course, we can't forget the [controversy](https://www.elastic.co/blog/why
 
 ![gitlab](/blog/assets/yearly-pick-platform-engineering-2022/gitlab.webp)
 
-[GitLab](https://github.com/gitlabhq/gitlabhq) was born a code hosting project to facilitate team development and collaboration, but has now expanded into a DevSecOps Platform. DevSecOps is DevOps with Security on top: normally, security awaits at the end of the development lifecycle, but when code is returned to developers for fixing, it adds extra cost. DevSecOps uses the shift-left approach to embrace security early in the DevOps lifecycle, by using tools to protect and monitor live applications, infusing security practices into every phase of software development till deployment.
+[GitLab](https://github.com/gitlabhq/gitlabhq) was born as a code hosting project to facilitate team development and collaboration, but has now expanded into a DevSecOps Platform. DevSecOps is DevOps with Security on top: normally, security awaits at the end of the development lifecycle, but when code is returned to developers for fixing, it adds extra cost. DevSecOps uses the shift-left approach to embrace security early in the DevOps lifecycle, by using tools to protect and monitor live applications, infusing security practices into every phase of software development till deployment.
 
 ![gitlab-devsecops](/blog/assets/yearly-pick-platform-engineering-2022/gitlab-devsecops.webp)
 
-In addition, GitLab is well known for their public [Handbook](https://about.gitlab.com/handbook/) (think of it as their employee handbook). This 2,000+ page-properly-categorized document gives a pretty specific and informative glimpse into the processes/collaboration/use of tools and even the culture of GitLab - this is extra handy for a  startup that is just starting out and looking to establish SOPs and processes.
+In addition, GitLab is well known for their public [Handbook](https://about.gitlab.com/handbook/) (think of it as their employee handbook). This 2,000+ page-properly-categorized document gives a pretty specific and informative glimpse into the processes/collaboration/use of tools and even the culture of GitLab - this is extra handy for a startup that is just starting out and looking to establish SOPs and processes.
 
 ## Grafana
 
 ![grafana](/blog/assets/yearly-pick-platform-engineering-2022/grafana.webp)
 
-[Grafana](https://github.com/grafana/grafana) is a observability and data visualization platform. It simplifies the complexity of monitoring: provide the data and Grafana will take care of the visualization. It was first released in 2014 by Torkel Ödegaard (Grafana Labs Co-Founder) as an offshoot project by Orbitz. We all know the story later: Grafana Labs went on a roll in 2019 after raising a $24M Series A round, most recently a $240M Series D in April, 2022.
+[Grafana](https://github.com/grafana/grafana) is an observability and data visualization platform. It simplifies the complexity of monitoring: provide the data and Grafana will take care of the visualization. It was first released in 2014 by Torkel Ödegaard (Grafana Labs Co-Founder) as an offshoot project by Orbitz. We all know the story later: Grafana Labs went on a roll in 2019 after raising a $24M Series A round, most recently a $240M Series D in April, 2022.
 
 At ObservabilityCON 2022, Grafana Labs announced two new projects: [Phlare](https://grafana.com/blog/2022/11/02/announcing-grafana-phlare-oss-continuous-profiling-database/), a database for continuous profiling, and [Faro](https://grafana.com/blog/2022/11/02/introducing-grafana-faro-oss-application-observability/), a front-end application observability service. It is worth noting that Phlare was inspired by a Hackathon project that demonstrated the value of continuous analytics when connected to metrics, logs, and traces, and they decided to create a database for continuous analytics telemetry.
 
@@ -58,7 +59,7 @@ At ObservabilityCON 2022, Grafana Labs announced two new projects: [Phlare](http
 
 [Kong](https://github.com/Kong/kong) is a cloud-native API gateway that allows users to analyze traffic and manage developers, consumers, partners, customers, etc. associated with different APIs. Since 2010, Kong has raised $169.1M in 6 rounds of funding. In 2022, they released [Kong Gateway 3.0](https://konghq.com/blog/kong-gateway-3-0) and launched a SaaS API platform in the AWS Marketplace: [Kong Konnect](https://konghq.com/products/cloud-api-platform).
 
-Kong started out as an API aggregation platform/marketplace, the company and product name back then was Mashape. Kong's API gateway project was incubated later and soon took over to become the core business, while Mashape’s original aggregation platform/marketplace businesses were sold to [RapidAPI](https://rapidapi.com/). It is a classic case of open-source transformation in recent years.
+Kong started out as an API aggregation platform/marketplace, the company and product name back then was Mashape. Kong's API gateway project was incubated later and soon took over to become the core business, while Mashape’s original aggregation platform/marketplace businesses were sold to [RapidAPI](https://rapidapi.com/). It is a classic open-source pivoting in recent years.
 
 ## Kubernetes
 
@@ -68,7 +69,7 @@ We know, we know, but we can’t leave [Kubernetes](https://github.com/kubernete
 
 ![kubernetes-terraform](/blog/assets/yearly-pick-platform-engineering-2022/kubernetes-terraform.webp)
 
-Kubernetes has a widespread ecosystem and is the platform within platform engineering. Kubernetes is the primary runtime platform for all of the projects listed in this post except Terraform. Terraform also supports interaction with Kubernetes through the [Terraform Kubernetes Provider](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs), which maintained by HashiCorp, and named after the three major cloud vendors.
+Kubernetes has a widespread ecosystem and is the platform within platform engineering. Kubernetes is the primary runtime platform for all of the projects listed in this post except Terraform. Terraform also supports interaction with Kubernetes through the [Terraform Kubernetes Provider](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs), which is maintained by HashiCorp, and listed together with the three major cloud vendors.
 
 Trivia #1: Kubernetes’ name comes from the ancient Greek word for "helmsman", which explains its logo☸️. It also has a connection with the concept of container, and of course may be more or less aimed at the competitor Docker Swarm back then.
 
@@ -104,7 +105,7 @@ In addition, the [Sourcegraph Podcast](https://about.sourcegraph.com/podcast), f
 
 ![temporal](/blog/assets/yearly-pick-platform-engineering-2022/temporal.webp)
 
-[Temporal](https://github.com/temporalio/temporal) is probably the black horse in this list, but it’s also a core part of platform engineering. It is a microservice task scheduling execution platform that executes application logic units, workflows in a resilient way, automatically handles intermittent failures, and retries failed operations. Although the first release only came in 2020.2, the founders built Cadence workflow (uber/cadence) back in Uber to solve Uber's workflow/orchestration problems, and Temporal is a commercialized fork version of Cadence.
+[Temporal](https://github.com/temporalio/temporal) is another rising stat and serves as a core piece in platform engineering. It is a microservice task scheduling execution platform that executes application logic units, workflows in a resilient way, automatically handles intermittent failures, and retries failed operations. Although the first release only came in 2020.2, the founders built Cadence workflow (uber/cadence) back in Uber to solve Uber's workflow/orchestration problems, and Temporal is a commercialized fork version of Cadence.
 
 Sidenote: Temporal annual conference Relay merch looks so damn good 😍.
 
@@ -114,30 +115,28 @@ Sidenote: Temporal annual conference Relay merch looks so damn good 😍.
 
 ![terraform](/blog/assets/yearly-pick-platform-engineering-2022/terraform.webp)
 
-[Terraform](https://github.com/hashicorp/terraform) is a tool for managing infrastructure (infrastructure-as-code) under HashiCorp. Terraform v0.1 was released back in 2014, but only became the industry leader 8 years later, revolutionizing the entire workflow, and was almost shut down in the early days because of the general response.
+[Terraform](https://github.com/hashicorp/terraform) is a tool for managing infrastructure (infrastructure-as-code) under HashiCorp. Terraform v0.1 was released back in 2014, but only became the industry leader 8 years later, revolutionizing the entire workflow, and was almost shut down in the early days because of the slow adoption.
 
-Terraform Provider started out as a way to smooth out the differences in managing the services of several large public cloud vendors, and has now become the de facto standard for managing various resources.
+Terraform Provider started out as a way to smooth out the differences in managing the services of several large public cloud vendors, and has now become the de facto standard for managing all cloud/SaaS resources.
 
 ## Platform engineering is the future
 
-Well, this is it for platform engineering projects, from big names to the newcomers, it feels like this is a tough category, let's take another look:
+Well, this is it for platform engineering projects, from big names to the starlets, let's review them again:
 
-- The low-level runtime platform - Kubernetes
-- The top-level catalog and developer portal - Backstage
+- The underlying runtime platform - Kubernetes
+- The service catalog and developer portal - Backstage
 - API gateway - Kong
 - Universal Search - Elasticsearch
-- Code hosting - GitLab
+- Code hosting and CI/CD - GitLab
 - Code Search - Sourcegraph
 - Monitoring/Alerting - Prometheus
 - Dashboard - Grafana
-- Task Scheduling Execution - Temporal
-- Keeping all of these resources in check - Terraform
+- Task Scheduling and Execution - Temporal
+- Managing all of the above resources (and the others) in code - Terraform
 
-Now you have a fully private and deployable platform engineering system, but is there any other core components that have not been mentioned?
+The above projects will constitute a pretty solid platform engineering backbone, while there are a couple of other core components worth mentioning.
 
-- Security platform (login, VPN, Audit Log, intrusion detection)
-- Resource platform (expansion and contraction, scheduling, FinOps)
-- Configuration platform (application configurations, feature flags)
-- Database development platform (for database change & query management)
-
-Sidenote: if you are interested in database development platforms, we’d recommend [Bytebase](https://www.bytebase.com/). As for the other items, DM us [@StarHistoryHQ](https://twitter.com/StarHistoryHQ) and we can provide recommendations ;)
+- Security platform (login, VPN, Audit Log, intrusion detection) - [Snyk](https://snyk.io/), [tailscale](https://tailscale.com/).
+- Resource platform (auto-scaling, scheduling, FinOps) [OpenCost](http://opencost.io/)
+- Configuration platform (application configurations, feature flags) [Apollo](https://github.com/apolloconfig/apollo), [Flagsmith](https://flagsmith.com/).
+- Database development platform (database change, query, admin, security management) - [Bytebase](https://bytebase.com)
