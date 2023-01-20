@@ -127,7 +127,7 @@ Well, this is it for platform engineering projects, from big names to the starle
 - **The service catalog and developer portal** - Backstage
 - **API gateway** - Kong
 - **Universal Search** - Elasticsearch
-- **Code hosting**, CI/CD, and DevSecOps - GitLab
+- **Code hosting, CI/CD, and DevSecOps** - GitLab
 - **Code Search** - Sourcegraph
 - **Monitoring/Alerting** - Prometheus
 - **Dashboard** - Grafana
