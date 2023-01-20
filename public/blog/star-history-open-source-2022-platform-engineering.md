@@ -1,4 +1,4 @@
-# Star History Yearly Pick 2022 | Platform Engineering
+# Star History Open Source 2022 | Platform Engineering
 
 From [What is platform engineering](https://platformengineering.org/blog/what-is-platform-engineering):
 > Platform engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era
@@ -105,7 +105,7 @@ In addition, the [Sourcegraph Podcast](https://about.sourcegraph.com/podcast), f
 
 ![temporal](/blog/assets/yearly-pick-platform-engineering-2022/temporal.webp)
 
-[Temporal](https://github.com/temporalio/temporal) is another rising stat and serves as a core piece in platform engineering. It is a microservice task scheduling execution platform that executes application logic units, workflows in a resilient way, automatically handles intermittent failures, and retries failed operations. Although the first release only came in 2020.2, the founders built Cadence workflow (uber/cadence) back in Uber to solve Uber's workflow/orchestration problems, and Temporal is a commercialized fork version of Cadence.
+[Temporal](https://github.com/temporalio/temporal) is another rising star and serves as a core piece in platform engineering. It is a microservice task scheduling execution platform that executes application logic units, workflows in a resilient way, automatically handles intermittent failures, and retries failed operations. Although the first release only came in 2020.2, the founders built Cadence workflow (uber/cadence) back in Uber to solve Uber's workflow/orchestration problems, and Temporal is a commercialized fork version of Cadence.
 
 Sidenote: Temporal annual conference Relay merch looks so damn good 😍.
 
@@ -119,7 +119,7 @@ Sidenote: Temporal annual conference Relay merch looks so damn good 😍.
 
 Terraform Provider started out as a way to smooth out the differences in managing the services of several large public cloud vendors, and has now become the de facto standard for managing all cloud/SaaS resources.
 
-## Platform engineering is the future
+## Platform Engineering is the Future
 
 Well, this is it for platform engineering projects, from big names to the starlets, let's review them again:
 
@@ -127,16 +127,16 @@ Well, this is it for platform engineering projects, from big names to the starle
 - The service catalog and developer portal - Backstage
 - API gateway - Kong
 - Universal Search - Elasticsearch
-- Code hosting and CI/CD - GitLab
+- Code hosting, CI/CD, and DevSecOps - GitLab
 - Code Search - Sourcegraph
 - Monitoring/Alerting - Prometheus
 - Dashboard - Grafana
 - Task Scheduling and Execution - Temporal
-- Managing all of the above resources (and the others) in code - Terraform
+- Manage all cloud resources and many of the above resources (and the others) in code - Terraform
 
 The above projects will constitute a pretty solid platform engineering backbone, while there are a couple of other core components worth mentioning.
 
-- Security platform (login, VPN, Audit Log, intrusion detection) - [Snyk](https://snyk.io/), [tailscale](https://tailscale.com/).
-- Resource platform (auto-scaling, scheduling, FinOps) [OpenCost](http://opencost.io/)
-- Configuration platform (application configurations, feature flags) [Apollo](https://github.com/apolloconfig/apollo), [Flagsmith](https://flagsmith.com/).
-- Database development platform (database change, query, admin, security management) - [Bytebase](https://bytebase.com)
+- Security and Access Control (network access, software supply chain, intrusion detection, Audit Log) - [Snyk](https://snyk.io/), [tailscale](https://tailscale.com/), [Vault](https://www.hashicorp.com/products/vault), [Boundary](https://www.boundaryproject.io/).
+- Resource Allocation (auto-scaling, scheduling, FinOps) - [OpenCost](http://opencost.io/).
+- Configuration (application configurations, feature flags) - [Apollo](https://github.com/apolloconfig/apollo), [Flagsmith](https://flagsmith.com/).
+- Database Development (database change, query, admin, security) - [Bytebase](https://bytebase.com).
