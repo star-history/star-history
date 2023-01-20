@@ -1,4 +1,4 @@
-# Star History Yearly Pick 2022 | Data, Infra & DevTools
+# Star History Open Source Best of 2022 | Data, Infra & DevTools
 
 Following up on our previous roundup of [Top Front-end open-source projects in 2022](/blog/star-history-yearly-pick-2022-frontend), Star History will round up the open-source projects that stood out in the **Data, Infra, and DevTools** section in 2022.
 
@@ -144,3 +144,10 @@ For Star History, our goal is to discover interesting and inspiring projects. Th
   - Tier for SaaS pricing infrastructure.
 
 We are sure these projects will perform in the coming years and we can’t wait to see what’s next for them.
+
+---
+
+This is part of Star History Open Source 2022 series, you can continue with:
+
+1. [Open Source Best of 2022 - Front-end](/blog/star-history-yearly-pick-2022-frontend).
+1. [Open Source Best of 2022 - Platform Engineering](/blog/star-history-open-source-2022-platform-engineering).

@@ -1,4 +1,4 @@
-# Star History Open Source 2022 | Platform Engineering
+# Star History Open Source Best of 2022 | Platform Engineering
 
 From [What is platform engineering](https://platformengineering.org/blog/what-is-platform-engineering):
 > Platform engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era
@@ -123,20 +123,27 @@ Terraform Provider started out as a way to smooth out the differences in managin
 
 Well, this is it for platform engineering projects, from big names to the starlets, let's review them again:
 
-- The underlying runtime platform - Kubernetes
-- The service catalog and developer portal - Backstage
-- API gateway - Kong
-- Universal Search - Elasticsearch
-- Code hosting, CI/CD, and DevSecOps - GitLab
-- Code Search - Sourcegraph
-- Monitoring/Alerting - Prometheus
-- Dashboard - Grafana
-- Task Scheduling and Execution - Temporal
-- Manage all cloud resources and many of the above resources (and the others) in code - Terraform
+- **The underlying runtime platform** - Kubernetes
+- **The service catalog and developer portal** - Backstage
+- **API gateway** - Kong
+- **Universal Search** - Elasticsearch
+- **Code hosting**, CI/CD, and DevSecOps - GitLab
+- **Code Search** - Sourcegraph
+- **Monitoring/Alerting** - Prometheus
+- **Dashboard** - Grafana
+- **Task Scheduling and Execution** - Temporal
+- **Codify Infrastructure and Cloud Resources** - Terraform
 
-The above projects will constitute a pretty solid platform engineering backbone, while there are a couple of other core components worth mentioning.
+The above projects will constitute a pretty solid platform engineering backbone, while there are a couple of other core components worth mentioning:
 
-- Security and Access Control (network access, software supply chain, intrusion detection, Audit Log) - [Snyk](https://snyk.io/), [tailscale](https://tailscale.com/), [Vault](https://www.hashicorp.com/products/vault), [Boundary](https://www.boundaryproject.io/).
-- Resource Allocation (auto-scaling, scheduling, FinOps) - [OpenCost](http://opencost.io/).
-- Configuration (application configurations, feature flags) - [Apollo](https://github.com/apolloconfig/apollo), [Flagsmith](https://flagsmith.com/).
-- Database Development (database change, query, admin, security) - [Bytebase](https://bytebase.com).
+- **Security and Access Control** (network access, software supply chain, intrusion detection, Audit Log) - [Snyk](https://snyk.io/), [tailscale](https://tailscale.com/), [Vault](https://www.hashicorp.com/products/vault), [Boundary](https://www.boundaryproject.io/).
+- **Resource Allocation** (auto-scaling, scheduling, FinOps) - [OpenCost](http://opencost.io/).
+- **Configuration** (application configurations, feature flags) - [Apollo](https://github.com/apolloconfig/apollo), [Flagsmith](https://flagsmith.com/).
+- **Database Development** (database change, query, admin, security) - [Bytebase](https://bytebase.com).
+
+---
+
+This is part of Star History Open Source 2022 series, you can continue with:
+
+1. [Open Source Best of 2022 - Data, Infra & DevTools](/blog/star-history-yearly-pick-2022-data-infra-devtools).
+1. [Open Source Best of 2022 - Platform Engineering](/blog/star-history-open-source-2022-platform-engineering).
