@@ -29,7 +29,7 @@
     "vue-tsc": "^1.0.0"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.206",
+    "@types/chrome": "0.0.210",
     "@types/d3-axis": "3.0.2",
     "@types/d3-scale": "4.0.3",
     "@types/d3-selection": "1.4.3",
