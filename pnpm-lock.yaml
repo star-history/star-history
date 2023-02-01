@@ -5,7 +5,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.1
   '@types/chrome': 0.0.206
   '@types/d3-axis': 3.0.2
-  '@types/d3-scale': 4.0.2
+  '@types/d3-scale': 4.0.3
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
   '@types/lodash': 4.14.191
@@ -60,7 +60,7 @@ dependencies:
 devDependencies:
   '@types/chrome': 0.0.206
   '@types/d3-axis': 3.0.2
-  '@types/d3-scale': 4.0.2
+  '@types/d3-scale': 4.0.3
   '@types/d3-selection': 1.4.3
   '@types/d3-shape': 3.1.0
   '@types/lodash': 4.14.191
@@ -205,8 +205,8 @@ packages:
     resolution: {integrity: sha512-NaIeSIBiFgSC6IGUBjZWcscUJEq7vpVu7KthHN8eieTV9d9MqkSOZLH4chq1PmcKy06PNe3axLeKmRIyxJ+PZQ==}
     dev: true
 
-  /@types/d3-scale/4.0.2:
-    resolution: {integrity: sha512-Yk4htunhPAwN0XGlIwArRomOjdoBFXC3+kCxK2Ubg7I9shQlVSJy/pG/Ht5ASN+gdMIalpk8TJ5xV74jFsetLA==}
+  /@types/d3-scale/4.0.3:
+    resolution: {integrity: sha512-PATBiMCpvHJSMtZAMEhc2WyL+hnzarKzI6wAHYjhsonjWJYGq5BXTzQjv4l8m2jO183/4wZ90rKvSeT7o72xNQ==}
     dependencies:
       '@types/d3-time': 2.1.1
     dev: true
