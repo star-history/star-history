@@ -2,7 +2,7 @@
 
 When choosing which tools to use, do you prefer open or closed-source? What are the differences? In this post, let’s take a look at some of the most famous open-source alternatives on the market.
 
-BTW: open-source =! free, while closed source =! paid. While some of the open-source tools are completely free, some tools offer commercial versions and support, while their non-open-source counterparts are instead, free.
+BTW: open-source =! free, closed source =! paid. While some of the open-source tools are completely free, some tools offer commercial versions and support, while their non-open-source counterparts are instead, free.
 
 ## Airbyte - Fivetran alternative
 
@@ -10,7 +10,7 @@ BTW: open-source =! free, while closed source =! paid. While some of the open-so
 
 [Airbyte](https://github.com/airbytehq/airbyte) is an open-source data integration (ELT) tool created in July 2020. It raised 3 consecutive funding rounds within 2021, from Seed ($5.2M) -> Series A ($26M) -> Series B ($150M).
 
-An enterprise’s data is usually scattered across multiple data sources. The traditional solution is through ETL (Extract, Transform, Load), which is to extract and process data, before transferring it to a data warehouse for easy use when needed. dbt and Fivetran are already serious contenders on this track. With the rise of cloud data warehouses led by Snowflake, the industry paradigm has shifted from ETL to ELT. Airbyte believes that to take ELT a step further ([Fivetran's philosophy](https://www.fivetran.com/blog/what-is-elt): data collected from multiple sources is extracted, sent to a data warehouse, and then transformed into data that is actually useful to analysts), [EL and T will gradually decouple](https://airbyte.com/blog/why-the-future-of-etl-is-not-elt-but-el): instead of ELT, EL completely decouples any transformations that may occur during L - T, and makes it easier to meet the specific needs of different companies and different businesses (some of which may not even need any transformations).
+An enterprise’s data is usually scattered across multiple data sources. The traditional solution is through ETL (Extract, Transform, Load), which is to extract and process data, before transferring it to a data warehouse for easy use when needed. [dbt](https://getdbt.com/) and [Fivetran](https://www.fivetran.com/) are already serious contenders on this track. With the rise of cloud data warehouses led by Snowflake, the industry paradigm has shifted from ETL to ELT. Airbyte believes that to take ELT a step further ([Fivetran's philosophy](https://www.fivetran.com/blog/what-is-elt): data collected from multiple sources is extracted, sent to a data warehouse, and then transformed into data that is actually useful to analysts), [EL and T will gradually decouple](https://airbyte.com/blog/why-the-future-of-etl-is-not-elt-but-el): instead of ELT, EL completely decouples any transformations that may occur during L - T, and makes it easier to meet the specific needs of different companies and different businesses (some of which may not even need any transformations).
 
 ![airbyte-elt](/blog/assets/yearly-pick-open-source-alternatives-2022/airbyte-elt.webp)
 
@@ -118,7 +118,7 @@ CEO Paul Copplestone [mentioned](https://open.spotify.com/episode/25C64y5kcKtPMz
 When comparing similar open or closed-source tools, since most open-source products are advertised as "XXX open-source alternative", the difference between them is mostly:
 
 - Open-source usually means self-deployment, that way you have more control your own data.
-- The community is freer and more open: you can choose your own configuration and request features.
+- The community is vibrant and more open: you can choose your own configuration and request features.
 - In addition, even if the open-source product is no longer maintained, you can still use it (maybe even better it).
 
 And last but not least, this concludes Star History’s 2022 open-source picks. We had fun browsing through the projects and learning about the different background stories, hope you enjoy it just as much as we did.
