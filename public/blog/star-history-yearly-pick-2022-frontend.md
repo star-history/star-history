@@ -138,5 +138,6 @@ That’s it for the top front-end projects. Stay tuned for the next round-up, wh
 
 This is part of Star History Open Source 2022 series, you can continue with:
 
-1. [Open Source Best of 2022 - Data, Infra & DevTools](/blog/star-history-yearly-pick-2022-data-infra-devtools).
-1. [Open Source Best of 2022 - Platform Engineering](/blog/star-history-open-source-2022-platform-engineering).
+1. [Open Source Best of 2022 - Data, Infra & DevTools](/blog/star-history-yearly-pick-2022-data-infra-devtools)
+1. [Open Source Best of 2022 - Platform Engineering](/blog/star-history-open-source-2022-platform-engineering)
+1. [Open Source Best of 2022 - Open-Source Alternatives](/blog/star-history-open-source-2022-open-source-alternatives)
