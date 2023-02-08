@@ -2,7 +2,7 @@
   <div class="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
     <Header />
     <section
-      class="w-full grow px-3 md:w-5/6 lg:max-w-7xl min-h-full h-auto flex flex-col justify-start items-center self-center"
+      class="w-full grow px-3 md:w-5/6 lg:max-w-6xl min-h-full h-auto flex flex-col justify-start items-center self-center"
     >
       <p
         class="mt-12 p-8 text-4xl font-bold text-dark"
@@ -127,6 +127,7 @@
     <Footer />
 
     <SponsorBanner />
+    <BlogBanner />
   </div>
 </template>
 
@@ -137,6 +138,7 @@ import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import BytebaseBanner from "../components/BytebaseBanner.vue";
 import SponsorBanner from "../components/SponsorBanner.vue";
+import BlogBanner from "../components/BlogBanner.vue";
 
 interface State {
   isLoading: boolean;

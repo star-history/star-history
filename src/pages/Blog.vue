@@ -99,6 +99,7 @@
     <Footer />
 
     <SponsorBanner />
+    <BlogBanner />
   </div>
 </template>
 
@@ -111,6 +112,7 @@ import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import BytebaseBanner from "../components/BytebaseBanner.vue";
 import SponsorBanner from "../components/SponsorBanner.vue";
+import BlogBanner from "../components/BlogBanner.vue";
 
 interface State {
   isLoading: boolean;
