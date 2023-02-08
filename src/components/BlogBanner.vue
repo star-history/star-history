@@ -24,7 +24,7 @@
         >
           <a
             :href="'/blog/' + blog.slug"
-            class="inline -ml-2 text-sm text-blue-600 hover:underline"
+            class="inline -ml-2 text-sm text-blue-700 hover:underline"
             >{{ blog.title }}</a
           >
         </li>
