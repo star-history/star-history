@@ -1,15 +1,5 @@
 <template>
-  <div
-    class="fixed left-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 shadow p-4 pb-2 rounded z-50"
-    :class="state.hide && '!hidden'"
-  >
-    <div class="z-10 w-full flex flex-row justify-end items-center mb-2 -mt-2">
-      <i
-        class="fas fa-times text-base text-gray-400 cursor-pointer hover:text-gray-500"
-        @click.prevent="handleCloseButtonClick"
-      ></i>
-    </div>
-    <p class="-mt-10"></p>
+  <div class="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
     <template v-for="section in blogSectionList" :key="section.title">
       <div class="w-full flex flex-row justify-between items-center my-2">
         <h3 class="text-xs font-medium text-gray-400 leading-6">
@@ -34,16 +24,6 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
-
-const state = reactive({
-  hide: false,
-});
-
-const handleCloseButtonClick = () => {
-  state.hide = true;
-};
-
 const blogSectionList = [
   {
     title: "Best of 2022",
