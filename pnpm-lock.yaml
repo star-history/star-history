@@ -17,10 +17,10 @@ specifiers:
   '@vue/eslint-config-typescript': 11.0.2
   autoprefixer: 10.4.13
   axios: ^1.0.0
-  d3-axis: ^3.0.0
-  d3-scale: ^4.0.0
+  d3-axis: ^1.0.12
+  d3-scale: ^3.2.0
   d3-selection: ^1.4.1
-  d3-shape: ^3.0.0
+  d3-shape: ^1.3.7
   dayjs: ^1.10.7
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0
@@ -42,10 +42,10 @@ dependencies:
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.0.23
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.23
   axios: 1.1.3
-  d3-axis: 3.0.0
-  d3-scale: 4.0.2
+  d3-axis: 1.0.12
+  d3-scale: 3.3.0
   d3-selection: 1.4.2
-  d3-shape: 3.1.0
+  d3-shape: 1.3.7
   dayjs: 1.11.0
   lodash: 4.17.21
   marked: 4.0.16
@@ -857,9 +857,8 @@ packages:
       internmap: 1.0.1
     dev: false
 
-  /d3-axis/3.0.0:
-    resolution: {integrity: sha512-IH5tgjV4jE/GhHkRV0HiVYPDtvfjHQlQfJHs0usq7M30XcSBvOotpmH1IgkcXsO/5gEQZD43B//fc7SRT5S+xw==}
-    engines: {node: '>=12'}
+  /d3-axis/1.0.12:
+    resolution: {integrity: sha512-ejINPfPSNdGFKEOAtnBtdkpr24c4d4jsei6Lg98mxf424ivoDP2956/5HDpIAtmHo85lqT4pruy+zEgvRUBqaQ==}
     dev: false
 
   /d3-color/2.0.0:
@@ -880,9 +879,8 @@ packages:
     resolution: {integrity: sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg==}
     dev: false
 
-  /d3-scale/4.0.2:
-    resolution: {integrity: sha512-GZW464g1SH7ag3Y7hXjf8RoUuAFIqklOAq3MRl4OaWabTFJY9PN/E1YklhXLh+OQ3fM9yS2nOkCoS+WLZ6kvxQ==}
-    engines: {node: '>=12'}
+  /d3-scale/3.3.0:
+    resolution: {integrity: sha512-1JGp44NQCt5d1g+Yy+GeOnZP7xHo0ii8zsQp6PGzd+C1/dl0KGsp9A7Mxwp+1D1o4unbTTxVdU/ZOIEBoeZPbQ==}
     dependencies:
       d3-array: 2.12.1
       d3-format: 2.0.0
@@ -895,9 +893,8 @@ packages:
     resolution: {integrity: sha512-SJ0BqYihzOjDnnlfyeHT0e30k0K1+5sR3d5fNueCNeuhZTnGw4M4o8mqJchSwgKMXCNFo+e2VTChiSJ0vYtXkg==}
     dev: false
 
-  /d3-shape/3.1.0:
-    resolution: {integrity: sha512-tGDh1Muf8kWjEDT/LswZJ8WF85yDZLvVJpYU9Nq+8+yW1Z5enxrmXOhTArlkaElU+CTn0OTVNli+/i+HP45QEQ==}
-    engines: {node: '>=12'}
+  /d3-shape/1.3.7:
+    resolution: {integrity: sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==}
     dependencies:
       d3-path: 1.0.9
     dev: false
