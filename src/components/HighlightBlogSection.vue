@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
     <template v-for="section in blogSectionList" :key="section.title">
       <div class="w-full flex flex-row justify-between items-center my-2">
-        <h3 class="text-xs font-medium text-gray-400 leading-6">
+        <h3 class="text-sm font-medium text-gray-400 leading-6">
           {{ section.title }}
         </h3>
       </div>
