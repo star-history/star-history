@@ -34,7 +34,7 @@ Lago was originally a no-code reverse ETL tool designed for growth teams, but th
 
 ![prql](/blog/assets/star-history-monthly-pick-202301/prql.webp)
 
-[PRQL](https://github.com/PRQL/prql) is Pipelined Relational Query Language, pronounced "Prequel" (just the opposite of SQL/Sequel). Like SQL, PRQL is readable and declarative; however, unlike SQL, it supports abstract concepts such as variables and functions. Moreover, PRQL is linear: each query line converts the result of the previous line . This should make writing PRQL statements much more straightforward.
+[PRQL](https://github.com/PRQL/prql) is Pipelined Relational Query Language, pronounced "Prequel" (just the opposite of SQL/Sequel). Like SQL, PRQL is readable and declarative; however, unlike SQL, it supports abstract concepts such as variables and functions. Moreover, PRQL is linear: each query line converts the result of the previous line. This should make writing PRQL statements much more straightforward.
 
 ![prql-statement](/blog/assets/star-history-monthly-pick-202301/prql-statement.webp)
 
