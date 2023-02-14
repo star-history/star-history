@@ -49,6 +49,10 @@ const blogSectionList = [
   {
     title: "Monthly Pick",
     blogList: [
+    {
+        title: "2023 Jan",
+        slug: "star-history-monthly-pick-202301",
+      },
       {
         title: "2022 Dec",
         slug: "star-history-monthly-pick-202212",
