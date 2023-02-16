@@ -27,7 +27,7 @@
         :placeholder="
           state.repos.length > 0
             ? '...add next repository'
-            : 'star-history or star-histor/star-history or https://github.com/star-histor/star-history'
+            : 'star-history or star-history/star-history or https://github.com/star-history/star-history'
         "
         @paste="handleInputerPasted"
         @keydown="handleInputerKeyDown"
