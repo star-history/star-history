@@ -6,12 +6,12 @@
 
 [**Star-history.com**](https://star-history.com), **The missing GitHub star history graph of GitHub repos.**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
 
 👆 **THIS** is a **`live`** chart created with the following markdown: 👇
 
 ```markdown
-[![Star History Chart](https://api.star-history.com/svg?repos=bytebase/star-history&type=Date)](https://star-history.com/#bytebase/star-history&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
 ```
 
 </div>
@@ -20,7 +20,7 @@
 
 **Sponsor** 👇
 
-<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/bytebase/star-history/main/public/bytebase.webp" /></a>
+<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/bytebase.webp" /></a>
 
 [Bytebase.com](https://bytebase.com) is an **`open source`**, **web-based database schema change and version control tool** for teams.
 

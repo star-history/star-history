@@ -27,7 +27,7 @@
         </a>
         <a
           class="h-full flex flex-row justify-center items-center mr-3 text-lg hover:opacity-80"
-          href="https://github.com/bytebase/star-history"
+          href="https://github.com/star-history/star-history"
           target="_blank"
         >
           <i class="fab fa-github"></i>

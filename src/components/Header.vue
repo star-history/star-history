@@ -37,10 +37,10 @@
         <span class="h-6 flex flex-row justify-center items-center mt-1">
           <a
             class="github-button -mt-1"
-            href="https://github.com/bytebase/star-history"
+            href="https://github.com/star-history/star-history"
             target="_blank"
             data-show-count="true"
-            aria-label="Star bytebase/star-history on GitHub"
+            aria-label="Star star-history/star-history on GitHub"
           >
             Star
           </a>
@@ -80,9 +80,9 @@
     <span class="h-12 px-3 w-full flex flex-row justify-start items-center">
       <a
         class="github-button -mt-1"
-        href="https://github.com/bytebase/star-history"
+        href="https://github.com/star-history/star-history"
         data-show-count="true"
-        aria-label="Star bytebase/star-history on GitHub"
+        aria-label="Star star-history/star-history on GitHub"
         target="_blank"
       >
         Star
