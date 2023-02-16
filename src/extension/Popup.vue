@@ -75,9 +75,9 @@
       <span class="flex flex-row justify-start items-center">
         <a
           class="github-button"
-          href="https://github.com/bytebase/star-history"
+          href="https://github.com/star-history/star-history"
           data-show-count="true"
-          aria-label="Star bytebase/star-history on GitHub"
+          aria-label="Star star-history/star-history on GitHub"
           target="_blank"
         >
           Star

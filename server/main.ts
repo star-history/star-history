@@ -24,7 +24,7 @@ const startServer = async () => {
   const router = new Router();
 
   // Example request link:
-  // /svg?repos=bytebase/star-history&type=Date
+  // /svg?repos=star-history/star-history&type=Date
   router.get("/svg", async (ctx) => {
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
