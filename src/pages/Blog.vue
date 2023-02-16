@@ -116,6 +116,7 @@
 import { marked } from "marked";
 import { onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
+import { useSeoMeta } from "@vueuse/head";
 import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
@@ -151,6 +152,12 @@ onMounted(async () => {
   };
   state.parsedBlogHTML = marked.parse(content);
   state.isLoading = false;
+
+  useSeoMeta({
+    title: blog.title,
+    twitterTitle: blog.title,
+    twitterImage: utils.absolutifyLink(blog.featureImage),
+  });
 });
 </script>
 
