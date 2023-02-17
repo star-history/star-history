@@ -34,17 +34,7 @@
         >
           {{ token ? "Edit" : "Add" }} Access Token
         </span>
-        <span class="h-6 flex flex-row justify-center items-center mt-1">
-          <a
-            class="github-button -mt-1"
-            href="https://github.com/star-history/star-history"
-            target="_blank"
-            data-show-count="true"
-            aria-label="Star star-history/star-history on GitHub"
-          >
-            Star
-          </a>
-        </span>
+        <GitHubStarButton />
       </div>
       <div class="h-full flex md:hidden flex-row justify-end items-center">
         <span
@@ -98,6 +88,7 @@
 <script lang="ts" setup>
 import { computed, reactive } from "vue";
 import useAppStore from "../store";
+import GitHubStarButton from "./GitHubStarButton.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
 interface State {
