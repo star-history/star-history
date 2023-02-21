@@ -1,5 +1,14 @@
 [
   {
+    "title": "How (and When) to use Star History",
+    "slug": "how-to-use-star-history",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/how-to-use-star-history/how-to-use-star-history.webp",
+    "publishedDate": "2023-02-21T09:50:06.000Z",
+    "excerpt": "When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?"
+  },
+  {
     "title": "Star History Monthly Pick | January 2023",
     "slug": "star-history-monthly-pick-202301",
     "author": "Mila",
