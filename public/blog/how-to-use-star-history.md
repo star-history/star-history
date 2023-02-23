@@ -28,7 +28,7 @@ It's just a simple search box, how hard could it be? Simplicity is indeed Star H
 - How to temporality show/hide a repo in the chart.
 - How to add your GitHub personal access token to remove GitHub API limits.
 - How to embed a live star history chart inside your GitHub project [README.md](http://README.md).
-- And don't forget we also have a chrome extension.
+- And don't forget we also have a [chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn).
 
 ### How to add a repo using 3 different formats
 
