@@ -1,7 +1,5 @@
 # How to use GitHub Star History
 
-## How to use
-
 When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?
 
 - Any other users out there?
@@ -45,6 +43,10 @@ To add a repo, you can:
 After adding one repo, you can continue adding more. They will be rendered in the same chart.
 
 ![multiple-repos](/blog/assets/how-to-use-star-history/multiple-repos.webp)
+
+For example, if you were wondering about which CI tool to use, here we have the history of their growth. Jenkins started way back and maintained its popularity, but then Drone took over quickly. From the steep slope, we can also see that Argo is catching up quickly, despite being one of the newer projects.
+
+![ci-tool-chart](/blog/assets/how-to-use-star-history/ci-tool-chart.webp)
 
 ### How to align the timeline to compare multiple repos
 
@@ -105,17 +107,8 @@ When you are done, click **Generate token** at the bottom of the page.
 1. Visit [extension page](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 ![home-chrome-extension](/blog/assets/how-to-use-star-history/home-chrome-extension.webp)
 
-2. Click **Add to Chrome**.
-![chrome-extension](/blog/assets/how-to-use-star-history/chrome-extension.webp)
-
-3. Go to any GitHub repo and click the extension. There will be a hovering
+2. Go to any GitHub repo and click the extension. There will be a hovering
 ![chrome-extension-working](/blog/assets/how-to-use-star-history/chrome-extension-working.webp)
-
-## How to read the chart
-
-For example, if you were wondering about which CI tool to use, here we have the history of their growth. Jenkins started way back and maintained its popularity, but then Drone took over quickly. From the steep slope, we can also see that Argo is catching up quickly, despite being one of the newer projects.
-
-![ci-tool-chart](/blog/assets/how-to-use-star-history/ci-tool-chart.webp)
 
 Play around and let us know @StarHistoryHQ what you think!
 
