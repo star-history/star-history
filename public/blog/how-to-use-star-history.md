@@ -1,4 +1,4 @@
-# How (and When) to use Star History
+# How to use GitHub Star History
 
 ## How to use
 
