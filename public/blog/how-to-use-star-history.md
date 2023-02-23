@@ -102,7 +102,7 @@ When you are done, click **Generate token** at the bottom of the page.
 
 ![gh-readme](/blog/assets/how-to-use-star-history/gh-readme.webp)
 
-###  Chrome extension
+### Chrome extension
 
 1. Visit [extension page](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 ![home-chrome-extension](/blog/assets/how-to-use-star-history/home-chrome-extension.webp)
