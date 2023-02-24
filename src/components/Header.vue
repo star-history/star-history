@@ -23,9 +23,16 @@
           href="https://twitter.com/StarHistoryHQ"
           target="_blank"
         >
-          <span class="text-light font-semibold pr-3">Follow us on</span>
+          <span class="hidden md:flex text-light font-semibold pr-3">Follow us on</span>
           <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
+      </div>
+      <div class="h-full flex flex-row justify-start items-center">
+        <router-link 
+          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          to="/blog/how-to-use-github-star-history">
+          📕 How to use this site
+        </router-link>
       </div>
       <div class="h-full hidden md:flex flex-row justify-end items-center">
         <span

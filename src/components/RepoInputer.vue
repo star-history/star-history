@@ -108,7 +108,12 @@ const isFetching = computed(() => {
 onMounted(async () => {
   const res = await fetch("/blog/data.json");
   const blogList = (await res.json()) as Blog[];
-  state.latestBlog = head(blogList);
+  for (const blog of blogList) {
+    if (blog.featured) {
+      state.latestBlog = blog;
+      break;
+    }
+  }
   state.repos = store.repos.map((r) => {
     return {
       name: r,
