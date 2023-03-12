@@ -62,12 +62,16 @@ const blogSectionList = [
     title: "Collections",
     linkList: [
       {
+        title: "AI Model",
+        path: "https://star-history.com/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama",
+      },
+      {
         title: "Database DevOps",
         path: "https://star-history.com/#bytebase/bytebase&liquibase/liquibase&flyway/flyway",
       },
       {
         title: "Workflow Orchestration",
-        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&Date",
+        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz",
       },
     ],
   },
