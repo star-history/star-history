@@ -28,16 +28,16 @@ const blogSectionList = [
     title: "Best of 2022",
     linkList: [
       {
-        title: "Open-Source Alternatives",
-        path: "https://star-history.com/blog/star-history-open-source-2022-open-source-alternatives",
+        title: "Data, Infra & DevTools",
+        path: "https://star-history.com/blog/star-history-yearly-pick-2022-data-infra-devtools",
       },
       {
         title: "Platform Engineering",
         path: "https://star-history.com/blog/star-history-open-source-2022-platform-engineering",
       },
       {
-        title: "Data, Infra & DevTools",
-        path: "https://star-history.com/blog/star-history-yearly-pick-2022-data-infra-devtools",
+        title: "Open-Source Alternatives",
+        path: "https://star-history.com/blog/star-history-open-source-2022-open-source-alternatives",
       },
       {
         title: "Front-end",
