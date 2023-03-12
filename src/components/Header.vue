@@ -3,7 +3,7 @@
     class="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-dark text-light"
   >
     <div
-      class="w-full md:w-5/6 lg:max-w-7xl h-full flex flex-row justify-between items-center"
+      class="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-0 sm:px-4"
     >
       <div class="h-full flex flex-row justify-start items-center">
         <router-link
@@ -23,14 +23,17 @@
           href="https://twitter.com/StarHistoryHQ"
           target="_blank"
         >
-          <span class="hidden md:flex text-light font-semibold pr-3">Follow us on</span>
+          <span class="hidden lg:flex text-light font-semibold pr-3"
+            >Follow us on</span
+          >
           <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
       </div>
-      <div class="h-full flex flex-row justify-start items-center">
-        <router-link 
+      <div class="hidden h-full md:flex flex-row justify-start items-center">
+        <router-link
           class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
-          to="/blog/how-to-use-github-star-history">
+          to="/blog/how-to-use-github-star-history"
+        >
           📕 How to use this site
         </router-link>
       </div>
@@ -68,6 +71,12 @@
     class="`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b"
     :class="state.showDropMenu ? 'flex' : 'hidden'"
   >
+    <router-link
+      class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
+      to="/blog/how-to-use-github-star-history"
+    >
+      📕 How to use this site
+    </router-link>
     <span
       class="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
       @click="handleSetTokenBtnClick"
