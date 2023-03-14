@@ -18,11 +18,19 @@
 
 ---
 
-**Sponsor** 👇
+## 💜 Sponsors
 
-<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/bytebase.webp" /></a>
+### Bytebase
 
-[Bytebase.com](https://bytebase.com) is an **`open source`**, **web-based database schema change and version control tool** for teams.
+[Bytebase](https://bytebase.com?source=star-history) is an **`open source`**, **web-based database schema change and version control tool** for teams.
+
+<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase.webp" /></a>
+
+### Ockam
+
+[Ockam](https://github.com/build-trust/ockam?utm_source=starhistory) builds secure-by-design applications that can trust data-in-motion. Orchestrate end-to-end encryption, mutual authentication, key management, credential management & authorization policy enforcement.
+
+<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam.webp" /></a>
 
 ## ✨ Features
 
