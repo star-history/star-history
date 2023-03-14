@@ -22,7 +22,7 @@
 
 ### Bytebase
 
-[Bytebase](https://bytebase.com?source=star-history) is an **`open source`**, **web-based database schema change and version control tool** for teams.
+[Bytebase](https://bytebase.com?source=star-history) is an open source, web-based database schema change and version control tool for teams.
 
 <a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase.webp" /></a>
 
