@@ -4,7 +4,7 @@
 
 # :sparkles: Star History :sparkles:
 
-[**Star-history.com**](https://star-history.com), **The missing GitHub star history graph of GitHub repos.**
+[**star-history.com**](https://star-history.com), **the missing GitHub star history graph of GitHub repos.**
 
 [![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
 
@@ -22,7 +22,7 @@
 
 ### Bytebase
 
-[Bytebase](https://bytebase.com?source=star-history) is an open source, web-based database schema change and version control tool for teams.
+[Bytebase](https://bytebase.com?source=star-history) is an open source, web-based database schema change and version control tool for teams. Supporting MySQL, PostgreSQL, Oracle, MongoDB, Redis, Snowflake, ClickHouse, TiDB, Google Spanner.
 
 <a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase.webp" /></a>
 
