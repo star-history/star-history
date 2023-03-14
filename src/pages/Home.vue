@@ -21,6 +21,6 @@ import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
 import RepoInputer from "../components/RepoInputer.vue";
 import StarChartViewer from "../components/StarChartViewer.vue";
-import SponsorBanner from "../components/SponsorBanner.vue";
+import SponsorBanner from "../components/SponsorStaticBanner.vue";
 import HighlightBlogSection from "../components/HighlightBlogSection.vue";
 </script>

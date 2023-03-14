@@ -152,8 +152,8 @@ import { onMounted, reactive } from "vue";
 import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import BytebaseBanner from "../components/BytebaseBanner.vue";
-import SponsorBanner from "../components/SponsorBanner.vue";
+import BytebaseBanner from "../components/SponsorView.vue";
+import SponsorBanner from "../components/SponsorStaticBanner.vue";
 import HighlightBlogSection from "../components/HighlightBlogSection.vue";
 
 interface State {

@@ -113,7 +113,7 @@ import { convertDataToChartData, getRepoData } from "../../common/chart";
 import api from "../../common/api";
 import toast from "../helpers/toast";
 import { RepoData } from "../../types/chart";
-import BytebaseBanner from "./BytebaseBanner.vue";
+import BytebaseBanner from "./SponsorView.vue";
 import StarXYChart from "./Charts/StarXYChart.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog.vue";

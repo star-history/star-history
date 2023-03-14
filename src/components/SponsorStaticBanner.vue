@@ -10,25 +10,24 @@
         @click.prevent="handleCloseButtonClick"
       ></i>
     </div>
-    <a
-      class="relative flex flex-col bg-gray-50 p-2 rounded justify-center items-center text-zinc-600 hover:opacity-80 hover:text-blue-600 hover:underline"
-      href="https://bytebase.com?source=star-history"
-      target="_blank"
-    >
-      <img
-        class="w-auto max-w-full rounded"
-        src="/imgs/ads.png"
-        alt="bytebase"
-      />
-      <p class="mt-2 text-xs">
-        Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB,
-        MongoDB and Spanner
-      </p>
-    </a>
+    <template v-for="sponsor in randomSponsors" :key="sponsor.name">
+      <a
+        :href="sponsor.link"
+        class="bg-gray-50 p-2 rounded w-full flex flex-col justify-center items-center mb-2 text-zinc-600 hover:opacity-80 hover:text-blue-600 hover:underline"
+        target="_blank"
+      >
+        <img
+          class="w-auto max-w-full"
+          :src="sponsor.logo"
+          :alt="sponsor.name"
+        />
+        <span class="text-xs mt-2">{{ sponsor.slogan }}</span>
+      </a>
+    </template>
     <a
       href="mailto:star@bytebase.com?subject=I'm interested in sponsoring star-history.com"
       target="_blank"
-      class="w-full mt-2 p-2 text-center bg-gray-50 text-xs leading-6 text-gray-400 rounded hover:underline hover:text-blue-600"
+      class="w-full p-2 text-center bg-gray-50 text-xs leading-6 text-gray-400 rounded hover:underline hover:text-blue-600"
       >Your logo</a
     >
   </div>
@@ -36,6 +35,7 @@
 
 <script lang="ts" setup>
 import { reactive } from "vue";
+import { randomSponsors } from "../helpers/sponsor";
 
 const state = reactive({
   hide: false,
