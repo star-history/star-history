@@ -24,13 +24,13 @@
 
 [Bytebase](https://bytebase.com?source=star-history) is an open source, web-based database schema change and version control tool for teams. Supporting MySQL, PostgreSQL, Oracle, MongoDB, Redis, Snowflake, ClickHouse, TiDB, Google Spanner.
 
-<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase.webp" /></a>
+<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase/landing.webp" /></a>
 
 ### Ockam
 
 [Ockam](https://github.com/build-trust/ockam?utm_source=starhistory) builds secure-by-design applications that can trust data-in-motion. Orchestrate end-to-end encryption, mutual authentication, key management, credential management & authorization policy enforcement.
 
-<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam.webp" /></a>
+<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam/landing.webp" /></a>
 
 ## ✨ Features
 
