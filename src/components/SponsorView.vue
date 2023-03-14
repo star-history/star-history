@@ -10,7 +10,7 @@
         <template v-for="sponsor in randomSponsors" :key="sponsor.name">
           <a
             class="text-blue-500 hover:opacity-80 underline"
-            href="https://bytebase.com"
+            :href="sponsor.link"
             target="_blank"
           >
             {{ sponsor.name }}
