@@ -24,6 +24,14 @@ const sponsors: Sponsor[] = [
     slogan:
       "Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB, MongoDB and Spanner",
   },
+  {
+    name: "Ockam",
+    logo: utils.absolutifyLink("/sponsors/ockam/logo.jpg"),
+    landingImage: utils.absolutifyLink("/sponsors/ockam/landing.webp"),
+    link: "https://github.com/build-trust/ockam?utm_source=starhistory",
+    slogan:
+      "End-to-end encryption and authentication for data-in-motion between distributed applications",
+  },
 ];
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length);

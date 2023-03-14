@@ -30,7 +30,7 @@
 
 [Ockam](https://github.com/build-trust/ockam?utm_source=starhistory) builds secure-by-design applications that can trust data-in-motion. Orchestrate end-to-end encryption, mutual authentication, key management, credential management & authorization policy enforcement.
 
-<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam.webp" /></a>
+<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam/landing.webp" /></a>
 
 ## ✨ Features
 
