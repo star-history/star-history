@@ -1,11 +1,12 @@
 [
   {
-    "title": "Star History Welcomes Ockam as First New Sponsor",
-    "slug": "star-history-ockam",
+    "title": "Ockam - Build Secure-by-Design Applications at Massive Scale",
+    "slug": "ockam",
     "author": "Mila",
-    "featureImage": "/blog/assets/star-history-ockam/banner.webp",
+    "featured": true,
+    "featureImage": "/blog/assets/ockam/banner.webp",
     "publishedDate": "2023-03-15T09:50:06.000Z",
-    "excerpt": "We are excited to introduce Star History's first sponsor: Ockam"
+    "excerpt": "Ockam is a suite of open source tools, programming libraries, and managed cloud services to orchestrate end-to-end encryption, mutual authentication, key management, credential management, and authorization policy enforcement – at massive scale."
   },
   {
     "title": "📕 How to use GitHub Star History",
