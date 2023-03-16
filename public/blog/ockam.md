@@ -53,7 +53,9 @@ the hero section.
 
 ---
 
-Last but not least let's take a look at Ockam's (star) history. It has been open-sourced since 2019, and picked up pace after 2021. In early 2022, they raised [$12.5M in Series A](https://www.ockam.io/blog/series_a). The spike in late 2022 is most likely due to [this submission](https://news.ycombinator.com/item?id=33038384) on HN.
+Last but not least let's take a look at Ockam's (star) history. It has been open-sourced since 2019, and picked up pace after 2021. In early 2022, they raised [$12.5M in Series A](https://www.ockam.io/blog/series_a). The spike in late 2022 was related to the launch of [Ockam Orchestrator](https://aws.amazon.com/marketplace/pp/prodview-wsd42efzcpsxk) - its SaaS offering through AWS marketplace. 
+[This HN submission](https://news.ycombinator.com/item?id=33038384) also helped (the `Rust`, `Elixir` and `Secure` combination
+probably attracts quite a few enthusiasms from the not-easily-pleased HN readers).
 
 ![ockam](/blog/assets/ockam/ockam.webp)
 
