@@ -82,6 +82,6 @@ const blogSectionList = [
 ];
 
 const clickLink = (link: string) => {
-  window.open(link, "_self");
+  window.open(link, "_blank");
 };
 </script>
