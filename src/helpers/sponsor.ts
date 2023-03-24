@@ -18,7 +18,7 @@ interface Sponsor {
 const sponsors: Sponsor[] = [
   {
     name: "Bytebase",
-    logo: utils.absolutifyLink("/sponsors/bytebase/logo.png"),
+    logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
     landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
     link: "https://bytebase.com?source=star-history",
     slogan:
@@ -26,11 +26,19 @@ const sponsors: Sponsor[] = [
   },
   {
     name: "Ockam",
-    logo: utils.absolutifyLink("/sponsors/ockam/logo.jpg"),
+    logo: utils.absolutifyLink("/sponsors/ockam/logo.webp"),
     landingImage: utils.absolutifyLink("/sponsors/ockam/landing.webp"),
     link: "https://github.com/build-trust/ockam?utm_source=starhistory",
     slogan:
       "End-to-end encryption and authentication for data-in-motion between distributed applications",
+  },
+  {
+    name: "Selecfra",
+    logo: utils.absolutifyLink("/sponsors/selefra/logo.webp"),
+    landingImage: utils.absolutifyLink("/sponsors/selefra/landing.webp"),
+    link: "https://github.com/selefra/selefra?utm_source=starhistory",
+    slogan:
+      "Policy-as-Code analysis for Multi-Cloud and SaaS environments, AWS/GCP/Azure, k8s, GitHub, etc.",
   },
 ];
 
