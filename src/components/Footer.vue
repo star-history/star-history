@@ -33,10 +33,13 @@
           <i class="fab fa-github"></i>
         </a>
       </div>
-      <div
-        class="text-sm leading-8 flex flex-row flex-wrap justify-start items-center underline text-blue-700 hover:opacity-80"
-      >
-        <a href="https://dbcost.com" target="_blank">DB Cost</a>
+      <div class="flex flex-row flex-wrap items-center space-x-2">
+        <div class="text-sm leading-8 underline text-blue-700 hover:opacity-80">
+          <a href="https://sqlchat.ai" target="_blank">SQL Chat</a>
+        </div>
+        <div class="text-sm leading-8 underline text-blue-700 hover:opacity-80">
+          <a href="https://dbcost.com" target="_blank">DB Cost</a>
+        </div>
       </div>
       <div
         class="text-xs leading-8 flex flex-row flex-nowrap justify-end items-center"
