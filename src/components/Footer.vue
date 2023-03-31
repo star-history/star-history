@@ -33,11 +33,17 @@
           <i class="fab fa-github"></i>
         </a>
       </div>
-      <div class="flex flex-row flex-wrap items-center space-x-2">
-        <div class="text-sm leading-8 underline text-blue-700 hover:opacity-80">
-          <a href="https://sqlchat.ai" target="_blank">SQL Chat</a>
+      <div class="flex flex-row flex-wrap items-center space-x-4">
+        <div
+          class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
+        >
+          <img class="h-6 mt-1 mr-2" src="/public/sqlchat.webp" />
+          <a href="https://sqlchat.ai" target="_blank"> SQL Chat </a>
         </div>
-        <div class="text-sm leading-8 underline text-blue-700 hover:opacity-80">
+        <div
+          class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
+        >
+          <img class="h-6 mt-1 mr-2" src="/public/dbcost.webp" />
           <a href="https://dbcost.com" target="_blank">DB Cost</a>
         </div>
       </div>
