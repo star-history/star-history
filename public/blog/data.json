@@ -1,5 +1,14 @@
 [
   {
+    "title": "SQL Chat - Chat With Your Database",
+    "slug": "sql-chat",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/sql-chat/banner.webp",
+    "publishedDate": "2023-04-06T09:50:06.000Z",
+    "excerpt": "SQL Chat is an open-source chat-based SQL client, powered by OpenAI's ChatGPT, with built-in capabilities to connect to and query your databases."
+  },  
+  {
     "title": "Star History Monthly Pick | February 2023",
     "slug": "star-history-monthly-pick-202302",
     "author": "Mila",
