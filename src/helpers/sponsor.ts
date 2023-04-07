@@ -32,14 +32,14 @@ const sponsors: Sponsor[] = [
     slogan:
       "End-to-end encryption and authentication for data-in-motion between distributed applications",
   },
-  {
-    name: "Selecfra",
-    logo: utils.absolutifyLink("/sponsors/selefra/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/selefra/landing.webp"),
-    link: "https://github.com/selefra/selefra?utm_source=starhistory",
-    slogan:
-      "Policy-as-Code analysis for Multi-Cloud and SaaS environments, AWS/GCP/Azure, k8s, GitHub, etc.",
-  },
+  // {
+  //   name: "Selefra",
+  //   logo: utils.absolutifyLink("/sponsors/selefra/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/selefra/landing.webp"),
+  //   link: "https://github.com/selefra/selefra?utm_source=starhistory",
+  //   slogan:
+  //     "Policy-as-Code analysis for Multi-Cloud and SaaS environments, AWS/GCP/Azure, k8s, GitHub, etc.",
+  // },
 ];
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length);
