@@ -22,4 +22,4 @@ As of now, it's 100% free to use (although we don't know if the author plans to 
 
 ## Our Thoughts on SQL Chat
 
-With the advent of Generative AI, we are currently witnessing a momentous shift in the way how we interact with tools and software, ditching the traditional GUI-based and transitioning to chat-based. And SQL Chat looks like a great tool to help you builders build.
+With the advent of Generative AI, we are currently witnessing a seismic shift in the way how we interact with tools and software, ditching the traditional GUI-based and transitioning to chat-based. And SQL Chat looks like a great tool to help you builders build.
