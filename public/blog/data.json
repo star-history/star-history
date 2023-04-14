@@ -1,5 +1,14 @@
 [
   {
+    "title": "Tabby: Self-hosted AI Coding Assistant",
+    "slug": "tabby",
+    "author": "Tianzhou",
+    "featured": false,
+    "featureImage": "/blog/assets/tabby/banner.webp",
+    "publishedDate": "2023-04-15T09:50:06.000Z",
+    "excerpt": "Tabby is an AI coding assistant that's designed as an open-source tool to help developers code faster. Think of it as an open-source/on-prem alternative to GitHub Copilot."
+  },
+  {
     "title": "Star History Monthly Pick | March 2023 / ChatGPT Edition",
     "slug": "star-history-monthly-pick-202303",
     "author": "Mila",

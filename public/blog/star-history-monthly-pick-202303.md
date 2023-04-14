@@ -67,7 +67,7 @@ It's also worth mentioning [Vicuna](https://pub.towardsai.net/meet-vicuna-the-la
 
 ![sqlchat](/blog/assets/star-history-monthly-pick-202303/sqlchat.webp)
 
-[SQL Chat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client. You can interact with your databases (currently supporting MySQL and PostgreSQL) using natural language directly in the dialogue box.
+[SQL Chat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client. You can interact with your databases (currently supporting MySQL and PostgreSQL) using natural language directly in the dialogue box. Check out our first impression of [SQL Chat](/blog/sql-chat).
 
 Big thumbs up for the newly added support for Dark Mode 🧛!
 
@@ -77,4 +77,4 @@ Big thumbs up for the newly added support for Dark Mode 🧛!
 
 With ChatGPT in our lives, it seems like we don't have to do much of anything anymore: does that mean we are soon to be replaced by AI?
 
-The ideal solution would be to have AI help us improve efficiency and do things better. Letting ChatGPT help us write SQL doesn't mean we don't need to master SQL and database knowledge proficiently, but rather, we can write better SQL much better and faster ✌️.
+The ideal solution would be to have AI help us improve efficiency and do things better. Letting ChatGPT help us write SQL doesn't mean we don't need to master SQL and database knowledge proficiently; or having an [AI code assistant](/blog/tabby) doesn't mean we don't need to master the art of coding. Instead, it means we can focus on the more important things and let AI do the dirty work.
