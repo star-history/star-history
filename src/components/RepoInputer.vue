@@ -51,6 +51,11 @@
           :key="item.name"
           class="leading-8 px-3 pr-2 mb-2 text-dark rounded flex flex-row justify-center items-center border mr-3 last:mr-0"
         >
+          <a :href="`https://github.com/${item.name}`" target="_blank">
+            <i
+              class="fas fa-external-link-alt mr-2 fa-sm text-gray-400 hover:text-green-600"
+            ></i>
+          </a>
           <span
             class="mr-1 cursor-pointer hover:line-through select-none"
             :class="item.visible ? '' : 'line-through text-gray-400'"
