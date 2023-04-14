@@ -24,4 +24,5 @@ However, it is important to note that Tabby is still in its alpha phase and is n
 If you are a developer looking for an AI-based coding assistant, you should give Tabby a try.
 
 GitHub: [https://github.com/TabbyML/tabby](https://github.com/TabbyML/tabby)
+
 HF Space: [https://huggingface.co/spaces/TabbyML/tabby](https://huggingface.co/spaces/TabbyML/tabby)
