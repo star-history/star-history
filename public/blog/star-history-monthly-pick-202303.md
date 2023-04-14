@@ -61,6 +61,8 @@ Moreover, this plugin can memorize and save fragments of your conversation with 
 
 For example, check out @steventey's discussion with ChatGPT regarding the meaning of life: [https://sharegpt.com/c/oPt72P3](https://sharegpt.com/c/oPt72P3)
 
+It's also worth mentioning [Vicuna](https://pub.towardsai.net/meet-vicuna-the-latest-metas-llama-model-that-matches-chatgpt-performance-e23b2fc67e6b) is trained by fine-tuning a LLaMA base model using approximately 70,000 user-shared conversations gathered from ShareGPT. And the results are quite encouraging according to their own benchmark.
+
 ## SQL Chat
 
 ![sqlchat](/blog/assets/star-history-monthly-pick-202303/sqlchat.webp)
