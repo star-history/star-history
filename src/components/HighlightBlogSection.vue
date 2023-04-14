@@ -49,6 +49,10 @@ const blogSectionList = [
     title: "Monthly Pick",
     linkList: [
       {
+        title: "2023 Mar (ChatGPT Edition)",
+        path: "https://star-history.com/blog/star-history-monthly-pick-202303",
+      },
+      {
         title: "2023 Feb",
         path: "https://star-history.com/blog/star-history-monthly-pick-202302",
       },
