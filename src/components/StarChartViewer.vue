@@ -293,25 +293,6 @@ const handleGenerateImageBtnClick = async () => {
       imgWidth * scale,
       imgHeight * scale
     );
-    // draw website link text
-    ctx.font = `${16 * scale}px xkcd`;
-    ctx.fillStyle = "#6b7280";
-    ctx.fillText(
-      "star-history.com",
-      (imgWidth - 130) * scale,
-      (imgHeight + 10) * scale
-    );
-    // draw star image
-    const starImage = new Image();
-    starImage.src = "/icon.png";
-    await utils.waitImageLoaded(starImage);
-    ctx.drawImage(
-      starImage,
-      (imgWidth - 155) * scale,
-      (imgHeight - 5) * scale,
-      20 * scale,
-      20 * scale
-    );
 
     const link = document.createElement("a");
     link.download = `star-history-${utils.getDateString(
