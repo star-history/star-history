@@ -2,6 +2,7 @@ import fs from "fs";
 import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
+import path from "path";
 import cors from "@koa/cors";
 import { JSDOM } from "jsdom";
 import logger from "./logger";
@@ -145,7 +146,7 @@ const startServer = async () => {
   });
 
   router.get("/icon.png", async (ctx) => {
-    const src = fs.createReadStream("./icon.png");
+    const src = fs.createReadStream(path.join(__dirname, "./icon.png"));
     ctx.response.set("content-type", "image/png");
     ctx.body = src;
   });
