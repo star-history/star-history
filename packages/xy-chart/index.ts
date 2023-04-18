@@ -10,6 +10,7 @@ import addFilter from "./utils/addFilter";
 import addFont from "./utils/addFont";
 import { drawTitle, drawXLabel, drawYLabel } from "./utils/drawLabels";
 import drawLegend from "./utils/drawLegend";
+import { drawWatermark } from "./utils/drawWatermark";
 import getFormatTimeline, {
   getTimestampFormatUnit,
 } from "./utils/getFormatTimeline";
@@ -191,6 +192,8 @@ const XYChart = (
     .range([chartHeight, 0]);
 
   const svgChart = chart.append("g").attr("pointer-events", "all");
+
+  drawWatermark(svgChart, chartWidth, chartHeight);
 
   if (title) {
     if (uniq(datasets.map((d) => d.label.split("/")[0])).length === 1) {

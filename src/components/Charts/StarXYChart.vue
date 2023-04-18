@@ -9,14 +9,6 @@
       class="w-full h-full"
       @click="handleSVGElementClick"
     ></svg>
-    <!-- watermark -->
-    <div
-      class="w-full h-8 -mt-6 pr-2 flex flex-row justify-end items-center text-gray-500"
-      style="font-family: 'xkcd', serif"
-    >
-      <img class="w-5 h-auto mr-1" src="/icon.png" />
-      star-history.com
-    </div>
   </div>
 </template>
 
