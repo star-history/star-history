@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "npx ts-node main.ts",
-    "build": "tsc --project ./"
+    "build": "tsc --project ./ && copyfiles *.png dist/server/"
   },
   "dependencies": {
     "@koa/cors": "4.0.0",
+    "copyfiles": "^2.4.1",
     "jsdom": "20.0.2",
     "koa": "2.13.4",
     "koa-router": "12.0.0",
