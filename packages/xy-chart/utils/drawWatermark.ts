@@ -18,6 +18,5 @@ export const drawWatermark = (
     .attr("transform", `translate(${chartWidth - 135},${chartHeight + 24})`)
     .attr("height", 20)
     .attr("width", 20)
-    // TODO: in dev mode, it will trigger cors when downloading as image.
-    .attr("href", "https://star-history.com/icon.png");
+    .attr("href", "/icon.png");
 };
