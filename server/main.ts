@@ -1,3 +1,4 @@
+import fs from "fs";
 import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
@@ -141,6 +142,12 @@ const startServer = async () => {
     ctx.set("date", `${now}`);
     ctx.set("expires", `${now}`);
     ctx.body = svgContent;
+  });
+
+  router.get("/icon.png", async (ctx) => {
+    const src = fs.createReadStream("./icon.png");
+    ctx.response.set("content-type", "image/png");
+    ctx.body = src;
   });
 
   app.on("error", (err) => {
