@@ -1,5 +1,14 @@
 [
   {
+    "title": "SQL Chat - Chat With Your Database",
+    "slug": "sql-chat",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/sql-chat/banner.webp",
+    "publishedDate": "2023-04-20T09:50:06.000Z",
+    "excerpt": "SQL Chat is an open-source chat-based SQL client, powered by OpenAI, with built-in capabilities to connect to and query your databases."
+  },  
+  {
     "title": "Tabby: Self-hosted AI Coding Assistant",
     "slug": "tabby",
     "author": "Tianzhou",
@@ -16,15 +25,6 @@
     "featureImage": "/blog/assets/star-history-monthly-pick-202303/banner.webp",
     "publishedDate": "2023-04-14T09:50:06.000Z",
     "excerpt": "ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. We are taking a look at a few handy AI-enhanced tools to make your life easier."
-  },  
-  {
-    "title": "SQL Chat - Chat With Your Database",
-    "slug": "sql-chat",
-    "author": "Mila",
-    "featured": true,
-    "featureImage": "/blog/assets/sql-chat/banner.webp",
-    "publishedDate": "2023-04-06T09:50:06.000Z",
-    "excerpt": "SQL Chat is an open-source chat-based SQL client, powered by OpenAI, with built-in capabilities to connect to and query your databases."
   },  
   {
     "title": "Star History Monthly Pick | February 2023",
