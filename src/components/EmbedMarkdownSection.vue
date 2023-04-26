@@ -60,7 +60,11 @@ const embedCode = computed(() => {
 
 [![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
     ","
-  )}&type=${store.chartMode})](${window.location.href})
+  )}&type=${store.chartMode}#gh-light-mode-only)](${window.location.href})
+[![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
+    ","
+  )}&type=${store.chartMode}&theme=dark#gh-dark-mode-only)](${window.location.href})
+
 `;
 });
 
