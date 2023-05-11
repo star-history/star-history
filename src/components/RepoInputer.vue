@@ -8,11 +8,18 @@
         class="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium"
         >What's new</span
       >
-      <a
+      <!-- <a
         class="text-gray-700 hover:underline"
         :href="`/blog/${state.latestBlog?.slug}`"
       >
         {{ state.latestBlog?.title }}
+        <i class="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>
+      </a> -->
+      <a
+        class="text-gray-700 hover:underline"
+        href="https://www.bytebase.com/blog/bytebase-2-0/"
+      >
+        Bytebase 2.0 - the GitLab for Database DevOps
         <i class="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>
       </a>
     </div>
