@@ -19,7 +19,7 @@ Azimutt was originally built to simply help developers understand the relational
 
 ## Ballerine
 
-![ballerine](/blog/assets/star-history-monthly-pick-202304/ballerine-hn.webp)
+![ballerine](/blog/assets/star-history-monthly-pick-202304/ballerine.webp)
 
 [Ballerine](https://github.com/ballerine-io/ballerine) is an open-source startup focused on user risk decisioning infrastructure that helps banks or Fintech companies automate their decisions for customer and business account-opening (KYC, KYB). They actually just [announced](https://techcrunch.com/2023/05/23/ballerine-brings-open-source-to-banks-risk-and-identity-decision-making/) a $5 million seed round of funding last week.
 
