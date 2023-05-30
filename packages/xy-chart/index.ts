@@ -28,6 +28,18 @@ const colors = [
   "#949494",
 ];
 
+const darkColors = [
+  "#ff6b6b",
+  "#48dbfb",
+  "#feca57",
+  "#ff9ff3",
+  "#1dd1a1",
+  "#f368e0",
+  "#ff9f43",
+  "#a4b0be",
+  "#576574",
+];
+
 const margin = {
   top: 50,
   right: 30,
@@ -56,6 +68,7 @@ export interface XYChartConfig {
   yLabel: string;
   data: XYChartData;
   showDots: boolean;
+  theme?: "light" | "dark";
 }
 
 type XTickLabelType = "Date" | "Number";
@@ -92,13 +105,22 @@ const getDefaultOptions = (): XYChartOptions => {
   };
 };
 
+const getDarkThemeDefaultOptions = (): XYChartOptions => {
+  return {
+    ...getDefaultOptions(),
+    dataColors: darkColors,
+    backgroundColor: "#0d1117",
+    strokeColor: "white",
+  };
+};
+
 const XYChart = (
   svg: SVGSVGElement,
-  { title, xLabel, yLabel, data: { datasets }, showDots }: XYChartConfig,
+  { title, xLabel, yLabel, data: { datasets }, showDots, theme }: XYChartConfig,
   initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
-    ...getDefaultOptions(),
+    ...(theme === 'dark' ? getDarkThemeDefaultOptions() : getDefaultOptions()),
     ...initialOptions,
   };
 
