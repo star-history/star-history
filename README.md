@@ -6,13 +6,25 @@
 
 [**star-history.com**](https://star-history.com), **the missing GitHub star history graph of GitHub repos.**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+</picture>
 
-👆 **THIS** is a **`live`** chart created with the following markdown: 👇
+👆 **THIS** is a **`live`** chart created with the following html: 👇
 
-```markdown
-[![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
+<div align="left">
+
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+</picture>
 ```
+
+</div>
 
 </div>
 
