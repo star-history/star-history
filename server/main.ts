@@ -26,6 +26,7 @@ const startServer = async () => {
   // Example request link:
   // /svg?repos=star-history/star-history&type=Date
   router.get("/svg", async (ctx) => {
+    const theme = `${ctx.query["theme"]}`;
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
     let size = `${ctx.query["size"]}`;
@@ -119,6 +120,7 @@ const startServer = async () => {
           yLabel: "GitHub Stars",
           data: convertDataToChartData(repoData, type),
           showDots: false,
+          theme: theme === "dark" ? "dark" : "light",
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
