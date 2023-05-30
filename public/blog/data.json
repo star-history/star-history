@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | April 2023",
+    "slug": "star-history-monthly-pick-202304",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history-monthly-pick-202304/banner.webp",
+    "publishedDate": "2023-05-30T09:50:06.000Z",
+    "excerpt": "AIGC-related projects are getting all the heat, but we still managed to find some interesting open-source projects that are not ChatGPT-based."
+  },  
+  {
     "title": "SQL Chat - Chat With Your Database",
     "slug": "sql-chat",
     "author": "Mila",
