@@ -56,21 +56,13 @@ const repoText = computed(() => {
   }
 });
 
-function generateEmbedCode(repos: string, type: string) {
+const embedCode = computed(() => {
   return `## Star History
 
-<a href="${window.location.href}">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=${repos}&type=${type}&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=${repos}&type=${type}" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=${repos}&type=${type}" />
-  </picture>
-</a>
+[![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
+    ","
+  )}&type=${store.chartMode})](${window.location.href})
 `;
-}
-
-const embedCode = computed(() => {
-  return generateEmbedCode(store.repos.join(","), store.chartMode);
 });
 
 const handleCopyBtnClick = () => {
