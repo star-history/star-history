@@ -87,6 +87,15 @@ const blogSectionList = [
       },
     ],
   },
+  {
+    title: "Classified",
+    linkList: [
+      {
+        title: "Ockam",
+        path: "/blog/ockam",
+      },
+    ],
+  },
 ];
 
 const clickLink = (link: string) => {
