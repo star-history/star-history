@@ -1,4 +1,4 @@
-# Open Source Infra Projects for Your Next AI Application
+# Open Source AI Infra for Your Next Project
 
 We have seen more mind-blowing AI-related tools in the past few months than ever before. And we noticed a rise to developer-friendly tools to build your own AI application, it's now easier than ever for developers to quickly build cool apps.
 
@@ -58,7 +58,7 @@ Recently, Stability AI announced the open-source of their AI image generation pl
 
 ## To Sum Up
 
-After taking a glance at the star history of these projects, it's obvious that there's a common trait - they are all still babies (in terms of age). It's wild that this time last year, none of them existed. Now they've become an indispensable part of our daily work and life.
+After taking a glance at the star history of these projects, it's obvious that there's a common trait - they are all still babies (in terms of age). It's wild that this time last year, none of them existed. Now they are on their way to become an integral part of the next generation application stack.
 
 ![star-history-ai](/blog/assets/open-source-ai-infra-projects/star-history-ai.webp)
 
