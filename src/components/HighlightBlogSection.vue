@@ -74,6 +74,10 @@ const blogSectionList = [
     title: "Collections",
     linkList: [
       {
+        title: "AI Infra Projects",
+        path: "https://star-history.com/blog/open-source-ai-infra-projects",
+      },
+      {
         title: "AI Model",
         path: "https://star-history.com/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM",
       },
