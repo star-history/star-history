@@ -24,12 +24,23 @@
       <pre class="w-full p-4 font-mono break-all whitespace-pre-wrap text-sm">{{
         embedCode
       }}</pre>
-      <p
-        class="w-full text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
-        @click="handleCopyBtnClick"
-      >
-        Copy to GitHub README.md
-      </p>
+      <div style="display: flex;">
+        <p
+          class="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
+          style="width: 70%; border-bottom-right-radius: 0;"
+          @click="handleCopyBtnClick"
+        >
+          Copy to GitHub README.md
+        </p>
+        <div class="bg-gray-100" style="width: 1px;"></div>
+        <p
+          class="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
+          style="width: 30%; min-width: max-content; border-bottom-left-radius: 0;"
+          @click="handleCopyBtnClick2"
+        >
+          (dark theme supported)
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -65,8 +76,28 @@ const embedCode = computed(() => {
 `;
 });
 
+const embedCode2 = computed(() => {
+  let repos = store.repos.join(",");
+  let type = store.chartMode;
+  return `## Star History
+
+<a href="${window.location.href}">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=${repos}&type=${type}&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=${repos}&type=${type}" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=${repos}&type=${type}" />
+  </picture>
+</a>
+`;
+});
+
 const handleCopyBtnClick = () => {
   utils.copyTextToClipboard(embedCode.value);
+  toast.succeed("Embed markdown code copied");
+};
+
+const handleCopyBtnClick2 = () => {
+  utils.copyTextToClipboard(embedCode2.value);
   toast.succeed("Embed markdown code copied");
 };
 </script>
