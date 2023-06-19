@@ -16,7 +16,7 @@ They also have a dazzling list of investors. ✨
 
 ![chroma-investors](/blog/assets/open-source-ai-infra-projects/chroma-investors.webp)
 
-## Langchain 🦜🔗
+## LangChain 🦜🔗
 
 [LangChain](https://github.com/hwchase17/langchain) was first released in October 2022. It is a framework that makes developing AI applications more flexible. Although LLMs can perform many cool tasks, they can't provide specific answers to problems requiring deep domain knowledge. LangChain can be seen as a tool that allows developers to chain different prompts together ⛓️. Chains can consist of multiple modules and components, such as:
 
