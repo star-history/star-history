@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | May 2023",
+    "slug": "star-history-monthly-pick-202305",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history-monthly-pick-202305/banner.webp",
+    "publishedDate": "2023-06-21T09:50:06.000Z",
+    "excerpt": "A collection of open-source projects for you non-tech people."
+  },  
+  {
     "title": "Open Source AI Infra for Your Next Project",
     "slug": "open-source-ai-infra-projects",
     "author": "Mila",
