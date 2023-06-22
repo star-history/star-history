@@ -42,7 +42,7 @@ The feature list already includes Chat2sql, executing and polishing SQL, process
 
 ![dbgpt-bytebase](/blog/assets/star-history-monthly-pick-202305/dbgpt-bytebase.webp)
 
-Of course, you can use it alongside Bytebase.
+Of course, you can use it alongside [Bytebase](https://www.bytebase.com/).
 
 ## SeaORM
 
