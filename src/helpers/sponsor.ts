@@ -20,9 +20,9 @@ const sponsors: Sponsor[] = [
     name: "Bytebase",
     logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
     landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
-    link: "https://bytebase.com?source=star-history",
+    link: "https://bytebase.com?utm_source=star-history",
     slogan:
-      "Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB, MongoDB and Spanner",
+      "Database DevOps and CI/CD for MySQL, PG, ClickHouse, Snowflake, TiDB, MongoDB and more",
   },
   {
     name: "Ockam",
