@@ -1,5 +1,14 @@
 [
   {
+    "title": "🙋‍♂️ Nominate Your Open Source Project",
+    "slug": "list-your-open-source-project",
+    "author": "Tianzhou",
+    "featured": true,
+    "featureImage": "/blog/assets/list-your-open-source-project/banner.webp",
+    "publishedDate": "2023-07-01T00:00:00.000Z",
+    "excerpt": "List your open source project to be seen by thousands of visitors every month."
+  },  
+  {
     "title": "Star History Monthly Pick | May 2023",
     "slug": "star-history-monthly-pick-202305",
     "author": "Mila",

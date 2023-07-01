@@ -1,4 +1,5 @@
 <template>
+  <TopBanner />
   <header
     class="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-dark text-light"
   >
@@ -104,6 +105,7 @@
 <script lang="ts" setup>
 import { computed, reactive } from "vue";
 import useAppStore from "../store";
+import TopBanner from "./TopBanner.vue";
 import GitHubStarButton from "./GitHubStarButton.vue";
 import TokenSettingDialog from "./TokenSettingDialog.vue";
 
