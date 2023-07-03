@@ -104,6 +104,15 @@ const blogSectionList = [
       },
     ],
   },
+  {
+    title: "The Starlet List",
+    linkList: [
+      {
+        title: "Issue #1 - Sniffnet",
+        path: "/blog/sniffnet",
+      },
+    ],
+  },
 ];
 
 const clickLink = (link: string) => {
