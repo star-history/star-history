@@ -2,7 +2,7 @@
 
 ---
 
-# Sniffnet — Cross-platform application to monitor Internet traffic
+# Sniffnet — Cross-platform Internet Traffic Monitor
 
 [Sniffnet](https://github.com/GyulyVGC/sniffnet) is an open-source network monitoring tool to help everyone analyze their Internet traffic with ease.
 
