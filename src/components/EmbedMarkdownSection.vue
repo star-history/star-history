@@ -36,7 +36,7 @@
         <p
           class="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
           style="width: 30%; min-width: max-content; border-bottom-left-radius: 0;"
-          @click="handleCopyBtnClick2"
+          @click="handleDarkModeCopyBtnClick"
         >
           (dark theme supported)
         </p>
@@ -76,7 +76,7 @@ const embedCode = computed(() => {
 `;
 });
 
-const embedCode2 = computed(() => {
+const embedDarkModeCode = computed(() => {
   let repos = store.repos.join(",");
   let type = store.chartMode;
   return `## Star History
@@ -96,8 +96,8 @@ const handleCopyBtnClick = () => {
   toast.succeed("Embed markdown code copied");
 };
 
-const handleCopyBtnClick2 = () => {
-  utils.copyTextToClipboard(embedCode2.value);
+const handleDarkModeCopyBtnClick = () => {
+  utils.copyTextToClipboard(embedDarkModeCode.value);
   toast.succeed("Embed markdown code copied");
 };
 </script>
