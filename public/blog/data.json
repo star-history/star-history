@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | June 2023",
+    "slug": "star-history-monthly-pick-202306",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/star-history-monthly-pick-202306/banner.webp",
+    "publishedDate": "2023-07-14T09:50:06.000Z",
+    "excerpt": "This month we pivot back to a selection of DevTools."
+  },  
+  {
     "title": "Sniffnet - Cross-platform Internet Traffic Monitor",
     "slug": "sniffnet",
     "author": "Giuliano",
