@@ -49,6 +49,10 @@ const blogSectionList = [
     title: "Monthly Pick",
     linkList: [
       {
+        title: "2023 June",
+        path: "https://star-history.com/blog/star-history-monthly-pick-202306",
+      },
+      {
         title: "2023 May",
         path: "https://star-history.com/blog/star-history-monthly-pick-202305",
       },
