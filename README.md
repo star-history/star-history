@@ -2,6 +2,8 @@
 
 🧩 [**Also available as a Chrome extension**](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
+<a href='https://github.com/repo-reviews/repo-reviews.github.io/blob/main/create.md' target="_blank"><img alt='Github' src='https://img.shields.io/badge/review_me-100000?style=flat&logo=Github&logoColor=white&labelColor=888888&color=555555'/></a>
+
 # :sparkles: Star History :sparkles:
 
 [**star-history.com**](https://star-history.com), **the missing GitHub star history graph of GitHub repos.**
