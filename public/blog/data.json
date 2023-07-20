@@ -1,5 +1,14 @@
 [
   {
+    "title": "DLTA-AI - Data Labeling, Tracking and Annotation with AI",
+    "slug": "dlta-ai",
+    "author": "Usama Ahmed",
+    "featured": true,
+    "featureImage": "/blog/assets/dlta-ai/banner.webp",
+    "publishedDate": "2023-07-20T00:00:00.000Z",
+    "excerpt": "DLTA-AI is the next generation of annotation tools, integrating the Computer Vision SOTA models to Labelme in a seamless expirence and intuitive workflow to make creating image datasets easier than ever before."
+  },
+  {
     "title": "Star History Monthly Pick | June 2023",
     "slug": "star-history-monthly-pick-202306",
     "author": "Mila",
