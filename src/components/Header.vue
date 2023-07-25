@@ -19,16 +19,12 @@
         >
           <span class="text-light font-semibold">Blog</span>
         </router-link>
-        <a
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
-          href="https://twitter.com/StarHistoryHQ"
-          target="_blank"
+        <span
+          class="h-full flex flex-row justify-center items-center cursor-pointer font-semibold mr-2 px-3 hover:bg-zinc-800"
+          @click="handleSetTokenBtnClick"
         >
-          <span class="hidden lg:flex text-light font-semibold pr-3"
-            >Follow us on</span
-          >
-          <i class="fab fa-twitter text-2xl text-blue-300"></i>
-        </a>
+          {{ token ? "Edit" : "Add" }} Access Token
+        </span>
       </div>
       <div class="hidden h-full md:flex flex-row justify-start items-center">
         <router-link
@@ -39,12 +35,20 @@
         </router-link>
       </div>
       <div class="h-full hidden md:flex flex-row justify-end items-center">
-        <span
-          class="h-full flex flex-row justify-center items-center cursor-pointer font-semibold mr-2 px-3 hover:bg-zinc-800"
-          @click="handleSetTokenBtnClick"
+        <a
+          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
+          href="https://twitter.com/StarHistoryHQ"
+          target="_blank"
         >
-          {{ token ? "Edit" : "Add" }} Access Token
-        </span>
+          <i class="fab fa-twitter text-2xl text-blue-300"></i>
+        </a>
+        <a
+          class="h-full flex flex-row justify-center items-center pl-2 pr-4 hover:bg-zinc-800"
+          href="https://discord.gg/yyzsmgcqg7"
+          target="_blank"
+        >
+          <i class="fab fa-discord text-2xl text-indigo-300"></i>
+        </a>
         <GitHubStarButton />
       </div>
       <div class="h-full flex md:hidden flex-row justify-end items-center">
