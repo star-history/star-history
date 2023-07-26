@@ -95,7 +95,7 @@ const blogSectionList = [
       },
       {
         title: "Workflow Orchestration",
-        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz",
+        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor",
       },
     ],
   },
