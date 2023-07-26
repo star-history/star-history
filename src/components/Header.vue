@@ -43,7 +43,7 @@
           <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
         <a
-          class="h-full flex flex-row justify-center items-center pl-2 pr-4 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
           href="https://discord.gg/yyzsmgcqg7"
           target="_blank"
         >
