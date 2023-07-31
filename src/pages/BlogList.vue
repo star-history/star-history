@@ -7,7 +7,7 @@
       </div>
       <div class="w-full flex flex-col justify-start items-center">
         <section
-          class="w-full grow px-3 md:w-5/6 lg:max-w-6xl min-h-full h-auto flex flex-col justify-start items-center self-center"
+          class="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center"
         >
           <p
             class="mt-12 p-8 text-4xl font-bold text-dark"
