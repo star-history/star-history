@@ -112,6 +112,10 @@ const blogSectionList = [
     title: "The Starlet List",
     linkList: [
       {
+        title: "Issue #3 - Mockoon",
+        path: "/blog/mockoon",
+      },
+      {
         title: "Issue #2 - DLTA-AI",
         path: "/blog/dlta-ai",
       },
