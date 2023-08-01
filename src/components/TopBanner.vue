@@ -4,7 +4,7 @@
   >
     <p class="text-sm leading-6 text-white">
       <router-link to="/blog/list-your-open-source-project">
-        Open source maintainers looking for funding? Be on our ⭐️Starlet
+        Want to promote your open source project? Be on our ⭐️Starlet
         List⭐️ for FREE&nbsp;<span aria-hidden="true">&rarr;</span>
       </router-link>
     </p>
