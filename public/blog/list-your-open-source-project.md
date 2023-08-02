@@ -1,3 +1,6 @@
+**💡We are a bit overwhelmed by the nominations. We do review every request and will contact you if
+your project is selected.**
+
 As open source and the GitHub ecosystem thrives, Star History has been gaining momentum since its inception.
 
 ![growth](/blog/assets/list-your-open-source-project/growth.webp)
