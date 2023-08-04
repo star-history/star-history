@@ -103,6 +103,10 @@ const blogSectionList = [
     title: "Classified",
     linkList: [
       {
+        title: "Dify.AI",
+        path: "/blog/dify-ai",
+      },
+      {
         title: "Ockam",
         path: "/blog/ockam",
       },
