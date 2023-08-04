@@ -1,5 +1,14 @@
 [
   {
+    "title": "Dify - LLMOps platform, Define your AI-native apps",
+    "slug": "dify-ai",
+    "author": "Dify.AI",
+    "featured": true,
+    "featureImage": "/blog/assets/dify-ai/banner.webp",
+    "publishedDate": "2023-08-04T09:50:06.000Z",
+    "excerpt": "Dify.AI is an open source LLMOps platform to unleash the full potential of GPT and other language models."
+  },
+  {
     "title": "Starlet #3 Mockoon - Mock your API in seconds",
     "slug": "mockoon",
     "author": "Guillaume (255kb)",
