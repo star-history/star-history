@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full px-3 max-w-3xl mx-auto flex flex-col justify-center items-center"
+    class="w-full px-3 max-w-2xl mx-auto flex flex-col justify-center items-center"
   >
     <p
       class="relative flex flex-row justify-center items-center mb-1 font-semibold"
@@ -14,7 +14,7 @@
       </a>
     </p>
     <div class="w-full mb-6 flex flex-col justify-center items-center">
-      <p class="mb-2 text-sm sm:text-base text-gray-600">
+      <p class="mb-2 text-sm text-gray-600">
         {{ randomSponsors[0].slogan }}
       </p>
       <a

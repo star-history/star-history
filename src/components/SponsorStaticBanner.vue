@@ -1,10 +1,10 @@
 <template>
   <div
-    class="fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-64 shadow p-4 rounded z-50"
+    class="fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 shadow p-4 rounded z-50"
     :class="state.hide && '!hidden'"
   >
     <div class="w-full flex flex-row justify-between items-center mb-2 -mt-2">
-      <span class="text-xs font-medium text-gray-400">SPONSORS</span>
+      <span class="text-xs text-gray-400">SPONSORS</span>
       <i
         class="fas fa-times text-base text-gray-400 cursor-pointer hover:text-gray-500"
         @click.prevent="handleCloseButtonClick"
