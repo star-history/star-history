@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #4 chatgpt.js - A powerful, open source client-side JavaScript library for ChatGPT",
+    "slug": "chatgpt-js",
+    "author": "Adam Lui",
+    "featured": true,
+    "featureImage": "/blog/assets/chatgpt-js/banner.webp",
+    "publishedDate": "2023-08-10T00:00:00.000Z",
+    "excerpt": "chatgpt.js is a JavaScript library that supports this ecosystem by allowing for super-easy interaction with the ChatGPT DOM."
+  },
+  {
     "title": "Dify - LLMOps platform, Define your AI-native apps",
     "slug": "dify-ai",
     "author": "Dify.AI",
