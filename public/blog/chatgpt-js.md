@@ -2,7 +2,7 @@
 
 ---
 
-# chatgpt.js - A powerful, open source client-side JavaScript library for ChatGPT
+# chatgpt.js - Client-side JavaScript library for ChatGPT
 
 <div>
 
