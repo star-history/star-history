@@ -10,11 +10,28 @@
 
 </div>
 
-Since ChatGPT launched on November 20, 2022, it has captured the imagination of humankind, becoming the [fastest-growing app in the history of the universe](https://www.zdnet.com/article/chatgpt-just-became-the-fastest-growing-app-of-all-time/) (outpacing even TikTok/Douyin) and never letting go.
+Back in 2022, OpenAI had been releasing large language models to the public since 2020's GPT-3 (triggering Microsoft's eventual investment for a whopping 49% stake in the company).
+
+Even before that, OpenAI had been releasing versions of GPT privately for [nearly five years](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf).
+
+It was not until the launch of ChatGPT (powered by GPT-3.5) on November 20, 2022, did AI finally capture the mainstream imagination of humankind, becoming the [fastest-growing app in the history of the universe](https://www.zdnet.com/article/chatgpt-just-became-the-fastest-growing-app-of-all-time/) (outpacing even TikTok/Douyin) and never letting go.
 
 Unsurprisingly, an ecosystem of tools that either utilize or enhance the AI's astounding power has blossomed.
 
-**[chatgpt.js](https://chatgpt.js.org)** is a JavaScript library that supports this ecosystem by allowing for super-easy interaction w/ the ChatGPT DOM.
+**[chatgpt.js](https://chatgpt.js.org)** is a JavaScript library that emerged in the following months, supporting this ecosystem by allowing for super-easy interaction w/ the ChatGPT DOM.
+
+## Importing the library
+
+```js
+(async () => {
+     await import('https://code.chatgptjs.org/chatgpt-latest.min.js');
+    // Your code here...
+})();
+```
+
+## Usage
+
+**chatgpt.js** was written w/ ultra flexibility in mind.
 
 For example:
 
@@ -33,14 +50,7 @@ Each call equally fetches the last response (from either DOM or API, dependent o
 
 </div>
 
-Importing the library is equally simplistic:
-
-```js
-(async () => {
-     await import('https://code.chatgptjs.org/chatgpt-latest.min.js');
-    // Your code here...
-})();
-```
+If you think it works, it probabily will... so just type it! If it didn't, an extended [userguide](https://github.com/kudoai/chatgpt.js/blob/main/docs/USERGUIDE.md) is available for guidance.
 
 ## Made with chatgpt.js
 
