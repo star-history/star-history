@@ -14,7 +14,7 @@ Back in 2022, OpenAI had been releasing large language models to the public sinc
 
 Even before that, OpenAI had been releasing versions of GPT privately for [nearly five years](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf).
 
-It was not until the launch of ChatGPT (powered by GPT-3.5) on November 20, 2022, did AI finally capture the mainstream imagination of humankind, becoming the [fastest-growing app in the history of the universe](https://www.zdnet.com/article/chatgpt-just-became-the-fastest-growing-app-of-all-time/) (outpacing even TikTok/Douyin) and never letting go.
+It was not until the launch of ChatGPT (powered by GPT-3.5) on November 20, 2022, did AI finally capture the mainstream imagination of humankind — becoming the *[fastest-growing app in the history of the universe](https://www.zdnet.com/article/chatgpt-just-became-the-fastest-growing-app-of-all-time/)* (outpacing even TikTok/Douyin!)
 
 Unsurprisingly, an ecosystem of tools that either utilize or enhance the AI's astounding power has blossomed.
 
