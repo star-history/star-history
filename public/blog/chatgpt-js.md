@@ -94,3 +94,5 @@ Two main events can be attributed with causing this astonishing growth spurt:
 **chatgpt.js** is continuously maintained, with new features added based on user demand in the [GitHub repo](https://github.com/kudoai/chatgpt.js).
 
 The project is open to sponsorships: if you are a company or individual and believe in the project, you can consider [pioneering chatgpt.js growth](https://github.com/sponsors/kudoai)!
+
+*8/14 Update — chatgpt.js is now part of [100 Builders](https://100.builders), an AI incubator funded by industry heavyweights like [Stability.ai](https://stability.ai) (creators of Stable Diffusion) & [Coinbase Ventures](https://ventures.coinbase.com)!*
