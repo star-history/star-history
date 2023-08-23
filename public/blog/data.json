@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | Llama 2 and Ecosystem Edition",
+    "slug": "llama2",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/llama2/banner.webp",
+    "publishedDate": "2023-08-23T09:50:06.000Z",
+    "excerpt": "Meta released Llama 2 in July, which can be freely used for research and commercial purposes. We are taking a look at some open-source options to get started with Llama 2 on your own machine."
+  },  
+  {
     "title": "Starlet #4 chatgpt.js - Client-side JavaScript library for ChatGPT",
     "slug": "chatgpt-js",
     "author": "Adam Lui",
