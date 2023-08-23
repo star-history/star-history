@@ -78,5 +78,5 @@ Another piece of news for the month of July: we started a new column "[Starlet L
 
 In the meantime, check out the July starlets:
 
-- [https://star-history.com/blog/sniffnet](/blog/sniffnet)
-- [https://star-history.com/blog/dlta-ai](/blog/dlta-ai)
+- [Sniffnet](/blog/sniffnet)
+- [DLTA-AI](/blog/dlta-ai)

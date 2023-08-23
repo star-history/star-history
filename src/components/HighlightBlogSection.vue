@@ -49,7 +49,7 @@ const blogSectionList = [
     title: "Monthly Pick",
     linkList: [
       {
-        title: "2023 July (Llama 2 & Ecosystem Edition)",
+        title: "2023 July (Llama 2 Edition)",
         path: "https://star-history.com/blog/llama2",
       },
       {
