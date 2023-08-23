@@ -25,6 +25,27 @@
 <script lang="ts" setup>
 const blogSectionList = [
   {
+    title: "AI Collections",
+    linkList: [
+      {
+        title: "Infra",
+        path: "https://star-history.com/blog/open-source-ai-infra-projects",
+      },
+      {
+        title: "Model",
+        path: "https://star-history.com/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM",
+      },
+      {
+        title: "Llama Ecosystem",
+        path: "https://star-history.com/blog/llama2",
+      },
+      {
+        title: "GPT Ecosystem",
+        path: "https://star-history.com/blog/star-history-monthly-pick-202303",
+      },
+    ],
+  },
+  {
     title: "Best of 2022",
     linkList: [
       {
@@ -83,16 +104,8 @@ const blogSectionList = [
     ],
   },
   {
-    title: "Collections",
+    title: "Developer Collections",
     linkList: [
-      {
-        title: "AI Infra Projects",
-        path: "https://star-history.com/blog/open-source-ai-infra-projects",
-      },
-      {
-        title: "AI Model",
-        path: "https://star-history.com/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM",
-      },
       {
         title: "Database DevOps",
         path: "https://star-history.com/#bytebase/bytebase&liquibase/liquibase&flyway/flyway",
