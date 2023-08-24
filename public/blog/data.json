@@ -1,5 +1,14 @@
 [
   {
+    "title": "The (Detailed & Creative) Playbook for Getting More GitHub Stars",
+    "slug": "playbook-for-more-github-stars",
+    "author": "Zevi Reinitz",
+    "featured": true,
+    "featureImage": "/blog/assets/playbook-for-more-github-stars/banner.webp",
+    "publishedDate": "2023-08-24T09:50:06.000Z",
+    "excerpt": "A team that just launched an open source tool for developers shares their first-hand experience on how to grow your own project."
+  },
+  {
     "title": "Star History Monthly Pick | Llama 2 and Ecosystem Edition",
     "slug": "llama2",
     "author": "Mila",
