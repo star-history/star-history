@@ -46,23 +46,15 @@ const blogSectionList = [
     ],
   },
   {
-    title: "Best of 2022",
+    title: "Developer Collections",
     linkList: [
       {
-        title: "Data, Infra & DevTools",
-        path: "https://star-history.com/blog/star-history-yearly-pick-2022-data-infra-devtools",
+        title: "Database DevOps",
+        path: "https://star-history.com/#bytebase/bytebase&liquibase/liquibase&flyway/flyway",
       },
       {
-        title: "Platform Engineering",
-        path: "https://star-history.com/blog/star-history-open-source-2022-platform-engineering",
-      },
-      {
-        title: "Open-Source Alternatives",
-        path: "https://star-history.com/blog/star-history-open-source-2022-open-source-alternatives",
-      },
-      {
-        title: "Front-end",
-        path: "https://star-history.com/blog/star-history-yearly-pick-2022-frontend",
+        title: "Workflow Orchestration",
+        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor",
       },
     ],
   },
@@ -104,15 +96,23 @@ const blogSectionList = [
     ],
   },
   {
-    title: "Developer Collections",
+    title: "Best of 2022",
     linkList: [
       {
-        title: "Database DevOps",
-        path: "https://star-history.com/#bytebase/bytebase&liquibase/liquibase&flyway/flyway",
+        title: "Data, Infra & DevTools",
+        path: "https://star-history.com/blog/star-history-yearly-pick-2022-data-infra-devtools",
       },
       {
-        title: "Workflow Orchestration",
-        path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor",
+        title: "Platform Engineering",
+        path: "https://star-history.com/blog/star-history-open-source-2022-platform-engineering",
+      },
+      {
+        title: "Open-Source Alternatives",
+        path: "https://star-history.com/blog/star-history-open-source-2022-open-source-alternatives",
+      },
+      {
+        title: "Front-end",
+        path: "https://star-history.com/blog/star-history-yearly-pick-2022-frontend",
       },
     ],
   },
@@ -130,7 +130,7 @@ const blogSectionList = [
     ],
   },
   {
-    title: "The Starlet List",
+    title: "Starlet List",
     linkList: [
       {
         title: "Issue #4 - chatgpt.js",
@@ -147,6 +147,19 @@ const blogSectionList = [
       {
         title: "Issue #1 - Sniffnet",
         path: "/blog/sniffnet",
+      },
+    ],
+  },
+  {
+    title: "Playbook",
+    linkList: [
+      {
+        title: "Getting More Stars",
+        path: "/blog/playbook-for-more-github-stars",
+      },
+      {
+        title: "How to Use this Site",
+        path: "/blog/how-to-use-github-star-history",
       },
     ],
   },

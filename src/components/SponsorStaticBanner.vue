@@ -4,7 +4,7 @@
     :class="state.hide && '!hidden'"
   >
     <div class="w-full flex flex-row justify-between items-center mb-2">
-      <span class="text-xs text-gray-400">SPONSORS</span>
+      <span class="text-xs text-gray-400">Sponsors (random order)</span>
       <i
         class="fas fa-times text-xs text-gray-400 cursor-pointer hover:text-gray-500"
         @click.prevent="handleCloseButtonClick"
