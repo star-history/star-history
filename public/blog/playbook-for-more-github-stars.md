@@ -279,4 +279,4 @@ And if you've made it this far, and are willing to leave Preevy a star I'd reall
 
 ---
 
-Published at Star History with permission of Zevi Reinitz. See the original article [here](https://dev.to/livecycle/the-detailed-creative-playbook-for-more-github-stars-5fo5).
+*Published at Star History with permission of Zevi Reinitz. See the original article [here](https://dev.to/livecycle/the-detailed-creative-playbook-for-more-github-stars-5fo5).*
