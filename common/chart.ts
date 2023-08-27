@@ -5,6 +5,9 @@ import utils from "./utils";
 
 export const DEFAULT_MAX_REQUEST_AMOUNT = 15;
 
+const STAR_HISTORY_LOGO_URL =
+  "https://avatars.githubusercontent.com/u/124480067";
+
 export const getReposStarData = async (
   repos: string[],
   token = "",
@@ -110,6 +113,24 @@ export const getRepoData = async (
         status = 501;
       } else {
         message = "Some unexpected error happened, try again later";
+      }
+
+      console.error("Failed to request data:", status, message);
+
+      // If encountering not found or no star error, we will return an empty image so that cache can be set.
+      if (status === 404 || status === 501) {
+        return [
+          {
+            repo,
+            starRecords: [
+              {
+                date: utils.getDateString(Date.now(), "yyyy/MM/dd"),
+                count: 0,
+              },
+            ],
+            logoUrl: STAR_HISTORY_LOGO_URL,
+          },
+        ];
       }
 
       return Promise.reject({

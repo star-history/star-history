@@ -206,11 +206,13 @@ const fetchReposData = async (repos: string[]) => {
   const repoData: RepoData[] = [];
   for (const repo of repos) {
     const cachedRepo = state.repoCacheMap.get(repo);
-    repoData.push({
-      repo,
-      starRecords: cachedRepo!.starData,
-      logoUrl: cachedRepo!.logoUrl,
-    });
+    if (cachedRepo) {
+      repoData.push({
+        repo,
+        starRecords: cachedRepo.starData,
+        logoUrl: cachedRepo.logoUrl,
+      });
+    }
   }
 
   if (repoData.length === 0) {

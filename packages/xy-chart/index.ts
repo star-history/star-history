@@ -120,7 +120,7 @@ const XYChart = (
   initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
-    ...(theme === 'dark' ? getDarkThemeDefaultOptions() : getDefaultOptions()),
+    ...(theme === "dark" ? getDarkThemeDefaultOptions() : getDefaultOptions()),
     ...initialOptions,
   };
 

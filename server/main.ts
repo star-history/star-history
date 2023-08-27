@@ -81,12 +81,6 @@ const startServer = async () => {
         const message =
           error.message || "Some unexpected error happened, try again later";
 
-        if (status === 404) {
-          // do nth, repo from user not found.
-        } else {
-          logger.error("Failed to request data", error);
-        }
-
         ctx.status = status;
         ctx.message = `${http.STATUS_CODES[status]}: ${message}`;
         return;
