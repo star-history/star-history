@@ -18,9 +18,9 @@ interface RepoData {
 const options = {
   // the number of most recently used items to keep,
   // based on the monthly visit count with `o/pv-star`.
-  max: 40000,
-  // max cache memory cost bytes: about 24Mb.
-  maxSize: 128 * 1024 * 1024,
+  max: 80000,
+  // max cache memory cost bytes: about 256Mb.
+  maxSize: 256 * 1024 * 1024,
   // calc cache size with its bytes.
   sizeCalculation: (value: RepoData) => {
     return utils.calcBytes(value);
