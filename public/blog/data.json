@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #5 MetisFL - the blazing-fast and developer-friendly federated learning framework",
+    "slug": "metisfl",
+    "author": "Panagiotis Kyriakis",
+    "featured": true,
+    "featureImage": "/blog/assets/metisfl/banner.webp",
+    "publishedDate": "2023-08-28T00:00:00.000Z",
+    "excerpt": "MetisFL is an open-source federated learning framework that makes it easy for developers and enterprises to train their models on distributed data sources."
+  },
+  {
     "title": "The (Detailed & Creative) Playbook for Getting More GitHub Stars",
     "slug": "playbook-for-more-github-stars",
     "author": "Zevi Reinitz",
