@@ -25,8 +25,8 @@ const options = {
   sizeCalculation: (value: RepoData) => {
     return utils.calcBytes(value);
   },
-  // max 6 hours to live.
-  ttl: 1000 * 60 * 60 * 6,
+  // max 3 hours to live.
+  ttl: 1000 * 60 * 60 * 3,
   updateAgeOnGet: false,
 };
 
