@@ -133,6 +133,10 @@ const blogSectionList = [
     title: "Starlet List",
     linkList: [
       {
+        title: "Issue #6 - Hoppscotch",
+        path: "/blog/hoppscotch",
+      },
+      {
         title: "Issue #5 - MetisFL",
         path: "/blog/metisfl",
       },
