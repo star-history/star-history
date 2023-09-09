@@ -100,15 +100,15 @@
             </p>
           </div>
         </div>
-        <BytebaseBanner
+        <SponsorFooterBanner
           v-if="!state.isLoading"
           class="mt-32 mb-8"
-        ></BytebaseBanner>
+        ></SponsorFooterBanner>
       </div>
       <div class="w-full hidden lg:block"></div>
     </div>
     <Footer />
-    <SponsorBanner />
+    <SponsorRightBanner />
   </div>
 </template>
 
@@ -120,8 +120,8 @@ import { useSeoMeta } from "@vueuse/head";
 import utils from "../../common/utils";
 import Footer from "../components/Footer.vue";
 import Header from "../components/Header.vue";
-import BytebaseBanner from "../components/SponsorView.vue";
-import SponsorBanner from "../components/SponsorStaticBanner.vue";
+import SponsorFooterBanner from "../components/SponsorView.vue";
+import SponsorRightBanner from "../components/SponsorStaticBanner.vue";
 import HighlightBlogSection from "../components/HighlightBlogSection.vue";
 
 interface State {
