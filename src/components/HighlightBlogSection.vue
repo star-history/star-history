@@ -25,6 +25,19 @@
 <script lang="ts" setup>
 const blogSectionList = [
   {
+    title: "Playbook",
+    linkList: [
+      {
+        title: "How to Use this Site",
+        path: "/blog/how-to-use-github-star-history",
+      },
+      {
+        title: "Getting More Stars",
+        path: "/blog/playbook-for-more-github-stars",
+      },
+    ],
+  },
+  {
     title: "AI Collections",
     linkList: [
       {
@@ -159,19 +172,6 @@ const blogSectionList = [
       {
         title: "Issue #1 - Sniffnet",
         path: "/blog/sniffnet",
-      },
-    ],
-  },
-  {
-    title: "Playbook",
-    linkList: [
-      {
-        title: "Getting More Stars",
-        path: "/blog/playbook-for-more-github-stars",
-      },
-      {
-        title: "How to Use this Site",
-        path: "/blog/how-to-use-github-star-history",
       },
     ],
   },
