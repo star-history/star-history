@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-auto mb-16 px-3 mx-auto max-w-4xl flex flex-col justify-start items-center"
+    class="w-full h-auto mb-12 px-3 mx-auto max-w-4xl flex flex-col justify-start items-center"
   >
     <p class="leading-8 mb-3">
       🌟 Show real-time chart on

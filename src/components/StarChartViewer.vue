@@ -35,7 +35,7 @@
   </div>
   <div
     v-if="state.chartData"
-    class="relative mt-4 mb-8 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center"
+    class="relative mt-4 mb-4 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center"
   >
     <div class="flex flex-row justify-start items-center mb-2">
       <a
@@ -88,7 +88,21 @@
   </div>
   <EmbedMarkdownSection v-if="state.chartData"></EmbedMarkdownSection>
   <div class="grow"></div>
-  <BytebaseBanner />
+  <div class="mb-12">
+    <iframe
+      src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+      data-test-id="beehiiv-embed"
+      height="52"
+      frameborder="0"
+      scrolling="no"
+      style="
+        margin: 0;
+        border-radius: 0px !important;
+        background-color: transparent;
+      "
+    ></iframe>
+  </div>
+  <BytebaseBanner v-if="state.chartData" />
   <TokenSettingDialog
     v-if="state.showSetTokenDialog"
     @close="handleSetTokenDialogClose"

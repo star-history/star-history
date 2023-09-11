@@ -15,6 +15,20 @@
           >
             Star History Blog
           </p>
+          <div class="mb-4">
+            <iframe
+              src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+              data-test-id="beehiiv-embed"
+              height="52"
+              frameborder="0"
+              scrolling="no"
+              style="
+                margin: 0;
+                border-radius: 0px !important;
+                background-color: transparent;
+              "
+            ></iframe>
+          </div>
           <div
             v-if="state.isLoading"
             class="grow w-full flex flex-col justify-center items-center"

@@ -19,21 +19,6 @@
         </li>
       </ul>
     </template>
-    <div class="w-full flex flex-row justify-between items-center my-2">
-      <h3 class="text-sm font-medium text-gray-400 leading-6">Newsletter</h3>
-    </div>
-    <iframe
-      src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-      data-test-id="beehiiv-embed"
-      height="52"
-      frameborder="0"
-      scrolling="no"
-      style="
-        margin: 0;
-        border-radius: 0px !important;
-        background-color: transparent;
-      "
-    ></iframe>
   </div>
 </template>
 

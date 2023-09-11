@@ -100,9 +100,23 @@
             </p>
           </div>
         </div>
+        <div class="mt-12">
+          <iframe
+            src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+            data-test-id="beehiiv-embed"
+            height="52"
+            frameborder="0"
+            scrolling="no"
+            style="
+              margin: 0;
+              border-radius: 0px !important;
+              background-color: transparent;
+            "
+          ></iframe>
+        </div>
         <SponsorFooterBanner
           v-if="!state.isLoading"
-          class="mt-32 mb-8"
+          class="mt-16 mb-8"
         ></SponsorFooterBanner>
       </div>
       <div class="w-full hidden lg:block"></div>
