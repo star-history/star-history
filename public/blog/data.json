@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #7 Clipboard – Remember Anything, Anytime, Anywhere at Breakneck Speed",
+    "slug": "clipboard",
+    "author": "Jackson Huff",
+    "featured": true,
+    "featureImage": "/blog/assets/clipboard-banner.webp",
+    "publishedDate": "2023-09-11T00:00:00.000Z",
+    "excerpt": "The Clipboard Project is a new and upcoming open source tool designed to supercharge your productivity by making it easy to remember anything, anytime, anywhere."
+  },
+  {
     "title": "Starlet #6 Hoppscotch - The Open Source API Platform for Developers",
     "slug": "hoppscotch",
     "author": "Liyas Thomas",
