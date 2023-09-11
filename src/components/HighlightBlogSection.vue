@@ -148,6 +148,10 @@ const blogSectionList = [
     title: "Starlet List",
     linkList: [
       {
+        title: "Issue #7 - Clipboard",
+        path: "/blog/clipboard",
+      },
+      {
         title: "Issue #6 - Hoppscotch",
         path: "/blog/hoppscotch",
       },
