@@ -28,7 +28,7 @@
     </div>
     <StarXYChart
       v-if="state.chartData"
-      classname="w-full h-auto"
+      classname="w-full h-auto mt-4"
       :data="state.chartData"
       :chart-mode="chartMode"
     />
