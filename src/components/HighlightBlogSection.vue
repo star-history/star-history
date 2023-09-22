@@ -75,6 +75,10 @@ const blogSectionList = [
     title: "Monthly Pick",
     linkList: [
       {
+        title: "2023 August (CLI tool for LLMs)",
+        path: "https://star-history.com/blog/cli-tool-for-llm",
+      },
+      {
         title: "2023 July (Llama 2 Edition)",
         path: "https://star-history.com/blog/llama2",
       },
