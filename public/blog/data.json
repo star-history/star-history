@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Pick | CLI Tools for Working with LLMs",
+    "slug": "cli-tool-for-llm",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/cli-tool-for-llm/banner.webp",
+    "publishedDate": "2023-09-22T09:50:06.000Z",
+    "excerpt": "This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs."
+  },  
+  {
     "title": "Starlet #7 Clipboard – Remember Anything, Anytime, Anywhere at Breakneck Speed",
     "slug": "clipboard",
     "author": "Jackson Huff",
