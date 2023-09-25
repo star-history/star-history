@@ -15,11 +15,11 @@ Tell it to set your computer to dark mode, edit videos, search for something on 
 
 ![open-interpreter](/blog/assets/cli-tool-for-llm/open-interpreter.webp)
 
-And yes, Open Interpreter's author wrote the aforementioned Tweet. Hard to imagine why.
+And yes, Open Interpreter's author wrote the Tweet above. Hard to imagine why.
 
 ## llm
 
-llm is a command line for running prompts against LLMs, getting the results back on the command-line and also storing the prompt and response in a SQLite database. Currently, OpenAI models are supported by default, but you can install plugins to make other LLMs available.
+[llm](https://github.com/simonw/llm) is a command line for running prompts against LLMs, getting the results back on the command-line and also storing the prompt and response in a SQLite database. Currently, OpenAI models are supported by default, but you can install plugins to make other LLMs available.
 
 To get it working, you need to install the tool, put your OpenAI API key somewhere it can find, and voila, start playing with it. Try asking it to translate your release notes to French, and the outputs will be directly prompted to your Terminal.
 
@@ -27,29 +27,29 @@ To get it working, you need to install the tool, put your OpenAI API key somewhe
 
 ## GPT Pilot
 
-AI can now write most of the code for an app, but it won’t work unless all the code works in cohesiveness and together. [GPT Pilot](https://github.com/Pythagora-io/gpt-pilot) is a fascinating devtool that can code an entire, production-ready app.
+AI can now write most of the code for an app, but it won’t work unless all the code works cohesively. [GPT Pilot](https://github.com/Pythagora-io/gpt-pilot) is a fascinating devtool that can code an entire, production-ready app.
 
 ![gpt-pilot](/blog/assets/cli-tool-for-llm/gpt-pilot.webp)
 
-How it works is that you describe an app you want to build and GPT Pilot works with an LLM to clarify specific app requirements, before finally writing the code. 
+It works by describing an app you want to build and GPT Pilot works with an LLM to clarify specific app requirements, before finally writing the code. 
 
-Right now, GPT Pilot is still in early stages and can only build simple web apps like a real time chat app or a timer app, but this concept obviously has far-reaching significance for the future.
+Right now, GPT Pilot is still in the early stages and can only build simple web apps like a real-time chat app or a timer app, but this concept obviously has far-reaching significance for the future.
 
 ## aider
 
-[aider](https://github.com/paul-gauthier/aider), as the name suggests, is AI pair programming in your Terminal. Once you launching aider from the command line with your source files, you can discuss and edit together. Aider supports all OpenAI's chat models (and GPT-4 is the recommended model to use for code editing). 
+[aider](https://github.com/paul-gauthier/aider), as the name suggests, is AI pair programming in your Terminal. Once you launch aider from the command line with your source files, you can discuss and edit together. Aider supports all OpenAI's chat models (and GPT-4 is the recommended model to use for code editing). 
 
 ![aider](/blog/assets/cli-tool-for-llm/aider.webp)
 
-When you put it side to side with GPT Pilot, aider acts more like guidance for writing an app, while GPT Pilot is more like a contractor where they collects the requirements and present you with the final results.
+When you put it side to side with GPT Pilot, aider acts more like guidance for writing an app, while GPT Pilot is more like a contractor where they collect the requirements and present you with the final results.
 
 ## Butterfish 🐠
 
-Butterfish equip your shell with AI superpowers. It is basically a transparent shell wrapper with GPT and currently works on MacOS and Linux. One of the reasons why ChatGPT is useful is that you can have a conversation with it, and have it tweak and improve its answers. Butterfish has memory as well, and it can include previous context by injecting your shell history into the chat. 
+[Butterfish](https://github.com/bakks/butterfish) equips your shell with AI superpowers. It is basically a transparent shell wrapper with GPT and currently works on MacOS and Linux. One of the reasons why ChatGPT is useful is that you can have a conversation with it, and have it tweak and improve its answers. Butterfish has memory as well, and it can include previous context by injecting your shell history into the chat. 
 
 ![butterfish](/blog/assets/cli-tool-for-llm/butterfish.webp)
 
-Another cool thing is that you can start a prompt simply with a capital letter. For example, $ Write me a poem will be sent as a ChatGPT prompt and expect your Terminal to return a poem.
+Another cool thing is that you can start a prompt simply with a capital letter. For example, `$ Write me a poem` will be sent as a ChatGPT prompt and expect your Terminal to return a poem.
 
 ## Lastly
 
