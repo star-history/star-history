@@ -2,7 +2,7 @@
 
 ---
 
-# Prompt flow - Developer Tool for Building High-quality LLM Applications
+# Prompt flow - Developer Tool for Building High-Quality LLM Applications
 
 Open-sourced by Microsoft recently, [Prompt flow](https://github.com/microsoft/promptflow) is a suite of development tools designed to streamline the end-to-end development cycle of LLM-based AI applications, from ideation, prototyping, testing, evaluation to production deployment and monitoring. It makes prompt engineering much easier and enables you to build LLM apps with production quality.
 
