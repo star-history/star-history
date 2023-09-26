@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #8 Prompt flow - Developer Tool for Building High-quality LLM Applications",
+    "slug": "prompt-flow",
+    "author": "Jie Tong",
+    "featured": true,
+    "featureImage": "/blog/assets/prompt-flow/banner.webp",
+    "publishedDate": "2023-09-26T00:00:00.000Z",
+    "excerpt": "Fresh open-sourced by Microsoft, Prompt flow is a suite of devtools designed to streamline the end-to-end development cycle of LLM-based AI applications."
+  },
+  {
     "title": "Star History Monthly Pick | CLI Tools for Working with LLMs",
     "slug": "cli-tool-for-llm",
     "author": "Mila",
