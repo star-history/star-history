@@ -6,11 +6,11 @@
 
 Open-sourced by Microsoft recently, [Prompt flow](https://github.com/microsoft/promptflow) is a suite of development tools designed to streamline the end-to-end development cycle of LLM-based AI applications, from ideation, prototyping, testing, evaluation to production deployment and monitoring. It makes prompt engineering much easier and enables you to build LLM apps with production quality.
 
-# Why
+## Why
 
 The utilization of Large Language Models (LLMs), such as ChatGPT and GPT-4, to enhance existing software or create new applications has become a pivotal strategy for many developers. This trend has been largely catalyzed by the early access Microsoft had to OpenAI's models, which allowed them to pioneer in this domain. One significant shift that LLMs introduce to application development is the increased stochastic nature of applications. This means that traditional testing methods may not be adequate or even applicable. The project 'prompt flow' represents Microsoft's efforts to incorporate their insights on building quality into the process of LLM application development.
 
-# How
+## How
 
 Prompt flow provides a suite of developer tools including:
 
@@ -27,7 +27,7 @@ Prompt flow provides a suite of developer tools including:
 
 Moreover, a cloud-based version of Prompt flow is available in Azure AI, which incorporates enterprise features and facilitates team collaboration on Azure. It is currently in public preview. You can find more details [here](https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow?view=azureml-api-2).
 
-# Star growth
+## Star growth
 
 As for its popularity, Prompt flow was publicly released in early September and witnessed a significant increase in interest, accumulating 2,000 stars within the first two weeks🚀.
 
