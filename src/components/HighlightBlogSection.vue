@@ -32,6 +32,10 @@ const blogSectionList = [
         path: "/blog/how-to-use-github-star-history",
       },
       {
+        title: "Do GitHub stars ⭐️ = Money 💰?",
+        path: "/blog/do-github-stars-equal-money",
+      },
+      {
         title: "Getting More Stars",
         path: "/blog/playbook-for-more-github-stars",
       },

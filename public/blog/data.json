@@ -1,5 +1,14 @@
 [
   {
+    "title": "Do GitHub stars ⭐️ = Money 💰?",
+    "slug": "do-github-stars-equal-money",
+    "author": "Nevo David",
+    "featured": true,
+    "featureImage": "/blog/assets/do-github-stars-equal-money/banner.webp",
+    "publishedDate": "2023-09-28T00:00:00.000Z",
+    "excerpt": "Open source projects are starting out by collecting GitHub stars, but stars are not coins, contributors, or customers. So why are we trying to collect them?"
+ },
+  {
     "title": "Starlet #8 Prompt flow - Developer Tool for Building High-Quality LLM Applications",
     "slug": "prompt-flow",
     "author": "Jie Tong",
