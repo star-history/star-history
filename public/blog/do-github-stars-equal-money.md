@@ -1,5 +1,7 @@
 # Do GitHub stars ⭐️ = Money 💰?
 
+_This is a guest post by Nevo David who works at [Novu](https://github.com/novuhq/novu) and runs [GitHub 20k](https://github20k.com)._
+
 Many open-source companies/libraries, [Novu](https://github.com/novuhq/novu) among them, are starting out by collecting GitHub stars. But stars are not coins, contributors, or customers. So why are we trying to collect them?
 
 This is the answer I get from almost everybody, and they are right! partially…
