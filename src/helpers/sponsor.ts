@@ -24,14 +24,14 @@ const sponsors: Sponsor[] = [
     slogan:
       "Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis",
   },
-  {
-    name: "Ockam",
-    logo: utils.absolutifyLink("/sponsors/ockam/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/ockam/landing.webp"),
-    link: "https://github.com/build-trust/ockam?utm_source=starhistory",
-    slogan:
-      "End-to-end encryption and authentication for data-in-motion between distributed applications",
-  },
+  // {
+  //   name: "Ockam",
+  //   logo: utils.absolutifyLink("/sponsors/ockam/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/ockam/landing.webp"),
+  //   link: "https://github.com/build-trust/ockam?utm_source=starhistory",
+  //   slogan:
+  //     "End-to-end encryption and authentication for data-in-motion between distributed applications",
+  // },
   {
     name: "Dify",
     logo: utils.absolutifyLink("/sponsors/dify/logo.webp"),

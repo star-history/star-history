@@ -28,15 +28,11 @@ const blogSectionList = [
     title: "Playbook",
     linkList: [
       {
-        title: "How to Use this Site",
+        title: "📕 How to Use this Site",
         path: "/blog/how-to-use-github-star-history",
       },
       {
-        title: "Do GitHub stars ⭐️ = Money 💰?",
-        path: "/blog/do-github-stars-equal-money",
-      },
-      {
-        title: "Getting More Stars",
+        title: "⭐️ How to Get More Stars",
         path: "/blog/playbook-for-more-github-stars",
       },
     ],
@@ -134,19 +130,6 @@ const blogSectionList = [
       {
         title: "Front-end",
         path: "https://star-history.com/blog/star-history-yearly-pick-2022-frontend",
-      },
-    ],
-  },
-  {
-    title: "Classified",
-    linkList: [
-      {
-        title: "Dify.AI",
-        path: "/blog/dify-ai",
-      },
-      {
-        title: "Ockam",
-        path: "/blog/ockam",
       },
     ],
   },
