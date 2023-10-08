@@ -49,7 +49,7 @@
               <div
                 v-for="blog in state.featuredBlogs"
                 :key="blog.slug"
-                class="w-full h-auto flex flex-col border rounded-md mb-6 shadow-lg"
+                class="w-full h-auto flex flex-col border rounded-md mb-8"
               >
                 <router-link :to="{ path: `/blog/${blog.slug}` }">
                   <img
