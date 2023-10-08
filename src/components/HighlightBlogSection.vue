@@ -137,6 +137,10 @@ const blogSectionList = [
     title: "Starlet List",
     linkList: [
       {
+        title: "Prompt yours for FREE ⭐️",
+        path: "/blog/list-your-open-source-project",
+      },
+      {
         title: "Issue #8 - Prompt flow",
         path: "/blog/Prompt-flow",
       },
