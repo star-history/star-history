@@ -4,8 +4,8 @@
   >
     <p class="text-sm leading-6 text-white">
       <a href="https://stars.github.com/nominate/" target="_blank">
-        🙋 Help out - Please nominate our curator @milasuperstar to become a
-        GitHub Star
+        🙋 Help out - Please take 2 mins to nominate our curator @milasuperstar
+        to become a GitHub Star
       </a>
     </p>
   </div>
