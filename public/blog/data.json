@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #9 Electric SQL - Build reactive, realtime, local-first apps directly on Postgres",
+    "slug": "electricsql",
+    "author": "Sam Willis",
+    "featured": true,
+    "featureImage": "/blog/assets/electricsql/banner.webp",
+    "publishedDate": "2023-10-11T00:00:00.000Z",
+    "excerpt": "Use ElectricSQL to build super fast, collaborative, offline-capable apps directly on Postgres by syncing to a local SQLite database."
+ },
+  {
     "title": "Do GitHub stars ⭐️ = Money 💰?",
     "slug": "do-github-stars-equal-money",
     "author": "Nevo David",
