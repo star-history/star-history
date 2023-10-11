@@ -141,6 +141,10 @@ const blogSectionList = [
         path: "/blog/list-your-open-source-project",
       },
       {
+        title: "Issue #9 - ElectricSQL",
+        path: "/blog/electricsql",
+      },
+      {
         title: "Issue #8 - Prompt flow",
         path: "/blog/Prompt-flow",
       },
