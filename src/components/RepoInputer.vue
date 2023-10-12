@@ -51,11 +51,13 @@
           :key="item.name"
           class="leading-8 px-3 pr-2 mb-2 text-dark rounded flex flex-row justify-center items-center border mr-3 last:mr-0"
         >
-          <a :href="`https://github.com/${item.name}`" target="_blank">
-            <i
-              class="fas fa-external-link-alt mr-2 fa-sm text-gray-400 hover:text-green-600"
-            ></i>
-          </a>
+          <span
+            class="relative w-3 h-3 mr-1 flex flex-row justify-center items-center cursor-pointer hover:opacity-60"
+            @click="handleDeleteRepoBtnClick(item.name)"
+          >
+            <span class="w-3 rotate-45 h-px bg-black absolute top-1/2"></span>
+            <span class="w-3 -rotate-45 h-px bg-black absolute top-1/2"></span>
+          </span>
           <span
             class="mr-1 cursor-pointer hover:line-through select-none"
             :class="item.visible ? '' : 'line-through text-gray-400'"
@@ -63,13 +65,11 @@
           >
             {{ item.name }}
           </span>
-          <span
-            class="relative w-5 h-5 flex flex-row justify-center items-center cursor-pointer hover:opacity-60"
-            @click="handleDeleteRepoBtnClick(item.name)"
-          >
-            <span class="w-3 rotate-45 h-px bg-black absolute top-1/2"></span>
-            <span class="w-3 -rotate-45 h-px bg-black absolute top-1/2"></span>
-          </span>
+          <a :href="`https://github.com/${item.name}`" target="_blank">
+            <i
+              class="fas fa-external-link-alt fa-sm text-gray-400 hover:text-green-600"
+            ></i>
+          </a>
         </div>
         <button
           class="leading-8 mb-2 text-black hover:bg-gray-100 px-3 rounded border border-transparent"
