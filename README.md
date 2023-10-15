@@ -38,11 +38,11 @@
 
 <a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/bytebase/landing.webp" /></a>
 
-### Ockam
+### Dify
 
-[Ockam](https://github.com/build-trust/ockam?utm_source=starhistory) builds secure-by-design applications that can trust data-in-motion. Orchestrate end-to-end encryption, mutual authentication, key management, credential management & authorization policy enforcement.
+[Dify](https://dify.ai) is an open source LLMOps platform that helps developers build AI applications more simply and quickly. Its core idea is to define various aspects of AI applications, including Prompts, Contexts, and Plugins, through declarative YAML files.
 
-<a href="https://github.com/build-trust/ockam?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/ockam/landing.webp" /></a>
+<a href="https://dify.ai/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
 
 ## ✨ Features
 
