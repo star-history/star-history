@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #10 PostgresML: The GPU-powered AI application database",
+    "slug": "postgresml",
+    "author": "Montana Low",
+    "featured": true,
+    "featureImage": "/blog/assets/postgresml/banner.webp",
+    "publishedDate": "2023-10-19T00:00:00.000Z",
+    "excerpt": "PostgresML is the first GPU-powered AI application database - build chatbots, search engines, forecasting apps and more with the latest NLP, LLM and ML models using the simplicity and power of SQL."
+ },
+  {
     "title": "Starlet #9 Electric SQL - Build reactive, realtime, local-first apps directly on Postgres",
     "slug": "electricsql",
     "author": "Sam Willis",
