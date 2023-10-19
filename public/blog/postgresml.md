@@ -8,7 +8,7 @@
 
 ## Problem
 
-PostgresML is the all of the functionality I wish I had working as a machine learning engineer at Instacart and scaling the company's data infrastructure. We needed a platform to quickly and reliably implement our online systems like our site search engine and real time fraud detection - crucial functions for ecommerce.  
+PostgresML provides all the functionality I wish I had working as a machine learning engineer at Instacart and scaling the company's data infrastructure. We needed a platform to quickly and reliably implement our online systems like our site search engine and real time fraud detection - crucial functions for ecommerce.  
 
 Today’s machine learning apps and their practitioners are encountering the same problems with complex and data hungry ML & AI apps. A leading cause of slowdowns is network latency due to microservices architecture. Several roundtrip network calls must be made across multiple services in the MLOPs ecosystem to return an accurate response. It’s slower for users, and it’s more complexity for engineers and product teams to build and manage. 
 
