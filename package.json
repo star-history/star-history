@@ -7,7 +7,21 @@
     "dev": "vite",
     "build": "vite build",
     "build:server": "pnpm i && cd server && pnpm i && pnpm build",
-    "build:extension": "vite build --mode extension"
+    "build:extension": "vite build --mode extension",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
+    ]
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
@@ -47,7 +61,9 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-vue": "9.7.0",
+    "lint-staged": "^15.0.2",
     "postcss": "8.4.19",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "simple-git-hooks": "^2.9.0"
   }
 }
