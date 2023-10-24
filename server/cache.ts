@@ -1,15 +1,13 @@
 import LRUCache from "lru-cache";
 import utils from "../common/utils";
+import type { StarRecord } from "../types/chart";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.
  * Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
  */
 interface RepoData {
-  starRecords: {
-    date: string;
-    count: number;
-  }[];
+  starRecords: StarRecord[];
   starAmount: number;
   logoUrl: string;
 }

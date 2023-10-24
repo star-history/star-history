@@ -15,5 +15,12 @@
     "checkJs": false,
     "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "plugins/scripts/*.ts", "packages/**/*.ts", "common/**/*.ts", "types/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "plugins/scripts/*.ts",
+    "packages/**/*.ts",
+    "common/**/*.ts",
+    "types/*.ts"
+  ]
 }
