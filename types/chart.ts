@@ -1,18 +1,15 @@
 export type ChartMode = "Date" | "Timeline";
 
-export interface RepoStarData {
-  repo: string;
-  starRecords: {
-    date: string;
-    count: number;
-  }[];
+export interface StarRecord {
+  date: string;
+  count: number;
 }
 
-export interface RepoData {
+export interface RepoStarData {
   repo: string;
-  starRecords: {
-    date: string;
-    count: number;
-  }[];
+  starRecords: StarRecord[];
+}
+
+export interface RepoData extends RepoStarData {
   logoUrl: string;
 }

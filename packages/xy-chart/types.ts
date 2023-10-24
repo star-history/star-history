@@ -6,3 +6,5 @@ export type D3Selection = Selection<
   null,
   undefined
 >;
+
+export type Position = "down_right" | "down_left" | "up_right" | "up_left";

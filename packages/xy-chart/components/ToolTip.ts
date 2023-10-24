@@ -1,4 +1,4 @@
-import { D3Selection } from "../types";
+import type { D3Selection, Position } from "../types";
 
 interface ToolTipConfig {
   selection: D3Selection;
@@ -10,7 +10,7 @@ interface ToolTipConfig {
   position: {
     x: number;
     y: number;
-    type: "down_right" | "down_left" | "up_right" | "up_left";
+    type: Position;
   };
   backgroundColor: string;
   strokeColor: string;
@@ -25,7 +25,7 @@ class ToolTip {
   public position: {
     x: number;
     y: number;
-    type: "down_right" | "down_left" | "up_right" | "up_left";
+    type: Position;
   };
   public backgroundColor: string;
   public strokeColor: string;
@@ -50,7 +50,7 @@ class ToolTip {
    *      text: 'tim: 13'
    *    }],
    *    position: {
-   *      type: 'upleft'
+   *      type: 'up_left'
    *      x: 100,
    *      y: 230,
    *    }
