@@ -48,6 +48,14 @@ const sponsors: Sponsor[] = [
   //   slogan:
   //     "Policy-as-Code analysis for Multi-Cloud and SaaS environments, AWS/GCP/Azure, k8s, GitHub, etc.",
   // },
+  {
+    name: "GPTBots",
+    logo: utils.absolutifyLink("/sponsors/gptbots/logo.webp"),
+    landingImage: utils.absolutifyLink("/sponsors/gptbots/landing.webp"),
+    link: "https://www.gptbots.ai?refer=star-history",
+    slogan:
+      "Seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.",
+  },
 ];
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length);

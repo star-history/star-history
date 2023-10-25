@@ -18,9 +18,22 @@
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date"
+  />
 </picture>
 ```
 
@@ -40,9 +53,15 @@
 
 ### Dify
 
-[Dify](https://dify.ai) is an open source LLMOps platform that helps developers build AI applications more simply and quickly. Its core idea is to define various aspects of AI applications, including Prompts, Contexts, and Plugins, through declarative YAML files.
+[Dify](https://dify.ai/?utm_source=star-history) is an open source LLMOps platform that helps developers build AI applications more simply and quickly. Its core idea is to define various aspects of AI applications, including Prompts, Contexts, and Plugins, through declarative YAML files.
 
-<a href="https://dify.ai/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
+<a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
+
+### GPTBots
+
+[GPTBots](https://www.gptbots.ai?refer=star-history) seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.
+
+<a href="https://www.gptbots.ai?refer=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/gptbots/landing.webp" /></a>
 
 ## ✨ Features
 
