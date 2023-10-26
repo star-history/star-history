@@ -56,6 +56,10 @@ const blogSectionList = [
         title: "GPT Ecosystem",
         path: "https://star-history.com/blog/star-history-monthly-pick-202303",
       },
+      {
+        title: "Coding Assistant",
+        path: "https://star-history.com/blog/coding-ai",
+      },
     ],
   },
   {

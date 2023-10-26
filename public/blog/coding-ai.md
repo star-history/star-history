@@ -1,4 +1,4 @@
-# Star History Monthly | Coding AI
+# Star History Monthly | Open-source GitHub Copilot alternatives
 
 One of the places where AI has made a major breakthrough is in helping with coding. Who doesn't like a productivity boost? For software development at least, generative AI is definitely the new standard. Here, we gathered a few open-source AI coding assistants to boost your productivity, but with privacy and safety in mind.
 
@@ -6,8 +6,7 @@ One of the places where AI has made a major breakthrough is in helping with codi
 
 ![cody](/blog/assets/coding-ai/cody.webp)
 
-[Cody](https://github.com/sourcegraph/cody) is an AI coding assistant open-sourced by Sourcegraph, available as a VS Code or JetBrains extension.
-. It can write, understand and fix your code. Cody is powered by Sourcegraph’s code graph, and has knowledge of your entire codebase.
+[Cody](https://github.com/sourcegraph/cody) is an AI coding assistant open-sourced by Sourcegraph, available as a VS Code or JetBrains extension. It can write, understand and fix your code. Cody is powered by Sourcegraph’s code graph, and has knowledge of your entire codebase.
 
 Aside from AI-powered code completion, writing unit tests, generating doc comments, summarizing code, the usual stuff you'd expect from an AI coding assis, it also has a chat interface meaning you can also chat with Cody or ask it to do something.
 
@@ -65,7 +64,7 @@ Sweep is available as a GitHub App to integrate into your repos, and that's real
 
 ## Lastly
 
-What do you think? Are you using any AI coding assistants at all? What's the key differentiator for you? Let us know! 
+What do you think? Are you using any AI coding assistants at all? What's the key differentiator for you? Let us know!
 
 ---
 
