@@ -19,15 +19,15 @@ Aside from AI-powered code completion, writing unit tests, generating doc commen
 
 [Cursor](https://github.com/getcursor/cursor) is an AI-powered IDE built with LLMs, taking AI pair programming to the next level. It is also keeping me from naming this edition "Top VS Code AI-Coding Extensions"!
 
-Cursor want to fix the problem that comes after the autocomplete: fixing the bug and bringing out a new feature.
+Cursor wants to fix the problem that comes after the autocomplete: fixing the bug and bringing out a new feature.
 
-The advantage Cursor has over VS Code is that, since they have way less users than VS Code (which is the preferred IDE of 73% of the respondents), as per Stack Overflow Developer Survey 2023, they get to iterate way faster and try out new stuff. After all, if the year 2023 has taught us anything, it's that you have to be fast and accepting of new things to keep up with the industy.
+The advantage Cursor has over VS Code is that, since they have way less users than VS Code (which is the preferred IDE of 73% of the respondents), as per Stack Overflow Developer Survey 2023, they get to iterate way faster and try out new stuff. After all, if the year 2023 has taught us anything, it's that you have to be fast and accepting of new things to keep up with the industry.
 
-Plus, they are already standing ontop of the giant: Cursor is actually a fork of VS Code, and in fact, I tried it out and it does look and feel a lot like VS Code, but with an AI-native twist.
+Plus, they are already standing on top of the giant: Cursor is actually a fork of VS Code, and in fact, I tried it out and it does look and feel a lot like VS Code, but with an AI-native twist.
 
 ![cursor-ui](/blog/assets/coding-ai/cursor-ui.webp)
 
-It was [open-sourced](https://twitter.com/amanrsanger/status/1640220737851236353) March this year and announced an [$8M funding](https://techcrunch.com/2023/10/11/anysphere-raises-8m-from-openai-to-build-an-ai-powered-ide/) led by the almighty OpenAI earlier this month.
+It was [open-sourced](https://twitter.com/amanrsanger/status/1640220737851236353) in March this year and announced an [$8M funding](https://techcrunch.com/2023/10/11/anysphere-raises-8m-from-openai-to-build-an-ai-powered-ide/) led by the almighty OpenAI earlier this month.
 
 ## Tabby
 
@@ -47,9 +47,9 @@ On another note, it's been a big month for Tabby - they celebrated reaching 11k 
 
 [Continue](https://github.com/continuedev/continue) is an IDE extension that brings the power of ChatGPT to VS Code and JetBrains.
 
-Continue can explain code, allow you to edit in natural language, avoi laborious edits, making it no longer necessary to copy and paste from your LLM Interface. What's more, Continue works with any LLM, including local models hosted on your own cloud infrastructure, so that you get to remain 100% private.
+Continue can explain code, allow you to edit in natural language, avoid laborious edits, making it no longer necessary to copy and paste from your LLM Interface. What's more, Continue works with any LLM, including local models hosted on your own cloud infrastructure, so that you get to remain 100% private.
 
-Basically, if you use Copilot or ChatGPT, it's GitHub and OpenAI collecting and learning from the data. With Continue, you can collect data on how you build software - when your team commit code, it can be used to [improve the LLM](https://medium.com/@continuedev/its-time-to-collect-data-on-how-you-build-software-197d12a020d5) used by your team.
+Basically, if you use Copilot or ChatGPT, it's GitHub and OpenAI collecting and learning from the data. With Continue, you can collect data on how you build software - when your team commits code, it can be used to [improve the LLM](https://medium.com/@continuedev/its-time-to-collect-data-on-how-you-build-software-197d12a020d5) used by your team.
 
 ![continue-workflow](/blog/assets/coding-ai/continue-workflow.webp)
 
@@ -57,7 +57,7 @@ Basically, if you use Copilot or ChatGPT, it's GitHub and OpenAI collecting and 
 
 ![sweep](/blog/assets/coding-ai/sweep.webp)
 
-[Sweep](https://github.com/sweepai/sweep) is an AI-powered junior dev that transforms bug & small features to code changes as a PR. Sweep cleans up after you... 🧹Get it?
+[Sweep](https://github.com/sweepai/sweep) is an AI-powered junior dev that transforms bugs & small features into code changes as a PR. Sweep cleans up after you... 🧹Get it?
 
 ![sweep-nightly](/blog/assets/coding-ai/sweep-nightly.webp)
 
