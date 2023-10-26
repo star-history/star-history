@@ -61,7 +61,7 @@ Basically, if you use Copilot or ChatGPT, it's GitHub and OpenAI collecting and 
 
 ![sweep-nightly](/blog/assets/coding-ai/sweep-nightly.webp)
 
-Sweep is available as a GitHub App to integrate into your repos, and that's really smart because if a standalone tool that generates a PR for you repo, you will want to test it, ultimately defeating the whole purpose of the tool. But thanks to the extensive GitHub ecosystem, Sweep makes perfect sense as a handy add-on to your repos, saving you a lot of tedious work.
+Sweep is available as a GitHub App to integrate into your repos, and that's really smart because if a standalone tool that generates a PR for your repo, you will want to test it, ultimately defeating the whole purpose of the tool. But thanks to the extensive GitHub ecosystem, Sweep makes perfect sense as a handy add-on to your repos, saving you a lot of tedious work.
 
 ## Lastly
 
