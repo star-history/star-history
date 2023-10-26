@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly | Coding AI",
+    "slug": "coding-ai",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/coding-ai/banner.webp",
+    "publishedDate": "2023-10-26T09:50:06.000Z",
+    "excerpt": "One of the places where AI has made a major breakthrough is in helping with coding. Here, we gathered a few open-source AI coding assistants to boost your productivity."
+  },  
+  {
     "title": "Starlet #10 PostgresML: The GPU-powered AI application database",
     "slug": "postgresml",
     "author": "Montana Low",
