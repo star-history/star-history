@@ -1,6 +1,8 @@
 # Star History Monthly | Open-source GitHub Copilot alternatives
 
-One of the places where AI has made a major breakthrough is in helping with coding. Who doesn't like a productivity boost? For software development at least, generative AI is definitely the new standard. Here, we gathered a few open-source AI coding assistants to boost your productivity, but with privacy and safety in mind.
+One of the places where AI has made a major breakthrough is in helping with coding. Who doesn't like a productivity boost? For software development at least, generative AI is definitely the new standard. 
+
+Here, we gathered a few open-source AI coding assistants to boost your productivity, but with privacy and safety in mind.
 
 ## Cody
 
@@ -18,7 +20,7 @@ Aside from AI-powered code completion, writing unit tests, generating doc commen
 
 [Cursor](https://github.com/getcursor/cursor) is an AI-powered IDE built with LLMs, taking AI pair programming to the next level. It is also keeping me from naming this edition "Top VS Code AI-Coding Extensions"!
 
-Cursor wants to fix the problem that comes after the autocomplete: fixing the bug and bringing out a new feature.
+Cursor wants to fix the problem that comes after autocompletion: fixing the bug and bringing out a new feature.
 
 The advantage Cursor has over VS Code is that, since they have way less users than VS Code (which is the preferred IDE of 73% of the respondents), as per Stack Overflow Developer Survey 2023, they get to iterate way faster and try out new stuff. After all, if the year 2023 has taught us anything, it's that you have to be fast and accepting of new things to keep up with the industry.
 
