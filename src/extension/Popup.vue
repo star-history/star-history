@@ -134,16 +134,14 @@ const token = computed(() => {
 
 onMounted(async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const url = tab.url + "/";
+  const url = new URL(tab.url);
 
-  try {
-    const result = /github.com\/(\S+?\/\S+?)\//.exec(url);
-    if (result) {
-      state.repo = result[1];
-      await fetchReposStarData([state.repo]);
+  if (url.hostname === 'github.com') {
+    const [owner, repo] = url.pathname.split('/').filter(Boolean);
+    if (owner && repo) {
+        state.repo = `${owner}/${repo}`;
+        await fetchReposStarData([state.repo]);
     }
-  } catch (err) {
-    // do nth
   }
 
   if (!state.repo) {
