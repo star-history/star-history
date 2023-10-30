@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #11 libSQL: SQLite for modern applications",
+    "slug": "libsql",
+    "author": "Glauber Costa",
+    "featured": true,
+    "featureImage": "/blog/assets/libsql.webp",
+    "publishedDate": "2023-10-30:00:00.000Z",
+    "excerpt": "libSQL is an Open Source and Open Contribution fork of SQLite"
+ },
+  {
     "title": "Star History Monthly Sep 2023 | Open-source GitHub Copilot alternatives",
     "slug": "coding-ai",
     "author": "Mila",
