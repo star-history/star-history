@@ -45,13 +45,21 @@
           class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
         >
           <img class="h-6 mt-1 mr-2" src="/sqlchat.webp" />
-          <a href="https://sqlchat.ai" target="_blank"> SQL Chat </a>
+          <a href="https://www.sqlchat.ai" target="_blank"> SQL Chat </a>
         </div>
         <div
           class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
         >
           <img class="h-6 mt-1 mr-2" src="/dbcost.webp" />
-          <a href="https://dbcost.com" target="_blank">DB Cost</a>
+          <a href="https://www.dbcost.com" target="_blank">DB Cost</a>
+        </div>
+        <div
+          class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
+        >
+          <img class="h-6 mt-1 mr-2" src="/mysql-vs-pg.webp" />
+          <a href="https://www.mysql-vs-postgresql.com/" target="_blank"
+            >MySQL or PG</a
+          >
         </div>
       </div>
       <div
