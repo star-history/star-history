@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import '../global.css'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode
