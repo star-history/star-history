@@ -5,7 +5,8 @@ import TokenSettingDialog from "./TokenSettingDialog";
 import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
+import { FaDiscord } from 'react-icons/fa';
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 
 interface State {
@@ -13,7 +14,7 @@ interface State {
   showSetTokenDialog: boolean;
 }
 
-const MyComponent: React.FC = () => {
+const Header: React.FC = () => {
   const [state, setState] = useState<State>({
     showDropMenu: false,
     showSetTokenDialog: false,
@@ -82,7 +83,7 @@ const MyComponent: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaTwitter className="text-3xl text-blue-300"/>
+              <FaSquareXTwitter className="text-3xl text-white"/>
             </a>
             <a
               className="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
@@ -165,4 +166,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Header;
