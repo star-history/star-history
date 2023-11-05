@@ -5,8 +5,7 @@ import TokenSettingDialog from "./TokenSettingDialog";
 import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
-import { FaDiscord } from 'react-icons/fa';
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
 
 interface State {
@@ -83,7 +82,7 @@ const Header: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaSquareXTwitter className="text-3xl text-white"/>
+              <FaTwitter className="text-3xl text-blue-300"/>
             </a>
             <a
               className="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
@@ -133,21 +132,21 @@ const Header: React.FC = () => {
       
       <Link
           href="/blog/how-to-use-github-star-history"
-          className="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
+          className="h-12 text-base px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
         >
           📕 How to use this site
         </Link>
 
 
         <span
-          className="h-12 px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
+          className="h-12 px-3 text-base w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
           onClick={handleSetTokenBtnClick}
         >
-
+Add Access Token
         </span>
 
         
-        <span className="h-12 px-3 w-full flex flex-row justify-start items-center">
+        <span className="h-12 text-base px-3 w-full flex flex-row justify-start items-center">
           <a
             className="github-button -mt-1"
             href="https://github.com/star-history/star-history"

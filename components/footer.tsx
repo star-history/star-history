@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { FaDiscord, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { FaDiscord, FaTwitter, FaEnvelope, FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
-import { FaSquareXTwitter } from "react-icons/fa6";
 import sqlone from "./footer.webp"
 import dbcost from "./dbcost.webp"
 import mysql from "./mysql-vs-pg.webp"
+
 const Footer = () => {
   return (
     <div className="relative w-full shrink-0 h-auto mt-6 flex flex-col justify-end items-center">
@@ -19,7 +19,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-              <FaSquareXTwitter />
+              <FaTwitter />
           </a>
           <a
             className="h-full flex flex-row justify-center items-center ml-3 text-lg hover:opacity-80"

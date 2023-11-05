@@ -1,6 +1,5 @@
 import type { NextPageWithLayout } from './_app'
 import Layout from '../components/layout'
-import Sidebar from '../components/sidebar'
 
 const About: NextPageWithLayout = () => {
   return (
@@ -38,7 +37,7 @@ export default About
 About.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout>
-      <Sidebar />
+  
       {page}
     </Layout>
   )
