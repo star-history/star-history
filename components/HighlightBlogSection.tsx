@@ -190,6 +190,8 @@ const MyComponent: React.FC = () => {
   };
 
   return (
+    <div className="w-full hidden lg:block">
+
     <div className="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
       {blogSectionList.map((section) => (
         <><div className="w-full flex flex-row justify-between items-center my-2" key={section.title}>
@@ -208,6 +210,7 @@ const MyComponent: React.FC = () => {
                   ))}
               </ul></>
       ))}
+    </div>
     </div>
   );
 };
