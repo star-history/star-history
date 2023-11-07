@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import Footer from '../components/footer';
-import Header from '../components/header';
-import BytebaseBanner from '../components/SponsorView';
-import SponsorBanner from '../components/SponsorStaticBanner';
-import HighlightBlogSection from '../components/HighlightBlogSection';
-import { range, getTimeStampByDate, getDateString, calcReadingTime } from '../common/utils';
+import Footer from '../../components/footer';
+import Header from '../../components/header';
+import BytebaseBanner from '../../components/SponsorView';
+import SponsorBanner from '../../components/SponsorStaticBanner';
+import HighlightBlogSection from '../../components/HighlightBlogSection';
+import { range, getTimeStampByDate, getDateString, calcReadingTime } from '../../common/utils';
 import Link from 'next/link';
+import { BiLoaderAlt } from 'react-icons/Bi';
+import data from './data.json';
+
 
 interface Blog {
   slug: string;
@@ -24,17 +27,20 @@ interface State {
   featuredBlogs: Blog[];
 }
 
-const IndexPage: React.FC = () => {
+const BlogPage: React.FC = () => {
   const [state, setState] = useState<State>({
     isLoading: true,
     blogs: [],
     featuredBlogs: [],
   });
 
-  useEffect(() => {
+
+  // useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/blog/data.json');
+      const res = await fetch('/data.json');
       const rawBlogList = await res.json();
+      console.log(rawBlogList)
+
 
       const blogList: Blog[] = [];
       for (const raw of rawBlogList) {
@@ -61,6 +67,8 @@ const IndexPage: React.FC = () => {
   }, []);
 
   return (
+
+ 
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
@@ -86,9 +94,19 @@ const IndexPage: React.FC = () => {
                 }}
               ></iframe>
             </div>
+
+            <div>
+    {data.map((blog) => (
+      <div key={blog.slug}>
+        <h2>{blog.title}</h2>
+        <p>{blog.excerpt}</p>
+      </div>
+    ))}
+  </div>
+  
             {state.isLoading ? (
               <div className="grow w-full flex flex-col justify-center items-center">
-                <i className="fas fa-spinner animate-spin text-4xl z-10"></i>
+                <BiLoaderAlt className="animate-spin text-4xl z-10" />
               </div>
             ) : state.featuredBlogs.length + state.blogs.length === 0 ? (
               <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -184,4 +202,4 @@ const IndexPage: React.FC = () => {
   );
 };
 
-export default IndexPage;
+export default BlogPage;
