@@ -12,7 +12,7 @@ import {
 } from "../../common/utils";
 import Link from "next/link";
 import { BiLoaderAlt } from "react-icons/Bi";
-import data from "./data.json";
+import data from "../../helpers/data.json";
 
 interface Blog {
   slug: string;
@@ -38,35 +38,36 @@ const BlogPage = () => {
     featuredBlogs: [],
   });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch("/data.json");
-  //     const rawBlogList = await res.json();
-  //     console.log(rawBlogList);
+   useEffect(() => {
+    
+     const fetchData = async () => {
+      const res = await fetch("/data.json");
+      const rawBlogList = await res.json();
+       console.log(rawBlogList);
 
-  //     const blogList: Blog[] = [];
-  //     for (const raw of rawBlogList) {
-  //       const contentRes = await fetch(`/blog/${raw.slug}.md`);
-  //       const content = await contentRes.text();
+    const blogList: Blog[] = [];
+     for (const raw of rawBlogList) {
+       const contentRes = await fetch(`/blog/${raw.slug}.md`);
+        const content = await contentRes.text();
 
-  //       blogList.push({
-  //         ...raw,
-  //         readingTime: calcReadingTime(content),
-  //       });
-  //     }
+       blogList.push({
+          ...raw,
+        readingTime: calcReadingTime(content),
+       });
+      }
 
-  //     const featuredBlogs = blogList.filter(blog => blog.featured);
-  //     const blogs = blogList.filter(blog => !blog.featured);
+     const featuredBlogs = blogList.filter(blog => blog.featured);
+     const blogs = blogList.filter(blog => !blog.featured);
 
-  //     setState({
-  //       isLoading: false,
-  //       blogs,
-  //       featuredBlogs,
-  //     });
-  //   };
+     setState({
+        isLoading: false,
+        blogs,
+        featuredBlogs,
+     });
+     };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+ }, []);
 
   return (
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
@@ -109,7 +110,6 @@ const BlogPage = () => {
 
             {state.isLoading ? (
               <div className="grow w-full flex flex-col justify-center items-center">
-                <BiLoaderAlt className="animate-spin text-4xl z-10" />
               </div>
             ) : state.featuredBlogs.length + state.blogs.length === 0 ? (
               <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -117,13 +117,18 @@ const BlogPage = () => {
                   Oops! No article found.
                 </p>
               </div>
+
+            
             ) : (
               <div className="w-full flex flex-col justify-start items-center">
                 {/* Featured blogs */}
+                )
                 <div className="w-full mt-8 flex flex-col justify-start items-start">
+                <div>
+
+                  
                   {data.map(blog => (
-                    <div
-                      key={blog.slug}
+                    <div key={blog.slug}
                       className="w-full h-auto flex flex-col border rounded-md mb-8"
                     >
                       <Link href={`/blog/${blog.slug}`}>
@@ -205,12 +210,13 @@ const BlogPage = () => {
                               )}
                             </time>
                             <span aria-hidden="true"> &middot; </span>
-                            <span>{blog.readingTime}</span>
+                            {/* <span>{blog.readingTime}</span> */}
                           </p>
                         </div>
                       </div>
                     </div>
                   ))}
+                </div>
                 </div>
               </div>
             )}
