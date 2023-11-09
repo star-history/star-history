@@ -10,6 +10,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "marked": "^9.1.5",
     "next": "latest",
