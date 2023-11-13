@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #12 Wasp: the fastest way to develop full-stack web apps with React & Node.js",
+    "slug": "wasp",
+    "author": "Matija Sosic",
+    "featured": true,
+    "featureImage": "/blog/assets/wasp/banner.webp",
+    "publishedDate": "2023-11-13:00:00.000Z",
+    "excerpt": "Wasp is a fully open-source, full-stack web framework for React, Node.js, and Prisma"
+ },
+  {
     "title": "Starlet #11 libSQL: SQLite for modern applications",
     "slug": "libsql",
     "author": "Glauber Costa",
