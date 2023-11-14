@@ -42,9 +42,23 @@ The best part is that you still write most of your code in the stack you already
 
 ## Getting started
 
-1. Install Wasp: **`curl** -sSL https://get.wasp-lang.dev/installer.sh | **sh**`
-2. Create a new project with a SaaS template: `wasp new <my-new-project> -t saas`
-3. Run it!: `wasp start`
+1. Install Wasp:
+
+    ```bash
+    curl -sSL https://get.wasp-lang.dev/installer.sh | sh
+    ```
+
+2. Create a new project with a SaaS template: 
+
+   ```bash
+   wasp new <my-new-project> -t saas
+   ```
+
+3. Run it!
+
+   ```bash
+   wasp start
+   ```
 
 For more details, check out the docs: [https://wasp-lang.dev/docs/quick-start](https://wasp-lang.dev/docs/quick-start)
 
