@@ -38,7 +38,7 @@ const sponsors: Sponsor[] = [
     landingImage: utils.absolutifyLink("/sponsors/dify/landing.webp"),
     link: "https://dify.ai/?utm_source=star-history",
     slogan:
-      "Create an AI app in minutes and integrate LLM into your app for continuous improvement",
+      "The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",
   },
   // {
   //   name: "Selefra",
