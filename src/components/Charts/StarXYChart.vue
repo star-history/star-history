@@ -60,6 +60,7 @@ const drawStarChart = (data: XYChartData) => {
           datasets: data.datasets,
         },
         showDots: true,
+        transparent: false
       },
       {
         xTickLabelType: props.chartMode === "Date" ? "Date" : "Number",

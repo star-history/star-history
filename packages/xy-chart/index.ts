@@ -68,6 +68,7 @@ export interface XYChartConfig {
   yLabel: string;
   data: XYChartData;
   showDots: boolean;
+  transparent: boolean;
   theme?: "light" | "dark";
 }
 
@@ -89,7 +90,7 @@ export interface XYChartOptions {
   chartWidth?: number;
 }
 
-const getDefaultOptions = (): XYChartOptions => {
+const getDefaultOptions = (transparent: boolean): XYChartOptions => {
   return {
     envType: "node",
     xTickLabelType: "Date",
@@ -100,27 +101,27 @@ const getDefaultOptions = (): XYChartOptions => {
     dotSize: 0.5,
     dataColors: colors,
     fontFamily: "xkcd",
-    backgroundColor: "white",
+    backgroundColor: transparent ? "transparent" : "white",
     strokeColor: "black",
   };
 };
 
-const getDarkThemeDefaultOptions = (): XYChartOptions => {
+const getDarkThemeDefaultOptions = (transparent: boolean): XYChartOptions => {
   return {
-    ...getDefaultOptions(),
+    ...getDefaultOptions(transparent),
     dataColors: darkColors,
-    backgroundColor: "#0d1117",
+    backgroundColor: transparent ? "transparent" : "#0d1117",
     strokeColor: "white",
   };
 };
 
 const XYChart = (
   svg: SVGSVGElement,
-  { title, xLabel, yLabel, data: { datasets }, showDots, theme }: XYChartConfig,
+  { title, xLabel, yLabel, data: { datasets }, showDots, theme, transparent }: XYChartConfig,
   initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
-    ...(theme === "dark" ? getDarkThemeDefaultOptions() : getDefaultOptions()),
+    ...(theme === "dark" ? getDarkThemeDefaultOptions(transparent) : getDefaultOptions(transparent)),
     ...initialOptions,
   };
 
