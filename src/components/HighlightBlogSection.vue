@@ -78,6 +78,10 @@ const blogSectionList = [
   {
     title: "Monthly Pick",
     linkList: [
+    {
+        title: "2023 Oct (AI for Postgres)",
+        path: "https://star-history.com/blog/ai-for-postgres",
+      },
       {
         title: "2023 Sept (Coding AI)",
         path: "https://star-history.com/blog/coding-ai",

@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Oct 2023 | Open-source AI Extensions for Postgres",
+    "slug": "ai-for-postgres",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/ai-for-postgres/banner.webp",
+    "publishedDate": "2023-11-24T09:50:06.000Z",
+    "excerpt": "Postgres extensions can add extra functionality to your database, and we're sharing five Postgres extensions that just might boost your AI experience."
+  }, 
+  {
     "title": "Starlet #12 Wasp: the fastest way to develop full-stack web apps with React & Node.js",
     "slug": "wasp",
     "author": "Matija Sosic",
