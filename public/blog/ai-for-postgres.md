@@ -2,7 +2,7 @@
 
 Postgres was named the most popular database by the [2023 Stack Overflow Developer Survey](https://survey.stackoverflow.co/2023/#technology), taking over the crown from MySQL. Why, you ask? We believe that a major factor comes down to Postgres [extensions](https://www.postgresql.org/docs/current/sql-createextension.html). Thanks to the extensible architecture and the fact that it's still a community-owned project, the Postgres ecosystem has been nothing but thriving lately.
 
-Postgres extensions add extra functionality to your database just like built-in features. Several extensions for AI use cases have appeared over the years. A handful of them came out this year, but surprisingly, there are a few first appeared a few years back and remain to be the frontrunners of the pcak.
+Postgres extensions add extra functionality to your database just like built-in features. Several extensions for AI use cases have appeared over the years. A handful of them came out this year, but surprisingly, there are a few first appeared a few years back and remain to be the frontrunners of the pack.
 
 In this post, we'll share five Postgres extensions that just might boost your AI experience.
 
