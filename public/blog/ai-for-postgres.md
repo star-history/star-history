@@ -61,7 +61,7 @@ It uses Hierarchical Navigable Small Worlds (HNSW) index to for high-dimensional
 
 ![pg-embedding-faster](/blog/assets/ai-for-postgres/pg-embedding-faster.webp)
 
-But a few months later in September, they added [a note](https://github.com/neondatabase/pg_embedding#pg_embedding) mentioning that they are no longer committing to pg_embedding. looks like there really is no Buy or Build dilemma: if there's a decent service out there, it's the obvious choice.
+But a few months later in September, they added [a note](https://github.com/neondatabase/pg_embedding#pg_embedding) mentioning that they are no longer committing to pg_embedding. Looks like there really is no Buy or Build dilemma: if there's a decent service out there, it's the obvious choice.
 
 ## pg_gpt
 
