@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #13 Earthly: Fast, consistent builds with an instantly familiar syntax - like Dockerfile and Makefile had a baby",
+    "slug": "earthly",
+    "author": "Gavin Johnson",
+    "featured": true,
+    "featureImage": "/blog/assets/earthly/banner.webp",
+    "publishedDate": "2023-12-01:00:00.000Z",
+    "excerpt": "Earthly is like a combination of Docker and Make, running build scripts in Docker containers for consistent results in any environment."
+ },
+  {
     "title": "Star History Monthly Oct 2023 | Open-source AI Extensions for Postgres",
     "slug": "ai-for-postgres",
     "author": "Mila",
