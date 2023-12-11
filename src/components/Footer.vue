@@ -57,7 +57,7 @@
           class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
         >
           <img class="h-6 mt-1 mr-2" src="/mysql-vs-pg.webp" />
-          <a href="https://www.mysql-vs-postgresql.com/" target="_blank"
+          <a href="https://www.mysql-vs-postgres.com/" target="_blank"
             >MySQL or PG</a
           >
         </div>
