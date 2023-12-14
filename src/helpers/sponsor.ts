@@ -16,14 +16,14 @@ interface Sponsor {
 
 // The list of current sponsors.
 const sponsors: Sponsor[] = [
-  {
-    name: "Bytebase",
-    logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
-    link: "https://bytebase.com?utm_source=star-history",
-    slogan:
-      "Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis",
-  },
+  // {
+  //   name: "Bytebase",
+  //   logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
+  //   link: "https://bytebase.com?utm_source=star-history",
+  //   slogan:
+  //     "Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis",
+  // },
   // {
   //   name: "Ockam",
   //   logo: utils.absolutifyLink("/sponsors/ockam/logo.webp"),

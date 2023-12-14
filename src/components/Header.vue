@@ -27,12 +27,13 @@
         </span>
       </div>
       <div class="hidden h-full md:flex flex-row justify-start items-center">
-        <router-link
+        <a
+          href="https://www.bytebase.com?source=star-history"
+          target="_blank"
           class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
-          to="/blog/how-to-use-github-star-history"
         >
-          📕 How to use this site
-        </router-link>
+          <img class="h-6 mt-1 mr-2" src="/craft-by-bytebase.webp" />
+        </a>
       </div>
       <div class="h-full hidden md:flex flex-row justify-end items-center">
         <a
