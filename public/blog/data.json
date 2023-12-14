@@ -1,5 +1,15 @@
 [
   {
+    "title": "Starlet #14 Proton: A streaming SQL analytical engine which connects to historical data processing in one single binary
+    ",
+    "slug": "proton",
+    "author": "Jove Zhong",
+    "featured": true,
+    "featureImage": "/blog/assets/proton/banner.webp",
+    "publishedDate": "2023-12-14:00:00.000Z",
+    "excerpt": "Proton is a new open-source streaming SQL analytical engine that combines the power of OLAP processing with responsive real-time streaming analytics."
+ },
+  {
     "title": "Starlet #13 Earthly: Fast, consistent builds with an instantly familiar syntax - like Dockerfile and Makefile had a baby",
     "slug": "earthly",
     "author": "Gavin Johnson",
