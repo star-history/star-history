@@ -1,6 +1,6 @@
 [
   {
-    "title": "Starlet #14 Proton: The SQLite for streaming analytical engine",
+    "title": "Starlet #14 Proton: A streaming SQL analytical engine, powered by ClickHouse",
     "slug": "proton",
     "author": "Jove Zhong",
     "featured": true,
