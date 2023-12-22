@@ -26,9 +26,9 @@ EmotiVoice currently supports English and Chinese, with multiple voice and promp
 - 🛠️ Tools for training new models and fine-tuning existing models in any language.
 - 📚 Utilities for dataset analysis and curation.
 
-Coqui TTS is essentially a continuation of Mozilla's TTS: some time ago Mozilla stopped working on their TTS project, and [Coqui.ai](http://Coqui.ai) was founded the founders of Mozilla’s machine learning group.
+Coqui TTS is essentially a continuation of Mozilla's TTS: some time ago Mozilla stopped working on their TTS project, and [Coqui.ai](http://Coqui.ai) was founded by the founders of Mozilla’s machine learning group.
 
-Note that it is licensed under MPL-2.0, which allows commercial use as well as modification of the code,, but the copyright of the modified code belongs to the initiator of the software.
+Note that it is licensed under MPL-2.0, which allows commercial use as well as modification of the code, but the copyright of the modified code belongs to the initiator of the software.
 
 ## TorToiSe 🐢
 
@@ -49,7 +49,7 @@ Tortoise is an advanced TTS system known for its exceptional voice cloning capab
 
 [Real-Time Voice Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning) can generate arbitrary speech in real-time. It is an implementation of the paper "[Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis](https://arxiv.org/pdf/1806.04558.pdf)" (SV2TTS, a deep learning framework) with a vocoder that works in real-time.
 
-The project started way back in 2019, and the author (who currently works for a AI Voice Generator company), [wrote](https://github.com/CorentinJ/Real-Time-Voice-Cloning#heads-up) that "just like everything else in Deep Learning, the Real-Time Voice Cloning repo is quickly getting old. Many other open-source repositories or SaaS apps (often paying) will give you a better audio quality than this repository will." Even so, the repo has not lost its momentum, and has been steadily gaining stargazers over the years.
+The project started way back in 2019, and the author (who currently works for an AI Voice Generator company), [wrote](https://github.com/CorentinJ/Real-Time-Voice-Cloning#heads-up) that "just like everything else in Deep Learning, the Real-Time Voice Cloning repo is quickly getting old. Many other open-source repositories or SaaS apps (often paying) will give you a better audio quality than this repository will." Even so, the repo has not lost its momentum, and has been steadily gaining stargazers over the years.
 
 ## VALL-E-X
 
