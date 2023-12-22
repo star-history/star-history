@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Nov 2023 | Open-source Text To Speech Engines",
+    "slug": "tts",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/tts/banner.webp",
+    "publishedDate": "2023-12-22T09:50:06.000Z",
+    "excerpt": "Text To Speech, or TTS, is a part of human-computer dialogue that enables machines to speak, here are a few open-source TTS options to look at."
+  }, 
+  {
     "title": "Starlet #14 Proton: A streaming SQL analytical engine, powered by ClickHouse",
     "slug": "proton",
     "author": "Jove Zhong",
