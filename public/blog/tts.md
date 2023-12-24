@@ -34,7 +34,7 @@ Note that it is licensed under MPL-2.0, which allows commercial use as well as m
 
 ![tortoise](/blog/assets/tts/tortoise.webp)
 
-[Tortoise](https://github.com/neonbjb/tortoise-tts) is a TTS program released in April 2022 (and got big in 2023). It has:
+[TorToiSe](https://github.com/neonbjb/tortoise-tts) is a TTS program released in April 2022 (and got big in 2023). It has:
 
 1. Strong multi-voice capabilities.
 2. Highly realistic prosody and intonation.
