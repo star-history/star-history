@@ -12,7 +12,6 @@
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.1",
-    "@vueuse/head": "^1.0.25",
     "axios": "^1.0.0",
     "d3-axis": "^1.0.12",
     "d3-scale": "^3.2.0",
