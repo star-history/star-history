@@ -182,7 +182,7 @@ const blogSectionList = [
       },
       {
         title: "Issue #8 - Prompt flow",
-        path: "/blog/Prompt-flow",
+        path: "/blog/prompt-flow",
       },
       {
         title: "Issue #7 - Clipboard",
