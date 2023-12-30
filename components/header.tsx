@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
+import { IoIosMenu } from 'react-icons/io';
 
 
 interface State {
@@ -73,7 +74,10 @@ const Header: React.FC = () => {
           </div>
 
           
-          <div className="hidden h-full md:flex flex-row justify-start items-center">  <a href="/blog/how-to-use-github-star-history" className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800"> 📕 How to use this site </a></div>    
+          <div className="hidden h-full md:flex flex-row justify-start items-center">  <a href="/blog/how-to-use-github-star-history" className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800"> 
+          <img className="h-6 mt-1 mr-2" src="https://star-history.com/craft-by-bytebase.webp" />
+
+           </a></div>    
 
           <div className="h-full hidden md:flex flex-row justify-end items-center">
             <a
@@ -160,6 +164,8 @@ Add Access Token
         </span>
 
       </div>
+
+{state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} />}
   
     </>
   );

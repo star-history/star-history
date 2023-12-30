@@ -12,19 +12,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx'], // Add '.ts' and '.tsx' extensions.
-  },
-
-  
 }

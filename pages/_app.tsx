@@ -5,6 +5,7 @@ import '../global.css';
 import Home from '../pages/index';
 import NotFound from '../pages/404';
 import BlogPage from './blog'
+import '..//global.css';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -19,11 +20,11 @@ const routes = {
   '/blog': BlogPage,
 };
 
-const Router = () => {
+const Router = (pageProps: any) => {
   const router = useRouter();
   const { pathname } = router;
   const Component = routes[pathname as keyof typeof routes] || NotFound;
-  return <Component />;
+  return <Component {...pageProps} />;
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {

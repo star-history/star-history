@@ -1,27 +1,37 @@
-export const range = (from: number, to: number): number[] => {
+namespace utils {
+  export function range(from: number, to: number): number[] {
     const r: number[] = [];
     for (let i = from; i <= to; i++) {
       r.push(i);
     }
     return r;
-  };
-  
-  export const getTimeStampByDate = (t: Date | number | string): number => {
+  }
+
+  export function getTimeStampByDate(t: Date | number | string): number {
     const d = new Date(t);
+
     return d.getTime();
-  };
-  
-  export const getDateString = (
+  }
+
+  // utils.tsx
+
+export function computed<T>(func: () => T): T {
+  return func();
+}
+
+  export function getDateString(
     t: Date | number | string,
     format = "yyyy/MM/dd hh:mm:ss"
-  ): string => {
+  ): string {
     const d = new Date(getTimeStampByDate(t));
+
     const year = d.getFullYear();
     const month = d.getMonth() + 1;
     const date = d.getDate();
     const hours = d.getHours();
     const minutes = d.getMinutes();
     const seconds = d.getSeconds();
+
     const formatedString = format
       .replace("yyyy", String(year))
       .replace("MM", String(month))
@@ -29,10 +39,11 @@ export const range = (from: number, to: number): number[] => {
       .replace("hh", String(hours))
       .replace("mm", String(minutes))
       .replace("ss", String(seconds));
+
     return formatedString;
-  };
-  
-  export const copyTextToClipboard = async (text: string) => {
+  }
+
+  export async function copyTextToClipboard(text: string) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       try {
         await navigator.clipboard.writeText(text);
@@ -40,20 +51,22 @@ export const range = (from: number, to: number): number[] => {
         console.warn("Copy to clipboard failed.", error);
       }
     } else {
-      console.warn("Copy to clipboard failed, methods not supported.");
+      console.warn("Copy to clipboard failed, methods not supports.");
     }
-  };
-  
-  export const convertSVGToDataURL = (svgElement: SVGSVGElement): string => {
+  }
+
+  export function convertSVGToDataURL(svgElement: SVGSVGElement) {
     const xml = new XMLSerializer().serializeToString(svgElement);
     const encodedData = window.btoa(xml);
     return `data:image/svg+xml;base64,${encodedData}`;
-  };
-  
-  export const waitImageLoaded = (image: HTMLImageElement): Promise<void> => {
+  }
+
+  export function waitImageLoaded(image: HTMLImageElement): Promise<void> {
     image.loading = "eager";
+
     return new Promise((resolve, reject) => {
       image.onload = () => {
+        // NOTE: There is image loading problem in Safari, fix it with some trick
         setTimeout(() => {
           resolve();
         }, 200);
@@ -62,10 +75,11 @@ export const range = (from: number, to: number): number[] => {
         reject("Image load failed");
       };
     });
-  };
-  
-  export const calcBytes = (d: any): number => {
+  }
+
+  export function calcBytes(d: any): number {
     let bytes = 0;
+
     if (typeof d === "number") {
       bytes += 8;
     } else if (typeof d === "string") {
@@ -83,24 +97,27 @@ export const range = (from: number, to: number): number[] => {
         }
       }
     }
+
     return bytes;
-  };
-  
-  export const calcReadingTime = (content: string): string => {
+  }
+
+  export function calcReadingTime(content: string): string {
     const wordsPerMinute = 200;
     const wordAmount = content.split(" ").length;
     if (wordAmount <= 200) {
       return "less than 1 min read";
     }
+
     const count = Math.ceil(wordAmount / wordsPerMinute);
     return `${count} min read`;
-  };
-  
-  export const getBase64Image = (url: string): Promise<string> => {
+  }
+
+  export function getBase64Image(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src = url;
       img.setAttribute("crossOrigin", "anonymous");
+
       img.onload = () => {
         const canvas = document.createElement("canvas");
         canvas.width = img.width;
@@ -114,19 +131,18 @@ export const range = (from: number, to: number): number[] => {
         const dataURL = canvas.toDataURL("image/png");
         resolve(dataURL);
       };
-      img.onerror = () => {
+
+      img.onerror = function () {
         reject("The image could not be loaded.");
       };
     });
-  };
-  
-  export const absolutifyLink = (rel: string): string => {
-    if (typeof document === "undefined") {
-      // Handle server-side rendering
-      return rel;
-    }
+  }
+
+  export function absolutifyLink(rel: string): string {
     const anchor = document.createElement("a");
     anchor.setAttribute("href", rel);
     return anchor.href;
-  };
+  }
+}
 
+export default utils;
