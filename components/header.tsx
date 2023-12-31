@@ -164,7 +164,6 @@ Add Access Token
         </span>
 
       </div>
-
 {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} />}
   
     </>

@@ -139,9 +139,12 @@ export function computed<T>(func: () => T): T {
   }
 
   export function absolutifyLink(rel: string): string {
-    const anchor = document.createElement("a");
-    anchor.setAttribute("href", rel);
-    return anchor.href;
+    if (typeof window !== 'undefined') {
+      const anchor = document.createElement("a");
+      anchor.setAttribute("href", rel);
+      return anchor.href;
+    }
+    return rel;
   }
 }
 

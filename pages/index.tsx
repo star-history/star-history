@@ -50,3 +50,4 @@ Index.getLayout = function getLayout(page: React.ReactElement, handleClickLink: 
     </AppStateProvider>
   )
 }
+

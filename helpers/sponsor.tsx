@@ -1,37 +1,60 @@
-
-import { sampleSize } from 'lodash';
+import { sampleSize } from "lodash";
+import utils from "../common/utils";
 
 interface Sponsor {
+  // The name of the sponsor
   name: string;
+  // The logo of the sponsor and will be displayed in the right side section.
   logo: string;
+  // The landing image of the sponsor and will be displayed in the bottom side section.
   landingImage: string;
+  // The link of the sponsor.
   link: string;
+  // The slogan of the sponsor.
   slogan: string;
 }
 
+// The list of current sponsors.
 const sponsors: Sponsor[] = [
+  // {
+  //   name: "Bytebase",
+  //   logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
+  //   link: "https://bytebase.com?utm_source=star-history",
+  //   slogan:
+  //     "Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis",
+  // },
+  // {
+  //   name: "Ockam",
+  //   logo: utils.absolutifyLink("/sponsors/ockam/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/ockam/landing.webp"),
+  //   link: "https://github.com/build-trust/ockam?utm_source=starhistory",
+  //   slogan:
+  //     "End-to-end encryption and authentication for data-in-motion between distributed applications",
+  // },
   {
-    name: 'Bytebase',
-    logo: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699219317/mw9knwcfdwkkif7ergtf.webp',
-    landingImage: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699219874/zqbpk6e4s6fnhiaz9kl6.webp',
-    link: 'https://bytebase.com?utm_source=star-history',
+    name: "Dify",
+    logo: utils.absolutifyLink("/sponsors/dify/logo.webp"),
+    landingImage: utils.absolutifyLink("/sponsors/dify/landing.webp"),
+    link: "https://dify.ai/?utm_source=star-history",
     slogan:
-      'Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis',
+      "The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",
   },
+  // {
+  //   name: "Selefra",
+  //   logo: utils.absolutifyLink("/sponsors/selefra/logo.webp"),
+  //   landingImage: utils.absolutifyLink("/sponsors/selefra/landing.webp"),
+  //   link: "https://github.com/selefra/selefra?utm_source=starhistory",
+  //   slogan:
+  //     "Policy-as-Code analysis for Multi-Cloud and SaaS environments, AWS/GCP/Azure, k8s, GitHub, etc.",
+  // },
   {
-    name: 'Dify',
-    logo: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699220066/latfhualqt6b35ascm8z.webp',
-    landingImage: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699220444/hz0bnvp2vkuxxtm97q8c.webp',
-    link: 'https://dify.ai/?utm_source=star-history',
-    slogan: 'Create an AI app in minutes and integrate LLM into your app for continuous improvement',
-  },
-  {
-    name: 'GPTBots',
-    logo: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699220862/yzt4uyxsz0hodqnnfx7x.webp',
-    landingImage: 'https://res.cloudinary.com/dwdb9tvii/image/upload/v1699221231/tuqk4h7pcz4lt0yud5e7.webp',
-    link: 'https://www.gptbots.ai?refer=star-history',
+    name: "GPTBots",
+    logo: utils.absolutifyLink("/sponsors/gptbots/logo.webp"),
+    landingImage: utils.absolutifyLink("/sponsors/gptbots/landing.webp"),
+    link: "https://www.gptbots.ai?refer=star-history",
     slogan:
-      'Seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.',
+      "Seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.",
   },
 ];
 

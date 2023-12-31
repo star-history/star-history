@@ -3,25 +3,26 @@ import axios from 'axios';
 import { FaGithub } from "react-icons/fa";
 
 
-const GitHubStarButton: React.FC = () => {
-  const [starCount, setStarCount] = useState<number>(0);
-
-  const getRepoStarCount = async () => {
-    const { data } = await axios.get(
-      `https://api.github.com/repos/star-history/star-history`,
-      {
-        headers: {
-          Accept: "application/vnd.github.v3.star+json",
-          Authorization: "",
-        },
-      }
-    );
-    return data.stargazers_count as number;
-  };
+const GitHubStarButton = () => {
+  const [starCount, setStarCount] = useState(0);
 
   useEffect(() => {
+    const getRepoStarCount = async () => {
+      const { data } = await axios.get(
+        `https://api.github.com/repos/star-history/star-history`,
+        {
+          headers: {
+            Accept: "application/vnd.github.v3.star+json",
+            Authorization: "",
+          },
+        }
+      );
+      return data.stargazers_count as number;
+    };
+
     getRepoStarCount().then(count => setStarCount(count));
   }, []);
+
   return (
     <a
       className="border rounded flex flex-row justify-start items-center text-black text-xs bg-white shadow-inner hover:opacity-80"
@@ -32,9 +33,7 @@ const GitHubStarButton: React.FC = () => {
       <span
         className="pr-1 pl-2 h-full flex flex-row justify-center items-center bg-gray-100 border-r font-medium"
       >
-
-<FaGithub className="fab fa-github text-base mr-1 -mt-px" />
-
+        <FaGithub className="fab fa-github text-base mr-1 -mt-px" />
         <span className="mt-px">Star</span>
       </span>
       <div className="h-full block px-2 mt-px font-medium">

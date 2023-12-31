@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState } from 'react';
 import { randomSponsors } from "../helpers/sponsor";
 
 const SponsorStaticBanner = () => {
@@ -7,14 +6,14 @@ const SponsorStaticBanner = () => {
 
   const handleCloseButtonClick = () => {
     setHide(true);
+    // Add this line to hide overflow when the dialog pops
+    document.body.style.overflow = 'hidden';
   };
 
+  if (hide) return null;
+
   return (
-    <div
-      className={`fixed right-0 top-32 ${
-        hide ? "hidden" : ""
-      } fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50`}
-    >
+    <div className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50 ${hide ? 'hidden' : ''}`}>
       <div className="w-full flex flex-row justify-between items-center mb-2">
         <span className="text-xs text-gray-400">Sponsors (random order)</span>
         <i
@@ -24,10 +23,10 @@ const SponsorStaticBanner = () => {
       </div>
       {randomSponsors.map((sponsor) => (
         <a
+          key={sponsor.name}
           href={sponsor.link}
           className="bg-gray-50 p-2 rounded w-full flex flex-col justify-center items-center mb-2 text-zinc-600 hover:opacity-80 hover:text-blue-600 hover:underline"
           target="_blank"
-          key={sponsor.name}
         >
           <img
             className="w-auto max-w-full"

@@ -10,6 +10,7 @@ interface AppState {
 }
 
 interface AppStateContextProps {
+  setToken(token: string): unknown;
   delRepo(repo: any): void;
   isFetching: any;
   repos: any;
@@ -95,6 +96,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     token: state.token,
     state,
     actions,
+    setToken: actions.setToken,
     delRepo: function (repo: any): void {
       throw new Error('Function not implemented.');
     }
