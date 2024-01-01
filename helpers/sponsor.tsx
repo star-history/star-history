@@ -34,8 +34,8 @@ const sponsors: Sponsor[] = [
   // },
   {
     name: "Dify",
-    logo: utils.absolutifyLink("/sponsors/dify/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/dify/landing.webp"),
+    logo: utils.absolutifyLink("https://star-history.com/sponsors/dify/logo.webp"),
+    landingImage: utils.absolutifyLink("https://star-history.com/sponsors/dify/landing.webp"),
     link: "https://dify.ai/?utm_source=star-history",
     slogan:
       "The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",

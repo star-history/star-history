@@ -10,22 +10,18 @@ interface EmbedCodeProps {
   show: boolean;
   onClose: () => void;
   embedCode: string;
-}
-
-const StepByStepGuide: React.FC<EmbedCodeProps> = ({ embedCode }): ReactElement => {
-  const store = useAppStore();
-
-  const singleRepo = useMemo(() => (store.repos.length === 1 ? store.repos[0] : null), [store.repos]);
-
+ }
+ 
+ const EmbedChartGuideDialog: React.FC<EmbedCodeProps> = ({ show, onClose, embedCode }) => {
   const handleCopyBtnClick = () => {
     utils.copyTextToClipboard(embedCode);
     toast.succeed('Embed markdown code copied');
   };
-
+ 
   const handleCloseBtnClick = () => {
-    // Handle close logic here
+    onClose();
   };
-
+ 
   return (
     <Dialog>
       <div className="w-160 max-w-full h-auto flex flex-col justify-start items-start bg-white rounded-md">
@@ -46,27 +42,17 @@ const StepByStepGuide: React.FC<EmbedCodeProps> = ({ embedCode }): ReactElement 
               <div className="relative w-full h-auto border mt-2 px-4 py-3 rounded-md shadow-inner">
                 <pre className="font-mono break-all text-gray-600 text-sm whitespace-pre-wrap">{embedCode}</pre>
                 <button
-                  className="absolute top-2 right-2 px-4 leading-8 text-sm rounded-md bg-green-600 shadow-inner text-white hover:bg-green-700"
-                  onClick={handleCopyBtnClick}
+                 className="absolute top-2 right-2 px-4 leading-8 text-sm rounded-md bg-green-600 shadow-inner text-white hover:bg-green-700"
+                 onClick={handleCopyBtnClick}
                 >
-                  Copy
+                 Copy
                 </button>
               </div>
             </li>
             <li className="mb-2">
               <p>
                 Paste it into your repo
-                {singleRepo ? (
-                  <a
-                    className="font-mono underline text-blue-600 hover:opacity-80"
-                    href={`https://github.com/${singleRepo}/blob/master/README.md`}
-                    target="_blank"
-                  >
-                    README
-                  </a>
-                ) : (
-                  <span className="font-mono">README</span>
-                )}
+                {/* Provide a direct link to the README if there is only one repository selected */}
               </p>
             </li>
           </ol>
@@ -74,6 +60,6 @@ const StepByStepGuide: React.FC<EmbedCodeProps> = ({ embedCode }): ReactElement 
       </div>
     </Dialog>
   );
-};
-
-export default StepByStepGuide;
+ };
+ 
+ export default EmbedChartGuideDialog;

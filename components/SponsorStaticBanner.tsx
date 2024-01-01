@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { randomSponsors } from '../helpers/sponsor';
+import { FaTimes } from "react-icons/fa";
+
 
 export default function SponsorStaticBanner() {
   const [hide, setHide] = useState(false);
@@ -14,10 +16,10 @@ export default function SponsorStaticBanner() {
     >
       <div className="w-full flex flex-row justify-between items-center mb-2">
         <span className="text-xs text-gray-400">Sponsors (random order)</span>
-        <i
-          className="fas fa-times text-xs text-gray-400 cursor-pointer hover:text-gray-500"
-          onClick={handleCloseButtonClick}
-        ></i>
+     
+        <FaTimes className="fas fa-times text-xs text-gray-400 cursor-pointer hover:text-gray-500"
+          onClick={handleCloseButtonClick}/>
+
       </div>
       {randomSponsors.map((sponsor) => (
         <a
