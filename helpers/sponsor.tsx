@@ -50,8 +50,8 @@ const sponsors: Sponsor[] = [
   // },
   {
     name: "GPTBots",
-    logo: utils.absolutifyLink("/sponsors/gptbots/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/gptbots/landing.webp"),
+    logo: utils.absolutifyLink("https://star-history.com/sponsors/gptbots/logo.webp"),
+    landingImage: utils.absolutifyLink("https://star-history.com/sponsors/gptbots/logo.webp"),
     link: "https://www.gptbots.ai?refer=star-history",
     slogan:
       "Seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.",

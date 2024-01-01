@@ -6,7 +6,7 @@ interface ModalProps {
 
 }
 
-const Modal: React.FC<ModalProps> = ({ classname, children }) => {
+const Dialog: React.FC<ModalProps> = ({ classname, children }) => {
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
 
@@ -22,4 +22,4 @@ const Modal: React.FC<ModalProps> = ({ classname, children }) => {
   );
 };
 
-export default Modal;
+export default Dialog;

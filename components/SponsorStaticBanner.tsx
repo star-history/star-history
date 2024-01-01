@@ -1,19 +1,17 @@
 import { useState } from 'react';
-import { randomSponsors } from "../helpers/sponsor";
+import { randomSponsors } from '../helpers/sponsor';
 
-const SponsorStaticBanner = () => {
+export default function SponsorStaticBanner() {
   const [hide, setHide] = useState(false);
 
   const handleCloseButtonClick = () => {
     setHide(true);
-    // Add this line to hide overflow when the dialog pops
-    document.body.style.overflow = 'hidden';
   };
 
-  if (hide) return null;
-
   return (
-    <div className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50 ${hide ? 'hidden' : ''}`}>
+    <div
+      className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50 ${hide ? '!hidden' : ''}`}
+    >
       <div className="w-full flex flex-row justify-between items-center mb-2">
         <span className="text-xs text-gray-400">Sponsors (random order)</span>
         <i
@@ -45,6 +43,4 @@ const SponsorStaticBanner = () => {
       </a>
     </div>
   );
-};
-
-export default SponsorStaticBanner;
+}

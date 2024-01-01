@@ -45,9 +45,8 @@ Index.getLayout = function getLayout(page: React.ReactElement, handleClickLink: 
           <div className="hidden lg:block"></div>
         </div>
         <Footer />
-        <SponsorBanner />
+        <SponsorBanner showSetTokenDialog={true} />
       </div>
     </AppStateProvider>
   )
 }
-

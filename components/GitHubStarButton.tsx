@@ -25,15 +25,15 @@ const GitHubStarButton = () => {
 
   return (
     <a
-      className="border rounded flex flex-row justify-start items-center text-black text-xs bg-white shadow-inner hover:opacity-80"
+      className="border rounded flex flex-row justify-start items-center text-black bg-white text-sm	 shadow-inner hover:opacity-80"
       href="https://github.com/star-history/star-history"
       target="_blank"
       aria-label="Star star-history/star-history on GitHub"
     >
       <span
-        className="pr-1 pl-2 h-full flex flex-row justify-center items-center bg-gray-100 border-r font-medium"
+        className="pr-1 pl-2 h-full flex flex-row justify-center items-center bg-gray-100 border-r"
       >
-        <FaGithub className="fab fa-github text-base mr-1 -mt-px" />
+        <FaGithub className="fab fa-github mr-1 -mt-px" />
         <span className="mt-px">Star</span>
       </span>
       <div className="h-full block px-2 mt-px font-medium">
