@@ -17,6 +17,7 @@
     "d3-shape": "^3.2.0",
     "dayjs": "^1.11.10",
     "gray-matter": "^4.0.3",
+    "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
     "marked": "^9.1.5",
     "next": "^14.0.4",

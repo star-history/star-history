@@ -6,7 +6,8 @@ import { FaTimesCircle } from 'react-icons/fa';
 
 interface TokenSettingDialogProps {
   onClose: () => void;
-  tokenCache: boolean; // or whatever the type of tokenCache is supposed to be
+  tokenCache?: string;
+ show: boolean; //
 }
 
 export default function TokenSettingDialog({ onClose, tokenCache }: TokenSettingDialogProps) {
