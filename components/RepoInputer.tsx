@@ -212,7 +212,7 @@ export default function RepoInputer() {
           onKeyDown={handleInputerKeyDown}
         />
         <button
-          className={`h-9 pl-4 pr-4 whitespace-nowrap w-auto text-black border-l border-black hover:text-light ${
+          className={`h-9 pl-4 pr-4 whitespace-nowrap w-auto text-black border-l border-black hover:bg-zinc-700 hover:text-white ${
             isFetching ? 'cursor-wait' : ''
           }`}
           onClick={handleAddRepoBtnClick}
