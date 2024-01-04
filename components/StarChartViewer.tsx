@@ -6,9 +6,14 @@ import EmbedMarkdownSection from './EmbedMarkdownSection';
 import EmbedChartGuideDialog from './EmbedChartGuideDialog';
 import html2canvas from 'html2canvas';
 import { Storage } from '../helpers/storage';
+import { useAppStore } from 'store';
+import { FaSpinner } from "react-icons/fa";
+
 
 function StarChartViewer() {
-        const [isFetching, setIsFetching] = useState(false);
+  const store = useAppStore()
+
+
  const [state, setState] = useState({
    chartMode: 'Date',
    repoCacheMap: new Map(),
@@ -21,34 +26,29 @@ function StarChartViewer() {
 
  const containerElRef = useRef(null);
 
- const storageInstance = new Storage();
 
   useEffect(() => {
-    const repos = storageInstance.getRepos();
+    const repos = store.repos
     if (Array.isArray(repos) && repos.length > 0) {
-      fetchReposData(repos);
-    }
-  }, []);
-
-
-
-
+      if (Array.isArray(repos) && repos.length > 0) {
+        repos.forEach(repoObj => fetchReposData(repoObj));
+      }    }
+  }, [store.repos]);
 
  
-const fetchReposData = async (repos: string[]) => {
+  const fetchReposData = async (repo: string) => {
     try {
-      setIsFetching(true);
-      const response = await fetch(
-        "https://api.github.com/users/{username}/repos"
-      );
-      const data = await response.json();
-      setState((prevState) => ({ ...prevState, chartData: data }));
-      setIsFetching(false);
+     store.actions.setIsFetching(true);
+     const response = await fetch(`https://api.github.com/repos/${repo}`);
+     const data = await response.json();
+     console.log(data)
+     setState((prevState) => ({ ...prevState, chartData: data }));
+     store.actions.setIsFetching(false);
     } catch (error) {
-      console.error("Error:", error);
-      setIsFetching(false);
+     console.error("Error:", error);
+     store.actions.setIsFetching(false);
     }
-  };
+   };
 
 
    const handleCopyLinkBtnClick = async () => {
@@ -138,10 +138,10 @@ const handleSetTokenDialogClose = () => {
       ref={containerElRef}
       className="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0"
     >
-      {isFetching && (
+      {store.isFetching && (
         <div className="absolute w-full h-full flex justify-center items-center z-10 top-0">
           <div className="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
-          <i className="fas fa-spinner animate-spin text-4xl z-10"></i>
+          <FaSpinner className="fas fa-spinner animate-spin text-4xl z-10"/>
         </div>
       )}
       {state.chartData && (
@@ -159,13 +159,13 @@ const handleSetTokenDialogClose = () => {
           </div>
         </div>
       )}
-      {state.chartData && (
-        <StarXYChart
-          classname="w-full h-auto mt-4"
-          data={{ datasets: state.chartData }}
-          chart-mode={chartMode}
-        />
-      )}
+ {state.chartData && state.chartData.length > 0 && (
+ <StarXYChart
+   classname="w-full h-auto mt-4"
+   data={{ datasets: state.chartData }}
+   chart-mode={chartMode}
+ />
+)}
       {/* ... rest of the JSX here */}
       {state.showSetTokenDialog && (
         <TokenSettingDialog

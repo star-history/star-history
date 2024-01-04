@@ -22,7 +22,7 @@ export default function RepoInputer() {
 
   const inputElRef = useRef<HTMLInputElement | null>(null);
 
-  const isFetching = store.state.isFetching;
+  console.log(store)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,10 +69,9 @@ export default function RepoInputer() {
   }, [store.state.repos, store.state.chartMode]);
 
   const handleAddRepoBtnClick = () => {
-    if (isFetching) {
+    if (store.isFetching) {
       return;
     }
-
     let rawRepos = state.repo;
     if (rawRepos === '' && state.repos.length === 0) {
       rawRepos = 'star-history/star-history';
@@ -213,7 +212,7 @@ export default function RepoInputer() {
         />
         <button
           className={`h-9 pl-4 pr-4 whitespace-nowrap w-auto text-black border-l border-black hover:bg-zinc-700 hover:text-white ${
-            isFetching ? 'cursor-wait' : ''
+            store.isFetching ? 'cursor-wait' : ''
           }`}
           onClick={handleAddRepoBtnClick}
         >

@@ -4,8 +4,8 @@ import Footer from '../components/footer'
 import HighlightBlogSection from '../components/HighlightBlogSection';
 import SponsorBanner from '../components/SponsorStaticBanner';
 import RepoInputer from "../components/RepoInputer";
-import React from 'react';
-import { AppStateProvider } from '../store'
+import React, { useContext } from 'react';
+import { AppStateProvider, useAppStore } from '../store'
 import type { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 import StarChartViewer from "../components/StarChartViewer";
@@ -40,12 +40,12 @@ Index.getLayout = function getLayout(page: React.ReactElement, handleClickLink: 
           </div>
           <div className="w-full flex flex-col justify-start items-center">
             <RepoInputer />
-            <StarChartViewer />
+        <StarChartViewer />
           </div>
           <div className="hidden lg:block"></div>
         </div>
         <Footer />
-        <SponsorBanner showSetTokenDialog={true} />
+        <SponsorBanner />
       </div>
     </AppStateProvider>
   )
