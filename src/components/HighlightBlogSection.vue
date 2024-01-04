@@ -157,6 +157,10 @@ const blogSectionList = [
         path: "/blog/list-your-open-source-project",
       },
       {
+        title: "Issue #15 - Infinity",
+        path: "/blog/infinity",
+      },
+      {
         title: "Issue #14 - Proton",
         path: "/blog/proton",
       },
