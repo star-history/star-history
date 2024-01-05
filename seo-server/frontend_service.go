@@ -112,7 +112,7 @@ func getBlogForntmatters() []*BlogFrontmatter {
 func (s *FrontendService) generateBlogMetadata(blog *BlogFrontmatter) string {
 	metadata := getDefaultMetadata()
 	if blog.Title != "" {
-		metadata.Title = template.HTMLEscapeString(fmt.Sprintf("%s - Star History", blog.Title))
+		metadata.Title = template.HTMLEscapeString(fmt.Sprintf("%s - GitHub Star History", blog.Title))
 	}
 	if blog.Excerpt != "" {
 		metadata.Description = template.HTMLEscapeString(blog.Excerpt)
