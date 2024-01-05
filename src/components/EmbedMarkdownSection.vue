@@ -77,7 +77,7 @@ const embedCode = computed(() => {
 });
 
 const embedDarkModeCode = computed(() => {
-  let repos = store.repos.join(",");
+  let repos = store.repos.join("%2C");
   let type = store.chartMode;
   return `## Star History
 
