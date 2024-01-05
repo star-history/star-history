@@ -10,6 +10,8 @@ import Link from "next/link";
 import Post from "./interfaces/post";
 import Image from 'next/image'
 
+
+
 type Props = {
   title: string
   coverImage: string

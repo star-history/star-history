@@ -8,11 +8,11 @@ interface Props {
   chartMode?: string;
   timeFormat?: string;
 }
-
 const StarXYChart: React.FC<Props> = ({ classname = '', data, chartMode = 'Date', timeFormat }) => {
   const chartContainerElRef = useRef<HTMLDivElement | null>(null);
   const svgElRef = useRef<SVGSVGElement | null>(null);
 
+  console.log(data, "this is the data")
   const drawStarChart = (data: XYChartData) => {
     if (svgElRef.current) {
       svgElRef.current.innerHTML = '';

@@ -22,7 +22,7 @@ export default function RepoInputer() {
 
   const inputElRef = useRef<HTMLInputElement | null>(null);
 
-  console.log(store)
+  // console.log(store)
 
   useEffect(() => {
     const fetchData = async () => {
