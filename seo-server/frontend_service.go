@@ -24,20 +24,22 @@ func NewFrontendService(instanceURL string) *FrontendService {
 }
 
 func (s *FrontendService) Serve(e *echo.Echo) {
-	// Use echo static middleware to serve the built dist folder.
-	// refer: https://github.com/labstack/echo/blob/master/middleware/static.go
-	e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-		Root:  "dist",
-		HTML5: true,
-	}))
-
 	s.registerFileRoutes(e)
 	s.registerBlogRoutes(e)
 }
 
 func (s *FrontendService) registerFileRoutes(e *echo.Echo) {
-	rawIndexHTML := getRawIndexHTML()
+	defaultIndexHTML := getDefaultIndexHTML()
 	blogs := getBlogForntmatters()
+
+	// Serve built static files from frontend.
+	e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
+		Root: "dist",
+		// Skip middleware for index.html, so that we can inject head metadata into it in the next handler.
+		Skipper: func(c echo.Context) bool {
+			return c.Path() == "" || c.Path() == "/" || c.Path() == "/index.html"
+		},
+	}))
 
 	e.GET("/robots.txt", func(c echo.Context) error {
 		robotsTxt := fmt.Sprintf(`User-agent: *
@@ -56,9 +58,9 @@ Sitemap: %s/sitemap.xml`, s.InstanceURL, s.InstanceURL)
 		return c.XMLBlob(http.StatusOK, []byte(sitemap))
 	})
 
+	// Serve index.html for all other routes.
 	e.GET("*", func(c echo.Context) error {
-		indexHTML := strings.ReplaceAll(rawIndexHTML, "<!-- star-history.metadata -->", getDefaultMetadata().String())
-		return c.HTML(http.StatusOK, indexHTML)
+		return c.HTML(http.StatusOK, defaultIndexHTML)
 	})
 }
 
@@ -79,10 +81,13 @@ func (s *FrontendService) registerBlogRoutes(e *echo.Echo) {
 		blogSlug := c.Param("blogSlug")
 		blogFrontmatter := getBlogFrontmatterBySlug(blogSlug)
 		if blogFrontmatter == nil {
-			return c.HTML(http.StatusOK, rawIndexHTML)
+			return c.HTML(http.StatusOK, getDefaultIndexHTML())
 		}
+
+		indexHTML := rawIndexHTML
 		// Inject memo metadata into `index.html`.
-		indexHTML := strings.ReplaceAll(rawIndexHTML, "<!-- star-history.metadata -->", s.generateBlogMetadata(blogFrontmatter))
+		indexHTML = strings.ReplaceAll(indexHTML, "<!-- star-history.head.placeholder -->", s.generateBlogMetadata(blogFrontmatter))
+		indexHTML = strings.ReplaceAll(indexHTML, "<!-- star-history.body.placeholder -->", fmt.Sprintf("<!-- star-history.blog.%s -->", blogSlug))
 		return c.HTML(http.StatusOK, indexHTML)
 	})
 }
@@ -90,6 +95,10 @@ func (s *FrontendService) registerBlogRoutes(e *echo.Echo) {
 func getRawIndexHTML() string {
 	bytes, _ := os.ReadFile("dist/index.html")
 	return string(bytes)
+}
+
+func getDefaultIndexHTML() string {
+	return strings.ReplaceAll(getRawIndexHTML(), "<!-- star-history.head.placeholder -->", getDefaultMetadata().String())
 }
 
 func getBlogForntmatters() []*BlogFrontmatter {
@@ -122,7 +131,7 @@ type Metadata struct {
 
 func getDefaultMetadata() *Metadata {
 	return &Metadata{
-		Title:       "Star History",
+		Title:       "GitHub Star History",
 		Description: "View and compare GitHub star history graph of open source projects.",
 		ImageURL:    "https://www.star-history.com/star-history.webp",
 	}
@@ -130,6 +139,7 @@ func getDefaultMetadata() *Metadata {
 
 func (m *Metadata) String() string {
 	metadataList := []string{
+		fmt.Sprintf(`<title>%s</title>`, m.Title),
 		fmt.Sprintf(`<meta name="description" content="%s" />`, m.Description),
 		fmt.Sprintf(`<meta property="og:title" content="%s" />`, m.Title),
 		fmt.Sprintf(`<meta property="og:description" content="%s" />`, m.Description),
