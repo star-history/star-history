@@ -200,6 +200,7 @@ const handleSetTokenDialogClose = () => {
    };
 
   return (
+    <>
     <div
       ref={containerElRef}
       className="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0"
@@ -240,7 +241,44 @@ const handleSetTokenDialogClose = () => {
         />
       )}
     </div>
+
+    
+<div className="relative mt-4 mb-4 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center">
+<div className="flex flex-row justify-start items-center mb-2">
+  <a className="h-full flex flex-row justify-center items-center leading-8 hover:opacity-80 underline underline-offset-2 mb-2 decoration-dark" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn" target="_blank">
+    <img className="w-5 h-auto mr-1" src="https://star-history.com/icons/free.svg" />
+    <span className="text-dark">Get Chrome Extension</span>
+  </a>
+</div>
+<div className="flex flex-row flex-wrap justify-end items-center mb-2">
+  <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
+    <i className="fas fa-download"></i>
+    Image
+  </button>
+
+  <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenEmbedCodeDialogBtnClick}>
+    <i className="fas fa-code"></i>
+    Embed
+  </button>
+  <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleCopyLinkBtnClick}>
+    <i className="far fa-copy"></i>
+    Link
+  </button>
+  <button className="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-600 border border-transparent text-white hover:bg-green-700" onClick={handleShareToTwitterBtnClick}>
+    <i className="relative -bottom-px fab fa-twitter"></i>
+    Share on Twitter
+  </button>
+</div>
+</div>
+<EmbedMarkdownSection />
+<div className="grow"></div>
+<div className="mb-12">
+<iframe src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{margin: 0, borderRadius: 0, backgroundColor: 'transparent'}}></iframe>
+</div>
+
+</>
   );
+
 }
 
 export default StarChartViewer;
