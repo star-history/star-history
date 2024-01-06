@@ -242,7 +242,9 @@ const handleSetTokenDialogClose = () => {
       )}
     </div>
 
-    
+    {state.chartData && state.chartData.datasets.length > 0 && (
+
+    <div>
 <div className="relative mt-4 mb-4 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center">
 <div className="flex flex-row justify-start items-center mb-2">
   <a className="h-full flex flex-row justify-center items-center leading-8 hover:opacity-80 underline underline-offset-2 mb-2 decoration-dark" href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn" target="_blank">
@@ -272,9 +274,12 @@ const handleSetTokenDialogClose = () => {
 </div>
 <EmbedMarkdownSection />
 <div className="grow"></div>
-<div className="mb-12">
+<div className="mb-12 flex justify-center">
 <iframe src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{margin: 0, borderRadius: 0, backgroundColor: 'transparent'}}></iframe>
 </div>
+
+</div>
+)}
 
 </>
   );

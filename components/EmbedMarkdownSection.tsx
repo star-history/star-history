@@ -60,7 +60,7 @@ const EmbedChart: React.FC = () => {
         </pre>
         <div style={{ display: 'flex' }}>
           <p
-            className="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
+            className="text-center py-4 bg-green-600 text-white font-mono rounded-b-md cursor-pointer hover:bg-green-700"
             style={{
               width: '70%',
               borderBottomRightRadius: 0,
@@ -71,7 +71,7 @@ const EmbedChart: React.FC = () => {
           </p>
           <div className="bg-gray-100" style={{ width: '1px' }} />
           <p
-            className="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
+            className="text-center py-4 bg-green-600 text-white font-mono rounded-b-md cursor-pointer hover:bg-green-700"
             style={{
               width: '30%',
               minWidth: 'max-content',
