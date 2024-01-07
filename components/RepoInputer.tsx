@@ -3,6 +3,7 @@ import { head } from 'lodash';
 import { GITHUB_REPO_URL_REG } from '../helpers/consts';
 import toast from '../helpers/toast';
 import { useAppStore } from '../store';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 interface State {
   repo: string;
@@ -246,7 +247,9 @@ export default function RepoInputer() {
                 {item.name}
               </span>
               <a href={`https://github.com/${item.name}`} target="_blank">
-                <i className="fas fa-external-link-alt fa-sm text-gray-400 hover:text-green-600"></i>
+     
+                <FaExternalLinkAlt className="fas fa-external-link-alt fa-sm text-gray-400 hover:text-green-600"/>
+
               </a>
             </div>
           ))}

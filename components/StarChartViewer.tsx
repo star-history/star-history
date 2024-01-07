@@ -128,14 +128,21 @@ function StarChartViewer() {
     alert('URL copied to clipboard!');
    };
 
-  const handleGenerateImageBtnClick = async () => {
+   const handleGenerateImageBtnClick = async () => {
     const element = document.querySelector("#capture") as HTMLElement;
     if (!element) {
       throw new Error("Element with id 'capture' not found");
     }
     const canvas = await html2canvas(element);
     const imgData = canvas.toDataURL("image/png");
-    // Now you can download the image or display it somewhere
+  
+    // Create a link element for downloading
+    const downloadLink = document.createElement('a');
+    downloadLink.href = imgData;
+    downloadLink.download = 'chart.png'; // You can name the file here
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   };
 
 
@@ -226,6 +233,8 @@ const handleSetTokenDialogClose = () => {
           </div>
         </div>
       )}
+      <div id="capture">
+
  {state.chartData && state.chartData.datasets.length > 0 && (
  <StarXYChart
    classname="w-full h-auto mt-4"
@@ -233,6 +242,7 @@ const handleSetTokenDialogClose = () => {
    chart-mode={chartMode}
  />
 )}
+</div>
       {/* ... rest of the JSX here */}
       {state.showSetTokenDialog && (
         <TokenSettingDialog
@@ -257,6 +267,11 @@ const handleSetTokenDialogClose = () => {
     <i className="fas fa-download"></i>
     Image
   </button>
+
+  <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
+    <i className="fas fa-download"></i>
+    CSV
+      </button>
 
   <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenEmbedCodeDialogBtnClick}>
     <i className="fas fa-code"></i>
