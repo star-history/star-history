@@ -12,7 +12,7 @@ export default function SponsorStaticBanner() {
 
   return (
     <div
-      className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50 ${hide ? '!hidden' : ''}`}
+      className={`z-index-50 fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-50 ${hide ? '!hidden' : ''}`}
     >
       <div className="w-full flex-row justify-between items-center mb-2">
         <span className="text-xs text-gray-400">Sponsors (random order)</span>

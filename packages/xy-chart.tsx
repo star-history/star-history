@@ -134,6 +134,7 @@ const XYChart = (
     ...initialOptions,
   };
 
+
   if (title) {
     margin.top = 60;
   }
@@ -190,10 +191,22 @@ const XYChart = (
 
   if (options.xTickLabelType === "Date") {
     data.datasets.forEach((dataset) => {
-      dataset.data.forEach((d) => {
-        d.x = dayjs(d.x) as any;
-      });
+     dataset.data.forEach((d) => {
+     if (typeof d.x === 'number') {
+       // Convert Unix timestamp to milliseconds
+       d.x = new Date(d.x / 1000);
+     } else {
+       // Parse the date using dayjs, assuming 'd.x' is a date string
+       const parsedDate = dayjs(d.x);
+       if (parsedDate.isValid()) {
+         d.x = parsedDate.toDate();
+       } else {
+         console.error(`Invalid date: ${d.x}`);
+       }
+     }
+     });
     });
+   
   }
 
   const allData: XYPoint[] = [];
