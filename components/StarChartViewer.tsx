@@ -289,10 +289,10 @@ const handleSetTokenDialogClose = () => {
 </div>
 <EmbedMarkdownSection />
 <div className="grow"></div>
+
 <div className="mb-12 flex justify-center">
 <iframe src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{margin: 0, borderRadius: 0, backgroundColor: 'transparent'}}></iframe>
 </div>
-
 </div>
 )}
 

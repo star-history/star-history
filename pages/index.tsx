@@ -15,6 +15,7 @@ type NextPageWithLayout = NextPage & {
 }
 
 
+
 const Index: NextPageWithLayout = () => {
   const handleClickLink = (link: string) => {
     // Handle the click event here
