@@ -57,12 +57,6 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
 
-### GPTBots
-
-[GPTBots](https://www.gptbots.ai?refer=star-history) seamlessly connects LLM with enterprise data and services to build usable AI Bot services for business scenarios.
-
-<a href="https://www.gptbots.ai?refer=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/gptbots/landing.webp" /></a>
-
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
