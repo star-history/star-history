@@ -92,7 +92,7 @@ export default function TokenSettingDialog({ onClose, tokenCache }: TokenSetting
               className="pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-white text-base hover:bg-green-600"
               onClick={handleButtonClick}
             >
-              {isEditing ? 'Save Changes' : 'Add Token'}
+          Save
             </button>
           </footer>
         </div>
