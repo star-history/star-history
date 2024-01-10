@@ -62,7 +62,6 @@ interface State {
       }
       window.location.hash = hash;
     };
-    
     handleWatch();
   }, [store.state.repos, store.state.chartMode]);
 
