@@ -288,6 +288,7 @@ const handleSetTokenDialogClose = () => {
 </div>
 </div>
 <EmbedMarkdownSection />
+
 <div className="grow"></div>
 
 <div className="mb-12 flex justify-center">

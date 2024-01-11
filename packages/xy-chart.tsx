@@ -15,6 +15,8 @@ import getFormatTimeline, {
   getTimestampFormatUnit,
 } from "./utils/getFormatTimeline";
 import { D3Selection } from "./types";
+import { fromUnixTime } from 'date-fns';
+
 
 let tooltipPositionType: Position;
 
@@ -133,6 +135,7 @@ const XYChart = (
     ...(theme === "dark" ? getDarkThemeDefaultOptions(transparent) : getDefaultOptions(transparent)),
     ...initialOptions,
   };
+
 
   if (title) {
     margin.top = 60;

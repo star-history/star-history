@@ -15,6 +15,7 @@
     "d3-scale": "^4.0.2",
     "d3-selection": "^3.0.0",
     "d3-shape": "^3.2.0",
+    "date-fns": "^3.2.0",
     "dayjs": "^1.11.10",
     "gray-matter": "^4.0.3",
     "html2canvas": "^1.4.1",
