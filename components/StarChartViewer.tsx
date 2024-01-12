@@ -30,6 +30,7 @@ interface State {
   isGeneratingImage: boolean;
   showSetTokenDialog: boolean;
   showGenEmbedCodeDialog: boolean;
+  showEmbedCodeDialog: boolean;
   showEmbedChartGuideDialog: boolean;
 }
 
@@ -42,6 +43,7 @@ function StarChartViewer() {
   repoCacheMap: new Map(),
   chartData: undefined,
   isGeneratingImage: false,
+  showEmbedCodeDialog: false,
   showSetTokenDialog: false,
   showGenEmbedCodeDialog: false,
   showEmbedChartGuideDialog: false,
@@ -250,6 +252,13 @@ const handleSetTokenDialogClose = () => {
           show={state.showSetTokenDialog}
         />
       )}
+
+{state.showEmbedCodeDialog && (
+      <GenerateEmbedCodeDialog
+        onClose={handleGenEmbedCodeDialogClose}
+        show={state.showEmbedCodeDialog}
+      />
+    )}
     </div>
 
     {state.chartData && state.chartData.datasets.length > 0 && (
