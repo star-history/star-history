@@ -17,6 +17,8 @@ interface GenerateEmbedCodeDialogProps {
 }
 
 const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ show, onClose }) => {
+
+
 const store = useAppStore(); // Cast to the correct type
     const [state, setState] = useState<State>({
     embedCode: "",
@@ -50,7 +52,7 @@ const store = useAppStore(); // Cast to the correct type
   };
 
   const handleCloseBtnClick = () => {
-    // Handle close logic here
+    onClose();
   };
 
   return (
