@@ -253,10 +253,10 @@ const handleSetTokenDialogClose = () => {
         />
       )}
 
-{state.showEmbedCodeDialog && (
+{showEmbedCodeDialog && (
       <GenerateEmbedCodeDialog
         onClose={handleGenEmbedCodeDialogClose}
-        show={state.showEmbedCodeDialog}
+        show={showEmbedCodeDialog}
       />
     )}
     </div>

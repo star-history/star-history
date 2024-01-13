@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { IoIosMenu } from 'react-icons/io';
+import { FiMenu } from "react-icons/fi";
 
 
 interface State {
@@ -103,8 +103,8 @@ const Header: React.FC = () => {
 
           </div>
           <div className="h-full flex md:hidden flex-row justify-end items-center">
-            <IoIosMenu
-              className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
+            <FiMenu
+              className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-white hover:bg-zinc-800"
               onClick={handleToggleDropMenuBtnClick}
             />
               <span
