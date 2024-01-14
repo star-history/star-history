@@ -191,23 +191,13 @@ const XYChart = (
 
   if (options.xTickLabelType === "Date") {
     data.datasets.forEach((dataset) => {
-     dataset.data.forEach((d) => {
-     if (typeof d.x === 'number') {
-       // Convert Unix timestamp to milliseconds
-       d.x = new Date(d.x / 1000);
-     } else {
-       // Parse the date using dayjs, assuming 'd.x' is a date string
-       const parsedDate = dayjs(d.x);
-       if (parsedDate.isValid()) {
-         d.x = parsedDate.toDate();
-       } else {
-         console.error(`Invalid date: ${d.x}`);
-       }
-     }
-     });
+      dataset.data.forEach((d) => {
+        d.x = dayjs(d.x) as any;
+      });
     });
-   
   }
+  
+  
 
   const allData: XYPoint[] = [];
   data.datasets.map((d) => allData.push(...d.data));
@@ -226,11 +216,11 @@ const XYChart = (
     ])
     .range([0, chartWidth]);
 
-  if (options.xTickLabelType === "Number") {
-    xScale = scaleLinear()
-      .domain([0, Math.max(...allXData.map((d) => Number(d)))])
-      .range([0, chartWidth]);
-  }
+    if (options.xTickLabelType === "Number") {
+      xScale = scaleLinear()
+        .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+        .range([0, chartWidth]);
+    }
 
   const yScale = scaleLinear()
     .domain([Math.min(...allYData), Math.max(...allYData)])

@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import '../global.css';
 import Home from '../pages/index';
 import NotFound from '../pages/404';
-import BlogPage from './blog'
+import BlogList from './BlogList'
 import '..//global.css';
 
 export type NextPageWithLayout = NextPage & {
@@ -17,7 +17,7 @@ type AppPropsWithLayout = AppProps & {
 
 const routes = {
   '/': Home,
-  '/blog': BlogPage,
+  '/blog/{slug}': BlogList,
 };
 
 const Router = (pageProps: any) => {
