@@ -7,6 +7,7 @@ interface Props {
   data?: XYChartData;
   chartMode?: string;
   timeFormat?: string;
+  id?: string;
 }
 const StarXYChart: React.FC<Props> = ({ classname = '', data, chartMode = 'Date', timeFormat }) => {
   const chartContainerElRef = useRef<HTMLDivElement | null>(null);
@@ -16,7 +17,7 @@ const StarXYChart: React.FC<Props> = ({ classname = '', data, chartMode = 'Date'
   const drawStarChart = (data: XYChartData) => {
     if (svgElRef.current) {
       svgElRef.current.innerHTML = '';
-
+  
       XYChart(
         svgElRef.current,
         {
@@ -30,12 +31,13 @@ const StarXYChart: React.FC<Props> = ({ classname = '', data, chartMode = 'Date'
           transparent: false,
         },
         {
-          xTickLabelType: chartMode === 'Date' ? 'Date' : 'Number',
+          xTickLabelType: chartMode === 'Date' ? 'Date' : undefined,
           envType: 'browser',
         }
       );
     }
   };
+  
 
   useEffect(() => {
     if (data) {

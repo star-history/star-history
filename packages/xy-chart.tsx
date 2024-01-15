@@ -15,8 +15,6 @@ import getFormatTimeline, {
   getTimestampFormatUnit,
 } from "./utils/getFormatTimeline";
 import { D3Selection } from "./types";
-import { fromUnixTime } from 'date-fns';
-
 
 let tooltipPositionType: Position;
 
@@ -198,6 +196,8 @@ const XYChart = (
       });
     });
   }
+  
+  
 
   const allData: XYPoint[] = [];
   data.datasets.map((d) => allData.push(...d.data));
@@ -216,11 +216,11 @@ const XYChart = (
     ])
     .range([0, chartWidth]);
 
-  if (options.xTickLabelType === "Number") {
-    xScale = scaleLinear()
-      .domain([0, Math.max(...allXData.map((d) => Number(d)))])
-      .range([0, chartWidth]);
-  }
+    if (options.xTickLabelType === "Number") {
+      xScale = scaleLinear()
+        .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+        .range([0, chartWidth]);
+    }
 
   const yScale = scaleLinear()
     .domain([Math.min(...allYData), Math.max(...allYData)])

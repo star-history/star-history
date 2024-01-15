@@ -3,6 +3,7 @@ import toast from "../helpers/toast";
 import utils from "../common/utils";
 import {useAppStore} from "../store";
 import Dialog from "./Dialog";
+import { FaTimesCircle } from "react-icons/fa";
 
 interface State {
   embedCode: string;
@@ -16,6 +17,8 @@ interface GenerateEmbedCodeDialogProps {
 }
 
 const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ show, onClose }) => {
+
+
 const store = useAppStore(); // Cast to the correct type
     const [state, setState] = useState<State>({
     embedCode: "",
@@ -49,18 +52,18 @@ const store = useAppStore(); // Cast to the correct type
   };
 
   const handleCloseBtnClick = () => {
-    // Handle close logic here
+    onClose();
   };
 
   return (
     <Dialog>
-      <div className="w-160 max-w-full h-auto flex flex-col justify-start items-start bg-white rounded-md">
+      <div className="max-w-2xl h-auto flex flex-col justify-start items-start bg-white rounded-md">
         <header className="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg">
           <span className="text-2xl">Embed Chart</span>
-          <i
+          <FaTimesCircle
             className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500"
             onClick={handleCloseBtnClick}
-          ></i>
+          />
         </header>
         <main className="w-full flex flex-col justify-start items-start p-4 pr-5">
           <p>
