@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import SponsorBanner from '../components/SponsorStaticBanner';
-import BytebaseBanner from '../components/SponsorView';
-import HighlightBlogSection from '../components/HighlightBlogSection';
-import utils from 'common/utils';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import SponsorBanner from "../components/SponsorStaticBanner";
+import BytebaseBanner from "../components/SponsorView";
+import HighlightBlogSection from "../components/HighlightBlogSection";
+import utils from "common/utils";
+import Link from "next/link";
 
 interface Blog {
   slug: string;
@@ -27,7 +27,7 @@ const Blog: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('/blog/data.json');
+        const res = await fetch("/blog/data.json");
         const rawBlogList = await res.json();
 
         const blogList: Blog[] = await Promise.all(
@@ -48,7 +48,7 @@ const Blog: React.FC = () => {
         setBlogs(blogs);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setIsLoading(false);
       }
     };
@@ -64,11 +64,16 @@ const Blog: React.FC = () => {
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
         <div className="w-full hidden lg:block">
-        <HighlightBlogSection clickLink={(link) => window.location.href = link} />
-                </div>
+          <HighlightBlogSection
+            clickLink={(link) => (window.location.href = link)}
+          />
+        </div>
         <div className="w-full flex flex-col justify-start items-center">
           <section className="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center">
-            <p className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: 'xkcd' }}>
+            <p
+              className="mt-12 p-8 text-4xl font-bold text-dark"
+              style={{ fontFamily: "xkcd" }}
+            >
               Star History Blog
             </p>
             <div className="mb-4">
@@ -80,8 +85,8 @@ const Blog: React.FC = () => {
                 scrolling="no"
                 style={{
                   margin: 0,
-                  borderRadius: '0px !important',
-                  backgroundColor: 'transparent',
+                  borderRadius: "0px !important",
+                  backgroundColor: "transparent",
                 }}
               ></iframe>
             </div>
@@ -92,40 +97,55 @@ const Blog: React.FC = () => {
             )}
             {!isLoading && featuredBlogs.length + blogs.length === 0 && (
               <div className="w-full h-10 flex flex-col justify-center items-center">
-                <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
+                <p className="text-center leading-8 text-lg text-dark font-medium">
+                  Oops! No article found.
+                </p>
               </div>
             )}
             {!isLoading && featuredBlogs.length + blogs.length > 0 && (
               <div className="w-full flex flex-col justify-start items-center">
                 <div className="w-full mt-8 flex flex-col justify-start items-start">
                   {featuredBlogs.map((blog) => (
-                    <div key={blog.slug} className="w-full h-auto flex flex-col border rounded-md mb-8">
-  <Link href={`/blog/${blog.slug}`} as={`/blog/${blog.slug}`}>
-    <img
-      className="h-60 w-full flex-shrink-0 object-cover rounded-t-md"
-      src={blog.featureImage}
-    />
-  </Link>
-
-
+                    <div
+                      key={blog.slug}
+                      className="w-full h-auto flex flex-col border rounded-md mb-8"
+                    >
+                      <Link
+                        href={`/blog/${blog.slug}`}
+                        as={`/blog/${blog.slug}`}
+                      >
+                        <img
+                          className="h-60 w-full flex-shrink-0 object-cover rounded-t-md"
+                          src={blog.featureImage}
+                        />
+                      </Link>
 
                       <div className="w-full p-6 py-4 flex flex-col justify-start">
                         <div className="mt-2 w-full flex flex-col justify-start items-start">
                           <Link href={`/blog/${blog.slug}`}>
-                            <p className="text-xl font-semibold text-dark">{blog.title}</p>
+                            <p className="text-xl font-semibold text-dark">
+                              {blog.title}
+                            </p>
                           </Link>
-                          <p className="mt-3 text-base text-gray-500 line-clamp-3">{blog.excerpt}</p>
+                          <p className="mt-3 text-base text-gray-500 line-clamp-3">
+                            {blog.excerpt}
+                          </p>
                         </div>
                         <div className="mt-3 flex flex-row justify-start items-center">
                           <p className="flex space-x-1 text-sm text-gray-500">
-                            <span className="text-sm font-medium text-gray-900">{blog.author}</span>
+                            <span className="text-sm font-medium text-gray-900">
+                              {blog.author}
+                            </span>
                             <span aria-hidden="true"> &middot; </span>
                             <time dateTime={blog.publishedDate}>
-                              {new Date(blog.publishedDate).toLocaleString('default', {
-                                year: 'numeric',
-                                month: 'short',
-                                day: 'numeric',
-                              })}
+                              {new Date(blog.publishedDate).toLocaleString(
+                                "default",
+                                {
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "numeric",
+                                }
+                              )}
                             </time>
                             <span aria-hidden="true"> &middot; </span>
                             <span> {blog.readingTime} </span>
@@ -144,7 +164,9 @@ const Blog: React.FC = () => {
                       <div className="p-6 pr-4 w-full flex flex-col justify-start items-start">
                         <div className="w-full flex flex-col justify-start items-start">
                           <Link href={`/blog/${blog.slug}`}>
-                            <p className="text-xl font-semibold text-dark">{blog.title}</p>
+                            <p className="text-xl font-semibold text-dark">
+                              {blog.title}
+                            </p>
                           </Link>
                           <p className="w-full mt-3 text-base text-gray-500 break-words line-clamp-3">
                             {blog.excerpt}
@@ -153,14 +175,19 @@ const Blog: React.FC = () => {
                         <div className="grow"></div>
                         <div className="flex flex-row justify-start items-center">
                           <p className="flex ml-2 space-x-1 text-sm text-gray-500">
-                            <span className="text-sm ml-2 font-medium text-gray-900">{blog.author}</span>
+                            <span className="text-sm ml-2 font-medium text-gray-900">
+                              {blog.author}
+                            </span>
                             <span aria-hidden="true"> &middot; </span>
                             <time dateTime={blog.publishedDate}>
-                              {new Date(blog.publishedDate).toLocaleString('default', {
-                                year: 'numeric',
-                                month: 'short',
-                                day: 'numeric',
-                              })}
+                              {new Date(blog.publishedDate).toLocaleString(
+                                "default",
+                                {
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "numeric",
+                                }
+                              )}
                             </time>
                             <span aria-hidden="true"> &middot; </span>
                             <span> {blog.readingTime} </span>
