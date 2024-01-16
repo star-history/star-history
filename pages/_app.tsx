@@ -6,7 +6,7 @@ import Home from "../pages/index";
 import NotFound from "../pages/404";
 import About from "./about";
 import Test from "./test";
-import Blog from "./Blog";
+import Blog from "./blog";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -26,7 +26,17 @@ const routes = {
 const Router = (pageProps: any) => {
   const router = useRouter();
   const { pathname } = router;
-  const Component = routes[("/" + pathname) as keyof typeof routes] || NotFound;
+  const lowercasePathname = pathname.toLowerCase();
+  const Component = routes[lowercasePathname as keyof typeof routes] || NotFound;
+
+  // Redirect to the lowercase path if it's different
+  if (pathname !== lowercasePathname) {
+    if (typeof window !== "undefined") {
+      window.location.href = lowercasePathname;
+    }
+    return null;
+  }
+
   return <Component {...pageProps} />;
 };
 
