@@ -7,7 +7,7 @@ import BytebaseBanner from "../components/SponsorView";
 import HighlightBlogSection from "../components/HighlightBlogSection";
 import utils from "common/utils";
 import Link from "next/link";
-import blogData from './blog/data.json';
+import blogData from '../public/blog/data.json';
 
 
 interface Blog {
