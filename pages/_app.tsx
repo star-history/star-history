@@ -8,6 +8,7 @@ import About from "./about";
 import Test from "./test";
 import Blog from "./blog";
 import './fonts.css';
+import blogdetail from "./[blogdetail]";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -22,6 +23,7 @@ const routes = {
   "/about": About,
   "/test": Test,
   "/blog": Blog,
+  "/blog/:blogSlug": blogdetail
 };
 
 const Router = (pageProps: any) => {

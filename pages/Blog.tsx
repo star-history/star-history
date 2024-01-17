@@ -11,14 +11,14 @@ import blogData from '../public/blog/data.json';
 
 
 interface Blog {
-  slug: string;
-  title: string;
-  excerpt: string;
-  author: string;
-  publishedDate: string;
-  readingTime: string;
-  featured: boolean;
-  featureImage?: string;
+ slug: string;
+ title: string;
+ excerpt: string;
+ author: string;
+ publishedDate: string;
+ readingTime?: string; // Make readingTime optional
+ featured: boolean;
+ featureImage?: string;
 }
 
 const Blog: React.FC = () => {
