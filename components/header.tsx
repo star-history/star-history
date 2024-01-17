@@ -28,6 +28,8 @@ const Header: React.FC = () => {
     }));
   };
 
+  const [hasToken, setHasToken] = useState<boolean>(false);
+  
   const handleSetTokenDialogClose = () => {
     setState((prevState) => ({
       ...prevState,
@@ -68,7 +70,7 @@ const Header: React.FC = () => {
               className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
               onClick={handleSetTokenBtnClick}
             >
-              Add Access Token
+{hasToken ? 'Edit Access Token' : 'Add Access Token'}
             </span>
         
 
@@ -143,11 +145,11 @@ const Header: React.FC = () => {
 
 
         <span
-          className="h-12 px-3 text-base w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
-          onClick={handleSetTokenBtnClick}
-        >
-Add Access Token
-        </span>
+ className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
+ onClick={handleSetTokenBtnClick}
+>
+ {hasToken ? 'Edit Access Token' : 'Add Access Token'}
+</span>
 
         
         <span className="h-12 text-base px-3 w-full flex flex-row justify-start items-center">

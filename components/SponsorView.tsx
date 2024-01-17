@@ -19,7 +19,7 @@ const BytebaseBanner: React.FC<BytebaseBannerProps> = ({ className }) => {
               {sponsor.name}
             </span>
           </Link>
-          - {sponsor.slogan}
+          - {sponsor.logoSlogan}
         </p>
         <Link href={sponsor.link}>
           <div className="hover:opacity-80">

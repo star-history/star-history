@@ -1,27 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import storage from '../helpers/storage';
 import { useAppStore } from '../store';
 import Dialog from './Dialog';
 import { FaTimesCircle } from 'react-icons/fa';
-
 interface TokenSettingDialogProps {
   onClose: () => void;
   tokenCache?: string;
- show: boolean; //
+  show: boolean; //
 }
 
-export default function TokenSettingDialog({ onClose, tokenCache }: TokenSettingDialogProps) {
-  const [localTokenCache, setLocalTokenCache] = useState(false); // initial value can be whatever you need
+export default function TokenSettingDialog({ onClose, tokenCache, show }: TokenSettingDialogProps) {
   const store = useAppStore();
   const [token, setToken] = useState(store.token);
+  const [hasToken, setHasToken] = useState(!!store.token); // initial value based on the current token
 
-  const isEditing = tokenCache; // Determine if we are in editing mode
+  useEffect(() => {
+   // Update the hasToken state whenever the tokenCache or store.token changes
+   setHasToken(!!(tokenCache || store.token));
+  }, [tokenCache, store.token]);
 
   const handleSaveTokenBtnClick = () => {
     store.setToken(token);
     storage.set({
       accessTokenCache: token,
     });
+    setHasToken(true); // Update hasToken state to true after saving
+    if (onClose) {
+      onClose(); // Close the dialog after saving
+    }
   };
 
   const handleCloseBtnClick = () => {
@@ -30,18 +36,13 @@ export default function TokenSettingDialog({ onClose, tokenCache }: TokenSetting
     }
   };
 
-  const handleButtonClick = () => {
-    handleSaveTokenBtnClick();
-    onClose();
-  };
-
   return (
     <>
       <Dialog>
         <div className="max-w-2xl justify-start items-start bg-white rounded-md overflow-hidden">
           <header className="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg">
             <span className="text-2xl">
-              {isEditing ? 'Edit' : 'Add'} GitHub Access Token
+            {hasToken ? 'Edit' : 'Add'} GitHub Access Token
             </span>
             <FaTimesCircle
               className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500"
@@ -90,7 +91,7 @@ export default function TokenSettingDialog({ onClose, tokenCache }: TokenSetting
           <footer className="w-full flex flex-row justify-end bg-gray-100 items-center p-4 pr-5 border-t rounded-b-md">
             <button
               className="pl-4 pr-4 h-10 rounded-md bg-green-500 shadow-inner text-white text-base hover:bg-green-600"
-              onClick={handleButtonClick}
+              onClick={handleSaveTokenBtnClick}
             >
           Save
             </button>

@@ -29,7 +29,7 @@ export default function SponsorStaticBanner() {
             src={sponsor.logo}
             alt={sponsor.name}
           />
-          <span className="text-xs mt-2">{sponsor.slogan}</span>
+          <span className="text-xs mt-2">{sponsor.logoSlogan}</span>
         </a>
       ))}
       <a
