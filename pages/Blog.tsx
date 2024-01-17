@@ -7,6 +7,8 @@ import BytebaseBanner from "../components/SponsorView";
 import HighlightBlogSection from "../components/HighlightBlogSection";
 import utils from "common/utils";
 import Link from "next/link";
+import blogData from './blog/data.json';
+
 
 interface Blog {
   slug: string;
@@ -27,9 +29,10 @@ const Blog: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/blog/data.json");
-        const rawBlogList = await res.json();
-
+        const rawBlogList = blogData;
+   
+        console.log("Raw Blog List:", rawBlogList);
+   
         const blogList: Blog[] = await Promise.all(
           rawBlogList.map(async (raw: Blog) => {
             const contentRes = await fetch(`/blog/${raw.slug}.md`);
@@ -40,10 +43,15 @@ const Blog: React.FC = () => {
             };
           })
         );
-
+   
+        console.log("Blog List:", blogList);
+   
         const featuredBlogs = blogList.filter((blog) => blog.featured);
         const blogs = blogList.filter((blog) => !blog.featured);
-
+   
+        console.log("Featured Blogs:", featuredBlogs);
+        console.log("Blogs:", blogs);
+   
         setFeaturedBlogs(featuredBlogs);
         setBlogs(blogs);
         setIsLoading(false);
@@ -52,9 +60,13 @@ const Blog: React.FC = () => {
         setIsLoading(false);
       }
     };
-
+   
     fetchData();
-  }, []);
+   }, []);
+
+  console.log("isLoading:", isLoading);
+  console.log("featuredBlogs:", featuredBlogs);
+  console.log("blogs:", blogs);
 
   return (
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">

@@ -7,6 +7,7 @@ import NotFound from "../pages/404";
 import About from "./about";
 import Test from "./test";
 import Blog from "./blog";
+import './fonts.css';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
