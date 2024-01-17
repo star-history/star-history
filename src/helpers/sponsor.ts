@@ -32,6 +32,14 @@ const sponsors: Sponsor[] = [
     slogan:
       "The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",
   },
+  {
+    name: "AutoMQ",
+    logo: utils.absolutifyLink("/sponsors/automq/logo.webp"),
+    landingImage: utils.absolutifyLink("/sponsors/automq/landing.webp"),
+    link: "https://github.com/AutoMQ/automq-for-kafka/?utm_source=star-history",
+    slogan:
+      "Truly serverless Kafka solution that maximizes the benefits of cloud.",
+  },
 ];
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length);
