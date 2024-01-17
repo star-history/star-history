@@ -7,6 +7,7 @@ import Icon from './icon.png';
 import Link from 'next/link';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { FiMenu } from "react-icons/fi";
+import { AppStateProvider } from "store";
 
 
 interface State {
@@ -163,8 +164,12 @@ Add Access Token
         </span>
 
       </div>
+      <AppStateProvider>
+
 {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} tokenCache={false} />}
   
+</AppStateProvider>
+
     </>
   );
 };
