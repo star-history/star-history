@@ -17,6 +17,7 @@ interface Blog {
   readingTime: string;
 }
 
+
 interface State {
   isLoading: boolean;
   blog?: Blog;
