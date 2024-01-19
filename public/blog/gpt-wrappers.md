@@ -13,7 +13,13 @@ With ChatGPT, all you need is the million dollar [idea](https://twitter.com/deba
 
 For this issue of Star History monthly, we have located a set of open-source ChatGPT wrapper tools.
 
-![star-history](/blog/assets/gpt-wrappers/star-history.webp)
+- [ChatGPT-Next-Web](#chatgpt-next-web)
+- [FastGPT](#fastgpt)
+- [OpenAI Translator](#openai-translator)
+- [Flowise](#flowise)
+- [Lobe Chat](#lobe-chat)
+
+[![star-history](/blog/assets/gpt-wrappers/star-history.webp)](/#labring/fastgpt&flowiseai/flowise&openai-translator/openai-translator&lobehub/lobe-chat&ChatGPTNextWeb/ChatGPT-Next-Web&Date)
 
 ## ChatGPT-Next-Web
 
@@ -67,7 +73,7 @@ Lobe Chat is designed to help users make better use of OpenAI's capabilities, wh
 
 ## My Two Cents
 
-Personally, I am still on the side that AI is more of an assistant tool (until now, that is). Its creativity stems from the human brain and what us humans have taught it. It does a great job of saving us from repetitive tasks and improving our work though.
+Personally, I am still on the side that AI is more of an assistant tool (aka copilot, until now, that is). Its creativity stems from the human brain and what us humans have taught it. It does a great job of saving us from repetitive tasks and improving our work though.
 
 We can learn to master using this tool and make better use of it, tho ;)
 
