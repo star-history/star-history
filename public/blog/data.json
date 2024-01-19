@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Dec 2023 | Open-source GPT Wrappers",
+    "slug": "gpt-wrappers",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/gpt-wrappers/banner.webp",
+    "publishedDate": "2024-01-19T09:50:06.000Z",
+    "excerpt": "GPT wrappers offer a service by wrapping around ChatGPT API to provide an additional functionality not offered directly by OpenAI itself."
+  }, 
+  {
     "title": "Starlet #15 Infinity: the AI-Native Database Powering the Next-Gen RAG for LLM",
     "slug": "infinity",
     "author": "Yingfeng Zhang",
