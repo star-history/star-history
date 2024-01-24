@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import SponsorBanner from "../components/SponsorStaticBanner";
-import BytebaseBanner from "../components/SponsorView";
-import HighlightBlogSection from "../components/HighlightBlogSection";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import SponsorBanner from "../../components/SponsorStaticBanner";
+import BytebaseBanner from "../../components/SponsorView";
+import HighlightBlogSection from "../../components/HighlightBlogSection";
 import utils from "common/utils";
 import Link from "next/link";
-import blogData from '../public/blog/data.json';
+import blogData from '../../public/blog/data.json';
 
 
 interface Blog {

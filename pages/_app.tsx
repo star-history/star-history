@@ -6,9 +6,9 @@ import Home from "../pages/index";
 import NotFound from "../pages/404";
 import About from "./about";
 import Test from "./test";
-import Blog from "./blog";
+import Blog from "./blog/";
 import './fonts.css';
-import blogdetail from "./[blogdetail]";
+import blogdetail from "./blog/[blogdetail]";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;

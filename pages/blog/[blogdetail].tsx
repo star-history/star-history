@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import SponsorFooterBanner from '../components/SponsorView';
-import SponsorRightBanner from '../components/SponsorStaticBanner';
-import HighlightBlogSection from '../components/HighlightBlogSection';
-import { marked } from 'marked'; 
-import utils from '../common/utils';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import SponsorFooterBanner from '../../components/SponsorView';
+import SponsorRightBanner from '../../components/SponsorStaticBanner';
+import HighlightBlogSection from '../../components/HighlightBlogSection';
+import { marked } from 'marked';
+import utils from '../../common/utils';
 
 interface Blog {
   slug: string;
@@ -17,39 +17,42 @@ interface Blog {
   readingTime: string;
 }
 
-
 interface State {
   isLoading: boolean;
   blog?: Blog;
   parsedBlogHTML?: string;
 }
 
-const blogdetail = () => {
+const BlogDetail: React.FC = () => {
   const [state, setState] = useState<State>({ isLoading: true });
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
-      const { blogSlug } = router.query;
-      const blogListRes = await fetch('/blog/data.json');
-      const blogList = await blogListRes.json() as Blog[];
-      const blog = blogList.find((blog) => blog.slug === blogSlug);
+      try {
+        const blogSlug = router.query.blogSlug as string;
+        const blogListRes = await fetch('/blog/data.json');
+        const blogList = (await blogListRes.json()) as Blog[];
+        const blog = blogList.find((blog) => blog.slug === blogSlug);
 
-      if (!blog) {
-        return;
+        if (!blog) {
+          return;
+        }
+
+        const contentRes = await fetch(`/blog/${blogSlug}.md`);
+        const content = await contentRes.text();
+
+        setState({
+          isLoading: false,
+          blog: {
+            ...blog,
+            readingTime: utils.calcReadingTime(content),
+          },
+          parsedBlogHTML: marked.parse(content),
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-
-      const contentRes = await fetch(`/blog/${blogSlug}.md`);
-      const content = await contentRes.text();
-
-      setState({
-        isLoading: false,
-        blog: {
-          ...blog,
-          readingTime: utils.calcReadingTime(content),
-        },
-        parsedBlogHTML: marked.parse(content),
-      });
     };
 
     fetchData();
@@ -60,7 +63,7 @@ const blogdetail = () => {
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
         <div className="w-full hidden lg:block">
-        <HighlightBlogSection clickLink={(link) => console.log(link)} />
+          <HighlightBlogSection />
         </div>
         <div className="w-full flex flex-col justify-start items-center">
           {state.isLoading && (
@@ -85,10 +88,13 @@ const blogdetail = () => {
           )}
           {!state.isLoading && state.blog && (
             <div className="w-full p-4 md:p-0 mt-6 md:w-5/6 lg:max-w-6xl h-full flex flex-col justify-start items-center self-center">
-              <img
-                className="hidden md:block w-auto max-w-full object-scale-down"
-                src={state.blog.featureImage || ''}
-              />
+              {state.blog.featureImage && (
+                <img
+                  className="hidden md:block w-auto max-w-full object-scale-down"
+                  src={state.blog.featureImage}
+                  alt={state.blog.title}
+                />
+              )}
               <div className="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center">
                 <h1 className="leading-16">{state.blog.title}</h1>
               </div>
@@ -152,4 +158,4 @@ const blogdetail = () => {
   );
 };
 
-export default blogdetail;
+export default BlogDetail;
