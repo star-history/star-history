@@ -8,23 +8,22 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=apache/incubator-answer&type=Date)](https://star-history.com/#apache/incubator-answer&Date)
 
-Answer is built with Go and ReactJS. It supports various databases, including SQLite, MySQL, and PostgresSQL, making it a flexible and scalable solution that can ben deployed in any environment.
+Answer is built with Go and ReactJS. It supports various databases, including SQLite, MySQL, and PostgresSQL, making it a flexible and scalable solution that can be deployed in any environment.
 
-## Features You Love. We’re Proud of it.
+## Features You Love. Proud We Have.
 
 ![answer](/blog/assets/answer/answer.webp)
 
-- Quick launch: Build a community forum, help center or knowledge base from the ground right away.
-- Smooth knowledge journey: Enjoy a seamless browsing experience on both mobiles and desktops.
-- Intuitive knowledge sharing: Your team members can ask, answer, and search effortlessly.
-- Stay organized: use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
-- Plugins: Add wings to Answer and make it powerful in the way you want.
-- Everyone involved: Vote for the best answers, and admins can accept highlighting the best answer for better knowledge sharing.
-- Engaging Q&A: Our reputation and award system keeps everyone involved and fosters a self-governed community.
+- **Easy setup**: Build a community forum, help center or knowledge base from the ground right away.
+- **Mobile friendly**: Enjoy a seamless browsing experience on both mobiles and desktops.
+- **Share knowledge**: Your team members can ask, answer, and search effortlessly.
+- **Stay organized**: use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
+- **Engage community**: Vote for the best answers, and admins can accept and highlight the best answer for better knowledge sharing.Our reputation and award system keeps everyone involved and fosters a self-governed community.
+- **Plugins**: Add wings to Answer and make it powerful in the way you want.
 
 ## Get Started
 
-There are multiple ways to start Answer, abut for an easy one, we suggest Docker Compose.
+There are multiple ways to start Answer, the easiest one is via Docker Compose.
 
 ```
 curl -fsSL https://raw.githubusercontent.com/apache/incubator-answer/main/docker-compose.yaml | docker compose -p answer -f - up
