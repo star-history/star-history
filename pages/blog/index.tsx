@@ -17,7 +17,7 @@ interface Blog {
  author: string;
  publishedDate: string;
  readingTime?: string; // Make readingTime optional
- featured: boolean;
+ featured?: boolean; // Make featured optional
  featureImage?: string;
 }
 
@@ -122,10 +122,8 @@ const Blog: React.FC = () => {
                       key={blog.slug}
                       className="w-full h-auto flex flex-col border rounded-md mb-8"
                     >
-                      <Link
-                        href={`/blog/${blog.slug}`}
-                        as={`/blog/${blog.slug}`}
-                      >
+                   <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
+                      
                         <img
                           className="h-60 w-full flex-shrink-0 object-cover rounded-t-md"
                           src={blog.featureImage}

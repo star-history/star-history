@@ -8,45 +8,43 @@ import About from "./about";
 import Test from "./test";
 import Blog from "./blog/";
 import './fonts.css';
-import blogdetail from "./blog/[blogdetail]";
 
 export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: React.ReactElement) => React.ReactNode;
+ getLayout?: (page: React.ReactElement) => React.ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
+ Component: NextPageWithLayout;
 };
 
 const routes = {
-  "/": Home,
-  "/about": About,
-  "/test": Test,
-  "/blog": Blog,
-  "/blog/:blogSlug": blogdetail
+ "/": Home,
+ "/about": About,
+ "/test": Test,
+ "/blog": Blog,
 };
 
-const Router = (pageProps: any) => {
-  const router = useRouter();
-  const { pathname } = router;
-  const lowercasePathname = pathname.toLowerCase();
-  const Component = routes[lowercasePathname as keyof typeof routes] || NotFound;
+const Router = ({ Component, pageProps }: AppPropsWithLayout) => {
+ const router = useRouter();
+ const { pathname } = router;
+ const lowercasePathname = pathname.toLowerCase();
+ const ComponentToRender = routes[lowercasePathname as keyof typeof routes] || NotFound;
 
-  // Redirect to the lowercase path if it's different
-  if (pathname !== lowercasePathname) {
+ // Redirect to the lowercase path if it's different
+ if (pathname !== lowercasePathname) {
     if (typeof window !== "undefined") {
       window.location.href = lowercasePathname;
     }
     return null;
-  }
+ }
 
-  return <Component {...pageProps} />;
+ return <ComponentToRender {...pageProps} />;
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-  // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? ((page) => page);
-  return getLayout(<Component {...pageProps} />);
+ // Use the layout defined at the page level, if available
+ const getLayout = Component.getLayout ?? ((page) => page);
+ return getLayout(<Component {...pageProps} />);
 };
 
 export default MyApp;
