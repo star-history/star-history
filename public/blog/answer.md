@@ -4,11 +4,11 @@
 
 # Apache Answer: Thrive the Community. Unleash Collective Knowledge.
 
-[Apache Answer](https://answer.apache.org/) is an open-source Q&A platform software for teams at any scale, now incubating in Apache Software Foundation. Whether it’s a developer hub, support center, or knowledge base, you can always count on Apache Answer. 
+[Apache Answer](https://answer.apache.org/) is an open-source Q&A platform software for teams at any scale, now incubating in Apache Software Foundation. Whether it’s a developer hub, support center, or knowledge base, you can always count on Apache Answer.
 
 [![Star History Chart](https://api.star-history.com/svg?repos=apache/incubator-answer&type=Date)](https://star-history.com/#apache/incubator-answer&Date)
 
-Answer is built with Go and ReactJS. It supports various databases, including SQLite, MySQL, and PostgresSQL, making it a flexible and scalable solution that can be deployed in any environment.
+Answer is built with Go and ReactJS. It supports various databases, including SQLite, MySQL, and PostgreSQL, making it a flexible and scalable solution that can be deployed in any environment.
 
 ## Features You Love. Proud We Have.
 
@@ -17,7 +17,7 @@ Answer is built with Go and ReactJS. It supports various databases, including SQ
 - **Easy setup**: Build a community forum, help center or knowledge base from the ground right away.
 - **Mobile friendly**: Enjoy a seamless browsing experience on both mobiles and desktops.
 - **Share knowledge**: Your team members can ask, answer, and search effortlessly.
-- **Stay organized**: use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
+- **Stay organized**: Use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
 - **Engage community**: Vote for the best answers, and admins can accept and highlight the best answer for better knowledge sharing.Our reputation and award system keeps everyone involved and fosters a self-governed community.
 - **Plugins**: Add wings to Answer and make it powerful in the way you want.
 
@@ -31,6 +31,6 @@ curl -fsSL https://raw.githubusercontent.com/apache/incubator-answer/main/docker
 
 ## Contributors Wanted
 
-We came with a dream to unlock collective wisdom, and finding the best answer could be as easy as breathing for everyone. We ship new features every month, and would love to have more contributors join us. Contribute your ideas and let’s push the boundaries of Q&A software together.
+We came with a dream to unlock collective wisdom, and finding the best answer could be as easy as breathing for everyone. We ship new features monthly, and would love more contributors to join us. Contribute your ideas and let’s push the boundaries of Q&A software together.
 
 There are ways you can be a part of our community, not just coding. You can find out more in our [Contributing](https://answer.apache.org/community/contributing) guide. Every contribution counts, no matter big or small, for real.
