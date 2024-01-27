@@ -8,6 +8,7 @@ import HighlightBlogSection from "../../components/HighlightBlogSection";
 import utils from "common/utils";
 import Link from "next/link";
 import blogData from '../../public/blog/data.json';
+import { NextPageWithLayout } from "pages/_app";
 
 
 interface Blog {
@@ -21,7 +22,7 @@ interface Blog {
  featureImage?: string;
 }
 
-const Blog: React.FC = () => {
+const Blog: NextPageWithLayout = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [featuredBlogs, setFeaturedBlogs] = useState<Blog[]>([]);

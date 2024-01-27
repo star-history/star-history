@@ -1,12 +1,13 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { marked } from "marked";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import Footer from "../../components/footer";
 import Header from "../../components/header";
 import SponsorFooterBanner from "../../components/SponsorView";
 import SponsorRightBanner from "../../components/SponsorStaticBanner";
 import HighlightBlogSection from "../../components/HighlightBlogSection";
-import Link from "next/link";
+import { GetServerSidePropsContext } from "next";
 
 interface Blog {
   title: string;
@@ -19,60 +20,15 @@ interface Blog {
 
 interface State {
   isLoading: boolean;
-  blog: Blog | undefined;
-  parsedBlogHTML: string | undefined;
+  blog?: Blog;
+  parsedBlogHTML?: string;
 }
 
 const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
-  const router = useRouter();
+  // No need for useRouter here since the data will be fetched using getServerSideProps
+  // const router = useRouter();
 
-  const [state, setState] = useState<State>({
-    isLoading: true,
-    blog: undefined,
-    parsedBlogHTML: undefined,
-   });
-   
-  // useEffect(() => {
-  //   let isMounted = true;
-
-  //   const fetchData = async () => {
-  //     const blogSlug = router.query.blogSlug as string;
-  //     if (blogSlug && blogSlug !== blog?.slug) {
-  //       try {
-  //         const res = await fetch("/blog/data.json");
-  //         const blogList: Blog[] = await res.json();
-
-  //         const foundBlog = blogList.find((blog) => blog.slug === blogSlug);
-  //         if (!foundBlog || !isMounted) {
-  //           return;
-  //         }
-
-  //         const contentRes = await fetch(`/blog/${blogSlug}.md`);
-  //         const content = await contentRes.text();
-
-  //         if (isMounted) {
-  //           useState({
-  //             ...state,
-  //             blog: {
-  //               ...foundBlog,
-  //               readingTime: calcReadingTime(content),
-  //             },
-  //             parsedBlogHTML: marked.parse(content),
-  //             isLoading: false,
-  //           });
-  //         }
-  //       } catch (error) {
-  //         console.error("Error fetching data:", error);
-  //       }
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, [router.query.blogSlug, blog?.slug]);
+  // The props are passed by getServerSideProps, no need for the State and useEffect
 
   const calcReadingTime = (content: string) => {
     const wordsPerMinute = 200;
@@ -172,5 +128,48 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
     </div>
   );
 };
+
+// Use getServerSideProps to fetch data based on the dynamic parameter
+// Use getServerSideProps to fetch data based on the dynamic parameter
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // Default return object
+  let returnObj = {
+    props: {
+      isLoading: true,
+      blog: null,
+      parsedBlogHTML: "",
+    },
+  };
+
+  try {
+    // Your existing code...
+    const blogSlug = context.params?.blogSlug as string;
+    const blogListRes = await fetch(`/public/blog/assets/data.json`);
+    const blogList = (await blogListRes.json()) as Blog[];
+    const blog = blogList.find((blog) => blog.slug === blogSlug);
+
+    if (!blog) {
+      return {
+        notFound: true,
+      };
+    }
+
+    const contentRes = await fetch(`/public/blog/assets/${blogSlug}.md`);
+    const content = await contentRes.text();
+
+    // Update return object
+    returnObj = {
+      props: {
+        isLoading: false,
+        blog: blog as Blog,
+        parsedBlogHTML: marked.parse(content),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  return returnObj;
+}
 
 export default BlogPost;
