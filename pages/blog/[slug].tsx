@@ -8,6 +8,10 @@ import SponsorFooterBanner from "../../components/SponsorView";
 import SponsorRightBanner from "../../components/SponsorStaticBanner";
 import HighlightBlogSection from "../../components/HighlightBlogSection";
 import { GetServerSidePropsContext } from "next";
+import path from "path";
+import fs from "fs/promises";
+
+import blogs from "public/blog/assets/data.json"
 
 interface Blog {
   title: string;
@@ -143,10 +147,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   try {
     // Your existing code...
-    const blogSlug = context.params?.blogSlug as string;
-    const blogListRes = await fetch(`/public/blog/assets/data.json`);
-    const blogList = (await blogListRes.json()) as Blog[];
-    const blog = blogList.find((blog) => blog.slug === blogSlug);
+    const blogSlug = context.params?.slug as string;
+
+    const blog = blogs.find((blog) => blog.slug === blogSlug);
 
     if (!blog) {
       return {
@@ -154,14 +157,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       };
     }
 
-    const contentRes = await fetch(`/public/blog/assets/${blogSlug}.md`);
-    const content = await contentRes.text();
+    const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`)
+    const content = await fs.readFile(filePath, 'utf8')
 
     // Update return object
     returnObj = {
       props: {
         isLoading: false,
-        blog: blog as Blog,
+        blog: blog as any, // correct the blog type
         parsedBlogHTML: marked.parse(content),
       },
     };
