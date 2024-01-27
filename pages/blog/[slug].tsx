@@ -12,6 +12,7 @@ import path from "path";
 import fs from "fs/promises";
 
 import blogs from "public/blog/assets/data.json"
+import { AppStateProvider } from "store";
 
 interface Blog {
   title: string;
@@ -41,6 +42,8 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
   };
 
   return (
+    <AppStateProvider>
+
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
@@ -130,6 +133,8 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
       <Footer />
       <SponsorRightBanner />
     </div>
+    </AppStateProvider>
+
   );
 };
 

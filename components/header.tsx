@@ -7,11 +7,13 @@ import Icon from './icon.png';
 import Link from 'next/link';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 import { FiMenu } from "react-icons/fi";
+import { AppStateProvider, useAppStore } from '../store';
 
 
 interface State {
   showDropMenu: boolean;
   showSetTokenDialog: boolean;
+  tokenCache?: string;
 }
 
 const Header: React.FC = () => {
@@ -43,6 +45,12 @@ const Header: React.FC = () => {
 
   return (
     <>
+
+    
+      {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} tokenCache={false} />}
+      <AppStateProvider>
+
+      
       <TopBanner />
       <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
         <div className="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-0 sm:px-4">
@@ -163,8 +171,8 @@ Add Access Token
         </span>
 
       </div>
-{state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} tokenCache={false} />}
-  
+      </AppStateProvider>
+
     </>
   );
 };

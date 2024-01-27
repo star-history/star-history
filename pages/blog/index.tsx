@@ -9,6 +9,7 @@ import utils from "common/utils";
 import Link from "next/link";
 import blogData from '../../public/blog/data.json';
 import { NextPageWithLayout } from "pages/_app";
+import { AppStateProvider } from "store";
 
 
 interface Blog {
@@ -70,6 +71,7 @@ const Blog: NextPageWithLayout = () => {
   console.log("blogs:", blogs);
 
   return (
+    <AppStateProvider>
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
       <Head>
         <title>Star History Blog</title>
@@ -224,6 +226,8 @@ const Blog: NextPageWithLayout = () => {
       <Footer />
       <SponsorBanner />
     </div>
+    </AppStateProvider>
+
   );
 };
 
