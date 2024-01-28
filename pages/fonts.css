@@ -2,3 +2,7 @@
     font-family: 'xkcd';
     src: url('../styles/xkcd.ttf') format('truetype');
    }
+
+   html, body {
+  font-family: "Inter", sans-serif;
+}

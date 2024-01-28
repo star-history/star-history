@@ -10,6 +10,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@tailwindcss/typography": "^0.5.10",
     "axios": "^1.6.3",
     "d3-axis": "^3.0.0",
     "d3-scale": "^4.0.2",
