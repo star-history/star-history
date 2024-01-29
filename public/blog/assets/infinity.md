@@ -2,7 +2,6 @@ _This is the fifteenth issue of The Starlet List. If you want to prompt your ope
 
 ---
 
-# Infinity, the AI-Native Database Powering the Next-Gen RAG for LLM
 
 After extensive development, the AI-native database Infinity was officially open-sourced on December 21, 2023. Github repo: https://github.com/infiniflow/infinity. Infinity is specifically designed to cater to large models and is primarily used for Retrieval Augmented Generation (RAG). In the future, the infrastructure layer of enterprise AI applications will only require an AI-native database combined with a large model (LLM currently, multi-modal models in the future) to fully address the core needs of enterprise AI applications including Copilot, search, recommendations, and conversational AI. All types of enterprise data — documents, regular databases (OLTP and OLAP), APIs, logs, and unstructured data — can be integrated into a single AI-native database. The database feeds the business queries’ data to the large model, which generates the final results for specific applications.
 

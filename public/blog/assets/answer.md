@@ -2,8 +2,6 @@
 
 ---
 
-# Apache Answer: Thrive the Community. Unleash Collective Knowledge.
-
 [Apache Answer](https://answer.apache.org/) is an open-source Q&A platform software for teams at any scale, now incubating in Apache Software Foundation. Whether it’s a developer hub, support center, or knowledge base, you can always count on Apache Answer.
 
 [![Star History Chart](https://api.star-history.com/svg?repos=apache/incubator-answer&type=Date)](https://star-history.com/#apache/incubator-answer&Date)

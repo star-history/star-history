@@ -10,6 +10,7 @@ import HighlightBlogSection from "../../components/HighlightBlogSection";
 import { GetServerSidePropsContext } from "next";
 import path from "path";
 import fs from "fs/promises";
+import { FaSpinner } from "react-icons/fa";
 
 import blogs from "public/blog/assets/data.json"
 import { AppStateProvider } from "store";
@@ -30,10 +31,6 @@ interface State {
 }
 
 const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
-  // No need for useRouter here since the data will be fetched using getServerSideProps
-  // const router = useRouter();
-
-  // The props are passed by getServerSideProps, no need for the State and useEffect
 
   const calcReadingTime = (content: string) => {
     const wordsPerMinute = 200;
@@ -53,7 +50,7 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
         <div className="w-full flex flex-col justify-start items-center">
           {isLoading ? (
             <div className="grow w-full flex flex-col justify-center items-center">
-              <i className="fas fa-spinner animate-spin text-4xl z-10"></i>
+              <FaSpinner className="animate-spin text-4xl z-10" />
             </div>
           ) : blog === undefined ? (
             <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -97,19 +94,6 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                 className="blog-content-container w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl"
                 dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }}
               />
-              <div className="w-full h-10 flex flex-col justify-center items-center">
-                <p className="text-center leading-8 text-lg text-dark font-medium">
-                  Oops! No article found.
-                </p>
-                <p className="text-center leading-8 text-lg text-dark font-medium">
-                  <Link href="/blog">
-                    <button className="w-full px-4 py-2 h-full text-base rounded-md bg-gray-400 shadow-inner text-light hover:bg-gray-500">
-                      <i className="fas fa-chevron-left mr-1"></i>
-                      Back to blog list
-                    </button>
-                  </Link>
-                </p>
-              </div>
             </div>
           )}
           <div className="mt-12">
@@ -138,10 +122,8 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
   );
 };
 
-// Use getServerSideProps to fetch data based on the dynamic parameter
-// Use getServerSideProps to fetch data based on the dynamic parameter
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // Default return object
+  // Always start with isLoading: true
   let returnObj = {
     props: {
       isLoading: true,
@@ -151,21 +133,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 
   try {
-    // Your existing code...
     const blogSlug = context.params?.slug as string;
-
     const blog = blogs.find((blog) => blog.slug === blogSlug);
 
     if (!blog) {
-      return {
-        notFound: true,
-      };
+      // If no blog is found, keep isLoading: true to show the spinner
+      // and prevent showing a 404 page immediately.
+      return returnObj;
     }
 
-    const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`)
-    const content = await fs.readFile(filePath, 'utf8')
+    const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`);
+    const content = await fs.readFile(filePath, 'utf8');
 
-    // Update return object
+    // Update return object with blog data and set isLoading: false
     returnObj = {
       props: {
         isLoading: false,
@@ -175,6 +155,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   } catch (error) {
     console.error("Error fetching data:", error);
+    // In case of an error, keep isLoading: true to show the spinner
+    return returnObj;
   }
 
   return returnObj;
