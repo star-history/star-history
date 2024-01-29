@@ -2,7 +2,6 @@
 
 ---
 
-# Wasp: the fastest way to develop full-stack web apps with React & Node.js
 
 ![waspsh_logo](/blog/assets/wasp/waspsh_logo.webp)
 

@@ -2,7 +2,6 @@
 
 ---
 
-# MetisFL - the blazing-fast and developer-friendly federated learning framework
 
 ## The Vision
 

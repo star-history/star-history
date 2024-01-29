@@ -2,7 +2,6 @@
 
 ---
 
-# Mockoon - Mock your API in seconds
 
 ## What is Mockoon?
 

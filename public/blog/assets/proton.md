@@ -2,8 +2,6 @@
 
 ---
 
-# Proton: A streaming SQL analytical engine which connects to historical data processing in one single binary
-
 > Thinking, Fast and Slow is a 2011 popular science book by psychologist Daniel Kahneman. The book's main thesis is a differentiation between two modes of thought: "System 1" is fast, instinctive and emotional; "System 2" is slower, more deliberative, and more logical.
 >
 > – https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow 

@@ -2,7 +2,6 @@
 
 ---
 
-# PostgresML: The GPU-powered AI application database
 
 [PostgresML](https://postgresml.org/) cuts the complexity from AI so you can get your app to market faster. It’s the first GPU-powered AI application database – enabling users to build chatbots, search engines, forecasting apps and more with the latest NLP, LLM and ML models using the simplicity and power of SQL.
 

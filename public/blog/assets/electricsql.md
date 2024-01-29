@@ -1,7 +1,6 @@
 *This is the ninth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---
-# Electric SQL - Build reactive, realtime, local-first apps directly on Postgres.
 
 [ElectricSQL](https://electric-sql.com/) is an open source local-first software platform. Use it to build super fast, collaborative, offline-capable apps directly on Postgres by syncing to a local SQLite database.
 

@@ -13,14 +13,14 @@ import { AppStateProvider } from "store";
 
 
 interface Blog {
- slug: string;
- title: string;
- excerpt: string;
- author: string;
- publishedDate: string;
- readingTime?: string; // Make readingTime optional
- featured?: boolean; // Make featured optional
- featureImage?: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  publishedDate: string;
+  readingTime?: string;
+  featured?: boolean;
+  featureImage?: string;
 }
 
 const Blog: NextPageWithLayout = () => {
@@ -32,28 +32,34 @@ const Blog: NextPageWithLayout = () => {
     const fetchData = async () => {
       try {
         const rawBlogList = blogData;
-   
+    
         console.log("Raw Blog List:", rawBlogList);
-   
+    
         const blogList: Blog[] = await Promise.all(
           rawBlogList.map(async (raw: Blog) => {
             const contentRes = await fetch(`/blog/${raw.slug}.md`);
             const content = await contentRes.text();
+    
+            // Calculate reading time based on the content
+            const wordsPerMinute = 200; // Adjust as needed
+            const wordCount = content.split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / wordsPerMinute);
+    
             return {
               ...raw,
-              readingTime: utils.calcReadingTime(content),
+              readingTime: `${readingTime} min read`,
             };
           })
         );
-   
+    
         console.log("Blog List:", blogList);
-   
+    
         const featuredBlogs = blogList.filter((blog) => blog.featured);
         const blogs = blogList.filter((blog) => !blog.featured);
-   
+    
         console.log("Featured Blogs:", featuredBlogs);
         console.log("Blogs:", blogs);
-   
+    
         setFeaturedBlogs(featuredBlogs);
         setBlogs(blogs);
         setIsLoading(false);
@@ -62,10 +68,10 @@ const Blog: NextPageWithLayout = () => {
         setIsLoading(false);
       }
     };
-   
+    
+  
     fetchData();
-   }, []);
-
+  }, []);
   console.log("isLoading:", isLoading);
   console.log("featuredBlogs:", featuredBlogs);
   console.log("blogs:", blogs);
@@ -74,7 +80,7 @@ const Blog: NextPageWithLayout = () => {
     <AppStateProvider>
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
       <Head>
-        <title>Star History Blog</title>
+        <title>GitHub Star History</title>
       </Head>
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
