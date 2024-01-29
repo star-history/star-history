@@ -87,7 +87,7 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                     })}
                   </time>
                   <span aria-hidden="true"> &middot; </span>
-                  <span> {blog.readingTime} </span>
+<span> {blog.readingTime} min read </span>
                 </div>
               </div>
               <div
@@ -123,7 +123,6 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // Always start with isLoading: true
   let returnObj = {
     props: {
       isLoading: true,
@@ -137,25 +136,30 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const blog = blogs.find((blog) => blog.slug === blogSlug);
 
     if (!blog) {
-      // If no blog is found, keep isLoading: true to show the spinner
-      // and prevent showing a 404 page immediately.
       return returnObj;
     }
 
     const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`);
     const content = await fs.readFile(filePath, 'utf8');
 
-    // Update return object with blog data and set isLoading: false
+    // Calculate reading time
+    const wordsPerMinute = 200;
+    const wordCount = content.split(" ").length;
+    const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+    // Update return object with blog data, reading time, and set isLoading: false
     returnObj = {
       props: {
         isLoading: false,
-        blog: blog as any, // correct the blog type
+        blog: {
+          ...blog,
+          readingTime: readingTime, // Add reading time to the blog object
+        },
         parsedBlogHTML: marked.parse(content),
       },
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-    // In case of an error, keep isLoading: true to show the spinner
     return returnObj;
   }
 

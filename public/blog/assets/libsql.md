@@ -2,8 +2,6 @@
 
 ---
 
-# libSQL: SQLite for modern applications
-
 [libSQL](https://turso.tech/libsql) is an Open Source and Open Contribution fork of SQLite. Unbeknownst to many, SQLite is developed without an OSS license (public domain), with a small set of developers that very rarely take external contributions. [In their own words](https://sqlite.org/copyright.html), the project is *"Open Source, not Open Contribution"*.
 
 ## libSQL

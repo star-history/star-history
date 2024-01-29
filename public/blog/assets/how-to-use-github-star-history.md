@@ -1,4 +1,3 @@
-# 📕 How to use GitHub Star History
 
 When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?
 

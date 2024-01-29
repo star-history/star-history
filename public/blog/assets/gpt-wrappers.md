@@ -1,4 +1,3 @@
-# Star History Monthly | Open-source GPT Wrappers
 
 GPT wrapper tools offer a service by "wrapping" around ChatGPT API, leveraging the underlying technology to provide an additional functionality not offered directly by OpenAI. What these tools have in common is：
 

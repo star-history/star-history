@@ -1,4 +1,3 @@
-# Introducing the new star-history.com
 
 After a month of hard work, we are happy to introduce you to the new [star-history.com](http://star-history.com/). It has been rebuilt using a modern tech stack while keeping the original sketching / xkcd feel. Besides, we have added several highly requested features.
 

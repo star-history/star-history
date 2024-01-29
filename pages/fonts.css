@@ -5,7 +5,7 @@
 
    @font-face {
     font-family: 'Inter';
-    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap') format('truetype');
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap') format('truetype');
    }
 
    html, body {
