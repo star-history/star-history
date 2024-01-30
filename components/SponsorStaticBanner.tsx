@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { randomSponsors } from "../helpers/sponsor";
 import { FaTimes } from "react-icons/fa";
 
+type Sponsor = {
+  name: string;
+  logo: string;
+  link: string;
+  logoSlogan: string;
+  landingImage: string;
+  landingSlogan: string;
+};
+
 export default function SponsorStaticBanner() {
   const [hideModal, setHideModal] = useState(false);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+
+  useEffect(() => {
+    setSponsors(randomSponsors);
+  }, []);
 
   return (
     <div
-      className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-10 ${hideModal ? '!hidden' : ''}`}
+      className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-10 ${
+        hideModal ? "!hidden" : ""
+      }`}
     >
       <div className="w-full flex justify-between items-center mb-2">
         <p className="text-xs text-gray-400">Sponsors (random order)</p>
@@ -17,7 +33,7 @@ export default function SponsorStaticBanner() {
           onClick={() => setHideModal(!hideModal)}
         />
       </div>
-      {randomSponsors.map((sponsor) => (
+      {sponsors.map((sponsor) => (
         <a
           key={sponsor.name}
           href={sponsor.link}

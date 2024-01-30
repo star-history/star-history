@@ -1,12 +1,22 @@
+import { useEffect, useState } from "react";
 import { randomSponsors } from "../helpers/sponsor";
 import Link from "next/link";
 
-interface BytebaseBannerProps {
+type Sponsor = {
   className?: string;
-}
+};
 
-const BytebaseBanner: React.FC<BytebaseBannerProps> = ({ className }) => {
-  const sponsor = randomSponsors[0];
+const BytebaseBanner: React.FC<Sponsor> = ({ className }) => {
+  const [isClient, setIsClient] = useState(false);
+  const sponsor = isClient ? randomSponsors[0] : null;
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!sponsor) {
+    return null; // or a loading state if needed
+  }
 
   return (
     <div

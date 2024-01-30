@@ -11,8 +11,7 @@ import { ReactElement, ReactNode } from "react";
 import StarChartViewer from "../components/StarChartViewer";
 import Head from "next/head";
 
-interface IndexProps {
-}
+interface IndexProps {}
 
 const Index: NextPage<IndexProps> = () => {
   const [isChartVisible, setChartVisibility] = useState(true);
@@ -23,11 +22,6 @@ const Index: NextPage<IndexProps> = () => {
 
   return (
     <section>
-
-      <Head>
-      <link rel="icon" href="/public/favicon.ico" />
-      <title>GitHub Star History</title>
-        </Head>
       <AppStateProvider>
         <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
           <Header />
@@ -44,13 +38,6 @@ const Index: NextPage<IndexProps> = () => {
               />
               {isChartVisible && <StarChartViewer />}
             </div>
-            
-            
-
-            <div className="hidden lg:block">
-              
-            </div>
-            
           </div>
           <Footer />
           <SponsorBanner />
