@@ -14,6 +14,7 @@ import { FaSpinner } from "react-icons/fa";
 
 import blogs from "public/blog/assets/data.json"
 import { AppStateProvider } from "store";
+import Head from "next/head";
 
 interface Blog {
   title: string;
@@ -42,6 +43,8 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
     <AppStateProvider>
 
     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
+
+    <title>{blog ? `${blog.title} - GitHub Star History` : 'GitHub Star History'}</title>
       <Header />
       <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
         <div className="w-full hidden lg:block">

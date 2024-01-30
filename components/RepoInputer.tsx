@@ -4,6 +4,7 @@ import { GITHUB_REPO_URL_REG } from "../helpers/consts";
 import toast from "../helpers/toast";
 import { useAppStore } from "../store";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 
 interface State {
   repo: string;
@@ -220,13 +221,15 @@ export default function RepoInputer({
         <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">
           What's new
         </span>
-        <a
-          className="text-gray-700 hover:underline"
-          href={`/blog/${state.latestBlog?.slug}`}
-        >
-          {state.latestBlog?.title}
-          <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>
-        </a>
+        <div className="flex items-center">
+         <a
+            className="text-gray-700 hover:underline"
+            href={`/blog/${state.latestBlog?.slug}`}
+         >
+            {state.latestBlog?.title}
+         </a>
+         <FaChevronRight className="mr-1 text-gray-500 text-sm" />
+        </div>
       </div>
       <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
         <input

@@ -72,6 +72,10 @@ const blogSectionList: BlogSection[] = [
     title: "Monthly Pick",
     linkList: [
       {
+        title: "2023 Dec (GPT Wrappers)",
+        path: "/blog/gpt-wrappers",
+      },
+      {
         title: "2023 Nov (TTS)",
         path: "https://star-history.com/blog/tts",
       },
@@ -117,7 +121,7 @@ const blogSectionList: BlogSection[] = [
       },
       {
         title: "2022 Dec",
-        path: "https://star-history.com/blog/star-history-monthly-pick-202212",
+        path: "/blog/star-history-monthly-pick-202212",
       },
     ],
   },

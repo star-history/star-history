@@ -9,21 +9,25 @@ import { AppStateProvider } from "../store";
 import type { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
 import StarChartViewer from "../components/StarChartViewer";
+import Head from "next/head";
 
 interface IndexProps {
-  // Add any additional props here
 }
 
 const Index: NextPage<IndexProps> = () => {
   const [isChartVisible, setChartVisibility] = useState(true);
 
   const handleClickLink = (link: string) => {
-    // Handle the click event here
     console.log(`Link clicked: ${link}`);
   };
 
   return (
     <section>
+
+      <Head>
+      <link rel="icon" href="/public/favicon.ico" />
+      <title>GitHub Star History</title>
+        </Head>
       <AppStateProvider>
         <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
           <Header />
@@ -40,7 +44,13 @@ const Index: NextPage<IndexProps> = () => {
               />
               {isChartVisible && <StarChartViewer />}
             </div>
-            <div className="hidden lg:block"></div>
+            
+            
+
+            <div className="hidden lg:block">
+              
+            </div>
+            
           </div>
           <Footer />
           <SponsorBanner />
