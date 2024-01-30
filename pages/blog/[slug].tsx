@@ -11,7 +11,7 @@ import { GetServerSidePropsContext } from "next";
 import path from "path";
 import fs from "fs/promises";
 import { FaSpinner } from "react-icons/fa";
-
+import { format } from "date-fns";
 import blogs from "public/blog/assets/data.json";
 import { AppStateProvider } from "store";
 import Head from "next/head";
@@ -82,13 +82,9 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                     <span className="text-gray-900">{blog.author}</span>
                     <span aria-hidden="true"> &middot; </span>
                     <time dateTime={blog.publishedDate}>
-                      {new Date(blog.publishedDate || "").toLocaleString(
-                        "default",
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        }
+                      {format(
+                        new Date(blog.publishedDate || ""),
+                        "MMM d, yyyy"
                       )}
                     </time>
                     <span aria-hidden="true"> &middot; </span>

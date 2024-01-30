@@ -7,7 +7,8 @@ import NotFound from "../pages/404";
 import About from "./about";
 import Test from "./test";
 import Blog from "./blog/";
-import './fonts.css';
+import "./fonts.css";
+import Head from "next/head";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -25,18 +26,25 @@ const routes = {
 };
 
 const Router = ({ Component, pageProps }: AppPropsWithLayout) => {
- const router = useRouter();
- const { pathname } = router;
- const ComponentToRender =
-    routes[pathname as keyof typeof routes] || NotFound;
+  const router = useRouter();
+  const { pathname } = router;
+  const ComponentToRender = routes[pathname as keyof typeof routes] || NotFound;
 
- return <ComponentToRender {...pageProps} />;
+  return <ComponentToRender {...pageProps} />;
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
-  return getLayout(<Component {...pageProps} />);
+  return (
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <title>Github Star History</title>
+      </Head>
+      {getLayout(<Component {...pageProps} />)}
+    </>
+  );
 };
 
 export default MyApp;
