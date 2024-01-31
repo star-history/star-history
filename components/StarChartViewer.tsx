@@ -12,6 +12,7 @@ import { XYChartData } from 'packages/xy-chart';
 import { convertDataToChartData, getRepoData } from 'common/chart';
 import toast from 'helpers/toast';
 import { RepoData } from 'types/chart';
+import BytebaseBanner from './SponsorView';
 
 
 interface State {
@@ -303,6 +304,9 @@ const handleSetTokenDialogClose = () => {
 <div className="mb-12 flex justify-center">
 <iframe src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{margin: 0, borderRadius: 0, backgroundColor: 'transparent'}}></iframe>
 </div>
+
+<BytebaseBanner v-if="state.chartData" />
+
 </div>
 )}
 

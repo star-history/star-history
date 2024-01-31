@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+        fontFamily: {
+      inter: ['Inter', 'sans-serif'],
+      },
       colors: {
         dark: "RGB(54, 54, 54)",
         light: "RGB(245, 245, 245)",
