@@ -43,13 +43,13 @@
         >
           <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
-        <a
+        <!-- <a
           class="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
           href="https://discord.gg/yyzsmgcqg7"
           target="_blank"
         >
           <i class="fab fa-discord text-2xl text-indigo-300"></i>
-        </a>
+        </a> -->
         <GitHubStarButton />
       </div>
       <div class="h-full flex md:hidden flex-row justify-end items-center">

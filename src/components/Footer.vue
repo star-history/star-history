@@ -18,13 +18,13 @@
         >
           <i class="fab fa-twitter"></i>
         </a>
-        <a
+        <!-- <a
           class="h-full flex flex-row justify-center items-center ml-3 text-lg hover:opacity-80"
           href="https://discord.gg/yyzsmgcqg7"
           target="_blank"
         >
           <i class="fab fa-discord"></i>
-        </a>
+        </a> -->
         <a
           class="h-full flex flex-row justify-center items-center mx-3 text-lg hover:opacity-80"
           href="mailto:star@bytebase.com"
