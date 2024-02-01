@@ -10,15 +10,12 @@ They can also help improve productivity by automating the process of generating 
 
 In this edition of Star History monthly, we have compiled a collection of open-source Text2SQL tools.
 
-- [Star History Monthly | Open-source Text2SQL Tools](#star-history-monthly--open-source-text2sql-tools)
-  - [Chat2DB](#chat2db)
-  - [SQL Chat](#sql-chat)
-  - [Vanna](#vanna)
-  - [DuckDB-NSQL](#duckdb-nsql)
-  - [Langchain](#langchain)
-  - [Awesome Text2SQL](#awesome-text2sql)
-  - [To Wrap up](#to-wrap-up)
-  - [Lastly](#lastly)
+- [Chat2DB](#chat2db)
+- [SQL Chat](#sql-chat)
+- [Vanna](#vanna)
+- [DuckDB-NSQL](#duckdb-nsql)
+- [Langchain](#langchain)
+- [Awesome Text2SQL](#awesome-text2sql)
 
 ## Chat2DB
 
@@ -40,7 +37,7 @@ It's [open-sourced by Bytebase](https://www.bytebase.com/blog/sql-chat/), a data
 
 ## Vanna
 
-[Vanna](https://github.com/vanna-ai/vanna) is a Python library that allows the training of an RAG model with queries, DDL, and documentation from a database.
+[Vanna](https://github.com/vanna-ai/vanna) is a Python framework that allows the training of an RAG model with queries, DDL, and documentation from a database.
 
 ![vanna](/blog/assets/text2sql/vanna.webp)
 
@@ -50,7 +47,7 @@ It was open-sourced July, 2023, but [got really popular](https://star-history.co
 
 ## DuckDB-NSQL
 
-[DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, by [MontherDuck](https://motherduck.com/) and [Numbers Station](https://www.numbersstation.ai/). This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go back-and-forth between the DuckDB documentation and the SQL shell.
+[DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, by [MontherDuck](https://motherduck.com/blog/duckdb-text2sql-llm/) and [Numbers Station](https://www.numbersstation.ai/). This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go back-and-forth between the DuckDB documentation and the SQL shell.
 
 ![duckdb](/blog/assets/text2sql/duckdb.webp)
 
