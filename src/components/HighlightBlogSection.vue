@@ -79,6 +79,10 @@ const blogSectionList = [
     title: "Monthly Pick",
     linkList: [
      {
+        title: "2024 Jan (Text2SQL)",
+        path: "https://star-history.com/blog/text2sql",
+      },
+     {
         title: "2023 Dec (GPT Wrappers)",
         path: "https://star-history.com/blog/gpt-wrappers",
       },

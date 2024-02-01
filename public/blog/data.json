@@ -1,5 +1,14 @@
 [
   {
+    "title": "Star History Monthly Jan 2024 | Open-source Text2SQL Tools",
+    "slug": "text2sql",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/text2sql/banner.webp",
+    "publishedDate": "2024-01-31T09:50:06.000Z",
+    "excerpt": "Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!"
+  }, 
+  {
     "title": "Starlet #16 Apache Answer: Thrive the Community. Unleash Collective Knowledge.",
     "slug": "answer",
     "author": "Anne Zhu",
