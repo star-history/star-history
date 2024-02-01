@@ -2,7 +2,7 @@
 
 Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!
 
-![gpt](/blog/assets/text2sql/gpt.webp)
+![gpt](/blog/assets/text2sql/gpt.gif)
 
 These tools started out to bridge the gap between non-tech users and databases, by allowing them to interact with databases using natural language and reduce the barrier to accessing and analyzing data. But with the advance of AI models, these tools now support more advanced features such as handling complex queries, joining multiple tables, or even supporting natural language conversations.
 
@@ -50,7 +50,7 @@ It was open-sourced July, 2023, but [got really popular](https://star-history.co
 
 ## DuckDB-NSQL
 
-[DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, built by DuckDB and Numbers Station. This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go forth-and-back between the DuckDB documentation and the SQL shell.
+[DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, by [MontherDuck](https://motherduck.com/) and [Numbers Station](https://www.numbersstation.ai/). This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go back-and-forth between the DuckDB documentation and the SQL shell.
 
 ![duckdb](/blog/assets/text2sql/duckdb.webp)
 
