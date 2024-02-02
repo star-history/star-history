@@ -10,6 +10,10 @@ import Link from "next/link";
 import blogData from "../../public/blog/data.json";
 import { NextPageWithLayout } from "pages/_app";
 import { AppStateProvider } from "store";
+import { marked } from "marked";
+import { GetServerSidePropsContext } from "next";
+import path from "path";
+import blogs from "public/blog/assets/data.json"
 
 interface Blog {
   slug: string;
@@ -20,6 +24,12 @@ interface Blog {
   readingTime?: string;
   featured?: boolean;
   featureImage?: string;
+}
+
+interface State {
+  isLoading: boolean;
+  blog?: Array <Blog>;
+  parsedBlogHTML?: string;
 }
 
 const Blog: NextPageWithLayout = () => {
@@ -33,13 +43,15 @@ const Blog: NextPageWithLayout = () => {
         const rawBlogList = blogData;
         const blogList: Blog[] = await Promise.all(
           rawBlogList.map(async (raw: Blog) => {
-            const contentRes = await fetch(`/blog/${raw.slug}.md`);
+            const contentRes = await fetch(`/blog/assets/${raw.slug}.md`);
             const content = await contentRes.text();
 
             // Calculate reading time based on the content
-            const wordsPerMinute = 200; // Adjust as needed
-            const wordCount = content.split(/\s+/).length;
+            const wordsPerMinute = 200;
+            const wordCount = content.split(" ").length;
             const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+            console.log(contentRes, "haha")
 
             return {
               ...raw,
@@ -223,5 +235,48 @@ const Blog: NextPageWithLayout = () => {
     </AppStateProvider>
   );
 };
+
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   let returnObj = {
+//     props: {
+//       isLoading: true,
+//       blog: [],
+//       parsedBlogHTML: "",
+//     },
+//   };
+
+//   try {
+
+//     if (!blogs) {
+//       return returnObj;
+//     }
+
+//     const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`);
+//     const content = await fs.readFile(filePath, 'utf8');
+
+//     // Calculate reading time
+//     const wordsPerMinute = 200;
+//     const wordCount = content.split(" ").length;
+//     const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+//     // Update return object with blog data, reading time, and set isLoading: false
+//     returnObj = {
+//       props: {
+//         isLoading: false,
+//         blog: {
+//           ...blog,
+//           readingTime: readingTime, // Add reading time to the blog object
+//         },
+//         parsedBlogHTML: marked.parse(content),
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return returnObj;
+//   }
+
+//   return returnObj;
+// }
+
 
 export default Blog;

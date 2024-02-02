@@ -145,6 +145,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`);
     const content = await fs.readFile(filePath, 'utf8');
 
+
+
     // Calculate reading time
     const wordsPerMinute = 200;
     const wordCount = content.split(" ").length;
