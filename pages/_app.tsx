@@ -8,6 +8,7 @@ import About from "./about";
 import Test from "./test";
 import Blog from "./blog/";
 import "./fonts.css";
+import '@fortawesome/fontawesome-free/css/all.css';
 import Head from "next/head";
 
 export type NextPageWithLayout = NextPage & {

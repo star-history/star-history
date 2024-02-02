@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Link from 'next/link';
 
 interface BlogLink {
   title: string;
@@ -214,7 +215,7 @@ const blogSectionList: BlogSection[] = [
 ];
 
 const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, 'blogSectionList'>> = ({ clickLink }) => {
-  return (
+ return (
     <div className="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
       {blogSectionList.map((section) => (
         <div key={section.title}>
@@ -225,20 +226,18 @@ const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, 'blogSectio
           </div>
           <ul className="list-disc list-inside">
             {section.linkList.map((blog) => (
-              <li
-                key={blog.title}
-                className="mb-2 leading-3 cursor-pointer"
-                onClick={() => clickLink(blog.path)}
-              >
-                <span className="inline -ml-2 text-sm text-blue-700 hover:underline">
-                  {blog.title}
-                </span>
+              <li key={blog.title} className="mb-2 leading-3">
+<Link href={blog.path} className="cursor-pointer" target="_blank" rel="noopener noreferrer">
+ <span className="inline -ml-2 text-sm text-blue-700 hover:underline">
+    {blog.title}
+ </span>
+</Link>
               </li>
             ))}
           </ul>
         </div>
       ))}
     </div>
-  );
-}
+ );
+};
 export default HighlightBlogSection;

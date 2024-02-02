@@ -5,6 +5,7 @@ import toast from "../helpers/toast";
 import { useAppStore } from "../store";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+import Link from "next/link";
 
 interface State {
   repo: string;
@@ -222,12 +223,12 @@ export default function RepoInputer({
           What's new
         </span>
         <div className="flex items-center">
-         <a
+         <Link
             className="text-gray-700 hover:underline"
             href={`/blog/${state.latestBlog?.slug}`}
          >
             {state.latestBlog?.title}
-         </a>
+         </Link>
          <FaChevronRight className="mr-1 text-gray-500 text-sm" />
         </div>
       </div>
