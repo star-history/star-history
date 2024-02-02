@@ -10,12 +10,15 @@ They can also help improve productivity by automating the process of generating 
 
 In this edition of Star History monthly, we have compiled a collection of open-source Text2SQL tools.
 
-- [Chat2DB](#chat2db)
-- [SQL Chat](#sql-chat)
-- [Vanna](#vanna)
-- [DuckDB-NSQL](#duckdb-nsql)
-- [Langchain](#langchain)
-- [Awesome Text2SQL](#awesome-text2sql)
+- [Star History Monthly | Open-source Text2SQL Tools](#star-history-monthly--open-source-text2sql-tools)
+  - [Chat2DB](#chat2db)
+  - [SQL Chat](#sql-chat)
+  - [Vanna](#vanna)
+  - [DuckDB-NSQL](#duckdb-nsql)
+  - [Langchain](#langchain)
+  - [Awesome Text2SQL](#awesome-text2sql)
+  - [To Wrap up](#to-wrap-up)
+  - [Lastly](#lastly)
 
 ## Chat2DB
 
@@ -23,7 +26,7 @@ In this edition of Star History monthly, we have compiled a collection of open-s
 
 ![chat2db](/blog/assets/text2sql/chat2db.webp)
 
-There was a bit of [drama](https://www.linkedin.com/feed/update/urn:li:activity:7153040091454611456/) involving Chat2DB a while ago, we won't get into details here but curious to know what you think.
+There was a bit of [drama](https://www.linkedin.com/feed/update/urn:li:activity:7153040091454611456/) involving Chat2DB a while ago, we won't get into details here but I'm curious to know what you think.
 
 ## SQL Chat
 
@@ -43,7 +46,7 @@ It's [open-sourced by Bytebase](https://www.bytebase.com/blog/sql-chat/), a data
 
 You can use Vanna as is, or build your own custom UI with an existing tool (e.g. Streamlit, Slack).
 
-It was open-sourced July, 2023, but [got really popular](https://star-history.com/#vanna-ai/vanna&Date) this January.
+It was open-sourced in July 2023 and [got really popular](https://star-history.com/#vanna-ai/vanna&Date) this past January.
 
 ## DuckDB-NSQL
 
@@ -53,27 +56,25 @@ It was open-sourced July, 2023, but [got really popular](https://star-history.co
 
 ## Langchain
 
-[https://python.langchain.com/docs/use_cases/sql/](https://python.langchain.com/docs/use_cases/sql/)
-
-With Langchain, you can basically build a Q&A chain and agent over a SQL database yourself.
+With Langchain, you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
 
 ![langchain](/blog/assets/text2sql/langchain.webp)
 
-LangChain also has an SQL Agent that you can add onto the chain. It can not only answer questions based on the databases’ schema and content, but also recover from errors by running a generated query, catching the traceback and regenerating it correctly.
+LangChain also has an SQL Agent that you can add to the chain. It can not only answer questions based on the databases’ schema and content, but also recover from errors by running a generated query, catching the traceback and regenerating it correctly.
 
 ## Awesome Text2SQL
 
-[Awesome Text2SQL](https://github.com/eosphoros-ai/Awesome-Text2SQL) is a suite of curated tutorials and resources for LLMs, Text2SQL, Text2DSL, Text2API, Text2Vis and more. Most of the models are LLM+Text2SQL, and for each model, there are links for papers, code, dataset. If you want to dive deep into Text2SQL, take a look.
+[Awesome Text2SQL](https://github.com/eosphoros-ai/Awesome-Text2SQL) is a suite of curated tutorials and resources for LLMs, Text2SQL, Text2DSL, Text2API, Text2Vis, and more. Most of the models are LLM+Text2SQL, and for each model, there are links for papers, code, dataset. If you want to dive deep into Text2SQL, take a look!
 
 ![awesome-text2sql](/blog/assets/text2sql/awesome-text2sql.webp)
 
 ## To Wrap up
 
-LLM or not, you should still be extra careful when it comes to executing model-generated SQL queries. Some [ways](https://blog.langchain.dev/llms-and-sql/) to minimize risks includes describing your database schema, data; constraining the size of the output; validating and reviewing the generated SQL queries before executing them.
+LLM or not, you should still be extra careful when executing model-generated SQL queries. Some [ways](https://blog.langchain.dev/llms-and-sql/) to minimize risks includes describing your database schema, data; constraining the size of the output; validating and reviewing the generated SQL queries before executing them.
 
 ## Lastly
 
-If you want more AI content, check out earlier editions of the star history open-source monthly:
+If you want more AI content, check out earlier editions of the **Star History Open-source Monthly**:
 
 - [GPT Wrappers](/blog/gpt-wrappers)
 - [TTS (Text-to-Speech) Tools](/blog/tts)
