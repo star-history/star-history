@@ -83,12 +83,13 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                   <span className="text-gray-900">{blog.author}</span>
                   <span aria-hidden="true"> &middot; </span>
                   <time dateTime={blog.publishedDate}>
-                    {new Date(blog.publishedDate || "").toLocaleString("default", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </time>
+  {new Date(blog.publishedDate || "").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })}
+</time>
+
                   <span aria-hidden="true"> &middot; </span>
 <span> {blog.readingTime} min read </span>
                 </div>
