@@ -82,16 +82,16 @@ const Header: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaTwitter className="text-3xl text-blue-300"/>
+          <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>
-              <a
+              {/* <a
                 className="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
                 href="https://discord.gg/yyzsmgcqg7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaDiscord className="text-3xl text-indigo-400"/>
-              </a>
+              </a> */}
               <GitHubStarButton />
             </div>
 
