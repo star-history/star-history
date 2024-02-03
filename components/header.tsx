@@ -94,37 +94,25 @@ const Header: React.FC = () => {
               </a>
               <GitHubStarButton />
             </div>
-          </div>
-          <div className="h-full flex md:hidden flex-row justify-end items-center">
-            {state.showDropMenu ? (
-              <>
-                <LiaTimesSolid
-                  className={`relative w-10 h-full px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-white hover:bg-zinc-800 transform transition-transform ease-in-out duration-300`}
-                  onClick={handleToggleDropMenuBtnClick}
-                />
-                <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${
-                    state.showDropMenu ? "w-6 rotate-45" : "-mt-1"
-                  }`}
-                ></span>
-                <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${
-                    state.showDropMenu ? "hidden" : ""
-                  }`}
-                ></span>
-                <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${
-                    state.showDropMenu ? "w-6 -rotate-45" : "mt-1"
-                  }`}
-                ></span>
-              </>
-            ) : (
-              <FiMenu
-                className={`relative w-10 h-full px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-white hover:bg-zinc-800 transform transition-transform ease-in-out duration-300`}
+
+            <div className="h-full flex md:hidden flex-row justify-end items-center">
+              <span
+                className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
                 onClick={handleToggleDropMenuBtnClick}
-              />
-            )}
+              >
+                <span
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'}`}
+                ></span>
+                <span
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'hidden' : ''}`}
+                ></span>
+                <span
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'}`}
+                ></span>
+              </span>
+            </div>
           </div>
+        
         </header>
         <div
           className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${
