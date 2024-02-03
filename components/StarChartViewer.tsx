@@ -13,6 +13,7 @@ import { convertDataToChartData, getRepoData } from 'common/chart';
 import toast from 'helpers/toast';
 import { RepoData } from 'types/chart';
 import BytebaseBanner from './SponsorView';
+import utils from 'common/utils';
 
 
 interface State {
@@ -119,17 +120,15 @@ function StarChartViewer() {
     console.log(state)
    };
 
-
    const handleCopyLinkBtnClick = async () => {
-    const url = window.location.href; // Replace this with the actual URL you want to copy
-    const tempElement = document.createElement('textarea');
-    tempElement.value = url;
-    document.body.appendChild(tempElement);
-    tempElement.select();
-    document.execCommand('copy');
-    document.body.removeChild(tempElement);
-    alert('URL copied to clipboard!');
-   };
+    try {
+      await utils.copyTextToClipboard(window.location.href);
+      toast.succeed('Link copied');
+    } catch (error) {
+      console.error('Error copying link:', error);
+      toast.error('Failed to copy link');
+    }
+  };
 
    const handleGenerateImageBtnClick = async () => {
     const element = document.querySelector("#capture") as HTMLElement;
