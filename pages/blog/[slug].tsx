@@ -11,7 +11,6 @@ import { GetServerSidePropsContext } from "next";
 import path from "path";
 import fs from "fs/promises";
 import { FaSpinner } from "react-icons/fa";
-
 import blogs from "public/blog/assets/data.json"
 import { AppStateProvider } from "store";
 import Head from "next/head";
