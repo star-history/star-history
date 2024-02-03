@@ -218,7 +218,7 @@ const handleSetTokenDialogClose = () => {
       {store.isFetching && (
         <div className="absolute w-full h-full flex justify-center items-center z-10 top-0">
           <div className="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
-          <FaSpinner className="fas fa-spinner animate-spin text-4xl z-10"/>
+          <FaSpinner className="animate-spin text-4xl z-10"/>
         </div>
       )}
       {state.chartData && (

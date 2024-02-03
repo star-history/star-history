@@ -228,8 +228,9 @@ export default function RepoInputer({
             href={`/blog/${state.latestBlog?.slug}`}
          >
             {state.latestBlog?.title}
-         </Link>
-         <FaChevronRight className="mr-1 text-gray-500 text-sm" />
+         <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>   
+               </Link>
+
         </div>
       </div>
       <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
