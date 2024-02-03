@@ -36,7 +36,7 @@ const blogSectionList: BlogSection[] = [
     linkList: [
       {
         title: "Infra",
-        path: "https://star-history.com/blog/open-source-ai-infra-projects",
+        path: "/blog/open-source-ai-infra-projects",
       },
       {
         title: "Model",
@@ -44,11 +44,11 @@ const blogSectionList: BlogSection[] = [
       },
       {
         title: "Llama Ecosystem",
-        path: "https://star-history.com/blog/llama2",
+        path: "/blog/llama2",
       },
       {
         title: "GPT Ecosystem",
-        path: "https://star-history.com/blog/star-history-monthly-pick-202303",
+        path: "/blog/star-history-monthly-pick-202303",
       },
       {
         title: "Coding Assistant",

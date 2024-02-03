@@ -81,7 +81,6 @@ function StarChartViewer() {
   
     try {
       const data = await getRepoData(notCachedRepos, store.token);
-     // console.log(data)
       for (const { repo, starRecords, logoUrl } of data) {
         state.repoCacheMap.set(repo, {
           starData: starRecords,
@@ -275,27 +274,20 @@ const handleSetTokenDialogClose = () => {
 </div>
 <div className="flex flex-row flex-wrap justify-end items-center mb-2">
   <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
-    <i className="fas fa-download"></i>
-    Image
+    <i className="fas fa-download"></i> Image
   </button>
 
   <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
-    <i className="fas fa-download"></i>
-    CSV
+    <i className="fas fa-download"></i> CSV
       </button>
 
   <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenEmbedCodeDialogBtnClick}>
-    <i className="fas fa-code"></i>
-    Embed
+    <i className="fas fa-code"></i> Embed
   </button>
   <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleCopyLinkBtnClick}>
-    <i className="far fa-copy"></i>
-    Link
-  </button>
+    <i className="far fa-copy"></i> Link </button>
   <button className="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-600 border border-transparent text-white hover:bg-green-700" onClick={handleShareToTwitterBtnClick}>
-    <i className="relative -bottom-px fab fa-twitter"></i>
-    Share on Twitter
-  </button>
+    <i className="relative -bottom-px fab fa-twitter"></i> Share on Twitter </button>
 </div>
 </div>
 <EmbedMarkdownSection />
