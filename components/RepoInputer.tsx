@@ -156,9 +156,13 @@ export default function RepoInputer({
         r.name === repo ? { ...r, visible: !r.visible } : r
       ),
     }));
+  
     store.actions.setRepos(
       state.repos.filter((r) => r.visible).map((r) => r.name)
     );
+  
+    const hasVisibleRepos = state.repos.some((r) => r.visible);
+    setChartVisibility(hasVisibleRepos);
   };
 
   const handleDeleteRepoBtnClick = (repo: string) => {
@@ -227,8 +231,7 @@ export default function RepoInputer({
             className="text-gray-700 hover:underline"
             href={`/blog/${state.latestBlog?.slug}`}
          >
-            {state.latestBlog?.title}
-         <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>   
+            {state.latestBlog?.title}   <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>   
                </Link>
 
         </div>
