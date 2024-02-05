@@ -1,26 +1,31 @@
+// TokenSettingDialog.tsx
+
 import { useEffect, useState } from "react";
 import storage from "../helpers/storage";
 import { useAppStore } from "../store";
 import Dialog from "./Dialog";
 import { FaTimesCircle } from "react-icons/fa";
+
 interface TokenSettingDialogProps {
   onClose: () => void;
   tokenCache?: boolean;
   show?: boolean;
-  onTokenChange?: (token: string) => void; // New prop
+  onTokenChange?: (token: string) => void;
+  onHeaderTextChange?: (text: string) => void;
 }
 
 export default function TokenSettingDialog({
   onClose,
   tokenCache,
   show,
+  onTokenChange,
+  onHeaderTextChange,
 }: TokenSettingDialogProps) {
   const store = useAppStore();
   const [token, setToken] = useState(store.token);
-  const [hasToken, setHasToken] = useState(!!store.token); // initial value based on the current token
+  const [hasToken, setHasToken] = useState(!!store.token);
 
   useEffect(() => {
-    // Update the hasToken state whenever the tokenCache or store.token changes
     setHasToken(!!(tokenCache || store.token));
   }, [tokenCache, store.token]);
 
@@ -29,9 +34,15 @@ export default function TokenSettingDialog({
     storage.set({
       accessTokenCache: token,
     });
-    setHasToken(true); // Update hasToken state to true after saving
+    setHasToken(true);
+    if (onTokenChange) {
+      onTokenChange(token);
+    }
+    if (onHeaderTextChange) {
+      onHeaderTextChange(hasToken ? "Edit Access Token" : "Add Access Token");
+    }
     if (onClose) {
-      onClose(); // Close the dialog after saving
+      onClose();
     }
   };
 

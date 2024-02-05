@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               </span>
             </div>
             <div className="hidden h-full md:flex flex-row justify-start items-center">
-              <Link href="/blog/how-to-use-github-star-history" target="_blank" rel="noopener noreferrer" className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800">
+              <Link href="https://www.bytebase.com/?source=star-history" target="_blank" rel="noopener noreferrer" className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800">
                 <img className="h-6 mt-1 mr-2" src="https://star-history.com/craft-by-bytebase.webp" />
               </Link>
             </div>
