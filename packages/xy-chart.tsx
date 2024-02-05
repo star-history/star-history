@@ -19,11 +19,11 @@ import { D3Selection } from "./types";
 let tooltipPositionType: Position;
 
 enum Position {
-    UpRight = 'up_right',
-    DownLeft = 'down_left',
-    UpLeft = 'up_left',
-    DownRight = 'down_right'
-  }
+  UpRight = "up_right",
+  DownLeft = "down_left",
+  UpLeft = "up_left",
+  DownRight = "down_right",
+}
 
 const colors = [
   "#dd4528",
@@ -126,14 +126,23 @@ const getDarkThemeDefaultOptions = (transparent: boolean): XYChartOptions => {
 
 const XYChart = (
   svg: SVGSVGElement,
-  { title, xLabel, yLabel, data: { datasets }, showDots, theme, transparent }: XYChartConfig,
+  {
+    title,
+    xLabel,
+    yLabel,
+    data: { datasets },
+    showDots,
+    theme,
+    transparent,
+  }: XYChartConfig,
   initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
-    ...(theme === "dark" ? getDarkThemeDefaultOptions(transparent) : getDefaultOptions(transparent)),
+    ...(theme === "dark"
+      ? getDarkThemeDefaultOptions(transparent)
+      : getDefaultOptions(transparent)),
     ...initialOptions,
   };
-
 
   if (title) {
     margin.top = 60;
@@ -196,8 +205,6 @@ const XYChart = (
       });
     });
   }
-  
-  
 
   const allData: XYPoint[] = [];
   data.datasets.map((d) => allData.push(...d.data));
@@ -216,11 +223,11 @@ const XYChart = (
     ])
     .range([0, chartWidth]);
 
-    if (options.xTickLabelType === "Number") {
-      xScale = scaleLinear()
-        .domain([0, Math.max(...allXData.map((d) => Number(d)))])
-        .range([0, chartWidth]);
-    }
+  if (options.xTickLabelType === "Number") {
+    xScale = scaleLinear()
+      .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+      .range([0, chartWidth]);
+  }
 
   const yScale = scaleLinear()
     .domain([Math.min(...allYData), Math.max(...allYData)])
@@ -346,19 +353,19 @@ const XYChart = (
           select(nodes[i].parentElement).attr("xy-group-index")
         );
         select(nodes[i]).attr("r", dotHoverSize);
-      
+
         const tipX = (xScale(d.x) || 0) + margin.left + 5;
         const tipY = yScale(d.y) + margin.top + 5;
         let tooltipPositionType = "down_right";
         if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
-            tooltipPositionType = Position.DownLeft;
-          } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
-            tooltipPositionType = Position.UpLeft;
-          } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
-            tooltipPositionType = Position.UpRight;
-          } else {
-            tooltipPositionType = Position.DownRight;
-          }
+          tooltipPositionType = Position.DownLeft;
+        } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
+          tooltipPositionType = Position.UpLeft;
+        } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
+          tooltipPositionType = Position.UpRight;
+        } else {
+          tooltipPositionType = Position.DownRight;
+        }
 
         // NOTE: tooltip title with date type(default)
         let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
@@ -378,23 +385,23 @@ const XYChart = (
         }
 
         tooltip.update({
-            title,
-            items: [
-              {
-                color: options.dataColors[xyGroupIndex],
-                text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
-              },
-            ],
-            position: {
-              x: tipX,
-              y: tipY,
-              type: tooltipPositionType as Position,
+          title,
+          items: [
+            {
+              color: options.dataColors[xyGroupIndex],
+              text: `${data.datasets[xyGroupIndex].label || ""}: ${d.y}`,
             },
-            selection: d3Selection, // replace with your actual selection
-            backgroundColor: options.backgroundColor, // replace with your actual background color
-            strokeColor: options.strokeColor, // replace with your actual stroke color
-          });
-          
+          ],
+          position: {
+            x: tipX,
+            y: tipY,
+            type: tooltipPositionType as Position,
+          },
+          selection: d3Selection, // replace with your actual selection
+          backgroundColor: options.backgroundColor, // replace with your actual background color
+          strokeColor: options.strokeColor, // replace with your actual stroke color
+        });
+
         tooltip.show();
       })
       .on("mouseout", (event, d) => {
