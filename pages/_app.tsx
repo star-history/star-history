@@ -4,10 +4,7 @@ import { AppProps } from "next/app";
 import "../global.css";
 import Home from "../pages/index";
 import NotFound from "../pages/404";
-import About from "./about";
-import Test from "./test";
 import Blog from "./blog/";
-import "./fonts.css";
 import '@fortawesome/fontawesome-free/css/all.css';
 import Head from "next/head";
 
@@ -21,8 +18,6 @@ type AppPropsWithLayout = AppProps & {
 
 const routes = {
   "/": Home,
-  "/about": About,
-  "/test": Test,
   "/blog": Blog,
 };
 

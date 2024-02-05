@@ -82,6 +82,9 @@ const Blog: NextPageWithLayout = () => {
 
   return (
     <AppStateProvider>
+      <Head>
+        <title>GitHub Star History</title>
+      </Head>
       <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
         <Header />
         <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">

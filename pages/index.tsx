@@ -21,6 +21,10 @@ const Index: NextPage<IndexProps> = () => {
   };
 
   return (
+    <>
+    <Head>
+      <title>GitHub Star History</title>
+    </Head>
     <section>
       <AppStateProvider>
         <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
@@ -51,6 +55,7 @@ const Index: NextPage<IndexProps> = () => {
         </div>
       </AppStateProvider>
     </section>
+    </>
   );
 };
 
