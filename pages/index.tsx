@@ -38,7 +38,11 @@ const Index: NextPage<IndexProps> = () => {
               />
               {isChartVisible && <StarChartViewer />}
             </div>
+
+            
             <div className="hidden lg:block"></div>
+
+            
           </div>
 
           

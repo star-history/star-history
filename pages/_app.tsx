@@ -41,7 +41,6 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <title>Github Star History</title>
       </Head>
       {getLayout(<Component {...pageProps} />)}
     </>

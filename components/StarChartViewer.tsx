@@ -249,6 +249,7 @@ function StarChartViewer() {
       </div>
 
       {state.chartData && state.chartData.datasets.length > 0 && (
+        <>
         <div>
           <div className="relative mt-4 mb-4 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center">
             <div className="flex flex-row justify-start items-center mb-2">
@@ -315,8 +316,10 @@ function StarChartViewer() {
             ></iframe>
           </div>
 
-          <BytebaseBanner v-if="state.chartData" />
-        </div>
+        
+        </div> 
+         <BytebaseBanner v-if="state.chartData" />
+         </>
       )}
     </>
   );

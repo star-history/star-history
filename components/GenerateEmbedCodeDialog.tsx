@@ -67,24 +67,18 @@ const store = useAppStore(); // Cast to the correct type
         </header>
         <main className="w-full flex flex-col justify-start items-start p-4 pr-5">
           <p>
-            Star-history will need your
-            <a
+            Star-history will need your <a
               className="text-blue-500"
               href="https://github.com/settings/tokens"
               target="_blank"
             >
-              personal access token
-            </a>
-            to unlimit the
-            <a
+              personal access token </a>
+            to unlimit the <a
               className="text-blue-500"
               href="https://developer.github.com/v3/#rate-limiting"
               target="_blank"
             >
-              GitHub API rate limit
-            </a>
-            . If you don't have one,
-            <a
+              GitHub API rate limit</a>. If you don't have one, <a
               className="text-blue-500"
               href="https://github.com/settings/tokens/new"
               target="_blank"
