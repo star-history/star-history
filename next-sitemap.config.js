@@ -1,20 +1,8 @@
-// next-sitemap.js
-
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "http://localhost:3000", // Update with your local development server URL
+  siteUrl: process.env.SITE_URL || "http://localhost:3000",
   generateRobotsTxt: true,
-  // Add a custom function to modify the sitemap entries
-  async xmlExport({ allPages, ...config }) {
-    // Modify the entries or add custom logic here
-    const modifiedEntries = allPages.map((entry) => {
-      // Example: Add a custom attribute to each URL
-      return {
-        ...entry,
-        customAttribute: "custom-value",
-      };
-    });
-
-    // Return the modified entries
-    return modifiedEntries;
-  },
+  // Currently dbcost will generate over 10,000 pages, so let's
+  // split a huge sitemap into smaller pieces.
+  sitemapSize: 5000,
 };
