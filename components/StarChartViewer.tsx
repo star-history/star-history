@@ -257,17 +257,7 @@ function StarChartViewer() {
         )}
         {state.chartData && (
           <div className="absolute top-0 right-1 p-2 flex flex-row">
-            <div
-              className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
-              onClick={handleToggleChartBtnClick}
-            >
-              <input
-                className="mr-2"
-                type="checkbox"
-                checked={state.chartMode === "Timeline"}
-              />
-              Align timeline
-            </div>
+           
           </div>
         )}
         <div id="capture">
@@ -351,6 +341,22 @@ function StarChartViewer() {
               </div>
             </div>
             <EmbedMarkdownSection />
+
+            <div className="flex-grow"></div>
+                <div className="flex justify-center mb-12">
+                  <iframe
+                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+                    data-test-id="beehiiv-embed"
+                    height="52"
+                    frameBorder="0"
+                    scrolling="no"
+                    style={{
+                      margin: 0,
+                      borderRadius: 0,
+                      backgroundColor: "transparent",
+                    }}
+                  ></iframe>
+                </div>
           </div>
           <BytebaseBanner v-if="state.chartData" />
         </>

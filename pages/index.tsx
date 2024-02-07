@@ -14,7 +14,7 @@ import Head from "next/head";
 interface IndexProps {}
 
 const Index: NextPage<IndexProps> = () => {
-  const [isChartVisible, setChartVisibility] = useState(true);
+  const [isChartVisible, setChartVisibility] = useState(false); // Start with false since chart is not visible by default
 
   const handleClickLink = (link: string) => {
     console.log(`Link clicked: ${link}`);
@@ -42,20 +42,22 @@ const Index: NextPage<IndexProps> = () => {
                 />
                 {isChartVisible && <StarChartViewer />}
                 <div className="flex-grow"></div>
-                <div className="flex justify-center mb-12">
-                  <iframe
-                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                    data-test-id="beehiiv-embed"
-                    height="52"
-                    frameBorder="0"
-                    scrolling="no"
-                    style={{
-                      margin: 0,
-                      borderRadius: 0,
-                      backgroundColor: "transparent",
-                    }}
-                  ></iframe>
-                </div>
+                {!isChartVisible && ( // Render iframe only if isChartVisible is false
+                  <div className="flex justify-center mb-12">
+                    <iframe
+                      src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+                      data-test-id="beehiiv-embed"
+                      height="52"
+                      frameBorder="0"
+                      scrolling="no"
+                      style={{
+                        margin: 0,
+                        borderRadius: 0,
+                        backgroundColor: "transparent",
+                      }}
+                    ></iframe>
+                  </div>
+                )}
               </div>
 
               <div className="hidden lg:block"></div>
