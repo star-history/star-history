@@ -68,6 +68,8 @@ export interface XYData {
 }
 
 export interface XYChartData {
+  startDate: string | number | Date;
+  endDate: string | number | Date;
   datasets: XYData[];
 }
 
@@ -348,7 +350,7 @@ const XYChart = (
       .attr("pointer-events", "all")
       .on("mouseover", (event, d) => {
         const nodes = event.currentTarget;
-        const i = nodes.indexOf(event.target);
+const i = Array.from(nodes.parentElement.children).indexOf(event.target);
         const xyGroupIndex = Number(
           select(nodes[i].parentElement).attr("xy-group-index")
         );

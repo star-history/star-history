@@ -105,9 +105,6 @@ function StarChartViewer() {
       }
     }
 
-    // if (repoData.length === 0) {
-    //   setState((prevState) => ({ ...prevState, chartData: undefined }));
-    // }
     if (repoData.length === 0) {
       setState((prevState) => ({ ...prevState, chartData: undefined }));
     } else {
@@ -116,30 +113,6 @@ function StarChartViewer() {
         chartData: convertDataToChartData(repoData, state.chartMode),
       }));
     }
-    // else {
-    //   setState((prevState) => ({
-    //     ...prevState,
-    //     chartData: convertDataToChartData(repoData, store.chartMode.value),
-    //   }));
-    // }
-    // else {
-    //   // Convert the data from the endpoint to XYChartData format
-    //   const xyChartData: XYChartData = {
-    //     datasets: repoData.map(({ repo, starRecords }) => ({
-    //       label: repo,
-    //       logo: "", // Add the logo if needed
-    //       data: starRecords.map((entry) => ({
-    //         x: new Date(entry.date),
-    //         y: entry.count,
-    //       })),
-    //     })),
-    //   };
-
-    //   setState((prevState) => ({
-    //     ...prevState,
-    //     chartData: xyChartData,
-    //   }));
-    // }
   };
 
   const handleCopyLinkBtnClick = async () => {
@@ -160,10 +133,9 @@ function StarChartViewer() {
     const canvas = await html2canvas(element);
     const imgData = canvas.toDataURL("image/png");
 
-    // Create a link element for downloading
     const downloadLink = document.createElement("a");
     downloadLink.href = imgData;
-    downloadLink.download = "chart.png"; // You can name the file here
+    downloadLink.download = "chart.png";
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
@@ -212,6 +184,7 @@ function StarChartViewer() {
     const tweetShareLink = `https://twitter.com/intent/tweet?text=${text}`;
     window.open(tweetShareLink, "_blank");
   };
+
   const [showEmbedCodeDialog, setShowEmbedCodeDialog] = useState(false);
 
   const handleGenEmbedCodeDialogBtnClick = () => {
@@ -221,17 +194,6 @@ function StarChartViewer() {
   const handleGenEmbedCodeDialogClose = () => {
     setShowEmbedCodeDialog(false);
   };
-
-  // const [chartMode, setChartMode] = useState("Date");
-
-  // const handleToggleChartBtnClick = () => {
-  //   store.setChartMode((prevMode) => (prevMode === "Date" ? "Timeline" : "Date"));
-  // };
-
-  // const handleToggleChartBtnClick = () => {
-  //   store.setChartMode(chartMode.value === "Date" ? "Timeline" : "Date");
-  //   fetchReposData(store.repos);
-  // };
 
   const handleToggleChartBtnClick = () => {
     const newChartMode = state.chartMode === "Date" ? "Timeline" : "Date";
@@ -257,21 +219,28 @@ function StarChartViewer() {
         )}
         {state.chartData && (
           <div className="absolute top-0 right-1 p-2 flex flex-row">
-           
+            <div
+              className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+              onClick={handleToggleChartBtnClick}
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+                checked={state.chartMode === "Timeline"}
+              />
+              Align timeline
+            </div>
           </div>
         )}
         <div id="capture">
           {state.chartData && state.chartData.datasets.length > 0 && (
             <StarXYChart
               classname="w-full h-auto mt-4"
-              // data={{ datasets: state.chartData.datasets }}
-              // chart-mode={chartMode}
               data={state.chartData}
-              chart-mode={state.chartMode}
+              chartMode={state.chartMode}
             />
           )}
         </div>
-        {/* ... rest of the JSX here */}
         {state.showSetTokenDialog && (
           <TokenSettingDialog
             onClose={handleSetTokenDialogClose}
@@ -343,20 +312,20 @@ function StarChartViewer() {
             <EmbedMarkdownSection />
 
             <div className="flex-grow"></div>
-                <div className="flex justify-center mb-12">
-                  <iframe
-                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                    data-test-id="beehiiv-embed"
-                    height="52"
-                    frameBorder="0"
-                    scrolling="no"
-                    style={{
-                      margin: 0,
-                      borderRadius: 0,
-                      backgroundColor: "transparent",
-                    }}
-                  ></iframe>
-                </div>
+            <div className="flex justify-center mb-12">
+              <iframe
+                src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameBorder="0"
+                scrolling="no"
+                style={{
+                  margin: 0,
+                  borderRadius: 0,
+                  backgroundColor: "transparent",
+                }}
+              ></iframe>
+            </div>
           </div>
           <BytebaseBanner v-if="state.chartData" />
         </>
