@@ -1,3 +1,5 @@
+// Header.tsx
+
 import React, { useState } from "react";
 import TopBanner from "./TopBanner";
 import GitHubStarButton from "./GitHubStarButton";
@@ -11,6 +13,8 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { AppStateProvider, useAppStore } from '../store';
 
 interface State {
+  token: string;
+  headerText: string;
   showDropMenu: boolean;
   showSetTokenDialog: boolean;
   tokenCache?: string;
@@ -18,6 +22,8 @@ interface State {
 
 const Header: React.FC = () => {
   const [state, setState] = useState<State>({
+    token: "", // Provide an initial value for token
+    headerText: "", // Provide an initial value for headerText
     showDropMenu: false,
     showSetTokenDialog: false,
   });
@@ -35,6 +41,16 @@ const Header: React.FC = () => {
       showSetTokenDialog: false,
     }));
   };
+  
+  const handleTokenSaved = () => {
+    // Check if the token is empty and set the header text accordingly
+    const newText = state.showSetTokenDialog && state.token !== "" ? "Edit Access Token" : "Add Access Token";
+    setState((prevState) => ({
+      ...prevState,
+      showSetTokenDialog: false,
+      headerText: newText,
+    }));
+  };
 
   const handleToggleDropMenuBtnClick = () => {
     setState((prevState) => ({
@@ -45,7 +61,13 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} tokenCache={false} />}
+      {state.showSetTokenDialog && (
+        <TokenSettingDialog
+          onClose={handleSetTokenDialogClose}
+          tokenCache={false}
+          onTokenSaved={handleTokenSaved} // Pass the callback to handle token saved
+        />
+      )}
       <AppStateProvider>
         <TopBanner />
         <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
@@ -67,7 +89,7 @@ const Header: React.FC = () => {
                 className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
                 onClick={handleSetTokenBtnClick}
               >
-                Add Access Token
+                {state.headerText || "Add Access Token"} {/* Conditional rendering of header text */}
               </span>
             </div>
             <div className="hidden h-full md:flex flex-row justify-start items-center">
@@ -84,14 +106,6 @@ const Header: React.FC = () => {
               >
           <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>
-              {/* <a
-                className="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
-                href="https://discord.gg/yyzsmgcqg7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaDiscord className="text-3xl text-indigo-400"/>
-              </a> */}
               <GitHubStarButton />
             </div>
 

@@ -1,7 +1,6 @@
 import { scaleLinear, scaleTime } from "d3-scale";
 import { select } from "d3-selection";
 import { line, curveMonotoneX } from "d3-shape";
-import { AxisScale } from "d3-axis";
 import dayjs from "dayjs";
 import { uniq } from "lodash";
 import ToolTip from "./components/ToolTip";
@@ -11,9 +10,7 @@ import addFont from "./utils/addFont";
 import { drawTitle, drawXLabel, drawYLabel } from "./utils/drawLabels";
 import drawLegend from "./utils/drawLegend";
 import { drawWatermark } from "./utils/drawWatermark";
-import getFormatTimeline, {
-  getTimestampFormatUnit,
-} from "./utils/getFormatTimeline";
+import getFormatTimeline, { getTimestampFormatUnit } from "./utils/getFormatTimeline";
 import { D3Selection } from "./types";
 
 let tooltipPositionType: Position;
@@ -68,8 +65,6 @@ export interface XYData {
 }
 
 export interface XYChartData {
-  startDate: string | number | Date;
-  endDate: string | number | Date;
   datasets: XYData[];
 }
 
@@ -136,7 +131,8 @@ const XYChart = (
     showDots,
     theme,
     transparent,
-  }: XYChartConfig,
+    alignTimeline,
+  }: XYChartConfig & { alignTimeline: boolean },
   initialOptions: Partial<XYChartOptions>
 ) => {
   const options: XYChartOptions = {
@@ -174,7 +170,6 @@ const XYChart = (
     .attr("height", clientHeight)
     .attr("preserveAspectRatio", "xMidYMid meet") as D3Selection;
   if (options.envType === "browser") {
-    // If in browser, be more responsive.
     d3Selection
       .attr("width", clientWidth <= 600 ? 600 : "100%")
       .attr(
@@ -200,10 +195,10 @@ const XYChart = (
     backgroundColor: options.backgroundColor,
   });
 
-  if (options.xTickLabelType === "Date") {
+  if (options.xTickLabelType === "Date" && alignTimeline) {
     data.datasets.forEach((dataset) => {
       dataset.data.forEach((d) => {
-        d.x = dayjs(d.x) as any;
+        d.x = "timeline" as any;
       });
     });
   }
@@ -217,18 +212,22 @@ const XYChart = (
   const chartWidth = clientWidth - margin.left - margin.right;
   const chartHeight = clientHeight - margin.top - margin.bottom;
 
-  // NOTE: Xaxis with date type(default)
-  let xScale: AxisScale<number | Date> = scaleTime()
-    .domain([
-      Math.min(...allXData.map((d) => Number(d))),
-      Math.max(...allXData.map((d) => Number(d))),
-    ])
-    .range([0, chartWidth]);
-
-  if (options.xTickLabelType === "Number") {
-    xScale = scaleLinear()
-      .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+  let xScale: any;
+  if (alignTimeline) {
+    xScale = scaleLinear().domain([0, 10]).range([0, chartWidth]);
+  } else {
+    xScale = scaleTime()
+      .domain([
+        Math.min(...allXData.map((d) => Number(d))),
+        Math.max(...allXData.map((d) => Number(d))),
+      ])
       .range([0, chartWidth]);
+
+    if (options.xTickLabelType === "Number") {
+      xScale = scaleLinear()
+        .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+        .range([0, chartWidth]);
+    }
   }
 
   const yScale = scaleLinear()
@@ -237,11 +236,8 @@ const XYChart = (
 
   const svgChart = chart.append("g").attr("pointer-events", "all");
 
-  drawWatermark(svgChart, chartWidth, chartHeight);
-
   if (title) {
     if (uniq(datasets.map((d) => d.label.split("/")[0])).length === 1) {
-      // If all repos have only one unique owner, show logo before graph title.
       drawTitle(
         d3Selection,
         title,
@@ -265,7 +261,6 @@ const XYChart = (
   if (yLabel) {
     const maxYData = Math.max(...allYData);
     let offsetY = 24;
-    // dynamic offset Y label
     if (maxYData > 100000) {
       offsetY = 2;
     } else if (maxYData > 10000) {
@@ -278,7 +273,6 @@ const XYChart = (
     drawYLabel(d3Selection, yLabel, options.strokeColor, offsetY);
   }
 
-  // draw axis
   drawXAxis(svgChart, {
     xScale,
     tickCount: options.xTickCount,
@@ -294,8 +288,7 @@ const XYChart = (
     stroke: options.strokeColor,
   });
 
-  // draw lines
-  if (options.showLine) {
+  if (!alignTimeline) {
     const drawLine = line<XYPoint>()
       .x((d) => xScale(d.x) || 0)
       .y((d) => yScale(d.y))
@@ -314,7 +307,6 @@ const XYChart = (
   }
 
   if (showDots) {
-    // draw dots
     const dotInitSize =
       3.5 * (options.dotSize === undefined ? 1 : options.dotSize);
     const dotHoverSize =
@@ -350,7 +342,7 @@ const XYChart = (
       .attr("pointer-events", "all")
       .on("mouseover", (event, d) => {
         const nodes = event.currentTarget;
-const i = Array.from(nodes.parentElement.children).indexOf(event.target);
+        const i = nodes.indexOf(event.target);
         const xyGroupIndex = Number(
           select(nodes[i].parentElement).attr("xy-group-index")
         );
@@ -369,7 +361,6 @@ const i = Array.from(nodes.parentElement.children).indexOf(event.target);
           tooltipPositionType = Position.DownRight;
         }
 
-        // NOTE: tooltip title with date type(default)
         let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(
           options.dateFormat
         );
@@ -399,9 +390,9 @@ const i = Array.from(nodes.parentElement.children).indexOf(event.target);
             y: tipY,
             type: tooltipPositionType as Position,
           },
-          selection: d3Selection, // replace with your actual selection
-          backgroundColor: options.backgroundColor, // replace with your actual background color
-          strokeColor: options.strokeColor, // replace with your actual stroke color
+          selection: d3Selection,
+          backgroundColor: options.backgroundColor,
+          strokeColor: options.strokeColor,
         });
 
         tooltip.show();
@@ -414,7 +405,6 @@ const i = Array.from(nodes.parentElement.children).indexOf(event.target);
       });
   }
 
-  // draw legend
   const legendItems = data.datasets.map((dataset, i) => ({
     color: options.dataColors[i] || "",
     text: dataset.label,

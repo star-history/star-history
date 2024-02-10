@@ -12,6 +12,7 @@ interface TokenSettingDialogProps {
   show?: boolean;
   onTokenChange?: (token: string) => void;
   onHeaderTextChange?: (text: string) => void;
+  onTokenSaved?: () => void;
 }
 
 export default function TokenSettingDialog({
@@ -20,6 +21,7 @@ export default function TokenSettingDialog({
   show,
   onTokenChange,
   onHeaderTextChange,
+  onTokenSaved,
 }: TokenSettingDialogProps) {
   const store = useAppStore();
   const [token, setToken] = useState(store.token);
@@ -34,12 +36,15 @@ export default function TokenSettingDialog({
     storage.set({
       accessTokenCache: token,
     });
-    setHasToken(true);
+    setHasToken(!!token);
     if (onTokenChange) {
       onTokenChange(token);
     }
     if (onHeaderTextChange) {
-      onHeaderTextChange(hasToken ? "Edit Access Token" : "Add Access Token");
+      onHeaderTextChange(!!token ? "Edit Access Token" : "Add Access Token");
+    }
+    if (onTokenSaved) {
+      onTokenSaved();
     }
     if (onClose) {
       onClose();

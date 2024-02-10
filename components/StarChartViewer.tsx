@@ -133,9 +133,10 @@ function StarChartViewer() {
     const canvas = await html2canvas(element);
     const imgData = canvas.toDataURL("image/png");
 
+    // Create a link element for downloading
     const downloadLink = document.createElement("a");
     downloadLink.href = imgData;
-    downloadLink.download = "chart.png";
+    downloadLink.download = "chart.png"; // You can name the file here
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
@@ -185,14 +186,12 @@ function StarChartViewer() {
     window.open(tweetShareLink, "_blank");
   };
 
-  const [showEmbedCodeDialog, setShowEmbedCodeDialog] = useState(false);
-
   const handleGenEmbedCodeDialogBtnClick = () => {
-    setShowEmbedCodeDialog(true);
+    setState((prevState) => ({ ...prevState, showEmbedCodeDialog: true }));
   };
 
   const handleGenEmbedCodeDialogClose = () => {
-    setShowEmbedCodeDialog(false);
+    setState((prevState) => ({ ...prevState, showEmbedCodeDialog: false }));
   };
 
   const handleToggleChartBtnClick = () => {
@@ -200,7 +199,7 @@ function StarChartViewer() {
     setState((prevState) => ({ ...prevState, chartMode: newChartMode }));
     fetchReposData(store.repos);
   };
-
+  
   const handleSetTokenDialogClose = () => {
     setState((prevState) => ({ ...prevState, showSetTokenDialog: false }));
   };
@@ -219,17 +218,17 @@ function StarChartViewer() {
         )}
         {state.chartData && (
           <div className="absolute top-0 right-1 p-2 flex flex-row">
-            <div
-              className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
-              onClick={handleToggleChartBtnClick}
-            >
-              <input
-                className="mr-2"
-                type="checkbox"
-                checked={state.chartMode === "Timeline"}
-              />
-              Align timeline
-            </div>
+              <div
+        className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+        onClick={handleToggleChartBtnClick}
+      >
+        <input
+          className="mr-2"
+          type="checkbox"
+          checked={state.chartMode === 'Timeline'}
+        />
+        {state.chartMode === 'Timeline' ? 'Timeline' : 'Date'}
+      </div>
           </div>
         )}
         <div id="capture">
@@ -241,6 +240,7 @@ function StarChartViewer() {
             />
           )}
         </div>
+        {/* ... rest of the JSX here */}
         {state.showSetTokenDialog && (
           <TokenSettingDialog
             onClose={handleSetTokenDialogClose}
@@ -248,10 +248,10 @@ function StarChartViewer() {
           />
         )}
 
-        {showEmbedCodeDialog && (
+        {state.showEmbedCodeDialog && (
           <GenerateEmbedCodeDialog
             onClose={handleGenEmbedCodeDialogClose}
-            show={showEmbedCodeDialog}
+            show={state.showEmbedCodeDialog}
           />
         )}
       </div>
@@ -312,20 +312,20 @@ function StarChartViewer() {
             <EmbedMarkdownSection />
 
             <div className="flex-grow"></div>
-            <div className="flex justify-center mb-12">
-              <iframe
-                src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                data-test-id="beehiiv-embed"
-                height="52"
-                frameBorder="0"
-                scrolling="no"
-                style={{
-                  margin: 0,
-                  borderRadius: 0,
-                  backgroundColor: "transparent",
-                }}
-              ></iframe>
-            </div>
+                <div className="flex justify-center mb-12">
+                  <iframe
+                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+                    data-test-id="beehiiv-embed"
+                    height="52"
+                    frameBorder="0"
+                    scrolling="no"
+                    style={{
+                      margin: 0,
+                      borderRadius: 0,
+                      backgroundColor: "transparent",
+                    }}
+                  ></iframe>
+                </div>
           </div>
           <BytebaseBanner v-if="state.chartData" />
         </>
