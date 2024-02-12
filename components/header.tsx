@@ -1,36 +1,32 @@
-import React, { useState, useEffect } from "react";
+// Header.tsx
+
+import React, { useState } from "react";
 import TopBanner from "./TopBanner";
+import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
-import { AppStateProvider } from '../store';
-import GitHubStarButton from "./GitHubStarButton";
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
+import { FiMenu } from "react-icons/fi";
+import { LiaTimesSolid } from "react-icons/lia";
+import { AppStateProvider, useAppStore } from '../store';
 
 interface State {
   token: string;
   headerText: string;
   showDropMenu: boolean;
   showSetTokenDialog: boolean;
+  tokenCache?: string;
 }
 
 const Header: React.FC = () => {
   const [state, setState] = useState<State>({
     token: "",
-    headerText: "", // Initialize header text as empty
+    headerText: "", // Initial header text is empty
     showDropMenu: false,
     showSetTokenDialog: false,
   });
-
-  useEffect(() => {
-    // Initialize header text from local storage after component mounts
-    const tokenFromStorage = localStorage.getItem("githubAccessToken");
-    setState(prevState => ({
-      ...prevState,
-      headerText: tokenFromStorage ? "Edit Access Token" : "Add Access Token",
-      token: tokenFromStorage || "",
-    }));
-  }, []); // Empty dependency array to run only once after component mounts
 
   const handleSetTokenBtnClick = () => {
     setState((prevState) => ({
@@ -75,6 +71,7 @@ const Header: React.FC = () => {
       {state.showSetTokenDialog && (
         <TokenSettingDialog
           onClose={handleSetTokenDialogClose}
+          tokenCache={false}
           onTokenSaved={handleTokenSaved}
           onHeaderTextChange={handleHeaderTextChange} // Pass the callback to handle header text change
         />

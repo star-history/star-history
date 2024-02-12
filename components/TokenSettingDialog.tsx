@@ -1,36 +1,58 @@
-import { useState, useEffect } from "react";
+// TokenSettingDialog.tsx
+
+import { useEffect, useState, useCallback } from "react";
+import storage from "../helpers/storage";
+import { useAppStore } from "../store";
 import Dialog from "./Dialog";
 import { FaTimesCircle } from "react-icons/fa";
 
 interface TokenSettingDialogProps {
   onClose: () => void;
-  onTokenSaved?: (token: string) => void; // Update the type definition
+  tokenCache?: boolean;
+  show?: boolean;
+  onTokenChange?: (token: string) => void;
   onHeaderTextChange?: (text: string) => void;
+  onTokenSaved?: () => void;
+  onNoTokenSaved?: () => void; // New event to emit when no token is saved
 }
 
 export default function TokenSettingDialog({
   onClose,
-  onTokenSaved,
+  tokenCache,
+  show,
+  onTokenChange,
   onHeaderTextChange,
+  onTokenSaved,
+  onNoTokenSaved, // Prop to handle when no token is saved
 }: TokenSettingDialogProps) {
-  const [token, setToken] = useState<string>(() => {
-    // Retrieve token from local storage, or use empty string if not found
-    return localStorage.getItem("githubAccessToken") || "";
-  });
+  const store = useAppStore();
+  const [token, setToken] = useState(store.token);
+  const [hasToken, setHasToken] = useState(!!store.token);
 
   useEffect(() => {
-    // Save token to local storage whenever it changes
-    localStorage.setItem("githubAccessToken", token);
-  }, [token]);
+    setHasToken(!!(tokenCache || store.token));
+  }, [tokenCache, store.token]);
 
-  const handleSaveTokenBtnClick = () => {
+  const handleSaveTokenBtnClick = useCallback(() => {
+    store.setToken(token);
+    storage.set({
+      accessTokenCache: token,
+    });
+    setHasToken(!!token);
+    if (onTokenChange) {
+      onTokenChange(token);
+    }
     if (onTokenSaved) {
-      onTokenSaved(token); // Pass the token to the callback
+      onTokenSaved();
     }
     if (onClose) {
       onClose();
     }
-  };
+    // Emit event if no token is saved
+    if (!token && onNoTokenSaved) {
+      onNoTokenSaved();
+    }
+  }, [token, store, onClose, onTokenChange, onTokenSaved, onNoTokenSaved]);
 
   const handleCloseBtnClick = () => {
     if (onClose) {
@@ -38,13 +60,21 @@ export default function TokenSettingDialog({
     }
   };
 
+  useEffect(() => {
+    // Invoke the onHeaderTextChange callback when token changes
+    const newText = hasToken ? "Edit Access Token" : "Add Access Token";
+    if (onHeaderTextChange) {
+      onHeaderTextChange(newText);
+    }
+  }, [hasToken, onHeaderTextChange]);
+
   return (
     <>
       <Dialog>
         <div className="max-w-2xl justify-start items-start bg-white rounded-md overflow-hidden">
           <header className="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg">
             <span className="text-2xl">
-              {token ? "Edit" : "Add"} GitHub Access Token {/* Adjusted condition */}
+              {hasToken ? "Edit" : "Add"} GitHub Access Token
             </span>
             <FaTimesCircle
               className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500"
