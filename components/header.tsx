@@ -1,6 +1,4 @@
-// Header.tsx
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TopBanner from "./TopBanner";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Image from 'next/image';
@@ -19,15 +17,32 @@ interface State {
 const Header: React.FC = () => {
   const [state, setState] = useState<State>({
     token: "",
-    headerText: "", // Initial header text is empty
+    headerText: "", // Initialize header text as empty
     showDropMenu: false,
     showSetTokenDialog: false,
   });
+
+  useEffect(() => {
+    // Initialize header text from local storage after component mounts
+    const tokenFromStorage = localStorage.getItem("githubAccessToken");
+    setState(prevState => ({
+      ...prevState,
+      headerText: tokenFromStorage ? "Edit Access Token" : "Add Access Token",
+      token: tokenFromStorage || "",
+    }));
+  }, []); // Empty dependency array to run only once after component mounts
 
   const handleSetTokenBtnClick = () => {
     setState((prevState) => ({
       ...prevState,
       showSetTokenDialog: true,
+    }));
+  };
+
+  const handleSetTokenDialogClose = () => {
+    setState((prevState) => ({
+      ...prevState,
+      showSetTokenDialog: false,
     }));
   };
 
@@ -39,11 +54,7 @@ const Header: React.FC = () => {
       showSetTokenDialog: false,
       headerText: savedToken ? "Edit Access Token" : "Add Access Token",
     }));
-  
-    // Save the token in local storage
-    localStorage.setItem('githubAccessToken', savedToken);
   };
-  
 
   const handleToggleDropMenuBtnClick = () => {
     setState((prevState) => ({
@@ -63,7 +74,7 @@ const Header: React.FC = () => {
     <>
       {state.showSetTokenDialog && (
         <TokenSettingDialog
-          onClose={() => setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))}
+          onClose={handleSetTokenDialogClose}
           onTokenSaved={handleTokenSaved}
           onHeaderTextChange={handleHeaderTextChange} // Pass the callback to handle header text change
         />
