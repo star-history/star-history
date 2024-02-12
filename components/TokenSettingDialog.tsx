@@ -1,50 +1,31 @@
-// TokenSettingDialog.tsx
-
-import { useEffect, useState } from "react";
-import storage from "../helpers/storage";
-import { useAppStore } from "../store";
+import { useState, useEffect } from "react";
 import Dialog from "./Dialog";
 import { FaTimesCircle } from "react-icons/fa";
 
 interface TokenSettingDialogProps {
   onClose: () => void;
-  tokenCache?: boolean;
-  show?: boolean;
-  onTokenChange?: (token: string) => void;
+  onTokenSaved?: (token: string) => void; // Update the type definition
   onHeaderTextChange?: (text: string) => void;
-  onTokenSaved?: () => void;
 }
 
 export default function TokenSettingDialog({
   onClose,
-  tokenCache,
-  show,
-  onTokenChange,
-  onHeaderTextChange,
   onTokenSaved,
+  onHeaderTextChange,
 }: TokenSettingDialogProps) {
-  const store = useAppStore();
-  const [token, setToken] = useState(store.token);
-  const [hasToken, setHasToken] = useState(!!store.token);
+  const [token, setToken] = useState<string>(() => {
+    // Retrieve token from local storage, or use empty string if not found
+    return localStorage.getItem("githubAccessToken") || "";
+  });
 
   useEffect(() => {
-    setHasToken(!!(tokenCache || store.token));
-  }, [tokenCache, store.token]);
+    // Save token to local storage whenever it changes
+    localStorage.setItem("githubAccessToken", token);
+  }, [token]);
 
   const handleSaveTokenBtnClick = () => {
-    store.setToken(token);
-    storage.set({
-      accessTokenCache: token,
-    });
-    setHasToken(!!token);
-    if (onTokenChange) {
-      onTokenChange(token);
-    }
-    if (onHeaderTextChange) {
-      onHeaderTextChange(!!token ? "Edit Access Token" : "Add Access Token");
-    }
     if (onTokenSaved) {
-      onTokenSaved();
+      onTokenSaved(token); // Pass the token to the callback
     }
     if (onClose) {
       onClose();
@@ -63,7 +44,7 @@ export default function TokenSettingDialog({
         <div className="max-w-2xl justify-start items-start bg-white rounded-md overflow-hidden">
           <header className="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg">
             <span className="text-2xl">
-              {hasToken ? "Edit" : "Add"} GitHub Access Token
+              {token ? "Edit" : "Add"} GitHub Access Token {/* Adjusted condition */}
             </span>
             <FaTimesCircle
               className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500"

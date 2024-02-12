@@ -2,28 +2,24 @@
 
 import React, { useState } from "react";
 import TopBanner from "./TopBanner";
-import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Image from 'next/image';
 import Icon from './icon.png';
 import Link from 'next/link';
-import { FaDiscord, FaTwitter } from 'react-icons/fa';
-import { FiMenu } from "react-icons/fi";
-import { LiaTimesSolid } from "react-icons/lia";
-import { AppStateProvider, useAppStore } from '../store';
+import { AppStateProvider } from '../store';
+import GitHubStarButton from "./GitHubStarButton";
 
 interface State {
   token: string;
   headerText: string;
   showDropMenu: boolean;
   showSetTokenDialog: boolean;
-  tokenCache?: string;
 }
 
 const Header: React.FC = () => {
   const [state, setState] = useState<State>({
-    token: "", // Provide an initial value for token
-    headerText: "", // Provide an initial value for headerText
+    token: "",
+    headerText: "", // Initial header text is empty
     showDropMenu: false,
     showSetTokenDialog: false,
   });
@@ -35,22 +31,19 @@ const Header: React.FC = () => {
     }));
   };
 
-  const handleSetTokenDialogClose = () => {
+  const handleTokenSaved = (savedToken: string) => {
+    // Update the token state with the saved token
     setState((prevState) => ({
       ...prevState,
+      token: savedToken,
       showSetTokenDialog: false,
+      headerText: savedToken ? "Edit Access Token" : "Add Access Token",
     }));
+  
+    // Save the token in local storage
+    localStorage.setItem('githubAccessToken', savedToken);
   };
   
-  const handleTokenSaved = () => {
-    // Check if the token is empty and set the header text accordingly
-    const newText = state.showSetTokenDialog && state.token !== "" ? "Edit Access Token" : "Add Access Token";
-    setState((prevState) => ({
-      ...prevState,
-      showSetTokenDialog: false,
-      headerText: newText,
-    }));
-  };
 
   const handleToggleDropMenuBtnClick = () => {
     setState((prevState) => ({
@@ -59,13 +52,20 @@ const Header: React.FC = () => {
     }));
   };
 
+  const handleHeaderTextChange = (text: string) => {
+    setState((prevState) => ({
+      ...prevState,
+      headerText: text,
+    }));
+  };
+
   return (
     <>
       {state.showSetTokenDialog && (
         <TokenSettingDialog
-          onClose={handleSetTokenDialogClose}
-          tokenCache={false}
-          onTokenSaved={handleTokenSaved} // Pass the callback to handle token saved
+          onClose={() => setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))}
+          onTokenSaved={handleTokenSaved}
+          onHeaderTextChange={handleHeaderTextChange} // Pass the callback to handle header text change
         />
       )}
       <AppStateProvider>
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                 className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
                 onClick={handleSetTokenBtnClick}
               >
-                {state.headerText || "Add Access Token"} {/* Conditional rendering of header text */}
+                {state.headerText || "Add Access Token"}
               </span>
             </div>
             <div className="hidden h-full md:flex flex-row justify-start items-center">
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-          <i className="fab fa-twitter text-2xl text-blue-300"></i>
+                <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>
               <GitHubStarButton />
             </div>
