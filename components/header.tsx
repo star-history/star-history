@@ -68,6 +68,7 @@ const Header: React.FC = () => {
 
   return (
     <>
+    
       {state.showSetTokenDialog && (
         <TokenSettingDialog
           onClose={handleSetTokenDialogClose}
