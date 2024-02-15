@@ -1,4 +1,3 @@
-// Header.tsx
 
 import React, { useState } from "react";
 import TopBanner from "./TopBanner";
