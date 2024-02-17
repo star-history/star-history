@@ -202,6 +202,7 @@ function StarChartViewer() {
             link.setAttribute("download", filename);
             document.body.appendChild(link);
             link.click();
+            toast.succeed("CSV Downloaded");
             document.body.removeChild(link);
         } else {
             toast.error("No chart data available to export");
