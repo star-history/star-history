@@ -4,7 +4,6 @@ import StarXYChart from "./Charts/StarXYChart"
 import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
-import html2canvas from "html2canvas"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "packages/xy-chart"
@@ -49,7 +48,7 @@ function StarChartViewer() {
         showEmbedChartGuideDialog: false
     })
 
-    const containerElRef = useRef(null)
+    const containerElRef = useRef<HTMLDivElement>(null)
 
     const fetchReposData = React.useCallback(
         async (repos: string[], chartMode?: ChartMode) => {
@@ -113,7 +112,7 @@ function StarChartViewer() {
         if (store.repos.length > 0) {
             fetchReposData(store.repos)
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [store.repos])
 
     const handleCopyLinkBtnClick = async () => {
@@ -126,21 +125,92 @@ function StarChartViewer() {
         }
     }
 
-    const handleGenerateImageBtnClick = async () => {
-        const element = document.querySelector("#capture") as HTMLElement
-        if (!element) {
-            throw new Error("Element with id 'capture' not found")
-        }
-        const canvas = await html2canvas(element)
-        const imgData = canvas.toDataURL("image/png")
+    // const handleGenerateImageBtnClick = async () => {
+    //     const element = document.querySelector("#capture") as HTMLElement
+    //     if (!element) {
+    //         throw new Error("Element with id 'capture' not found")
+    //     }
+    //     const canvas = await html2canvas(element, {allowTaint: true, useCORS: true})
+    //     const imgData = canvas.toDataURL("image/png")
 
-        // Create a link element for downloading
-        const downloadLink = document.createElement("a")
-        downloadLink.href = imgData
-        downloadLink.download = "chart.png" // You can name the file here
-        document.body.appendChild(downloadLink)
-        downloadLink.click()
-        document.body.removeChild(downloadLink)
+    //     // Create a link element for downloading
+    //     const downloadLink = document.createElement("a")
+    //     downloadLink.href = imgData
+    //     downloadLink.download = "chart.png" // You can name the file here
+    //     document.body.appendChild(downloadLink)
+    //     downloadLink.click()
+    //     document.body.removeChild(downloadLink)
+    // }
+
+    const handleGenerateImageBtnClick = async () => {
+        if (state.isGeneratingImage) {
+            return
+        }
+
+        const svgElement = containerElRef.current?.querySelector("svg")?.cloneNode(true) as SVGSVGElement
+        svgElement.querySelectorAll(".chart-tooltip-dot").forEach((d) => d.remove())
+        // convert images from url href to data url href
+        for (const i of Array.from(svgElement.querySelectorAll("image"))) {
+            const url = i.getAttribute("href")
+            if (url) {
+                const dataUrl = await utils.getBase64Image(url)
+                i.setAttribute("href", dataUrl)
+            }
+        }
+        svgElement.setAttribute("class", "fixed -z-10")
+        document.body.append(svgElement)
+
+        if (!svgElement || !containerElRef.current) {
+            toast.warn("Chart element not found, please try later")
+            return
+        }
+
+        state.isGeneratingImage = true
+
+        let destoryGeneratingToast = () => {
+            // do nth
+        }
+        setTimeout(() => {
+            if (state.isGeneratingImage) {
+                const cbs = toast.warn(`<i class="fas fa-spinner animate-spin text-2xl mr-3"></i>Generating image`, -1)
+                destoryGeneratingToast = cbs.destroy
+            }
+        }, 2000)
+
+        try {
+            // Get image's width and height from the container, because the svg's width is set to 100%
+            const { width: imgWidth, height: imgHeight } = containerElRef.current.getBoundingClientRect()
+            const canvas = document.createElement("canvas")
+            const scale = Math.floor(window.devicePixelRatio * 2)
+            canvas.width = (imgWidth + 20) * scale
+            canvas.height = (imgHeight + 30) * scale
+            const ctx = canvas.getContext("2d")
+            if (!ctx) {
+                toast.warn("Get canvas context failed.")
+                return
+            }
+            ctx.fillStyle = "white"
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+            // draw chart image
+            const chartDataURL = utils.convertSVGToDataURL(svgElement)
+            const chartImage = new Image()
+            chartImage.src = chartDataURL
+            await utils.waitImageLoaded(chartImage)
+            ctx.drawImage(chartImage, 10 * scale, 10 * scale, imgWidth * scale, imgHeight * scale)
+
+            const link = document.createElement("a")
+            link.download = `star-history-${utils.getDateString(Date.now(), "yyyyMMdd")}.png`
+            link.href = canvas.toDataURL()
+            link.click()
+            state.isGeneratingImage = false
+            destoryGeneratingToast()
+            toast.succeed("Image Downloaded")
+        } catch (error) {
+            console.error(error)
+            toast.error("Generate image failed")
+        }
+        svgElement.remove()
     }
 
     const handleShareToTwitterBtnClick = async () => {
