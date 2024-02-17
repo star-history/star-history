@@ -156,13 +156,9 @@ export default function RepoInputer({
         r.name === repo ? { ...r, visible: !r.visible } : r
       ),
     }));
-  
     store.actions.setRepos(
       state.repos.filter((r) => r.visible).map((r) => r.name)
     );
-  
-    const hasVisibleRepos = state.repos.some((r) => r.visible);
-    setChartVisibility(hasVisibleRepos);
   };
 
   const handleDeleteRepoBtnClick = (repo: string) => {
@@ -236,7 +232,7 @@ export default function RepoInputer({
 
         </div>
       </div>
-      <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-dark rounded">
+      <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
         <input
           ref={inputElRef}
           value={state.repo}

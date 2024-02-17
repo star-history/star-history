@@ -126,21 +126,46 @@ function StarChartViewer() {
   };
 
   const handleGenerateImageBtnClick = async () => {
-    const element = document.querySelector("#capture") as HTMLElement;
+    const element = document.querySelector("#capture");
     if (!element) {
       throw new Error("Element with id 'capture' not found");
     }
-    const canvas = await html2canvas(element);
+  
+    // Preload repository logos
+    const logoUrls = Array.from(state.repoCacheMap.values()).map(repo => repo.logoUrl);
+    await preloadImages(logoUrls);
+  
+    // Wait for all images to load
+    await Promise.all(logoUrls.map(url => loadImage(url)));
+  
+    // Capture screenshot
+    const canvas = await html2canvas(element as HTMLElement);
     const imgData = canvas.toDataURL("image/png");
-
-    // Create a link element for downloading
+  
     const downloadLink = document.createElement("a");
     downloadLink.href = imgData;
-    downloadLink.download = "chart.png"; // You can name the file here
+    downloadLink.download = "chart.png";
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
   };
+  
+  // Function to preload images
+  const preloadImages = (urls: string[]) => {
+    const promises = urls.map(url => loadImage(url));
+    return Promise.all(promises);
+  };
+  
+  // Function to load an image
+  const loadImage = (url: string) => {
+    return new Promise<void>((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve();
+      img.onerror = () => reject(`Failed to load image: ${url}`);
+      img.src = url;
+    });
+  };
+  
 
   const handleShareToTwitterBtnClick = async () => {
     const repos = store.repos;
@@ -186,12 +211,14 @@ function StarChartViewer() {
     window.open(tweetShareLink, "_blank");
   };
 
+  const [showEmbedCodeDialog, setShowEmbedCodeDialog] = useState(false);
+
   const handleGenEmbedCodeDialogBtnClick = () => {
-    setState((prevState) => ({ ...prevState, showEmbedCodeDialog: true }));
+    setShowEmbedCodeDialog(true);
   };
 
   const handleGenEmbedCodeDialogClose = () => {
-    setState((prevState) => ({ ...prevState, showEmbedCodeDialog: false }));
+    setShowEmbedCodeDialog(false);
   };
 
   const handleToggleChartBtnClick = () => {
@@ -199,7 +226,7 @@ function StarChartViewer() {
     setState((prevState) => ({ ...prevState, chartMode: newChartMode }));
     fetchReposData(store.repos);
   };
-  
+
   const handleSetTokenDialogClose = () => {
     setState((prevState) => ({ ...prevState, showSetTokenDialog: false }));
   };
@@ -218,17 +245,17 @@ function StarChartViewer() {
         )}
         {state.chartData && (
           <div className="absolute top-0 right-1 p-2 flex flex-row">
-              <div
-        className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
-        onClick={handleToggleChartBtnClick}
-      >
-        <input
-          className="mr-2"
-          type="checkbox"
-          checked={state.chartMode === 'Timeline'}
-        />
-        {state.chartMode === 'Timeline' ? 'Timeline' : 'Date'}
-      </div>
+            <div
+              className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+              onClick={handleToggleChartBtnClick}
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+                checked={state.chartMode === "Timeline"}
+              />
+              Align timeline
+            </div>
           </div>
         )}
         <div id="capture">
@@ -240,7 +267,6 @@ function StarChartViewer() {
             />
           )}
         </div>
-        {/* ... rest of the JSX here */}
         {state.showSetTokenDialog && (
           <TokenSettingDialog
             onClose={handleSetTokenDialogClose}
@@ -248,10 +274,10 @@ function StarChartViewer() {
           />
         )}
 
-        {state.showEmbedCodeDialog && (
+        {showEmbedCodeDialog && (
           <GenerateEmbedCodeDialog
             onClose={handleGenEmbedCodeDialogClose}
-            show={state.showEmbedCodeDialog}
+            show={showEmbedCodeDialog}
           />
         )}
       </div>
@@ -312,20 +338,20 @@ function StarChartViewer() {
             <EmbedMarkdownSection />
 
             <div className="flex-grow"></div>
-                <div className="flex justify-center mb-12">
-                  <iframe
-                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                    data-test-id="beehiiv-embed"
-                    height="52"
-                    frameBorder="0"
-                    scrolling="no"
-                    style={{
-                      margin: 0,
-                      borderRadius: 0,
-                      backgroundColor: "transparent",
-                    }}
-                  ></iframe>
-                </div>
+            <div className="flex justify-center mb-12">
+              <iframe
+                src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameBorder="0"
+                scrolling="no"
+                style={{
+                  margin: 0,
+                  borderRadius: 0,
+                  backgroundColor: "transparent",
+                }}
+              ></iframe>
+            </div>
           </div>
           <BytebaseBanner v-if="state.chartData" />
         </>
