@@ -10,11 +10,11 @@ interface TokenSettingDialogProps {
     onClose: () => void
     tokenCache?: boolean
     show?: boolean
-    onTokenChange?: (token: string) => void
-    onHeaderTextChange?: (text: string) => void
+    onTokenChange?: (_token: string) => void
+    onHeaderTextChange?: (_text: string) => void
 }
 
-export default function TokenSettingDialog({ onClose, tokenCache, show, onTokenChange, onHeaderTextChange }: TokenSettingDialogProps) {
+export default function TokenSettingDialog({ onClose, tokenCache, onTokenChange, onHeaderTextChange }: TokenSettingDialogProps) {
     const store = useAppStore()
     const [token, setToken] = useState(store.token)
     const [hasToken, setHasToken] = useState(!!store.token)
@@ -68,7 +68,7 @@ export default function TokenSettingDialog({ onClose, tokenCache, show, onTokenC
                             <a className="text-blue-500" href="https://github.com/settings/tokens" target="_blank">
                                 personal access token
                             </a>{" "}
-                            to unlimit it. If you don't already have one,{" "}
+                            to unlimit it. If you {"don't"} already have one,{" "}
                             <a className="text-blue-500" href="https://github.com/settings/tokens/new" target="_blank">
                                 create one
                             </a>

@@ -4,8 +4,8 @@ import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import toast from "../helpers/toast"
 import { useAppStore } from "../store"
 import { FaExternalLinkAlt } from "react-icons/fa"
-import { FaChevronRight } from "react-icons/fa"
 import Link from "next/link"
+import { Blog } from "helpers/types/blog"
 
 interface State {
     repo: string
@@ -21,7 +21,7 @@ interface RepoInputerProps {
     setChartVisibility: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function RepoInputer({ isChartVisible, setChartVisibility }: RepoInputerProps) {
+export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     const store = useAppStore()
     const [state, setState] = useState<State>({
         repo: "",
@@ -52,7 +52,7 @@ export default function RepoInputer({ isChartVisible, setChartVisibility }: Repo
         }
 
         fetchData()
-    }, [])
+    }, [store.state.repos])
 
     useEffect(() => {
         const handleWatch = () => {
@@ -74,7 +74,7 @@ export default function RepoInputer({ isChartVisible, setChartVisibility }: Repo
         }
 
         handleWatch()
-    }, [store.state.repos, store.state.chartMode])
+    }, [store.state.repos, store.state.chartMode, state.repos])
 
     const handleAddRepoBtnClick = () => {
         if (store.isFetching) {
@@ -195,7 +195,7 @@ export default function RepoInputer({ isChartVisible, setChartVisibility }: Repo
     return (
         <div className="w-full px-3 shrink-0 flex flex-col justify-start items-center">
             <div className={`w-auto mx-auto mt-6 mb-2 flex flex-row justify-center items-center flex-wrap ${state.latestBlog ? "" : "invisible"}`}>
-                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">What's new</span>
+                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">{"What's new"}</span>
                 <div className="flex items-center">
                     <Link className="text-gray-700 hover:underline" href={`/blog/${state.latestBlog?.slug}`}>
                         {state.latestBlog?.title} <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>

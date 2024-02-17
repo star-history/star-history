@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react"
 import Head from "next/head"
 import Header from "../../components/header"
@@ -5,15 +6,10 @@ import Footer from "../../components/footer"
 import SponsorBanner from "../../components/SponsorStaticBanner"
 import BytebaseBanner from "../../components/SponsorView"
 import HighlightBlogSection from "../../components/HighlightBlogSection"
-import utils from "common/utils"
 import Link from "next/link"
 import blogData from "../../public/blog/data.json"
 import { NextPageWithLayout } from "pages/_app"
 import { AppStateProvider } from "store"
-import { marked } from "marked"
-import { GetServerSidePropsContext } from "next"
-import path from "path"
-import blogs from "public/blog/assets/data.json"
 
 interface Blog {
     slug: string
@@ -26,13 +22,7 @@ interface Blog {
     featureImage?: string
 }
 
-interface State {
-    isLoading: boolean
-    blog?: Array<Blog>
-    parsedBlogHTML?: string
-}
-
-const Blog: NextPageWithLayout = () => {
+const BlogPage: NextPageWithLayout = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [blogs, setBlogs] = useState<Blog[]>([])
     const [featuredBlogs, setFeaturedBlogs] = useState<Blog[]>([])
@@ -126,7 +116,7 @@ const Blog: NextPageWithLayout = () => {
                                         {featuredBlogs.map((blog) => (
                                             <div key={blog.slug} className="w-full h-auto flex flex-col border rounded-md mb-8">
                                                 <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
-                                                    <img className="h-60 w-full flex-shrink-0 object-cover rounded-t-md" src={blog.featureImage} />
+                                                    <img className="h-60 w-full flex-shrink-0 object-cover rounded-t-md" src={blog.featureImage} alt="" />
                                                 </Link>
 
                                                 <div className="w-full p-6 py-4 flex flex-col justify-start">
@@ -186,6 +176,7 @@ const Blog: NextPageWithLayout = () => {
                                                     <img
                                                         className="shrink-0 w-full h-60 object-cover rounded-t-md lg:w-auto lg:h-auto lg:max-h-full lg:max-w-xs lg:m-2 lg:rounded-md"
                                                         src={blog.featureImage}
+                                                        alt=""
                                                     />
                                                 )}
                                             </div>
@@ -247,4 +238,4 @@ const Blog: NextPageWithLayout = () => {
 //   return returnObj;
 // }
 
-export default Blog
+export default BlogPage

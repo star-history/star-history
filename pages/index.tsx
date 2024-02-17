@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import Layout from "../components/layout"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import HighlightBlogSection from "../components/HighlightBlogSection"
@@ -7,7 +6,6 @@ import SponsorBanner from "../components/SponsorStaticBanner"
 import RepoInputer from "../components/RepoInputer"
 import { AppStateProvider } from "../store"
 import type { NextPage } from "next"
-import { ReactElement, ReactNode } from "react"
 import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
 
@@ -15,10 +13,6 @@ interface IndexProps {}
 
 const Index: NextPage<IndexProps> = () => {
     const [isChartVisible, setChartVisibility] = useState(false) // Start with false since chart is not visible by default
-
-    const handleClickLink = (link: string) => {
-        console.log(`Link clicked: ${link}`)
-    }
 
     return (
         <>

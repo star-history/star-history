@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import toast from "../helpers/toast"
 import utils from "../common/utils"
 import { useAppStore } from "../store"
@@ -15,28 +15,23 @@ interface GenerateEmbedCodeDialogProps {
     onClose: () => void
 }
 
-const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ show, onClose }) => {
+const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ onClose }) => {
     const store = useAppStore() // Cast to the correct type
     const [state, setState] = useState<State>({
         embedCode: "",
         token: store.token
     })
-
-    useEffect(() => {
-        generateEmbedCode()
-    }, [])
-
-    useEffect(() => {
-        generateEmbedCode()
-    }, [state.token])
-
-    const generateEmbedCode = () => {
+    const generateEmbedCode = React.useCallback(() => {
         const secret = btoa(state.token)
         setState({
             ...state,
             embedCode: `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${window.location.origin}/embed?secret=${secret}#${store.repos.join("&")}&${store.chartMode}" frameBorder="0"></iframe>`
         })
-    }
+    }, [store.repos, store.chartMode, state])
+
+    useEffect(() => {
+        generateEmbedCode()
+    }, [generateEmbedCode])
 
     const handleCopyBtnClick = () => {
         if (state.token === "") {
@@ -69,7 +64,7 @@ const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ show,
                         <a className="text-blue-500" href="https://developer.github.com/v3/#rate-limiting" target="_blank">
                             GitHub API rate limit
                         </a>
-                        . If you don't have one,{" "}
+                        . If you {"don't"} have one,{" "}
                         <a className="text-blue-500" href="https://github.com/settings/tokens/new" target="_blank">
                             create one
                         </a>

@@ -13,7 +13,7 @@ interface BlogSection {
 
 interface HighlightBlogSectionProps {
     blogSectionList: BlogSection[]
-    clickLink: (link: string) => void
+    clickLink: (_link: string) => void
 }
 
 const blogSectionList: BlogSection[] = [
@@ -217,7 +217,7 @@ const blogSectionList: BlogSection[] = [
     }
 ]
 
-const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, "blogSectionList">> = ({ clickLink }) => {
+const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, "blogSectionList">> = () => {
     return (
         <div className="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
             {blogSectionList.map((section) => (

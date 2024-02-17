@@ -1,6 +1,5 @@
 import Image from "next/image"
-import { FaDiscord, FaTwitter, FaEnvelope, FaGithub } from "react-icons/fa"
-import Link from "next/link"
+import { FaTwitter, FaEnvelope, FaGithub } from "react-icons/fa"
 import sqlone from "./footer.webp"
 import dbcost from "./dbcost.webp"
 import mysql from "./mysql-vs-pg.webp"
@@ -14,14 +13,6 @@ const Footer = () => {
                     <a className="h-full flex flex-row justify-center items-center ml-3 text-lg hover:opacity-80" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
                         <FaTwitter />
                     </a>
-                    {/* <a
-            className="h-full flex flex-row justify-center items-center ml-3 text-lg hover:opacity-80"
-            href="https://discord.gg/yyzsmgcqg7"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaDiscord />
-          </a> */}
                     <a className="h-full flex flex-row justify-center items-center mx-3 text-lg hover:opacity-80" href="mailto:star@bytebase.com" target="_blank" rel="noopener noreferrer">
                         <FaEnvelope />
                     </a>

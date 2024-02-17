@@ -32,19 +32,19 @@ const Toast: React.FC<ToastProps> = ({ message, type = "normal", duration = 2000
 
     const textColor = "text-white"
 
+    const destroyToast = React.useCallback(() => {
+        if (duration >= 0) {
+            setState((prev) => ({ ...prev, classname: "-top-full" }))
+            setTimeout(() => destroy?.(), ANIMATION_DURATION)
+        }
+    }, [destroy, duration])
+
     useEffect(() => {
         if (duration >= 0) {
             const timeoutId = setTimeout(destroyToast, duration)
             return () => clearTimeout(timeoutId)
         }
-    }, [duration])
-
-    const destroyToast = () => {
-        if (duration >= 0) {
-            setState((prev) => ({ ...prev, classname: "-top-full" }))
-            setTimeout(() => destroy?.(), ANIMATION_DURATION)
-        }
-    }
+    }, [duration, destroyToast])
 
     return (
         <div

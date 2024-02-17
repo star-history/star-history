@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import XYChart, { XYChartData } from "../../packages/xy-chart"
 import { MIN_CHART_WIDTH } from "../../helpers/consts"
 
@@ -9,34 +9,37 @@ interface Props {
     timeFormat?: string
     id?: string
 }
-const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", timeFormat }) => {
+const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date" }) => {
     const chartContainerElRef = useRef<HTMLDivElement | null>(null)
     const svgElRef = useRef<SVGSVGElement | null>(null)
 
-    const drawStarChart = (data: XYChartData) => {
-        if (svgElRef.current) {
-            svgElRef.current.innerHTML = ""
+    const drawStarChart = React.useCallback(
+        (data: XYChartData) => {
+            if (svgElRef.current) {
+                svgElRef.current.innerHTML = ""
 
-            XYChart(
-                svgElRef.current,
-                {
-                    title: "Star History",
-                    xLabel: chartMode === "Timeline" ? "Timeline" : "Date",
-                    yLabel: "GitHub Stars",
-                    data: {
-                        datasets: data.datasets
+                XYChart(
+                    svgElRef.current,
+                    {
+                        title: "Star History",
+                        xLabel: chartMode === "Timeline" ? "Timeline" : "Date",
+                        yLabel: "GitHub Stars",
+                        data: {
+                            datasets: data.datasets
+                        },
+                        showDots: true,
+                        transparent: false,
+                        alignTimeline: false
                     },
-                    showDots: true,
-                    transparent: false,
-                    alignTimeline: false
-                },
-                {
-                    xTickLabelType: chartMode === "Date" ? "Date" : "Number",
-                    envType: "browser"
-                }
-            )
-        }
-    }
+                    {
+                        xTickLabelType: chartMode === "Date" ? "Date" : "Number",
+                        envType: "browser"
+                    }
+                )
+            }
+        },
+        [chartMode]
+    )
 
     useEffect(() => {
         if (data) {
@@ -54,7 +57,7 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                 chartContainerElRef.current.parentElement.style.height = `${chartContainerElRef.current.clientHeight * scaleRate + 16}px`
             }
         }
-    }, [data])
+    }, [data, drawStarChart])
 
     const handleSVGElementClick = () => {
         // Maybe we can capture the clicked svg element to expand chart functions.

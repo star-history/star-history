@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react"
 import { randomSponsors } from "../helpers/sponsor"
 import Link from "next/link"
