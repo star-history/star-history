@@ -12,10 +12,10 @@ With its advanced algorithms and machine learning, Tabby provides a seamless cod
 
 ## Features
 
-- Editor Extensions support: VSCode, VIM.
-- Self-contained, with no need for a DBMS or cloud service.
-- Web UI for visualizing and configuration models and MLOps.
-- Consumer level GPU supports (FP-16 weight loading with various optimization).
+-   Editor Extensions support: VSCode, VIM.
+-   Self-contained, with no need for a DBMS or cloud service.
+-   Web UI for visualizing and configuration models and MLOps.
+-   Consumer level GPU supports (FP-16 weight loading with various optimization).
 
 ![tabby-ui](/blog/assets/tabby/tabby-ui.gif)
 

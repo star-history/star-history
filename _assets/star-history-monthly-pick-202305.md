@@ -18,9 +18,9 @@ Apparently, a user [submitted](https://news.ycombinator.com/item?id=35920082) Wi
 
 I was actually researching Prisma use cases when I came across [Formbricks](http://github.com/formbricks/formbricks), a survey tool and open-source alternative to Typeform. It is originally called snoopForms when they first launched back in 2022. They attribute their success to:
 
-- Open-source: data security, customizable, no vendor lock-in
-- Low-code: accessible to both developers and non-tech people
-- And its value: it's all about the when, how and where to ask the questions so as to obtain accurate insights from users. These tasks are often completed by product managers who may not be developers themselves. As a low-code tool, the ability to embed surveys directly into products without needing to modify application code and bother developers repeatedly surely is music to the ears.
+-   Open-source: data security, customizable, no vendor lock-in
+-   Low-code: accessible to both developers and non-tech people
+-   And its value: it's all about the when, how and where to ask the questions so as to obtain accurate insights from users. These tasks are often completed by product managers who may not be developers themselves. As a low-code tool, the ability to embed surveys directly into products without needing to modify application code and bother developers repeatedly surely is music to the ears.
 
 ![formbricks](/blog/assets/star-history-monthly-pick-202305/formbricks.webp)
 

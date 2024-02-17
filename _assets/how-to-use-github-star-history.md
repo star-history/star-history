@@ -2,9 +2,9 @@
 
 When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?
 
-- Any other users out there?
-- Is it the most popular in this category?
-- Is this technology in decline?
+-   Any other users out there?
+-   Is it the most popular in this category?
+-   Is this technology in decline?
 
 Here's one obvious metric I'm sure you will also investigate: its GitHub stars.
 
@@ -20,13 +20,13 @@ Even if a project has hundreds of millions of stars now, doesn't mean that it's 
 
 It's just a simple search box, how hard could it be? Simplicity is indeed Star History's No 1 design principal. On the other hand, it also provides some handy features for power users. Below we will show you:
 
-- How to add a repo using 3 different formats.
-- How to add multiple repos.
-- How to align the timeline to compare multiple repos.
-- How to temporality show/hide a repo in the chart.
-- How to add your GitHub personal access token to remove GitHub API limits.
-- How to embed a live star history chart inside your GitHub project [README.md](http://README.md).
-- And don't forget we also have a [chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn).
+-   How to add a repo using 3 different formats.
+-   How to add multiple repos.
+-   How to align the timeline to compare multiple repos.
+-   How to temporality show/hide a repo in the chart.
+-   How to add your GitHub personal access token to remove GitHub API limits.
+-   How to embed a live star history chart inside your GitHub project [README.md](http://README.md).
+-   And don't forget we also have a [chrome extension](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn).
 
 ### How to add a repo using 3 different formats
 
@@ -74,9 +74,9 @@ Star History is free to use, but it uses GitHub API to retrieve repository metad
 
 4. Fill in the form on the token details page,
 
-- Note: give it a name for identification.
-- Expiration: how long should it be valid for?
-- Select scopes: access boundary for this token, for Star History, **repo** access will do.
+-   Note: give it a name for identification.
+-   Expiration: how long should it be valid for?
+-   Select scopes: access boundary for this token, for Star History, **repo** access will do.
 
 When you are done, click **Generate token** at the bottom of the page.
 

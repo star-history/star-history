@@ -20,9 +20,9 @@ They also have a dazzling list of investors. ✨
 
 [LangChain](https://github.com/hwchase17/langchain) was first released in October 2022. It is a framework that makes developing AI applications more flexible. Although LLMs can perform many cool tasks, they can't provide specific answers to problems requiring deep domain knowledge. LangChain can be seen as a tool that allows developers to chain different prompts together ⛓️. Chains can consist of multiple modules and components, such as:
 
-- Large language models (LLMs): such as GPT-3, BLOOM, etc.
-- Agents: what actions are to be taken?
-- Memory: short- or long-term memory.
+-   Large language models (LLMs): such as GPT-3, BLOOM, etc.
+-   Agents: what actions are to be taken?
+-   Memory: short- or long-term memory.
 
 🔗 You can link a series of commands together so that the AI model knows what it needs to do, generate what sort of answer, and perform which task.
 

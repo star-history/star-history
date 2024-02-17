@@ -1,0 +1,11 @@
+{
+    "extends": ["next/core-web-vitals", "next/core-web-vitals", "eslint:recommended"],
+    "globals": {
+        "React": "readonly",
+        "JSX": true,
+        "google": true
+    },
+    "rules": {
+        "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    }
+}

@@ -1,10 +1,9 @@
-
 GPT wrapper tools offer a service by "wrapping" around ChatGPT API, leveraging the underlying technology to provide an additional functionality not offered directly by OpenAI. What these tools have in common is：
 
-- An easy-to-use UI.
-- Comes with pre-trained models and prompts.
-- Novice users can use them.
-- You can use your own OpenAI API key, so you pay for exactly what you use.
+-   An easy-to-use UI.
+-   Comes with pre-trained models and prompts.
+-   Novice users can use them.
+-   You can use your own OpenAI API key, so you pay for exactly what you use.
 
 ![chatgpt-gif](/blog/assets/gpt-wrappers/chatgpt.gif)
 
@@ -12,11 +11,11 @@ With ChatGPT, all you need is the million dollar [idea](https://twitter.com/deba
 
 For this issue of Star History monthly, we have located a set of open-source ChatGPT wrapper tools.
 
-- [ChatGPT-Next-Web](#chatgpt-next-web)
-- [FastGPT](#fastgpt)
-- [OpenAI Translator](#openai-translator)
-- [Flowise](#flowise)
-- [Lobe Chat](#lobe-chat)
+-   [ChatGPT-Next-Web](#chatgpt-next-web)
+-   [FastGPT](#fastgpt)
+-   [OpenAI Translator](#openai-translator)
+-   [Flowise](#flowise)
+-   [Lobe Chat](#lobe-chat)
 
 [![star-history](/blog/assets/gpt-wrappers/star-history.webp)](/#labring/fastgpt&flowiseai/flowise&openai-translator/openai-translator&lobehub/lobe-chat&ChatGPTNextWeb/ChatGPT-Next-Web&Date)
 
@@ -46,8 +45,8 @@ It started out as a Chrome extension, and has now evolved into a multi-platform 
 
 As an OpenAI Translator user, it stands out as a GPT wrapper in three ways:
 
-- The three different models that it offers: translation, polishing and summarization. It's way more than just a translation tool, but a two-in-one. Have it summarize your readings next time.
-- Chrome extension: need I say more?
+-   The three different models that it offers: translation, polishing and summarization. It's way more than just a translation tool, but a two-in-one. Have it summarize your readings next time.
+-   Chrome extension: need I say more?
 
 ## Flowise
 
@@ -57,8 +56,8 @@ As an OpenAI Translator user, it stands out as a GPT wrapper in three ways:
 
 It is a low-code UI tool for LangChain JS, written in Node Typescript, which aims to provide a seamless platform for easy experimentation flow and prototype design. With Flowise, you can:
 
-- Text file Q&A using conversational retrieval QA chain.
-- Language translation using LLM Chain with a Chat Prompt Template and Chat Model.
+-   Text file Q&A using conversational retrieval QA chain.
+-   Language translation using LLM Chain with a Chat Prompt Template and Chat Model.
 
 If you are feeling handy, you can build your own GPT tools with Flowise to replace the previous two tools.
 
@@ -80,9 +79,9 @@ We can learn to master using this tool and make better use of it, tho ;)
 
 If you want more AI content, check out earlier editions of the star history open-source monthly:
 
-- [TTS (Text-to-Speech) Tools](/blog/tts)
-- [AI Extensions for Postgres](/blog/ai-for-postgres)
-- [GitHub Copilot alternatives](/blog/coding-ai)
-- [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
-- [Llama 2 and Ecosystem](/blog/llama2)
-- [ChatGPT Special](/blog/star-history-monthly-pick-202303)
+-   [TTS (Text-to-Speech) Tools](/blog/tts)
+-   [AI Extensions for Postgres](/blog/ai-for-postgres)
+-   [GitHub Copilot alternatives](/blog/coding-ai)
+-   [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
+-   [Llama 2 and Ecosystem](/blog/llama2)
+-   [ChatGPT Special](/blog/star-history-monthly-pick-202303)

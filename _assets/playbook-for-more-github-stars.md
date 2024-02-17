@@ -2,10 +2,10 @@
 
 ## TL;DR
 
-- My team and I recently launched an [open source tool for developers](https://github.com/livecycle/preevy)
-- This was my first time promoting an open source tool. It was hard to find meaningful early-tage growth advice, so I had to get creative.
-- We've quickly grown to more than 1.5k stars in a short time. I've compiled a detailed list of growth tactics that worked to bring us traffic and stars
-- I’m sharing it all here so that others can apply these tactics and grow their own projects
+-   My team and I recently launched an [open source tool for developers](https://github.com/livecycle/preevy)
+-   This was my first time promoting an open source tool. It was hard to find meaningful early-tage growth advice, so I had to get creative.
+-   We've quickly grown to more than 1.5k stars in a short time. I've compiled a detailed list of growth tactics that worked to bring us traffic and stars
+-   I’m sharing it all here so that others can apply these tactics and grow their own projects
 
 ## Launching an open source project for the first time
 
@@ -51,10 +51,10 @@ The underlying assumption here is that GitHub stars have value. But what exactly
 
 Increasing your star count has several benefits clear and present benefits:
 
-- It focuses the team's efforts and motivates everyone to rally around a single cause and a single metric that is constantly increasing
-- Stars = credibility and trustworthiness in the eyes of potential users and contributors
-- Your pool of stargazers can teach you a lot about your target audience
-- Stars can help you reach [GitHub trending](https://github.com/trending) status and a TON of visibility. (there are several factors that go into trending, but stars is an important one).
+-   It focuses the team's efforts and motivates everyone to rally around a single cause and a single metric that is constantly increasing
+-   Stars = credibility and trustworthiness in the eyes of potential users and contributors
+-   Your pool of stargazers can teach you a lot about your target audience
+-   Stars can help you reach [GitHub trending](https://github.com/trending) status and a TON of visibility. (there are several factors that go into trending, but stars is an important one).
 
 So if you’re trying to promote your GitHub library, you should be thinking about how you can get more people to star it, especially in the first couple of months after you go live.
 
@@ -68,9 +68,9 @@ The first thing I focused on was making sure our repository was set up for succe
 
 Those generic articles spend a lot of time on this, and like with any good cliche - there's a lot of truth to it. So we established a baseline for repo health that included:
 
-- A clear description of what the tool does
-- A Readme that is both informative and aesthetically pleasing (screenshot/GIF at the top, clearly structured, use of some emojis to mix it up a bit). I also upgraded the social card that appeared when the repo is linked on social.
-- A [dedicated docs site](https://preevy.dev/) with relevant technical information and how-to guides for people who want to use it
+-   A clear description of what the tool does
+-   A Readme that is both informative and aesthetically pleasing (screenshot/GIF at the top, clearly structured, use of some emojis to mix it up a bit). I also upgraded the social card that appeared when the repo is linked on social.
+-   A [dedicated docs site](https://preevy.dev/) with relevant technical information and how-to guides for people who want to use it
 
 I don't have a lot of wisdom to add here. Just make a best effort at communicating clearly in your documentation (without any fluff) and don't be afraid to iterate as needed.
 
@@ -131,10 +131,10 @@ Content creation and distribution was a big part of our strategy (and this conti
 
 As far as content creation, we set out to create an ongoing flow of blog posts. These posts fell into one of four categories:
 
-- **Present the tool directly** - We wrote a number of posts that talk about Preevy directly. What it is, why we built it, who we think can benefit from it. These can be very effective when they are written in an authentic, human way
-- **Present the tool indirectly as part of a larger project** - We wrote a number of “How-to” posts that show how to build a cool project, including Preevy as part of the stack
-- **Listicles** - We put together a few list-based articles that had an open source angle to them. “5 Projects that will help you learn [some framework]” or “10 new open source repositories you need to know about in 2023” or something similar. We included Preevy in the list when relevant, but not every time.
-- **Building in public** - Open source is about sharing with others. So we wrote several posts explaining how we solved an interesting problem or how we achieved a relevant milestone (like this post, for example)
+-   **Present the tool directly** - We wrote a number of posts that talk about Preevy directly. What it is, why we built it, who we think can benefit from it. These can be very effective when they are written in an authentic, human way
+-   **Present the tool indirectly as part of a larger project** - We wrote a number of “How-to” posts that show how to build a cool project, including Preevy as part of the stack
+-   **Listicles** - We put together a few list-based articles that had an open source angle to them. “5 Projects that will help you learn [some framework]” or “10 new open source repositories you need to know about in 2023” or something similar. We included Preevy in the list when relevant, but not every time.
+-   **Building in public** - Open source is about sharing with others. So we wrote several posts explaining how we solved an interesting problem or how we achieved a relevant milestone (like this post, for example)
 
 Each post had clear section headings. We added a TL;DR at the top and emojis/GIFs to keep it friendly and fun to read. We mentioned explicitly that we are building Preevy and we’d appreciate it if people could check it out and star the repository. We phrased this in-line request in different ways (sometimes more directly than others), but we always found a way to put it in the body of the article as a clear call to action.
 
@@ -142,14 +142,14 @@ Each post had clear section headings. We added a TL;DR at the top and emojis/GIF
 
 Writing content is great, but it won't help you if you don’t have a good plan for distributing it to the relevant people. Here’s how we distributed our Preevy content:
 
-- **Dev-centric blogging platforms** - We published our content on dev-centric blogging platforms like [Dev.to](http://Dev.to), Hashnode, Hackernoon, and Medium. These are the main platforms we’ve been using, but there are others you might consider as well. When doing this, be mindful of any platform-specific tags you can use to better position your content (for example, DevTo has a #showdev tag that can help show your new tool off to other developers). Also note that on platforms like [Dev.to](http://Dev.to), you can create a company blog with a fixed call to action that appears on the right side of any article you publish there. This helps to get more people clicking through from your content to your GitHub repository.
+-   **Dev-centric blogging platforms** - We published our content on dev-centric blogging platforms like [Dev.to](http://Dev.to), Hashnode, Hackernoon, and Medium. These are the main platforms we’ve been using, but there are others you might consider as well. When doing this, be mindful of any platform-specific tags you can use to better position your content (for example, DevTo has a #showdev tag that can help show your new tool off to other developers). Also note that on platforms like [Dev.to](http://Dev.to), you can create a company blog with a fixed call to action that appears on the right side of any article you publish there. This helps to get more people clicking through from your content to your GitHub repository.
 
-*Here's one of our posts trending on* [*Dev.to*](http://Dev.to)*:*
+_Here's one of our posts trending on_ [_Dev.to_](http://Dev.to)_:_
 
 ![devto](/blog/assets/playbook-for-more-github-stars/devto.webp)
 
-- **Reddit and social media** - Once the content was published on the above platforms, we promoted it on social media and in relevant subreddits. We did not drive traffic to our company blog (we’ll get to that in a minute). Rather, we intentionally directed people to the articles hosted on these outside blogging platforms. We did this because each of these blogging platforms has a built-in trending algorithm that boosts high-performing posts. By driving traffic to these links, we got the platform algorithms to work for us and get our posts many more views in a short period of time.
-- **Our company blog** - Don’t worry. We didn’t forget about our own site. We also published all content on our company blog. After all, SEO is still a thing, and so it’s good to have all that relevant content hosted on the company domain. As extra credit, we also managed to get our blog approved as a content source by dev-centric content aggregators like [daily.dev](https://app.daily.dev/sources/livecycle). This helps us to distribute the content posted on our company’s blog, in addition to the content published on those external blogging sites.
+-   **Reddit and social media** - Once the content was published on the above platforms, we promoted it on social media and in relevant subreddits. We did not drive traffic to our company blog (we’ll get to that in a minute). Rather, we intentionally directed people to the articles hosted on these outside blogging platforms. We did this because each of these blogging platforms has a built-in trending algorithm that boosts high-performing posts. By driving traffic to these links, we got the platform algorithms to work for us and get our posts many more views in a short period of time.
+-   **Our company blog** - Don’t worry. We didn’t forget about our own site. We also published all content on our company blog. After all, SEO is still a thing, and so it’s good to have all that relevant content hosted on the company domain. As extra credit, we also managed to get our blog approved as a content source by dev-centric content aggregators like [daily.dev](https://app.daily.dev/sources/livecycle). This helps us to distribute the content posted on our company’s blog, in addition to the content published on those external blogging sites.
 
 ### Github Lists and Topics
 
@@ -165,8 +165,8 @@ We’ve used both Lists and Topics to promote Preevy.
 
 We found a number of sites and newsletters focused on promoting open source tools. We used these resources to promote Preevy. Here are two examples that were effective for us:
 
-- [GitHub20K](https://libraries.github20k.com/) - Add your library here for free (maintained by [@nevodavid](https://dev.to/nevodavid) )
-- [Console.dev](https://console.dev/) - Submit your tool for free, or pay to sponsor a newsletter
+-   [GitHub20K](https://libraries.github20k.com/) - Add your library here for free (maintained by [@nevodavid](https://dev.to/nevodavid) )
+-   [Console.dev](https://console.dev/) - Submit your tool for free, or pay to sponsor a newsletter
 
 ### Relevant communities and dark social
 
@@ -178,9 +178,9 @@ We noticed that each community has its own rules, nuances and opportunities. For
 
 Once we generated a decent amount of organic traffic, we ran some small, paid ad campaigns. We used three advertising platforms:
 
-- [Ethical Ads](https://www.ethicalads.io/) (a dev-focused advertising platform)
-- Reddit (with a focus on specific, technical subreddits)
-- Twitter (with a focus on specific, relevant keywords)
+-   [Ethical Ads](https://www.ethicalads.io/) (a dev-focused advertising platform)
+-   Reddit (with a focus on specific, technical subreddits)
+-   Twitter (with a focus on specific, relevant keywords)
 
 These campaigns brought us traffic, and they also allowed us to test our messaging and learn more about what attracted people to our repository. We used these results to further optimize our content and our future ad campaigns.
 
@@ -212,11 +212,11 @@ It took us some time to find the right people, but once we did, all of the above
 
 We used Hackernews to promote Preevy in two ways:
 
-- Post the GitHub repository under the [“Show HN” tag](https://news.ycombinator.com/show) - Hackernews can be a great place to share your new project with other technical folks. It helps to get others to upvote and comment soon after posting (just don’t share the direct link to your post!). We added a first comment where our CTO explained what we built and inviting others to try it. I don’t know if this comment helped, but I saw a lot of other open source projects doing the same. And while I can’t say for sure, it seems like HN is friendlier to GitHub repository links as opposed to some branded URL. So with a bit of coordination, HN could give you a potent dose of traffic.
+-   Post the GitHub repository under the [“Show HN” tag](https://news.ycombinator.com/show) - Hackernews can be a great place to share your new project with other technical folks. It helps to get others to upvote and comment soon after posting (just don’t share the direct link to your post!). We added a first comment where our CTO explained what we built and inviting others to try it. I don’t know if this comment helped, but I saw a lot of other open source projects doing the same. And while I can’t say for sure, it seems like HN is friendlier to GitHub repository links as opposed to some branded URL. So with a bit of coordination, HN could give you a potent dose of traffic.
 
 ![hn](/blog/assets/playbook-for-more-github-stars/hn.webp)
 
-- Post content - We’ve tried posting some of our content on HN. Success is hit or miss, and HN will not even accept posts from some external blogging platforms. But it’s free to try and the potential upside is huge.
+-   Post content - We’ve tried posting some of our content on HN. Success is hit or miss, and HN will not even accept posts from some external blogging platforms. But it’s free to try and the potential upside is huge.
 
 ### Social media retargeting
 
@@ -242,10 +242,10 @@ So for example, when we wrote listicles that included other open source projects
 
 Once we reached a few hundred stargazers, I analyzed the modest audience I had built. I developed an experimental, multi-part playbook for promoting Preevy in a more targeted way to people who were more likely to be interested in it. Here’s a quick summary of what I came up with:
 
-- I used tools (such at [this one](https://github.com/spencerkimball/stargazers) and [this one](https://clickhouse.com/)) to see what other repos our stargazers were starring most frequently. The stargazers of these "other" commonly starred repos became an expanded pool of potential stargazers for Preevy
-- I looked through the stargazers in these other repos and identified people who had publicly exposed email addresses in their GitHub profiles. To me, this was a clue that they didn’t mind being contacted via email
-- I further identified the people who I thought were most relevant and followed them on GitHub
-- Then, I reached out to these folks via email, told them I had just followed them and introduced myself and my project in case they were interested to check it out.
+-   I used tools (such at [this one](https://github.com/spencerkimball/stargazers) and [this one](https://clickhouse.com/)) to see what other repos our stargazers were starring most frequently. The stargazers of these "other" commonly starred repos became an expanded pool of potential stargazers for Preevy
+-   I looked through the stargazers in these other repos and identified people who had publicly exposed email addresses in their GitHub profiles. To me, this was a clue that they didn’t mind being contacted via email
+-   I further identified the people who I thought were most relevant and followed them on GitHub
+-   Then, I reached out to these folks via email, told them I had just followed them and introduced myself and my project in case they were interested to check it out.
 
 The last two steps were just my personal spin. You can probably do without them. The main idea is to use your pool of authentic stargazers to point you in the direction of a wider pool of similar users who might be interested in what you have to offer.
 
@@ -279,4 +279,4 @@ And if you've made it this far, and are willing to leave Preevy a star I'd reall
 
 ---
 
-*Published at Star History with permission of Zevi Reinitz. See the original article [here](https://dev.to/livecycle/the-detailed-creative-playbook-for-more-github-stars-5fo5).*
+_Published at Star History with permission of Zevi Reinitz. See the original article [here](https://dev.to/livecycle/the-detailed-creative-playbook-for-more-github-stars-5fo5)._

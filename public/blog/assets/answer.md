@@ -1,4 +1,4 @@
-*This is the sixteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+_This is the sixteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---
 
@@ -12,12 +12,12 @@ Answer is built with Go and ReactJS. It supports various databases, including SQ
 
 ![answer](/blog/assets/answer/answer.webp)
 
-- **Easy setup**: Build a community forum, help center or knowledge base from the ground right away.
-- **Mobile friendly**: Enjoy a seamless browsing experience on both mobiles and desktops.
-- **Share knowledge**: Your team members can ask, answer, and search effortlessly.
-- **Stay organized**: Use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
-- **Engage community**: Vote for the best answers, and admins can accept and highlight the best answer for better knowledge sharing.Our reputation and award system keeps everyone involved and fosters a self-governed community.
-- **Plugins**: Add wings to Answer and make it powerful in the way you want.
+-   **Easy setup**: Build a community forum, help center or knowledge base from the ground right away.
+-   **Mobile friendly**: Enjoy a seamless browsing experience on both mobiles and desktops.
+-   **Share knowledge**: Your team members can ask, answer, and search effortlessly.
+-   **Stay organized**: Use tags to edit, organize, and manage the content easily, while users can follow tags and jump right to the content they’re interested in.
+-   **Engage community**: Vote for the best answers, and admins can accept and highlight the best answer for better knowledge sharing.Our reputation and award system keeps everyone involved and fosters a self-governed community.
+-   **Plugins**: Add wings to Answer and make it powerful in the way you want.
 
 ## Get Started
 

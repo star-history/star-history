@@ -10,9 +10,9 @@ This is the answer I get from almost everybody, and they are right! partially…
 
 I would like to touch on three subjects:
 
-- Credibility
-- Vanity metric
-- Trending opportunity
+-   Credibility
+-   Vanity metric
+-   Trending opportunity
 
 ## Credibility feeds developers 🍽️
 
@@ -34,10 +34,10 @@ If you grow stars organic (not buying stars or manipulating people to give you).
 
 We have written tens of articles with a CTA to give us a star, which resulted in the following:
 
-- More contributors
-- More PRS
-- More signups
-- More visibility
+-   More contributors
+-   More PRS
+-   More signups
+-   More visibility
 
 In Novu, we achieved a major amount of stars that usually takes COSS libraries around 2-3 years to get. However, if you compare the other metrics, you will see that they match.
 
@@ -47,10 +47,10 @@ In Novu, we achieved a major amount of stars that usually takes COSS libraries a
 
 GitHub has the [Trending page](https://github20k.com). Many people monitor this page:
 
-- Investors
-- Contributors
-- Developers
-- Many other roles
+-   Investors
+-   Contributors
+-   Developers
+-   Many other roles
 
 Many libraries, such as Novu, got into a turning point once they got there.
 
@@ -80,9 +80,9 @@ We have methodically increased our number of stars and have also been declared o
 
 I started a 100% free (and always will be) newsletter, it is good for you if:
 
-- You are considering open-sourcing your product (or building a new one).
-- You are considering opening a by-product and open-source it (to reflect on your main product).
-- You are in tech and want growth without the stars / without GitHub trending.
+-   You are considering open-sourcing your product (or building a new one).
+-   You are considering opening a by-product and open-source it (to reflect on your main product).
+-   You are in tech and want growth without the stars / without GitHub trending.
 
 Feel free to register at: [https://github20k.com](https://github20k.com/)
 

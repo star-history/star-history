@@ -36,7 +36,7 @@ It was open-sourced in 2015 by InfluxData, which closed a whopping $81 million i
 
 ![triggerdotdev](/blog/assets/star-history-monthly-pick-202302/triggerdotdev.webp)
 
-[Trigger.dev](https://github.com/triggerdotdev/trigger.dev) is a developer-first open-source Zapier alternative that allows developers to create workflows directly in code. Developers often have to help non-tech people build workflows in no/low-code tools, which rely on sacrificing customization for convenience. For developers, however, it's not *that* complicated to build, test, and run workflows on their own.
+[Trigger.dev](https://github.com/triggerdotdev/trigger.dev) is a developer-first open-source Zapier alternative that allows developers to create workflows directly in code. Developers often have to help non-tech people build workflows in no/low-code tools, which rely on sacrificing customization for convenience. For developers, however, it's not _that_ complicated to build, test, and run workflows on their own.
 
 Of course, you can also go straight to the other extreme: create notifications directly from GitHub to Slack via Slack's webhook system, though you have no control over how this alert appears on your Slack or interacts between the two applications. Trigger.dev already integrates with GitHub and Slack, which means you can create a customizable workflow directly in code that you can later customize and extend to meet your needs. trigger.dev now supports GitHub, Notion, WhatsApp, Resend, Airtable, and Sendgrid integration, which isn't much, but is well enough for basic needs.
 

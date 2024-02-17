@@ -2,11 +2,11 @@
 
 Following up on our previous roundup of [Top Front-end open-source projects in 2022](/blog/star-history-yearly-pick-2022-frontend), Star History will round up the open-source projects that stood out in the **Data, Infra, and DevTools** section in 2022.
 
-If you didn’t know,  [star-history.com](http://star-history.com) is a place to view and compare the star history of GitHub repos. We are proud to say that it is the de facto place people turn to for GitHub stars: it is, after all, the first (and second) result on Google. 😆
+If you didn’t know, [star-history.com](http://star-history.com) is a place to view and compare the star history of GitHub repos. We are proud to say that it is the de facto place people turn to for GitHub stars: it is, after all, the first (and second) result on Google. 😆
 
 ![google-result](/blog/assets/yearly-pick-data-infra-devtools-2022/google-result.webp)
 
-*Note: the list is in alphabetical order.
+\*Note: the list is in alphabetical order.
 
 ## Buf
 
@@ -24,9 +24,9 @@ Buf closed a $68M Series B at the end of 2021 and has kept a low profile for all
 
 While the aforementioned Buf targets the API schema, [Bytebase](https://github.com/bytebase/bytebase) targets the database schema hidden behind the API. While there are a number of commercial/open-source database engines on the market, there are only a few tools around to ensure reliable database schema changes. To this day, many engineering teams continue to connect directly to production databases to change data. 💥
 
-- Like how GitHub/GitLab manages code changes, Bytebase provides a GUI to manage database changes.
-- Like Figma for designer team collaboration, Bytebase helps DevOps teams collaborate on database management.
-- Like how Terraform defines Infrastructure-as-Code, Bytebase aims to build Database-as-Code.
+-   Like how GitHub/GitLab manages code changes, Bytebase provides a GUI to manage database changes.
+-   Like Figma for designer team collaboration, Bytebase helps DevOps teams collaborate on database management.
+-   Like how Terraform defines Infrastructure-as-Code, Bytebase aims to build Database-as-Code.
 
 ![bytebase-site](/blog/assets/yearly-pick-data-infra-devtools-2022/bytebase-site.webp)
 
@@ -132,16 +132,16 @@ Tier has a top-level design for how to implement pricing that allows for changes
 
 For Star History, our goal is to discover interesting and inspiring projects. The aforementioned projects are not household names in the open-source community (yet), but each has great potential since they are tackling genuine issues with novel ideas. We see that the **Data & Infra & DevTools** section can be divided into two main categories:
 
-- Vertical innovation: database engines being the most popular segment, such as DuckDB and Neon.
-- Horizontal unification and standardization:
-  - Buf for API development.
-  - Bytebase for database development.
-  - Casdoor for authentication sources.
-  - Dagger for pipeline deployments.
-  - Meltano for data platforms.
-  - Opa for policy configurations.
-  - Steampipe for accessing cloud resources across different cloud providers.
-  - Tier for SaaS pricing infrastructure.
+-   Vertical innovation: database engines being the most popular segment, such as DuckDB and Neon.
+-   Horizontal unification and standardization:
+    -   Buf for API development.
+    -   Bytebase for database development.
+    -   Casdoor for authentication sources.
+    -   Dagger for pipeline deployments.
+    -   Meltano for data platforms.
+    -   Opa for policy configurations.
+    -   Steampipe for accessing cloud resources across different cloud providers.
+    -   Tier for SaaS pricing infrastructure.
 
 We are sure these projects will perform in the coming years and we can’t wait to see what’s next for them.
 

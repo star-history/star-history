@@ -12,14 +12,14 @@ Remember Supabase's "Build in a weekend" tagline? In a sense, [AI Getting Starte
 
 The current stack is:
 
-- Auth: [Clerk](https://clerk.com/)
-- App logic: [Next.js](https://nextjs.org/)
-- VectorDB: [Pinecone](https://www.pinecone.io/) / [Supabase pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)
-- LLM Orchestration: [Langchain.js](https://js.langchain.com/docs/)
-- Image Model: [Replicate](https://replicate.com/)
-- Text Model: [OpenAI](https://platform.openai.com/docs/models)
-- Text streaming: [Vercel AI SDK](https://github.com/vercel-labs/ai)
-- Deployment: [Fly.io](https://fly.io/)
+-   Auth: [Clerk](https://clerk.com/)
+-   App logic: [Next.js](https://nextjs.org/)
+-   VectorDB: [Pinecone](https://www.pinecone.io/) / [Supabase pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)
+-   LLM Orchestration: [Langchain.js](https://js.langchain.com/docs/)
+-   Image Model: [Replicate](https://replicate.com/)
+-   Text Model: [OpenAI](https://platform.openai.com/docs/models)
+-   Text streaming: [Vercel AI SDK](https://github.com/vercel-labs/ai)
+-   Deployment: [Fly.io](https://fly.io/)
 
 ## Copycat
 

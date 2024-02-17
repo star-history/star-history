@@ -10,10 +10,10 @@ For open source projects, showing up on the GitHub Trending Tab is a braggable m
 
 For such a popular industry leaderboard, it’s always a challenge to be fair and pick the top N projects most people are happy with. And fair is even more subjective in the developer world.
 
-* Go vs. Rust?
-* React vs. Vue?
-* MySQL vs. PostgreSQL?
-* Vim vs. Emacs?
+-   Go vs. Rust?
+-   React vs. Vue?
+-   MySQL vs. PostgreSQL?
+-   Vim vs. Emacs?
 
 Developers are often polarized and strongly opinionated. You are always pissing off at least half the population, even for doing nothing. Open source maintainers often question why other seemingly mediocre repos appear on the ladder while their awesome projects stay in the dark, unnoticed, after spending years of sweat.
 
@@ -27,7 +27,7 @@ star-history.com runs a Twitter account [@StartHistoryHQ](https://twitter.com/st
 
 Some people DMed us asking if we use a bot to find those repos. Actually, we curate each repo manually, and GitHub Trending Tab is one of our primary sources to find those repos. For us, the Trending Tab serves as a starting point. We review the list every day and pick 1 or 2 interesting repos. Without GitHub Trending, finding the needles in the haystack would require much more effort.
 
-As someone promoting others’ repositories daily, we can sense the strong feelings around GitHub Trending. Because we often see people get excited about us promoting their open source projects, imagine how excited it would be if their projects show up on the GitHub Trending Tab. 
+As someone promoting others’ repositories daily, we can sense the strong feelings around GitHub Trending. Because we often see people get excited about us promoting their open source projects, imagine how excited it would be if their projects show up on the GitHub Trending Tab.
 
 People often complain about the ranking mystery, but mystery also brings serendipity.
 

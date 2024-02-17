@@ -1,7 +1,6 @@
-*This is the twelfth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+_This is the twelfth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---
-
 
 ![waspsh_logo](/blog/assets/wasp/waspsh_logo.webp)
 
@@ -21,23 +20,23 @@ The best part is that you still write most of your code in the stack you already
 
 ## What you get
 
-- **Full-stack authentication** - username/email & password or social auth (google, github). No 3rd party services
-- **Full-stack type-safety** - full TypeScript support with auto-generated types across the whole stack
-- **Typesafe RPC** **- no API**; your data models and server logic are instantly brought to the client
-- **One-line deployment** - deploy to any platform; Wasp CLI offers powerful helpers
-- **Async jobs** - easily define, schedule, and run specialized server tasks
-- **Email sending** - just connect an email provider or use SMTP
-- **Powerful CLI** - Wasp CLI covers everything from running your app, database migrations to deployment
-- **And more!** - Custom API routes, database seeding, automatic cache invalidation, …
+-   **Full-stack authentication** - username/email & password or social auth (google, github). No 3rd party services
+-   **Full-stack type-safety** - full TypeScript support with auto-generated types across the whole stack
+-   **Typesafe RPC** **- no API**; your data models and server logic are instantly brought to the client
+-   **One-line deployment** - deploy to any platform; Wasp CLI offers powerful helpers
+-   **Async jobs** - easily define, schedule, and run specialized server tasks
+-   **Email sending** - just connect an email provider or use SMTP
+-   **Powerful CLI** - Wasp CLI covers everything from running your app, database migrations to deployment
+-   **And more!** - Custom API routes, database seeding, automatic cache invalidation, …
 
 ![auth_demo_customize](/blog/assets/wasp/auth_demo_customize.webp)
 
 ## Made with Wasp
 
-- [https://coverlettergpt.xyz/](https://coverlettergpt.xyz/) - Generate a cover letter via GPT based on your resume - used for 10,000 resumes!
-- [https://www.amicus.work/](https://www.amicus.work/) - A project management software for legal teams
-- [https://description-generator.online/](https://description-generator.online/) - Generate a product listing based on a description or image for your Etsy marketplace via GPT. [[Acquired - read more!](https://dev.to/wasp/from-idea-to-exit-building-and-selling-an-ai-powered-saas-in-5-months-27d9)]
-- See more examples [here](https://wasp-lang.dev/#examples)
+-   [https://coverlettergpt.xyz/](https://coverlettergpt.xyz/) - Generate a cover letter via GPT based on your resume - used for 10,000 resumes!
+-   [https://www.amicus.work/](https://www.amicus.work/) - A project management software for legal teams
+-   [https://description-generator.online/](https://description-generator.online/) - Generate a product listing based on a description or image for your Etsy marketplace via GPT. [[Acquired - read more!](https://dev.to/wasp/from-idea-to-exit-building-and-selling-an-ai-powered-saas-in-5-months-27d9)]
+-   See more examples [here](https://wasp-lang.dev/#examples)
 
 ## Getting started
 
@@ -47,17 +46,17 @@ The best part is that you still write most of your code in the stack you already
     curl -sSL https://get.wasp-lang.dev/installer.sh | sh
     ```
 
-2. Create a new project with a SaaS template: 
+2. Create a new project with a SaaS template:
 
-   ```bash
-   wasp new <my-new-project> -t saas
-   ```
+    ```bash
+    wasp new <my-new-project> -t saas
+    ```
 
 3. Run it!
 
-   ```bash
-   wasp start
-   ```
+    ```bash
+    wasp start
+    ```
 
 For more details, check out the docs: [https://wasp-lang.dev/docs/quick-start](https://wasp-lang.dev/docs/quick-start)
 
@@ -69,6 +68,6 @@ Wasp has had a pretty solid Year 2023, and in October alone we doubled our stars
 
 If you'd like to learn more and try out Wasp for yourself, visit our site!
 
-- Website: [http://wasp.sh/](http://wasp.sh/)
-- GitHub: [https://github.com/wasp-lang/wasp](https://github.com/wasp-lang/wasp)
-- Discord: [https://discord.gg/rzdnErX](https://discord.gg/rzdnErX)
+-   Website: [http://wasp.sh/](http://wasp.sh/)
+-   GitHub: [https://github.com/wasp-lang/wasp](https://github.com/wasp-lang/wasp)
+-   Discord: [https://discord.gg/rzdnErX](https://discord.gg/rzdnErX)

@@ -14,10 +14,10 @@ In this post, we'll share five Postgres extensions that just might boost your AI
 
 If you're looking for a vector database, Postgres got you covered, you can continue using your Postgres with benefits including:
 
-- store your vectors with the rest of your data
-- exact and approximate nearest neighbor search
-- L2 distance, inner product, and cosine distance
-- any language with a Postgres client
+-   store your vectors with the rest of your data
+-   exact and approximate nearest neighbor search
+-   L2 distance, inner product, and cosine distance
+-   any language with a Postgres client
 
 If you use plain Postgres, simply compile and install the extension; if you are using Postgres services or apps, some of them already have pgvector included, e.g. Aiven, Neon, Supabase, Postgres.app, etc.
 
@@ -31,9 +31,9 @@ If you don't have fancy ML workloads (because not all of us are AI giants) in yo
 
 ![postgresml-textgen](/blog/assets/ai-for-postgres/postgresml-textgen.webp)
 
-*Side note #1: They got another open-source project under the organization: [PgCat](https://github.com/postgresml/pgcat), a Postgres pooler, which was first released back in February, 2022. Interesting to see them pivot to the more sexy topic of AI.*
+_Side note #1: They got another open-source project under the organization: [PgCat](https://github.com/postgresml/pgcat), a Postgres pooler, which was first released back in February, 2022. Interesting to see them pivot to the more sexy topic of AI._
 
-*Side note #2: PostgresML was actually* [*featured on the starlet issue*](https://star-history.com/blog/postgresml) *a while back, and that kinda gave me the inspo for this issue.*
+_Side note #2: PostgresML was actually_ [_featured on the starlet issue_](https://star-history.com/blog/postgresml) _a while back, and that kinda gave me the inspo for this issue._
 
 ## MADlib
 
@@ -79,7 +79,7 @@ We've seen a lot this year: the tech world shifting towards AI and looking for a
 
 ## Star History Monthly Previous Editions
 
-- [Coding AI](/blog/coding-ai)
-- [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
-- [Llama 2 and Ecosystem](/blog/llama2)
-- [ChatGPT Special](/blog/star-history-monthly-pick-202303)
+-   [Coding AI](/blog/coding-ai)
+-   [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
+-   [Llama 2 and Ecosystem](/blog/llama2)
+-   [ChatGPT Special](/blog/star-history-monthly-pick-202303)

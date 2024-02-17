@@ -77,13 +77,13 @@ Here is the render's monitoring view and it's been running fine so far
 
 We provide two ways to embed the real-time star history chart into the web pages.
 
-- If you want to put an auto-sizeable and interactive chart on your private network, you should try the embedded chart with `<iframe />`.
-- If you want to show a static chart with update-to-date star history data to the public, such as putting it on the GitHub repository README, you should use the image link such as `https://api.star-history.com/svg?repos=star-history/star-history&type=Date`
+-   If you want to put an auto-sizeable and interactive chart on your private network, you should try the embedded chart with `<iframe />`.
+-   If you want to show a static chart with update-to-date star history data to the public, such as putting it on the GitHub repository README, you should use the image link such as `https://api.star-history.com/svg?repos=star-history/star-history&type=Date`
 
 ---
 
 Check out examples below of using SVG embed charts in GitHub repository README and organization README.
 
-- [https://github.com/star-history/star-history#star-history](https://github.com/star-history/star-history#star-history)
-- [https://github.com/bytebase/bytebase#star-history](https://github.com/bytebase/bytebase#star-history)
-- [https://github.com/bytebase](https://github.com/bytebase)
+-   [https://github.com/star-history/star-history#star-history](https://github.com/star-history/star-history#star-history)
+-   [https://github.com/bytebase/bytebase#star-history](https://github.com/bytebase/bytebase#star-history)
+-   [https://github.com/bytebase](https://github.com/bytebase)

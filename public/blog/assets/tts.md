@@ -22,9 +22,9 @@ EmotiVoice currently supports English and Chinese, with multiple voice and promp
 
 [Coqui TTS](https://github.com/coqui-ai/TTS) is a TTS model that can clone voices in different languages in just 3 seconds. It enables cross-language voice cloning and multilingual speech generation so that you can quickly and easily create, cast, and direct AI voice actors. It's got:
 
-- 🚀 Pretrained models in +1100 languages.
-- 🛠️ Tools for training new models and fine-tuning existing models in any language.
-- 📚 Utilities for dataset analysis and curation.
+-   🚀 Pretrained models in +1100 languages.
+-   🛠️ Tools for training new models and fine-tuning existing models in any language.
+-   📚 Utilities for dataset analysis and curation.
 
 Coqui TTS is essentially a continuation of Mozilla's TTS: some time ago Mozilla stopped working on their TTS project, and [Coqui.ai](http://Coqui.ai) was founded by the founders of Mozilla’s machine learning group.
 
@@ -63,8 +63,8 @@ VALL-E X can synthesize personalized speech in another language for a monolingua
 
 If you want more AI content, check out earlier editions of the star history open-source monthly:
 
-- [AI Extensions for Postgres](/blog/ai-for-postgres)
-- [GitHub Copilot alternatives](/blog/coding-ai)
-- [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
-- [Llama 2 and Ecosystem](/blog/llama2)
-- [ChatGPT Special](/blog/star-history-monthly-pick-202303)
+-   [AI Extensions for Postgres](/blog/ai-for-postgres)
+-   [GitHub Copilot alternatives](/blog/coding-ai)
+-   [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
+-   [Llama 2 and Ecosystem](/blog/llama2)
+-   [ChatGPT Special](/blog/star-history-monthly-pick-202303)

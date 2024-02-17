@@ -1,4 +1,3 @@
-
 ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. Let's take a look at a few handy AI-enhanced tools to make your life easier😋.
 
 ## Auto-GPT

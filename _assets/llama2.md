@@ -20,9 +20,9 @@ Compared to the original version, Llama 2 was trained on 2 trillion tokens, have
 
 [llama.cpp](https://github.com/ggerganov/llama.cpp) is one of the achievements by the community mentioned in Meta's official announcement. It has rewritten Llama's inference code in C++, and through various optimizations, it has challenged our understanding: it can run large-scale LLMs quickly on ordinary hardware. For example:
 
-- On the Google Pixel5, it can run the 7B model at 1 token/s.
-- On the M2 Macbook Pro, it can run the 7B model at 16 tokens/s.
-- On Raspberry Pi with 4GB RAM, it can run the 7B model at 0.1 token/s.
+-   On the Google Pixel5, it can run the 7B model at 1 token/s.
+-   On the M2 Macbook Pro, it can run the 7B model at 16 tokens/s.
+-   On Raspberry Pi with 4GB RAM, it can run the 7B model at 0.1 token/s.
 
 This project is so successful that the author, Georgi Gerganov, established his side project as a startup called [ggml.ai](http://ggml.ai) (a tensor library for machine learning, powering both llama.cpp and whisper.cpp).
 
@@ -68,9 +68,9 @@ As an open-source, free, and commercially available LLM, Llama has brought AI cl
 
 But of course, there are many other ways to start using Llama 2, via Homebrew, Poe, etc. For some further reading:
 
-- [Run Llama 2 on your own Mac using LLM and Homebrew](https://simonwillison.net/2023/Aug/1/llama-2-mac/)
-- [Llama 2 is here - get it on Hugging Face](https://huggingface.co/blog/llama2)
-- [A comprehensive guide to running Llama 2 locally](https://replicate.com/blog/run-llama-locally)
+-   [Run Llama 2 on your own Mac using LLM and Homebrew](https://simonwillison.net/2023/Aug/1/llama-2-mac/)
+-   [Llama 2 is here - get it on Hugging Face](https://huggingface.co/blog/llama2)
+-   [A comprehensive guide to running Llama 2 locally](https://replicate.com/blog/run-llama-locally)
 
 ## AND: the Starlet Issues
 
@@ -78,5 +78,5 @@ Another piece of news for the month of July: we started a new column "[Starlet L
 
 In the meantime, check out the July starlets:
 
-- [Sniffnet](/blog/sniffnet)
-- [DLTA-AI](/blog/dlta-ai)
+-   [Sniffnet](/blog/sniffnet)
+-   [DLTA-AI](/blog/dlta-ai)

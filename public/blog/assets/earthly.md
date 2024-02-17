@@ -1,4 +1,4 @@
-*This is the thirteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+_This is the thirteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---
 
@@ -24,14 +24,14 @@ As such Earthly is used broadly by many different roles. That said, the primary 
 
 ## Getting started with Earthly
 
-- **Sign up for Earthly Cloud**, [https://cloud.earthly.dev/login](https://cloud.earthly.dev/login). This will give you a free Earthly Cloud account including 6,000 build minutes on our hosted and managed remote build runners, Earthly Satellites. It also walks you through the process of installing Earthly and familiarizing yourself with how it works.
-- **_(Alternative)_ Install Earthly without logging in**, [https://earthly.dev/get-earthly](https://earthly.dev/get-earthly). This gives you instructions to install Earthly without signing up for Earthly Cloud.
+-   **Sign up for Earthly Cloud**, [https://cloud.earthly.dev/login](https://cloud.earthly.dev/login). This will give you a free Earthly Cloud account including 6,000 build minutes on our hosted and managed remote build runners, Earthly Satellites. It also walks you through the process of installing Earthly and familiarizing yourself with how it works.
+-   **_(Alternative)_ Install Earthly without logging in**, [https://earthly.dev/get-earthly](https://earthly.dev/get-earthly). This gives you instructions to install Earthly without signing up for Earthly Cloud.
 
 ## Learn more about Earthly
 
 If you'd like to learn more about Earthly, try it out, or even just give us a star, go check out our links below.
 
-- Website: [https://earthly.dev/](https://earthly.dev/)
-- GitHub: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)
-- Docs: [https://docs.earthly.dev/](https://docs.earthly.dev/)
-- Community Slack: [https://earthly.dev/slack](https://earthly.dev/slack)
+-   Website: [https://earthly.dev/](https://earthly.dev/)
+-   GitHub: [https://github.com/earthly/earthly](https://github.com/earthly/earthly)
+-   Docs: [https://docs.earthly.dev/](https://docs.earthly.dev/)
+-   Community Slack: [https://earthly.dev/slack](https://earthly.dev/slack)
