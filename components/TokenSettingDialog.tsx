@@ -1,5 +1,3 @@
-// TokenSettingDialog.tsx
-
 import { useEffect, useState } from "react"
 import storage from "../helpers/storage"
 import { useAppStore } from "../store"
