@@ -4,7 +4,7 @@ As a proper goodbye to 2022, Star History looks at some of the most interesting 
 
 In today’s post, we are covering front-end projects.
 
-*Note: The following ranking is in alphabetical order.
+\*Note: The following ranking is in alphabetical order.
 
 ## Bun
 
@@ -18,8 +18,8 @@ Bun is a JavaScript runtime that [came out of nowhere](https://twitter.com/jarre
 
 People can’t help but analyze how Bun can be this fast. The conclusion mostly boiled down to:
 
-- Bun is still an early-stage project (there are still many issues, and features to consume the performance advantage 😂)
-- Bun is very purposeful, with optimizations designed for specific scenarios.
+-   Bun is still an early-stage project (there are still many issues, and features to consume the performance advantage 😂)
+-   Bun is very purposeful, with optimizations designed for specific scenarios.
 
 Half a year later, we wonder, is Bun faster?
 
@@ -73,20 +73,19 @@ I’m sure no one can resist generating a ticket of their own to this year's Nex
 
 ![nextjs-conf](/blog/assets/yearly-pick-frontend-2022/nextjs-conf.webp)
 
-
 ## SolidJS
 
 https://github.com/solidjs/solid
 
 ![solidjs](/blog/assets/yearly-pick-frontend-2022/solidjs.webp)
 
-Solid.js won the Breakthrough of the year award at JS Nation 2022. It is a JavaScript library for building user interfaces, and the official “Why Solid?” mentions that they are very proud of their: 
+Solid.js won the Breakthrough of the year award at JS Nation 2022. It is a JavaScript library for building user interfaces, and the official “Why Solid?” mentions that they are very proud of their:
 
-- indistinguishable performance (second only to native JS).
-   ![solidjs-performance](/blog/assets/yearly-pick-frontend-2022/solidjs-performance.webp)
-- full-featured with everything you can expect from a modern framework.
-- simple, composable primitives without hidden rules and gotchas.
-- growing ecosystem.
+-   indistinguishable performance (second only to native JS).
+    ![solidjs-performance](/blog/assets/yearly-pick-frontend-2022/solidjs-performance.webp)
+-   full-featured with everything you can expect from a modern framework.
+-   simple, composable primitives without hidden rules and gotchas.
+-   growing ecosystem.
 
 ## Tailwind CSS
 

@@ -1,14 +1,13 @@
 ---
-title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
-excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: 'https://star-history.com/blog/assets/libsql.webp'
-date: '2020-03-16T05:35:07.322Z'
+title: "Learn How to Pre-render Pages Using Static Generation with Next.js"
+excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
+coverImage: "https://star-history.com/blog/assets/libsql.webp"
+date: "2020-03-16T05:35:07.322Z"
 author:
-  name: Tim Neutkens
-  ogImage:
-  url: '/assets/blog/hello-world/cover.jpg'
+    name: Tim Neutkens
+    ogImage:
+    url: "/assets/blog/hello-world/cover.jpg"
 ---
-
 
 # Add a live star-history chart to your GitHub README
 
@@ -89,13 +88,13 @@ Here is the render's monitoring view and it's been running fine so far
 
 We provide two ways to embed the real-time star history chart into the web pages.
 
-- If you want to put an auto-sizeable and interactive chart on your private network, you should try the embedded chart with `<iframe />`.
-- If you want to show a static chart with update-to-date star history data to the public, such as putting it on the GitHub repository README, you should use the image link such as `https://api.star-history.com/svg?repos=star-history/star-history&type=Date`
+-   If you want to put an auto-sizeable and interactive chart on your private network, you should try the embedded chart with `<iframe />`.
+-   If you want to show a static chart with update-to-date star history data to the public, such as putting it on the GitHub repository README, you should use the image link such as `https://api.star-history.com/svg?repos=star-history/star-history&type=Date`
 
 ---
 
 Check out examples below of using SVG embed charts in GitHub repository README and organization README.
 
-- [https://github.com/star-history/star-history#star-history](https://github.com/star-history/star-history#star-history)
-- [https://github.com/bytebase/bytebase#star-history](https://github.com/bytebase/bytebase#star-history)
-- [https://github.com/bytebase](https://github.com/bytebase)
+-   [https://github.com/star-history/star-history#star-history](https://github.com/star-history/star-history#star-history)
+-   [https://github.com/bytebase/bytebase#star-history](https://github.com/bytebase/bytebase#star-history)
+-   [https://github.com/bytebase](https://github.com/bytebase)

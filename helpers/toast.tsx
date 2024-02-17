@@ -1,52 +1,52 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Toast from '../components/Toast';
+import React from "react"
+import ReactDOM from "react-dom"
+import Toast from "../components/Toast"
 
-type ToastType = "succeed" | "warn" | "error" | "normal";
+type ToastType = "succeed" | "warn" | "error" | "normal"
 
 interface ToastProps {
-  message: string;
-  type: ToastType;
-  duration: number;
-  destroy: () => void;
+    message: string
+    type: ToastType
+    duration: number
+    destroy: () => void
 }
 
 interface ToastCallbacks {
-  destroy: () => void;
+    destroy: () => void
 }
 
 function show(message: string, type: ToastType, duration: number): ToastCallbacks {
-  const tempDiv = document.createElement('div');
-  document.body.appendChild(tempDiv);
+    const tempDiv = document.createElement("div")
+    document.body.appendChild(tempDiv)
 
-  const destroy = () => {
-    ReactDOM.unmountComponentAtNode(tempDiv);
-    tempDiv.remove();
-  };
+    const destroy = () => {
+        ReactDOM.unmountComponentAtNode(tempDiv)
+        tempDiv.remove()
+    }
 
-  const toastProps: ToastProps = {
-    message,
-    type,
-    duration,
-    destroy,
-  };
+    const toastProps: ToastProps = {
+        message,
+        type,
+        duration,
+        destroy
+    }
 
-  ReactDOM.render(<Toast {...toastProps} />, tempDiv);
+    ReactDOM.render(<Toast {...toastProps} />, tempDiv)
 
-  return { destroy };
+    return { destroy }
 }
 
 // NOTE: Just for mocking alert and only for this project.
 const toast = {
-  succeed(message: string, duration = 2000): ToastCallbacks {
-    return show(message, 'succeed', duration);
-  },
-  warn(message: string, duration = 2000): ToastCallbacks {
-    return show(message, 'warn', duration);
-  },
-  error(message: string, duration = 2000): ToastCallbacks {
-    return show(message, 'error', duration);
-  },
-};
+    succeed(message: string, duration = 2000): ToastCallbacks {
+        return show(message, "succeed", duration)
+    },
+    warn(message: string, duration = 2000): ToastCallbacks {
+        return show(message, "warn", duration)
+    },
+    error(message: string, duration = 2000): ToastCallbacks {
+        return show(message, "error", duration)
+    }
+}
 
-export default toast;
+export default toast

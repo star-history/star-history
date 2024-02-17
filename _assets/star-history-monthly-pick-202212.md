@@ -22,13 +22,13 @@ Each month, we will select some of these projects and make a collection. DM us i
 
 memos is a lightweight notebook/knowledge base that supports private deployments to quickly jot down your ideas, and also supports recording and sharing like Twitter.
 
-It has a rich and active community with many third-party tools contributed by community users, including: 
+It has a rich and active community with many third-party tools contributed by community users, including:
 
-- Native APP: iOS and Android
-- Chrome Plugin
-- WeChat applets
-- Telegram bot
-- Logseq plugin
+-   Native APP: iOS and Android
+-   Chrome Plugin
+-   WeChat applets
+-   Telegram bot
+-   Logseq plugin
 
 ![memos demo](/blog/assets/star-history-monthly-pick-202212/memos-demo.webp)
 
@@ -52,7 +52,7 @@ What's remarkable is that their star history graph also looks like a step ;)
 
 GreptimeDB (again, as its name suggests) is a distributed time-series database.
 
-From the [internal design doc](https://greptime.com/blogs/2022-12-08-GreptimeDB-internal-design), they mentioned “Folks are also looking for seamless shifting and scaling because they are holding too much data but receiving too little value from it. They are keen to have better analysis and insights. It's hard, but it's not all impossible.” 
+From the [internal design doc](https://greptime.com/blogs/2022-12-08-GreptimeDB-internal-design), they mentioned “Folks are also looking for seamless shifting and scaling because they are holding too much data but receiving too little value from it. They are keen to have better analysis and insights. It's hard, but it's not all impossible.”
 
 ![greptimedb architecture](/blog/assets/star-history-monthly-pick-202212/greptimedb-architecture.webp)
 

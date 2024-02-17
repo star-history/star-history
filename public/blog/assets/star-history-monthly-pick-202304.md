@@ -12,8 +12,8 @@ AI is still the trend of April. But amidst the AICG wave, we still managed to lo
 
 The problem with existing database table tools:
 
-- Traditional ERDs always show everything. When you have more than 50 tables, they are useless.
-- Data catalogs are primarily focused on data governance and lineage in big data sector.
+-   Traditional ERDs always show everything. When you have more than 50 tables, they are useless.
+-   Data catalogs are primarily focused on data governance and lineage in big data sector.
 
 Azimutt was originally built to simply help developers understand the relational databases behind their applications more easily, but has now evolved to design, explore, document, and analyze databases.
 

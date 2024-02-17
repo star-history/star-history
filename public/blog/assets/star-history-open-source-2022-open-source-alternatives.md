@@ -86,10 +86,10 @@ In addition to the aforementioned better security and control, Rocket.Chat's add
 
 SigNoz’s recent [blogs](https://signoz.io/blog/) might not be the most neutral pieces, but if you want to learn more about monitoring, logging, and tracking topics, it is a good read.
 
-- 7 Open-Source Log Management Tools that you may consider in 2023
-- Top 9 observability tools in 2023 perfect for microservices
-- Top 11 Splunk Alternatives that you may consider in 2023
-- Top 13 open-source APM tools in 2023
+-   7 Open-Source Log Management Tools that you may consider in 2023
+-   Top 9 observability tools in 2023 perfect for microservices
+-   Top 11 Splunk Alternatives that you may consider in 2023
+-   Top 13 open-source APM tools in 2023
 
 ## Snowplow - Segment alternative
 
@@ -117,9 +117,9 @@ CEO Paul Copplestone [mentioned](https://open.spotify.com/episode/25C64y5kcKtPMz
 
 When comparing similar open or closed-source tools, since most open-source products are advertised as "XXX open-source alternative", the difference between them is mostly:
 
-- Open-source usually means self-deployment, that way you have more control your own data.
-- The community is vibrant and more open: you can choose your own configuration and request features.
-- In addition, even if the open-source product is no longer maintained, you can still use it (maybe even better it).
+-   Open-source usually means self-deployment, that way you have more control your own data.
+-   The community is vibrant and more open: you can choose your own configuration and request features.
+-   In addition, even if the open-source product is no longer maintained, you can still use it (maybe even better it).
 
 And last but not least, this concludes Star History’s 2022 open-source picks. We had fun browsing through the projects and learning about the different background stories, hope you enjoy it just as much as we did.
 

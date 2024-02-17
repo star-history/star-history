@@ -33,7 +33,7 @@ It is hard to build and scale an application that makes identity driven trust de
 
 ### The Building Blocks for Tailscale alike
 
-While Tailscale is a SaaS security solution, Ockam is the PaaS counterpart providing the underlying 
+While Tailscale is a SaaS security solution, Ockam is the PaaS counterpart providing the underlying
 building blocks. Ockam is a novel idea and a great addition to the industry. It greatly lowers the
 barrier to add data-in-motion security to the application. Moreover, you can also use it to build a
 security solution like Tailscale.
@@ -53,7 +53,7 @@ the hero section.
 
 ---
 
-Last but not least let's take a look at Ockam's (star) history. It has been open-sourced since 2019, and picked up pace after 2021. In early 2022, they raised [$12.5M in Series A](https://www.ockam.io/blog/series_a). The spike in late 2022 was related to the launch of [Ockam Orchestrator](https://aws.amazon.com/marketplace/pp/prodview-wsd42efzcpsxk) - its SaaS offering through AWS marketplace. 
+Last but not least let's take a look at Ockam's (star) history. It has been open-sourced since 2019, and picked up pace after 2021. In early 2022, they raised [$12.5M in Series A](https://www.ockam.io/blog/series_a). The spike in late 2022 was related to the launch of [Ockam Orchestrator](https://aws.amazon.com/marketplace/pp/prodview-wsd42efzcpsxk) - its SaaS offering through AWS marketplace.
 [This HN submission](https://news.ycombinator.com/item?id=33038384) also helped (the `Rust`, `Elixir` and `Secure` combination
 probably attracts quite a few enthusiasms from the not-easily-pleased HN readers).
 
@@ -61,8 +61,8 @@ probably attracts quite a few enthusiasms from the not-easily-pleased HN readers
 
 The Ockam team also [shares their thoughts](https://www.ockam.io/blog/how_grow_popular_open_source_github) about growing the open-source community:
 
-* Listening to and supporting others
-* Being accessible and approachable
-* Building trust and giving back to the community
+-   Listening to and supporting others
+-   Being accessible and approachable
+-   Building trust and giving back to the community
 
 If you want a solid and developer friendly building blocks to secure your microservices traffic, please do give [Ockam](https://github.com/build-trust/ockam) a spin.

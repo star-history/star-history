@@ -1,50 +1,50 @@
 // TokenSettingDialog.tsx
 
-import { useEffect, useState } from "react";
-import storage from "../helpers/storage";
-import { useAppStore } from "../store";
-import Dialog from "./Dialog";
-import { FaTimesCircle } from "react-icons/fa";
+import { useEffect, useState } from "react"
+import storage from "../helpers/storage"
+import { useAppStore } from "../store"
+import Dialog from "./Dialog"
+import { FaTimesCircle } from "react-icons/fa"
 
 interface TokenSettingDialogProps {
-    onClose: () => void;
-    tokenCache?: boolean;
-    show?: boolean;
-    onTokenChange?: (token: string) => void;
-    onHeaderTextChange?: (text: string) => void;
+    onClose: () => void
+    tokenCache?: boolean
+    show?: boolean
+    onTokenChange?: (token: string) => void
+    onHeaderTextChange?: (text: string) => void
 }
 
 export default function TokenSettingDialog({ onClose, tokenCache, show, onTokenChange, onHeaderTextChange }: TokenSettingDialogProps) {
-    const store = useAppStore();
-    const [token, setToken] = useState(store.token);
-    const [hasToken, setHasToken] = useState(!!store.token);
+    const store = useAppStore()
+    const [token, setToken] = useState(store.token)
+    const [hasToken, setHasToken] = useState(!!store.token)
 
     useEffect(() => {
-        setHasToken(!!(tokenCache || store.token));
-    }, [tokenCache, store.token]);
+        setHasToken(!!(tokenCache || store.token))
+    }, [tokenCache, store.token])
 
     const handleSaveTokenBtnClick = () => {
-        store.setToken(token);
+        store.setToken(token)
         storage.set({
-            accessTokenCache: token,
-        });
-        setHasToken(true);
+            accessTokenCache: token
+        })
+        setHasToken(true)
         if (onTokenChange) {
-            onTokenChange(token);
+            onTokenChange(token)
         }
         if (onHeaderTextChange) {
-            onHeaderTextChange(hasToken ? "Edit Access Token" : "Add Access Token");
+            onHeaderTextChange(hasToken ? "Edit Access Token" : "Add Access Token")
         }
         if (onClose) {
-            onClose();
+            onClose()
         }
-    };
+    }
 
     const handleCloseBtnClick = () => {
         if (onClose) {
-            onClose();
+            onClose()
         }
-    };
+    }
 
     return (
         <>
@@ -86,5 +86,5 @@ export default function TokenSettingDialog({ onClose, tokenCache, show, onTokenC
                 </div>
             </Dialog>
         </>
-    );
+    )
 }

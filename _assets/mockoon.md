@@ -1,4 +1,4 @@
-*This is the third issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+_This is the third issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---
 
@@ -33,14 +33,14 @@ Mockoon is also privacy-friendly and requires no account or cloud deployment.
 
 Among the many features of Mockoon, here are some of the most notable ones:
 
-- ♾️ Fast and easy mocking: quickly prototype your mock APIs with our ready-to-use templates and AI assistant.
-- ⚙️ Fully configurable: create realistic endpoints with dynamic data, custom headers and status codes, templating, rules, regexes, latency, etc.
-- 🗂️ Automated CRUD endpoints: manipulate data as if you had a development database (similar to json-server).
-- 🧩 Partial mocking: mock only the endpoints you need and forward the rest to the actual API.
-- 🐋 Run your mock anywhere: use the CLI to run your mock APIs in any headless or automated environment: CI, GitHub Actions, Docker containers, etc.
-- ☁️ Serverless compatibility: run your mock APIs in serverless environments: AWS Lambda, GCP/Firebase Functions, etc.
-- ⏺️ Logging and recording: log requests and responses and record them to create mocks automatically.
-- 📥 Import/export: don't start from a blank canvas by importing an OpenAPI specification file.
+-   ♾️ Fast and easy mocking: quickly prototype your mock APIs with our ready-to-use templates and AI assistant.
+-   ⚙️ Fully configurable: create realistic endpoints with dynamic data, custom headers and status codes, templating, rules, regexes, latency, etc.
+-   🗂️ Automated CRUD endpoints: manipulate data as if you had a development database (similar to json-server).
+-   🧩 Partial mocking: mock only the endpoints you need and forward the rest to the actual API.
+-   🐋 Run your mock anywhere: use the CLI to run your mock APIs in any headless or automated environment: CI, GitHub Actions, Docker containers, etc.
+-   ☁️ Serverless compatibility: run your mock APIs in serverless environments: AWS Lambda, GCP/Firebase Functions, etc.
+-   ⏺️ Logging and recording: log requests and responses and record them to create mocks automatically.
+-   📥 Import/export: don't start from a blank canvas by importing an OpenAPI specification file.
 
 ## A little bit of history
 

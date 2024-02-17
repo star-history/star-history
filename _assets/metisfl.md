@@ -1,4 +1,4 @@
-*This is the fifth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+_This is the fifth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---
 
@@ -20,25 +20,25 @@ Our vision is to drive this transition from machine learning to federated learni
 
 ## Why MetisFL?
 
-* **Scalability**: MetisFL is the only federated learning framework with the core controller developed purely in C++. This allows for the system to scale and support up to 100K+ learners!
+-   **Scalability**: MetisFL is the only federated learning framework with the core controller developed purely in C++. This allows for the system to scale and support up to 100K+ learners!
 
-* **Speed**: The core operations at the controller as well as the controller-learner communication overhead has been optimized for efficiency. This allows MetisFL to achieve improvements of up to 1000x on the federation round time compared to other federated learning frameworks.
+-   **Speed**: The core operations at the controller as well as the controller-learner communication overhead has been optimized for efficiency. This allows MetisFL to achieve improvements of up to 1000x on the federation round time compared to other federated learning frameworks.
 
-* **Efficiency and Flexibility**: MetisFL supports synchronous, semi-synchronous and asynchronous protocols. The different choices make our framework flexible enough to adapt to the needs of each use-case. Additionally, the support of fully asynchronous protocol makes MetisFL a highly efficient solution for use-cases with high heterogeneity on the compute/communication capabilities of the learners.
+-   **Efficiency and Flexibility**: MetisFL supports synchronous, semi-synchronous and asynchronous protocols. The different choices make our framework flexible enough to adapt to the needs of each use-case. Additionally, the support of fully asynchronous protocol makes MetisFL a highly efficient solution for use-cases with high heterogeneity on the compute/communication capabilities of the learners.
 
-* **Strong Security**: MetisFL supports secure aggregations with fully homomorphic encryption using the [Palisade](https://gitlab.com/palisade/palisade-release) C++ cryptographic library.  This ensures that the weights of the produced models remain private and secure in transit.
+-   **Strong Security**: MetisFL supports secure aggregations with fully homomorphic encryption using the [Palisade](https://gitlab.com/palisade/palisade-release) C++ cryptographic library. This ensures that the weights of the produced models remain private and secure in transit.
 
-* **Developer-Friendly**: MetisFL is designed to be developer-friendly. It provides a simple API that allows developers to federate their machine learning workflows with minimal effort. Additionally, it provides a set of tools that allow developers to easily monitor and debug their federated learning experiments.
+-   **Developer-Friendly**: MetisFL is designed to be developer-friendly. It provides a simple API that allows developers to federate their machine learning workflows with minimal effort. Additionally, it provides a set of tools that allow developers to easily monitor and debug their federated learning experiments.
 
 ## MetisFL History
 
 MetisFL sprung up from the Information and Science Institute (ISI) in the University of Southern California (USC). It was initially built as a research prototype to support research efforts in the field of federated learning. The mastermind behind the project is [Dimitris Stripelis](https://www.linkedin.com/in/dstripelis/), a Federated Learning expert, who has been working on the project for several years as part of his Ph.D. research. At its current state, the source code has been re-engineered and open-sourced to support a wide range of use-cases and to be easily extensible to support new federated learning algorithms and protocols.
 
-## Applications 
+## Applications
 
-MetisFL is a general purpose federated learning framework. It provides out-of-the box support for different communication protocols (synchronous, semi-synchronous, asynchronous) and federated algorithmic optimizations (e.g., FedAvg, FedOPT, FedProx) and it can be extended to support any type of federated learning topology (centralized, peer-to-peer). The framework has been used 
+MetisFL is a general purpose federated learning framework. It provides out-of-the box support for different communication protocols (synchronous, semi-synchronous, asynchronous) and federated algorithmic optimizations (e.g., FedAvg, FedOPT, FedProx) and it can be extended to support any type of federated learning topology (centralized, peer-to-peer). The framework has been used
 
-The framework has been used to produce extensive research results and train models in academia across different application domains such as in Computer Vision, Natural Language Processing and Neuroimaging. Further use-cases and applications are currently being explored. 
+The framework has been used to produce extensive research results and train models in academia across different application domains such as in Computer Vision, Natural Language Processing and Neuroimaging. Further use-cases and applications are currently being explored.
 
 ## Future Development
 
