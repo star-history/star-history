@@ -182,6 +182,33 @@ function StarChartViewer() {
         window.open(tweetShareLink, "_blank")
     }
 
+    const handleGenerateCSVBtnClick = () => {
+        if (state.chartData) {
+            const currentDate = new Date();
+            const formattedDate = `${currentDate.getFullYear()}${currentDate.getMonth() + 1}${currentDate.getDate()}`;
+            const filename = `star-history-${formattedDate}.csv`;
+    
+            const csvContent = "data:text/csv;charset=utf-8," +
+                state.chartData.datasets.reduce((acc: string, dataset: any) => {
+                    dataset.data.forEach((dataPoint: any) => {
+                        acc += `${dataset.label},${new Date(dataPoint.x).toString()},${dataPoint.y}\n`;
+                    });
+                    return acc;
+                }, "Repository,Date,Stars\n");
+    
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            toast.error("No chart data available to export");
+        }
+    };
+    
+    
     const handleGenEmbedCodeDialogBtnClick = () => {
         setState((prevState) => ({ ...prevState, showEmbedCodeDialog: true }))
     }
@@ -247,7 +274,7 @@ function StarChartViewer() {
                                     <i className="fas fa-download"></i> Image
                                 </button>
 
-                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
+                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateCSVBtnClick}>
                                     <i className="fas fa-download"></i> CSV
                                 </button>
 
