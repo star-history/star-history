@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TopBanner from "./TopBanner";
 import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
@@ -11,69 +10,34 @@ import { FiMenu } from "react-icons/fi";
 import { LiaTimesSolid } from "react-icons/lia";
 import { AppStateProvider, useAppStore } from '../store';
 
-interface State {
-  token: string;
-  headerText: string;
-  showDropMenu: boolean;
-  showSetTokenDialog: boolean;
-  tokenCache?: string;
-}
-
 const Header: React.FC = () => {
-  const [state, setState] = useState<State>({
-    token: "",
-    headerText: "", // Initial header text is empty
-    showDropMenu: false,
-    showSetTokenDialog: false,
-  });
+  const [showSetTokenDialog, setShowSetTokenDialog] = useState(false);
+  const [headerText, setHeaderText] = useState("Add Access Token");
 
   const handleSetTokenBtnClick = () => {
-    setState((prevState) => ({
-      ...prevState,
-      showSetTokenDialog: true,
-    }));
+    setShowSetTokenDialog(true);
   };
 
   const handleSetTokenDialogClose = () => {
-    setState((prevState) => ({
-      ...prevState,
-      showSetTokenDialog: false,
-    }));
+    setShowSetTokenDialog(false);
   };
 
-  const handleTokenSaved = (savedToken: string) => {
-    // Update the token state with the saved token
-    setState((prevState) => ({
-      ...prevState,
-      token: savedToken,
-      showSetTokenDialog: false,
-      headerText: savedToken ? "Edit Access Token" : "Add Access Token",
-    }));
+  const handleTokenChange = (token: string) => {
+    setHeaderText("Edit Access Token");
   };
 
-  const handleToggleDropMenuBtnClick = () => {
-    setState((prevState) => ({
-      ...prevState,
-      showDropMenu: !prevState.showDropMenu,
-    }));
-  };
-
-  const handleHeaderTextChange = (text: string) => {
-    setState((prevState) => ({
-      ...prevState,
-      headerText: text,
-    }));
-  };
+  useEffect(() => {
+    console.log("Header text updated:", headerText);
+  }, [headerText]);
 
   return (
     <>
-    
-      {state.showSetTokenDialog && (
+      {showSetTokenDialog && (
         <TokenSettingDialog
           onClose={handleSetTokenDialogClose}
           tokenCache={false}
-          onTokenSaved={handleTokenSaved}
-          onHeaderTextChange={handleHeaderTextChange} // Pass the callback to handle header text change
+          onTokenChange={handleTokenChange}
+          onHeaderTextChange={setHeaderText}
         />
       )}
       <AppStateProvider>
@@ -97,7 +61,7 @@ const Header: React.FC = () => {
                 className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
                 onClick={handleSetTokenBtnClick}
               >
-                {state.headerText || "Add Access Token"}
+                {headerText}
               </span>
             </div>
             <div className="hidden h-full md:flex flex-row justify-start items-center">
@@ -120,25 +84,24 @@ const Header: React.FC = () => {
             <div className="h-full flex md:hidden flex-row justify-end items-center">
               <span
                 className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
-                onClick={handleToggleDropMenuBtnClick}
+                onClick={() => setShowSetTokenDialog((prev) => !prev)}
               >
                 <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'w-6 rotate-45' : '-mt-1'}`}
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? 'w-6 rotate-45' : '-mt-1'}`}
                 ></span>
                 <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'hidden' : ''}`}
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? 'hidden' : ''}`}
                 ></span>
                 <span
-                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? 'w-6 -rotate-45' : 'mt-1'}`}
+                  className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? 'w-6 -rotate-45' : 'mt-1'}`}
                 ></span>
               </span>
             </div>
           </div>
-        
         </header>
         <div
           className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${
-            state.showDropMenu ? "flex" : "hidden"
+            showSetTokenDialog ? "flex" : "hidden"
           }`}
         >
           <Link
@@ -151,7 +114,7 @@ const Header: React.FC = () => {
             className="h-12 px-3 text-base w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
             onClick={handleSetTokenBtnClick}
           >
-            Add Access Token
+            {headerText}
           </span>
           <span className="h-12 text-base px-3 w-full flex flex-row justify-start items-center">
             <a
