@@ -31,7 +31,7 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                     alignTimeline: false,
                 },
                 {
-                    xTickLabelType: chartMode === "Date" ? "Date" : undefined,
+                    xTickLabelType: chartMode === "Date" ? "Date" : "Number",
                     envType: "browser",
                 }
             );
