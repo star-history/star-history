@@ -1,11 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from "react"
 import StarXYChart from "./Charts/StarXYChart"
 import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
-import EmbedChartGuideDialog from "./EmbedChartGuideDialog"
 import html2canvas from "html2canvas"
-import { Storage } from "../helpers/storage"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "packages/xy-chart"
@@ -51,12 +50,6 @@ function StarChartViewer() {
     })
 
     const containerElRef = useRef(null)
-
-    useEffect(() => {
-        if (store.repos.length > 0 && state.repoCacheMap.size === 0) {
-            fetchReposData(store.repos)
-        }
-    }, [store.repos])
 
     const fetchReposData = React.useCallback(
         async (repos: string[], chartMode?: ChartMode) => {
@@ -112,8 +105,14 @@ function StarChartViewer() {
                 }))
             }
         },
-        [state.chartMode, store.repos, store.token, state.repoCacheMap]
+        [state.chartMode, state.repoCacheMap, store]
     )
+
+    useEffect(() => {
+        if (store.repos.length > 0 && state.repoCacheMap.size === 0) {
+            fetchReposData(store.repos)
+        }
+    }, [store.repos, fetchReposData, state.repoCacheMap])
 
     const handleCopyLinkBtnClick = async () => {
         try {
@@ -195,7 +194,7 @@ function StarChartViewer() {
             return { ...prevState, chartMode: newChartMode }
         })
         fetchReposData(store.repos, newChartMode)
-    }, [state.chartMode, store.repos])
+    }, [state.chartMode, store.repos, fetchReposData])
 
     const handleSetTokenDialogClose = () => {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
@@ -237,7 +236,7 @@ function StarChartViewer() {
                                     href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
                                     target="_blank"
                                 >
-                                    <img className="w-5 h-auto mr-1" src="https://star-history.com/icons/free.svg" />
+                                    <img className="w-5 h-auto mr-1" src="https://star-history.com/icons/free.svg" alt="" />
                                     <span className="text-dark">Get Chrome Extension</span>
                                 </a>
                             </div>

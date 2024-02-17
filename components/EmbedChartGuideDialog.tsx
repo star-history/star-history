@@ -1,9 +1,6 @@
-import { ReactElement, useEffect, useMemo } from "react"
-import { useAppStore } from "../store"
 import Dialog from "./Dialog"
 import utils from "../common/utils"
 import toast from "../helpers/toast"
-import { useState } from "react"
 
 interface EmbedCodeProps {
     show: boolean
@@ -11,7 +8,7 @@ interface EmbedCodeProps {
     embedCode: string
 }
 
-const EmbedChartGuideDialog: React.FC<EmbedCodeProps> = ({ show, onClose, embedCode }) => {
+const EmbedChartGuideDialog: React.FC<EmbedCodeProps> = ({ onClose, embedCode }) => {
     const handleCopyBtnClick = () => {
         utils.copyTextToClipboard(embedCode)
         toast.succeed("Embed markdown code copied")
@@ -29,7 +26,7 @@ const EmbedChartGuideDialog: React.FC<EmbedCodeProps> = ({ show, onClose, embedC
                     <i className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500" onClick={handleCloseBtnClick}></i>
                 </header>
                 <main className="w-full flex flex-col justify-start items-start p-4 pr-5">
-                    <p className="leading-7">It's very easy to add star-history chart into GitHub README, just two steps:</p>
+                    <p className="leading-7">{"It's very easy to add star-history chart into GitHub README, just two steps"}:</p>
                     <ol className="list-decimal pl-5 mt-3">
                         <li className="mb-2">
                             <p>Copy the raw markdown string below</p>

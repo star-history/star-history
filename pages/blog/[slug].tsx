@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
+/* eslint-disable @next/next/no-img-element */
 import { marked } from "marked"
-import { useRouter } from "next/router"
 import Link from "next/link"
 import Footer from "../../components/footer"
 import Header from "../../components/header"
@@ -13,7 +12,6 @@ import fs from "fs/promises"
 import { FaSpinner } from "react-icons/fa"
 import blogs from "public/blog/assets/data.json"
 import { AppStateProvider } from "store"
-import Head from "next/head"
 
 interface Blog {
     title: string
@@ -32,12 +30,6 @@ interface State {
 }
 
 const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
-    const calcReadingTime = (content: string) => {
-        const wordsPerMinute = 200
-        const wordCount = content.split(" ").length
-        return Math.ceil(wordCount / wordsPerMinute)
-    }
-
     return (
         <AppStateProvider>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
@@ -66,7 +58,7 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                             </div>
                         ) : (
                             <div className="w-full p-4 md:p-0 mt-6 md:w-5/6 lg:max-w-6xl h-full flex flex-col justify-start items-center self-center">
-                                <img className="hidden md:block w-auto max-w-full object-scale-down" src={blog.featureImage || ""} />
+                                <img className="hidden md:block w-auto max-w-full object-scale-down" src={blog.featureImage || ""} alt="" />
                                 <div className="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center">
                                     <h1 className="leading-16">{blog.title}</h1>
                                 </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react"
 import TopBanner from "./TopBanner"
 import GitHubStarButton from "./GitHubStarButton"
@@ -5,10 +6,7 @@ import TokenSettingDialog from "./TokenSettingDialog"
 import Image from "next/image"
 import Icon from "./icon.png"
 import Link from "next/link"
-import { FaDiscord, FaTwitter } from "react-icons/fa"
-import { FiMenu } from "react-icons/fi"
-import { LiaTimesSolid } from "react-icons/lia"
-import { AppStateProvider, useAppStore } from "../store"
+import { AppStateProvider } from "../store"
 
 const Header: React.FC = () => {
     const [showSetTokenDialog, setShowSetTokenDialog] = useState(false)
@@ -22,7 +20,7 @@ const Header: React.FC = () => {
         setShowSetTokenDialog(false)
     }
 
-    const handleTokenChange = (token: string) => {
+    const handleTokenChange = (_token: string) => {
         setHeaderText("Edit Access Token")
     }
 
@@ -45,7 +43,7 @@ const Header: React.FC = () => {
                                 <span className="text-white font-semibold -2">Blog</span>
                             </Link>
                             <span
-                                className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 px-3 hover:bg-zinc-800"
+                                className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 hover:bg-zinc-800"
                                 onClick={handleSetTokenBtnClick}
                             >
                                 {headerText}
@@ -58,7 +56,7 @@ const Header: React.FC = () => {
                                 rel="noopener noreferrer"
                                 className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800"
                             >
-                                <img className="h-6 mt-1 mr-2" src="https://star-history.com/craft-by-bytebase.webp" />
+                                <img className="h-6 mt-1 mr-2" src="https://star-history.com/craft-by-bytebase.webp" alt="" />
                             </Link>
                         </div>
                         <div className="h-full hidden md:flex flex-row justify-end items-center">
