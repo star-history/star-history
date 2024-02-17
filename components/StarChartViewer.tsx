@@ -109,10 +109,12 @@ function StarChartViewer() {
     )
 
     useEffect(() => {
-        if (store.repos.length > 0 && state.repoCacheMap.size === 0) {
+        console.log("store.repos", store.repos)
+        if (store.repos.length > 0) {
             fetchReposData(store.repos)
         }
-    }, [store.repos, fetchReposData, state.repoCacheMap])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [store.repos])
 
     const handleCopyLinkBtnClick = async () => {
         try {
