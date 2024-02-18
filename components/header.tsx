@@ -27,10 +27,13 @@ const Header: React.FC = () => {
 }
 
 
-    useEffect(() => {
-        console.log("Header text updated:", headerText);
-        localStorage.setItem("headerText", headerText);
-    }, [headerText]);
+useEffect(() => {
+    const savedHeaderText = localStorage.getItem("headerText");
+    if (savedHeaderText) {
+        setHeaderText(savedHeaderText);
+    }
+}, []);
+
 
   useEffect(() => {
     localStorage.setItem("headerText", headerText);
