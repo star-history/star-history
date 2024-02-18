@@ -315,13 +315,13 @@ function StarChartViewer() {
                             onClick={handleToggleChartBtnClick}
                         >
                             <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
-                            {state.chartMode === "Timeline" ? "Timeline" : "Date"}
+                            {state.chartMode === "Timeline" ? "Align timeline" : "Align timeline"}
                         </div>
                     </div>
                 )}
                 <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} />}</div>
                 {/* ... rest of the JSX here */}
-                {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} show={state.showSetTokenDialog} />}
+                {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} show={state.showSetTokenDialog} setHeaderText={(text: string) => {/* implementation here */}} />}
 
                 {state.showEmbedCodeDialog && <GenerateEmbedCodeDialog onClose={handleGenEmbedCodeDialogClose} show={state.showEmbedCodeDialog} />}
             </div>
