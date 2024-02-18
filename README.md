@@ -57,12 +57,6 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
 
-### AutoMQ
-
-[AutoMQ](https://github.com/AutoMQ/automq-for-kafka?utm_source=star-history) is a truly serverless Kafka solution that maximizes the benefits of cloud.
-
-<a href="https://github.com/AutoMQ/automq-for-kafka?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/automq/landing.webp" /></a>
-
 ### Akuity
 
 [Akuity](https://hubs.li/Q02fpVR30) A legit and balanced comparison of top two GitOps tools. Choose Argo CD today for a better DevOps experience.
