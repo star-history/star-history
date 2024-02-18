@@ -11,9 +11,26 @@ import storage from "../helpers/storage";
 const Header: React.FC = () => {
   const [showSetTokenDialog, setShowSetTokenDialog] = useState(false);
   const [headerText, setHeaderText] = useState("Add Access Token");
+  const [state, setState] = useState<State>({
+    showDropMenu: false,
+    showSetTokenDialog: false,
+  });
+
+  interface State {
+    showDropMenu: boolean;
+    showSetTokenDialog: boolean;
+    tokenCache?: string;
+  }
 
   const handleSetTokenBtnClick = () => {
     setShowSetTokenDialog(true);
+  };
+
+  const handleToggleDropMenuBtnClick = () => {
+    setState((prevState) => ({
+      ...prevState,
+      showDropMenu: !prevState.showDropMenu,
+    }));
   };
 
   const handleSetTokenDialogClose = () => {
@@ -89,16 +106,16 @@ useEffect(() => {
             <div className="h-full flex md:hidden flex-row justify-end items-center">
               <span
                 className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
-                onClick={() => setShowSetTokenDialog((prev) => !prev)}
+                onClick={handleToggleDropMenuBtnClick}
               >
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? "w-6 rotate-45" : "-mt-1"}`}></span>
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? "hidden" : ""}`}></span>
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showSetTokenDialog ? "w-6 -rotate-45" : "mt-1"}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 rotate-45" : "-mt-1"}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "hidden" : ""}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 -rotate-45" : "mt-1"}`}></span>
               </span>
             </div>
           </div>
         </header>
-        <div className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${showSetTokenDialog ? "flex" : "hidden"}`}>
+        <div className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${state.showDropMenu ? "flex" : "hidden"}`}>
           <Link
             href="/blog/how-to-use-github-star-history"
             className="h-12 text-base px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
