@@ -17,7 +17,7 @@ const EmbedChart: React.FC = () => {
 
     const embedDarkModeCode = `## Star History\n\n<a href="${typeof window !== "undefined" ? window.location.href : ""}">\n <picture>\n   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}&theme=dark" />\n   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}" />\n   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}" />\n </picture>\n</a>`
     let repos = store.repos.join("%2C");
-    let type = store.chartMode;
+      let type = store.chartMode;
 
     const handleCopyBtnClick = () => {
         utils.copyTextToClipboard(embedCode)
