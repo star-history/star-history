@@ -292,6 +292,8 @@ function StarChartViewer() {
 
     const handleToggleChartBtnClick = React.useCallback(() => {
         const newChartMode = state.chartMode === "Date" ? "Timeline" : "Date"
+        store.actions.setChartMode(newChartMode)
+
         setState((prevState) => {
             return { ...prevState, chartMode: newChartMode }
         })
@@ -366,7 +368,7 @@ function StarChartViewer() {
                             </div>
                         </div>
 
-                        <EmbedMarkdownSection />
+                        <EmbedMarkdownSection  />
 
                         <div className="flex-grow"></div>
                         <div className="flex justify-center mb-12">

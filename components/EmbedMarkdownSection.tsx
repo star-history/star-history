@@ -3,6 +3,10 @@ import { useAppStore } from "../store"
 import utils from "../common/utils"
 import toast from "../helpers/toast"
 
+
+interface EmbedMarkdownSectionProps {
+    chartMode: "Date" | "Timeline";
+  }
 const EmbedChart: React.FC = () => {
     const store = useAppStore()
     const [singleRepo, setSingleRepo] = useState<string | null>(null)
