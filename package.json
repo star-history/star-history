@@ -6,7 +6,8 @@
         "start": "NODE_ENV=production node server.js",
         "lint": "next lint",
         "prettier": "prettier --write .",
-        "postbuild": "next-sitemap"
+        "postbuild": "next-sitemap --config next-sitemap.config.js --sitemap-xml",
+        "sitemap": "next-sitemap --config next-sitemap.config.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.5.1",
@@ -30,7 +31,6 @@
         "marked": "^9.1.6",
         "next": "^14.1.0",
         "next-compose-plugins": "^2.2.1",
-        "next-sitemap": "^4.2.3",
         "pinia": "^2.1.7",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -49,6 +49,7 @@
         "@types/react": "^18.2.46",
         "@types/react-dom": "^18.0.7",
         "autoprefixer": "^10.4.16",
+        "next-sitemap": "^4.2.3",
         "postcss": "^8.4.32",
         "prettier": "^3.2.5",
         "tailwindcss": "^3.4.0",

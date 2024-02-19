@@ -147,9 +147,22 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     const handleToggleRepoItemVisible = (repo: string) => {
         setState((prev) => ({
             ...prev,
-            repos: prev.repos.map((r) => (r.name === repo ? { ...r, visible: !r.visible } : r))
-        }))
-        store.actions.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name))
+            repos: prev.repos.map((r) => {
+                if (r.name === repo) {
+                    return {
+                        ...r,
+                        visible: !r.visible // Toggle visibility
+                    };
+                }
+                return r;
+            })
+        }));
+    
+        // Determine if any repo is visible
+        const anyRepoVisible = state.repos.some((r) => r.visible);
+        
+        // Set the chart visibility based on whether any repo is visible
+        setChartVisibility(!anyRepoVisible);
     }
 
     const handleDeleteRepoBtnClick = (repo: string) => {
