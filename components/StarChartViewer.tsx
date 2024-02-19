@@ -47,6 +47,8 @@ function StarChartViewer() {
         showGenEmbedCodeDialog: false,
         showEmbedChartGuideDialog: false
     })
+    
+    const [chartMode, setChartMode] = useState<"Date" | "Timeline">("Date");
 
     const containerElRef = useRef<HTMLDivElement>(null)
 
@@ -363,6 +365,7 @@ function StarChartViewer() {
                                 </button>
                             </div>
                         </div>
+
                         <EmbedMarkdownSection />
 
                         <div className="flex-grow"></div>
