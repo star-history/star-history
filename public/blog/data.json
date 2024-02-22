@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #17 SpiceDB: Google Zanzibar-inspired Authorization System",
+    "slug": "spicedb",
+    "author": "Pablo Macias",
+    "featured": true,
+    "featureImage": "/blog/assets/spicedb-banner.webp",
+    "publishedDate": "2024-02-23:00:00.000Z",
+    "excerpt": "SpiceDB is an open source, Google Zanzibar-inspired database for creating and managing security-critical application permissions."
+  },
+  {
     "title": "Star History Monthly Jan 2024 | Open-source Text2SQL Tools",
     "slug": "text2sql",
     "author": "Mila",
