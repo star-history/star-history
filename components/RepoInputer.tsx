@@ -144,6 +144,8 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         setState((prev) => ({ ...prev, repo: "" }))
     }
 
+
+    //doesn't delete any repo
     // const handleToggleRepoItemVisible = (repo: string) => {
     //     setState((prev) => ({
     //         ...prev,
@@ -154,11 +156,16 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     //                     visible: !r.visible // Toggle visibility
     //                 };
     //             }
-    //             store.actions.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name));
     //             return r;
     //         })
     //     }));
+    //     // Determine if any repo is visible
+    //     const anyRepoVisible = state.repos.filter((r) => r.visible);
+        
+    //     // Set the chart visibility based on whether any repo is visible
+    //     setChartVisibility(!anyRepoVisible);
     // }
+
 
     const handleToggleRepoItemVisible = (repo: string) => {
         for (const r of state.repos) {
@@ -168,18 +175,17 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
           }
         }
         store.actions.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name));
+   
       };
-    
-    
-
-    const handleDeleteRepoBtnClick = (repo: string) => {
-        setState((prev) => ({
-            ...prev,
-            repos: prev.repos.filter((r) => r.name !== repo)
-        }))
-        store.actions.delRepo(repo)
-        setChartVisibility(false)
-    }
+      const handleDeleteRepoBtnClick = (repo: string) => {
+        for (const r of state.repos) {
+          if (r.name === repo) {
+            state.repos.splice(state.repos.indexOf(r), 1);
+            break;
+          }
+        }
+        store.delRepo(repo);
+      };
 
     const handleClearAllRepoBtnClick = () => {
         setState((prev) => ({
