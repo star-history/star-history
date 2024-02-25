@@ -47,8 +47,8 @@ function StarChartViewer() {
         showGenEmbedCodeDialog: false,
         showEmbedChartGuideDialog: false
     })
-    
-    const [chartMode, setChartMode] = useState<"Date" | "Timeline">("Date");
+
+    const [chartMode, setChartMode] = useState<"Date" | "Timeline">("Date")
 
     const containerElRef = useRef<HTMLDivElement>(null)
 
@@ -110,7 +110,6 @@ function StarChartViewer() {
     )
 
     useEffect(() => {
-        console.log("store.repos", store.repos)
         if (store.repos.length > 0) {
             fetchReposData(store.repos)
         }
@@ -256,32 +255,32 @@ function StarChartViewer() {
 
     const handleGenerateCSVBtnClick = () => {
         if (state.chartData) {
-            const currentDate = new Date();
-            const formattedDate = `${currentDate.getFullYear()}${currentDate.getMonth() + 1}${currentDate.getDate()}`;
-            const filename = `star-history-${formattedDate}.csv`;
-    
-            const csvContent = "data:text/csv;charset=utf-8," +
+            const currentDate = new Date()
+            const formattedDate = `${currentDate.getFullYear()}${currentDate.getMonth() + 1}${currentDate.getDate()}`
+            const filename = `star-history-${formattedDate}.csv`
+
+            const csvContent =
+                "data:text/csv;charset=utf-8," +
                 state.chartData.datasets.reduce((acc: string, dataset: any) => {
                     dataset.data.forEach((dataPoint: any) => {
-                        acc += `${dataset.label},${new Date(dataPoint.x).toString()},${dataPoint.y}\n`;
-                    });
-                    return acc;
-                }, "Repository,Date,Stars\n");
-    
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", filename);
-            document.body.appendChild(link);
-            link.click();
-            toast.succeed("CSV Downloaded");
-            document.body.removeChild(link);
+                        acc += `${dataset.label},${new Date(dataPoint.x).toString()},${dataPoint.y}\n`
+                    })
+                    return acc
+                }, "Repository,Date,Stars\n")
+
+            const encodedUri = encodeURI(csvContent)
+            const link = document.createElement("a")
+            link.setAttribute("href", encodedUri)
+            link.setAttribute("download", filename)
+            document.body.appendChild(link)
+            link.click()
+            toast.succeed("CSV Downloaded")
+            document.body.removeChild(link)
         } else {
-            toast.error("No chart data available to export");
+            toast.error("No chart data available to export")
         }
-    };
-    
-    
+    }
+
     const handleGenEmbedCodeDialogBtnClick = () => {
         setState((prevState) => ({ ...prevState, showEmbedCodeDialog: true }))
     }
@@ -325,7 +324,15 @@ function StarChartViewer() {
                 )}
                 <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} />}</div>
                 {/* ... rest of the JSX here */}
-                {state.showSetTokenDialog && <TokenSettingDialog onClose={handleSetTokenDialogClose} show={state.showSetTokenDialog} setHeaderText={(text: string) => {/* implementation here */}} />}
+                {state.showSetTokenDialog && (
+                    <TokenSettingDialog
+                        onClose={handleSetTokenDialogClose}
+                        show={state.showSetTokenDialog}
+                        setHeaderText={(text: string) => {
+                            /* implementation here */
+                        }}
+                    />
+                )}
 
                 {state.showEmbedCodeDialog && <GenerateEmbedCodeDialog onClose={handleGenEmbedCodeDialogClose} show={state.showEmbedCodeDialog} />}
             </div>
@@ -368,7 +375,7 @@ function StarChartViewer() {
                             </div>
                         </div>
 
-                        <EmbedMarkdownSection  />
+                        <EmbedMarkdownSection />
 
                         <div className="flex-grow"></div>
                         <div className="flex justify-center mb-12">
