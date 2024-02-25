@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { head } from "lodash"
 import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import toast from "../helpers/toast"
@@ -33,26 +33,24 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     // console.log(store)
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch("/blog/data.json")
-            const blogList = (await res.json()) as Blog[]
-            for (const blog of blogList) {
-                if (blog.featured) {
-                    setState((prev) => ({ ...prev, latestBlog: blog }))
-                    break
+        if (store.repos.length === 0) {
+            console.log("store.repos ->", store.repos)
+            const fetchData = async () => {
+                const res = await fetch("/blog/data.json")
+                const blogList = (await res.json()) as Blog[]
+                for (const blog of blogList) {
+                    if (blog.featured) {
+                        setState((prev) => ({ ...prev, latestBlog: blog }))
+                        break
+                    }
                 }
-            }
-            setState((prev) => ({
-                ...prev,
-                repos: store.state.repos.map((r: string) => ({
-                    name: r,
-                    visible: true
-                }))
-            }))
-        }
 
-        fetchData()
-    }, [store.state.repos])
+                setState((prev) => ({ ...prev, repos: store.repos.map((r: string) => ({ name: r, visible: true })) }))
+            }
+
+            fetchData()
+        }
+    }, [store.repos])
 
     useEffect(() => {
         const handleWatch = () => {
@@ -144,48 +142,42 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         setState((prev) => ({ ...prev, repo: "" }))
     }
 
+    const handleToggleRepoItemVisible = React.useCallback(
+        (repo: string) => {
+            const prevRepos = state.repos
+            const newRepos = prevRepos.map((r) => (r.name === repo ? { ...r, visible: !r.visible } : r))
+            setState((prev) => ({
+                ...prev,
+                repos: newRepos
+            }))
 
-    //doesn't delete any repo
-    // const handleToggleRepoItemVisible = (repo: string) => {
-    //     setState((prev) => ({
-    //         ...prev,
-    //         repos: prev.repos.map((r) => {
-    //             if (r.name === repo) {
-    //                 return {
-    //                     ...r,
-    //                     visible: !r.visible // Toggle visibility
-    //                 };
-    //             }
-    //             return r;
-    //         })
-    //     }));
-    //     // Determine if any repo is visible
-    //     const anyRepoVisible = state.repos.filter((r) => r.visible);
-        
-    //     // Set the chart visibility based on whether any repo is visible
-    //     setChartVisibility(!anyRepoVisible);
-    // }
+            // Determine if any repo is visible
+            const anyRepoVisible = state.repos.some((r) => r.visible)
 
+            // Set the chart visibility based on whether any repo is visible
+            setChartVisibility(anyRepoVisible)
 
-    const handleToggleRepoItemVisible = (repo: string) => {
-        for (const r of state.repos) {
-          if (r.name === repo) {
-            r.visible = !r.visible;
-            break;
-          }
+            // Update the store with the new list of visible repos
+            store.actions.setRepos(newRepos.filter((r) => r.visible).map((r) => r.name))
+
+            if (newRepos.filter((r) => r.visible).length === 0) {
+                setChartVisibility(false)
+            }
+        },
+        [state.repos, store.actions, setChartVisibility]
+    )
+
+    const handleDeleteRepoBtnClick = (repo: string) => {
+        setState((prev) => ({
+            ...prev,
+            repos: prev.repos.filter((r) => r.name !== repo)
+        }))
+        store.actions.delRepo(repo)
+
+        if (store.state.repos.length === 1) {
+            setChartVisibility(false)
         }
-        store.actions.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name));
-   
-      };
-      const handleDeleteRepoBtnClick = (repo: string) => {
-        for (const r of state.repos) {
-          if (r.name === repo) {
-            state.repos.splice(state.repos.indexOf(r), 1);
-            break;
-          }
-        }
-        store.delRepo(repo);
-      };
+    }
 
     const handleClearAllRepoBtnClick = () => {
         setState((prev) => ({
