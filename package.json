@@ -7,7 +7,8 @@
         "lint": "next lint",
         "prettier": "prettier --write .",
         "postbuild": "next-sitemap --config next-sitemap.config.js --sitemap-xml",
-        "sitemap": "next-sitemap --config next-sitemap.config.js"
+        "sitemap": "next-sitemap --config next-sitemap.config.js",
+        "build:extension": "vite build --mode extension"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.5.1",
