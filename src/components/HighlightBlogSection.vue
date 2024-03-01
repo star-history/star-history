@@ -137,8 +137,12 @@ const blogSectionList = [
     ],
   },
   {
-    title: "Best of 2022",
+    title: "Best of",
     linkList: [
+      {
+        title: "2023",
+        path: "https://star-history.com/blog/best-of-2023",
+      },
       {
         title: "Data, Infra & DevTools",
         path: "https://star-history.com/blog/star-history-yearly-pick-2022-data-infra-devtools",
