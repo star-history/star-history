@@ -2,32 +2,32 @@
 
 Time for an End of Year Review for 2023! 🎉
 
-AI is the keyword of 2023, but there is so much more to this past year in the realm of open source!. We at Star History HQ gathered a few categories and picked our favourite project for each category, including:
+AI is the keyword of 2023, but there is so much more to this past year in the realm of open source! We at Star History HQ gathered a few categories and picked our favorite project for each category, including:
 
 - [Star History Monthly | Best Of 2023](#star-history-monthly--best-of-2023)
   - [AI: LangChain](#ai-langchain)
   - [Database: Neon](#database-neon)
   - [DevTool: Nx](#devtool-nx)
   - [Front-end: Astro](#front-end-astro)
-  - [Security - Teleport](#security---teleport)
-  - [Web3 - zkSync](#web3---zksync)
+  - [Security: Teleport](#security-teleport)
+  - [Web3: zkSync](#web3-zksync)
   - [To Wrap Up](#to-wrap-up)
 
 ## AI: LangChain
 
 [LangChain](https://github.com/langchain-ai/langchain) was first released in October 2022 as an open-source side project, a framework that makes developing AI applications more flexible. It got so popular that it was promptly turned into a startup.
 
-In the course of 2023, LangChain managed to gain ~70k stargazers, scoring a [$10M seed round](https://blog.langchain.dev/announcing-our-10m-seed-round-led-by-benchmark/), grew exponentially product-wise: the framework now consists of several parts, integrations with 20+ different LLM providers, 10+ different vector databases, and more, lowering AI's threshold for the people. For example, they have this [SQL Agent](https://star-history.com/blog/text2sql#langchain) so that you can build a Q&A chain and agent over a SQL database.
+In 2023, LangChain managed to gain ~70k stargazers, scoring a [$10M seed round](https://blog.langchain.dev/announcing-our-10m-seed-round-led-by-benchmark/), grew exponentially product-wise: the framework now consists of several parts, integrations with 20+ different LLM providers, 10+ different vector databases, and more, lowering AI's threshold for the people. For example, they have this [SQL Agent](https://star-history.com/blog/text2sql#langchain) so that you can build a Q&A chain and agent over an SQL database.
 
 ![langchain](/blog/assets/best-of-2023/langchain.webp)
 
-2023 was obviously the first "real" year of LLM app development, and they must now have a clearer vision of how to construct the product to better enable people to use AI.
+2023 was the first "real" year of LLM app development, and they must now have a clearer vision of how to construct the product to better enable people to use AI.
 
 ## Database: Neon
 
-[Neon](https://github.com/neondatabase/neon) is an open sourcee serverless Postgres offering.
+[Neon](https://github.com/neondatabase/neon) is an open-source serverless Postgres offering.
 
-Postgres took over the first spot from MySQL and became the most admired and desired database in 2023, as per [Stack Overflow's annual survey](https://survey.stackoverflow.co/2023/). Neon ist smart and stands ontop of the giant by bringing Postgres to the cloud. They landed a [$46M Series B funding](https://neon.tech/blog/series-b-funding) in August 2023 (see, last year wasn't all about AI!)
+Postgres took over the first spot from MySQL and became the most admired and desired database in 2023, as per [Stack Overflow's annual survey](https://survey.stackoverflow.co/2023/). Neon is smart and stands on top of the giant by bringing Postgres to the cloud. They landed a [$46M Series B funding](https://neon.tech/blog/series-b-funding) in August 2023 (see, last year wasn't all about AI!)
 
 ![neon](/blog/assets/best-of-2023/neon.webp)
 
@@ -53,9 +53,9 @@ You can use Astro to build your website - whatever its purpose: event, marketing
 
 Astro had a big year. They started out with ~23k stargazers and ended with a 60% increase to ~38k.
 
-## Security - Teleport
+## Security: Teleport
 
-[Teleport](https://github.com/gravitational/teleport) is an SSH for Clusters and Teams and aims to be the dropin replacement for OpenSSH.
+[Teleport](https://github.com/gravitational/teleport) is an SSH for Clusters and Teams and aims to be the drop-in replacement for OpenSSH.
 
 Teleport removes the need for VPNs, comes with a beautiful new Web UI, and provides a unified access plane for all your infrastructure: servers, Kubernetes, internal web apps, databases, and cloud provider APIs across all your infrastructure.
 
@@ -63,7 +63,7 @@ Teleport removes the need for VPNs, comes with a beautiful new Web UI, and provi
 
 When it comes to infrastructure security, you should be skeptical and pragmatic: it'd be smart to put more trust in a product that's been around a while, so that it's trialed and tested, and probably not going anywhere anytime soon (FYI: Teleport debuted on Hacker News way back in 2016, and they recently released Teleport 15).
 
-## Web3 - zkSync
+## Web3: zkSync
 
 Aside from AI, Web3 was also having a moment in 2023, and Crypto is more than just about currency!
 
