@@ -79,4 +79,4 @@ What a year, huh? We've witnessed some pretty amazing growth and ideas come to l
 
 And, thank you for following Star History through 2023. We are excited and ready for what the New Year has in store for us!
 
-*Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*s
+*Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
