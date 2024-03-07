@@ -45,7 +45,9 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                     }
                 }
 
-                setState((prev) => ({ ...prev, repos: store.repos.map((r: string) => ({ name: r, visible: true })) }))
+                if (state.repos.length === 0) {
+                    setState((prev) => ({ ...prev, repos: [] }))
+                }
             }
 
             fetchData()
@@ -57,7 +59,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         setChartVisibility(true)
     }, [setChartVisibility])
 
-    
+
     useEffect(() => {
         const handleWatch = () => {
             for (const r of state.repos) {
@@ -158,7 +160,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
             }))
 
             // Determine if any repo is visible
-            const anyRepoVisible = state.repos.some((r) => r.visible)
+            const anyRepoVisible = newRepos.some((r) => r.visible)
 
             // Set the chart visibility based on whether any repo is visible
             setChartVisibility(anyRepoVisible)
@@ -166,9 +168,9 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
             // Update the store with the new list of visible repos
             store.actions.setRepos(newRepos.filter((r) => r.visible).map((r) => r.name))
 
-            if (newRepos.filter((r) => r.visible).length === 0) {
-                setChartVisibility(false)
-            }
+            // if (newRepos.filter((r) => r.visible).length === 0) {
+            //     setChartVisibility(false)
+            // }
         },
         [state.repos, store.actions, setChartVisibility]
     )
@@ -180,7 +182,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         }))
         store.actions.delRepo(repo)
 
-        if (store.state.repos.length === 1) {
+        if (state.repos.length === 1) {
             setChartVisibility(false)
         }
     }
