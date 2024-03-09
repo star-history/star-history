@@ -1,8 +1,5 @@
 import Image from "next/image"
 import { FaTwitter, FaEnvelope, FaGithub } from "react-icons/fa"
-import sqlone from "./footer.webp"
-import dbcost from "./dbcost.webp"
-import mysql from "./mysql-vs-pg.webp"
 
 const Footer = () => {
     return (
@@ -27,20 +24,20 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-row flex-wrap items-center space-x-4">
                     <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
-                        <Image className="h-6 mt-1 mr-2" src={sqlone} alt="SQL Chat" height={24} />
+                        <Image className="h-6 mt-1 mr-2" src="/sqlchat.webp" alt="SQL Chat" width={18} height={24} />
                         <a href="https://sqlchat.ai" target="_blank" rel="noopener noreferrer">
                             {" "}
                             SQL Chat{" "}
                         </a>
                     </div>
                     <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
-                        <Image className="h-6 mt-1 mr-2" src={dbcost} alt="DB Cost" height={24} />
+                        <Image className="h-6 mt-1 mr-2" src="/dbcost.webp" alt="DB Cost" width={17} height={24} />
                         <a href="https://dbcost.com" target="_blank" rel="noopener noreferrer">
                             DB Cost
                         </a>
                     </div>
                     <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
-                        <Image className="h-6 mt-1 mr-2" src={mysql} alt="DB Cost" height={24} />
+                        <Image className="h-6 mt-1 mr-2" src="/mysql-vs-pg.webp" alt="DB Cost" width={24} height={24} />
                         <a href="https://dbcost.com" target="_blank" rel="noopener noreferrer">
                             MySQL or PG
                         </a>
