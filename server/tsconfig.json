@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2015"],
+    "rootDir": "../",
+    "outDir": "dist",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "./*.ts",
+    "../common/*.ts",
+    "../packages/**/*.ts",
+    "../types/*.ts"
+  ]
+}
