@@ -194,6 +194,8 @@ const XYChart = (
 
     const svgChart = chart.append("g").attr("pointer-events", "all")
 
+    drawWatermark(svgChart, chartWidth, chartHeight);
+
     if (title) {
         if (uniq(datasets.map((d) => d.label.split("/")[0])).length === 1) {
             drawTitle(d3Selection, title, datasets[0].logo, options.strokeColor, options.chartWidth)
