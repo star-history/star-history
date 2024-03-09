@@ -33,7 +33,7 @@ const BlogPage: NextPageWithLayout = () => {
                 const rawBlogList = blogData
                 const blogList: Blog[] = await Promise.all(
                     rawBlogList.map(async (raw: Blog) => {
-                        const contentRes = await fetch(`/blog/assets/${raw.slug}.md`)
+                        const contentRes = await fetch(`/blog/${raw.slug}.md`)
                         const content = await contentRes.text()
 
                         // Calculate reading time based on the content
@@ -211,7 +211,7 @@ const BlogPage: NextPageWithLayout = () => {
 //       return returnObj;
 //     }
 
-//     const filePath = path.join(process.cwd(), 'public', `blog/assets/${blogSlug}.md`);
+//     const filePath = path.join(process.cwd(), 'public', `blog/${blogSlug}.md`);
 //     const content = await fs.readFile(filePath, 'utf8');
 
 //     // Calculate reading time

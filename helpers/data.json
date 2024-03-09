@@ -4,7 +4,7 @@
         "slug": "coding-ai",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/coding-ai/banner.webp",
+        "featureImage": "/blog/coding-ai/banner.webp",
         "publishedDate": "2023-10-26T09:50:06.000Z",
         "excerpt": "One of the places where AI has made a major breakthrough is in helping with coding. Here, we gathered a few open-source AI coding assistants to boost your productivity."
     },
@@ -13,7 +13,7 @@
         "slug": "postgresml",
         "author": "Montana Low",
         "featured": true,
-        "featureImage": "/blog/assets/postgresml/banner.webp",
+        "featureImage": "/blog/postgresml/banner.webp",
         "publishedDate": "2023-10-19T00:00:00.000Z",
         "excerpt": "PostgresML is the first GPU-powered AI application database - build chatbots, search engines, forecasting apps and more with the latest NLP, LLM and ML models using the simplicity and power of SQL."
     },
@@ -22,7 +22,7 @@
         "slug": "electricsql",
         "author": "Sam Willis",
         "featured": true,
-        "featureImage": "/blog/assets/electricsql/banner.webp",
+        "featureImage": "/blog/electricsql/banner.webp",
         "publishedDate": "2023-10-11T00:00:00.000Z",
         "excerpt": "Use ElectricSQL to build super fast, collaborative, offline-capable apps directly on Postgres by syncing to a local SQLite database."
     },
@@ -31,7 +31,7 @@
         "slug": "do-github-stars-equal-money",
         "author": "Nevo David",
         "featured": true,
-        "featureImage": "/blog/assets/do-github-stars-equal-money/banner.webp",
+        "featureImage": "/blog/do-github-stars-equal-money/banner.webp",
         "publishedDate": "2023-09-28T00:00:00.000Z",
         "excerpt": "Open source projects are starting out by collecting GitHub stars, but stars are not coins, contributors, or customers. So why are we trying to collect them?"
     },
@@ -40,7 +40,7 @@
         "slug": "prompt-flow",
         "author": "Jie Tong",
         "featured": true,
-        "featureImage": "/blog/assets/prompt-flow/banner.webp",
+        "featureImage": "/blog/prompt-flow/banner.webp",
         "publishedDate": "2023-09-26T00:00:00.000Z",
         "excerpt": "Fresh open-sourced by Microsoft, Prompt flow is a suite of devtools designed to streamline the end-to-end development cycle of LLM-based AI applications."
     },
@@ -49,7 +49,7 @@
         "slug": "cli-tool-for-llm",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/cli-tool-for-llm/banner.webp",
+        "featureImage": "/blog/cli-tool-for-llm/banner.webp",
         "publishedDate": "2023-09-22T09:50:06.000Z",
         "excerpt": "This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs."
     },
@@ -58,7 +58,7 @@
         "slug": "clipboard",
         "author": "Jackson Huff",
         "featured": true,
-        "featureImage": "/blog/assets/clipboard-banner.webp",
+        "featureImage": "/blog/clipboard-banner.webp",
         "publishedDate": "2023-09-11T00:00:00.000Z",
         "excerpt": "The Clipboard Project is a new and upcoming open source tool designed to supercharge your productivity by making it easy to remember anything, anytime, anywhere."
     },
@@ -67,7 +67,7 @@
         "slug": "hoppscotch",
         "author": "Liyas Thomas",
         "featured": true,
-        "featureImage": "/blog/assets/hoppscotch-banner.webp",
+        "featureImage": "/blog/hoppscotch-banner.webp",
         "publishedDate": "2023-09-06T00:00:00.000Z",
         "excerpt": "Launched as an open-source alternative to Postman, Hoppschotch's goal is to build a lightweight API request builder that works for everyone regardless of their system specification to test their APIs."
     },
@@ -76,7 +76,7 @@
         "slug": "metisfl",
         "author": "Panagiotis Kyriakis",
         "featured": true,
-        "featureImage": "/blog/assets/metisfl/banner.webp",
+        "featureImage": "/blog/metisfl/banner.webp",
         "publishedDate": "2023-08-28T00:00:00.000Z",
         "excerpt": "MetisFL is an open-source federated learning framework that makes it easy for developers and enterprises to train their models on distributed data sources."
     },
@@ -85,7 +85,7 @@
         "slug": "playbook-for-more-github-stars",
         "author": "Zevi Reinitz",
         "featured": true,
-        "featureImage": "/blog/assets/playbook-for-more-github-stars/banner.webp",
+        "featureImage": "/blog/playbook-for-more-github-stars/banner.webp",
         "publishedDate": "2023-08-24T09:50:06.000Z",
         "excerpt": "A team that just launched an open source tool for developers shares their first-hand experience on how to grow your own project."
     },
@@ -94,7 +94,7 @@
         "slug": "llama2",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/llama2/banner.webp",
+        "featureImage": "/blog/llama2/banner.webp",
         "publishedDate": "2023-08-23T09:50:06.000Z",
         "excerpt": "Meta released Llama 2 in July, which can be freely used for research and commercial purposes. We are taking a look at some open-source options to get started with Llama 2 on your own machine."
     },
@@ -103,7 +103,7 @@
         "slug": "chatgpt-js",
         "author": "Adam Lui",
         "featured": true,
-        "featureImage": "/blog/assets/chatgpt-js/banner.webp",
+        "featureImage": "/blog/chatgpt-js/banner.webp",
         "publishedDate": "2023-08-10T00:00:00.000Z",
         "excerpt": "chatgpt.js is a JavaScript library that supports this ecosystem by allowing for super-easy interaction with the ChatGPT DOM."
     },
@@ -112,7 +112,7 @@
         "slug": "dify-ai",
         "author": "Dify.AI",
         "featured": true,
-        "featureImage": "/blog/assets/dify-ai/banner.webp",
+        "featureImage": "/blog/dify-ai/banner.webp",
         "publishedDate": "2023-08-04T09:50:06.000Z",
         "excerpt": "Dify.AI is an open source LLMOps platform to unleash the full potential of GPT and other language models."
     },
@@ -121,7 +121,7 @@
         "slug": "mockoon",
         "author": "Guillaume (255kb)",
         "featured": true,
-        "featureImage": "/blog/assets/mockoon/banner.webp",
+        "featureImage": "/blog/mockoon/banner.webp",
         "publishedDate": "2023-08-01T00:00:00.000Z",
         "excerpt": "Mockoon is a versatile API mocking tool with a desktop application and a CLI. It is simple and easy to use, yet powerful and heavily customizable."
     },
@@ -130,7 +130,7 @@
         "slug": "dlta-ai",
         "author": "Usama Ahmed",
         "featured": true,
-        "featureImage": "/blog/assets/dlta-ai/banner.webp",
+        "featureImage": "/blog/dlta-ai/banner.webp",
         "publishedDate": "2023-07-20T00:00:00.000Z",
         "excerpt": "DLTA-AI is the next generation of annotation tools, integrating the Computer Vision SOTA models to Labelme in a seamless expirence and intuitive workflow to make creating image datasets easier than ever before."
     },
@@ -139,7 +139,7 @@
         "slug": "star-history-monthly-pick-202306",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202306/banner.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202306/banner.webp",
         "publishedDate": "2023-07-14T09:50:06.000Z",
         "excerpt": "This month we pivot back to a selection of DevTools."
     },
@@ -148,7 +148,7 @@
         "slug": "sniffnet",
         "author": "Giuliano",
         "featured": true,
-        "featureImage": "/blog/assets/sniffnet/banner.webp",
+        "featureImage": "/blog/sniffnet/banner.webp",
         "publishedDate": "2023-07-03T00:00:00.000Z",
         "excerpt": "Sniffnet is an open-source network monitoring tool to help everyone analyze their Internet traffic with ease."
     },
@@ -157,7 +157,7 @@
         "slug": "list-your-open-source-project",
         "author": "Tianzhou",
         "featured": true,
-        "featureImage": "/blog/assets/list-your-open-source-project/banner.webp",
+        "featureImage": "/blog/list-your-open-source-project/banner.webp",
         "publishedDate": "2023-07-01T00:00:00.000Z",
         "excerpt": "List your open source project to be seen by thousands of visitors every month."
     },
@@ -166,7 +166,7 @@
         "slug": "star-history-monthly-pick-202305",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202305/banner.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202305/banner.webp",
         "publishedDate": "2023-06-21T09:50:06.000Z",
         "excerpt": "A collection of open-source projects for you non-tech people."
     },
@@ -175,7 +175,7 @@
         "slug": "open-source-ai-infra-projects",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/open-source-ai-infra-projects/banner.webp",
+        "featureImage": "/blog/open-source-ai-infra-projects/banner.webp",
         "publishedDate": "2023-06-16T09:50:06.000Z",
         "excerpt": "A shortlist of open-source infra projects for your next AI project."
     },
@@ -184,7 +184,7 @@
         "slug": "star-history-monthly-pick-202304",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202304/banner.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202304/banner.webp",
         "publishedDate": "2023-05-30T09:50:06.000Z",
         "excerpt": "AIGC-related projects are getting all the heat, but we still managed to find some interesting open-source projects that are not ChatGPT-based."
     },
@@ -193,7 +193,7 @@
         "slug": "sql-chat",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/sql-chat/banner.webp",
+        "featureImage": "/blog/sql-chat/banner.webp",
         "publishedDate": "2023-04-20T09:50:06.000Z",
         "excerpt": "SQL Chat is an open-source chat-based SQL client, powered by OpenAI, with built-in capabilities to connect to and query your databases."
     },
@@ -202,7 +202,7 @@
         "slug": "tabby",
         "author": "Tianzhou",
         "featured": false,
-        "featureImage": "/blog/assets/tabby/banner.webp",
+        "featureImage": "/blog/tabby/banner.webp",
         "publishedDate": "2023-04-15T09:50:06.000Z",
         "excerpt": "Tabby is an AI coding assistant that's designed as an open-source tool to help developers code faster. Think of it as an open-source/on-prem alternative to GitHub Copilot."
     },
@@ -211,7 +211,7 @@
         "slug": "star-history-monthly-pick-202303",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202303/banner.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202303/banner.webp",
         "publishedDate": "2023-04-14T09:50:06.000Z",
         "excerpt": "ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. We are taking a look at a few handy AI-enhanced tools to make your life easier."
     },
@@ -220,7 +220,7 @@
         "slug": "star-history-monthly-pick-202302",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202302/banner.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202302/banner.webp",
         "publishedDate": "2023-03-16T09:50:06.000Z",
         "excerpt": "Some of the most fascinating open-source projects and the stories behind these projects we discovered throughout February."
     },
@@ -229,7 +229,7 @@
         "slug": "ockam",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/ockam/banner.webp",
+        "featureImage": "/blog/ockam/banner.webp",
         "publishedDate": "2023-03-15T09:50:06.000Z",
         "excerpt": "Ockam is a suite of open source tools, programming libraries, and managed cloud services to orchestrate end-to-end encryption, mutual authentication, key management, credential management, and authorization policy enforcement – at massive scale."
     },
@@ -237,7 +237,7 @@
         "title": "📕 How to use GitHub Star History",
         "slug": "how-to-use-github-star-history",
         "author": "Mila",
-        "featureImage": "/blog/assets/how-to-use-github-star-history/how-to-use-github-star-history.webp",
+        "featureImage": "/blog/how-to-use-github-star-history/how-to-use-github-star-history.webp",
         "publishedDate": "2023-02-21T09:50:06.000Z",
         "excerpt": "When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?"
     },
@@ -246,7 +246,7 @@
         "slug": "star-history-monthly-pick-202301",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202301/star-history-monthly-pick-202301.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202301/star-history-monthly-pick-202301.webp",
         "publishedDate": "2023-02-14T09:50:06.000Z",
         "excerpt": "Some of the most fascinating open-source projects and the stories behind these projects we discovered over the past month."
     },
@@ -255,7 +255,7 @@
         "slug": "star-history-open-source-2022-open-source-alternatives",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/yearly-pick-open-source-alternatives-2022/star-history-open-source-alternatives-2022.webp",
+        "featureImage": "/blog/yearly-pick-open-source-alternatives-2022/star-history-open-source-alternatives-2022.webp",
         "publishedDate": "2023-02-02T09:50:06.000Z",
         "excerpt": "When choosing which tools to use, do you prefer open or closed-source? What are the differences? In this post, let’s take a look at some of the most famous open-source alternatives on the market."
     },
@@ -264,7 +264,7 @@
         "slug": "star-history-open-source-2022-platform-engineering",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/yearly-pick-platform-engineering-2022/star-history-platform-engineering-2022.webp",
+        "featureImage": "/blog/yearly-pick-platform-engineering-2022/star-history-platform-engineering-2022.webp",
         "publishedDate": "2023-01-19T09:50:06.000Z",
         "excerpt": "Platform Engineering continues to rise in popularity in 2022 and is also featured in the Gartner Hype Cycle for Software Engineering 2022. In this post, Star History picks out 10 open-source projects in the category Platform Engineering."
     },
@@ -273,7 +273,7 @@
         "slug": "star-history-yearly-pick-2022-data-infra-devtools",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/yearly-pick-data-infra-devtools-2022/yearly-pick-data-infra-devtools-2022.webp",
+        "featureImage": "/blog/yearly-pick-data-infra-devtools-2022/yearly-pick-data-infra-devtools-2022.webp",
         "publishedDate": "2023-01-11T09:50:06.000Z",
         "excerpt": "Following up on the previous roundup of top front-end os projects, Star History looks at some of the lesser known open-source projects under the category of data/infra/tools in 2022."
     },
@@ -282,7 +282,7 @@
         "slug": "star-history-yearly-pick-2022-frontend",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/yearly-pick-frontend-2022/star-history-frontend-2022.webp",
+        "featureImage": "/blog/yearly-pick-frontend-2022/star-history-frontend-2022.webp",
         "publishedDate": "2023-01-04T09:50:06.000Z",
         "excerpt": "As a proper goodbye to 2022, Star History picks some of the most interesting open-source front-end projects in 2022."
     },
@@ -291,7 +291,7 @@
         "slug": "star-history-monthly-pick-202212",
         "author": "Mila",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-monthly-pick-202212/star-history-202212.webp",
+        "featureImage": "/blog/star-history-monthly-pick-202212/star-history-202212.webp",
         "publishedDate": "2022-12-14T09:50:06.000Z",
         "excerpt": "A few open-source projects for December 2022, hand-picked by the Star History team."
     },
@@ -300,7 +300,7 @@
         "slug": "github-trending-tab",
         "author": "Tianzhou",
         "featured": true,
-        "featureImage": "/blog/assets/github-trending-tab/github-trending-tab.webp",
+        "featureImage": "/blog/github-trending-tab/github-trending-tab.webp",
         "publishedDate": "2022-09-02T09:50:06.000Z",
         "excerpt": "Our take on GitHub's intention to deprecate GitHub Trending Tab."
     },
@@ -309,7 +309,7 @@
         "slug": "add-a-live-star-history-chart-to-your-github-readme",
         "author": "Steven",
         "featured": true,
-        "featureImage": "/blog/assets/star-history-in-github-readme.png",
+        "featureImage": "/blog/star-history-in-github-readme.png",
         "publishedDate": "2022-03-21T09:39:06.000Z",
         "excerpt": "Now we support embedding a live star history chart into your GitHub README. This feature is quite handy. A snippet would appear after querying the repository from our star-history.com main page; the only thing you need to do is simply copy that snippet into your GitHub README markdown file."
     },
@@ -318,7 +318,7 @@
         "slug": "introducing-the-new-star-history-com",
         "author": "Steven",
         "featured": true,
-        "featureImage": "/blog/assets/star-history.png",
+        "featureImage": "/blog/star-history.png",
         "publishedDate": "2022-01-21T09:13:05.000Z",
         "excerpt": "After a month of hard work, we are happy to introduce you to the new star-history.com. It has been rebuilt using a modern tech stack while keeping the original sketching / xkcd feel. Besides, we have added several highly requested features..."
     }

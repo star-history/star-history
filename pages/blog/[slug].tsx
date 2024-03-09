@@ -10,7 +10,7 @@ import { GetServerSidePropsContext } from "next"
 import path from "path"
 import fs from "fs/promises"
 import { FaSpinner } from "react-icons/fa"
-import blogs from "public/blog/assets/data.json"
+import blogs from "public/blog/data.json"
 import { AppStateProvider } from "store"
 
 interface Blog {
@@ -124,7 +124,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
             return returnObj
         }
 
-        const filePath = path.join(process.cwd(), "public", `blog/assets/${blogSlug}.md`)
+        const filePath = path.join(process.cwd(), "public", `blog/${blogSlug}.md`)
         const content = await fs.readFile(filePath, "utf8")
 
         // Calculate reading time
