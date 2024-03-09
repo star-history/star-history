@@ -48,7 +48,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
 
             fetchData()
         }
-    }, [store.repos])
+    }, [state.repos.length, store.repos.length])
 
 
     useEffect(() => {

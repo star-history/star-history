@@ -1,6 +1,7 @@
 import { scaleLinear, scaleTime } from "d3-scale"
 import { select } from "d3-selection"
 import { line, curveMonotoneX } from "d3-shape"
+import { AxisScale } from "d3-axis";
 import dayjs from "dayjs"
 import { uniq } from "lodash"
 import ToolTip from "./components/ToolTip"
@@ -11,7 +12,7 @@ import { drawTitle, drawXLabel, drawYLabel } from "./utils/drawLabels"
 import drawLegend from "./utils/drawLegend"
 import { drawWatermark } from "./utils/drawWatermark"
 import getFormatTimeline, { getTimestampFormatUnit } from "./utils/getFormatTimeline"
-import { D3Selection } from "./types"
+import { D3Selection, Position } from "./types"
 
 const colors = ["#dd4528", "#28a3dd", "#f3db52", "#ed84b5", "#4ab74e", "#9179c0", "#8e6d5a", "#f19839", "#949494"]
 
@@ -288,15 +289,13 @@ const XYChart = (
 
                 const tipX = (xScale(d.x) || 0) + margin.left + 5
                 const tipY = yScale(d.y) + margin.top + 5
-                let tooltipPositionType = "down_right"
+                let tooltipPositionType : Position = "down_right"
                 if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
-                    tooltipPositionType = Position.DownLeft
+                    tooltipPositionType = "down_left"
                 } else if (tipX > chartWidth / 2 && tipY > chartHeight / 2) {
-                    tooltipPositionType = Position.UpLeft
+                    tooltipPositionType = "up_left"
                 } else if (tipX < chartWidth / 2 && tipY > chartHeight / 2) {
-                    tooltipPositionType = Position.UpRight
-                } else {
-                    tooltipPositionType = Position.DownRight
+                    tooltipPositionType = "up_right"
                 }
 
                 let title = dayjs(data.datasets[xyGroupIndex].data[i].x).format(options.dateFormat)
@@ -316,7 +315,7 @@ const XYChart = (
                     position: {
                         x: tipX,
                         y: tipY,
-                        type: tooltipPositionType as Position
+                        type: tooltipPositionType,
                     },
                     selection: d3Selection,
                     backgroundColor: options.backgroundColor,

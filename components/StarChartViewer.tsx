@@ -48,8 +48,6 @@ function StarChartViewer() {
         showEmbedChartGuideDialog: false
     })
 
-    const [chartMode, setChartMode] = useState<"Date" | "Timeline">("Date")
-
     const containerElRef = useRef<HTMLDivElement>(null)
 
     const fetchReposData = React.useCallback(
@@ -280,7 +278,7 @@ function StarChartViewer() {
             return { ...prevState, chartMode: newChartMode }
         })
         fetchReposData(store.repos, newChartMode)
-    }, [state.chartMode, store.repos, fetchReposData])
+    }, [state.chartMode, store.actions, store.repos, fetchReposData])
 
     const handleSetTokenDialogClose = () => {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
@@ -311,9 +309,6 @@ function StarChartViewer() {
                     <TokenSettingDialog
                         onClose={handleSetTokenDialogClose}
                         show={state.showSetTokenDialog}
-                        setHeaderText={(text: string) => {
-                            /* implementation here */
-                        }}
                     />
                 )}
 

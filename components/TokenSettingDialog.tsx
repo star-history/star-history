@@ -8,10 +8,9 @@ interface TokenSettingDialogProps {
     onClose: () => void
     tokenCache?: boolean
     show?: boolean
-    setHeaderText: (_text: string) => void; // Add setHeaderText prop
 }
 
-export default function TokenSettingDialog({ onClose, tokenCache, setHeaderText }: TokenSettingDialogProps) {
+export default function TokenSettingDialog({ onClose, tokenCache }: TokenSettingDialogProps) {
     const store = useAppStore()
     const [token, setToken] = useState(store.token)
     const [hasToken, setHasToken] = useState(!!store.token)
@@ -21,7 +20,7 @@ export default function TokenSettingDialog({ onClose, tokenCache, setHeaderText 
         if (!hasToken && token === "") {
             setToken(""); // Clear token state if token status is "Add Access Token" and token is empty
         }
-    }, [tokenCache, store.token])
+    }, [tokenCache, store.token, hasToken, token])
 
     const handleSaveTokenBtnClick = () => {
         store.setToken(token);
@@ -30,11 +29,6 @@ export default function TokenSettingDialog({ onClose, tokenCache, setHeaderText 
         });
         setHasToken(true);
 
-        // if (token.trim() === "") {
-        //     setHeaderText("Add Access Token"); // Set header text to "Add Access Token" if token is empty
-        // } else {
-        //     setHeaderText("Edit Access Token"); // Set header text to "Edit Access Token" if token is not empty
-        // }
         if (onClose) {
             onClose();
         }
