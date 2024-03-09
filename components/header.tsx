@@ -79,7 +79,7 @@ useEffect(() => {
                 <img className="h-6 mt-1 mr-2" src="https://star-history.com/craft-by-bytebase.webp" alt="" />
               </Link>
             </div>
-            <div className="h-full hidden md:flex flex-row justify-end items-center">
+            <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
               <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>

@@ -8,12 +8,10 @@ interface TokenSettingDialogProps {
     onClose: () => void
     tokenCache?: boolean
     show?: boolean
-    onTokenChange?: (_token: string, hasToken: boolean) => void
-    onHeaderTextChange?: (_text: string, hasToken: boolean) => void
     setHeaderText: (_text: string) => void; // Add setHeaderText prop
 }
 
-export default function TokenSettingDialog({ onClose, tokenCache, onTokenChange, onHeaderTextChange, setHeaderText }: TokenSettingDialogProps) {
+export default function TokenSettingDialog({ onClose, tokenCache, setHeaderText }: TokenSettingDialogProps) {
     const store = useAppStore()
     const [token, setToken] = useState(store.token)
     const [hasToken, setHasToken] = useState(!!store.token)
@@ -31,14 +29,12 @@ export default function TokenSettingDialog({ onClose, tokenCache, onTokenChange,
             accessTokenCache: token
         });
         setHasToken(true);
-        if (onTokenChange) {
-            onTokenChange(token, true); // Pass true indicating token is present
-        }
-        if (token.trim() === "") {
-            setHeaderText("Add Access Token"); // Set header text to "Add Access Token" if token is empty
-        } else {
-            setHeaderText("Edit Access Token"); // Set header text to "Edit Access Token" if token is not empty
-        }
+
+        // if (token.trim() === "") {
+        //     setHeaderText("Add Access Token"); // Set header text to "Add Access Token" if token is empty
+        // } else {
+        //     setHeaderText("Edit Access Token"); // Set header text to "Edit Access Token" if token is not empty
+        // }
         if (onClose) {
             onClose();
         }
@@ -47,9 +43,6 @@ export default function TokenSettingDialog({ onClose, tokenCache, onTokenChange,
     
     const handleCloseBtnClick = () => {
         if (onClose) {
-            if (onHeaderTextChange) { // Check if onHeaderTextChange is defined
-                onHeaderTextChange("Add Access Token", false); // Pass false indicating token is not present
-            }
             onClose();
         }
     };

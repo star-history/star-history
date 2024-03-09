@@ -376,22 +376,6 @@ function StarChartViewer() {
                         </div>
 
                         <EmbedMarkdownSection />
-
-                        <div className="flex-grow"></div>
-                        <div className="flex justify-center mb-12">
-                            <iframe
-                                src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                                data-test-id="beehiiv-embed"
-                                height="52"
-                                frameBorder="0"
-                                scrolling="no"
-                                style={{
-                                    margin: 0,
-                                    borderRadius: 0,
-                                    backgroundColor: "transparent"
-                                }}
-                            ></iframe>
-                        </div>
                     </div>
                     <BytebaseBanner v-if="state.chartData" />
                 </>

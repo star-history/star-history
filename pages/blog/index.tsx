@@ -40,9 +40,6 @@ const BlogPage: NextPageWithLayout = () => {
                         const wordsPerMinute = 200
                         const wordCount = content.split(" ").length
                         const readingTime = Math.ceil(wordCount / wordsPerMinute)
-
-                        console.log(contentRes, "haha")
-
                         return {
                             ...raw,
                             readingTime: `${readingTime} min read`
@@ -50,13 +47,8 @@ const BlogPage: NextPageWithLayout = () => {
                     })
                 )
 
-                console.log("Blog List:", blogList)
-
                 const featuredBlogs = blogList.filter((blog) => blog.featured)
                 const blogs = blogList.filter((blog) => !blog.featured)
-
-                console.log("Featured Blogs:", featuredBlogs)
-                console.log("Blogs:", blogs)
 
                 setFeaturedBlogs(featuredBlogs)
                 setBlogs(blogs)
@@ -116,7 +108,7 @@ const BlogPage: NextPageWithLayout = () => {
                                         {featuredBlogs.map((blog) => (
                                             <div key={blog.slug} className="w-full h-auto flex flex-col border rounded-md mb-8">
                                                 <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
-                                                    <img className="h-60 w-full flex-shrink-0 object-cover rounded-t-md" src={blog.featureImage} alt="" />
+                                                    <img className="h-full w-auto flex-shrink-0 object-cover rounded-t-md" src={blog.featureImage} alt="" />
                                                 </Link>
 
                                                 <div className="w-full p-6 py-4 flex flex-col justify-start">

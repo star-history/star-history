@@ -29,12 +29,8 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     })
 
     const inputElRef = useRef<HTMLInputElement | null>(null)
-
-    // console.log(store)
-
     useEffect(() => {
         if (store.repos.length === 0) {
-            console.log("store.repos ->", store.repos)
             const fetchData = async () => {
                 const res = await fetch("/blog/data.json")
                 const blogList = (await res.json()) as Blog[]
@@ -260,7 +256,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                             >
                                 {item.name}
                             </span>
-                            <a href={`https://github.com/${item.name}`} target="_blank">
+                            <a href={`https://github.com/${item.name}`} target="_blank" className="flex items-center">
                                 <FaExternalLinkAlt className="fas fa-external-link-alt fa-sm text-gray-400 hover:text-green-600" />
                             </a>
                         </div>

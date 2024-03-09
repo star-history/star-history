@@ -37,7 +37,7 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                 <Header />
                 <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
                     <div className="w-full hidden lg:block">
-                        <HighlightBlogSection clickLink={(link) => console.log(link)} />
+                        <HighlightBlogSection />
                     </div>
                     <div className="w-full flex flex-col justify-start items-center">
                         {isLoading ? (
@@ -78,7 +78,7 @@ const BlogPost: React.FC<State> = ({ isLoading, blog, parsedBlogHTML }) => {
                                         <span> {blog.readingTime} min read </span>
                                     </div>
                                 </div>
-                                <div className="blog-content-container w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
+                                <div className="mt-8 w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                             </div>
                         )}
                         <div className="mt-12">

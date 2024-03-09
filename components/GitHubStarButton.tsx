@@ -17,7 +17,7 @@ const GitHubStarButton = () => {
                 })
                 count = data.stargazers_count;
             } catch (error) {
-              // Noop
+              // 
             }
             return count;
         }
@@ -32,8 +32,8 @@ const GitHubStarButton = () => {
             target="_blank"
             aria-label="Star star-history/star-history on GitHub"
         >
-            <span className="pr-1 pl-2 h-full flex flex-row justify-center items-center bg-gray-100 border-r">
-                <FaGithub className="fab fa-github mr-1 -mt-px" />
+            <span className="pr-1 pl-2 h-full flex flex-row justify-center items-center bg-gray-100 border-r font-medium">
+                <FaGithub className="fab text-base mr-1 -mt-px" />
                 <span className="mt-px">Star</span>
             </span>
             <div className="h-full block px-2 mt-px font-medium">{starCount === 0 ? <i className="fa fa-spinner animate-spin opacity-90 px-2"></i> : <span>{starCount}</span>}</div>
