@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Best of 2023",
+        "slug": "best-of-2023",
+        "author": "Mila",
+        "featured": true,
+        "featureImage": "/blog/assets/best-of-2023/banner.webp",
+        "publishedDate": "2024-03-01:00:00.000Z",
+        "excerpt": "Time for an End of Year Review of our favourite open-source projects that stood out in 2023!"
+    }, 
+    {
         "title": "Starlet #17 SpiceDB: Google Zanzibar-inspired Authorization System",
         "slug": "spicedb",
         "author": "Pablo Macias",
@@ -7,7 +16,7 @@
         "featureImage": "/blog/assets/spicedb-banner.webp",
         "publishedDate": "2024-02-23:00:00.000Z",
         "excerpt": "SpiceDB is an open source, Google Zanzibar-inspired database for creating and managing security-critical application permissions."
-      },
+    },
     {
         "title": "Star History Monthly Jan 2024 | Open-source Text2SQL Tools",
         "slug": "text2sql",

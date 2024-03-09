@@ -2,8 +2,6 @@
 
 ---
 
-# SpiceDB: Google Zanzibar-inspired Authorization System
-
 ## What is SpiceDB?
 
 SpiceDB is the most scalable and consistent Google Zanzibar-inspired database for storing and computing permissions data—use it to build global-scale fine-grained authorization services.
