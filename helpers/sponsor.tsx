@@ -37,14 +37,6 @@ const sponsors: Sponsor[] = [
         landingSlogan: "The next-gen development platform. Create Assistants API and GPTs based on any LLMs."
     },
     {
-        name: "AutoMQ",
-        logo: utils.absolutifyLink("/sponsors/automq/logo.webp"),
-        landingImage: utils.absolutifyLink("/sponsors/automq/landing.webp"),
-        link: "https://github.com/AutoMQ/automq-for-kafka/?utm_source=star-history",
-        logoSlogan: "AutoMQ: Truly serverless Kafka solution that maximizes the benefits of cloud.",
-        landingSlogan: "Truly serverless Kafka solution that maximizes the benefits of cloud."
-    },
-    {
         name: "Argo CD vs. Flux",
         logo: utils.absolutifyLink("/sponsors/akuity/logo.webp"),
         landingImage: utils.absolutifyLink("/sponsors/akuity/landing.webp"),
