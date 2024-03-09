@@ -126,23 +126,6 @@ function StarChartViewer() {
         }
     }
 
-    // const handleGenerateImageBtnClick = async () => {
-    //     const element = document.querySelector("#capture") as HTMLElement
-    //     if (!element) {
-    //         throw new Error("Element with id 'capture' not found")
-    //     }
-    //     const canvas = await html2canvas(element, {allowTaint: true, useCORS: true})
-    //     const imgData = canvas.toDataURL("image/png")
-
-    //     // Create a link element for downloading
-    //     const downloadLink = document.createElement("a")
-    //     downloadLink.href = imgData
-    //     downloadLink.download = "chart.png" // You can name the file here
-    //     document.body.appendChild(downloadLink)
-    //     downloadLink.click()
-    //     document.body.removeChild(downloadLink)
-    // }
-
     const handleGenerateImageBtnClick = async () => {
         if (state.isGeneratingImage) {
             return
