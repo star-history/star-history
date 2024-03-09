@@ -13,15 +13,6 @@ import { drawWatermark } from "./utils/drawWatermark"
 import getFormatTimeline, { getTimestampFormatUnit } from "./utils/getFormatTimeline"
 import { D3Selection } from "./types"
 
-let tooltipPositionType: Position
-
-enum Position {
-    UpRight = "up_right",
-    DownLeft = "down_left",
-    UpLeft = "up_left",
-    DownRight = "down_right"
-}
-
 const colors = ["#dd4528", "#28a3dd", "#f3db52", "#ed84b5", "#4ab74e", "#9179c0", "#8e6d5a", "#f19839", "#949494"]
 
 const darkColors = ["#ff6b6b", "#48dbfb", "#feca57", "#ff9ff3", "#1dd1a1", "#f368e0", "#ff9f43", "#a4b0be", "#576574"]
@@ -103,7 +94,7 @@ const getDarkThemeDefaultOptions = (transparent: boolean): XYChartOptions => {
 
 const XYChart = (
     svg: SVGSVGElement,
-    { title, xLabel, yLabel, data: { datasets }, showDots, theme, transparent, alignTimeline }: XYChartConfig & { alignTimeline: boolean },
+    { title, xLabel, yLabel, data: { datasets }, showDots, theme, transparent }: XYChartConfig,
     initialOptions: Partial<XYChartOptions>
 ) => {
     const options: XYChartOptions = {
@@ -137,8 +128,12 @@ const XYChart = (
         .attr("width", clientWidth)
         .attr("height", clientHeight)
         .attr("preserveAspectRatio", "xMidYMid meet") as D3Selection
+        
     if (options.envType === "browser") {
-        d3Selection.attr("width", clientWidth <= 600 ? 600 : "100%").attr("viewBox", `0 0 ${clientWidth <= 600 ? 600 : clientWidth} ${clientHeight}`)
+        // If in browser, be more responsive.
+        d3Selection
+            .attr("width", clientWidth <= 600 ? 600 : "100%")
+            .attr("viewBox", `0 0 ${clientWidth <= 600 ? 600 : clientWidth} ${clientHeight}`)
     }
     d3Selection.selectAll("*").remove()
 
@@ -156,12 +151,12 @@ const XYChart = (
         backgroundColor: options.backgroundColor
     })
 
-    if (options.xTickLabelType === "Date" && alignTimeline) {
+    if (options.xTickLabelType === "Date") {
         data.datasets.forEach((dataset) => {
-            dataset.data.forEach((d) => {
-                d.x = "timeline" as any
-            })
-        })
+          dataset.data.forEach((d) => {
+            d.x = dayjs(d.x) as any;
+          });
+        });
     }
 
     const allData: XYPoint[] = []
@@ -173,19 +168,18 @@ const XYChart = (
     const chartWidth = clientWidth - margin.left - margin.right
     const chartHeight = clientHeight - margin.top - margin.bottom
 
-    let xScale: any
-    if (alignTimeline) {
-        xScale = scaleLinear().domain([0, 10]).range([0, chartWidth])
-    } else {
-        xScale = scaleTime()
-            .domain([Math.min(...allXData.map((d) => Number(d))), Math.max(...allXData.map((d) => Number(d)))])
-            .range([0, chartWidth])
+    // NOTE: Xaxis with date type(default)
+    let xScale: AxisScale<number | Date> = scaleTime()
+        .domain([
+        Math.min(...allXData.map((d) => Number(d))),
+        Math.max(...allXData.map((d) => Number(d))),
+        ])
+        .range([0, chartWidth]);
 
-        if (options.xTickLabelType === "Number") {
-            xScale = scaleLinear()
-                .domain([0, Math.max(...allXData.map((d) => Number(d)))])
-                .range([0, chartWidth])
-        }
+    if (options.xTickLabelType === "Number") {
+        xScale = scaleLinear()
+        .domain([0, Math.max(...allXData.map((d) => Number(d)))])
+        .range([0, chartWidth]);
     }
 
     const yScale = scaleLinear()
@@ -221,6 +215,7 @@ const XYChart = (
         drawYLabel(d3Selection, yLabel, options.strokeColor, offsetY)
     }
 
+    // draw axis
     drawXAxis(svgChart, {
         xScale,
         tickCount: options.xTickCount,
@@ -236,7 +231,8 @@ const XYChart = (
         stroke: options.strokeColor
     })
 
-    if (!alignTimeline) {
+    // draw lines
+    if (options.showLine) {
         const drawLine = line<XYPoint>()
             .x((d) => xScale(d.x) || 0)
             .y((d) => yScale(d.y))
@@ -255,6 +251,7 @@ const XYChart = (
     }
 
     if (showDots) {
+        // draw dots
         const dotInitSize = 3.5 * (options.dotSize === undefined ? 1 : options.dotSize)
         const dotHoverSize = 6 * (options.dotSize === undefined ? 1 : options.dotSize)
         svgChart
@@ -337,6 +334,7 @@ const XYChart = (
             })
     }
 
+    // draw legend
     const legendItems = data.datasets.map((dataset, i) => ({
         color: options.dataColors[i] || "",
         text: dataset.label,

@@ -28,8 +28,7 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                             datasets: data.datasets
                         },
                         showDots: true,
-                        transparent: false,
-                        alignTimeline: false
+                        transparent: false
                     },
                     {
                         xTickLabelType: chartMode === "Date" ? "Date" : "Number",
