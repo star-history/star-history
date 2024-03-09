@@ -13,7 +13,7 @@ interface BlogSection {
 
 interface HighlightBlogSectionProps {
     blogSectionList: BlogSection[]
-    clickLink: (_link: string) => void
+    clickLink?: (_link: string) => void
 }
 
 const blogSectionList: BlogSection[] = [

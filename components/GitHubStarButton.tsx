@@ -7,13 +7,19 @@ const GitHubStarButton = () => {
 
     useEffect(() => {
         const getRepoStarCount = async () => {
-            const { data } = await axios.get(`https://api.github.com/repos/star-history/star-history`, {
-                headers: {
-                    Accept: "application/vnd.github.v3.star+json",
-                    Authorization: ""
-                }
-            })
-            return data.stargazers_count as number
+            let count = 0;
+            try {
+                const { data } = await axios.get(`https://api.github.com/repos/star-history/star-history`, {
+                    headers: {
+                        Accept: "application/vnd.github.v3.star+json",
+                        Authorization: ""
+                    }
+                })
+                count = data.stargazers_count;
+            } catch (error) {
+              // Noop
+            }
+            return count;
         }
 
         getRepoStarCount().then((count) => setStarCount(count))
@@ -21,7 +27,7 @@ const GitHubStarButton = () => {
 
     return (
         <a
-            className="border rounded flex flex-row justify-start items-center text-black bg-white text-sm	 shadow-inner hover:opacity-80"
+            className="border rounded flex flex-row justify-start items-center text-black bg-white text-sm shadow-inner hover:opacity-80"
             href="https://github.com/star-history/star-history"
             target="_blank"
             aria-label="Star star-history/star-history on GitHub"

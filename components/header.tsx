@@ -5,10 +5,10 @@ import TokenSettingDialog from "./TokenSettingDialog";
 import Image from "next/image";
 import Icon from "./icon.png";
 import Link from "next/link";
-import { AppStateProvider } from "../store";
-import storage from "../helpers/storage";
+import { AppStateProvider, useAppStore } from "../store";
 
 const Header: React.FC = () => {
+  const store = useAppStore()
   const [showSetTokenDialog, setShowSetTokenDialog] = useState(false);
   const [headerText, setHeaderText] = useState("Add Access Token");
   const [state, setState] = useState<State>({
@@ -37,24 +37,9 @@ const Header: React.FC = () => {
     setShowSetTokenDialog(false);
   };
 
-  const handleTokenChange = (_token: string, hasToken: boolean) => {
-    const newText = hasToken ? "Edit Access Token" : "Add Access Token";
-    setHeaderText(newText);
-    localStorage.setItem("headerText", newText);
-}
-
-
 useEffect(() => {
-    const savedHeaderText = localStorage.getItem("headerText");
-    if (savedHeaderText) {
-        setHeaderText(savedHeaderText);
-    }
-}, []);
-
-
-  useEffect(() => {
-    localStorage.setItem("headerText", headerText);
-}, [headerText]);
+  setHeaderText(store.token ? "Edit Access Token" : "Add Access Token")
+}, [store.token]);
 
   return (
     <>
@@ -62,8 +47,6 @@ useEffect(() => {
         <TokenSettingDialog
           onClose={handleSetTokenDialogClose}
           tokenCache={false}
-          onTokenChange={handleTokenChange}
-          onHeaderTextChange={setHeaderText}
           setHeaderText={setHeaderText} // Pass setHeaderText as a prop
         />
       )}
