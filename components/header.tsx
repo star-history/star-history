@@ -3,7 +3,6 @@ import TopBanner from "./TopBanner";
 import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Image from "next/image";
-import Icon from "/icon.png";
 import Link from "next/link";
 import { AppStateProvider, useAppStore } from "../store";
 
