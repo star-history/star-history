@@ -244,7 +244,7 @@ const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, "blogSectio
                     <ul className="list-disc list-inside">
                         {section.linkList.map((blog) => (
                             <li key={blog.title} className="mb-2 leading-3">
-                                <Link href={blog.path} className="cursor-pointer" target="_blank" rel="noopener noreferrer">
+                                <Link href={blog.path} className="cursor-pointer" rel="noopener noreferrer">
                                     <span className="inline -ml-2 text-sm text-blue-700 hover:underline">{blog.title}</span>
                                 </Link>
                             </li>
