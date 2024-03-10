@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import TopBanner from "./TopBanner";
 import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
-import Image from "next/image";
 import Link from "next/link";
 import { AppStateProvider, useAppStore } from "../store";
 
@@ -55,7 +54,7 @@ useEffect(() => {
           <div className="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-0 sm:px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
               <Link href="/" className="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800">
-                <Image className="w-7 h-auto" src="/icon.png" width={500} height={500} alt="Logo" />
+                <img className="w-7 h-auto" src="/icon.png" alt="Logo" />
               </Link>
               <Link href="/blog" className="h-full flex flex-row justify-center items-center text-base px-5 hover:bg-zinc-800">
                 <span className="text-white font-semibold -2">Blog</span>
@@ -74,7 +73,7 @@ useEffect(() => {
                 rel="noopener noreferrer"
                 className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800"
               >
-                <Image className="h-6 mt-1 mr-2" src="/craft-by-bytebase.webp" width={188} height={24} alt="" />
+                <img className="h-6 mt-1 mr-2" src="/craft-by-bytebase.webp" alt="" />
               </Link>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
