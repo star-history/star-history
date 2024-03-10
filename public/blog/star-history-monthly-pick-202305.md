@@ -46,7 +46,7 @@ Of course, you can use it alongside [Bytebase](https://www.bytebase.com/).
 
 ## SeaORM
 
-[SeaORM](github.com/SeaQL/sea-query) is an asynchronous dynamic Rust ORM that provides a simple way to operate SQL databases.
+[SeaORM](http://github.com/SeaQL/sea-query) is an asynchronous dynamic Rust ORM that provides a simple way to operate SQL databases.
 
 SeaORM's organization is called SeaQL (bonus points for the pun), and all of their projects are named after the sea and database-related. For example, SeaQuery is the foundation of SeaORM, a dynamic SQL query builder that works with MySQL, Postgres, and SQLite.
 
