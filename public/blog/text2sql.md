@@ -1,6 +1,6 @@
 Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!
 
-![gpt](/blog/assets/text2sql/gpt.gif)
+![gpt](/assets/blog/text2sql/gpt.gif)
 
 These tools started out to bridge the gap between non-tech users and databases, by allowing them to interact with databases using natural language and reduce the barrier to accessing and analyzing data. But with the advance of AI models, these tools now support more advanced features such as handling complex queries, joining multiple tables, or even supporting natural language conversations.
 
@@ -22,7 +22,7 @@ In this edition of Star History monthly, we have compiled a collection of open-s
 
 [Chat2DB](https://github.com/chat2db/chat2db) aims to be a general-purpose SQL client and reporting tool that incorporates AI capabilities from the start. It supports connection to a handful of databases including MySQL, Postgres, Oracle, SQL Server, SQLite, ClickHouse and more.
 
-![chat2db](/blog/assets/text2sql/chat2db.webp)
+![chat2db](/assets/blog/text2sql/chat2db.webp)
 
 There was a bit of [drama](https://www.linkedin.com/feed/update/urn:li:activity:7153040091454611456/) involving Chat2DB a while ago, we won't get into details here but I'm curious to know what you think.
 
@@ -32,7 +32,7 @@ There was a bit of [drama](https://www.linkedin.com/feed/update/urn:li:activity:
 
 It currently supports MySQL, Postgres, SQL Server and TiDB serverless.
 
-![sqlchat](/blog/assets/text2sql/sqlchat.webp)
+![sqlchat](/assets/blog/text2sql/sqlchat.webp)
 
 It's [open-sourced by Bytebase](https://www.bytebase.com/blog/sql-chat/), a database migration tool for teams.
 
@@ -40,7 +40,7 @@ It's [open-sourced by Bytebase](https://www.bytebase.com/blog/sql-chat/), a data
 
 [Vanna](https://github.com/vanna-ai/vanna) is a Python framework that allows the training of an RAG model with queries, DDL, and documentation from a database.
 
-![vanna](/blog/assets/text2sql/vanna.webp)
+![vanna](/assets/blog/text2sql/vanna.webp)
 
 You can use Vanna as is, or build your own custom UI with an existing tool (e.g. Streamlit, Slack).
 
@@ -50,13 +50,13 @@ It was open-sourced in July 2023 and [got really popular](https://star-history.c
 
 [DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, by [MontherDuck](https://motherduck.com/blog/duckdb-text2sql-llm/) and [Numbers Station](https://www.numbersstation.ai/). This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go back-and-forth between the DuckDB documentation and the SQL shell.
 
-![duckdb](/blog/assets/text2sql/duckdb.webp)
+![duckdb](/assets/blog/text2sql/duckdb.webp)
 
 ## Langchain
 
 With Langchain, you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
 
-![langchain](/blog/assets/text2sql/langchain.webp)
+![langchain](/assets/blog/text2sql/langchain.webp)
 
 LangChain also has an SQL Agent that you can add to the chain. It can not only answer questions based on the databases’ schema and content, but also recover from errors by running a generated query, catching the traceback and regenerating it correctly.
 
@@ -64,7 +64,7 @@ LangChain also has an SQL Agent that you can add to the chain. It can not only a
 
 [Awesome Text2SQL](https://github.com/eosphoros-ai/Awesome-Text2SQL) is a suite of curated tutorials and resources for LLMs, Text2SQL, Text2DSL, Text2API, Text2Vis, and more. Most of the models are LLM+Text2SQL, and for each model, there are links for papers, code, dataset. If you want to dive deep into Text2SQL, take a look!
 
-![awesome-text2sql](/blog/assets/text2sql/awesome-text2sql.webp)
+![awesome-text2sql](/assets/blog/text2sql/awesome-text2sql.webp)
 
 ## To Wrap up
 
