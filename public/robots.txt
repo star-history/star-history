@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /_next/
 Disallow: /assets/
+Disallow: /embed
