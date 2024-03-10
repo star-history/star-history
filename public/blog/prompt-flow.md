@@ -14,11 +14,11 @@ Prompt flow provides a suite of developer tools including:
 
 -   A [VS Code extension](https://marketplace.visualstudio.com/items?itemName=prompt-flow.prompt-flow) that allows for visual development and testing of the flow within VS Code. Although it may initially appear as a low-code solution for creating static "graphs", it actually allows you to program within different Python nodes with as much flexibility as you need. This enables you to fully utilize the quality assurance capabilities that Prompt Flow offers.
 
-![vs-code](/blog/assets/prompt-flow/vs-code.webp)
+![vs-code](/assets/blog/prompt-flow/vs-code.webp)
 
 -   A [Python SDK/CLI](https://pypi.org/project/promptflow/) that facilitates experimentation with batch tests and evaluations, and offers a clear visualization of test results and intermediate outcomes. This tool can also be integrated into your CI/CD process.
 
-![python-sdk](/blog/assets/prompt-flow/python-sdk.webp)
+![python-sdk](/assets/blog/prompt-flow/python-sdk.webp)
 
 -   [Built-in support for prompt tuning](https://microsoft.github.io/promptflow/how-to-guides/tune-prompts-with-variants.html) is another feature that simplifies the process of testing multiple prompts. It allows you to easily select the best prompt using metrics.
 -   [Flexible deployment support](https://microsoft.github.io/promptflow/how-to-guides/deploy-a-flow/index.html) that enables you to package your flow as a Docker container, which can then be run on various cloud platforms. Additionally, you can integrate the flow into your existing Python application using the SDK.9/17/2023, 12:42:47 PMSend
@@ -29,4 +29,4 @@ Moreover, a cloud-based version of Prompt flow is available in Azure AI, which i
 
 As for its popularity, Prompt flow was publicly released in early September and witnessed a significant increase in interest, accumulating 2,000 stars within the first two weeks🚀.
 
-![star-history](/blog/assets/prompt-flow/star-history.webp)
+![star-history](/assets/blog/prompt-flow/star-history.webp)

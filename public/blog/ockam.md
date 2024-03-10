@@ -49,7 +49,7 @@ To address to the developer audience, trust is important. This is even more so f
 Throughout Ockam's marketing website, you can see quite a few code examples, below is the one from
 the hero section.
 
-![ockam](/blog/assets/ockam/build-trust.webp)
+![ockam](/assets/blog/ockam/build-trust.webp)
 
 ---
 
@@ -57,7 +57,7 @@ Last but not least let's take a look at Ockam's (star) history. It has been open
 [This HN submission](https://news.ycombinator.com/item?id=33038384) also helped (the `Rust`, `Elixir` and `Secure` combination
 probably attracts quite a few enthusiasms from the not-easily-pleased HN readers).
 
-![ockam](/blog/assets/ockam/ockam.webp)
+![ockam](/assets/blog/ockam/ockam.webp)
 
 The Ockam team also [shares their thoughts](https://www.ockam.io/blog/how_grow_popular_open_source_github) about growing the open-source community:
 

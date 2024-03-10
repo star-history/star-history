@@ -13,7 +13,7 @@ It allows developers to design their mock APIs during the development phase with
 
 It answers most API mocking use cases, from quick prototyping or teaching to complex automation testing with rules and dynamic data.
 
-![Mockoon's desktop application and CLI screenshots](/blog/assets/mockoon/screenshot.webp)
+![Mockoon's desktop application and CLI screenshots](/assets/blog/mockoon/screenshot.webp)
 
 ## Why Mockoon?
 

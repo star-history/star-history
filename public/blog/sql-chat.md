@@ -2,7 +2,7 @@
 
 [SQL Chat](https://github.com/sqlchat/sqlchat) is an open-source chat-based SQL client. It’s built by the folks at Bytebase, a database DevOps tool for teams to manage database changes efficiently, you can see why this combination can’t go wrong: a SQL client hand-crafted by a team that deals with databases. Bytebase has actually already integrated ChatGPT capabilities into their product in an older version, but apparently, it didn’t meet their expectations. They came out with a great replacement instead: SQL Chat.
 
-![sql-chat](/blog/assets/sql-chat/sqlchat.webp)
+![sql-chat](/assets/blog/sql-chat/sqlchat.webp)
 
 ## First-Impressions
 
@@ -14,7 +14,7 @@ SQL Chat’s UI is rather straightforward. At first glance, it looks like the Ch
 
 What makes SQL Chat really stand out is that you can connect directly to your database and ask the bot questions or query your database right from the chat dialog. Right now only MySQL and PostgreSQL are supported but we are hopeful that more databases are going to be available once the requests start pouring in.
 
-![sql-chat](/blog/assets/sql-chat/db-connections.webp)
+![sql-chat](/assets/blog/sql-chat/db-connections.webp)
 
 **Low (Free) Cost**
 

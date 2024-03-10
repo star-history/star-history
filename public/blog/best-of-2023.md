@@ -17,7 +17,7 @@ AI is the keyword of 2023, but there is so much more to this past year in the re
 
 In 2023, LangChain managed to gain ~70k stargazers, scoring a [$10M seed round](https://blog.langchain.dev/announcing-our-10m-seed-round-led-by-benchmark/), grew exponentially product-wise: the framework now consists of several parts, integrations with 20+ different LLM providers, 10+ different vector databases, and more, lowering AI's threshold for the people. For example, they have this [SQL Agent](https://star-history.com/blog/text2sql#langchain) so that you can build a Q&A chain and agent over an SQL database.
 
-![langchain](/blog/assets/best-of-2023/langchain.webp)
+![langchain](/assets/blog/best-of-2023/langchain.webp)
 
 2023 was the first "real" year of LLM app development, and they must now have a clearer vision of how to construct the product to better enable people to use AI.
 
@@ -27,7 +27,7 @@ In 2023, LangChain managed to gain ~70k stargazers, scoring a [$10M seed round](
 
 Postgres took over the first spot from MySQL and became the most admired and desired database in 2023, as per [Stack Overflow's annual survey](https://survey.stackoverflow.co/2023/). Neon is smart and stands on top of the giant by bringing Postgres to the cloud. They landed a [$46M Series B funding](https://neon.tech/blog/series-b-funding) in August 2023 (see, last year wasn't all about AI!)
 
-![neon](/blog/assets/best-of-2023/neon.webp)
+![neon](/assets/blog/best-of-2023/neon.webp)
 
 Neon uses a shared-storage architecture that separates the compute and storage. The compute part is a PostgreSQL server, the storage part is a custom-built multi-tenant storage system shared by all Postgres compute nodes.
 
@@ -35,7 +35,7 @@ Neon uses a shared-storage architecture that separates the compute and storage. 
 
 [Nx](https://github.com/nrwl/nx) is a set of DevTools to make it simpler for software dev teams to work within a monorepo, which is a version-controlled code repository that contains a number of projects. Think of Nx as a VSCode of build tools.
 
- ![nx](/blog/assets/best-of-2023/nx.webp)
+ ![nx](/assets/blog/best-of-2023/nx.webp)
 
 The funding team saw a need for tools to make it simpler for devs to store related apps and libraries in one shared code repository, and so they built Nx. You can speed up your builds and tests, locally and on CI and integrate and automate your tooling via its plugins.
 
@@ -47,7 +47,7 @@ It's worth noting that they closed a [$16 million Series A](https://techcrunch.c
 
 You can use Astro to build your website - whatever its purpose: event, marketing, e-commerce, blog. One key element of Astro is it automatically removes unused JavaScript and renders to HTML for better core web vitals, conversion rates and SEO, and that's what we love!
 
-![astro](/blog/assets/best-of-2023/astro.webp)
+![astro](/assets/blog/best-of-2023/astro.webp)
 
 Astro had a big year. They started out with ~23k stargazers and ended with a 60% increase to ~38k.
 
@@ -57,7 +57,7 @@ Astro had a big year. They started out with ~23k stargazers and ended with a 60%
 
 Teleport removes the need for VPNs, comes with a beautiful new Web UI, and provides a unified access plane for all your infrastructure: servers, Kubernetes, internal web apps, databases, and cloud provider APIs across all your infrastructure.
 
-![teleport](/blog/assets/best-of-2023/teleport.webp)
+![teleport](/assets/blog/best-of-2023/teleport.webp)
 
 When it comes to infrastructure security, you should be skeptical and pragmatic: it'd be smart to put more trust in a product that's been around a while, so that it's trialed and tested, and probably not going anywhere anytime soon (FYI: Teleport debuted on Hacker News way back in 2016, and they recently released Teleport 15).
 
@@ -67,7 +67,7 @@ Aside from AI, Web3 was also having a moment in 2023, and Crypto is more than ju
 
 [zkSync](https://github.com/matter-labs/zksync) is a ZK rollup, a layer-2 protocol that uses cryptographic validity proofs to provide scalable and low-cost transactions on Ethereum.
 
-![zksync](/blog/assets/best-of-2023/zksync.webp)
+![zksync](/assets/blog/best-of-2023/zksync.webp)
 
 zkSync is one of the most recognized layer-2 scaling solutions for Ethereum. What makes zkSync stand out from other layer-2 protocols is that it can significantly reduce gas costs without sacrificing security or user control, making it cheaper and faster for users to interact with Ethereum smart contracts.
 

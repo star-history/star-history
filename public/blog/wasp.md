@@ -2,7 +2,7 @@ _This is the twelfth issue of The Starlet List. If you want to prompt your open 
 
 ---
 
-![waspsh_logo](/blog/assets/wasp/waspsh_logo.webp)
+![waspsh_logo](/assets/blog/wasp/waspsh_logo.webp)
 
 [Wasp](https://wasp-lang.dev/) is a fully open-source, full-stack web framework for React, Node.js, and Prisma. Use it to develop and deploy any web application backed by a database with all the common features ready out-of-the-box, without any 3rd party services - authentication, cron jobs, sending emails, …
 
@@ -10,11 +10,11 @@ Wasp is currently in Beta and has been used to create over 25,000 projects. It a
 
 ## How it works?
 
-![wasp_code_example](/blog/assets/wasp/wasp_code_example.webp)
+![wasp_code_example](/assets/blog/wasp/wasp_code_example.webp)
 
 Wasp is based on a simple configuration language backed by a custom-made compiler. This lets Wasp understand your web app's complete structure and requirements, from front-end to database and even deployment, resulting in faster development and much less boilerplate code.
 
-![wasp_compilation_diagram](/blog/assets/wasp/wasp_compilation_diagram.webp)
+![wasp_compilation_diagram](/assets/blog/wasp/wasp_compilation_diagram.webp)
 
 The best part is that you still write most of your code in the stack you already know, React & Node.js, and have complete flexibility to use your favorite npm libraries. Wasp is just a tool to help you move faster, with best practices included.
 
@@ -29,7 +29,7 @@ The best part is that you still write most of your code in the stack you already
 -   **Powerful CLI** - Wasp CLI covers everything from running your app, database migrations to deployment
 -   **And more!** - Custom API routes, database seeding, automatic cache invalidation, …
 
-![auth_demo_customize](/blog/assets/wasp/auth_demo_customize.webp)
+![auth_demo_customize](/assets/blog/wasp/auth_demo_customize.webp)
 
 ## Made with Wasp
 

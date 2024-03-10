@@ -6,7 +6,7 @@ _This is the ninth issue of The Starlet List. If you want to prompt your open so
 
 Electric comprises a sync layer (built with Elixir) placed in front of your Postgres database, and a type-safe client allowing you to bidirectionally sync data from your Postgres to local SQLite databases. This sync is CRDT-based, resilient to conflicting edits from multiple nodes at the same time, and works after being offline for extended periods.
 
-![electric-graphic](/blog/assets/electricsql/electric-graphic.webp)
+![electric-graphic](/assets/blog/electricsql/electric-graphic.webp)
 
 In some ways Electric is similar to Hasura or PostgREST in that it can provide a plug-and-play API to your Postgres database. However, there are three key differences:
 

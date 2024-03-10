@@ -6,13 +6,13 @@ _This is the fifth issue of The Starlet List. If you want to prompt your open so
 
 Machine learning has reached an inflection point. The models have become so big and powerful that the current data sources are not enough to train them. ChatGPT was trained on the entire **public** internet. Our current data sources are dangerously running out of data leading the so called **AI Data Starvation** problem. Additionally, end-users are becoming more and more privacy-cautious and are reluctant to share their data with third parties. This makes it harder for companies to use the data they need to train their models. The solution to this problem is to train the models on distributed data sources. However, the current federated learning solutions are still in their beginnings and not suitable for production use-cases. We are set out to change that!
 
-![Transition to Federated Learning](/blog/assets/metisfl/transition.webp)
+![Transition to Federated Learning](/assets/blog/metisfl/transition.webp)
 
 Our vision is to drive this transition from machine learning to federated learning. We want to make it easy for developers and enterprises to train their models on distributed data sources. We believe that such a transition will eventually happen and will be beneficial for everyone. The end-users will be able to keep their data private and secure, while the enterprises will be able to train better models and provide better services to their customers.
 
 ## What is MetisFL?
 
-![MetisFL Architecture](/blog/assets/metisfl/MetisFL-Components-Internal-02.webp)
+![MetisFL Architecture](/assets/blog/metisfl/MetisFL-Components-Internal-02.webp)
 
 [MetisFL](https://github.com/nevronAI/metisfl/) is an open-source federated learning framework that allows developer to train machine learning models on distributed data sources. Currently, the project is transitioning from a private, experimental version to a public, beta phase. We are actively encouraging developers, researchers and data scientists to experiment with the framework and contribute to the codebase.Please have a look at our [draft documentation](https://docs.nevron.ai/metisfl/) and [GitHub repository](https://github.com/nevronAI/metisfl/) to get a better understanding of the framework and how to use it.
 

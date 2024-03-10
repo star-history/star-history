@@ -18,7 +18,7 @@ PostgresML collocates data and compute, so you can save models and index data ri
 
 Instead of patching together MongoDB, Databricks, Pinecone, Huggingface, LangChain and more to get the latest algorithms and LLMs in your app – you can add one extension to your Postgres database and get to market quickly. Here’s what a typical chatbot build looks like with and without PostgresML:
 
-![diagram](/blog/assets/postgresml/diagram.webp)
+![diagram](/assets/blog/postgresml/diagram.webp)
 
 Why Postgres? If it’s not broke, don’t fix it. Postgres is old reliable for a reason. It’s highly efficient, scalable and open-source (Just like all of PostgresML). Plus, you can easily build your AI app using simple SQL.
 

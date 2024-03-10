@@ -3,15 +3,15 @@ your project is selected.**
 
 As open source and the GitHub ecosystem thrives, Star History has been gaining momentum since its inception.
 
-![growth](/blog/assets/list-your-open-source-project/growth.webp)
+![growth](/assets/blog/list-your-open-source-project/growth.webp)
 
 Today, it's already the de-facto place to check and compare GitHub star trajectory.
 
-![search](/blog/assets/list-your-open-source-project/google-search.webp)
+![search](/assets/blog/list-your-open-source-project/google-search.webp)
 
 The Star History team posts new open source projects daily on [@StarHistoryHQ](https://twitter.com/StarHistoryHQ). The team also curates [a monthly newsletter](/blog/star-history-monthly-pick-202305) to list intriguing open source projects.
 
-![newsletter](/blog/assets/list-your-open-source-project/monthly-pick.webp)
+![newsletter](/assets/blog/list-your-open-source-project/monthly-pick.webp)
 
 The Star History content is consumed by thousands of visitors every month. Among the visitors, the open
 source practitioners and the open source investors are the two largest groups.

@@ -4,7 +4,7 @@ _This is the fifteenth issue of The Starlet List. If you want to prompt your ope
 
 After extensive development, the AI-native database Infinity was officially open-sourced on December 21, 2023. Github repo: https://github.com/infiniflow/infinity. Infinity is specifically designed to cater to large models and is primarily used for Retrieval Augmented Generation (RAG). In the future, the infrastructure layer of enterprise AI applications will only require an AI-native database combined with a large model (LLM currently, multi-modal models in the future) to fully address the core needs of enterprise AI applications including Copilot, search, recommendations, and conversational AI. All types of enterprise data — documents, regular databases (OLTP and OLAP), APIs, logs, and unstructured data — can be integrated into a single AI-native database. The database feeds the business queries’ data to the large model, which generates the final results for specific applications.
 
-![applications](/blog/assets/infinity/applications.webp)
+![applications](/assets/blog/infinity/applications.webp)
 
 ## Vector databases alone are insufficient for enterprise AI applications
 
@@ -20,7 +20,7 @@ For example, most RAG (Retrieval-Augmented Generation) applications require prec
 
 Therefore, the infrastructure for AI has actually evolved through three generations:
 
-![iterations](/blog/assets/infinity/iterations.webp)
+![iterations](/assets/blog/infinity/iterations.webp)
 
 The initial phase of AI relies on data statistics and mining and features the search engine. Elasticsearch and databases like MySQL were commonly used as infrastructure supporting enterprise AI applications.
 
@@ -46,11 +46,11 @@ Some may consider incorporating vector search capabilities into data lakes as an
 
 Therefore, as depicted in the blue box of the diagram, Infinity is a product that integrates AI and data infrastructure. It is specifically designed to cater to online scenarios and fulfill the future requirements of enterprises regarding data infrastructure for large language models.
 
-![ecosystem](/blog/assets/infinity/ecosystem.webp)
+![ecosystem](/assets/blog/infinity/ecosystem.webp)
 
 ## Infinity’s system architecture
 
-![architecture](/blog/assets/infinity/architecture.webp)
+![architecture](/assets/blog/infinity/architecture.webp)
 
 As shown in the diagram above, Infinity consists of two major modules: the storage layer and the computation layer.
 

@@ -6,7 +6,7 @@ Many open-source companies/libraries, [Novu](https://github.com/novuhq/novu) amo
 
 This is the answer I get from almost everybody, and they are right! partially…
 
-![confused](/blog/assets/do-github-stars-equal-money/confused.gif)
+![confused](/assets/blog/do-github-stars-equal-money/confused.gif)
 
 I would like to touch on three subjects:
 
@@ -22,7 +22,7 @@ Of course, they will look after the last commit and latest pull requests. It’s
 
 If you are an early adopter, yes, you might choose to go with a smaller library, but bigger libraries want to see growth - the more stars you have, the longer time you are in the market, and this is part of the vanity metric 👇
 
-![credibility](/blog/assets/do-github-stars-equal-money/credibility.gif)
+![credibility](/assets/blog/do-github-stars-equal-money/credibility.gif)
 
 ## The vanity metric that rules them all 👑
 
@@ -41,7 +41,7 @@ We have written tens of articles with a CTA to give us a star, which resulted in
 
 In Novu, we achieved a major amount of stars that usually takes COSS libraries around 2-3 years to get. However, if you compare the other metrics, you will see that they match.
 
-![vanity](/blog/assets/do-github-stars-equal-money/vanity.gif)
+![vanity](/assets/blog/do-github-stars-equal-money/vanity.gif)
 
 ## Trending on GitHub weekly 📊
 
@@ -58,7 +58,7 @@ And so, I have always tried to understand how to get to this page and realized t
 
 Since then, we have been trending there multiple times and have had major growth in all the factors.
 
-![trend](/blog/assets/do-github-stars-equal-money/trend.gif)
+![trend](/assets/blog/do-github-stars-equal-money/trend.gif)
 
 ## Where’s the money buddy 💰
 
@@ -86,4 +86,4 @@ I started a 100% free (and always will be) newsletter, it is good for you if:
 
 Feel free to register at: [https://github20k.com](https://github20k.com/)
 
-![tech](/blog/assets/do-github-stars-equal-money/tech.webp)
+![tech](/assets/blog/do-github-stars-equal-money/tech.webp)

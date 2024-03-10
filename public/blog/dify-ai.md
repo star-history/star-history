@@ -57,19 +57,19 @@ With Dify, anyone can quickly create AI apps visually in minutes:
 
 Step 1:
 
-![Step 1](/blog/assets/dify-ai/step1.webp)
+![Step 1](/assets/blog/dify-ai/step1.webp)
 
 Step 2:
 
-![Step 2](/blog/assets/dify-ai/step2.webp)
+![Step 2](/assets/blog/dify-ai/step2.webp)
 
 Step 3:
 
-![Step 3](/blog/assets/dify-ai/step3.webp)
+![Step 3](/assets/blog/dify-ai/step3.webp)
 
 Step 4:
 
-![Step 4](/blog/assets/dify-ai/step4.webp)
+![Step 4](/assets/blog/dify-ai/step4.webp)
 
 ## Using Dify.AI
 

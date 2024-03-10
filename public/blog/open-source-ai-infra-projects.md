@@ -10,11 +10,11 @@ Despite having only been in the industry for half a year, [Chroma](https://githu
 
 Although there are plenty vector database solutions out there, the Chroma team believes that none of them are friendly enough for dev environments. Chroma comes with everything you need to build an AI application in terms of embedding storage. Simply pip install chromadb, no additional configuration or installation needed.
 
-![chroma](/blog/assets/open-source-ai-infra-projects/chroma.webp)
+![chroma](/assets/blog/open-source-ai-infra-projects/chroma.webp)
 
 They also have a dazzling list of investors. ✨
 
-![chroma-investors](/blog/assets/open-source-ai-infra-projects/chroma-investors.webp)
+![chroma-investors](/assets/blog/open-source-ai-infra-projects/chroma-investors.webp)
 
 ## LangChain 🦜🔗
 
@@ -26,7 +26,7 @@ They also have a dazzling list of investors. ✨
 
 🔗 You can link a series of commands together so that the AI model knows what it needs to do, generate what sort of answer, and perform which task.
 
-![langchain-chroma](/blog/assets/open-source-ai-infra-projects/langchain-chroma.webp)
+![langchain-chroma](/assets/blog/open-source-ai-infra-projects/langchain-chroma.webp)
 
 For example, Chroma and LangChain can seamlessly run together: you can use LangChain to build LLM applications powered by Chroma.
 
@@ -34,7 +34,7 @@ For example, Chroma and LangChain can seamlessly run together: you can use LangC
 
 [GPTCache](https://github.com/zilliztech/GPTCache) is a semantic caching layer developed by Zilliz. When your AI Chatbot gets more popular and the traffic gradually increases, GPTCache can help save API calling costs and maintain response speed. In fact, Zilliz open-sourced GPTCache because their Q&A bot OSSChat encountered performance degradation and increasing service costs. 🚑
 
-![gptcache](/blog/assets/open-source-ai-infra-projects/gptcache.webp)
+![gptcache](/assets/blog/open-source-ai-infra-projects/gptcache.webp)
 
 Besides improved performance and saved costs, you can customize cache rules to suit your own needs to maximize efficiency. Oh, and BTW - GPTCache is also [fully integrated](https://python.langchain.com/en/latest/modules/models/llms/examples/llm_caching.html?highlight=cache#gptcache) with LangChain.
 
@@ -42,7 +42,7 @@ Besides improved performance and saved costs, you can customize cache rules to s
 
 [Dify.AI](https://github.com/langgenius/dify) is an out of the box LLMOps platform that comes with an interface for prompt engineering and operations for you to create AI applications. It has several built-in application templates (e.g. their SQL Creator template to generate SQL statements 🤗).
 
-![dify](/blog/assets/open-source-ai-infra-projects/dify.webp)
+![dify](/assets/blog/open-source-ai-infra-projects/dify.webp)
 
 Even if writing code is not your forte, you can create simple LLM applications and share them with your friends. Some (relatively) advance operations include integrating your own dataset, selecting LLM models, improving and adjusting your prompts.
 
@@ -52,7 +52,7 @@ Even if writing code is not your forte, you can create simple LLM applications a
 
 Stable Diffusion is open-source, and there are already tons of projects based upon it, such as the prompt search engine for Stable Diffusion, Figma and PS plugins, etc.
 
-![stable-diffusion](/blog/assets/open-source-ai-infra-projects/stable-diffusion.webp)
+![stable-diffusion](/assets/blog/open-source-ai-infra-projects/stable-diffusion.webp)
 
 Recently, Stability AI announced the open-source of their AI image generation platform [StableStudio](https://github.com/Stability-AI/StableStudio), which is an open-source version of DreamStudio. Key features include online generation, editing and repairing of AI-generated images. Is this an attempt to one-up Midjourney? 🤔️
 
@@ -60,7 +60,7 @@ Recently, Stability AI announced the open-source of their AI image generation pl
 
 After taking a glance at the star history of these projects, it's obvious that there's a common trait - they are all still babies (in terms of age). It's wild that this time last year, none of them existed. Now they are on their way to become an integral part of the next generation application stack.
 
-![star-history-ai](/blog/assets/open-source-ai-infra-projects/star-history-ai.webp)
+![star-history-ai](/assets/blog/open-source-ai-infra-projects/star-history-ai.webp)
 
 Wowza. The only reasonable explanation for this graph is that Stable Diffusion is way too powerful. The other projects are actually really strong players in terms of growth.
 

@@ -10,7 +10,7 @@ Actually, OpenAI [started](https://openai.com/blog/chatgpt-can-now-see-hear-and-
 
 ## EmotiVoice
 
-![emotivoice](/blog/assets/tts/emotivoice.webp)
+![emotivoice](/assets/blog/tts/emotivoice.webp)
 
 [EmotiVoice](https://github.com/netease-youdao/EmotiVoice) is a multi-voice and prompt-controlled TTS engine, by the NetEase Youdao team. The project gained 4.2k stars within the first week of its launch.
 
@@ -18,7 +18,7 @@ EmotiVoice currently supports English and Chinese, with multiple voice and promp
 
 ## Coqui TTS 🐸
 
-![coqui-tts](/blog/assets/tts/coqui-tts.webp)
+![coqui-tts](/assets/blog/tts/coqui-tts.webp)
 
 [Coqui TTS](https://github.com/coqui-ai/TTS) is a TTS model that can clone voices in different languages in just 3 seconds. It enables cross-language voice cloning and multilingual speech generation so that you can quickly and easily create, cast, and direct AI voice actors. It's got:
 
@@ -32,7 +32,7 @@ Note that it is licensed under MPL-2.0, which allows commercial use as well as m
 
 ## TorToiSe 🐢
 
-![tortoise](/blog/assets/tts/tortoise.webp)
+![tortoise](/assets/blog/tts/tortoise.webp)
 
 [TorToiSe](https://github.com/neonbjb/tortoise-tts) is a TTS program released in April 2022 (and got big in 2023). It has:
 
@@ -45,7 +45,7 @@ Tortoise is an advanced TTS system known for its exceptional voice cloning capab
 
 ## Real-Time Voice Cloning
 
-![rvc](/blog/assets/tts/rvc.webp)
+![rvc](/assets/blog/tts/rvc.webp)
 
 [Real-Time Voice Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning) can generate arbitrary speech in real-time. It is an implementation of the paper "[Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis](https://arxiv.org/pdf/1806.04558.pdf)" (SV2TTS, a deep learning framework) with a vocoder that works in real-time.
 
@@ -53,7 +53,7 @@ The project started way back in 2019, and the author (who currently works for an
 
 ## VALL-E-X
 
-![vall-e-x](/blog/assets/tts/vall-e-x.webp)
+![vall-e-x](/assets/blog/tts/vall-e-x.webp)
 
 [VALL-E-X](https://github.com/Plachtaa/VALL-E-X) is Microsoft's cross-lingual neural codec language model, which is an extension of its original [VALL-E](https://www.microsoft.com/en-us/research/project/vall-e-x/vall-e/). Microsoft initially published the research paper, and a team at Nanyang Technological University reproduced the results and trained their own model.
 

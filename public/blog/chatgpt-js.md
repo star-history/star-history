@@ -6,7 +6,7 @@ _This is the fourth issue of The Starlet List. If you want to prompt your open s
 
 <div>
 
-![chatgpt.js landing page](/blog/assets/chatgpt-js/chatgpt-js-landing-page.webp)
+![chatgpt.js landing page](/assets/blog/chatgpt-js/chatgpt-js-landing-page.webp)
 
 </div>
 
@@ -46,7 +46,7 @@ Each call equally fetches the last response (from either DOM or API, dependent o
 
 <div align="center">
 
-![Chrome extension made with chatgpt.js](/blog/assets/chatgpt-js/chatgpt-extension-loaded.webp)
+![Chrome extension made with chatgpt.js](/assets/blog/chatgpt-js/chatgpt-extension-loaded.webp)
 
 </div>
 
@@ -77,7 +77,7 @@ Two main events can be attributed with causing this astonishing growth spurt:
 
 <div align="center">
 
-![GitHub growth spike after Product Hunt launch](/blog/assets/chatgpt-js/github-traffic-spike-after-product-hunt-launch.webp)
+![GitHub growth spike after Product Hunt launch](/assets/blog/chatgpt-js/github-traffic-spike-after-product-hunt-launch.webp)
 
 </div>
 
@@ -85,7 +85,7 @@ Two main events can be attributed with causing this astonishing growth spurt:
 
 <div align="center">
 
-![image](/blog/assets/chatgpt-js/tldr-newslettere-featuring-chatgpt-js.webp)
+![image](/assets/blog/chatgpt-js/tldr-newslettere-featuring-chatgpt-js.webp)
 
 </div>
 

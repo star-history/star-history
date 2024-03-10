@@ -8,7 +8,7 @@ In this post, we'll share five Postgres extensions that just might boost your AI
 
 ## pgvector
 
-![pgvector](/blog/assets/ai-for-postgres/pgvector.webp)
+![pgvector](/assets/blog/ai-for-postgres/pgvector.webp)
 
 [pgvector](https://github.com/pgvector/pgvector) is an open-source vector similarity search specifically designed for Postgres (supports Postgres 11+). It can also be used for storing embeddings. It's been around since 2021, way before AI became part of our daily routine. The spike in popularity came around 2023.2, when vector similarity search became a hot topic.
 
@@ -23,13 +23,13 @@ If you use plain Postgres, simply compile and install the extension; if you are 
 
 ## PostgresML
 
-![postgresml](/blog/assets/ai-for-postgres/postgresml.webp)
+![postgresml](/assets/blog/ai-for-postgres/postgresml.webp)
 
 [PostgresML](https://github.com/postgresml/postgresml) is an extension that allows developers to integrate machine learning (ML) models into Postgres that scored a [$4.7M seed funding round](https://postgresml.org/blog/postgresml-raises-4.7M-to-launch-serverless-ai-application-databases-based-on-postgres) this May. It enables training and inference on text and data using SQL queries, greatly reducing the complexity of application development.
 
 If you don't have fancy ML workloads (because not all of us are AI giants) in your company, but would like to build your own machine learning model that can learn from fresh data, this would be a good way to get started.
 
-![postgresml-textgen](/blog/assets/ai-for-postgres/postgresml-textgen.webp)
+![postgresml-textgen](/assets/blog/ai-for-postgres/postgresml-textgen.webp)
 
 _Side note #1: They got another open-source project under the organization: [PgCat](https://github.com/postgresml/pgcat), a Postgres pooler, which was first released back in February, 2022. Interesting to see them pivot to the more sexy topic of AI._
 
@@ -37,21 +37,21 @@ _Side note #2: PostgresML was actually_ [_featured on the starlet issue_](https:
 
 ## MADlib
 
-![madlib](/blog/assets/ai-for-postgres/madlib.webp)
+![madlib](/assets/blog/ai-for-postgres/madlib.webp)
 
 Apache [MADlib](https://github.com/apache/madlib) is a tool for big data Machine Learning in SQL. It started out way back before ChatGPT brought the heat to AI, the repo was released on GitHub somewhere in 2016, but the initial release was as early as in 2011 (and continues to evolve).
 
-![madlib-alpha](/blog/assets/ai-for-postgres/madlib-alpha.webp)
+![madlib-alpha](/assets/blog/ai-for-postgres/madlib-alpha.webp)
 
 The perception that SQL doesn't work well enough for inferential, predictive or causal analysis on larger or unstructured data sets is no longer true. MADlib basically an in-database machine learning library, where you get to perform advanced machine learning within your database where your data resides. Once installed, you can use SQL to perform various data analysis tasks, including regression and classification easily.
 
 Interesting fact: MAD in MADlib actually stands for Magnetic, Agile, and Deep.
 
-![madlib-mad](/blog/assets/ai-for-postgres/madlib-mad.webp)
+![madlib-mad](/assets/blog/ai-for-postgres/madlib-mad.webp)
 
 ## pg_embedding
 
-![pg-embedding](/blog/assets/ai-for-postgres/pg-embedding.webp)
+![pg-embedding](/assets/blog/ai-for-postgres/pg-embedding.webp)
 
 Now we are onto a few wildcards, they are riveting projects for sure, but use them at your own risk.
 
@@ -59,13 +59,13 @@ Now we are onto a few wildcards, they are riveting projects for sure, but use th
 
 It uses Hierarchical Navigable Small Worlds (HNSW) index to for high-dimensional similarity search, which was before pgvector added support for HNSW (Hard to understand why it was [20x faster than pgvector](https://neon.tech/blog/pg-embedding-extension-for-vector-search) when it first came out).
 
-![pg-embedding-faster](/blog/assets/ai-for-postgres/pg-embedding-faster.webp)
+![pg-embedding-faster](/assets/blog/ai-for-postgres/pg-embedding-faster.webp)
 
 But a few months later in September, they added [a note](https://github.com/neondatabase/pg_embedding#pg_embedding) mentioning that they are no longer committing to pg_embedding. Looks like there really is no Buy or Build dilemma: if there's a decent service out there, it's the obvious choice.
 
 ## pg_gpt
 
-![pg-gpt](/blog/assets/ai-for-postgres/pg-gpt.webp)
+![pg-gpt](/assets/blog/ai-for-postgres/pg-gpt.webp)
 
 [pg_gpt](https://github.com/cloudquery/pg_gpt) is an experimental Postgres extension uses the OpenAI GPT API inside Postgres, so you can ask your database questions using natural language. And it's actually built by CloudQuery, an open-source ELT platform.
 

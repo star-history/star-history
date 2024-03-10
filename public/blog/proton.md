@@ -12,7 +12,7 @@ We believe data analytics work best when you can use it like a human brain: cons
 
 Introducing Proton, a new open-source streaming SQL analytical engine that functions as intuitively as a human brain: in a single binary, you can combine the power of OLAP processing with responsive real-time streaming analytics.
 
-![proton-logo-for-whitebg](/blog/assets/proton/proton-logo-for-whitebg.webp)
+![proton-logo-for-whitebg](/assets/blog/proton/proton-logo-for-whitebg.webp)
 
 [Proton](https://github.com/timeplus-io/proton) is a SQL database for both historical and streaming data, with a strong focus on simplicity, performance, and openness.
 
@@ -34,7 +34,7 @@ Introducing Proton, a new open-source streaming SQL analytical engine that funct
 
 Here is the high-level architecture diagram of Proton:
 
-![](/blog/assets/proton/proton-architecture.webp)
+![](/assets/blog/proton/proton-architecture.webp)
 
 Please check [this blog](https://www.timeplus.com/post/unify-streaming-and-historical-data-processing) for details.
 

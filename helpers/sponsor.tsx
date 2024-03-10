@@ -20,8 +20,8 @@ interface Sponsor {
 const sponsors: Sponsor[] = [
     // {
     //   name: "Bytebase",
-    //   logo: utils.absolutifyLink("/sponsors/bytebase/logo.webp"),
-    //   landingImage: utils.absolutifyLink("/sponsors/bytebase/landing.webp"),
+    //   logo: utils.absolutifyLink("/assets/sponsors/bytebase/logo.webp"),
+    //   landingImage: utils.absolutifyLink("/assets/sponsors/bytebase/landing.webp"),
     //   link: "https://bytebase.com?utm_source=star-history",
     //   logoSlogan:
     //     "Bytebase: Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, CK, Mongo, Redis",
@@ -30,16 +30,16 @@ const sponsors: Sponsor[] = [
     // },
     {
         name: "Dify",
-        logo: utils.absolutifyLink("/sponsors/dify/logo.webp"),
-        landingImage: utils.absolutifyLink("/sponsors/dify/landing.webp"),
+        logo: utils.absolutifyLink("/assets/sponsors/dify/logo.webp"),
+        landingImage: utils.absolutifyLink("/assets/sponsors/dify/landing.webp"),
         link: "https://dify.ai/?utm_source=star-history",
         logoSlogan: "Dify: The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",
         landingSlogan: "The next-gen development platform. Create Assistants API and GPTs based on any LLMs."
     },
     {
         name: "Argo CD vs. Flux",
-        logo: utils.absolutifyLink("/sponsors/akuity/logo.webp"),
-        landingImage: utils.absolutifyLink("/sponsors/akuity/landing.webp"),
+        logo: utils.absolutifyLink("/assets/sponsors/akuity/logo.webp"),
+        landingImage: utils.absolutifyLink("/assets/sponsors/akuity/landing.webp"),
         link: "https://hubs.li/Q02fpVR30",
         logoSlogan: "A legit and balanced comparison of top two GitOps tools. Choose Argo CD today for a better DevOps experience.",
         landingSlogan: "choose Argo CD for a better DevOps experience."

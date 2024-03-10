@@ -8,11 +8,11 @@ This month's collection didn't start with a specific topic in mind, but looking 
 
 Windmill Hub is a place where users share script templates that others can reuse. This is golden for those looking for specific solutions and should also help with SEO and conversion rates (Having users generate and share templates is key to Notion's success).
 
-![windmill-hub](/blog/assets/star-history-monthly-pick-202305/windmill-hub.webp)
+![windmill-hub](/assets/blog/star-history-monthly-pick-202305/windmill-hub.webp)
 
 Apparently, a user [submitted](https://news.ycombinator.com/item?id=35920082) Windmill to HN a month ago, which is also reflected in their star history (will you look at that spike).
 
-![windmill-hn](/blog/assets/star-history-monthly-pick-202305/windmill-hn.webp)
+![windmill-hn](/assets/blog/star-history-monthly-pick-202305/windmill-hn.webp)
 
 ## Formbricks
 
@@ -22,17 +22,17 @@ I was actually researching Prisma use cases when I came across [Formbricks](http
 -   Low-code: accessible to both developers and non-tech people
 -   And its value: it's all about the when, how and where to ask the questions so as to obtain accurate insights from users. These tasks are often completed by product managers who may not be developers themselves. As a low-code tool, the ability to embed surveys directly into products without needing to modify application code and bother developers repeatedly surely is music to the ears.
 
-![formbricks](/blog/assets/star-history-monthly-pick-202305/formbricks.webp)
+![formbricks](/assets/blog/star-history-monthly-pick-202305/formbricks.webp)
 
 ## Easy Email
 
 [Easy Email](http://github.com/zalify/easy-email) is a drag-and-drop email editor developed based on the poplular framework for responsive-email: MJML. It's open-sourced by Zalify, a data-driven growth platform for Shopify merchants and it looks like Easy Email is a Zalify add-on.
 
-![easymail](/blog/assets/star-history-monthly-pick-202305/easymail.webp)
+![easymail](/assets/blog/star-history-monthly-pick-202305/easymail.webp)
 
 BTW - is it just me or is their logo Gmail's cousin? 🤣
 
-![easymail-gmail](/blog/assets/star-history-monthly-pick-202305/easymail-gmail.webp)
+![easymail-gmail](/assets/blog/star-history-monthly-pick-202305/easymail-gmail.webp)
 
 ## DB-GPT
 
@@ -40,7 +40,7 @@ After the initial hype of having Large Language Models change our lives complete
 
 The feature list already includes Chat2sql, executing and polishing SQL, processing data, storing and indexing vectors, and managing LLMs.
 
-![dbgpt-bytebase](/blog/assets/star-history-monthly-pick-202305/dbgpt-bytebase.webp)
+![dbgpt-bytebase](/assets/blog/star-history-monthly-pick-202305/dbgpt-bytebase.webp)
 
 Of course, you can use it alongside [Bytebase](https://www.bytebase.com/).
 
@@ -50,10 +50,10 @@ Of course, you can use it alongside [Bytebase](https://www.bytebase.com/).
 
 SeaORM's organization is called SeaQL (bonus points for the pun), and all of their projects are named after the sea and database-related. For example, SeaQuery is the foundation of SeaORM, a dynamic SQL query builder that works with MySQL, Postgres, and SQLite.
 
-![seaql](/blog/assets/star-history-monthly-pick-202305/seaql.webp)
+![seaql](/assets/blog/star-history-monthly-pick-202305/seaql.webp)
 
 ## To Sum Up
 
-![star-history](/blog/assets/star-history-monthly-pick-202305/star-history.webp)
+![star-history](/assets/blog/star-history-monthly-pick-202305/star-history.webp)
 
 All of these projects are so different and have completely different origin stories, and even their Star History trends, but isn't that what's fascinating?! And, if you come across any interesting tools, make sure to let us know [@StarHistoryHQ](https://twitter.com/StarHistoryHQ)! 👻

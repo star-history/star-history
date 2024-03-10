@@ -2,7 +2,7 @@ _This is the thirteenth issue of The Starlet List. If you want to prompt your op
 
 ---
 
-![earthly-logo](/blog/assets/earthly/earthly-logo.webp)
+![earthly-logo](/assets/blog/earthly/earthly-logo.webp)
 
 [Earthly](https://earthly.dev/) is like a combination of Docker and Make, running build scripts in Docker containers for consistent results in any environment - local, remote, and CI. It even blends Dockerfile and Makefile syntaxes for ease of use. It has advanced caching, like Docker layer caching on steroids, that speeds up builds significantly, especially in CI. Additionally, Earthly is designed for easy integration with any CI, helping you ensure fast, consistent builds everywhere.
 

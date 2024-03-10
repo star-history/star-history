@@ -5,7 +5,7 @@ GPT wrapper tools offer a service by "wrapping" around ChatGPT API, leveraging t
 -   Novice users can use them.
 -   You can use your own OpenAI API key, so you pay for exactly what you use.
 
-![chatgpt-gif](/blog/assets/gpt-wrappers/chatgpt.gif)
+![chatgpt-gif](/assets/blog/gpt-wrappers/chatgpt.gif)
 
 With ChatGPT, all you need is the million dollar [idea](https://twitter.com/debarghya_das/status/1748014098967912456) to get started.
 
@@ -17,13 +17,13 @@ For this issue of Star History monthly, we have located a set of open-source Cha
 -   [Flowise](#flowise)
 -   [Lobe Chat](#lobe-chat)
 
-[![star-history](/blog/assets/gpt-wrappers/star-history.webp)](/#labring/fastgpt&flowiseai/flowise&openai-translator/openai-translator&lobehub/lobe-chat&ChatGPTNextWeb/ChatGPT-Next-Web&Date)
+[![star-history](/assets/blog/gpt-wrappers/star-history.webp)](/#labring/fastgpt&flowiseai/flowise&openai-translator/openai-translator&lobehub/lobe-chat&ChatGPTNextWeb/ChatGPT-Next-Web&Date)
 
 ## ChatGPT-Next-Web
 
 [ChatGPT-Next-Web](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) is a cross-platform UI for ChatGPT (or Gemini), available as a web app or as a compact client on Linux, Windows and MacOS. You can also deploy ChatGPT-Next-Web on Vercel in just a minute.
 
-![chatgpt-next-web](/blog/assets/gpt-wrappers/chatgpt-next-web.webp)
+![chatgpt-next-web](/assets/blog/gpt-wrappers/chatgpt-next-web.webp)
 
 Aside from the built-in prompts powered by [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) (Are you an ETH dev, a financial analyst, or a personal trainer today?), you can also create, share and debug your chat tools with prompt templates.
 
@@ -31,7 +31,7 @@ Aside from the built-in prompts powered by [awesome-chatgpt-prompts](https://git
 
 [FastGPT](https://github.com/labring/FastGPT) is a knowledge-based QA system built on the LLM, offers out-of-the-box data processing and model invocation capabilities, allows for workflow orchestration. Basically, you can use FastGPT to build your own AI knowledge base.
 
-![fastgpt](/blog/assets/gpt-wrappers/fastgpt.webp)
+![fastgpt](/assets/blog/gpt-wrappers/fastgpt.webp)
 
 For example, feed all your docs to FastGPT, and it will organize and group them. When you later ask FastGPT relevant questions, it can directly locate the information in its brain.
 
@@ -41,7 +41,7 @@ For example, feed all your docs to FastGPT, and it will organize and group them.
 
 It started out as a Chrome extension, and has now evolved into a multi-platform desktop app.
 
-![openai-translator](/blog/assets/gpt-wrappers/openai-translator.webp)
+![openai-translator](/assets/blog/gpt-wrappers/openai-translator.webp)
 
 As an OpenAI Translator user, it stands out as a GPT wrapper in three ways:
 
@@ -52,7 +52,7 @@ As an OpenAI Translator user, it stands out as a GPT wrapper in three ways:
 
 [Flowise](https://github.com/FlowiseAI/Flowise) provides a drag & drop UI to build your customized LLM flow.
 
-![flowise](/blog/assets/gpt-wrappers/flowise.webp)
+![flowise](/assets/blog/gpt-wrappers/flowise.webp)
 
 It is a low-code UI tool for LangChain JS, written in Node Typescript, which aims to provide a seamless platform for easy experimentation flow and prototype design. With Flowise, you can:
 
@@ -65,7 +65,7 @@ If you are feeling handy, you can build your own GPT tools with Flowise to repla
 
 [Lobe Chat](https://github.com/lobehub/lobe-chat) is It's an all-in-one chatbot platform - TTS & STT, vision, plugins, you name it. You can also one-click deploy your private ChatGPT or LLM web app.
 
-![lobe-chat](/blog/assets/gpt-wrappers/lobe-chat.webp)
+![lobe-chat](/assets/blog/gpt-wrappers/lobe-chat.webp)
 
 Lobe Chat is designed to help users make better use of OpenAI's capabilities, while also providing a wide range of applicable features. Its plugin ecosystem is a significant extension. For example, WeatherGPT, Ask Your PDF, Search Engine are just some of the plugins it's equipped with.
 

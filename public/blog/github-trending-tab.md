@@ -2,11 +2,11 @@
 
 When I learned GitHub’s plan to remove the Trending tab. My immediate reaction was:
 
-![throw](/blog/assets/github-trending-tab/throw.gif)
+![throw](/assets/blog/github-trending-tab/throw.gif)
 
 For open source projects, showing up on the GitHub Trending Tab is a braggable milestone. As someone from [HN](https://news.ycombinator.com/item?id=32681319) suggests, the Trending Tab sits on many developer’s bookmark bar:
 
-![hn](/blog/assets/github-trending-tab/hn.webp)
+![hn](/assets/blog/github-trending-tab/hn.webp)
 
 For such a popular industry leaderboard, it’s always a challenge to be fair and pick the top N projects most people are happy with. And fair is even more subjective in the developer world.
 
@@ -23,7 +23,7 @@ And apparently, the GitHub folks don’t have enough capacity to clean up the we
 
 star-history.com runs a Twitter account [@StartHistoryHQ](https://twitter.com/starhistoryhq) posting interesting GitHub repos every day.
 
-![star-history](/blog/assets/github-trending-tab/star-history.webp)
+![star-history](/assets/blog/github-trending-tab/star-history.webp)
 
 Some people DMed us asking if we use a bot to find those repos. Actually, we curate each repo manually, and GitHub Trending Tab is one of our primary sources to find those repos. For us, the Trending Tab serves as a starting point. We review the list every day and pick 1 or 2 interesting repos. Without GitHub Trending, finding the needles in the haystack would require much more effort.
 
@@ -35,7 +35,7 @@ People often complain about the ranking mystery, but mystery also brings serendi
 
 While composing this post, I just checked [github.com](https://github.com), and they still have a dedicated Community tab. To me, Community is what GitHub differentiates itself from other VCS providers like GitLab, Bitbucket.
 
-![github-home](/blog/assets/github-trending-tab/github-home.webp)
+![github-home](/assets/blog/github-trending-tab/github-home.webp)
 
 GitHub calls itself the home for the Developers. The stars, the issues, the discussions, the followers, the sponsors, and the trendings, it’s these engagements make developers have emotional bindings with GitHub.
 

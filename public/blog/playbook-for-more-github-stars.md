@@ -13,7 +13,7 @@ Anyone involved in marketing knows that no two days are the same. You are consta
 
 And so it was a few months back when I was tasked with promoting a new open source project that we built, called [Preevy](https://github.com/livecycle/preevy).
 
-![preevy](/blog/assets/playbook-for-more-github-stars/preevy.webp)
+![preevy](/assets/blog/playbook-for-more-github-stars/preevy.webp)
 
 I’ve spent years leading go to market efforts at various companies for dozens of products, but this was my first time doing so for an open source developer tool. Don't get me wrong - the devs on my team are seasoned OSS pros. But as the head of marketing, I was the open source newbie facing a learning curve.
 
@@ -29,7 +29,7 @@ The next couple of months became a whirlwind of research and experimentation to 
 
 And today, 12 weeks after launching Preevy, the project has 1.5k GitHub stars, and we’re seeing a week-over-week increase in repository traffic, forks and contributions.
 
-![star-history](/blog/assets/playbook-for-more-github-stars/star-history.webp)
+![star-history](/assets/blog/playbook-for-more-github-stars/star-history.webp)
 
 There are several repeatable actions that have been effective in growing our traffic and our star count. In retrospect, some of them were buried in those generic "How to" articles, but most of them were not. Many of the creative steps we took (and continue to take) are lessons we learned the old-fashioned way.
 
@@ -60,7 +60,7 @@ So if you’re trying to promote your GitHub library, you should be thinking abo
 
 So without further ado, let's take a deep dive into the key growth levers that worked for me and my team.
 
-![jump](/blog/assets/playbook-for-more-github-stars/jump.gif)
+![jump](/assets/blog/playbook-for-more-github-stars/jump.gif)
 
 ## Prerequisites: Basic repo health
 
@@ -146,7 +146,7 @@ Writing content is great, but it won't help you if you don’t have a good plan 
 
 _Here's one of our posts trending on_ [_Dev.to_](http://Dev.to)_:_
 
-![devto](/blog/assets/playbook-for-more-github-stars/devto.webp)
+![devto](/assets/blog/playbook-for-more-github-stars/devto.webp)
 
 -   **Reddit and social media** - Once the content was published on the above platforms, we promoted it on social media and in relevant subreddits. We did not drive traffic to our company blog (we’ll get to that in a minute). Rather, we intentionally directed people to the articles hosted on these outside blogging platforms. We did this because each of these blogging platforms has a built-in trending algorithm that boosts high-performing posts. By driving traffic to these links, we got the platform algorithms to work for us and get our posts many more views in a short period of time.
 -   **Our company blog** - Don’t worry. We didn’t forget about our own site. We also published all content on our company blog. After all, SEO is still a thing, and so it’s good to have all that relevant content hosted on the company domain. As extra credit, we also managed to get our blog approved as a content source by dev-centric content aggregators like [daily.dev](https://app.daily.dev/sources/livecycle). This helps us to distribute the content posted on our company’s blog, in addition to the content published on those external blogging sites.
@@ -214,7 +214,7 @@ We used Hackernews to promote Preevy in two ways:
 
 -   Post the GitHub repository under the [“Show HN” tag](https://news.ycombinator.com/show) - Hackernews can be a great place to share your new project with other technical folks. It helps to get others to upvote and comment soon after posting (just don’t share the direct link to your post!). We added a first comment where our CTO explained what we built and inviting others to try it. I don’t know if this comment helped, but I saw a lot of other open source projects doing the same. And while I can’t say for sure, it seems like HN is friendlier to GitHub repository links as opposed to some branded URL. So with a bit of coordination, HN could give you a potent dose of traffic.
 
-![hn](/blog/assets/playbook-for-more-github-stars/hn.webp)
+![hn](/assets/blog/playbook-for-more-github-stars/hn.webp)
 
 -   Post content - We’ve tried posting some of our content on HN. Success is hit or miss, and HN will not even accept posts from some external blogging platforms. But it’s free to try and the potential upside is huge.
 
@@ -236,7 +236,7 @@ Open source is not a zero-sum game. There’s enough traffic and enough GitHub s
 
 So for example, when we wrote listicles that included other open source projects, we tagged these companies/maintainers on Twitter when we promoted the article. Many time, they would like and retweet, adding a lot more reach to our content. This approach can be applied in many different ways, but it’s potent enough to deserve a dedicated mention in our list of open source GTM actions.
 
-![preevy-supabase](/blog/assets/playbook-for-more-github-stars/preevy-supabase.webp)
+![preevy-supabase](/assets/blog/playbook-for-more-github-stars/preevy-supabase.webp)
 
 ### My (crazy) Github retargeting experiment
 
