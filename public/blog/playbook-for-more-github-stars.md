@@ -60,8 +60,6 @@ So if you’re trying to promote your GitHub library, you should be thinking abo
 
 So without further ado, let's take a deep dive into the key growth levers that worked for me and my team.
 
-![jump](/assets/blog/playbook-for-more-github-stars/jump.gif)
-
 ## Prerequisites: Basic repo health
 
 The first thing I focused on was making sure our repository was set up for success.

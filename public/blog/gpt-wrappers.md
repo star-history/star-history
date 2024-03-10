@@ -5,8 +5,6 @@ GPT wrapper tools offer a service by "wrapping" around ChatGPT API, leveraging t
 -   Novice users can use them.
 -   You can use your own OpenAI API key, so you pay for exactly what you use.
 
-![chatgpt-gif](/assets/blog/gpt-wrappers/chatgpt.gif)
-
 With ChatGPT, all you need is the million dollar [idea](https://twitter.com/debarghya_das/status/1748014098967912456) to get started.
 
 For this issue of Star History monthly, we have located a set of open-source ChatGPT wrapper tools.
