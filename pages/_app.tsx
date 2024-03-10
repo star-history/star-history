@@ -19,6 +19,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
         <>
             <Head>
                 <link rel="icon" href="/assets/favicon.ico" />
+                <script defer data-domain="star-history.com" src="https://plausible.io/js/script.js"></script>
             </Head>
             {getLayout(<Component {...pageProps} />)}
         </>
