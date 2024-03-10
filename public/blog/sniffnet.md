@@ -2,8 +2,6 @@ _This is the first issue of The Starlet List. If you want to prompt your open so
 
 ---
 
-# Sniffnet — Cross-platform Internet Traffic Monitor
-
 [Sniffnet](https://github.com/GyulyVGC/sniffnet) is an open-source network monitoring tool to help everyone analyze their Internet traffic with ease.
 
 Whether you want to **gather statistics**, or you need to **inspect more in depth** what's going on in your network, this app will get you covered.

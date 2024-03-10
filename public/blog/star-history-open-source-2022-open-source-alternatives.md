@@ -1,5 +1,3 @@
-# Star History open-source Best of 2022 | open-source Alternatives
-
 When choosing which tools to use, do you prefer open or closed-source? What are the differences? In this post, let’s take a look at some of the most famous open-source alternatives on the market.
 
 BTW: open-source =! free, closed source =! paid. While some of the open-source tools are completely free, some tools offer commercial versions and support, while their non-open-source counterparts are instead, free.

@@ -1,6 +1,4 @@
-# Do GitHub stars matter?
-
-"The goreleaser/goreleaser-cross repo has only 26 stars, while goreleaser/goreleaser has 10k+ stars. It could mean that using goeleaser-cross has some risks."
+> The goreleaser/goreleaser-cross repo has only 26 stars, while goreleaser/goreleaser has 10k+ stars. It could mean that using goeleaser-cross has some risks.
 
 This is a quote from a previous Bytebase (our main hustle) blog, "[How to cross compile with CGO using GoReleaser and GitHub Actions](https://www.bytebase.com/blog/how-to-cross-compile-with-cgo-use-goreleaser-and-github-action)" and it received the following comment on [Reddit](https://www.reddit.com/r/programmingcirclejerk/comments/wx6kmq/the_goreleasergoreleasercross_repo_has_only_26/): stars cut right to the chase.
 

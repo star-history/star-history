@@ -1,5 +1,3 @@
-# Star History Open Source Best of 2022 | Front-end
-
 As a proper goodbye to 2022, Star History looks at some of the most interesting open-source projects in the year that passed. Some projects came out of nowhere and made a big bang; some released new versions, while some renovated their websites.
 
 In today’s post, we are covering front-end projects.

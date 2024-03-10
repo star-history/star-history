@@ -1,5 +1,3 @@
-# Star History Monthly Pick | June 2023
-
 Last month's [post](/blog/star-history-monthly-pick-202305) was for marketers and analysts, but this issue returns to the DevTools category. In June, we discovered quite a few great tools for you devs!
 
 ## AI Getting Started

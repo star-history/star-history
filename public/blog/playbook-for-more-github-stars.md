@@ -1,5 +1,3 @@
-# The (Detailed & Creative) Playbook for Getting More GitHub Stars
-
 ## TL;DR
 
 -   My team and I recently launched an [open source tool for developers](https://github.com/livecycle/preevy)

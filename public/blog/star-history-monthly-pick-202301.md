@@ -1,5 +1,3 @@
-# Star History Monthly Pick | January 2023
-
 Happy February! Hope you all had a lovely January. Can't believe it's already time to share Star History's January open-source picks!
 
 In case you don't know, each month Star History picks out some of the most fascinating open-source projects that we share over [@StarHistoryHQ](https://twitter.com/StarHistoryHQ), and also try to explore the stories behind these projects.

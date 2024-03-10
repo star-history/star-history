@@ -2,8 +2,6 @@ _This is the sixth issue of The Starlet List. If you want to prompt your open so
 
 ---
 
-# Hoppscotch - The Open Source API Platform for Developers
-
 [Hoppscotch](https://hoppscotch.io) is a community-driven open-source API platform started in 2019, as an open-source alternative to Postman. The goal was to build a lightweight API request builder that works for everyone regardless of their system specification to test their APIs. Today, Hoppscotch is one of the most loved API Platforms by developers with over 1M+ users and [54k+ stars on GitHub](https://github.com/hoppscotch/hoppscotch). Hoppscotch is also the only API platform that you can self-host and have ownership of your data!
 
 ## Why use Hoppscotch?

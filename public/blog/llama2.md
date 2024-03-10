@@ -1,5 +1,3 @@
-# Star History Monthly Pick | Llama 2 and Ecosystem Edition
-
 On July 18th, Meta [released](https://ai.meta.com/blog/llama-2/) Llama 2, the next generation of Llama. It can be freely used for research and commercial purposes, and supports private deployment.
 
 Therefore, we have located a few open-source projects to help you quickly get started with Llama 2 on your own machine, regardless of what it is!

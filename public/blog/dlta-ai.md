@@ -2,8 +2,6 @@ _This is the second issue of The Starlet List. If you want to prompt your open s
 
 ---
 
-# DLTA-AI - Data Labeling, Tracking and Annotation with AI
-
 ## Problem
 
 The annotation process is a critical component of computer vision tasks and can greatly impact the accuracy of the resulting model. However, manual annotation is a time-consuming and resource-intensive task, often requiring significant human labor. Therefore, developing an Auto Annotation tool for computer vision tasks is of utmost importance, as it has the potential to save significant time and resources while also improving the quality of the annotations and the resulting models.
@@ -14,7 +12,7 @@ The solution is to develop an automated annotation tool that can accurately and 
 
 ### Input modes
 
-![input modes](/assets/blog/dlta-ai/input_modes.webp)
+![input modes](/blog/assets/dlta-ai/input_modes.webp)
 
 DLTA-AI supports four input modes to provide flexibility to the user depending on the application. These are:
 Image: load an image in the canvas to work with.
@@ -27,7 +25,7 @@ Video as frames: convert a chosen video into frames to work with in directory mo
 
 ### Segmentation models
 
-![segmentation models](/assets/blog/dlta-ai/segmentation_models.webp)
+![segmentation models](/blog/assets/dlta-ai/segmentation_models.webp)
 
 DLTA-AI supports a variety of segmentation models to provide accurate and consistent annotations for objects in images and videos. These models include:
 
@@ -60,7 +58,7 @@ DLTA-AI also incorporates interpolation methods to fill in the gaps when the det
 
 ### Export
 
-![custom export](/assets/blog/dlta-ai/custom_export.webp)
+![custom export](/blog/assets/dlta-ai/custom_export.webp)
 
 DLTA-AI allows the user to export the annotations to standard formats, or any custom format such as plot, dashboard or even a report.
 

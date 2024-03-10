@@ -1,5 +1,3 @@
-# Star History Open Source Best of 2022 | Platform Engineering
-
 From [What is platform engineering](https://platformengineering.org/blog/what-is-platform-engineering):
 
 > Platform engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations in the cloud-native era

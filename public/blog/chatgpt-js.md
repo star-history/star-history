@@ -2,8 +2,6 @@ _This is the fourth issue of The Starlet List. If you want to prompt your open s
 
 ---
 
-# chatgpt.js - Client-side JavaScript library for ChatGPT
-
 <div>
 
 ![chatgpt.js landing page](/assets/blog/chatgpt-js/chatgpt-js-landing-page.webp)

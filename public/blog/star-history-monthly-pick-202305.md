@@ -1,5 +1,3 @@
-# Star History Monthly Pick | May 2023
-
 This month's collection didn't start with a specific topic in mind, but looking back it seems they are not your usual hardcore GitHub projects for developers, but rather, can also be used by non-tech (or not-so tech-savy) people. Call me biased, but as a non-developer myself, it's always nice to find inspiring projects that I can get started with to make my life easier.
 
 ## Windmill

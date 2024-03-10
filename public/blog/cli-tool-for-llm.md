@@ -1,5 +1,3 @@
-# Star History Monthly Pick | CLI tools for working with LLMs
-
 Hey all, welcome to the August edition of Star History Monthly! This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs.
 
 The inspiration for this topic actually came from [this Tweet](https://twitter.com/hellokillian/status/1699540666953629722).

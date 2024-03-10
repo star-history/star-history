@@ -1,5 +1,3 @@
-# Star History Monthly Nov 2023 | Open-source Text To Speech Engines
-
 Happy (almost) holidays! Can't believe we are already here: the last Star History Monthly of 2023.
 
 A colleague of mine was making a tutorial series a while back and was looking at TTS apps to save her the hassle of recording and editing, which gave me the idea for this topic.
