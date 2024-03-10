@@ -7,7 +7,7 @@ import SponsorBanner from "../../components/SponsorStaticBanner"
 import BytebaseBanner from "../../components/SponsorView"
 import HighlightBlogSection from "../../components/HighlightBlogSection"
 import Link from "next/link"
-import blogData from "../../public/blog/data.json"
+import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
 import { AppStateProvider } from "store"
 

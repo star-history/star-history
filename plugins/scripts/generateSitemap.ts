@@ -1,5 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
+import { Blog } from "helpers/types/blog"
+import blogs from "helpers/blog.json"
 
 interface Route {
   url: string;
@@ -22,13 +24,9 @@ const staticRoutes: Route[] = [
 ];
 
 const getBlogsRoutes = async (): Promise<Route[]> => {
-  const rawdata = readFileSync(
-    resolve(__dirname, "../../public/blog/data.json")
-  );
-  const blogs = JSON.parse(rawdata.toString());
   const blogRoutes: Route[] = [];
 
-  for (const blog of blogs) {
+  for (const blog of blogs as Blog[]) {
     blogRoutes.push({
       url: `/blog/${blog.slug}`,
       name: blog.title,

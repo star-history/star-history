@@ -6,6 +6,7 @@ import { useAppStore } from "../store"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import Link from "next/link"
 import { Blog } from "helpers/types/blog"
+import blogs from "helpers/blog.json"
 
 interface State {
     repo: string
@@ -32,8 +33,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     useEffect(() => {
         if (store.repos.length === 0) {
             const fetchData = async () => {
-                const res = await fetch("/blog/data.json")
-                const blogList = (await res.json()) as Blog[]
+                const blogList = blogs as Blog[]
                 for (const blog of blogList) {
                     if (blog.featured) {
                         setState((prev) => ({ ...prev, latestBlog: blog }))
