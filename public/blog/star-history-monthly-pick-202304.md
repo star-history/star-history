@@ -76,6 +76,6 @@ That's it for April. As promised, almost no AI-related content! Isn't that refre
 **Best of 2022**
 
 1. [Front-end](/blog/star-history-yearly-pick-2022-frontend)
-2. [Data, Infra & DevTools](/star-history-yearly-pick-2022-data-infra-devtools)
+2. [Data, Infra & DevTools](/blog/star-history-yearly-pick-2022-data-infra-devtools)
 3. [Platform Engineering](/blog/star-history-open-source-2022-platform-engineering)
 4. [Open-source Alternatives](/blog/star-history-open-source-2022-open-source-alternatives)
