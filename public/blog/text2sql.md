@@ -1,78 +1,83 @@
-ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. Let's take a look at a few handy AI-enhanced tools to make your life easier😋.
+Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!
 
-## Auto-GPT
+![gpt](/blog/assets/text2sql/gpt.gif)
 
-![autogpt](/assets/blog/star-history-monthly-pick-202303/autogpt.webp)
+These tools started out to bridge the gap between non-tech users and databases, by allowing them to interact with databases using natural language and reduce the barrier to accessing and analyzing data. But with the advance of AI models, these tools now support more advanced features such as handling complex queries, joining multiple tables, or even supporting natural language conversations.
 
-[Auto-GPT](https://github.com/Torantulino/Auto-GPT) is powered by GPT-4 and can autonomously reflect on and improve its behavior.
-For example, if you plan to create an application program, you really only need to describe it using natural language, and Auto-GPT can [automatically generate and execute the code](https://twitter.com/SigGravitas/status/1642181498278408193), as well as independently debug and fix any issues.
+They can also help improve productivity by automating the process of generating SQL queries, thereby saving time and effort.
 
-Although Auto-GPT is not a mature product and only an experiment (yet), imagine AI running completely autonomously to complete your daily work for you is just around the corner is still mind-blowing.
+In this edition of Star History monthly, we have compiled a collection of open-source Text2SQL tools.
 
-## 🧠 Awesome ChatGPT Prompts
+- [Star History Monthly | Open-source Text2SQL Tools](#star-history-monthly--open-source-text2sql-tools)
+  - [Chat2DB](#chat2db)
+  - [SQL Chat](#sql-chat)
+  - [Vanna](#vanna)
+  - [DuckDB-NSQL](#duckdb-nsql)
+  - [Langchain](#langchain)
+  - [Awesome Text2SQL](#awesome-text2sql)
+  - [To Wrap up](#to-wrap-up)
+  - [Lastly](#lastly)
 
-![awesome-chatgpt-prompts](/assets/blog/star-history-monthly-pick-202303/awesome-chatgpt-prompts.webp)
+## Chat2DB
 
-It's not easy to come up with effective prompts every time. Someone [compiled a collection](https://github.com/f/awesome-chatgpt-prompts) of commonly used prompts, such as asking ChatGPT to be your social media manager or helping you translate what you wrote into emojis 🤷‍♀️.
+[Chat2DB](https://github.com/chat2db/chat2db) aims to be a general-purpose SQL client and reporting tool that incorporates AI capabilities from the start. It supports connection to a handful of databases including MySQL, Postgres, Oracle, SQL Server, SQLite, ClickHouse and more.
 
-![prompts](/assets/blog/star-history-monthly-pick-202303/prompts.webp)
+![chat2db](/blog/assets/text2sql/chat2db.webp)
 
-## ChatGPT Retrieval Plugin
-
-![chatgpt-retrieval-plugin](/assets/blog/star-history-monthly-pick-202303/chatgpt-retrieval-plugin.webp)
-
-This is a [plugin](https://github.com/openai/chatgpt-retrieval-plugin) by the almighty OpenAI themselves. By connecting ChatGPT to an instance of a vector database, you can use natural language queries to perform semantic searches and retrievals on personal or organizational documents, thereby obtaining the most relevant document fragments.
-
-![retrieve-docs](/assets/blog/star-history-monthly-pick-202303/retrieve-docs.webp)
-
-Moreover, this plugin can memorize and save fragments of your conversation with ChatGPT to a vector database, allowing ChatGPT to remember and retrieve information from your previous conversations.
-
-## Glarity
-
-![glarity](/assets/blog/star-history-monthly-pick-202303/glarity.webp)
-
-[Glarity](https://github.com/sparticleinc/chatgpt-google-summary-extension) is a Chrome extension that provides summaries for web pages, such as summaries of Google search results/YouTube videos/news pages (no more browsing through pages or watching long videos!).
-
-![glarity-summary](/assets/blog/star-history-monthly-pick-202303/glarity-summary.webp)
-
-## OpenAI Translator
-
-![openai-translator](/assets/blog/star-history-monthly-pick-202303/openai-translator.webp)
-
-[OpenAI Translator](https://github.com/yetone/openai-translator) is a browser extension/desktop application for translation. In addition to basic translation functions, it can also polish, summarize, and analyze your content (and even explain code), maximizing AI's contribution to the language department. (Sidenote: Google Translate and DeepL, y'all need to take notes 😢).
-
-![openai-translator-ui](/assets/blog/star-history-monthly-pick-202303/openai-translator-ui.webp)
-
-## OpenPrompt
-
-![openprompt](/assets/blog/star-history-monthly-pick-202303/openprompt.webp)
-
-[OpenPrompt](https://github.com/timqian/openprompt.co) can actually be looked at as GitHub for ChatGPT: you can create, search, use, and share ChatGPT Prompts.
-
-![openprompt-home](/assets/blog/star-history-monthly-pick-202303/openprompt-home.webp)
-
-## ShareGPT
-
-![sharegpt](/assets/blog/star-history-monthly-pick-202303/sharegpt.webp)
-
-[ShareGPT](https://github.com/domeccleston/sharegpt) is a Chrome extension that can generate a permanent link for your conversation with ChatGPT. This way, you can easily share your conversation with your friends without having to take multiple screenshots.
-
-For example, check out @steventey's discussion with ChatGPT regarding the meaning of life: [https://sharegpt.com/c/oPt72P3](https://sharegpt.com/c/oPt72P3)
-
-It's also worth mentioning [Vicuna](https://pub.towardsai.net/meet-vicuna-the-latest-metas-llama-model-that-matches-chatgpt-performance-e23b2fc67e6b) is trained by fine-tuning a LLaMA base model using approximately 70,000 user-shared conversations gathered from ShareGPT. And the results are quite encouraging according to their own benchmark.
+There was a bit of [drama](https://www.linkedin.com/feed/update/urn:li:activity:7153040091454611456/) involving Chat2DB a while ago, we won't get into details here but I'm curious to know what you think.
 
 ## SQL Chat
 
-![sqlchat](/assets/blog/star-history-monthly-pick-202303/sqlchat.webp)
+[SQL Chat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client, and you can use natural language to communicate with your database to implement operations, such as query, modification, addition, and deletion (!) of the database.
 
-[SQL Chat](https://github.com/sqlchat/sqlchat) is a chat-based SQL client. You can interact with your databases (currently supporting MySQL and PostgreSQL) using natural language directly in the dialogue box. Check out our first impression of [SQL Chat](/blog/sql-chat).
+It currently supports MySQL, Postgres, SQL Server and TiDB serverless.
 
-Big thumbs up for the newly added support for Dark Mode 🧛!
+![sqlchat](/blog/assets/text2sql/sqlchat.webp)
 
-![darkmode](/assets/blog/star-history-monthly-pick-202303/darkmode.webp)
+It's [open-sourced by Bytebase](https://www.bytebase.com/blog/sql-chat/), a database migration tool for teams.
 
-## My Two Pennies 🪙
+## Vanna
 
-With ChatGPT in our lives, it seems like we don't have to do much of anything anymore: does that mean we are soon to be replaced by AI?
+[Vanna](https://github.com/vanna-ai/vanna) is a Python framework that allows the training of an RAG model with queries, DDL, and documentation from a database.
 
-The ideal solution would be to have AI help us improve efficiency and do things better. Letting ChatGPT help us write SQL doesn't mean we don't need to master SQL and database knowledge proficiently; or having an [AI code assistant](/blog/tabby) doesn't mean we don't need to master the art of coding. Instead, it means we can focus on the more important things and let AI do the dirty work.
+![vanna](/blog/assets/text2sql/vanna.webp)
+
+You can use Vanna as is, or build your own custom UI with an existing tool (e.g. Streamlit, Slack).
+
+It was open-sourced in July 2023 and [got really popular](https://star-history.com/#vanna-ai/vanna&Date) this past January.
+
+## DuckDB-NSQL
+
+[DuckDB-NSQL](https://github.com/NumbersStationAI/DuckDB-NSQL) is a Text2SQL LLM built for local DuckDB SQL analytics tasks, by [MontherDuck](https://motherduck.com/blog/duckdb-text2sql-llm/) and [Numbers Station](https://www.numbersstation.ai/). This can certainly help users leverage the full power of DuckDB and its analytic potential, without having to go back-and-forth between the DuckDB documentation and the SQL shell.
+
+![duckdb](/blog/assets/text2sql/duckdb.webp)
+
+## Langchain
+
+With Langchain, you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
+
+![langchain](/blog/assets/text2sql/langchain.webp)
+
+LangChain also has an SQL Agent that you can add to the chain. It can not only answer questions based on the databases’ schema and content, but also recover from errors by running a generated query, catching the traceback and regenerating it correctly.
+
+## Awesome Text2SQL
+
+[Awesome Text2SQL](https://github.com/eosphoros-ai/Awesome-Text2SQL) is a suite of curated tutorials and resources for LLMs, Text2SQL, Text2DSL, Text2API, Text2Vis, and more. Most of the models are LLM+Text2SQL, and for each model, there are links for papers, code, dataset. If you want to dive deep into Text2SQL, take a look!
+
+![awesome-text2sql](/blog/assets/text2sql/awesome-text2sql.webp)
+
+## To Wrap up
+
+LLM or not, you should still be extra careful when executing model-generated SQL queries. Some [ways](https://blog.langchain.dev/llms-and-sql/) to minimize risks includes describing your database schema, data; constraining the size of the output; validating and reviewing the generated SQL queries before executing them.
+
+## Lastly
+
+If you want more AI content, check out earlier editions of the **Star History Open-source Monthly**:
+
+- [GPT Wrappers](/blog/gpt-wrappers)
+- [TTS (Text-to-Speech) Tools](/blog/tts)
+- [AI Extensions for Postgres](/blog/ai-for-postgres)
+- [GitHub Copilot alternatives](/blog/coding-ai)
+- [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
+- [Llama 2 and Ecosystem](/blog/llama2)
+- [ChatGPT Special](/blog/star-history-monthly-pick-202303)
