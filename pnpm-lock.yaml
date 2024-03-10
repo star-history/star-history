@@ -44,6 +44,9 @@ dependencies:
   eslint-config-next:
     specifier: ^14.1.0
     version: 14.1.0(eslint@8.57.0)(typescript@4.9.5)
+  find-free-port:
+    specifier: ^2.0.0
+    version: 2.0.0
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -1761,6 +1764,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
+
+  /find-free-port@2.0.0:
+    resolution: {integrity: sha512-J1j8gfEVf5FN4PR5w5wrZZ7NYs2IvqsHcd03cAeQx3Ec/mo+lKceaVNhpsRKoZpZKbId88o8qh+dwUwzBV6WCg==}
+    dev: false
 
   /find-up@5.0.0:
     resolution: {integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==}
