@@ -12,7 +12,7 @@ The solution is to develop an automated annotation tool that can accurately and 
 
 ### Input modes
 
-![input modes](/blog/assets/dlta-ai/input_modes.webp)
+![input modes](/assets/blog/dlta-ai/input_modes.webp)
 
 DLTA-AI supports four input modes to provide flexibility to the user depending on the application. These are:
 Image: load an image in the canvas to work with.
@@ -25,7 +25,7 @@ Video as frames: convert a chosen video into frames to work with in directory mo
 
 ### Segmentation models
 
-![segmentation models](/blog/assets/dlta-ai/segmentation_models.webp)
+![segmentation models](/assets/blog/dlta-ai/segmentation_models.webp)
 
 DLTA-AI supports a variety of segmentation models to provide accurate and consistent annotations for objects in images and videos. These models include:
 
@@ -58,7 +58,7 @@ DLTA-AI also incorporates interpolation methods to fill in the gaps when the det
 
 ### Export
 
-![custom export](/blog/assets/dlta-ai/custom_export.webp)
+![custom export](/assets/blog/dlta-ai/custom_export.webp)
 
 DLTA-AI allows the user to export the annotations to standard formats, or any custom format such as plot, dashboard or even a report.
 
