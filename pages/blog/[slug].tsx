@@ -39,7 +39,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                         <HighlightBlogSection />
                     </div>
                     {
-                        blog === undefined ? (
+                        blog == null ? (
                             <div className="w-full h-10 flex flex-col justify-center items-center">
                                 <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
                                 <p className="text-center leading-8 text-lg text-dark font-medium">
