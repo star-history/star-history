@@ -12,7 +12,7 @@ Our vision is to drive this transition from machine learning to federated learni
 
 ## What is MetisFL?
 
-![MetisFL Architecture](/assets/blog/metisfl/MetisFL-Components-Internal-02.webp)
+![MetisFL Architecture](/assets/blog/metisfl/internal.webp)
 
 [MetisFL](https://github.com/nevronAI/metisfl/) is an open-source federated learning framework that allows developer to train machine learning models on distributed data sources. Currently, the project is transitioning from a private, experimental version to a public, beta phase. We are actively encouraging developers, researchers and data scientists to experiment with the framework and contribute to the codebase.Please have a look at our [draft documentation](https://docs.nevron.ai/metisfl/) and [GitHub repository](https://github.com/nevronAI/metisfl/) to get a better understanding of the framework and how to use it.
 
