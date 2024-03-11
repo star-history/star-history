@@ -325,7 +325,7 @@ function StarChartViewer() {
                                     href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
                                     target="_blank"
                                 >
-                                    <img className="w-5 h-auto mr-1" src="https://star-history.com/icons/free.svg" alt="" />
+                                    <img className="w-5 h-auto mr-1" src="/assets/free.svg" alt="" />
                                     <span className="text-dark">Get Chrome Extension</span>
                                 </a>
                             </div>
