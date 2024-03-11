@@ -71,7 +71,7 @@ const BlogPage: NextPageWithLayout = () => {
                 <Header />
                 <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
                     <div className="w-full hidden lg:block">
-                        <HighlightBlogSection clickLink={(link) => (window.location.href = link)} />
+                        <HighlightBlogSection />
                     </div>
                     <div className="w-full flex flex-col justify-start items-center">
                         <section className="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center">
