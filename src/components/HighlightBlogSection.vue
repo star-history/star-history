@@ -169,6 +169,10 @@ const blogSectionList = [
         path: "/blog/list-your-open-source-project",
       },
       {
+        title: "Issue #18 - Prisma",
+        path: "/blog/prisma",
+      },
+      {
         title: "Issue #17 - SpiceDB",
         path: "/blog/spicedb",
       },

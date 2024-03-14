@@ -1,5 +1,14 @@
 [
   {
+    "title": "Starlet #18 Prisma ORM: Simplify Working and Interacting with Databases",
+    "slug": "prisma",
+    "author": "Nikolas Burk",
+    "featured": true,
+    "featureImage": "/blog/assets/prisma-banner.webp",
+    "publishedDate": "2024-03-14:00:00.000Z",
+    "excerpt": "Prisma ORM is a toolkit that makes it easy for developers to work with databases, and is committed to creating a great developer experience for developers that are building data-driven applications."
+  },
+  {
     "title": "Star History Best of 2023",
     "slug": "best-of-2023",
     "author": "Mila",
