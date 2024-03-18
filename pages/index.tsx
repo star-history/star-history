@@ -10,8 +10,10 @@ import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
 
 interface IndexProps {}
+
 const Index: NextPage<IndexProps> = () => {
     const [isChartVisible, setChartVisibility] = useState(false) // Start with false since chart is not visible by default
+
     return (
         <>
             <Head>
