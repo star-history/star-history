@@ -8,19 +8,26 @@
     >
       <div class="h-full flex flex-row justify-start items-center">
         <router-link
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           to="/"
         >
           <img class="w-7 h-auto" src="/icon.png" />
         </router-link>
+        <a
+          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
+          href="https://forum.star-history.com"
+          target="_blank"
+        >
+          <span class="text-light font-semibold">Forum</span>
+        </a>
         <router-link
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           to="/blog"
         >
           <span class="text-light font-semibold">Blog</span>
         </router-link>
         <span
-          class="h-full flex flex-row justify-center items-center cursor-pointer font-semibold mr-2 px-3 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center cursor-pointer font-semibold mr-2 px-2 hover:bg-zinc-800"
           @click="handleSetTokenBtnClick"
         >
           {{ token ? "Edit" : "Add" }} Access Token
@@ -35,7 +42,9 @@
           <img class="h-6 mt-1 mr-2" src="/craft-by-bytebase.webp" />
         </a>
       </div>
-      <div class="h-full hidden md:flex flex-row justify-end items-center">
+      <div
+        class="h-full hidden md:flex flex-row justify-end items-center space-x-1"
+      >
         <a
           class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           href="https://twitter.com/StarHistoryHQ"
