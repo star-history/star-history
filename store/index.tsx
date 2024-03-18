@@ -38,7 +38,6 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     })
 
     useEffect(() => {
-        const hash = window.location.hash.slice(1);
         const fetchData = () => {
             const { accessTokenCache } = storage.get(["accessTokenCache"])
             const hash = window.location.hash.slice(1)
