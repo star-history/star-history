@@ -57,12 +57,6 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
 
-### Akuity
-
-[Akuity](https://hubs.li/Q02fpVR30) A legit and balanced comparison of top two GitOps tools. Choose Argo CD today for a better DevOps experience.
-
-<a href="https://hubs.li/Q02fpVR30"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/akuity/landing.webp" /></a>
-
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;

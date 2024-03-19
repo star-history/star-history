@@ -38,15 +38,6 @@ const sponsors: Sponsor[] = [
     landingSlogan:
       "The next-gen development platform. Create Assistants API and GPTs based on any LLMs.",
   },
-  {
-    name: "Argo CD vs. Flux",
-    logo: utils.absolutifyLink("/sponsors/akuity/logo.webp"),
-    landingImage: utils.absolutifyLink("/sponsors/akuity/landing.webp"),
-    link: "https://hubs.li/Q02fpVR30",
-    logoSlogan:
-      "A legit and balanced comparison of top two GitOps tools. Choose Argo CD today for a better DevOps experience.",
-    landingSlogan: "choose Argo CD for a better DevOps experience.",
-  },
 ];
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length);
