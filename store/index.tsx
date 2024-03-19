@@ -1,93 +1,108 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
-import storage from "../helpers/storage"
-import { ChartMode } from "../types/chart"
+import React, { createContext, useContext, useEffect, useState } from "react";
+import storage from "../helpers/storage";
+import { ChartMode } from "../types/chart";
+import { useRouter } from "next/router";
 
 interface AppState {
-    isFetching: boolean
-    token: string
-    repos: string[]
-    chartMode: ChartMode
+    isFetching: boolean;
+    token: string;
+    repos: string[];
+    chartMode: ChartMode;
 }
 
 interface AppStateContextProps {
-    setToken(token: string): unknown
-    delRepo(repo: any): void
-    isFetching: any
-    repos: any
-    chartMode: any
-    token: string
-    state: AppState
+    setToken(token: string): void;
+    delRepo(repo: string): void;
+    isFetching: boolean;
+    repos: string[];
+    chartMode: ChartMode;
+    token: string;
+    state: AppState;
     actions: {
-        addRepo: (repo: string) => void
-        delRepo: (repo: string) => void
-        setRepos: (repos: string[]) => void
-        setToken: (token: string) => void
-        setIsFetching: (isFetching: boolean) => void
-        setChartMode: (chartMode: ChartMode) => void
-    }
+        addRepo(repo: string): void;
+        delRepo(repo: string): void;
+        setRepos(repos: string[]): void;
+        setToken(token: string): void;
+        setIsFetching(isFetching: boolean): void;
+        setChartMode(chartMode: ChartMode): void;
+    };
 }
 
-const AppStateContext = createContext<AppStateContextProps | undefined>(undefined)
+const AppStateContext = createContext<AppStateContextProps | undefined>(undefined);
 
 export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [state, setState] = useState<AppState>({
         isFetching: false,
         token: "",
         repos: [],
-        chartMode: "Date"
-    })
+        chartMode: "Date",
+    });
 
+    const router = useRouter();
     useEffect(() => {
         const fetchData = () => {
-            const { accessTokenCache } = storage.get(["accessTokenCache"])
-            const hash = window.location.hash.slice(1)
-            const params = hash.split("&").filter((i) => Boolean(i))
-            const repos: string[] = []
-            let chartMode: ChartMode = "Date"
-
+            const { accessTokenCache } = storage.get(["accessTokenCache"]);
+            const hash = router.asPath.split("#")[1] || '';
+            const params = hash.split("&").filter((i) => Boolean(i));
+            const repos: string[] = [];
+            let chartMode: ChartMode = "Date";
+    
             for (const value of params) {
                 if (value === "Date" || value === "Timeline") {
-                    chartMode = value
-                    continue
-                }
-                if (!repos.includes(value)) {
-                    repos.push(value)
+                    chartMode = value as ChartMode;
+                } else {
+                    repos.push(value);
                 }
             }
-
+    
             setState({
+                ...state,
                 isFetching: false,
                 token: accessTokenCache || "",
-                repos: repos,
-                chartMode: chartMode
-            })
-        }
+                repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
+                chartMode: chartMode,
+            });
+        };
+    
+        // Fetch data and set initial state
+        fetchData();
 
-        fetchData()
-    }, []) // Empty dependency array ensures useEffect runs only once on mount
+        // Listen for hash changes using Next.js router
+        const handleHashChange = (url: string) => {
+            if (url.includes("#")) {
+                fetchData();
+            }
+        };
+        router.events.on("hashChangeComplete", handleHashChange);
 
-    const actions: AppStateContextProps["actions"] = {
+        // Cleanup the event listener
+        return () => {
+            router.events.off("hashChangeComplete", handleHashChange);
+        };
+    }, [router]);
+    
+   const actions: AppStateContextProps["actions"] = {
         addRepo: (repo: string) => {
             if (!state.repos.includes(repo)) {
-                setState((prev) => ({ ...prev, repos: [...prev.repos, repo] }))
+                setState((prev) => ({ ...prev, repos: [...prev.repos, repo] }));
             }
         },
         delRepo: (repo: string) => {
-            setState((prev) => ({ ...prev, repos: prev.repos.filter((r) => r !== repo) }))
+            setState((prev) => ({ ...prev, repos: prev.repos.filter((r) => r !== repo) }));
         },
         setRepos: (repos: string[]) => {
-            setState((prev) => ({ ...prev, repos }))
+            setState((prev) => ({ ...prev, repos }));
         },
         setToken: (token: string) => {
-            setState((prev) => ({ ...prev, token }))
+            setState((prev) => ({ ...prev, token }));
         },
         setIsFetching: (isFetching: boolean) => {
-            setState((prev) => ({ ...prev, isFetching }))
+            setState((prev) => ({ ...prev, isFetching }));
         },
         setChartMode: (chartMode: ChartMode) => {
-            setState((prev) => ({ ...prev, chartMode }))
-        }
-    }
+            setState((prev) => ({ ...prev, chartMode }));
+        },
+    };
 
     const store: AppStateContextProps = {
         isFetching: state.isFetching,
@@ -97,18 +112,16 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         state,
         actions,
         setToken: actions.setToken,
-        delRepo: function (repo: any): void {
-            throw new Error("Function not implemented.")
-        }
-    }
+        delRepo: actions.delRepo,
+    };
 
-    return <AppStateContext.Provider value={store}>{children}</AppStateContext.Provider>
-}
+    return <AppStateContext.Provider value={store}>{children}</AppStateContext.Provider>;
+};
 
 export const useAppStore = () => {
-    const context = useContext(AppStateContext)
+    const context = useContext(AppStateContext);
     if (!context) {
-        throw new Error("useAppStore must be used within an AppStateProvider")
+        throw new Error("useAppStore must be used within an AppStateProvider");
     }
-    return context
-}
+    return context;
+};

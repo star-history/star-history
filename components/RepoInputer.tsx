@@ -50,11 +50,19 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         }
     }, [state.repos.length, store.repos.length])
 
-
     useEffect(() => {
         setChartVisibility(true)
     }, [setChartVisibility])
 
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+           
+            const reposFromHash = hash.substring(1).split('&');
+            setState({ ...state, repos: reposFromHash.map(name => ({ name, visible: true })) });
+
+        }
+    }, []);
 
     useEffect(() => {
         const handleWatch = () => {
