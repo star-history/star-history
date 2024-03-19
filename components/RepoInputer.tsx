@@ -50,7 +50,6 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         }
     }, [state.repos.length, store.repos.length])
 
-
     useEffect(() => {
         setChartVisibility(true)
     }, [setChartVisibility])
