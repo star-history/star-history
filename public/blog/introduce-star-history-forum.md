@@ -1,10 +1,15 @@
-As the de-facto site to check GitHub star history, [star-history.com](/) has been growing steadily over the 
-year. Today, it is welcoming 30,000+ unique visitors every month. 
+As the de-facto site to check GitHub star history, [star-history.com](/) has been growing steadily over the
+years. Today, it is welcoming 30,000+ unique visitors.
 
 ![](/blog/assets/introduce-star-history-forum/uv-pv.webp)
 
-Comparing to other sites, this is a very small visitor numbers, while the open source talents density
-is high. Many popular GitHub projects, in particular, from the recent AI wave, have also embedded our live
+Comparing to other sites, this is an intimidating small number, while the open source talents density
+here is high. Many open source project maintainers check our site routinely. Engineers and investors
+also use our site to compare similar projects.
+
+![](/blog/assets/introduce-star-history-forum/llm-star-history.webp)
+
+Many popular GitHub projects, in particular, from the recent AI wave, have also embedded our live
 chart in their README.
 
 ![](/blog/assets/introduce-star-history-forum/chart.webp)
@@ -14,10 +19,9 @@ open source projects. Since then, we have received a lot of open source project 
 compiled 18 issues.
 
 To scale the community, today we introduce another endeavor, the star history forum at https://forum.star-history.com.
-To retain the sketchy spirit, we use the discourse classic theme to build the forum. 
+To retain the sketchy spirit, we use the discourse classic theme to build the forum.
 
 ![](/blog/assets/introduce-star-history-forum/banner.webp)
 
-Hope you like it and looking forward to seeing all the amazing open source gigs there!
-
-
+Our star history editorial team will hang out there and pick interesting goodies to share with the
+community. See you there!

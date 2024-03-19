@@ -28,6 +28,10 @@ const blogSectionList = [
     title: "Playbook",
     linkList: [
       {
+        title: "🎁 Prompt yours for FREE",
+        path: "/blog/list-your-open-source-project",
+      },
+      {
         title: "📕 How to Use this Site",
         path: "/blog/how-to-use-github-star-history",
       },
@@ -164,10 +168,6 @@ const blogSectionList = [
   {
     title: "Starlet List",
     linkList: [
-      {
-        title: "Prompt yours for FREE ⭐️",
-        path: "/blog/list-your-open-source-project",
-      },
       {
         title: "Issue #18 - Prisma",
         path: "/blog/prisma",
