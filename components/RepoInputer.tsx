@@ -30,6 +30,8 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     })
 
     const inputElRef = useRef<HTMLInputElement | null>(null)
+
+    
     useEffect(() => {
         if (store.repos.length === 0) {
             const fetchData = async () => {
@@ -51,9 +53,48 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     }, [state.repos.length, store.repos.length])
 
     useEffect(() => {
+        const fetchData = async () => {
+            const blogList = blogs as Blog[];
+            for (const blog of blogList) {
+                if (blog.featured) {
+                    setState((prev) => ({ ...prev, latestBlog: blog }));
+                    break;
+                }
+            }
+    
+            if (state.repos.length === 0) {
+                setState((prev) => ({ ...prev, repos: [] }));
+            }
+        };
+    
+        fetchData();
+    }, [state.repos.length]);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const blogList = blogs as Blog[];
+                const latest = blogList.find(blog => blog.featured);
+                if (latest) {
+                    console.log("Latest blog found:", latest);
+                    setState(prevState => ({ ...prevState, latestBlog: latest }));
+                } else {
+                    console.log("No latest blog found");
+                }
+            } catch (error) {
+                console.error("Error fetching latest blog:", error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
+
+    useEffect(() => {
         setChartVisibility(true)
     }, [setChartVisibility])
 
+    
     useEffect(() => {
         const hash = window.location.hash;
         if (hash) {
@@ -63,6 +104,8 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
 
         }
     }, []);
+
+    
 
     useEffect(() => {
         const handleWatch = () => {
