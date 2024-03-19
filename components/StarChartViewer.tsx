@@ -55,7 +55,6 @@ function StarChartViewer() {
             store.actions.setIsFetching(true)
             const notCachedRepos: string[] = []
 
-            // Check if the repo data is cached
             for (const repo of store.repos) {
                 const cachedRepo = state.repoCacheMap.get(repo)
 
@@ -106,7 +105,31 @@ function StarChartViewer() {
         },
         [state.chartMode, state.repoCacheMap, store]
     )
+    
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash;
+            const alignTimeline = hash.includes("Timeline");
+            if (alignTimeline) {
+                const newChartMode = "Timeline";
+                setState(prevState => ({ ...prevState, chartMode: newChartMode }));
+                fetchReposData(store.repos, newChartMode);
+            }
+        };
 
+        handleHashChange();
+    
+        window.addEventListener("hashchange", handleHashChange);
+    
+        fetchReposData(store.repos, state.chartMode);
+    
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+        };
+    }, [store.repos, state.chartMode]);
+    
+    
+    
     useEffect(() => {
         if (store.repos.length > 0) {
             fetchReposData(store.repos)
