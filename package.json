@@ -6,12 +6,10 @@
   "private": true,
   "scripts": {
       "dev": "node server.js",
-      "build": "next build",
+      "build": "next-sitemap && next build",
       "start": "NODE_ENV=production node server.js",
       "lint": "next lint",
-      "prettier": "prettier --write .",
-      "postbuild": "next-sitemap --config next-sitemap.config.js --sitemap-xml",
-      "sitemap": "next-sitemap --config next-sitemap.config.js"
+      "prettier": "prettier --write ."
   },
   "dependencies": {
       "@fortawesome/fontawesome-free": "^6.5.1",
