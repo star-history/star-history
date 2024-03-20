@@ -9,7 +9,6 @@ import HighlightBlogSection from "../../components/HighlightBlogSection"
 import { GetServerSidePropsContext } from "next"
 import path from "path"
 import fs from "fs/promises"
-import { FaSpinner } from "react-icons/fa"
 import blogs from "helpers/blog.json"
 import { AppStateProvider } from "store"
 
