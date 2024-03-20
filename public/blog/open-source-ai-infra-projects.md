@@ -1,5 +1,3 @@
-# Open Source AI Infra for Your Next Project
-
 We have seen more mind-blowing AI-related tools in the past few months than ever before. And we noticed a rise to developer-friendly tools to build your own AI application, it's now easier than ever for developers to quickly build cool apps.
 
 Here, we collected some open-source infra projects that can be directly used for your next project. 💡

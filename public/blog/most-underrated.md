@@ -1,12 +1,11 @@
 For Star History's Feb edition, we were fully inspired by [this](https://news.ycombinator.com/item?id=39635486) post discussing underrated open source projects that deserve more recognition, and we dived DEEP into the threads to see what we were missing out! Here are some of our favourites:
 
--   [Star History Monthly | Underrated Open Source Projects](#star-history-monthly--underrated-open-source-projects)
-    -   [Cryptpad](#cryptpad)
-    -   [Pagefind](#pagefind)
-    -   [Paperless-ngx](#paperless-ngx)
-    -   [QPDF](#qpdf)
-    -   [River](#river)
-    -   [Lastly](#lastly)
+-   [Cryptpad](#cryptpad)
+-   [Pagefind](#pagefind)
+-   [Paperless-ngx](#paperless-ngx)
+-   [QPDF](#qpdf)
+-   [River](#river)
+-   [Lastly](#lastly)
 
 ## Cryptpad
 

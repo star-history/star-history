@@ -1,5 +1,3 @@
-# Tabby
-
 [Tabby](http://github.com/TabbyML/tabby) is an AI coding assistant that's designed as an open-source tool to help developers code faster. It debuted on [HackerNews](https://news.ycombinator.com/item?id=35470915) last week and caught our attention.
 
 ![tabby](/assets/blog/tabby/hn.webp)

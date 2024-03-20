@@ -2,8 +2,6 @@ _This is the seventh issue of The Starlet List. If you want to prompt your open 
 
 ---
 
-# The Clipboard Project – Remember Anything, Anytime, Anywhere at Breakneck Speed
-
 The [Clipboard Project](https://github.com/Slackadays/Clipboard) is a new and upcoming open source tool designed to supercharge your productivity by making it easy to remember anything, anytime, anywhere – as if you had a second brain.😎🏖️🐬
 
 ## Motivation

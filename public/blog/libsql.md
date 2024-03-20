@@ -61,6 +61,6 @@ try {
 }
 ```
 
-# What's coming
+## What's coming
 
 We are looking into supporting libSQL in more languages, improving the server memory footprint and multitenant abilities, and more. Your contribution is welcome!
