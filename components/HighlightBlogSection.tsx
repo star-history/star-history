@@ -20,7 +20,7 @@ const blogSectionList: BlogSection[] = [
         title: "Playbook",
         linkList: [
             {
-                title: "🎁 Prompt yours for FREE",
+                title: "🎁 Prompt project for FREE",
                 path: "/blog/list-your-open-source-project",
             },
             {
@@ -165,7 +165,7 @@ const blogSectionList: BlogSection[] = [
         title: "Starlet List",
         linkList: [
             {
-                title: "Prompt yours for FREE ⭐️",
+                title: "🎁 Prompt yours for FREE",
                 path: "/blog/list-your-open-source-project"
             },
             {
