@@ -20,6 +20,10 @@ const blogSectionList: BlogSection[] = [
         title: "Playbook",
         linkList: [
             {
+                title: "🎁 Prompt yours for FREE",
+                path: "/blog/list-your-open-source-project",
+            },
+            {
                 title: "📕 How to Use this Site",
                 path: "/blog/how-to-use-github-star-history"
             },

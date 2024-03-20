@@ -1,5 +1,14 @@
 [
     {
+        "title": "Introducing Star History Forum",
+        "slug": "introduce-star-history-forum",
+        "author": "Tianzhou",
+        "featured": true,
+        "featureImage": "/assets/blog/introduce-star-history-forum/banner.webp",
+        "publishedDate": "2024-03-19:00:00.000Z",
+        "excerpt": "Introducing star history forum"
+    },
+    {
         "title": "Starlet #18 Prisma ORM: Simplify Working and Interacting with Databases",
         "slug": "prisma",
         "author": "Nikolas Burk",
