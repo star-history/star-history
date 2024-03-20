@@ -6,7 +6,7 @@ import Header from "../../components/header"
 import SponsorFooterBanner from "../../components/SponsorView"
 import SponsorRightBanner from "../../components/SponsorStaticBanner"
 import HighlightBlogSection from "../../components/HighlightBlogSection"
-import { GetServerSidePropsContext } from "next"
+import { GetStaticPropsContext, GetStaticPaths } from "next"
 import path from "path"
 import fs from "fs/promises"
 import blogs from "helpers/blog.json"
@@ -127,7 +127,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
     )
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
+export async function getStaticProps(context: GetStaticPropsContext) {
     let returnObj = {
         props: {
             blog: null as Blog | null,
@@ -168,6 +168,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
 
     return returnObj
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    // Generate the paths we want to pre-render based on blogs
+    const paths = blogs.map((blog) => ({
+        params: { slug: blog.slug },
+    }))
+
+    // Return the paths with a fallback strategy
+    return { paths, fallback: false } // Or use 'blocking' or true for fallback pages
 }
 
 export default BlogPost
