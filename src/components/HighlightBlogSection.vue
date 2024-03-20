@@ -82,6 +82,10 @@ const blogSectionList = [
   {
     title: "Monthly Pick",
     linkList: [
+      {
+        title: "2024 Feb (Most Underrated)",
+        path: "https://star-history.com/blog/most-underrated",
+      },
      {
         title: "2024 Jan (Text2SQL)",
         path: "https://star-history.com/blog/text2sql",
