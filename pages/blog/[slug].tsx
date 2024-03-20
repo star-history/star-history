@@ -46,6 +46,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             <meta property="og:image" content={blog.featureImage} />
 
                             {/* Twitter */}
+                            <meta property="twitter:card" content="summary_large_image" />
                             <meta property="twitter:card" content={blog.featureImage} />
                             <meta property="twitter:title" content={blog.title} />
                             <meta property="twitter:description" content={blog.excerpt} />

@@ -18,6 +18,23 @@ const Index: NextPage<IndexProps> = () => {
         <>
             <Head>
                 <title>GitHub Star History</title>
+                <meta name="description" content="GitHub Star History" />
+
+                {/* Standard Meta Tags */}
+                <meta name="description" content={blog.excerpt} />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={blog.title} />
+                <meta property="og:description" content={blog.excerpt} />
+                <meta property="og:image" content={blog.featureImage} />
+
+                {/* Twitter */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:card" content={blog.featureImage} />
+                <meta property="twitter:title" content={blog.title} />
+                <meta property="twitter:description" content={blog.excerpt} />
+                <meta property="twitter:image" content={blog.featureImage} />
             </Head>
             <section>
                 <AppStateProvider>
