@@ -188,46 +188,4 @@ const BlogPage: NextPageWithLayout = () => {
     )
 }
 
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   let returnObj = {
-//     props: {
-//       isLoading: true,
-//       blog: [],
-//       parsedBlogHTML: "",
-//     },
-//   };
-
-//   try {
-
-//     if (!blogs) {
-//       return returnObj;
-//     }
-
-//     const filePath = path.join(process.cwd(), 'public', `blog/${blogSlug}.md`);
-//     const content = await fs.readFile(filePath, 'utf8');
-
-//     // Calculate reading time
-//     const wordsPerMinute = 200;
-//     const wordCount = content.split(" ").length;
-//     const readingTime = Math.ceil(wordCount / wordsPerMinute);
-
-//     // Update return object with blog data, reading time, and set isLoading: false
-//     returnObj = {
-//       props: {
-//         isLoading: false,
-//         blog: {
-//           ...blog,
-//           readingTime: readingTime, // Add reading time to the blog object
-//         },
-//         parsedBlogHTML: marked.parse(content),
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     return returnObj;
-//   }
-
-//   return returnObj;
-// }
-
 export default BlogPage

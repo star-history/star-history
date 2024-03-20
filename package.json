@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
       "dev": "node server.js",
-      "build": "next-sitemap && next build",
+      "build": "next build && next-sitemap",
       "start": "NODE_ENV=production node server.js",
       "lint": "next lint",
       "prettier": "prettier --write ."
