@@ -1,5 +1,3 @@
-# Star History Monthly | Underrated Open Source Projects
-
 For Star History's Feb edition, we were fully inspired by [this](https://news.ycombinator.com/item?id=39635486) post discussing underrated open source projects that deserve more recognition, and we dived DEEP into the threads to see what we were missing out! Here are some of our favourites:
 
 -   [Star History Monthly | Underrated Open Source Projects](#star-history-monthly--underrated-open-source-projects)
