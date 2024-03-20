@@ -16,6 +16,7 @@ interface Blog {
     title: string
     slug: string
     author: string
+    excerpt: string
     publishedDate: string
     featureImage?: string
     readingTime?: number
@@ -31,7 +32,8 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
     return (
         <AppStateProvider>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
-                <title>{blog ? `${blog.title} - GitHub Star History` : "GitHub Star History"}</title>
+                <title>{blog ? `${blog.title}` : "GitHub Star History"}</title>
+                <meta name="description" content={blog ? blog.excerpt : "" } />
                 <Header />
                 <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
                     <div className="w-full hidden lg:block">

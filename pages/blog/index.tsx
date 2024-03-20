@@ -65,7 +65,7 @@ const BlogPage: NextPageWithLayout = () => {
     return (
         <AppStateProvider>
             <Head>
-                <title>GitHub Star History</title>
+                <title>Star History Blog</title>
             </Head>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
                 <Header />
@@ -75,9 +75,9 @@ const BlogPage: NextPageWithLayout = () => {
                     </div>
                     <div className="w-full flex flex-col justify-start items-center">
                         <section className="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center">
-                            <p className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
+                            <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
                                 Star History Blog
-                            </p>
+                            </h1>
                             <div className="mb-4">
                                 <iframe
                                     src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
