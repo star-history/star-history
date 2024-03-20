@@ -42,7 +42,7 @@ const blogSectionList: BlogSection[] = [
             },
             {
                 title: "Model",
-                path: "https://star-history.com/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM"
+                path: "/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM"
             },
             {
                 title: "Llama Ecosystem",
@@ -63,11 +63,11 @@ const blogSectionList: BlogSection[] = [
         linkList: [
             {
                 title: "Database DevOps",
-                path: "https://star-history.com/#bytebase/bytebase&liquibase/liquibase&flyway/flyway"
+                path: "/#bytebase/bytebase&liquibase/liquibase&flyway/flyway"
             },
             {
                 title: "Workflow Orchestration",
-                path: "https://star-history.com/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor"
+                path: "/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor"
             }
         ]
     },
