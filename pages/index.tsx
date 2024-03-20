@@ -14,27 +14,33 @@ interface IndexProps {}
 const Index: NextPage<IndexProps> = () => {
     const [isChartVisible, setChartVisibility] = useState(false) // Start with false since chart is not visible by default
 
+    const metadata = {
+		title:       "GitHub Star History",
+		description: "View and compare GitHub star history graph of open source projects.",
+		imageURL:    "https://www.star-history.com/assets/star-history.webp",
+	}
+
     return (
         <>
             <Head>
-                <title>GitHub Star History</title>
+                <title>{metadata.title}</title>
                 <meta name="description" content="GitHub Star History" />
 
                 {/* Standard Meta Tags */}
-                <meta name="description" content={blog.excerpt} />
+                <meta name="description" content={metadata.description} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content={blog.title} />
-                <meta property="og:description" content={blog.excerpt} />
-                <meta property="og:image" content={blog.featureImage} />
+                <meta property="og:title" content={metadata.title} />
+                <meta property="og:description" content={metadata.description} />
+                <meta property="og:image" content={metadata.imageURL} />
 
                 {/* Twitter */}
                 <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:card" content={blog.featureImage} />
-                <meta property="twitter:title" content={blog.title} />
-                <meta property="twitter:description" content={blog.excerpt} />
-                <meta property="twitter:image" content={blog.featureImage} />
+                <meta property="twitter:card" content={metadata.imageURL} />
+                <meta property="twitter:title" content={metadata.title} />
+                <meta property="twitter:description" content={metadata.description} />
+                <meta property="twitter:image" content={metadata.imageURL} />
             </Head>
             <section>
                 <AppStateProvider>
