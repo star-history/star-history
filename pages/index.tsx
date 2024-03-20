@@ -37,11 +37,11 @@ const Index: NextPage<IndexProps> = () => {
                 <meta property="og:image" content={metadata.imageURL} />
 
                 {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://star-history.com" />
-                <meta property="twitter:title" content={metadata.title} />
-                <meta property="twitter:description" content={metadata.description} />
-                <meta property="twitter:image" content={metadata.imageURL} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:url" content="https://star-history.com" />
+                <meta name="twitter:title" content={metadata.title} />
+                <meta name="twitter:description" content={metadata.description} />
+                <meta name="twitter:image" content={metadata.imageURL} />
             </Head>
             <section>
                 <AppStateProvider>

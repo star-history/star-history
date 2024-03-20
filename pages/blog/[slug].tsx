@@ -47,11 +47,11 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             <meta property="og:image" content={blog.featureImage} />
 
                             {/* Twitter */}
-                            <meta property="twitter:card" content="summary_large_image" />
-                            <meta property="twitter:url" content={`https://star-history.com/blog/${blog.slug}`} />
-                            <meta property="twitter:title" content={blog.title} />
-                            <meta property="twitter:description" content={blog.excerpt} />
-                            <meta property="twitter:image" content={blog.featureImage} />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta name="twitter:url" content={`https://star-history.com/blog/${blog.slug}`} />
+                            <meta name="twitter:title" content={blog.title} />
+                            <meta name="twitter:description" content={blog.excerpt} />
+                            <meta name="twitter:image" content={blog.featureImage} />
                         </>
                     )
                 }
