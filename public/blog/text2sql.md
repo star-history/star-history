@@ -8,15 +8,16 @@ They can also help improve productivity by automating the process of generating 
 
 In this edition of Star History monthly, we have compiled a collection of open-source Text2SQL tools.
 
-- [Star History Monthly | Open-source Text2SQL Tools](#star-history-monthly--open-source-text2sql-tools)
-  - [Chat2DB](#chat2db)
-  - [SQL Chat](#sql-chat)
-  - [Vanna](#vanna)
-  - [DuckDB-NSQL](#duckdb-nsql)
-  - [Langchain](#langchain)
-  - [Awesome Text2SQL](#awesome-text2sql)
-  - [To Wrap up](#to-wrap-up)
-  - [Lastly](#lastly)
+-   [Chat2DB](#chat2db)
+-   [SQL Chat](#sql-chat)
+-   [Vanna](#vanna)
+-   [DuckDB-NSQL](#duckdb-nsql)
+-   [Langchain](#langchain)
+-   [Awesome Text2SQL](#awesome-text2sql)
+-   [To Wrap up](#to-wrap-up)
+-   [Lastly](#lastly)
+
+[![star-history](/assets/blog/text2sql/compare.webp)](/#chat2db/chat2db&sqlchat/sqlchat&vanna-ai/vanna&NumbersStationAI/DuckDB-NSQL&langchain-ai/langchain&eosphoros-ai/Awesome-Text2SQL&Date)
 
 ## Chat2DB
 
@@ -54,7 +55,7 @@ It was open-sourced in July 2023 and [got really popular](https://star-history.c
 
 ## Langchain
 
-With Langchain, you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
+With [Langchain](https://github.com/langchain-ai/langchain), you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
 
 ![langchain](/assets/blog/text2sql/langchain.webp)
 
@@ -74,10 +75,10 @@ LLM or not, you should still be extra careful when executing model-generated SQL
 
 If you want more AI content, check out earlier editions of the **Star History Open-source Monthly**:
 
-- [GPT Wrappers](/blog/gpt-wrappers)
-- [TTS (Text-to-Speech) Tools](/blog/tts)
-- [AI Extensions for Postgres](/blog/ai-for-postgres)
-- [GitHub Copilot alternatives](/blog/coding-ai)
-- [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
-- [Llama 2 and Ecosystem](/blog/llama2)
-- [ChatGPT Special](/blog/star-history-monthly-pick-202303)
+-   [GPT Wrappers](/blog/gpt-wrappers)
+-   [TTS (Text-to-Speech) Tools](/blog/tts)
+-   [AI Extensions for Postgres](/blog/ai-for-postgres)
+-   [GitHub Copilot alternatives](/blog/coding-ai)
+-   [CLI Tools for Working with LLMs](/blog/cli-tool-for-llm)
+-   [Llama 2 and Ecosystem](/blog/llama2)
+-   [ChatGPT Special](/blog/star-history-monthly-pick-202303)
