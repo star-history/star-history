@@ -76,10 +76,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                 const blogList = blogs as Blog[];
                 const latest = blogList.find(blog => blog.featured);
                 if (latest) {
-                    console.log("Latest blog found:", latest);
                     setState(prevState => ({ ...prevState, latestBlog: latest }));
-                } else {
-                    console.log("No latest blog found");
                 }
             } catch (error) {
                 console.error("Error fetching latest blog:", error);
