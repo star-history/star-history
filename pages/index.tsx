@@ -31,13 +31,14 @@ const Index: NextPage<IndexProps> = () => {
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://star-history.com" />
                 <meta property="og:title" content={metadata.title} />
                 <meta property="og:description" content={metadata.description} />
                 <meta property="og:image" content={metadata.imageURL} />
 
                 {/* Twitter */}
                 <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:card" content={metadata.imageURL} />
+                <meta property="twitter:url" content="https://star-history.com" />
                 <meta property="twitter:title" content={metadata.title} />
                 <meta property="twitter:description" content={metadata.description} />
                 <meta property="twitter:image" content={metadata.imageURL} />
