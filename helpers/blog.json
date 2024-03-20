@@ -3,7 +3,7 @@
         "title": "Star History Monthly Jan 2024 | Underrated Open Source Projects",
         "slug": "most-underrated",
         "author": "Mila",
-        "featured": false,
+        "featured": true,
         "featureImage": "/assets//blog/most-underrated/banner.webp",
         "publishedDate": "2024-03-20:00:00.000Z",
         "excerpt": "We are taking a look at some underrated open source projects that deserve more recognition."
