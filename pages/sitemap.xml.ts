@@ -1,8 +1,6 @@
 import blogs from '../helpers/blog.json';
-import { Blog } from '../helpers/types/blog'; // Assuming you have defined Blog type in types.ts or similar
-import path from 'path';
 
-const generateSitemap = (blogs) => {
+const generateSitemap = (blogs: any[]) => {
     const uniqueUrls = new Set();
 
     // Add the homepage URL

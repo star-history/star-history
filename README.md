@@ -18,22 +18,9 @@
 
 ```html
 <picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark
-    "
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="
-      https://api.star-history.com/svg?repos=star-history/star-history&type=Date
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date"
-  />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
 </picture>
 ```
 
@@ -57,24 +44,18 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/assets/sponsors/dify/landing.webp" /></a>
 
-### Akuity
-
-[Akuity](https://hubs.li/Q02fpVR30) A legit and balanced comparison of top two GitOps tools. Choose Argo CD today for a better DevOps experience.
-
-<a href="https://hubs.li/Q02fpVR30"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/assets/sponsors/akuity/landing.webp" /></a>
-
 ## ✨ Features
 
-- **Unique** **`sketch xkcd`** feeling **chart**;
-- **One-click** generation of **high-quality** image for chart;
-- Support **multiple chart view** mode **`based on date or timeline`**;
-- **Embed** the **real-time chart** into **`GitHub readme or other websites`** **(like the one we embed here on the top)**
-- And **various** useful **functions**:
-  - toggle **repo visibility**;
-  - **shortcut** to input repo;
-  - **share** on **`Twitter`** **quickly**;
-  - **support** input **multiple repos**;
-  - ...waiting **for you** to **find out!**
+-   **Unique** **`sketch xkcd`** feeling **chart**;
+-   **One-click** generation of **high-quality** image for chart;
+-   Support **multiple chart view** mode **`based on date or timeline`**;
+-   **Embed** the **real-time chart** into **`GitHub readme or other websites`** **(like the one we embed here on the top)**
+-   And **various** useful **functions**:
+    -   toggle **repo visibility**;
+    -   **shortcut** to input repo;
+    -   **share** on **`Twitter`** **quickly**;
+    -   **support** input **multiple repos**;
+    -   ...waiting **for you** to **find out!**
 
 ## 🌠 Screenshots
 
@@ -91,8 +72,8 @@
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/)
-- [pnpm](https://pnpm.io/)
+-   [Node.js](https://nodejs.org/en/download/)
+-   [pnpm](https://pnpm.io/)
 
 ### Install dependencies
 
@@ -102,27 +83,27 @@ pnpm i
 
 ### Start with your interest
 
-- **Main website** is the homepage of star-history with most of **useful features and blogs** about **`open source`**.
+-   **Main website** is the homepage of star-history with most of **useful features and blogs** about **`open source`**.
 
-  ```shell
-  pnpm dev
-  ```
+    ```shell
+    pnpm dev
+    ```
 
-  The website will be served at http://localhost:3000.
+    The website will be served at http://localhost:3000.
 
-- **Chrome extension** supports the **basic chart viewer** as a **free** additional product.
+-   **Chrome extension** supports the **basic chart viewer** as a **free** additional product.
 
-  ```shell
-  pnpm build:ext
-  ```
+    ```shell
+    pnpm build:ext
+    ```
 
-  Load the built `./dist` folder as **unpacked project** to chrome extensions page.
+    Load the built `./dist` folder as **unpacked project** to chrome extensions page.
 
-- **API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
+-   **API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
 
-  ```shell
-  cd server
-  pnpm i && pnpm dev
-  ```
+    ```shell
+    cd server
+    pnpm i && pnpm dev
+    ```
 
-  The API server will be running on http://localhost:8080.
+    The API server will be running on http://localhost:8080.
