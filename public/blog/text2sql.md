@@ -10,15 +10,16 @@ They can also help improve productivity by automating the process of generating 
 
 In this edition of Star History monthly, we have compiled a collection of open-source Text2SQL tools.
 
-- [Star History Monthly | Open-source Text2SQL Tools](#star-history-monthly--open-source-text2sql-tools)
-  - [Chat2DB](#chat2db)
-  - [SQL Chat](#sql-chat)
-  - [Vanna](#vanna)
-  - [DuckDB-NSQL](#duckdb-nsql)
-  - [Langchain](#langchain)
-  - [Awesome Text2SQL](#awesome-text2sql)
-  - [To Wrap up](#to-wrap-up)
-  - [Lastly](#lastly)
+- [Chat2DB](#chat2db)
+- [SQL Chat](#sql-chat)
+- [Vanna](#vanna)
+- [DuckDB-NSQL](#duckdb-nsql)
+- [Langchain](#langchain)
+- [Awesome Text2SQL](#awesome-text2sql)
+- [To Wrap up](#to-wrap-up)
+- [Lastly](#lastly)
+
+[![star-history](/blog/assets/text2sql/compare.webp)](/#chat2db/chat2db&sqlchat/sqlchat&vanna-ai/vanna&NumbersStationAI/DuckDB-NSQL&langchain-ai/langchain&eosphoros-ai/Awesome-Text2SQL&Date)
 
 ## Chat2DB
 
@@ -56,7 +57,7 @@ It was open-sourced in July 2023 and [got really popular](https://star-history.c
 
 ## Langchain
 
-With Langchain, you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
+With [Langchain](https://github.com/langchain-ai/langchain), you can [build](https://python.langchain.com/docs/use_cases/sql/) a Q&A chain and agent over an SQL database yourself.
 
 ![langchain](/blog/assets/text2sql/langchain.webp)
 
