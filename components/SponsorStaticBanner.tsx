@@ -1,24 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { randomSponsors } from "../helpers/sponsor"
 import { FaTimes } from "react-icons/fa"
 
-type Sponsor = {
-    name: string
-    logo: string
-    link: string
-    logoSlogan: string
-    landingImage: string
-    landingSlogan: string
-}
-
 export default function SponsorStaticBanner() {
     const [hideModal, setHideModal] = useState(false)
-    const [sponsors, setSponsors] = useState<Sponsor[]>([])
-
-    useEffect(() => {
-        setSponsors(randomSponsors)
-    }, [])
 
     return (
         <div className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-10 ${hideModal ? "!hidden" : ""}`}>
@@ -27,7 +13,7 @@ export default function SponsorStaticBanner() {
 
                 <FaTimes className="fas fa-times text-xs text-gray-400 cursor-pointer hover:text-gray-500" onClick={() => setHideModal(!hideModal)} />
             </div>
-            {sponsors.map((sponsor) => (
+            {randomSponsors.map((sponsor) => (
                 <a
                     key={sponsor.name}
                     href={sponsor.link}
