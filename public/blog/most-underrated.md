@@ -2,13 +2,14 @@
 
 For Star History's Feb edition, we were fully inspired by [this](https://news.ycombinator.com/item?id=39635486) post discussing underrated open source projects that deserve more recognition, and we dived DEEP into the threads to see what we were missing out! Here are some of our favourites:
 
-- [Star History Monthly | Underrated Open Source Projects](#star-history-monthly--underrated-open-source-projects)
-  - [Cryptpad](#cryptpad)
-  - [Pagefind](#pagefind)
-  - [Paperless-ngx](#paperless-ngx)
-  - [QPDF](#qpdf)
-  - [River](#river)
-  - [Lastly](#lastly)
+- [Cryptpad](#cryptpad)
+- [Pagefind](#pagefind)
+- [Paperless-ngx](#paperless-ngx)
+- [QPDF](#qpdf)
+- [River](#river)
+- [Lastly](#lastly)
+
+[![star-history](/blog/assets/most-underrated/compare.webp)](/#cryptpad/cryptpad&CloudCannon/pagefind&paperless-ngx/paperless-ngx&qpdf/qpdf&online-ml/river&Date)
 
 ## Cryptpad
 
@@ -45,7 +46,7 @@ QPDF's magic begins once you have a valid PDF file:
 ![qpdf](/blog/assets/most-underrated/qpdf.webp)
 
 > What if you have a password-protected PDF and can’t remember the password?
-It can transform that file in ways that your current PDF tool can’t handle with minimal operations from your CLI.
+> It can transform that file in ways that your current PDF tool can’t handle with minimal operations from your CLI.
 
 Beyond encryption and decryption, QPDF can also modify, merge, split, and convert PDF files into different formats.
 
@@ -61,4 +62,4 @@ River is actually the merger between [creme](https://github.com/MaxHalford/creme
 
 ## Lastly
 
-What do you think? Are there any open source projects that you have come across that deserve more recognition? Let us know!
+What do you think? Are there any open source projects that you have come across that deserve more recognition? [Let us know](/blog/list-your-open-source-project) or post it on our newly minted [forum](https://forum.star-history.com/)!.
