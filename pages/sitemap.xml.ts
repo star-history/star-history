@@ -4,12 +4,12 @@ const generateSitemap = (blogs: any[]) => {
     const uniqueUrls = new Set();
 
     // Add the homepage URL
-    uniqueUrls.add("https://www.star-history.com");
-    uniqueUrls.add("https://www.star-history.com/blog");
+    uniqueUrls.add("https://star-history.com");
+    uniqueUrls.add("https://star-history.com/blog");
 
     // Add URLs for each blog post
     blogs.forEach(blog => {
-        uniqueUrls.add(`https://www.star-history.com/blog/${blog.slug}`);
+        uniqueUrls.add(`https://star-history.com/blog/${blog.slug}`);
     });
 
     // Construct the sitemap XML
