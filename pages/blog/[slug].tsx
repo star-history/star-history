@@ -33,7 +33,27 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
         <AppStateProvider>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
                 <title>{blog ? `${blog.title}` : "GitHub Star History"}</title>
-                <meta name="description" content={blog ? blog.excerpt : "" } />
+                {
+                    blog && (
+                        <>
+                            {/* Standard Meta Tags */}
+                            <meta name="description" content={blog.excerpt} />
+
+                            {/* Open Graph / Facebook */}
+                            <meta property="og:type" content="website" />
+                            <meta property="og:title" content={blog.title} />
+                            <meta property="og:description" content={blog.excerpt} />
+                            <meta property="og:image" content={blog.featureImage} />
+
+                            {/* Twitter */}
+                            <meta property="twitter:card" content={blog.featureImage} />
+                            <meta property="twitter:title" content={blog.title} />
+                            <meta property="twitter:description" content={blog.excerpt} />
+                            <meta property="twitter:image" content={blog.featureImage} />
+                        </>
+                    )
+                }
+
                 <Header />
                 <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
                     <div className="w-full hidden lg:block">
