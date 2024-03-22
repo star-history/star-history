@@ -56,8 +56,8 @@ useEffect(() => {
               <Link href="/" className="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800">
                 <img className="w-7 h-auto" src="/assets/icon.png" alt="Logo" />
               </Link>
-              <Link href="/blog" className="h-full flex flex-row justify-center items-center text-base px-5 hover:bg-zinc-800">
-                <span className="text-white font-semibold -2">Blog</span>
+              <Link href="https://forum.star-history.com" className="h-full flex flex-row justify-center items-center text-base px-5 hover:bg-zinc-800">
+                <span className="text-white font-semibold -2">Forum</span>
               </Link>
               <span
                 className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 hover:bg-zinc-800"
