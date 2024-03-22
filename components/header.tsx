@@ -53,12 +53,15 @@ useEffect(() => {
         <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
           <div className="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-0 sm:px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
-              <Link href="/" className="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800">
+              <Link href="/" className="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800">
                 <img className="w-7 h-auto" src="/assets/icon.png" alt="Logo" />
               </Link>
-              <a href="https://forum.star-history.com" target="__blank" className="h-full flex flex-row justify-center items-center text-base px-5 hover:bg-zinc-800">
+              <Link href="https://forum.star-history.com" target="__blank" className="h-full flex flex-row justify-center items-center text-base px-3 hover:bg-zinc-800">
                 <span className="text-white font-semibold -2">Forum</span>
-              </a>
+              </Link>
+              <Link href="/blog"className="h-full flex flex-row justify-center items-center text-base px-3 hover:bg-zinc-800">
+                <span className="text-white font-semibold -2">Blog</span>
+              </Link>
               <span
                 className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 hover:bg-zinc-800"
                 onClick={handleSetTokenBtnClick}
