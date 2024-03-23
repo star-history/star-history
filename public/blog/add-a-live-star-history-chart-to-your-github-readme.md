@@ -1,5 +1,3 @@
-# Add a live star-history chart to your GitHub README
-
 ![star-history-svg-example](/assets/blog/star-history-svg-example.png)
 Now we support embedding a live star history chart into your GitHub README.  Above is the screenshot from our own [GitHub start history repo](https://github.com/star-history/star-history).
 

@@ -1,5 +1,3 @@
-# Dify.AI - An open source LLMOps platform to unleash the full potential of GPT and other language models
-
 With the continuous evolution and capability improvements of large language models (LLMs), the demand for AI applications is growing. However, for most developers, building AI applications with GPT and other large language models, frameworks like Langchain, remains an extremely challenging task. Developers have to spend a lot of time learning various abstruse concepts and technical research, and it's hard to continuously operate AI applications.
 
 **What if there was a perfect solution: developers don't need to care about the underlying principles of the infrastructure, just focus on turning imagination into real AI applications and operating them continuously, making large language models as easy to use as cloud computing services.**
