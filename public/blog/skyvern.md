@@ -2,8 +2,6 @@
 
 ---
 
-# Skyvern – Browser automation using LLMs and computer vision
-
 Hello Star History readers! We're the team behind [Skyvern](https://www.skyvern.com/), an open-source tool that uses LLMs and computer vision to help companies automate and scale browser-based workflows. 
 
 ## The Birth of Skyvern
