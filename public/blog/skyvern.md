@@ -24,17 +24,17 @@ Our project has seen exciting use cases, such as:
 
 - Automating material procurement for companies.
     
-![finditparts_recording_crop](/blog/assets/skyvern/finditparts_recording_crop.webp)
+![finditparts_recording_crop](/assets/blog/skyvern/finditparts_recording_crop.webp)
     
 - Streamlining interactions with government websites for administrative tasks. [[demo](https://github.com/skyvern-ai/skyvern?tab=readme-ov-file#navigating-to-government-websites-to-register-accounts-or-fill-out-forms)]
     
-![edd_services](/blog/assets/skyvern/edd_services.webp)
+![edd_services](/assets/blog/skyvern/edd_services.webp)
     
 - Facilitating insurance quote generation through dynamic form navigation. [[demo](https://github.com/skyvern-ai/skyvern?tab=readme-ov-file#retrieving-insurance-quotes-from-insurance-providers-in-any-language)]
     
-![geico_shu_recording_cropped](/blog/assets/skyvern/geico_shu_recording_cropped.webp)
+![geico_shu_recording_cropped](/assets/blog/skyvern/geico_shu_recording_cropped.webp)
     
-![bci_seguros_recording](/blog/assets/skyvern/bci_seguros_recording.webp)
+![bci_seguros_recording](/assets/blog/skyvern/bci_seguros_recording.webp)
     
 
 ## Learn more about Skyvern
