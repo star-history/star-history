@@ -75,6 +75,10 @@ const blogSectionList: BlogSection[] = [
         title: "Monthly Pick",
         linkList: [
             {
+                title: "2024 Mar (Non-AI)",
+                path: "/blog/non-ai",
+            },
+            {
                 title: "2024 Feb (Most Underrated)",
                 path: "/blog/most-underrated",
             },
