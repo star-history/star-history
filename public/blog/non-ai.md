@@ -57,4 +57,4 @@ Puter has been around a while, but was recently open-sourced so that you can sel
 So... what are you working on? Is it AI or non-AI?
 
 
-*Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
+📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
