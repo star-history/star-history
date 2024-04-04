@@ -2,14 +2,12 @@ Time for an End of Year Review for 2023! 🎉
 
 AI is the keyword of 2023, but there is so much more to this past year in the realm of open source! We at Star History HQ gathered a few categories and picked our favorite project for each category, including:
 
-- [Star History Monthly | Best Of 2023](#star-history-monthly--best-of-2023)
-  - [AI: LangChain](#ai-langchain)
-  - [Database: Neon](#database-neon)
-  - [DevTool: Nx](#devtool-nx)
-  - [Front-end: Astro](#front-end-astro)
-  - [Security: Teleport](#security-teleport)
-  - [Web3: zkSync](#web3-zksync)
-  - [To Wrap Up](#to-wrap-up)
+- [AI: LangChain](#ai-langchain)
+- [Database: Neon](#database-neon)
+- [DevTool: Nx](#devtool-nx)
+- [Front-end: Astro](#front-end-astro)
+- [Security: Teleport](#security-teleport)
+- [Web3: zkSync](#web3-zksync)
 
 ## AI: LangChain
 

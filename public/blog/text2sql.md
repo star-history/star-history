@@ -14,8 +14,6 @@ In this edition of Star History monthly, we have compiled a collection of open-s
 -   [DuckDB-NSQL](#duckdb-nsql)
 -   [Langchain](#langchain)
 -   [Awesome Text2SQL](#awesome-text2sql)
--   [To Wrap up](#to-wrap-up)
--   [Lastly](#lastly)
 
 [![star-history](/assets/blog/text2sql/compare.webp)](/#chat2db/chat2db&sqlchat/sqlchat&vanna-ai/vanna&NumbersStationAI/DuckDB-NSQL&langchain-ai/langchain&eosphoros-ai/Awesome-Text2SQL&Date)
 
