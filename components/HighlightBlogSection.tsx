@@ -20,10 +20,6 @@ const blogSectionList: BlogSection[] = [
         title: "Playbook",
         linkList: [
             {
-                title: "🎁 Prompt project for FREE",
-                path: "/blog/list-your-open-source-project",
-            },
-            {
                 title: "📕 How to Use this Site",
                 path: "/blog/how-to-use-github-star-history"
             },
@@ -255,6 +251,13 @@ const blogSectionList: BlogSection[] = [
 const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, "blogSectionList">> = () => {
     return (
         <div className="flex flex-col justify-start items-start w-full mt-12 p-4 pl-8">
+            <a
+                href="https://forum.star-history.com/"
+                className="hover:opacity-75 border-2 border-[#363636]"
+                target="_blank"
+            >
+                <img className="w-auto max-w-full" src="/assets/forum-icon.webp" />
+            </a>
             {blogSectionList.map((section) => (
                 <div key={section.title}>
                     <div className="w-full flex flex-row justify-between items-center my-2">
