@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #20 ParadeDB: Postgres for Search & Analytics",
+        "slug": "paradedb",
+        "author": "Philippe Noël",
+        "featured": true,
+        "featureImage": "/assets/blog/paradedb/banner.webp",
+        "publishedDate": "2024-04-18:00:00.000Z",
+        "excerpt": "ParadeDB is an Elasticsearch alternative built on Postgres!"
+    },
+    {
         "title": "Star History Monthly Mar 2024 | Non-AI Open Source Projects that are 🔥",
         "slug": "non-ai",
         "author": "Mila",
@@ -15,7 +24,7 @@
         "featured": true,
         "featureImage": "/assets/blog/skyvern/banner.webp",
         "publishedDate": "2024-03-28:00:00.000Z",
-        "excerpt": "skyvern is an open-source tool that uses LLMs and computer vision to help companies automate and scale browser-based workflows."
+        "excerpt": "Skyvern is an open-source tool that uses LLMs and computer vision to help companies automate and scale browser-based workflows."
     },
     {
         "title": "Star History Monthly Feb 2024 | Underrated Open Source Projects",
