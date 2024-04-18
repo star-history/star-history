@@ -11,7 +11,7 @@
         >
           {{ randomSponsors[0].name }}
         </a>
-        - {{ randomSponsors[0].slogan }}
+        - {{ randomSponsors[0].landingSlogan }}
       </p>
       <a
         class="hover:opacity-80"

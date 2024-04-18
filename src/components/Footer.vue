@@ -18,13 +18,13 @@
         >
           <i class="fab fa-twitter"></i>
         </a>
-        <a
+        <!-- <a
           class="h-full flex flex-row justify-center items-center ml-3 text-lg hover:opacity-80"
           href="https://discord.gg/yyzsmgcqg7"
           target="_blank"
         >
           <i class="fab fa-discord"></i>
-        </a>
+        </a> -->
         <a
           class="h-full flex flex-row justify-center items-center mx-3 text-lg hover:opacity-80"
           href="mailto:star@bytebase.com"
@@ -57,7 +57,7 @@
           class="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80"
         >
           <img class="h-6 mt-1 mr-2" src="/mysql-vs-pg.webp" />
-          <a href="https://www.mysql-vs-postgresql.com/" target="_blank"
+          <a href="https://www.mysql-vs-postgres.com/" target="_blank"
             >MySQL or PG</a
           >
         </div>

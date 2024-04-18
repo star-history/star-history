@@ -1,5 +1,122 @@
 [
   {
+    "title": "Star History Monthly Jan 2024 | Underrated Open Source Projects",
+    "slug": "most-underrated",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/most-underrated/banner.webp",
+    "publishedDate": "2024-03-20:00:00.000Z",
+    "excerpt": "We are taking a look at some underrated open source projects that deserve more recognition."
+  },
+  {
+    "title": "Introducing Star History Forum",
+    "slug": "introduce-star-history-forum",
+    "author": "Tianzhou",
+    "featured": true,
+    "featureImage": "/blog/assets/introduce-star-history-forum/banner.webp",
+    "publishedDate": "2024-03-19:00:00.000Z",
+    "excerpt": "Introducing star-history forum"
+  },
+  {
+    "title": "Starlet #18 Prisma ORM: Simplify Working and Interacting with Databases",
+    "slug": "prisma",
+    "author": "Nikolas Burk",
+    "featured": true,
+    "featureImage": "/blog/assets/prisma-banner.webp",
+    "publishedDate": "2024-03-14:00:00.000Z",
+    "excerpt": "Prisma ORM is a toolkit that makes it easy for developers to work with databases, and is committed to creating a great developer experience for developers that are building data-driven applications."
+  },
+  {
+    "title": "Star History Best of 2023",
+    "slug": "best-of-2023",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/best-of-2023/banner.webp",
+    "publishedDate": "2024-03-01:00:00.000Z",
+    "excerpt": "Time for an End of Year Review of our favourite open-source projects that stood out in 2023!"
+  }, 
+  {
+    "title": "Starlet #17 SpiceDB: Google Zanzibar-inspired Authorization System",
+    "slug": "spicedb",
+    "author": "Pablo Macias",
+    "featured": true,
+    "featureImage": "/blog/assets/spicedb-banner.webp",
+    "publishedDate": "2024-02-23:00:00.000Z",
+    "excerpt": "SpiceDB is an open source, Google Zanzibar-inspired database for creating and managing security-critical application permissions."
+  },
+  {
+    "title": "Star History Monthly Jan 2024 | Open-source Text2SQL Tools",
+    "slug": "text2sql",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/text2sql/banner.webp",
+    "publishedDate": "2024-01-31T09:50:06.000Z",
+    "excerpt": "Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!"
+  }, 
+  {
+    "title": "Starlet #16 Apache Answer: Thrive the Community. Unleash Collective Knowledge.",
+    "slug": "answer",
+    "author": "Anne Zhu",
+    "featured": true,
+    "featureImage": "/blog/assets/answer/banner.webp",
+    "publishedDate": "2024-01-26:00:00.000Z",
+    "excerpt": "Apache Answer is an open-source Q&A platform software for teams at any scale, now incubating in Apache Software Foundation."
+  },
+  {
+    "title": "Star History Monthly Dec 2023 | Open-source GPT Wrappers",
+    "slug": "gpt-wrappers",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/gpt-wrappers/banner.webp",
+    "publishedDate": "2024-01-19T09:50:06.000Z",
+    "excerpt": "GPT wrappers offer a service by wrapping around ChatGPT API to provide an additional functionality not offered directly by OpenAI itself."
+  }, 
+  {
+    "title": "Starlet #15 Infinity: the AI-Native Database Powering the Next-Gen RAG for LLM",
+    "slug": "infinity",
+    "author": "Yingfeng Zhang",
+    "featured": true,
+    "featureImage": "/blog/assets/infinity/banner.webp",
+    "publishedDate": "2024-01-05:00:00.000Z",
+    "excerpt": "Infinity is an AI-native database specifically designed to cater to large models and is primarily used for Retrieval Augmented Generation (RAG)."
+  },
+  {
+    "title": "Star History Monthly Nov 2023 | Open-source Text To Speech Engines",
+    "slug": "tts",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/tts/banner.webp",
+    "publishedDate": "2023-12-22T09:50:06.000Z",
+    "excerpt": "Text To Speech, or TTS, is a part of human-computer dialogue that enables machines to speak, here are a few open-source TTS options to look at."
+  }, 
+  {
+    "title": "Starlet #14 Proton: A streaming SQL analytical engine, powered by ClickHouse",
+    "slug": "proton",
+    "author": "Jove Zhong",
+    "featured": true,
+    "featureImage": "/blog/assets/proton/banner.webp",
+    "publishedDate": "2023-12-14:00:00.000Z",
+    "excerpt": "Proton is a new open-source streaming SQL analytical engine that combines the power of OLAP processing with responsive real-time streaming analytics."
+  },
+  {
+    "title": "Starlet #13 Earthly: Fast, consistent builds with an instantly familiar syntax - like Dockerfile and Makefile had a baby",
+    "slug": "earthly",
+    "author": "Gavin Johnson",
+    "featured": true,
+    "featureImage": "/blog/assets/earthly/banner.webp",
+    "publishedDate": "2023-12-01:00:00.000Z",
+    "excerpt": "Earthly is like a combination of Docker and Make, running build scripts in Docker containers for consistent results in any environment."
+  },
+  {
+    "title": "Star History Monthly Oct 2023 | Open-source AI Extensions for Postgres",
+    "slug": "ai-for-postgres",
+    "author": "Mila",
+    "featured": true,
+    "featureImage": "/blog/assets/ai-for-postgres/banner.webp",
+    "publishedDate": "2023-11-24T09:50:06.000Z",
+    "excerpt": "Postgres extensions can add extra functionality to your database, and we're sharing five Postgres extensions that just might boost your AI experience."
+  },
+  {
     "title": "Starlet #12 Wasp: the fastest way to develop full-stack web apps with React & Node.js",
     "slug": "wasp",
     "author": "Matija Sosic",
@@ -7,7 +124,7 @@
     "featureImage": "/blog/assets/wasp/banner.webp",
     "publishedDate": "2023-11-13:00:00.000Z",
     "excerpt": "Wasp is a fully open-source, full-stack web framework for React, Node.js, and Prisma"
- },
+  },
   {
     "title": "Starlet #11 libSQL: SQLite for modern applications",
     "slug": "libsql",
@@ -16,7 +133,7 @@
     "featureImage": "/blog/assets/libsql.webp",
     "publishedDate": "2023-10-30:00:00.000Z",
     "excerpt": "libSQL is an Open Source and Open Contribution fork of SQLite"
- },
+  },
   {
     "title": "Star History Monthly Sep 2023 | Open-source GitHub Copilot alternatives",
     "slug": "coding-ai",
@@ -25,7 +142,7 @@
     "featureImage": "/blog/assets/coding-ai/banner.webp",
     "publishedDate": "2023-10-26T09:50:06.000Z",
     "excerpt": "One of the places where AI has made a major breakthrough is in helping with coding. Here, we gathered a few open-source AI coding assistants to boost your productivity."
-  },  
+  },
   {
     "title": "Starlet #10 PostgresML: The GPU-powered AI application database",
     "slug": "postgresml",
@@ -34,7 +151,7 @@
     "featureImage": "/blog/assets/postgresml/banner.webp",
     "publishedDate": "2023-10-19T00:00:00.000Z",
     "excerpt": "PostgresML is the first GPU-powered AI application database - build chatbots, search engines, forecasting apps and more with the latest NLP, LLM and ML models using the simplicity and power of SQL."
- },
+  },
   {
     "title": "Starlet #9 Electric SQL - Build reactive, realtime, local-first apps directly on Postgres",
     "slug": "electricsql",
@@ -43,7 +160,7 @@
     "featureImage": "/blog/assets/electricsql/banner.webp",
     "publishedDate": "2023-10-11T00:00:00.000Z",
     "excerpt": "Use ElectricSQL to build super fast, collaborative, offline-capable apps directly on Postgres by syncing to a local SQLite database."
- },
+  },
   {
     "title": "Do GitHub stars ⭐️ = Money 💰?",
     "slug": "do-github-stars-equal-money",
@@ -52,7 +169,7 @@
     "featureImage": "/blog/assets/do-github-stars-equal-money/banner.webp",
     "publishedDate": "2023-09-28T00:00:00.000Z",
     "excerpt": "Open source projects are starting out by collecting GitHub stars, but stars are not coins, contributors, or customers. So why are we trying to collect them?"
- },
+  },
   {
     "title": "Starlet #8 Prompt flow - Developer Tool for Building High-Quality LLM Applications",
     "slug": "prompt-flow",
@@ -70,7 +187,7 @@
     "featureImage": "/blog/assets/cli-tool-for-llm/banner.webp",
     "publishedDate": "2023-09-22T09:50:06.000Z",
     "excerpt": "This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs."
-  },  
+  },
   {
     "title": "Starlet #7 Clipboard – Remember Anything, Anytime, Anywhere at Breakneck Speed",
     "slug": "clipboard",
@@ -115,7 +232,7 @@
     "featureImage": "/blog/assets/llama2/banner.webp",
     "publishedDate": "2023-08-23T09:50:06.000Z",
     "excerpt": "Meta released Llama 2 in July, which can be freely used for research and commercial purposes. We are taking a look at some open-source options to get started with Llama 2 on your own machine."
-  },  
+  },
   {
     "title": "Starlet #4 chatgpt.js - Client-side JavaScript library for ChatGPT",
     "slug": "chatgpt-js",
@@ -160,7 +277,7 @@
     "featureImage": "/blog/assets/star-history-monthly-pick-202306/banner.webp",
     "publishedDate": "2023-07-14T09:50:06.000Z",
     "excerpt": "This month we pivot back to a selection of DevTools."
-  },  
+  },
   {
     "title": "Starlet #1 Sniffnet - Cross-platform Internet Traffic Monitor",
     "slug": "sniffnet",
@@ -178,7 +295,7 @@
     "featureImage": "/blog/assets/list-your-open-source-project/banner.webp",
     "publishedDate": "2023-07-01T00:00:00.000Z",
     "excerpt": "List your open source project to be seen by thousands of visitors every month."
-  },  
+  },
   {
     "title": "Star History Monthly Pick | May 2023",
     "slug": "star-history-monthly-pick-202305",
@@ -187,7 +304,7 @@
     "featureImage": "/blog/assets/star-history-monthly-pick-202305/banner.webp",
     "publishedDate": "2023-06-21T09:50:06.000Z",
     "excerpt": "A collection of open-source projects for you non-tech people."
-  },  
+  },
   {
     "title": "Open Source AI Infra for Your Next Project",
     "slug": "open-source-ai-infra-projects",
@@ -196,7 +313,7 @@
     "featureImage": "/blog/assets/open-source-ai-infra-projects/banner.webp",
     "publishedDate": "2023-06-16T09:50:06.000Z",
     "excerpt": "A shortlist of open-source infra projects for your next AI project."
-  },  
+  },
   {
     "title": "Star History Monthly Pick | April 2023",
     "slug": "star-history-monthly-pick-202304",
@@ -205,7 +322,7 @@
     "featureImage": "/blog/assets/star-history-monthly-pick-202304/banner.webp",
     "publishedDate": "2023-05-30T09:50:06.000Z",
     "excerpt": "AIGC-related projects are getting all the heat, but we still managed to find some interesting open-source projects that are not ChatGPT-based."
-  },  
+  },
   {
     "title": "SQL Chat - Chat With Your Database",
     "slug": "sql-chat",
@@ -214,7 +331,7 @@
     "featureImage": "/blog/assets/sql-chat/banner.webp",
     "publishedDate": "2023-04-20T09:50:06.000Z",
     "excerpt": "SQL Chat is an open-source chat-based SQL client, powered by OpenAI, with built-in capabilities to connect to and query your databases."
-  },  
+  },
   {
     "title": "Tabby: Self-hosted AI Coding Assistant",
     "slug": "tabby",
@@ -232,7 +349,7 @@
     "featureImage": "/blog/assets/star-history-monthly-pick-202303/banner.webp",
     "publishedDate": "2023-04-14T09:50:06.000Z",
     "excerpt": "ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. We are taking a look at a few handy AI-enhanced tools to make your life easier."
-  },  
+  },
   {
     "title": "Star History Monthly Pick | February 2023",
     "slug": "star-history-monthly-pick-202302",
@@ -303,7 +420,7 @@
     "featureImage": "/blog/assets/yearly-pick-frontend-2022/star-history-frontend-2022.webp",
     "publishedDate": "2023-01-04T09:50:06.000Z",
     "excerpt": "As a proper goodbye to 2022, Star History picks some of the most interesting open-source front-end projects in 2022."
-  }, 
+  },
   {
     "title": "Star History Monthly Pick | December 2022",
     "slug": "star-history-monthly-pick-202212",

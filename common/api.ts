@@ -66,7 +66,7 @@ namespace api {
         requestPages.push(Math.round((i * pageCount) / maxRequestAmount) - 1);
       });
       if (!requestPages.includes(1)) {
-        requestPages.unshift(1);
+        requestPages[0] = 1;
       }
     }
 

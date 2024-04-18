@@ -2,6 +2,7 @@ import http from "http";
 import Koa from "koa";
 import Router from "koa-router";
 import cors from "@koa/cors";
+import { optimize, Config } from 'svgo';
 import { JSDOM } from "jsdom";
 import logger from "./logger";
 import XYChart from "../packages/xy-chart";
@@ -131,14 +132,19 @@ const startServer = async () => {
       return;
     }
 
+    // Optimizing SVG to save bandwidth
     const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
+    const options: Config = {
+      multipass: true, // Apply optimizations multiple times
+    };
+    const optimized = optimize(svgContent, options).data;
 
     const now = new Date();
     ctx.type = "image/svg+xml;charset=utf-8";
     ctx.set("cache-control", "no-cache");
     ctx.set("date", `${now}`);
     ctx.set("expires", `${now}`);
-    ctx.body = svgContent;
+    ctx.body = optimized;
   });
 
   app.on("error", (err) => {

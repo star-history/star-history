@@ -8,13 +8,13 @@
     >
       <div class="h-full flex flex-row justify-start items-center">
         <router-link
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
           to="/"
         >
           <img class="w-7 h-auto" src="/icon.png" />
         </router-link>
         <router-link
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
+          class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
           to="/blog"
         >
           <span class="text-light font-semibold">Blog</span>
@@ -27,14 +27,17 @@
         </span>
       </div>
       <div class="hidden h-full md:flex flex-row justify-start items-center">
-        <router-link
-          class="h-full flex flex-row justify-center items-center px-4 hover:bg-zinc-800"
-          to="/blog/how-to-use-github-star-history"
+        <a
+          href="https://www.bytebase.com?source=star-history"
+          target="_blank"
+          class="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800"
         >
-          📕 How to use this site
-        </router-link>
+          <img class="h-6 mt-1 mr-2" src="/craft-by-bytebase.webp" />
+        </a>
       </div>
-      <div class="h-full hidden md:flex flex-row justify-end items-center">
+      <div
+        class="h-full hidden md:flex flex-row justify-end items-center space-x-1"
+      >
         <a
           class="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800"
           href="https://twitter.com/StarHistoryHQ"
@@ -42,13 +45,13 @@
         >
           <i class="fab fa-twitter text-2xl text-blue-300"></i>
         </a>
-        <a
+        <!-- <a
           class="h-full flex flex-row justify-center items-center px-2 mr-2 hover:bg-zinc-800"
           href="https://discord.gg/yyzsmgcqg7"
           target="_blank"
         >
           <i class="fab fa-discord text-2xl text-indigo-300"></i>
-        </a>
+        </a> -->
         <GitHubStarButton />
       </div>
       <div class="h-full flex md:hidden flex-row justify-end items-center">

@@ -21,7 +21,7 @@
           :src="sponsor.logo"
           :alt="sponsor.name"
         />
-        <span class="text-xs mt-2">{{ sponsor.slogan }}</span>
+        <span class="text-xs mt-2">{{ sponsor.logoSlogan }}</span>
       </a>
     </template>
     <a
