@@ -36,8 +36,8 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
-                        <img className="h-6 mt-1 mr-2" src="/assets/mysql-vs-pg.webp" alt="DB Cost" />
-                        <a href="https://dbcost.com" target="_blank" rel="noopener noreferrer">
+                        <img className="h-6 mt-1 mr-2" src="/assets/mysql-vs-pg.webp" alt="MySQL or PG" />
+                        <a href="https://www.mysql-vs-postgres.com/" target="_blank" rel="noopener noreferrer">
                             MySQL or PG
                         </a>
                     </div>
