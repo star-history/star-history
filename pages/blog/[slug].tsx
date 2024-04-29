@@ -44,14 +44,14 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             <meta property="og:url" content={`https://star-history.com/blog/${blog.slug}`} />
                             <meta property="og:title" content={blog.title} />
                             <meta property="og:description" content={blog.excerpt} />
-                            <meta property="og:image" content={blog.featureImage} />
+                            <meta property="og:image" content={`https://star-history.com${blog.featureImage}`} />
 
                             {/* Twitter */}
                             <meta name="twitter:card" content="summary_large_image" />
                             <meta name="twitter:url" content={`https://star-history.com/blog/${blog.slug}`} />
                             <meta name="twitter:title" content={blog.title} />
                             <meta name="twitter:description" content={blog.excerpt} />
-                            <meta name="twitter:image" content={blog.featureImage} />
+                            <meta name="twitter:image" content={`https://star-history.com${blog.featureImage}`} />
                         </>
                     )
                 }
