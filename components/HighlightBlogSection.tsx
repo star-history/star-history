@@ -30,44 +30,6 @@ const blogSectionList: BlogSection[] = [
         ]
     },
     {
-        title: "AI Collections",
-        linkList: [
-            {
-                title: "Infra",
-                path: "/blog/open-source-ai-infra-projects"
-            },
-            {
-                title: "Model",
-                path: "/#CompVis/stable-diffusion&lllyasviel/ControlNet&openai/whisper&facebookresearch/llama&databrickslabs/dolly&tatsu-lab/stanford_alpaca&nomic-ai/gpt4all&Stability-AI/StableLM"
-            },
-            {
-                title: "Llama Ecosystem",
-                path: "/blog/llama2"
-            },
-            {
-                title: "GPT Ecosystem",
-                path: "/blog/star-history-monthly-pick-202303"
-            },
-            {
-                title: "Coding Assistant",
-                path: "/blog/coding-ai"
-            }
-        ]
-    },
-    {
-        title: "Developer Collections",
-        linkList: [
-            {
-                title: "Database DevOps",
-                path: "/#bytebase/bytebase&liquibase/liquibase&flyway/flyway"
-            },
-            {
-                title: "Workflow Orchestration",
-                path: "/#temporalio/temporal&apache/dolphinscheduler&apache/airflow&quartz-scheduler/quartz&netflix/conductor"
-            }
-        ]
-    },
-    {
         title: "Monthly Pick",
         linkList: [
             {
