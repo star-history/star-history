@@ -99,26 +99,26 @@ const blogSectionList: BlogSection[] = [
         ]
     },
     {
-        title: "Best of 2022",
+        title: "Yearly Pick",
         linkList: [
             {
                 title: "2023",
                 path: "/blog/best-of-2023",
             },
             {
-                title: "Data, Infra & DevTools",
+                title: "Data, Infra & DevTools (2022)",
                 path: "/blog/star-history-yearly-pick-2022-data-infra-devtools"
             },
             {
-                title: "Platform Engineering",
+                title: "Platform Engineering (2022)",
                 path: "/blog/star-history-open-source-2022-platform-engineering"
             },
             {
-                title: "Open-Source Alternatives",
+                title: "Open-Source Alternatives (2022)",
                 path: "/blog/star-history-open-source-2022-open-source-alternatives"
             },
             {
-                title: "Front-end",
+                title: "Front-end (2022)",
                 path: "/blog/star-history-yearly-pick-2022-frontend"
             }
         ]
