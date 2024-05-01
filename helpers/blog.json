@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly Apr 2024 | Open Source Prompt Engineering Guides & Tools",
+        "slug": "prompt-engineering",
+        "author": "Mila",
+        "featured": true,
+        "featureImage": "/assets/blog/prompt-engineering/banner.webp",
+        "publishedDate": "2024-05-01:00:00.000Z",
+        "excerpt": "Prompt Engineering is to design and refine prompts or instructions given to a language model, in order to elicit desired responses."
+    },
+    {
         "title": "Starlet #20 ParadeDB: Postgres for Search & Analytics",
         "slug": "paradedb",
         "author": "Ming Ying",
