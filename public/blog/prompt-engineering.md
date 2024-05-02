@@ -1,6 +1,6 @@
 Prompt Engineering is to design and refine prompts or instructions given to a language model, in order to elicit desired responses. To make the most of the language model's capabilities while ensuring the responses are accurate and tailored to their needs, you often need to carefully craft the input provided to the model to guide its output towards specific objectives.
 
-For this seletions, we divided them into two sections: The guides which will take you through the basics of prompt engineering, and the tools for managing your prompts.
+For the selections, we divided them into two sections: The guides which will take you through the basics of prompt engineering, and the tools for managing your prompts.
 
 -   [Prompt Engineering Guide](#prompt-engineering-guide)
 -   [Awesome-GPTs-Prompts](#awesome-gpts-prompts)
@@ -17,21 +17,21 @@ For this seletions, we divided them into two sections: The guides which will tak
 
 ![prompt-eng-guide](/assets/blog/prompt-engineering/prompt-eng-guide.webp)
 
-Since going live at the end of 2022, Prompt Engineering Guide has grown to support 13 languages, its courses has educated over 3M learners, and they have put together a 1 hour lecture that provides a overview of prompting techniques, applications, and tools.
+Since going live at the end of 2022, Prompt Engineering Guide has grown to support 13 languages, its courses have educated over 3M learners, and they have put together a 1-hour lecture that provides an overview of prompting techniques, applications, and tools.
 
 ### Awesome-GPTs-Prompts
 
-[Awesome-GPTs-Prompts](https://github.com/ai-boost/awesome-prompts) is a curated list of prompts from the top-rated GPTs so that you can unlock the magic behind large language models easier.
+[Awesome-GPTs-Prompts](https://github.com/ai-boost/awesome-prompts) is a curated list of prompts from the top-rated GPTs so that you can unlock the magic behind large language models more easily.
 
 ![awesome-prompts](/assets/blog/prompt-engineering/awesome-prompts.webp)
 
-The curated list includes GPTs from the official GPT Store, prompts form the community, and some interesting resources on basic prompt engineering, how to prompt attack and prompt protect.
+The curated list includes GPTs from the official GPT Store, prompts from the community, and some interesting resources on basic prompt engineering, how to prompt attack and prompt protect.
 
 ## Prompt Management
 
 ### Langfuse
 
-Once you have the basics of prompt engineering down, it's time to manage and test your prompts so that they are on their A game.
+Once you have the basics of prompt engineering down, it's time to manage and test your prompts so that they are on their A-game.
 
 [Langfuse](https://github.com/langfuse/langfuse/) is an open-source LLM engineering platform that helps teams collaboratively debug, analyze, and iterate on their LLM applications.
 
@@ -68,6 +68,6 @@ You can either use a set of built-in evaluators that can be configured, loading 
 
 More companies than ever have launched their own AI tools, as simple as a chatbot to automation, or project management tools. As McKinsey [puts it](https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-prompt-engineering), "Prompt engineering is likely to become a larger hiring category in the next few years".
 
-Obtaining desired results is not that complicated, but it requires practice to provide specific, clear instructions to the computers. We have got a great list for you, get started playing🤸.
+Obtaining desired results is not that complicated, but it requires practice to provide specific, clear instructions to the computers. We have a great list for you, get started playing🤸.
 
 📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
