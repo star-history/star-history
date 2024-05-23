@@ -12,6 +12,8 @@ Here, we present a few open-source AI web scraping tools to choose from.
 
 ## Reader
 
+![reader-star-history](/assets/blog/ai-web-scraper/reader-star-history.webp)
+
 [Reader](https://github.com/jina-ai/reader) is an offering by Jina AI. It can convert any URL to an LLM-friendly input when you append a simple [https://r.jina.ai/](https://r.jina.ai/), and you can get structured output for your agent and RAG systems at no cost.
 
 Since its first release just this past month (April 15th, to be exact), they have served [over 18M](https://jina.ai/news/jina-reader-for-search-grounding-to-improve-factuality-of-llms/) requests from the world, and the project itself has already gained 4.5K stargazers.
@@ -26,6 +28,8 @@ Together, you can construct a comprehensive solution for LLMs, agents, and RAG s
 
 ## LLM Scraper
 
+![llm-scraper-star-history](/assets/blog/ai-web-scraper/llm-scraper-star-history.webp)
+
 [LLM Scraper](https://github.com/mishushakov/llm-scraper) is a TypeScript library to convert any webpages into structured data using LLMs. Essentially, it uses function calling to convert pages to structured data.
 
 Simliarly to Reader, it was open-sourced just last month. It currently supports Local (GGUF), OpenAI, Groq chat models. Apparently, the author is [working on](https://news.ycombinator.com/item?id=40100824) supporting local LLMs via llama.cpp to lower the cost of using LLMs for web scraping.
@@ -34,6 +38,8 @@ Simliarly to Reader, it was open-sourced just last month. It currently supports 
 
 ## Firecrawl
 
+![firecrawl-star-history](/assets/blog/ai-web-scraper/firecrawl-star-history.webp)
+
 [Firecrawl](https://github.com/mendableai/firecrawl) is an API service that can convert an URL into clean, well-formatted markdown. This format is great for LLM applications, offering a structured yet flexible way to represent web content.
 
 ![reader](/assets/blog/ai-web-scraper/reader.webp)
@@ -41,6 +47,8 @@ Simliarly to Reader, it was open-sourced just last month. It currently supports 
 This tool is tailored for LLM engineers, data scientists, AI researchers, and developers looking to harness web data for training machine learning models, market research, content aggregation. It simplifies the data preparation process, allowing professionals to focus on insights and model development, and you can self-host it to your own taste.
 
 ## ScrapeGraphAI
+
+![scrapegraphai-star-history](/assets/blog/ai-web-scraper/scrapegraphai-star-history.webp)
 
 [ScrapeGraphAI](https://github.com/VinciGit00/Scrapegraph-ai) is a Python library that uses LLM and direct graph logic to create scraping pipelines for websites and local documents (XML, HTML, JSON, etc.). With ScrapeGraphAI, you get to specify exactly what sort of data you want to extract.
 
@@ -51,6 +59,8 @@ ScrapegraphAI leverages the power of LLMs,and can thus adapt to changes in websi
 The LLMs it currently supports include GPT, Gemini, Groq, Azure, Hugging Face, as well as local models.
 
 ## LangChain
+
+![langchain-star-history](/assets/blog/ai-web-scraper/langchain-star-history.webp)
 
 What is LangChain not capable of? Not [web scraping](https://python.langchain.com/v0.1/docs/use_cases/web_scraping/).
 
