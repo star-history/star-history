@@ -1,4 +1,4 @@
-Web scraping, in simpler words, is to scrape data and content from websites, the data is then saved in the form of XML, Excel, or SQL. On top of lead generation, competitor monitoring, market research, web sprapers can also be used to automate your data collection process.
+Web scraping, in simpler words, is to scrape data and content from websites, the data is then saved in the form of XML, Excel, or SQL. On top of lead generation, competitor monitoring, market research, web scrapers can also be used to automate your data collection process.
 
 With the help of AI web scraping tools, the limitations associated with manual or purely code-based scraping tools can be addressed: dynamic or unstructured websites can easily be handled, all without human intervention.
 
@@ -30,7 +30,7 @@ Together, you can construct a comprehensive solution for LLMs, agents, and RAG s
 
 ![llm-scraper-star-history](/assets/blog/ai-web-scraper/llm-scraper-star-history.webp)
 
-[LLM Scraper](https://github.com/mishushakov/llm-scraper) is a TypeScript library to convert any webpages into structured data using LLMs. Essentially, it uses function calling to convert pages to structured data.
+[LLM Scraper](https://github.com/mishushakov/llm-scraper) is a TypeScript library that can convert any webpage into structured data using LLMs. Essentially, it uses function calling to convert pages to structured data.
 
 Simliarly to Reader, it was open-sourced just last month. It currently supports Local (GGUF), OpenAI, Groq chat models. Apparently, the author is [working on](https://news.ycombinator.com/item?id=40100824) supporting local LLMs via llama.cpp to lower the cost of using LLMs for web scraping.
 
@@ -54,7 +54,7 @@ This tool is tailored for LLM engineers, data scientists, AI researchers, and de
 
 ![scrapegraphai](/assets/blog/ai-web-scraper/scrapegraphai.webp)
 
-ScrapegraphAI leverages the power of LLMs,and can thus adapt to changes in website structures, reducing the need for constant developer intervention. This flexibility ensures that scrapers remain functional even when website layouts change.
+ScrapegraphAI leverages the power of LLMs, and can thus adapt to changes in website structures, reducing the need for constant developer intervention. This flexibility ensures that scrapers remain functional even when website layouts change.
 
 The LLMs it currently supports include GPT, Gemini, Groq, Azure, Hugging Face, as well as local models.
 
@@ -72,7 +72,7 @@ If you are doing research and want to scrape only news article's name and summar
 
 ## To Sum Up
 
-Of course, there is no one-size-fits-all web scraper. Do you prefer old school traditional web scrapers or LLM-empowered ones?
+Of course, there is no one-size-fits-all web scraper. Do you prefer old-school traditional web scrapers or LLM-empowered ones?
 
 
 📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
