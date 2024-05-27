@@ -34,7 +34,7 @@ Together, you can construct a comprehensive solution for LLMs, agents, and RAG s
 
 Simliarly to Reader, it was open-sourced just last month. It currently supports Local (GGUF), OpenAI, Groq chat models. Apparently, the author is [working on](https://news.ycombinator.com/item?id=40100824) supporting local LLMs via llama.cpp to lower the cost of using LLMs for web scraping.
 
-![reader](/assets/blog/ai-web-scraper/reader.webp)
+![llm-scraper](/assets/blog/ai-web-scraper/llm-scraper.webp)
 
 ## Firecrawl
 
@@ -42,7 +42,7 @@ Simliarly to Reader, it was open-sourced just last month. It currently supports 
 
 [Firecrawl](https://github.com/mendableai/firecrawl) is an API service that can convert an URL into clean, well-formatted markdown. This format is great for LLM applications, offering a structured yet flexible way to represent web content.
 
-![reader](/assets/blog/ai-web-scraper/reader.webp)
+![firecrawl](/assets/blog/ai-web-scraper/firecrawl.webp)
 
 This tool is tailored for LLM engineers, data scientists, AI researchers, and developers looking to harness web data for training machine learning models, market research, content aggregation. It simplifies the data preparation process, allowing professionals to focus on insights and model development, and you can self-host it to your own taste.
 
