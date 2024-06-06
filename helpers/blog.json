@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #21 Khoj: Open, Personal AI for your Digital Brain",
+        "slug": "khoj",
+        "author": "Saba Imran",
+        "featured": true,
+        "featureImage": "/assets/blog/khoj/banner.webp",
+        "publishedDate": "2024-06-06:00:00.000Z",
+        "excerpt": "Khoj is a thinking tool that helps you reason, aggregate information, and create content in a transparent way."
+    },
+    {
         "title": "Star History Monthly May 2024 | Open Source AI Web Scrapers",
         "slug": "ai-web-scraper",
         "author": "Mila",
