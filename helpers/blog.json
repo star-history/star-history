@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #22 Giskard: Open-Source Evaluation & Testing for LLMs and ML models",
+        "slug": "giskard",
+        "author": "Blanca Rivera Campos",
+        "featured": true,
+        "featureImage": "/assets/blog/giskard/banner.webp",
+        "publishedDate": "2024-06-21:00:00.000Z",
+        "excerpt": "Giskard develops an open-source AI testing framework that helps to identify risks of AI models  - with a specific focus on LLM agents."
+    },
+    {
         "title": "Starlet #21 Khoj: Open, Personal AI for your Digital Brain",
         "slug": "khoj",
         "author": "Saba Imran",
