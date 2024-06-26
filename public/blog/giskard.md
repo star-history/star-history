@@ -2,8 +2,6 @@
 
 ---
 
-# Giskard: Open-Source Evaluation & Testing for LLMs and ML models
-
 Giskard develops an open-source **AI testing framework** that helps to identify risks of AI models  - with a specific focus on LLM agents. This helps AI developers save time by ***automating the evaluation*** process, and save money by avoiding costly AI incidents.
 
 ## Problem: Why is AI testing important?
@@ -51,9 +49,7 @@ pip install "giskard[llm]"
 }
 ```
 
-In this tutorial we will use Giskard’s LLM Scan to automatically detect issues on a Retrieval Augmented Generation (RAG) task:
-
-<iframe src="https://colab.research.google.com/github/giskard-ai/giskard/blob/main/docs/getting_started/quickstart/quickstart_llm.ipynb" width="100%" height="600"></iframe>
+In this [tutorial](https://colab.research.google.com/github/giskard-ai/giskard/blob/main/docs/getting_started/quickstart/quickstart_llm.ipynb) we will use Giskard’s LLM Scan to automatically detect issues on a Retrieval Augmented Generation (RAG) task.
 
 For more details, check out the [docs](https://docs.giskard.ai/en/stable/getting_started/quickstart/quickstart_llm.html).
 
