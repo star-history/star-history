@@ -51,6 +51,8 @@ pip install "giskard[llm]"
 
 In this [tutorial](https://colab.research.google.com/github/giskard-ai/giskard/blob/main/docs/getting_started/quickstart/quickstart_llm.ipynb) we will use Giskard’s LLM Scan to automatically detect issues on a Retrieval Augmented Generation (RAG) task.
 
+![LLM Quickstart](/assets/blog/giskard/notebook.webp)
+
 For more details, check out the [docs](https://docs.giskard.ai/en/stable/getting_started/quickstart/quickstart_llm.html).
 
 ## Future development
