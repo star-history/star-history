@@ -107,7 +107,7 @@ pnpm i
 - **Chrome extension** supports the **basic chart viewer** as a **free** additional product.
 
   ```shell
-  pnpm build:ext
+  pnpm build:extension
   ```
 
   Load the built `./dist` folder as **unpacked project** to chrome extensions page.
