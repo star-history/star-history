@@ -7,15 +7,15 @@ AI generators emerge in delicate divisions of our lives, some of which entertain
 -   [hugo(websites builder)](#hugo)
 -   [bark(voice generator)](#bark)
 
-## Marqo
+### Flux
 
-![marqo](/assets/blog/ai-search/marqo.webp)
+![flux](/assets/blog/ai-generators/flux.webp)
 
-[Marqo](https://github.com/marqo-ai/marqo) is an end-to-end vector search engine designed to enhance the relevance and efficiency of AI-driven search applications.. The platform can handle everything from vector generation to storage and retrieval, simplifying the process for developers by allowing them to select models and pass data directly to the API.
+[Flux](https://github.com/black-forest-labs/flux) is a text-to-image model to date, featuring 12 billion parameters for enhanced creativity and performance. Integrated with fal's inference engine, Flux models run twice as fast as previous methods, facilitating quicker image generation without sacrificing detail or quality, and includes features like advanced human anatomy rendering and exceptional speed.
 
-Marqo uses tensor search, which allows neural networks to structure documents, images and other data in such a way that it can be searched with human-like understanding. This provides typo tolerance, natural language understanding and multi-modal functionality (such as image search) out of the box.
+![flux-stars](/assets/blog/ai-generators/flux-stars.webp)
 
-![marqo-search](/assets/blog/ai-search/marqo-search.webp)
+Flux offers three versions: FLUX.1 [dev] with a non-commercial license for community development, FLUX.1 [schnell] for faster processing with an Apache 2 License, and FLUX.1 [pro] for professional use via API, all aimed at producing high-quality, photorealistic images with improved prompt adherence.
 
 ## txtai
 
