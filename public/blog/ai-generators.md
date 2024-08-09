@@ -9,29 +9,29 @@ AI generators emerge in delicate divisions of our lives, some of which entertain
 
 ### Flux
 
-![flux](/assets/blog/ai-generators/flux.webp)
+![flux-star](/assets/blog/ai-generators/flux-star.webp)
 
 [Flux](https://github.com/black-forest-labs/flux) is a text-to-image model to date, featuring 12 billion parameters for enhanced creativity and performance. Integrated with fal's inference engine, Flux models run twice as fast as previous methods, facilitating quicker image generation without sacrificing detail or quality, and includes features like advanced human anatomy rendering and exceptional speed.
 
-![flux-stars](/assets/blog/ai-generators/flux-stars.webp)
+![flux](/assets/blog/ai-generators/flux.webp)
 
 Flux offers three versions: FLUX.1 [dev] with a non-commercial license for community development, FLUX.1 [schnell] for faster processing with an Apache 2 License, and FLUX.1 [pro] for professional use via API, all aimed at producing high-quality, photorealistic images with improved prompt adherence.
 
-## txtai
+### Faceswap
 
-![txtai](/assets/blog/ai-search/txtai.webp)
+![faceswap-star](/assets/blog/ai-generators/faceswap-star.webp)
 
-[txtai](https://github.com/neuml/txtai) is an all-in-one embeddings database for semantic search, LLM orchestration and language model workflows. It integrates vector indexes, graph networks, and relational databases, enabling advanced functionalities such as vector search with SQL, topic modeling, and retrieval augmented generation (RAG).
+[Faceswap](https://github.com/deepfakes/faceswap) is a tool that utilizes deep learning to recognize and swap faces in pictures and videos. The machine learning model primarily processes faces, and other objects might not work.
 
-![txtai-search](/assets/blog/ai-search/txtai-search.webp)
+![faceswap](/assets/blog/ai-generators/faceswap.webp)
 
-With txtai, you can conduct vector search with SQL, object storage, topic modeling, graph analysis and multimodal indexing; create embeddings for text, documents, audio, images and video; achieve pipelines powered by language models that run LLM prompts, question-answering, labeling, transcription, translation, summarization and more.
+Powered by Tensorflow, Keras and Python; Faceswap will run on Windows, macOS and Linux. It insists on ethical and legal uses.
 
-## Typesense
+### Phaser
 
-![typesense](/assets/blog/ai-search/typesense.webp)
+![phaser-star](/assets/blog/ai-generators/phaser-star.webp)
 
-[Typesense](https://github.com/typesense/typesense) is a typo-tolerant search engine for building search experiences. You can think of it as an open-source alternative to [Algolia](https://typesense.org/typesense-vs-algolia-vs-elasticsearch-vs-meilisearch/). It debuted way back, long ago before AI was big.
+[Phaser](https://github.com/phaserjs/phaser) is a game framework based on HTML5, easy to integrate with modern web technologies, suitable for rapid iteration and deployment of web platforms as well. It is relatively lightweight and focuses more on browser-side game development.
 
 Now it already supports vector and semantic search, long-term memory for chat-based LLMs like ChatGPT. These features can be used together to make Chat LLMs respond to users' questions, and build conversational chat bots over your dataset.
 
