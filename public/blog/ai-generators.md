@@ -1,14 +1,11 @@
-AI is transforming the search experience, making it more intelligent, personalized, and efficient for us.
+AI generators emerge in delicate divisions of our lives, some of which entertain us, some bring convenience. For this edition, we present some fun ideas of AI generators that have done well in broadening the boundaries of AI's application.
 
-You might think, "but Google works well enough!" First of all, search relevance and personalisation comes at a price with Google, and what about searches across different media types for the most relevant information formats, or even automation of certain tasks, like [crawling websites](https://star-history.com/blog/ai-web-scraper), indexing content, and search engine optimization.
-
-For this edition, we present you with a few different open-source options that utilize AI to enhance our search experience and efficiency.
-
--   [Marqo](#marqo)
--   [txtai](#txtai)
--   [Typesense](#typesense)
--   [Perplexika](#perplexika)
--   [Morphic](#morphic)
+-   [flux(image generator)](#flux)
+-   [faceswap](#faceswap)
+-   [phaser(game framework)](#phaser)
+-   [PptxGenJS](#pptxgenjs)
+-   [hugo(websites builder)](#hugo)
+-   [bark(voice generator)](#bark)
 
 ## Marqo
 
