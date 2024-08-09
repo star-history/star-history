@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly July 2024 | Fun AI Generators",
+        "slug": "ai-generators",
+        "author": "dec",
+        "featured": true,
+        "featureImage": "/assets/blog/ai-generators/banner.webp",
+        "publishedDate": "2024-08-06:00:00.000Z",
+        "excerpt": "Some fun ideas of AI generators that have done well in broadening the boundaries of AI's application."
+    },
+    {
         "title": "Star History Monthly June 2024 | Open Source AI Searches",
         "slug": "ai-search",
         "author": "Mila",
