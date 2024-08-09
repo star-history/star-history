@@ -33,36 +33,36 @@ Powered by Tensorflow, Keras and Python; Faceswap will run on Windows, macOS and
 
 [Phaser](https://github.com/phaserjs/phaser) is a game framework based on HTML5, easy to integrate with modern web technologies, suitable for rapid iteration and deployment of web platforms as well. It is relatively lightweight and focuses more on browser-side game development.
 
-Now it already supports vector and semantic search, long-term memory for chat-based LLMs like ChatGPT. These features can be used together to make Chat LLMs respond to users' questions, and build conversational chat bots over your dataset.
+![phaser](/assets/blog/ai-generators/phaser.webp)
 
-![typesense-site](/assets/blog/ai-search/typesense-site.webp)
+Phaser offers WebGL and Canvas rendering across desktop and mobile web browsers. It is available via GitHub, npm and CDNs. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
 
-## Perplexika
+### PptxGenJS
 
-![perplexika](/assets/blog/ai-search/perplexika.webp)
+![pptxgenjs-star](/assets/blog/ai-generators/pptxgenjs-star.webp)
 
-This name is a deadringer of Perpleixity, the AI-powered search engine. And indeed [Perplexika](https://github.com/ItzCrazyKns/Perplexica) is inspired by Perplexity AI.
+[PptxGenJS](https://github.com/gitbrent/PptxGenJS/) is a JavaScript PowerPoint library that creates Open Office XML (OOXML) Presentations. It is fully featured and convenient to export. For example, it's able to transform HTML tables into Presentations with a single line of code.
 
-![perplexika-ui](/assets/blog/ai-search/perplexika-ui.webp)
+It can be installed easily with Npm, Yarn, or CDN.
 
-It's an open-source option that not just does the searches but understands your questions. It uses advanced machine learning algorithms like similarity searching and embeddings to refine results and provides clear answers with sources cited.
+### Hugo
 
-Side note: I recently started using Perplexity for searches and I must say, it's a whole new elevated experience without having to dig through ads and irrelevant information to find exactly what I need.
+![hugo-star](/assets/blog/ai-generators/hugo-star.webp)
 
-## Morphic
+[Hugo](https://github.com/gohugoio/hugo) is a static site generator written in Go, optimized for speed and designed for flexibility. It renders a complete site in seconds, often less. Hugo is widely used to create: documentation sites; image portfolios; Business, professional, and personal blogs; Resumes and CVs; etc.
 
-![morphic](/assets/blog/ai-search/morphic.webp)
+You can install Hugo from a prebuilt binary, package manager, or package repository. It can be operated on macOS, Linux, Windows, as well as BSD.
 
-[Morphic](https://github.com/miurla/morphic) is another AI-powered search engine with a generative UI.
+### Bark
 
-![morphic-ui](/assets/blog/ai-search/morphic-ui.webp)
+![bark-star](/assets/blog/ai-generators/bark-star.webp)
 
-The UI is more simplistic than that of Perpleixika, but the features are pretty wholesome: you can log in, ask follow-up questions, search through your history.
+[Bark](https://github.com/serp-ai/bark-with-voice-clone) supports various languages out-of-the-box and automatically determines language from input text. It can generate all types of audio and doesn't see a difference between speech and music. Bark has the capability to fully clone voices. You can provide certain speaker prompts such as NARRATOR, MAN, WOMAN, etc.
 
-It is designed to be easily built and deployed, but if you are feeling lousy, you can also simply visit the official website [morphic.sh](https://morphic.sh/) to get a taste of what it's like.
+Bark has been tested and works on both CPU and GPU (pytorch 2.0+, CUDA 11.7 and 12.0). Running Bark requires running >100M parameter transformer models. On modern GPUs and PyTorch nightly, Bark can generate audio in roughly realtime. On older GPUs, default colab, or CPU, inference time might be 10-100x slower.
 
-## Lastly
+### Lastly
 
-Search and you shall find. But with AI-powered search, you shall find, learn, and discover. 🔍 Do you use AI-powered searches?
+AI nowadays is applied in more and more aspects of our everyday life. Maybe these ideas will inspire you towards greater creativity.
 
 📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
