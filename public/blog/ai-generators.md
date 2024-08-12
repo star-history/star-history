@@ -35,9 +35,9 @@ Powered by Tensorflow, Keras and Python; Faceswap will run on Windows, macOS and
 
 Phaser offers WebGL and Canvas rendering across desktop and mobile web browsers. It is available via GitHub, npm and CDNs. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
 
+![phaser-screenshot](/assets/blog/ai-generators/phaser-screenshot.webp)
 
-
-
+Cooperating with Rosebud AI since 5th January 2024, Phaser's latest game templates revolve around AI Characters & NPCs. These templates allow game devs to create dynamic, interactive characters and integrate them into their games to reach a new level of depth and engagement. You can check out more trending projects on [play.rosebud.ai](https://play.rosebud.ai/), all 2D games are run on Phaser and clone any of them.
 
 ### Bark
 
