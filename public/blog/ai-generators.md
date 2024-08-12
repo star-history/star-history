@@ -3,8 +3,6 @@ AI generators emerge in delicate divisions of our lives, some of which entertain
 -   [flux(image generator)](#flux)
 -   [faceswap](#faceswap)
 -   [phaser(game framework)](#phaser)
--   [PptxGenJS](#pptxgenjs)
--   [hugo(websites builder)](#hugo)
 -   [bark(voice generator)](#bark)
 
 ### Flux
@@ -37,21 +35,9 @@ Powered by Tensorflow, Keras and Python; Faceswap will run on Windows, macOS and
 
 Phaser offers WebGL and Canvas rendering across desktop and mobile web browsers. It is available via GitHub, npm and CDNs. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
 
-### PptxGenJS
 
-![pptxgenjs-star](/assets/blog/ai-generators/pptxgenjs-star.webp)
 
-[PptxGenJS](https://github.com/gitbrent/PptxGenJS/) is a JavaScript PowerPoint library that creates Open Office XML (OOXML) Presentations. It is fully featured and convenient to export. For example, it's able to transform HTML tables into Presentations with a single line of code.
 
-It can be installed easily with Npm, Yarn, or CDN.
-
-### Hugo
-
-![hugo-star](/assets/blog/ai-generators/hugo-star.webp)
-
-[Hugo](https://github.com/gohugoio/hugo) is a static site generator written in Go, optimized for speed and designed for flexibility. It renders a complete site in seconds, often less. Hugo is widely used to create: documentation sites; image portfolios; Business, professional, and personal blogs; Resumes and CVs; etc.
-
-You can install Hugo from a prebuilt binary, package manager, or package repository. It can be operated on macOS, Linux, Windows, as well as BSD.
 
 ### Bark
 
