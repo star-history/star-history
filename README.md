@@ -57,6 +57,19 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/sponsors/dify/landing.webp" /></a>
 
+
+### Code Contributors
+
+<a href="https://github.com/star-history/star-history/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=star-history/star-history" />
+</a>
+
+### Token Contributors
+
+We need invididual tokens to bypass GitHub API rate limiter, thanks to all our donators:
+
+[mrnossiom](https://github.com/mrnossiom)
+
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
