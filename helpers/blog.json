@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #23 Tea-tasting: a Package for Statistical Analysis of A/B Tests",
+        "slug": "tea-tasting",
+        "author": "Evgeny Ivanov",
+        "featured": true,
+        "featureImage": "/assets/blog/tea-tasting/banner.webp",
+        "publishedDate": "2024-08-20:00:00.000Z",
+        "excerpt": "Tea-tasting is a Python package for statistical analysis supporting a wide range of data backends."
+    },
+    {
         "title": "Star History Monthly July 2024 | Fun AI Generators",
         "slug": "ai-generators",
         "author": "dec",
