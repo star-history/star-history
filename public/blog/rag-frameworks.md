@@ -32,11 +32,11 @@ With CPU >= 4 cores, RAM >= 16 GB, Disk >= 50 GB, Docker >= 24.0.0 & Docker Comp
 
 ![storm-star](/assets/blog/rag-frameworks/storm-star.webp)
 
-[STORM](https://github.com/infiniflow/ragflow) offers a streamlined RAG workflow for businesses of any scale, combining LLM (Large Language Models) to provide truthful question-answering capabilities, backed by well-founded citations from various complex formatted data. It features "Quality in, quality out", template-based chunking, grounded citations with reduced hallucinations, compatibility with heterogeneous data sources, and automated and effortless RAG workflow.
+[STORM](https://github.com/stanford-oval/storm) is a LLM system that writes Wikipedia-like articles from scratch based on Internet search. It breaks down generating long articles with citations into two steps: Pre-writing stage and Writing stage, and identifies the core of automating the research process as automatically coming up with good questions to ask. To improve the depth and breadth of the questions, STORM adopts two strategies: Perspective-Guided Question Asking and Simulated Conversation. Based on the separation of the two stages, STORM is implemented in a highly modular way using dspy.
 
 ![storm](/assets/blog/rag-frameworks/storm.webp)
 
-With CPU >= 4 cores, RAM >= 16 GB, Disk >= 50 GB, Docker >= 24.0.0 & Docker Compose >= v2.26.1, you can clone the repo in GitHub, build the pre-built Docker images and start up the server.
+To install the knowledge storm library, you could either use pip or install the source code on GitHub which allows you to modify the behavior of STORM engine directly. 
 
 ### Lastly
 
