@@ -14,7 +14,7 @@ For this edition, we'll present some well-featured open-source RAG frameworks th
 
 ![haystack-star](/assets/blog/rag-frameworks/haystack-star.webp)
 
-[Haystack](https://github.com/deepset-ai/haystack) is an end-to-end LLM framework that allows you to build applications powered by LLMs, Transformer models, vector search and more. Whether you want to perform retrieval-augmented generation (RAG), document search, question answering or answer generation, Haystack can orchestrate state-of-the-art embedding models and LLMs into pipelines to build end-to-end NLP applications and solve your use case.
+[Haystack](https://github.com/deepset-ai/haystack) is an end-to-end LLM framework that allows you to build applications powered by LLMs, Transformer models, vector search and more. Whether you want to perform RAG, document search, question answering or answer generation, Haystack can orchestrate state-of-the-art embedding models and LLMs into pipelines to build end-to-end NLP applications and solve your use case.
 
 ![haystack](/assets/blog/rag-frameworks/haystack.webp)
 
@@ -42,25 +42,25 @@ To install the knowledge storm library, you could either use pip or install the 
 
 ### FlashRAG
 
-![FlashRAG-star](/assets/blog/rag-frameworks/FlashRAG-star.webp)
+![flashrag-star](/assets/blog/rag-frameworks/flashrag-star.webp)
 
 [FlashRAG](https://github.com/RUC-NLPIR/FlashRAG) is a Python toolkit for the reproduction and development of RAG research including 32 pre-processed benchmark RAG datasets and 14 state-of-the-art RAG algorithms. With FlashRAG and provided resources, you can reproduce existing SOTA works in the RAG domain or implement your custom RAG processes and components.
 
 FlashRAG features Extensive and Customizable Framework, Comprehensive Benchmark Datasets, Pre-implemented Advanced RAG Algorithms, Efficient Preprocessing Stage, and Optimized Execution. It's still under development and more good functions are to be uncovered.
 
-![FlashRAG](/assets/blog/rag-frameworks/FlashRAG.webp)
+![flashrag](/assets/blog/rag-frameworks/flashrag.webp)
 
 To get started with FlashRAG, simply clone it from Github and install (requires Python 3.9+).
 
 ### Canopy
 
-![Canopy-star](/assets/blog/rag-frameworks/Canopy-star.webp)
+![canopy-star](/assets/blog/rag-frameworks/canopy-star.webp)
 
 [Canopy](https://github.com/pinecone-io/canopy) is an open-source RAG framework and context engine built on top of the Pinecone vector database enabling you to quickly and easily experiment with and build applications using RAG. Just start chatting with your documents or text data with a few simple commands.
 
 Canopy takes on the heavy lifting for building RAG applications: from chunking and embedding your text data to chat history management, query optimization, context retrieval (including prompt engineering), and augmented generation. It provides a configurable built-in server so you can effortlessly deploy a RAG-powered chat application to your existing chat UI or interface. Or you can build your own, custom RAG application using the Canopy library. It lets you evaluate your RAG workflow with a CLI based chat tool as well. With a simple command in the Canopy CLI you can interactively chat with your text data and compare RAG vs. non-RAG workflows side-by-side.
 
-![Canopy](/assets/blog/rag-frameworks/Canopy.webp)
+![canopy](/assets/blog/rag-frameworks/canopy.webp)
 
 To get Canopy, simply set up environments via pip and download the package according to tutorial docs. You may have to set up a virtual environment.
 
