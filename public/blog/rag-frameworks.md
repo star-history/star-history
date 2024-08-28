@@ -7,6 +7,7 @@ For this edition, we'll present some well-featured open-source RAG frameworks th
 -   [Haystack](#haystack)
 -   [RAGFlow](#ragflow)
 -   [STORM](#storm)
+-   [FlashRAG](#FlashRAG)
 
 ### Haystack
 
@@ -36,7 +37,19 @@ With CPU >= 4 cores, RAM >= 16 GB, Disk >= 50 GB, Docker >= 24.0.0 & Docker Comp
 
 ![storm](/assets/blog/rag-frameworks/storm.webp)
 
-To install the knowledge storm library, you could either use pip or install the source code on GitHub which allows you to modify the behavior of STORM engine directly. 
+To install the knowledge storm library, you could either use pip or install the source code on GitHub which allows you to modify the behavior of STORM engine directly. The STORM knowledge curation engine is defined as a simple Python STORMWikiRunner class. As STORM is working in the information curation layer, you need to set up the information retrieval module and language model module to create a STORMWikiRunner instance.
+
+### FlashRAG
+
+![FlashRAG-star](/assets/blog/rag-frameworks/FlashRAG-star.webp)
+
+[FlashRAG](https://github.com/RUC-NLPIR/FlashRAG) is a Python toolkit for the reproduction and development of RAG research including 32 pre-processed benchmark RAG datasets and 14 state-of-the-art RAG algorithms. With FlashRAG and provided resources, you can reproduce existing SOTA works in the RAG domain or implement your custom RAG processes and components.
+
+FlashRAG features Extensive and Customizable Framework, Comprehensive Benchmark Datasets, Pre-implemented Advanced RAG Algorithms, Efficient Preprocessing Stage, and Optimized Execution. It's still under development and more good functions are to be uncovered.
+
+![FlashRAG](/assets/blog/rag-frameworks/FlashRAG.webp)
+
+To get started with FlashRAG, simply clone it from Github and install (requires Python 3.9+). 
 
 ### Lastly
 
