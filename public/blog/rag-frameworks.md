@@ -8,6 +8,7 @@ For this edition, we'll present some well-featured open-source RAG frameworks th
 -   [RAGFlow](#ragflow)
 -   [STORM](#storm)
 -   [FlashRAG](#FlashRAG)
+-   [Canopy](#Canopy)
 
 ### Haystack
 
@@ -49,10 +50,22 @@ FlashRAG features Extensive and Customizable Framework, Comprehensive Benchmark 
 
 ![FlashRAG](/assets/blog/rag-frameworks/FlashRAG.webp)
 
-To get started with FlashRAG, simply clone it from Github and install (requires Python 3.9+). 
+To get started with FlashRAG, simply clone it from Github and install (requires Python 3.9+).
+
+### Canopy
+
+![Canopy-star](/assets/blog/rag-frameworks/Canopy-star.webp)
+
+[Canopy](https://github.com/pinecone-io/canopy) is an open-source RAG framework and context engine built on top of the Pinecone vector database enabling you to quickly and easily experiment with and build applications using RAG. Just start chatting with your documents or text data with a few simple commands.
+
+Canopy takes on the heavy lifting for building RAG applications: from chunking and embedding your text data to chat history management, query optimization, context retrieval (including prompt engineering), and augmented generation. It provides a configurable built-in server so you can effortlessly deploy a RAG-powered chat application to your existing chat UI or interface. Or you can build your own, custom RAG application using the Canopy library. It lets you evaluate your RAG workflow with a CLI based chat tool as well. With a simple command in the Canopy CLI you can interactively chat with your text data and compare RAG vs. non-RAG workflows side-by-side.
+
+![Canopy](/assets/blog/rag-frameworks/Canopy.webp)
+
+To get Canopy, simply set up environments via pip and download the package according to tutorial docs. You may have to set up a virtual environment.
 
 ### Lastly
 
-AI nowadays is applied in more and more aspects of our everyday life. Maybe these ideas will inspire you towards greater creativity.
+By carefully evaluating and experimenting with different frameworks, you may eventually find the RAG solution that best fits your needs. Let's expect these frameworks to evolve and new ones to emerge in the future.
 
 📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
