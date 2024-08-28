@@ -5,9 +5,8 @@ RAG works by retrieving relevant information from a knowledge base and using it 
 For this edition, we'll present some well-featured open-source RAG frameworks that represent the cutting edge of RAG technology and are worth investigating.
 
 -   [Haystack](#haystack)
--   [faceswap](#faceswap)
--   [phaser(game framework)](#phaser)
--   [bark(voice generator)](#bark)
+-   [RAGFlow](#ragflow)
+-   [STORM](#storm)
 
 ### Haystack
 
@@ -19,37 +18,25 @@ For this edition, we'll present some well-featured open-source RAG frameworks th
 
 Haystack supports multiple installation methods including Docker images. You can simply get Haystack via pip.
 
-### Faceswap
+### RAGFlow
 
-![faceswap-star](/assets/blog/ai-generators/faceswap-star.webp)
+![ragflow-star](/assets/blog/rag-frameworks/ragflow-star.webp)
 
-[Faceswap](https://github.com/deepfakes/faceswap) is a tool that utilizes deep learning to recognize and swap faces in pictures and videos. The machine learning model primarily processes faces, and other objects might not work.
+[RAGFlow](https://github.com/infiniflow/ragflow) offers a streamlined RAG workflow for businesses of any scale, combining LLM (Large Language Models) to provide truthful question-answering capabilities, backed by well-founded citations from various complex formatted data. It features "Quality in, quality out", template-based chunking, grounded citations with reduced hallucinations, compatibility with heterogeneous data sources, and automated and effortless RAG workflow.
 
-![faceswap](/assets/blog/ai-generators/faceswap.webp)
+![ragflow](/assets/blog/rag-frameworks/ragflow.webp)
 
-Powered by Tensorflow, Keras and Python; Faceswap will run on Windows, macOS and Linux. It insists on ethical and legal uses.
+With CPU >= 4 cores, RAM >= 16 GB, Disk >= 50 GB, Docker >= 24.0.0 & Docker Compose >= v2.26.1, you can clone the repo in GitHub, build the pre-built Docker images and start up the server.
 
-### Phaser
+### STORM
 
-![phaser-star](/assets/blog/ai-generators/phaser-star.webp)
+![storm-star](/assets/blog/rag-frameworks/storm-star.webp)
 
-[Phaser](https://github.com/phaserjs/phaser) is a game framework based on HTML5, easy to integrate with modern web technologies, suitable for rapid iteration and deployment of web platforms as well. It is relatively lightweight and focuses more on browser-side game development.
+[STORM](https://github.com/infiniflow/ragflow) offers a streamlined RAG workflow for businesses of any scale, combining LLM (Large Language Models) to provide truthful question-answering capabilities, backed by well-founded citations from various complex formatted data. It features "Quality in, quality out", template-based chunking, grounded citations with reduced hallucinations, compatibility with heterogeneous data sources, and automated and effortless RAG workflow.
 
-![phaser](/assets/blog/ai-generators/phaser.webp)
+![storm](/assets/blog/rag-frameworks/storm.webp)
 
-Phaser offers WebGL and Canvas rendering across desktop and mobile web browsers. It is available via GitHub, npm and CDNs. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
-
-![phaser-screenshot](/assets/blog/ai-generators/phaser-screenshot.webp)
-
-Cooperating with Rosebud AI since 5th January 2024, Phaser's latest game templates revolve around AI Characters & NPCs. These templates allow game devs to create dynamic, interactive characters and integrate them into their games to reach a new level of depth and engagement. You can check out more trending projects on [play.rosebud.ai](https://play.rosebud.ai/) where all 2D games are run on Phaser, and clone any of them.
-
-### Bark
-
-![bark-star](/assets/blog/ai-generators/bark-star.webp)
-
-[Bark](https://github.com/serp-ai/bark-with-voice-clone) supports various languages out-of-the-box and automatically determines language from input text. It can generate all types of audio and doesn't see a difference between speech and music. Bark has the capability to fully clone voices. You can provide certain speaker prompts such as NARRATOR, MAN, WOMAN, etc.
-
-Bark has been tested and works on both CPU and GPU (pytorch 2.0+, CUDA 11.7 and 12.0). Running Bark requires running >100M parameter transformer models. On modern GPUs and PyTorch nightly, Bark can generate audio in roughly realtime. On older GPUs, default colab, or CPU, inference time might be 10-100x slower.
+With CPU >= 4 cores, RAM >= 16 GB, Disk >= 50 GB, Docker >= 24.0.0 & Docker Compose >= v2.26.1, you can clone the repo in GitHub, build the pre-built Docker images and start up the server.
 
 ### Lastly
 
