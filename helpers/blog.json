@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly August 2024 | RAG Frameworks",
+        "slug": "rag-frameworks",
+        "author": "dec",
+        "featured": true,
+        "featureImage": "/assets/blog/rag-frameworks/banner.webp",
+        "publishedDate": "2024-08-29:00:00.000Z",
+        "excerpt": "Retrieval-Augmented Generation (RAG) that enhance the capabilities of large language models."
+    },
+    {
         "title": "Starlet #23 Tea-tasting: a Package for Statistical Analysis of A/B Tests",
         "slug": "tea-tasting",
         "author": "Evgeny Ivanov",
