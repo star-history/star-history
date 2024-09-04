@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #24 Superlinked: a compute framework with ultra-modal vector embeddings",
+        "slug": "superlinked",
+        "author": "Ben Gutkovich",
+        "featured": true,
+        "featureImage": "/assets/blog/superlinked/banner.webp",
+        "publishedDate": "2024-09-04:00:00.000Z",
+        "excerpt": "Superlinked is a compute framework for building Search, RAG, Recommendations and Analytics over complex data, with ultra-modal vector embeddings."
+    },
+    {
         "title": "Star History Monthly August 2024 | RAG Frameworks",
         "slug": "rag-frameworks",
         "author": "dec",
