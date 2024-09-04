@@ -151,6 +151,10 @@ const blogSectionList: BlogSection[] = [
                 path: "/blog/list-your-open-source-project"
             },
             {
+                title: "Issue #24 - Superlinked",
+                path: "/blog/superlinked",
+            },
+            {
                 title: "Issue #23 - tea-tasting",
                 path: "/blog/tea-tasting",
             },
