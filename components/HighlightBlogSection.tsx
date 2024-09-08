@@ -49,7 +49,7 @@ const blogSectionList: BlogSection[] = [
                 path: "/blog/ai-web-scraper",
             },
             {
-                title: "2024 Apr (Prompt Engineering)",
+                title: "2024 Apr (AI Prompt)",
                 path: "/blog/prompt-engineering",
             },
             {
