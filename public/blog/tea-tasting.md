@@ -2,8 +2,6 @@
 
 ---
 
-# tea-tasting: a Python package for the statistical analysis of A/B tests
-
 [**tea-tasting**](https://github.com/e10v/tea-tasting) is a Python package for the statistical analysis of A/B tests featuring:
 
 - Student's t-test, Bootstrap, variance reduction with CUPED, power analysis, and other statistical methods and approaches out of the box.
