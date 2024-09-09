@@ -4,7 +4,7 @@
 
 [**Taipy**](https://links.taipy.io/15J5bi7) is a fully open-source Python framework. It is a Two-in-One tool for UI generation and Scenario/Data Management. Use it to develop and deploy any Data & AI web application in no time within a single language: Python.
 
-![WhatisTaipy.gif](/assets/blog/taipy/WhatisTaipy.gif)
+![WhatisTaipy.gif](/assets/blog/taipy/taipy.gif)
 
 Taipy is designed for data scientists and machine learning engineers to build data & AI web applications.
 
