@@ -47,7 +47,7 @@ You can create Taipy applications in 3 main ways:
 
 ## **Taipy for Scenario Management**
 
-![image](/assets/blog/taipy/image%201.png)
+![image](/assets/blog/taipy/image1.webp)
 
 **Taipy Scenario Management** is the backend part of Taipy applications. You can create complete applications without it, but it offers a **convenient and declarative** way to abstract the data inputs, outputs, and function calls of your application, through configuration files. This way of creating pipelines makes it **easy to switch your application from a test environment to a production environment.**
 
@@ -85,7 +85,7 @@ And that’s all! You’re ready to go!
 
 Taipy has a pretty solid community we’ve built along 2024. If you want to contribute to the project, join us on GitHub and don’t miss our participation in the HacktoberFest 2024 to win a lot of nice swags. Stay tuned!
 
-![star-history-202492.png](star-history-202492.png)
+![star-history-202492](/assets/blog/taipy/star-history-202492.webp)
 
 If you'd like to learn more and try out Taipy, visit our site!
 
