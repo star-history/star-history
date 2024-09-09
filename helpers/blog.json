@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #25 Taipy: Two-in-One tool for UI generation and Scenario/Data Management",
+        "slug": "taipy",
+        "author": "Rym Michaut",
+        "featured": true,
+        "featureImage": "/assets/blog/taipy/banner.webp",
+        "publishedDate": "2024-09-09:00:00.000Z",
+        "excerpt": "Taipy is a two-in-One tool for UI generation and Scenario/Data Management that helps develop and deploy Data & AI web application."
+    },
+    {
         "title": "Starlet #24 Superlinked: Unlock the Power of GenAI Applications in Production",
         "slug": "superlinked",
         "author": "Ben Gutkovich",
