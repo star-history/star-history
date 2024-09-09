@@ -1,4 +1,8 @@
-[Superlinked](https://www.superlinked.com/?utm_source=StarHistory&utm_medium=referral&utm_campaign=Starlet_AUG_2024) is an open-source vector compute framework for your information retrieval and feature engineering systems, focused on turning complex (structured+unstructured) data into ultra-modal vector embeddings within your RAG, Search, Recommendations and Analytics stack. Integrate Superlinked into your machine learning stack to achieve custom model performance with pre-trained model convenience.
+*This is the twenty-fourth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
+
+---
+
+[**Superlinked**](https://www.superlinked.com/?utm_source=StarHistory&utm_medium=referral&utm_campaign=Starlet_AUG_2024) is an open-source vector compute framework for your information retrieval and feature engineering systems, focused on turning complex (structured+unstructured) data into ultra-modal vector embeddings within your RAG, Search, Recommendations and Analytics stack. Integrate Superlinked into your machine learning stack to achieve custom model performance with pre-trained model convenience.
 
 ![Example query requiring structured and unstructured data](/assets/blog/superlinked/example_query.webp)
 
