@@ -4,7 +4,7 @@
 
 [**Taipy**](https://links.taipy.io/15J5bi7) is a fully open-source Python framework. It is a Two-in-One tool for UI generation and Scenario/Data Management. Use it to develop and deploy any Data & AI web application in no time within a single language: Python. ****
 
-![What is Taipy.gif](What_is_Taipy.gif)
+![What is Taipy.gif](/assets/blog/taipy/What_is_Taipy.gif)
 
 Taipy is designed for data scientists and machine learning engineers to build data & AI web applications.
 
@@ -31,7 +31,7 @@ Here are some examples of applications that you can create with Taipy:
 
 ## **Taipy for GUI**
 
-![image.png](image.png)
+![image](/assets/blog/taipy/image.webp)
 
 **The GUI component of the Taipy is the major one**. With this sub-library, you can create all kinds of data applications. Here are some things you can do with it:
 
@@ -47,7 +47,7 @@ You can create Taipy applications in 3 main ways:
 
 ## **Taipy for Scenario Management**
 
-![image.png](image%201.png)
+![image](/assets/blog/taipy/image%201.png)
 
 **Taipy Scenario Management** is the backend part of Taipy applications. You can create complete applications without it, but it offers a **convenient and declarative** way to abstract the data inputs, outputs, and function calls of your application, through configuration files. This way of creating pipelines makes it **easy to switch your application from a test environment to a production environment.**
 
