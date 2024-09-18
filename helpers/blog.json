@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly September 2024 | AI Agents",
+        "slug": "ai-agents",
+        "author": "dec",
+        "featured": true,
+        "featureImage": "/assets/blog/ai-agents/banner.webp",
+        "publishedDate": "2024-09-19:00:00.000Z",
+        "excerpt": "Some high-functioning AI agents that independently choose the best approach to those human-set goals."
+    },
+    {
         "title": "Starlet #25 Taipy: Two-in-One tool for UI generation and Scenario/Data Management",
         "slug": "taipy",
         "author": "Rym Michaut",
