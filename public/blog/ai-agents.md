@@ -1,4 +1,4 @@
-AI agents independently choose the best approach to human-set goals. AI Agent has planning skills, memory, and tool use ability, so it's able to solve general problems, far more intelligent than previous proprietary AI. Here are some high-functioning AI agents.
+AI agents independently choose the best approach to human-set goals. AI Agent has planning skills, memory, and tool use ability, so it's able to solve general problems, far more intelligent than previous proprietary AI. Here are some capable AI agents.
 
 -   [AutoGen](#autogen)
 -   [AutoGPT](#autogpt)
@@ -34,7 +34,7 @@ To maintain a uniform standard and ensure seamless compatibility with many curre
 
 ![chatdev-star](/assets/blog/ai-agents/chatdev-star.webp)
 
-[ChatDev](https://github.com/phaserjs/phaser) stands as a virtual software company that operates through various intelligent agents holding different roles, like CEO, CPO, programmer, art designer, etc. They form a multi-agent organizational structure and are united by a mission to "revolutionize the digital world through programming." The agents within ChatDev collaborate by participating in specialized functional seminars, including tasks such as designing, coding, testing, and documenting.
+[ChatDev](https://github.com/OpenBMB/ChatDev) stands as a virtual software company that operates through various intelligent agents holding different roles, like CEO, CPO, programmer, art designer, etc. They form a multi-agent organizational structure and are united by a mission to "revolutionize the digital world through programming." The agents within ChatDev collaborate by participating in specialized functional seminars, including tasks such as designing, coding, testing, and documenting.
 
 It impresses users with a unique pixel game interface style.
 
@@ -42,11 +42,11 @@ It impresses users with a unique pixel game interface style.
 
 The primary objective of ChatDev is to offer an easy-to-use, highly customizable and extendable framework, which is based on large language models (LLMs) and serves as an ideal scenario for studying collective intelligence. You can access Quickstart simply with terminal or with Docker.
 
-## crewAI
+## CrewAI
 
 ![crewai-star](/assets/blog/ai-agents/crewai-star.webp)
 
-[CrewAI](https://github.com/phaserjs/phaser) is designed to enable AI agents to assume roles, share goals, and operate in a cohesive unit - much like a well-oiled crew. Whether you're building a smart assistant platform, an automated customer service ensemble, or a multi-agent research team, CrewAI provides the backbone for sophisticated multi-agent interactions. It features:
+[CrewAI](https://github.com/crewAIInc/crewAI) is designed to enable AI agents to assume roles, share goals, and operate in a cohesive unit - much like a well-oiled crew. Whether you're building a smart assistant platform, an automated customer service ensemble, or a multi-agent research team, CrewAI provides the backbone for sophisticated multi-agent interactions. It features:
 
 - Role-Based Agent Design
 - Autonomous Inter-Agent Delegation
@@ -61,7 +61,7 @@ You can easily install crewAI with pip.
 
 ![openhands-star](/assets/blog/ai-agents/openhands-star.webp)
 
-[OpenHands](https://github.com/phaserjs/phaser) aims to "Code Less, Make More". Within a concise interface, OpenHands agents can do anything a human developer can: modify code, run commands, browse the web, call APIs, and even copy code snippets from StackOverflow.
+[OpenHands](https://github.com/All-Hands-AI/OpenHands) aims to "Code Less, Make More". Within a concise interface, OpenHands agents can do anything a human developer can: modify code, run commands, browse the web, call APIs, and even copy code snippets from StackOverflow.
 
 ![openhands](/assets/blog/ai-agents/openhands.webp)
 
