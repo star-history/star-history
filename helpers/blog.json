@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #26 thepi.pe: Intelligent Document Scraping with Vision-Language Models",
+        "slug": "thepipe",
+        "author": "Emmett McFarlane",
+        "featured": true,
+        "featureImage": "/assets/blog/thepipe/banner.webp",
+        "publishedDate": "2024-09-25:00:00.000Z",
+        "excerpt": "thepi.pe is an open-source package for intelligent document scraping at scale using vision-language models (VLMs)."
+    },
+    {
         "title": "Star History Monthly September 2024 | AI Agents",
         "slug": "ai-agents",
         "author": "dec",
