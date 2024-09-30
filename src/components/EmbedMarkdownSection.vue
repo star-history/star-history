@@ -24,18 +24,22 @@
       <pre class="w-full p-4 font-mono break-all whitespace-pre-wrap text-sm">{{
         embedCode
       }}</pre>
-      <div style="display: flex;">
+      <div style="display: flex">
         <p
           class="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
-          style="width: 70%; border-bottom-right-radius: 0;"
+          style="width: 70%; border-bottom-right-radius: 0"
           @click="handleCopyBtnClick"
         >
           Copy to GitHub README.md
         </p>
-        <div class="bg-gray-100" style="width: 1px;"></div>
+        <div class="bg-gray-100" style="width: 1px"></div>
         <p
           class="text-center py-4 bg-green-600 text-light font-mono rounded-b-md cursor-pointer hover:bg-green-700"
-          style="width: 30%; min-width: max-content; border-bottom-left-radius: 0;"
+          style="
+            width: 30%;
+            min-width: max-content;
+            border-bottom-left-radius: 0;
+          "
           @click="handleDarkModeCopyBtnClick"
         >
           (dark theme supported)
@@ -71,14 +75,14 @@ const embedCode = computed(() => {
   return `## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
-    ","
+    "%2C"
   )}&type=${store.chartMode})](${window.location.href})
 `;
 });
 
 const embedDarkModeCode = computed(() => {
-  let repos = store.repos.join("%2C");
-  let type = store.chartMode;
+  const repos = store.repos.join("%2C");
+  const type = store.chartMode;
   return `## Star History
 
 <a href="${window.location.href}">

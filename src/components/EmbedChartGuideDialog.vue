@@ -76,7 +76,7 @@ const embedCode = computed(() => {
   return `## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(
-    ","
+    "%2C"
   )}&type=${store.chartMode})](${window.location.href})
 `;
 });
