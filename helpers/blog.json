@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly October 2024 | Homelab",
+        "slug": "homelab",
+        "author": "dec",
+        "featured": true,
+        "featureImage": "/assets/blog/homelab/banner.webp",
+        "publishedDate": "2024-10-12:00:00.000Z",
+        "excerpt": "Homelab provides you with extra space of good privacy to experiment and develop with little cost."
+    },
+    {
         "title": "Starlet #26 thepi.pe: Intelligent Document Scraping with Vision-Language Models",
         "slug": "thepipe",
         "author": "Emmett McFarlane",
