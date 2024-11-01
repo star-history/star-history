@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #27 Langfuse: Open-source LLM Observability",
+        "slug": "langfuse",
+        "author": "Clemens Rawert",
+        "featured": true,
+        "featureImage": "/assets/blog/langfuse/banner.webp",
+        "publishedDate": "2024-11-01:00:00.000Z",
+        "excerpt": "Langfuse is a LLM engineering platform that helps understand LLM applications and offers ways to improve them."
+    },
+    {
         "title": "Star History Monthly October 2024 | Homelab",
         "slug": "homelab",
         "author": "dec",
