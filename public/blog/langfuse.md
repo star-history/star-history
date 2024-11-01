@@ -6,7 +6,7 @@
 
 Langfuse is MIT-licensed and has \> 5.9k stars [on GitHub](https://github.com/langfuse/langfuse/). It is incredibly easy to self-host (one docker container) and has a community of thousands of self-hosting deployments.
 
-![Langfuse LLM Monitoring][/assets/blog/langfuse/langfuse-llm-monitoring.webp]
+![Langfuse LLM Monitoring](/assets/blog/langfuse/langfuse-llm-monitoring.webp)
 
 ## Core Features of Langfuse
 
@@ -86,7 +86,7 @@ main()
 
 Once the script runs, visit the [Langfuse UI](https://cloud.langfuse.com/) to view the trace created.
 
-![Example trace in the Langfuse UI][/assets/blog/langfuse/example-trace-in-langfuse.webp]
+![Example trace in the Langfuse UI](/assets/blog/langfuse/example-trace-in-langfuse.webp)
 
 *Example trace in the Langfuse UI:* [https://cloud.langfuse.com/project/cloramnkj0002jz088vzn1ja4/traces/fac231bc-90ee-490a-aa32-78c4269474e3](https://cloud.langfuse.com/project/cloramnkj0002jz088vzn1ja4/traces/fac231bc-90ee-490a-aa32-78c4269474e3) 
 
@@ -94,7 +94,7 @@ You can now take it further by managing your prompts through Langfuse or by star
 
 ## Learn more about Langfuse
 
-![Langfuse star-history graph][/assets/blog/langfuse/langfuse-star-history-graph.webp]
+![Langfuse star-history graph](/assets/blog/langfuse/langfuse-star-history-graph.webp)
 
 Langfuse has a community of thousands of active users ranging from hobbyists to enterprises. We are most active on [GitHub discussions](https://github.com/orgs/langfuse/discussions) and you can also join [our Discord](https://langfuse.com/discord) for a chat. 
 
