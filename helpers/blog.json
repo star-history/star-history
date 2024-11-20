@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly November 2024 | AI DevTools",
+        "slug": "ai-devtools",
+        "author": "dec",
+        "featured": true,
+        "featureImage": "/assets/blog/ai-devtools/banner.webp",
+        "publishedDate": "2024-11-20:00:00.000Z",
+        "excerpt": "AI DevTools are tools that help developers build, test, and deploy AI applications."
+    },
+    {
         "title": "Starlet #28 Trench: Open source analytics infrastructure",
         "slug": "trench",
         "author": "Eric Brownrout",
