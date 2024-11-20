@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #28 Trench: Open source analytics infrastructure",
+        "slug": "trench",
+        "author": "Eric Brownrout",
+        "featured": true,
+        "featureImage": "/assets/blog/trench/banner.webp",
+        "publishedDate": "2024-11-20:00:00.000Z",
+        "excerpt": "Trench is an open source analytics infrastructure for tracking events, identifying users, and querying data in real time."
+    },
+    {
         "title": "Starlet #27 Langfuse: Open-source LLM Observability",
         "slug": "langfuse",
         "author": "Clemens Rawert",
