@@ -138,6 +138,10 @@ const blogSectionList: BlogSection[] = [
         title: "Yearly Pick",
         linkList: [
             {
+                title: "2024",
+                path: "/blog/best-of-2024",
+            },
+            {
                 title: "2023",
                 path: "/blog/best-of-2023",
             },

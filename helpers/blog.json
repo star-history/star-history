@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Best of 2024",
+        "slug": "best-of-2024",
+        "author": "ayra",
+        "featured": true,
+        "featureImage": "/assets/blog/best-of-2024/banner.webp",
+        "publishedDate": "2025-01-01:00:00.000Z",
+        "excerpt": "Time for an End of Year Review of our favourite open-source projects that stood out in 2024!"
+    },
+    {
         "title": "Star History Monthly December 2024 | AI Data Visualization",
         "slug": "ai-data-visualization",
         "author": "dec",
