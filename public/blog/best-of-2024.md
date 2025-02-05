@@ -16,7 +16,7 @@ This year, many outstanding open-source tools have emerged and quickly gained wi
 
 ![dify](/assets/blog/best-of-2024/dify.webp)
 
-Dify was founded in March 2023 and quickly embraced open-source development, embarking on a path toward globalization. In just over a year, it experienced rapid growth, becoming the fastest-growing tool among global LLM solutions.
+Dify was founded in March 2023 and quickly embraced open-source development, embarking on a path toward globalization, and soon became the fastest-growing tool among global LLM solutions. In April 2024 especially, Dify experienced [explosive growth in the Japanese market](https://note.com/kii_genai/n/n1a0c438e08df), with even [dedicated tutorial](https://www.amazon.com/Introduction-Dify-Shaping-Future-Technology-ebook/dp/B0DD2VT56X) published.
 
 As a neutral, multi-model toolbox, Dify precisely addresses users’ pain points. Serving as an intermediary product, Dify strikes a balance between technological changes and rapid product iteration, delivering an excellent user experience and service.
 
@@ -28,17 +28,19 @@ As a neutral, multi-model toolbox, Dify precisely addresses users’ pain points
 
 ![ghostty](/assets/blog/best-of-2024/ghostty.webp)
 
-Ghostty, developed by HashiCorp co-founder Mitchell Hashimoto starting in May 2023, was released and open-sourced on December 27, 2024, garnering 3,240 stars on its first day. Ghostty’s standout features include multi-window/tab/split support, fast rendering, and a rich variety of themes and fonts.
+Ghostty, developed by HashiCorp co-founder [Mitchell Hashimoto](https://mitchellh.com/) starting in May 2023, was released and open-sourced on December 27, 2024, garnering 3,240 stars on its first day. Ghostty’s standout features include multi-window/tab/split support, fast rendering, and a rich variety of themes and fonts.
+
+Mitchell Hashimoto shares his insights on developing Ghostty in [a comprehensive blog post](https://mitchellh.com/ghostty).
 
 ## GitButler
 
 ![gitbutler-star](/assets/blog/best-of-2024/gitbutler-star.webp)
 
-[GitButler](https://gitbutler.com/) is a git branch management tool, built from the ground up for modern workflows.
+[GitButler](https://gitbutler.com/) is a git branch management tool built with [zig](https://github.com/ziglang/zig) from the ground up for modern workflows.
 
 ![gitbutler](/assets/blog/best-of-2024/gitbutler.webp)
 
-GitButler was open-sourced by Co-founder of GitHub in February, 2024. It allows you to quickly organize file changes into separate branches while still having them applied to your working directory. You can then push branches individually to your remote, or directly create pull requests.
+GitButler was open-sourced by [Scott Chacon](https://scottchacon.com/), Co-founder of GitHub in February, 2024. It allows you to quickly organize file changes into separate branches while still having them applied to your working directory. You can then push branches individually to your remote, or directly create pull requests.
 
 With Virtual Branches, Easy SSH Key Management and a highly interactive GUI, Gitbutler allows you to efficiently multitask across branches.
 
@@ -46,7 +48,7 @@ With Virtual Branches, Easy SSH Key Management and a highly interactive GUI, Git
 
 ![mcp-star](/assets/blog/best-of-2024/mcp-star.webp)
 
-[MCP](https://modelcontextprotocol.io/) is an open protocol that standardizes how applications provide context to LLMs.
+[MCP](https://modelcontextprotocol.io/) is an open protocol raised by [anthropic](https://www.anthropic.com/) that standardizes how applications provide context to LLMs.
 
 ![mcp](/assets/blog/best-of-2024/mcp.webp)
 
