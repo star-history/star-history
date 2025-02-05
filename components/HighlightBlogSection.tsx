@@ -33,7 +33,7 @@ const blogSectionList: BlogSection[] = [
         title: "Monthly Pick",
         linkList: [
             {
-                title: "2025 Jan (Knowledge management)",
+                title: "2025 Jan (Knowledge Management)",
                 path: "/blog/knowledge-management",
             },
             {
@@ -53,7 +53,7 @@ const blogSectionList: BlogSection[] = [
                 path: "/blog/ai-agents",
             },
             {
-                title: "2024 Aug (RAG frameworks)",
+                title: "2024 Aug (RAG Frameworks)",
                 path: "/blog/rag-frameworks",
             },
             {
