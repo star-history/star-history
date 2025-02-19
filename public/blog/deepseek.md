@@ -41,11 +41,11 @@ You can configure DeepSeek following RAGFlow's [Quick Start](https://ragflow.io/
 
 ![solana-agent-kit-star](/assets/blog/deepseek/solana-agent-kit-star.webp)
 
-Solana Agent Kit is a toolkit for connecting AI agents to Solana protocols. Anyone - whether an SF-based AI researcher or a crypto-native builder - can bring their AI agents trained with any model and seamlessly integrate with Solana.
+[Solana Agent Kit](https://kit.sendai.fun/) is a toolkit for connecting AI agents to Solana protocols. Anyone - whether an SF-based AI researcher or a crypto-native builder - can bring their AI agents trained with any model and seamlessly integrate with Solana.
 
 ![solana-agent-kit](/assets/blog/deepseek/solana-agent-kit.webp)
 
-SendAI is the AI development lab and community focused on the Solana ecosystem, aiming to amplify Solana AI's capabilities a hundredfold. On January 28, 2025, SendAI [announced via X](https://x.com/sendaifun/status/1884232169872392632) their integration of DeepSeek, expressing confidence that this collaboration would enable the unlocking of myriad use cases at reduced costs, all while maintaining an open-source commitment.
+[SendAI](https://github.com/sendaifun) is the AI development lab and community focused on the Solana ecosystem, aiming to amplify Solana AI's capabilities a hundredfold. On January 28, 2025, SendAI [announced via X](https://x.com/sendaifun/status/1884232169872392632) their integration of DeepSeek, expressing confidence that this collaboration would enable the unlocking of myriad use cases at reduced costs, all while maintaining an open-source commitment.
 
 ## Lastly
 
