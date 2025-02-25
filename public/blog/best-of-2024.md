@@ -58,7 +58,7 @@ MCP provides a universal, open standard for connecting AI systems with data sour
 
 ![zed-star](/assets/blog/best-of-2024/zed-star.webp)
 
-Zed is a high-performance, multiplayer code editor from the creators of [Atom](https://github.com/atom/atom) and [Tree-sitter](https://github.com/tree-sitter/tree-sitter).
+[Zed](https://github.com/zed-industries/zed) is a high-performance, multiplayer code editor from the creators of [Atom](https://github.com/atom/atom) and [Tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 ![zed](/assets/blog/best-of-2024/zed.webp)
 
