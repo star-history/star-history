@@ -2,7 +2,7 @@
 
 ---
 
-We’re thrilled to announce **Agentic Security**, an open-source vulnerability scanner designed to protect **Agent Workflows** and **Large Language Models (LLMs)** from **jailbreaks, fuzzing, and multimodal attacks**. Built for **developers, researchers, and security teams**, Agentic Security empowers you to **proactively identify and mitigate risks** in AI systems—all within a **lightweight, Python-based framework**.
+[**Agentic Security**](https://agentic-security.vercel.app/) is an open-source vulnerability scanner designed to protect **Agent Workflows** and **Large Language Models (LLMs)** from **jailbreaks, fuzzing, and multimodal attacks**. Built for **developers, researchers, and security teams**, Agentic Security empowers you to **proactively identify and mitigate risks** in AI systems—all within a **lightweight, Python-based framework**.
 
 Agentic Security is **Apache 2.0-licensed** on GitHub and has already sparked interest in the **AI security community**. Whether you’re securing LLMs or stress-testing APIs, this tool is your go-to for **building safer, more reliable AI deployments**.
 
