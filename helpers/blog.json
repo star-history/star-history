@@ -1,5 +1,14 @@
 [
     {
+        "title": "Starlet #29 Agentic Security: Open-Source Vulnerability Scanner for AI Systems",
+        "slug": "agentic-security",
+        "author": "Alexander Myasoedov",
+        "featured": true,
+        "featureImage": "/assets/blog/agentic-security/banner.webp",
+        "publishedDate": "2025-03-05:00:00.000Z",
+        "excerpt": "Agentic Security is a vulnerability scanner to protect Agent Workflows and LLMs."
+    },
+    {
         "title": "Star History Monthly February 2025 | DeepSeek",
         "slug": "deepseek",
         "author": "ayra",
