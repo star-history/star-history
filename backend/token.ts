@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as process from "process";
 import logger from "./logger";
-import api from "../common/api";
+import api from "../common/api.jsx";
 
 // Token env file path in render.com: All secret files you create are available to read at the root of your repo.
 const ENV_PATH_IN_RENDER = "./token.env";
