@@ -225,15 +225,6 @@
         "excerpt": "We are taking a look at some underrated open source projects that deserve more recognition."
     },
     {
-        "title": "Introducing Star History Forum",
-        "slug": "introduce-star-history-forum",
-        "author": "Tianzhou",
-        "featured": true,
-        "featureImage": "/assets/blog/introduce-star-history-forum/banner.webp",
-        "publishedDate": "2024-03-19:00:00.000Z",
-        "excerpt": "Introducing star history forum"
-    },
-    {
         "title": "Starlet #18 Prisma ORM: Simplify Working and Interacting with Databases",
         "slug": "prisma",
         "author": "Nikolas Burk",
@@ -250,7 +241,7 @@
         "featureImage": "/assets/blog/best-of-2023/banner.webp",
         "publishedDate": "2024-03-01:00:00.000Z",
         "excerpt": "Time for an End of Year Review of our favourite open-source projects that stood out in 2023!"
-    }, 
+    },
     {
         "title": "Starlet #17 SpiceDB: Google Zanzibar-inspired Authorization System",
         "slug": "spicedb",
