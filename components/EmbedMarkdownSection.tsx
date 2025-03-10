@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useAppStore } from "../store"
-import utils from "../common/utils"
+import utils from "../shared/common/utils"
 import toast from "../helpers/toast"
 
 const EmbedChart: React.FC = () => {

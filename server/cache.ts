@@ -1,4 +1,4 @@
-import LRUCache from "lru-cache";
+import { LRUCache } from "lru-cache";
 import utils from "../shared/common/utils";
 import type { StarRecord } from "../shared/types/chart";
 
