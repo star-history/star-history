@@ -1,7 +1,7 @@
 {
     "name": "sh-server",
     "version": "0.0.1",
-    "type": "commonjs",
+    "type": "module",
     "scripts": {
         "dev": "tsx main.ts",
         "build": "tsc --project ./"
