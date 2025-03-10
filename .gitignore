@@ -10,14 +10,14 @@ node_modules
 /coverage
 
 # next.js
-/.next/
+.next/
 /out/
 dist
 
 # production
 /build
-/public/sitemap*.xml
-/public/robots.txt
+sitemap*.xml
+robots.txt
 
 # misc
 .DS_Store
@@ -39,4 +39,4 @@ yarn-error.log*
 next-env.d.ts
 
 # server
-server/token.env
+token.env
