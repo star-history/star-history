@@ -36,13 +36,13 @@
 
 [Bytebase](https://bytebase.com?source=star-history) is an open source, web-based database schema change and version control tool for teams. Supporting MySQL, PostgreSQL, Oracle, MongoDB, Redis, Snowflake, ClickHouse, TiDB, Google Spanner.
 
-<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/assets/sponsors/bytebase/landing.webp" /></a>
+<a href="https://bytebase.com?source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/bytebase/landing.webp" /></a>
 
 ### Dify
 
 [Dify](https://dify.ai/?utm_source=star-history) is an open source LLMOps platform that helps developers build AI applications more simply and quickly. Its core idea is to define various aspects of AI applications, including Prompts, Contexts, and Plugins, through declarative YAML files.
 
-<a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/public/assets/sponsors/dify/landing.webp" /></a>
+<a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
 ## ✨ Features
 
@@ -75,13 +75,11 @@
 -   [Node.js](https://nodejs.org/en/download/)
 -   [pnpm](https://pnpm.io/)
 
-### Install dependencies
+### Frontend
 
 ```shell
 pnpm i
 ```
-
-### Start with your interest
 
 -   **Main website** is the homepage of star-history with most of **useful features and blogs** about **`open source`**.
 
@@ -98,6 +96,8 @@ pnpm i
     ```
 
     Load the built `./dist` folder as **unpacked project** to chrome extensions page.
+
+### Backend
 
 -   **API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
 
