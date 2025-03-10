@@ -9,14 +9,13 @@
     "strict": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "resolveJsonModule": true,
     "allowJs": true
   },
   "include": [
     "./*.ts",
-    "../common/*.ts",
-    "../packages/**/*.ts",
-    "../types/*.ts"
+    "./shared/**/*.ts",
+    "./shared/**/*.tsx"
   ]
 }

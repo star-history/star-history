@@ -4,18 +4,18 @@ import Router from "koa-router";
 import cors from "@koa/cors";
 import { optimize, Config } from 'svgo';
 import { JSDOM } from "jsdom";
-import logger from "./logger";
-import XYChart from "../packages/xy-chart";
-import { convertDataToChartData, getRepoData } from "../common/chart";
-import cache from "./cache";
+import XYChart from "./shared/packages/xy-chart.js";
+import { convertDataToChartData, getRepoData } from "./shared/common/chart.js";
+import { ChartMode } from "./shared/types/chart.js";
+import logger from "./logger.js";
+import cache from "./cache.js";
 import {
   getChartWidthWithSize,
   replaceSVGContentFilterWithCamelcase,
   getBase64Image,
-} from "./utils";
-import { getNextToken, initTokenFromEnv } from "./token";
-import { ChartMode } from "../types/chart";
-import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const";
+} from "./utils.js";
+import { getNextToken, initTokenFromEnv } from "./token.js";
+import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const.js";
 
 const startServer = async () => {
   await initTokenFromEnv();

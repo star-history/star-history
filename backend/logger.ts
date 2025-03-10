@@ -1,10 +1,22 @@
 import winston from "winston";
 
-const createLogger = () => {
-  return winston.createLogger({
-    transports: [new winston.transports.Console()],
-    format: winston.format.combine(winston.format.simple()),
-  });
-};
+// Configure the Winston logger
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json()
+  ),
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.printf(({ timestamp, level, message }) => {
+          return `${timestamp} [${level}]: ${message}`;
+        })
+      ),
+    }),
+  ],
+});
 
-export default createLogger();
+export default logger;

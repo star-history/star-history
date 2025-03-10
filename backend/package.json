@@ -1,30 +1,42 @@
 {
-    "name": "sh-server",
-    "version": "0.0.1",
-    "type": "module",
-    "scripts": {
-        "dev": "tsx main.ts",
-        "build": "tsc --project ./"
-    },
-    "dependencies": {
-        "@koa/cors": "5.0.0",
-        "jsdom": "20.0.2",
-        "koa": "2.13.4",
-        "koa-router": "12.0.0",
-        "lru-cache": "7.14.1",
-        "node-fetch": "2.6.7",
-        "svgo": "^3.2.0",
-        "ts-node": "10.9.1",
-        "typescript": "4.8.4",
-        "winston": "3.8.2"
-    },
-    "devDependencies": {
-        "@types/jsdom": "20.0.0",
-        "@types/koa": "2.13.5",
-        "@types/koa-router": "7.4.4",
-        "@types/koa__cors": "3.3.0",
-        "@types/lru-cache": "7.10.9",
-        "@types/node": "18.11.10",
-        "tsx": "^4.19.3"
-    }
+  "name": "sh-server",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx main.ts",
+    "build": "tsc --project ./"
+  },
+  "dependencies": {
+    "@koa/cors": "5.0.0",
+    "axios": "^1.6.3",
+    "d3-axis": "^2.1.0",
+    "d3-scale": "^3.3.0",
+    "d3-selection": "^2.0.0",
+    "d3-shape": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "jsdom": "20.0.2",
+    "koa": "2.13.4",
+    "koa-router": "12.0.0",
+    "lru-cache": "7.14.1",
+    "lodash": "^4.17.21",
+    "node-fetch": "2.6.7",
+    "svgo": "^3.2.0",
+    "ts-node": "10.9.1",
+    "typescript": "4.8.4",
+    "winston": "3.8.2"
+  },
+  "devDependencies": {
+    "@types/d3-axis": "^2.1.0",
+    "@types/d3-scale": "^3.3.0",
+    "@types/d3-selection": "^2.0.0",
+    "@types/d3-shape": "^2.1.0",
+    "@types/lodash": "^4.14.200",
+    "@types/jsdom": "20.0.0",
+    "@types/koa": "2.13.5",
+    "@types/koa-router": "7.4.4",
+    "@types/koa__cors": "3.3.0",
+    "@types/lru-cache": "7.10.9",
+    "@types/node": "18.11.10",
+    "tsx": "^4.19.3"
+  }
 }
