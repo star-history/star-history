@@ -90,7 +90,7 @@
 
 ### Homepage
 
-Homepage of star-history with most of useful features and blogs about open source
+**Homepage** of star-history with most of useful features and blogs about open source.
 
 ```shell
 cd frontend && pnpm i && pnpm dev
