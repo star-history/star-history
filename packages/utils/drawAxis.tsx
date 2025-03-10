@@ -1,7 +1,7 @@
 import { axisBottom, axisLeft, AxisScale } from "d3-axis"
 import { D3Selection } from "../types"
-import getFormatNumber, { getNumberFormatUnit, NumberUnitType } from "./getFormatNumber.jsx"
-import getFormatTimeline, { DurationUnitType, getTimestampFormatUnit } from "./getFormatTimeline.jsx"
+import getFormatNumber, { getNumberFormatUnit, NumberUnitType } from "./getFormatNumber"
+import getFormatTimeline, { DurationUnitType, getTimestampFormatUnit } from "./getFormatTimeline"
 
 interface DrawXAxisConfig {
     xScale: AxisScale<number | Date>

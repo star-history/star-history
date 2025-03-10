@@ -1,6 +1,6 @@
 import LRUCache from "lru-cache";
-import utils from "../common/utils.jsx";
-import type { StarRecord } from "../types/chart.jsx";
+import utils from "../common/utils";
+import type { StarRecord } from "../types/chart";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.

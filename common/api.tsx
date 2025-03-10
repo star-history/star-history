@@ -1,5 +1,5 @@
 import axios from "axios"
-import utils from "./utils.jsx"
+import utils from "./utils"
 
 const DEFAULT_PER_PAGE = 30
 

@@ -5,8 +5,8 @@ import cors from "@koa/cors";
 import { optimize, Config } from 'svgo';
 import { JSDOM } from "jsdom";
 import logger from "./logger";
-import XYChart from "../packages/xy-chart.jsx";
-import { convertDataToChartData, getRepoData } from "../common/chart.jsx";
+import XYChart from "../packages/xy-chart";
+import { convertDataToChartData, getRepoData } from "../common/chart";
 import cache from "./cache";
 import {
   getChartWidthWithSize,

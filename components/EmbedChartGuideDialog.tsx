@@ -1,5 +1,5 @@
 import Dialog from "./Dialog"
-import utils from "../common/utils.jsx"
+import utils from "../common/utils"
 import toast from "../helpers/toast"
 
 interface EmbedCodeProps {

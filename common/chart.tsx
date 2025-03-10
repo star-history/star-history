@@ -1,7 +1,7 @@
 import { XYChartData, XYData } from "../packages/xy-chart"
 import { ChartMode, RepoStarData, RepoData } from "../types/chart"
-import api from "./api.jsx"
-import utils from "./utils.jsx"
+import api from "./api"
+import utils from "./utils"
 
 export const DEFAULT_MAX_REQUEST_AMOUNT = 15
 
