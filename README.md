@@ -18,9 +18,22 @@
 
 ```html
 <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date" />
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date"
+  />
 </picture>
 ```
 
@@ -46,16 +59,16 @@
 
 ## ✨ Features
 
--   **Unique** **`sketch xkcd`** feeling **chart**;
--   **One-click** generation of **high-quality** image for chart;
--   Support **multiple chart view** mode **`based on date or timeline`**;
--   **Embed** the **real-time chart** into **`GitHub readme or other websites`** **(like the one we embed here on the top)**
--   And **various** useful **functions**:
-    -   toggle **repo visibility**;
-    -   **shortcut** to input repo;
-    -   **share** on **`Twitter`** **quickly**;
-    -   **support** input **multiple repos**;
-    -   ...waiting **for you** to **find out!**
+- **Unique** **`sketch xkcd`** feeling **chart**;
+- **One-click** generation of **high-quality** image for chart;
+- Support **multiple chart view** mode **`based on date or timeline`**;
+- **Embed** the **real-time chart** into **`GitHub readme or other websites`** **(like the one we embed here on the top)**
+- And **various** useful **functions**:
+  - toggle **repo visibility**;
+  - **shortcut** to input repo;
+  - **share** on **`Twitter`** **quickly**;
+  - **support** input **multiple repos**;
+  - ...waiting **for you** to **find out!**
 
 ## 🌠 Screenshots
 
@@ -72,38 +85,35 @@
 
 ### Prerequisites
 
--   [Node.js](https://nodejs.org/en/download/)
--   [pnpm](https://pnpm.io/)
+- [Node.js](https://nodejs.org/en/download/)
+- [pnpm](https://pnpm.io/)
 
-### Frontend
+### Homepage
+
+Homepage of star-history with most of useful features and blogs about open source
 
 ```shell
-pnpm i
+cd frontend && pnpm i && pnpm dev
 ```
 
--   **Main website** is the homepage of star-history with most of **useful features and blogs** about **`open source`**.
+The website will be served at http://localhost:3000.
 
-    ```shell
-    pnpm dev
-    ```
+### Chrome Extension
 
-    The website will be served at http://localhost:3000.
+**Chrome extension** supports the **basic chart viewer** as a **free** additional product.
 
--   **Chrome extension** supports the **basic chart viewer** as a **free** additional product.
+```shell
+cd frontend && pnpm build:ext
+```
 
-    ```shell
-    pnpm build:ext
-    ```
+Load the built `./dist` folder as **unpacked project** to chrome extensions page.
 
-    Load the built `./dist` folder as **unpacked project** to chrome extensions page.
+### API Server
 
-### Backend
+**API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
 
--   **API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
+```shell
+cd backend && pnpm i && pnpm dev
+```
 
-    ```shell
-    cd server
-    pnpm i && pnpm dev
-    ```
-
-    The API server will be running on http://localhost:8080.
+The API server will be running on http://localhost:8080.
