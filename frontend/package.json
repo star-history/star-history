@@ -18,7 +18,7 @@
         "@fortawesome/free-solid-svg-icons": "^6.4.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "@tailwindcss/typography": "^0.5.10",
-        "axios": "^1.6.3",
+        "axios": "^1.8.2",
         "d3-axis": "^2.1.0",
         "d3-scale": "^3.3.0",
         "d3-selection": "^2.0.0",
