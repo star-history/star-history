@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly March 2025 | MCP Server",
+        "slug": "mcp-server",
+        "author": "ayra",
+        "featured": true,
+        "featureImage": "/assets/blog/mcp-server/banner.webp",
+        "publishedDate": "2025-03-13:00:00.000Z",
+        "excerpt": "MCP provides a standardized way to connect AI models to data sources and tools like how USB-C connects your devices to peripherals and accessories."
+    },
+    {
         "title": "Starlet #29 Agentic Security: Open-Source Vulnerability Scanner for AI Systems",
         "slug": "agentic-security",
         "author": "Alexander Myasoedov",

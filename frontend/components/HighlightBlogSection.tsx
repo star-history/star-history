@@ -33,6 +33,10 @@ const blogSectionList: BlogSection[] = [
         title: "Monthly Pick",
         linkList: [
             {
+                title: "2025 Mar (MCP Server)",
+                path: "/blog/mcp-server",
+            },
+            {
                 title: "2025 Feb (DeepSeek)",
                 path: "/blog/deepseek",
             },
