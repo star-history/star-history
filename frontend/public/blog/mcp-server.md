@@ -1,6 +1,6 @@
 The Model Context Protocol (MCP) is an open standard that enables AI models to safely access and interact with various data sources. It creates a standardized way for large language models (LLMs) to retrieve context from external systems in a secure, controlled manner. By acting as a bridge between AI models and data services, MCP helps solve critical challenges in AI applications including data freshness, hallucination reduction, and controlled data access.
 
-_For a detailed MCP explanation, check out [What is MCP? - A Primer](https://www.whatismcp.com/).
+_For a detailed MCP explanation, check out [What is MCP? - A Primer](https://www.whatismcp.com/)._
 
 MCP servers act as intermediaries that translate AI model requests into specific data source operations. Here are several notable implementations:
 
