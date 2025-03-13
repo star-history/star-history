@@ -9,7 +9,7 @@ MCP servers act as intermediaries that translate AI model requests into specific
 
 ## Filesystem MCP Server
 
-![awesome-star](/assets/blog/mcp-server/awesome-star.webp)
+![mcp-star](/assets/blog/mcp-server/mcp-star.webp)
 
 [Filesystem MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) provides a simple yet powerful implementation that enables AI models to access local files and directories. It transforms your file system into a contextual knowledge base that LLMs can query directly.
 
