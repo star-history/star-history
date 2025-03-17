@@ -36,6 +36,14 @@ const sponsors: Sponsor[] = [
         logoSlogan: "Dify: Open-source platform for building LLM apps, from agents to AI workflows.",
         landingSlogan: "Open-source platform for building LLM apps, from agents to AI workflows."
     },
+    {
+      name: "DBHub",
+      logo: utils.absolutifyLink("/assets/sponsors/dbhub/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/sponsors/dbhub/landing.webp"),
+      link: "https://github.com/bytebase/dbhub/?utm_source=star-history",
+      logoSlogan: "DBHub: Universal Database MCP Server.",
+      landingSlogan: "Universal Database MCP Server."
+  },
 ]
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length)
