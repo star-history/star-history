@@ -4,10 +4,18 @@ _For a detailed MCP explanation, check out [What is MCP? - A Primer](https://www
 
 MCP servers act as intermediaries that translate AI model requests into specific data source operations. Here are several notable implementations:
 
+- DBHub - Database MCP Server
 - Filesystem MCP Server
 - Brave Search MCP Server
-- DBHub - Database Explorer
 - Awesome MCP Servers Collection
+
+## DBHub - Database Explorer
+
+[DBHub](https://github.com/bytebase/dbhub) by [Bytebase](https://www.bytebase.com/) is a specialized MCP server that connects AI assistants to database systems. It enables LLMs to interact with structured data through SQL in a secure and controlled manner.
+
+![dbhub](/assets/blog/mcp-server/dbhub.webp)
+
+DBHub supports multiple database engines including MySQL, PostgreSQL, SQL Server, and SQLite, allowing AI models to execute queries, explore schemas, and analyze results. Its architecture provides fine-grained access control and query validation to prevent security risks. This implementation is particularly valuable for data analysts, database administrators, and developers who want to leverage conversational AI interfaces for database operations while maintaining appropriate security boundaries.
 
 ## Filesystem MCP Server
 
@@ -22,14 +30,6 @@ This server implementation allows AI assistants to read files, navigate director
 [Brave Search MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) connects AI models to Brave's privacy-focused search engine, providing real-time information retrieval capabilities beyond an LLM's training cutoff date.
 
 This implementation enables AI systems to perform web searches on demand, retrieving current information while maintaining user privacy. It supports various search parameters including region-specific results and safe search filtering. By integrating with Brave Search, AI models can provide answers grounded in the latest available information, significantly reducing hallucinations when responding to queries about recent events, evolving topics, or time-sensitive data.
-
-## DBHub - Database Explorer
-
-[DBHub](https://github.com/bytebase/dbhub) by [Bytebase](https://www.bytebase.com/) is a specialized MCP server that connects AI assistants to database systems. It enables LLMs to interact with structured data through SQL in a secure and controlled manner.
-
-![dbhub](/assets/blog/mcp-server/dbhub.webp)
-
-DBHub supports multiple database engines including MySQL, PostgreSQL, and SQLite, allowing AI models to execute queries, explore schemas, and analyze results. Its architecture provides fine-grained access control and query validation to prevent security risks. This implementation is particularly valuable for data analysts, database administrators, and developers who want to leverage conversational AI interfaces for database operations while maintaining appropriate security boundaries.
 
 ## Awesome MCP Servers Collection
 
