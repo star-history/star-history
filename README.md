@@ -43,7 +43,7 @@
 
 ---
 
-## 💜 Sponsors
+## 🎁 Sponsors
 
 ### Bytebase
 
@@ -56,6 +56,12 @@
 [Dify](https://dify.ai/?utm_source=star-history) is an open source LLMOps platform that helps developers build AI applications more simply and quickly. Its core idea is to define various aspects of AI applications, including Prompts, Contexts, and Plugins, through declarative YAML files.
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
+
+## 💜 Token Contributor
+
+We need individual tokens to bypass GitHub API rate limiter, thanks to all our donators:
+
+[mrnossiom](https://github.com/mrnossiom), [Vaishnav-sabari-girish](https://github.com/Vaishnav-Sabari-Girish), [kutovoys](https://github.com/kutovoys), [zayn](https://github.com/DSYZayn)
 
 ## ✨ Features
 
