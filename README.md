@@ -59,7 +59,7 @@
 
 ## 💜 Token Contributor
 
-We need individual tokens to bypass GitHub API rate limiter, thanks to all our donators:
+We need [zero-scope individual tokens](https://github.com/settings/tokens) to bypass GitHub API rate limiter, thanks to all our donators:
 
 [mrnossiom](https://github.com/mrnossiom), [Vaishnav-sabari-girish](https://github.com/Vaishnav-Sabari-Girish), [kutovoys](https://github.com/kutovoys), [zayn](https://github.com/DSYZayn)
 
