@@ -1,3 +1,5 @@
+> Update: We have restored the API service on Mar 29, 2025.
+
 We enable users to embed a live GitHub star history chart directly into their repositories, with many maintainers already incorporating it into their READMEs to showcase project growth.
 
 ![live-chart](/assets/blog/a-message-to-github-star-history-users/live-chart.webp)
