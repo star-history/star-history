@@ -305,8 +305,9 @@ const blogSectionList: BlogSection[] = [
 const HighlightBlogSection: React.FC<Omit<HighlightBlogSectionProps, "blogSectionList">> = () => {
     return (
         <div className="flex flex-col justify-start items-start w-full mt-2 p-4 pl-8">
-            <Link href="/blog/list-your-open-source-project" className="hover:opacity-75">
-                <img className="w-auto max-w-full" src="/assets/starlet-icon.webp" />
+            <Link href="/blog/list-your-open-source-project" className="flex flex-col items-center group transition-all duration-200">
+                <img className="w-auto max-w-full" src="/assets/starlet-icon.webp" alt="Starlet Icon" />
+                <span className="text-sm text-blue-700 mt-1 group-hover:underline">👆 List your project for FREE</span>
             </Link>
             {blogSectionList.map((section) => (
                 <div key={section.title}>
