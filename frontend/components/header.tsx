@@ -80,6 +80,9 @@ useEffect(() => {
               <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>
+              <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
+                <i className="fas fa-rss text-2xl text-orange-400"></i>
+              </a>
               <GitHubStarButton />
             </div>
 
