@@ -49,7 +49,7 @@ useEffect(() => {
       )}
 
       <AppStateProvider>
-        <TopBanner />
+        {/* <TopBanner /> */}
         <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
           <div className="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-0 sm:px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
@@ -66,15 +66,13 @@ useEffect(() => {
                 {headerText}
               </span>
             </div>
-            <div className="hidden h-full md:flex flex-row justify-start items-center">
-              <Link
-                href="https://www.bytebase.com/?source=star-history"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-full flex text-white text-base flex-row justify-center items-center px-4 hover:bg-zinc-800"
+            <div className="hidden h-full md:flex flex-row justify-center items-center px-4">
+              <button 
+                onClick={() => window.open('https://newsletter.star-history.com/subscribe', '_blank')}
+                className="text-sm bg-green-600 hover:bg-green-700 text-white font-medium py-1 px-3 rounded transition-colors"
               >
-                <img className="h-6 mt-1 mr-2" src="/assets/craft-by-bytebase.webp" alt="" />
-              </Link>
+                Subscribe to Newsletter
+              </button>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
               <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
