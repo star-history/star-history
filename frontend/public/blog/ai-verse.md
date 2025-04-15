@@ -5,7 +5,7 @@ Today, we'll explore three cutting-edge open-source projects that are pushing th
 |  |  |
 | ------- | ----------- |
 | **Second-Me** | AI Digital Twin |
-| **Arnis** | Lightweight AI Orchestration |
+| **Arnis** | Geographical Visualization |
 | **RoboVerse** | Robot Simulation Platform |
 |  |  |
 
@@ -58,6 +58,6 @@ With this advanced architecture, RoboVerse distinguishes itself through:
 
 ## Lastly
 
-These three projects represent different facets of the emerging AI Verse ecosystem. From personal digital twins to orchestration frameworks and robotic simulations, we're seeing the building blocks of more immersive, intelligent digital environments taking shape. As these technologies mature, the boundaries between digital and physical reality will continue to blur, creating new opportunities for work, play, and connection.
+These three projects represent different facets of the emerging AI Verse ecosystem. From personal digital twins to geographical visualizations and robotic simulations, we're seeing the building blocks of more immersive, intelligent digital environments taking shape. As these technologies mature, the boundaries between digital and physical reality will continue to blur, creating new opportunities for work, play, and connection.
 
 📧 *Subscribe to our [weekly newsletter here](https://star-history.beehiiv.com/subscribe).*
