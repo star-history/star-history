@@ -1,6 +1,5 @@
 [
     {
-<<<<<<< ours
         "title": "Star History Monthly April 2025 | AI Verse",
         "slug": "ai-verse",
         "author": "ayra",
@@ -10,18 +9,7 @@
         "excerpt": "Exploring most advanced AI verse projects in terms of digital twins, geographical visualization, and robotic simulation."
     },
     {
-||||||| ancestor
-=======
-        "title": "Star History Monthly April 2025 | AI Verse",
-        "slug": "ai-verse",
-        "author": "ayra",
-        "featured": true,
-        "featureImage": "/assets/blog/ai-verse/banner.webp",
-        "publishedDate": "2025-04-16:12:00.000Z",
-        "excerpt": "."
-    },
-    {
->>>>>>> theirs
+
         "title": "Star History Monthly March 2025 | MCP Server",
         "slug": "mcp-server",
         "author": "ayra",
