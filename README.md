@@ -65,7 +65,7 @@ We need zero-scope individual tokens to bypass GitHub API rate limiter, thanks t
 
 To contribute:
 
-1. Go to https://github.com/settings/personal-access-tokens/new.
+1. Go to https://github.com/settings/tokens to generate a **Classic** token.
 1. Specify a token name, do not touch any permissions (all OFF by default), and create.
 1. Email the token to `star`@`bytebase.com`.
 
