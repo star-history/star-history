@@ -15,10 +15,9 @@ interface RepoData {
 // Actually, we don't need LRU, but the memory control.
 const options = {
   // the number of most recently used items to keep,
-  // based on the monthly visit count with `o/pv-star`.
-  max: 80000,
-  // max cache memory cost bytes: about 512Mb.
-  maxSize: 512 * 1024 * 1024,
+  max: 10000,
+  // max cache memory cost bytes: about 1024MB.
+  maxSize: 1024 * 1024 * 1024,
   // calc cache size with its bytes.
   sizeCalculation: (value: RepoData) => {
     return utils.calcBytes(value);
