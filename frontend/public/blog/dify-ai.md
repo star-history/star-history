@@ -38,10 +38,10 @@ Now, turning imagination into real AI applications has become easy.
 
 Dify can be widely applied to various AI app scenarios:
 
--   [Create an AI Chatbot with business data in minutes](https://docs.dify.ai/use-cases/create-an-ai-chatbot-with-business-data-in-minutes)
--   [Build an Notion AI assistant](https://docs.dify.ai/use-cases/build-an-notion-ai-assistant)
--   [Create a Midjourney prompt robot](https://docs.dify.ai/use-cases/create-a-midjoureny-prompt-bot-with-dify)
--   Multilingual translation assistant
+-   [Create an AI Chatbot with business data in minutes](https://docs.dify.ai/en/learn-more/use-cases/create-an-ai-chatbot-with-business-data-in-minutes)
+-   [Build an Notion AI assistant](https://docs.dify.ai/en/learn-more/use-cases/build-an-notion-ai-assistant)
+-   [Create a Midjourney prompt robot](https://docs.dify.ai/en/learn-more/use-cases/create-a-midjourney-prompt-bot-with-dify)
+-   [Multilingual translation assistant](https://dify.ai/blog/building-a-multilingual-document-translation-tool-with-dify)
 
 ## Popular among developers worldwide
 
