@@ -140,6 +140,7 @@ const startServer = async () => {
     const optimized = optimize(svgContent, options).data;
 
     ctx.type = "image/svg+xml;charset=utf-8";
+    // Consistent with the ttl in cache.ts
     ctx.set("cache-control", "max-age=86400");
     ctx.body = optimized;
   });
