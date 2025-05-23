@@ -12,6 +12,7 @@ import cache from "./cache.js";
 import {
   getChartWidthWithSize,
   replaceSVGContentFilterWithCamelcase,
+  getBase64Image,
 } from "./utils.js";
 import { getNextToken, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const.js";
@@ -69,6 +70,7 @@ const startServer = async () => {
         const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
 
         for (const d of data) {
+          d.logoUrl = await getBase64Image(`${d.logoUrl}&size=22`);
           cache.set(d.repo, {
             starRecords: d.starRecords,
             starAmount: d.starRecords[d.starRecords.length - 1].count,
