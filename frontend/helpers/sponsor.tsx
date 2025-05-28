@@ -24,9 +24,9 @@ const sponsors: Sponsor[] = [
       landingImage: utils.absolutifyLink("/assets/sponsors/bytebase/landing.webp"),
       link: "https://bytebase.com?utm_source=star-history",
       logoSlogan:
-        "Bytebase: Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
+        "Bytebase: Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
       landingSlogan:
-        "Database DevOps and CI/CD for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
+        "Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
     },
     {
         name: "Dify",
