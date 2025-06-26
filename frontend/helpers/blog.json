@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly June 2025 | Browser for AI Agent",
+        "slug": "browser-ai-agent",
+        "author": "ayra",
+        "featured": true,
+        "featureImage": "/assets/blog/browser-ai-agent/banner.webp",
+        "publishedDate": "2025-06-25T12:00.000Z",
+        "excerpt": "Browser AI agents enable natural language automation of complex tasks that traditionally required manual intervention."
+    },
+    {
         "title": "Star History Monthly May 2025 | Agent Protocol",
         "slug": "agent-protocol",
         "author": "ayra",
