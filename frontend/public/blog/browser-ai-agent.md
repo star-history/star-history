@@ -59,7 +59,7 @@ With advanced schema-based data extraction with Zod integration, the ability to 
 
 ![notte](/assets/blog/browser-ai-agent/notte.webp)
 
-Combining `notte.Session`, `notte.Vault`, and `notte.Agent` for comprehensive automation, Notte impresses users with ultra-Fast performance, say 86.2% success rate with 47-second average completion time in benchmarks. It is available as both cloud service and local installation.
+Combining `notte.Session`, `notte.Vault`, and `notte.Agent` for comprehensive automation, Notte impresses users with ultra-fast performance, say 86.2% success rate with 47-second average completion time in benchmarks. It is available as both cloud service and local installation.
 
 Notte's perception layer allows smaller, faster AI models to understand web pages better, reducing costs while maintaining accuracy.
 
