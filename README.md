@@ -57,6 +57,12 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
+### Parlant
+
+[Parlant](https://github.com/emcie-co/parlant) is the open-source conversation modeling engine for building better, deliberate Agentic UX. It gives you the power of LLMs without the unpredictability.
+
+<a href="https://github.com/emcie-co/parlant/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/parlant/landing.webp" /></a>
+
 ## 💜 Token Contributor
 
 We need zero-scope individual tokens to bypass GitHub API rate limiter, thanks to all our donators:

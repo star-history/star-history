@@ -43,7 +43,15 @@ const sponsors: Sponsor[] = [
       link: "https://github.com/bytebase/dbhub/?utm_source=star-history",
       logoSlogan: "DBHub: Universal Database MCP Server.",
       landingSlogan: "Universal Database MCP Server."
-  },
+    },
+    {
+      name: "Parlant",
+      logo: utils.absolutifyLink("/assets/sponsors/parlant/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/sponsors/parlant/landing.webp"),
+      link: "https://github.com/emcie-co/parlant/?utm_source=star-history",
+      logoSlogan: "Parlant: The Open-Source Conversational AI Framework.",
+      landingSlogan: "The Open-Source Conversational AI Framework."
+    },
 ]
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length)
