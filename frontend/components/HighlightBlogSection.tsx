@@ -33,7 +33,7 @@ const blogSectionList: BlogSection[] = [
         title: "Monthly Pick",
         linkList: [
             {
-                title: "2025 June (Browser for AI Agent)",
+                title: "2025 June (Agent Browser)",
                 path: "/blog/browser-ai-agent",
             },
             {
