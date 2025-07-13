@@ -22,4 +22,4 @@ RUN pnpm build
 EXPOSE 3000
 
 # Start the application
-CMD ["node", "./dist/backend/main.js"]
+CMD ["node", "./dist/main.js"]
