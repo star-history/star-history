@@ -31,3 +31,17 @@ jobs:
           tags: bytebase/star-history:backend-latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      - name: Get GKE credentials
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
+          location: ${{ secrets.GKE_CLUSTER_LOCATION }}
+
+      - name: Restart deployment
+        run: kubectl rollout restart deployment/star-history-api --namespace website
