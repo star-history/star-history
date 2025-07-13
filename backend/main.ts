@@ -24,6 +24,12 @@ const startServer = async () => {
   app.use(cors());
   const router = new Router();
 
+  // Health check endpoint
+  router.get("/healthz", async (ctx) => {
+    ctx.status = 200;
+    ctx.body = "OK";
+  });
+
   // Example request link:
   // /svg?repos=star-history/star-history&type=Date
   router.get("/svg", async (ctx) => {
