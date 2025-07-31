@@ -33,6 +33,10 @@ const blogSectionList: BlogSection[] = [
         title: "Monthly Pick",
         linkList: [
             {
+                title: "2025 July (IDE for Vibe Coding)",
+                path: "/blog/ide-vibe-coding",
+            },
+            {
                 title: "2025 June (Agent Browser)",
                 path: "/blog/browser-ai-agent",
             },
