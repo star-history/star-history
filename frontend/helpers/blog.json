@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly July 2025 | IDE for Vibe Coding",
+        "slug": "ide-vibe-coding",
+        "author": "ayra",
+        "featured": true,
+        "featureImage": "/assets/blog/ide-vibe-coding/banner.webp",
+        "publishedDate": "2025-07-31T12:00.000Z",
+        "excerpt": "Development environment optimized for AI-assisted programming, enabling real-time natural language-to-code generation and automated debugging."
+    },
+    {
         "title": "Star History Monthly June 2025 | Agent Browser",
         "slug": "browser-ai-agent",
         "author": "ayra",
