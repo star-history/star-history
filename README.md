@@ -57,11 +57,11 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
-### Parlant
+### Apache Gravitino™
 
-[Parlant](https://github.com/emcie-co/parlant) is the open-source conversation modeling engine for building better, deliberate Agentic UX. It gives you the power of LLMs without the unpredictability.
+[Apache Gravitino™](https://github.com/apache/gravitino) is an open-source data and AI catalog that powers a unified metadata lake for federated, real-time, and AI-native workloads.
 
-<a href="https://github.com/emcie-co/parlant/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/parlant/landing.webp" /></a>
+<a href="https://github.com/apache/gravitino/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/gravitino/landing.webp" /></a>
 
 ## 💜 Token Contributor
 
