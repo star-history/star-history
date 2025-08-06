@@ -14,7 +14,7 @@ const DateFilter: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-row items-center gap-2 mb-4 p-3 bg-gray-50 rounded-lg">
+        <div className="flex flex-row items-center gap-2 mb-4">
             <label htmlFor="dateFrom" className="text-sm font-medium text-gray-700">
                 Date from:
             </label>

@@ -29,7 +29,7 @@ namespace api {
         return data.stargazers_count
     }
 
-    export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number) {
+    export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number, dateFrom?: string) {
         const patchRes = await getRepoStargazers(repo, token)
 
         const headerLink = patchRes.headers["link"] || ""
@@ -105,6 +105,15 @@ namespace api {
                 count: v
             })
         })
+
+        // Filter by dateFrom if provided
+        if (dateFrom) {
+            const filterDate = new Date(dateFrom)
+            return starRecords.filter(record => {
+                const recordDate = new Date(record.date)
+                return recordDate >= filterDate
+            })
+        }
 
         return starRecords
     }

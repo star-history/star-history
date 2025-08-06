@@ -7,12 +7,12 @@ export const DEFAULT_MAX_REQUEST_AMOUNT = 15
 
 const STAR_HISTORY_LOGO_URL = "https://avatars.githubusercontent.com/u/124480067"
 
-export const getReposStarData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT): Promise<RepoStarData[]> => {
+export const getReposStarData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT, dateFrom?: string): Promise<RepoStarData[]> => {
     const repoStarDataCacheMap = new Map()
 
     for (const repo of repos) {
         try {
-            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount)
+            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount, dateFrom)
             repoStarDataCacheMap.set(repo, starRecords)
         } catch (error: any) {
             let message = ""
@@ -58,7 +58,7 @@ export const getReposStarData = async (repos: string[], token = "", maxRequestAm
     })
 }
 
-export const getRepoData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT): Promise<RepoData[]> => {
+export const getRepoData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT, dateFrom?: string): Promise<RepoData[]> => {
     const repoDataCacheMap: Map<
         string,
         {
@@ -72,7 +72,7 @@ export const getRepoData = async (repos: string[], token = "", maxRequestAmount 
 
     for (const repo of repos) {
         try {
-            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount)
+            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount, dateFrom)
             const logo = await api.getRepoLogoUrl(repo, token)
             repoDataCacheMap.set(repo, { star: starRecords, logo })
         } catch (error: any) {
@@ -182,57 +182,31 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
     }
 }
 
-export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode, dateFrom?: string | null): XYChartData => {
+export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode): XYChartData => {
     if (chartMode === "Date") {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
-            let filteredRecords = starRecords
-            
-            // Filter by date if dateFrom is provided
-            if (dateFrom) {
-                const filterDate = new Date(dateFrom)
-                filteredRecords = starRecords.filter((item) => {
-                    const itemDate = new Date(item.date)
-                    return itemDate >= filterDate
-                })
-            }
-            
-            return {
-                label: repo,
-                logo: logoUrl,
-                data: filteredRecords.map((item) => {
-                    return {
-                        x: new Date(item.date),
-                        y: Number(item.count)
-                    }
-                })
-            }
-        })
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
+            label: repo,
+            logo: logoUrl,
+            data: starRecords.map((item) => {
+                return {
+                    x: new Date(item.date),
+                    y: Number(item.count)
+                }
+            })
+        }))
 
         return { datasets }
     } else {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
-            let filteredRecords = starRecords
-            
-            // Filter by date if dateFrom is provided
-            if (dateFrom) {
-                const filterDate = new Date(dateFrom)
-                filteredRecords = starRecords.filter((item) => {
-                    const itemDate = new Date(item.date)
-                    return itemDate >= filterDate
-                })
-            }
-            
-            return {
-                label: repo,
-                logo: logoUrl,
-                data: filteredRecords.map((item) => {
-                    return {
-                        x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
-                        y: Number(item.count)
-                    }
-                })
-            }
-        })
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
+            label: repo,
+            logo: logoUrl,
+            data: starRecords.map((item) => {
+                return {
+                    x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
+                    y: Number(item.count)
+                }
+            })
+        }))
 
         return { datasets }
     }

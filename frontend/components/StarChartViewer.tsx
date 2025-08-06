@@ -5,7 +5,6 @@ import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
 import DateFilter from "./DateFilter"
-import ZoomControls from "./ZoomControls"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "shared/packages/xy-chart"
@@ -58,7 +57,9 @@ function StarChartViewer() {
             const notCachedRepos: string[] = []
 
             for (const repo of store.repos) {
-                const cachedRepo = state.repoCacheMap.get(repo)
+                // Create cache key that includes dateFrom to handle different date filters
+                const cacheKey = store.dateFrom ? `${repo}_${store.dateFrom}` : repo;
+                const cachedRepo = state.repoCacheMap.get(cacheKey)
 
                 if (!cachedRepo) {
                     notCachedRepos.push(repo)
@@ -66,9 +67,11 @@ function StarChartViewer() {
             }
 
             try {
-                const data = await getRepoData(notCachedRepos, store.token)
+                const data = await getRepoData(notCachedRepos, store.token, undefined, store.dateFrom)
                 for (const { repo, starRecords, logoUrl } of data) {
-                    state.repoCacheMap.set(repo, {
+                    // Create cache key that includes dateFrom to handle different date filters
+                    const cacheKey = store.dateFrom ? `${repo}_${store.dateFrom}` : repo;
+                    state.repoCacheMap.set(cacheKey, {
                         starData: starRecords,
                         logoUrl
                     })
@@ -86,7 +89,9 @@ function StarChartViewer() {
 
             const repoData: RepoData[] = []
             for (const repo of store.repos) {
-                const cachedRepo = state.repoCacheMap.get(repo)
+                // Create cache key that includes dateFrom to handle different date filters
+                const cacheKey = store.dateFrom ? `${repo}_${store.dateFrom}` : repo;
+                const cachedRepo = state.repoCacheMap.get(cacheKey)
                 if (cachedRepo) {
                     repoData.push({
                         repo,
@@ -101,7 +106,7 @@ function StarChartViewer() {
             } else {
                 setState((prevState) => ({
                     ...prevState,
-                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, store.dateFrom)
+                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode)
                 }))
             }
         },
@@ -309,17 +314,7 @@ function StarChartViewer() {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
     }
 
-    const handleZoomIn = () => {
-        store.actions.setZoomLevel(Math.min(store.zoomLevel + 0.5, 3))
-    }
 
-    const handleZoomOut = () => {
-        store.actions.setZoomLevel(Math.max(store.zoomLevel - 0.5, 0.5))
-    }
-
-    const handleZoomReset = () => {
-        store.actions.setZoomLevel(1)
-    }
     return (
         <>
             <div ref={containerElRef} className="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0">
@@ -340,19 +335,8 @@ function StarChartViewer() {
                         </div>
                     </div>
                 )}
-                {state.chartData && state.chartData.datasets.length > 0 && (
-                    <>
-                        <DateFilter />
-                        <ZoomControls
-                            onZoomIn={handleZoomIn}
-                            onZoomOut={handleZoomOut}
-                            onReset={handleZoomReset}
-                            canZoomIn={store.zoomLevel < 3}
-                            canZoomOut={store.zoomLevel > 0.5}
-                        />
-                    </>
-                )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} zoomLevel={store.zoomLevel} />}</div>
+                {state.chartData && state.chartData.datasets.length > 0 && <DateFilter />}
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog
