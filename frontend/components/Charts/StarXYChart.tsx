@@ -8,8 +8,9 @@ interface Props {
     chartMode?: string
     timeFormat?: string
     id?: string
+    zoomLevel?: number
 }
-const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date" }) => {
+const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", zoomLevel = 1 }) => {
     const chartContainerElRef = useRef<HTMLDivElement | null>(null)
     const svgElRef = useRef<SVGSVGElement | null>(null)
 
@@ -45,18 +46,27 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
             drawStarChart(data)
         }
 
-        // Scale chart to a suitable mobile view.
-        if (window.innerWidth < MIN_CHART_WIDTH && chartContainerElRef.current) {
-            const scaleRate = window.innerWidth / MIN_CHART_WIDTH
+        // Scale chart to a suitable mobile view and apply zoom
+        if (chartContainerElRef.current) {
+            let scaleRate = 1
+            
+            // Apply mobile scaling
+            if (window.innerWidth < MIN_CHART_WIDTH) {
+                scaleRate = window.innerWidth / MIN_CHART_WIDTH
+            }
+            
+            // Apply zoom level
+            const totalScale = scaleRate * zoomLevel
+            
             chartContainerElRef.current.style.marginTop = "8px"
-            chartContainerElRef.current.style.transform = `scale(${scaleRate})`
+            chartContainerElRef.current.style.transform = `scale(${totalScale})`
 
             if (chartContainerElRef.current.parentElement) {
                 chartContainerElRef.current.parentElement.style.minHeight = "0"
-                chartContainerElRef.current.parentElement.style.height = `${chartContainerElRef.current.clientHeight * scaleRate + 16}px`
+                chartContainerElRef.current.parentElement.style.height = `${chartContainerElRef.current.clientHeight * totalScale + 16}px`
             }
         }
-    }, [data, drawStarChart])
+    }, [data, drawStarChart, zoomLevel])
 
     const handleSVGElementClick = () => {
         // Maybe we can capture the clicked svg element to expand chart functions.

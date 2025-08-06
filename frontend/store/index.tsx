@@ -8,6 +8,8 @@ interface AppState {
     token: string;
     repos: string[];
     chartMode: ChartMode;
+    dateFrom: string | null;
+    zoomLevel: number;
 }
 
 interface AppStateContextProps {
@@ -17,6 +19,8 @@ interface AppStateContextProps {
     repos: string[];
     chartMode: ChartMode;
     token: string;
+    dateFrom: string | null;
+    zoomLevel: number;
     state: AppState;
     actions: {
         addRepo(repo: string): void;
@@ -25,6 +29,8 @@ interface AppStateContextProps {
         setToken(token: string): void;
         setIsFetching(isFetching: boolean): void;
         setChartMode(chartMode: ChartMode): void;
+        setDateFrom(dateFrom: string | null): void;
+        setZoomLevel(zoomLevel: number): void;
     };
 }
 
@@ -36,6 +42,8 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         token: "",
         repos: [],
         chartMode: "Date",
+        dateFrom: null,
+        zoomLevel: 1,
     });
 
     const router = useRouter();
@@ -61,6 +69,8 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 token: accessTokenCache || "",
                 repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
                 chartMode: chartMode,
+                dateFrom: state.dateFrom, // Preserve dateFrom state
+                zoomLevel: state.zoomLevel, // Preserve zoomLevel state
             });
         };
     
@@ -102,6 +112,12 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setChartMode: (chartMode: ChartMode) => {
             setState((prev) => ({ ...prev, chartMode }));
         },
+        setDateFrom: (dateFrom: string | null) => {
+            setState((prev) => ({ ...prev, dateFrom }));
+        },
+        setZoomLevel: (zoomLevel: number) => {
+            setState((prev) => ({ ...prev, zoomLevel }));
+        },
     };
 
     const store: AppStateContextProps = {
@@ -109,6 +125,8 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         repos: state.repos,
         chartMode: state.chartMode,
         token: state.token,
+        dateFrom: state.dateFrom,
+        zoomLevel: state.zoomLevel,
         state,
         actions,
         setToken: actions.setToken,

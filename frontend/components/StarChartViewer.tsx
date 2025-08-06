@@ -4,6 +4,8 @@ import StarXYChart from "./Charts/StarXYChart"
 import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
+import DateFilter from "./DateFilter"
+import ZoomControls from "./ZoomControls"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "shared/packages/xy-chart"
@@ -99,7 +101,7 @@ function StarChartViewer() {
             } else {
                 setState((prevState) => ({
                     ...prevState,
-                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode)
+                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, store.dateFrom)
                 }))
             }
         },
@@ -135,7 +137,7 @@ function StarChartViewer() {
             fetchReposData(store.repos)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [store.repos])
+    }, [store.repos, store.dateFrom])
 
     const handleCopyLinkBtnClick = async () => {
         try {
@@ -306,6 +308,18 @@ function StarChartViewer() {
     const handleSetTokenDialogClose = () => {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
     }
+
+    const handleZoomIn = () => {
+        store.actions.setZoomLevel(Math.min(store.zoomLevel + 0.5, 3))
+    }
+
+    const handleZoomOut = () => {
+        store.actions.setZoomLevel(Math.max(store.zoomLevel - 0.5, 0.5))
+    }
+
+    const handleZoomReset = () => {
+        store.actions.setZoomLevel(1)
+    }
     return (
         <>
             <div ref={containerElRef} className="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0">
@@ -326,7 +340,19 @@ function StarChartViewer() {
                         </div>
                     </div>
                 )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} />}</div>
+                {state.chartData && state.chartData.datasets.length > 0 && (
+                    <>
+                        <DateFilter />
+                        <ZoomControls
+                            onZoomIn={handleZoomIn}
+                            onZoomOut={handleZoomOut}
+                            onReset={handleZoomReset}
+                            canZoomIn={store.zoomLevel < 3}
+                            canZoomOut={store.zoomLevel > 0.5}
+                        />
+                    </>
+                )}
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} zoomLevel={store.zoomLevel} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog

@@ -182,31 +182,57 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
     }
 }
 
-export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode): XYChartData => {
+export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode, dateFrom?: string | null): XYChartData => {
     if (chartMode === "Date") {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
-            label: repo,
-            logo: logoUrl,
-            data: starRecords.map((item) => {
-                return {
-                    x: new Date(item.date),
-                    y: Number(item.count)
-                }
-            })
-        }))
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
+            let filteredRecords = starRecords
+            
+            // Filter by date if dateFrom is provided
+            if (dateFrom) {
+                const filterDate = new Date(dateFrom)
+                filteredRecords = starRecords.filter((item) => {
+                    const itemDate = new Date(item.date)
+                    return itemDate >= filterDate
+                })
+            }
+            
+            return {
+                label: repo,
+                logo: logoUrl,
+                data: filteredRecords.map((item) => {
+                    return {
+                        x: new Date(item.date),
+                        y: Number(item.count)
+                    }
+                })
+            }
+        })
 
         return { datasets }
     } else {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
-            label: repo,
-            logo: logoUrl,
-            data: starRecords.map((item) => {
-                return {
-                    x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
-                    y: Number(item.count)
-                }
-            })
-        }))
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
+            let filteredRecords = starRecords
+            
+            // Filter by date if dateFrom is provided
+            if (dateFrom) {
+                const filterDate = new Date(dateFrom)
+                filteredRecords = starRecords.filter((item) => {
+                    const itemDate = new Date(item.date)
+                    return itemDate >= filterDate
+                })
+            }
+            
+            return {
+                label: repo,
+                logo: logoUrl,
+                data: filteredRecords.map((item) => {
+                    return {
+                        x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
+                        y: Number(item.count)
+                    }
+                })
+            }
+        })
 
         return { datasets }
     }

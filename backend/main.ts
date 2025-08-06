@@ -38,6 +38,7 @@ const startServer = async () => {
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
     let size = `${ctx.query["size"]}`;
+    const dateFrom = `${ctx.query["dateFrom"]}`;
 
     if (!CHART_TYPES.includes(type)) {
       type = "Date";
@@ -120,7 +121,7 @@ const startServer = async () => {
           title: "Star History",
           xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
-          data: convertDataToChartData(repoData, type),
+          data: convertDataToChartData(repoData, type, dateFrom || null),
           showDots: false,
           transparent: transparent.toLowerCase() === "true",
           theme: theme === "dark" ? "dark" : "light",
