@@ -67,7 +67,7 @@ function StarChartViewer() {
             }
 
             try {
-                const data = await getRepoData(notCachedRepos, store.token, undefined, store.dateFrom)
+                const data = await getRepoData(notCachedRepos, store.token, undefined, store.dateFrom ?? undefined)
                 for (const { repo, starRecords, logoUrl } of data) {
                     // Create cache key that includes dateFrom to handle different date filters
                     const cacheKey = store.dateFrom ? `${repo}_${store.dateFrom}` : repo;

@@ -47,17 +47,34 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         const fetchData = () => {
             const { accessTokenCache } = storage.get(["accessTokenCache"]);
             const hash = router.asPath.split("#")[1] || '';
+            console.log(`[DEBUG] Parsing hash: ${hash}`)
             const params = hash.split("&").filter((i) => Boolean(i));
+            console.log(`[DEBUG] Hash params: ${params.join(", ")}`)
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
+            let dateFrom: string | null = null;
     
             for (const value of params) {
                 if (value === "Date" || value === "Timeline") {
                     chartMode = value as ChartMode;
+                    console.log(`[DEBUG] Chart mode: ${chartMode}`)
+                } else if (value.startsWith("from=")) {
+                    // Handle dateFrom parameter: from=timestamp_in_seconds
+                    const timestamp = value.split("=")[1];
+                    console.log(`[DEBUG] Found from parameter: ${timestamp}`)
+                    if (timestamp && !isNaN(Number(timestamp))) {
+                        const date = new Date(Number(timestamp) * 1000);
+                        dateFrom = date.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
+                        console.log(`[DEBUG] Converted timestamp to date: ${dateFrom}`)
+                    }
                 } else {
                     repos.push(value);
+                    console.log(`[DEBUG] Added repo: ${value}`)
                 }
             }
+    
+            console.log(`[DEBUG] Final repos: ${repos.join(", ")}`)
+            console.log(`[DEBUG] Final dateFrom: ${dateFrom}`)
     
             setState({
                 ...state,
@@ -65,7 +82,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 token: accessTokenCache || "",
                 repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
                 chartMode: chartMode,
-                dateFrom: state.dateFrom, // Preserve dateFrom state
+                dateFrom: dateFrom || state.dateFrom, // Use URL dateFrom if provided, otherwise preserve existing
             });
         };
     
