@@ -1,11 +1,20 @@
 [
     {
+        "title": "Star History Monthly August 2025 | Vertical LLM",
+        "slug": "vertical-llm",
+        "author": "ayra",
+        "featured": true,
+        "featureImage": "/assets/blog/vertical-llm/banner.webp",
+        "publishedDate": "2025-08-06:12:00.000Z",
+        "excerpt": "Vertical LLMs are specialized language models that are fine-tuned for specific industries or domains, enhancing their performance and relevance in those areas."
+    },
+    {
         "title": "Star History Monthly July 2025 | IDE for Vibe Coding",
         "slug": "ide-vibe-coding",
         "author": "ayra",
         "featured": true,
         "featureImage": "/assets/blog/ide-vibe-coding/banner.webp",
-        "publishedDate": "2025-07-31T12:00.000Z",
+        "publishedDate": "2025-07-31:12:00.000Z",
         "excerpt": "Development environment optimized for AI-assisted programming, enabling real-time natural language-to-code generation and automated debugging."
     },
     {
@@ -14,7 +23,7 @@
         "author": "ayra",
         "featured": true,
         "featureImage": "/assets/blog/browser-ai-agent/banner.webp",
-        "publishedDate": "2025-06-25T12:00.000Z",
+        "publishedDate": "2025-06-25:12:00.000Z",
         "excerpt": "Browser AI agents enable natural language automation of complex tasks that traditionally required manual intervention."
     },
     {
