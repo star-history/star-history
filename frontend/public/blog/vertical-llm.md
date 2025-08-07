@@ -34,7 +34,7 @@ Meditron-70B supports medical exam question answering, differential diagnosis as
 
 ## Neta Lumina
 
-[Neta Lumina](https://huggingface.co/neta-art/Neta-Lumina) is a high-quality anime-style image generation model built on the open-source Lumina-Image-2.0 foundation, fine-tuned with vast corpus of anime images and multilingual tag data to deliver exceptional creative capabilities.
+[Neta Lumina](https://huggingface.co/neta-art/Neta-Lumina) is a high-quality anime-style image generation model built on the open-source Lumina-Image-2.0 foundation, fine-tuned with a vast corpus of anime images and multilingual tag data to deliver exceptional creative capabilities.
 
 ![neta-lumina](/assets/blog/vertical-llm/neta-lumina.webp)
 
