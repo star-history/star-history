@@ -26,7 +26,7 @@ The model offers an open-source CLI tool and integrates with existing developer 
 
 ![meditron-star](/assets/blog/vertical-llm/meditron-star.webp)
 
-[Meditron](https://github.com/epfLLM/meditron) is a suite of open-source medical Large Language Models developed by EPFL, offering both 7B and 70B parameter versions adapted from Llama-2 through continued pretraining on comprehensively curated medical corpora. The models are trained on selected PubMed papers, medical guidelines, and domain-specific datasets to deliver specialized healthcare AI capabilities.
+[Meditron](https://github.com/epfLLM/meditron) is a suite of open-source medical Large Language Models developed by EPFL, offering both 7B and 70B parameter versions adapted from Llama-2 through continued pretraining on curated medical corpora. The models are trained on selected PubMed papers, medical guidelines, and domain-specific datasets to deliver specialized healthcare AI capabilities.
 
 ![meditron](/assets/blog/vertical-llm/meditron.webp)
 
