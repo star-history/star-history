@@ -30,6 +30,90 @@ namespace api {
     }
 
     export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number, dateFrom?: string) {
+        // If dateFrom is provided, we need to build star history from that date onwards
+        if (dateFrom) {
+            console.log(`[DEBUG] Fetching data for ${repo} from date: ${dateFrom}`)
+            const filterDate = new Date(dateFrom)
+            console.log(`[DEBUG] Filter date: ${filterDate.toISOString()}`)
+            
+            // Get the current total star count
+            const totalStarCount = await getRepoStargazersCount(repo, token)
+            console.log(`[DEBUG] Total star count: ${totalStarCount}`)
+            
+            // Fetch all available star data to build proper history
+            const allStarData: { starred_at: string }[] = []
+            let page = 1
+            let hasMorePages = true
+            
+            // Fetch pages until we have enough data or reach the end
+            while (hasMorePages && allStarData.length < maxRequestAmount * 10) {
+                try {
+                    const response = await getRepoStargazers(repo, token, page)
+                    const { data } = response
+                    
+                    if (data.length === 0) {
+                        hasMorePages = false
+                    } else {
+                        allStarData.push(...data)
+                        page++
+                    }
+                } catch (error) {
+                    console.log(`[DEBUG] Error fetching page ${page}:`, error)
+                    hasMorePages = false
+                }
+            }
+            
+            console.log(`[DEBUG] Total star records fetched: ${allStarData.length}`)
+            
+            // Sort by date (oldest first)
+            allStarData.sort((a, b) => new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime())
+            
+            // Calculate the baseline star count at the filter date
+            const starsBeforeFilter = allStarData.filter(star => {
+                const starDate = new Date(star.starred_at)
+                return starDate < filterDate
+            }).length
+            
+            console.log(`[DEBUG] Stars before filter date: ${starsBeforeFilter}`)
+            
+            // Get stars after the filter date
+            const starsAfterFilter = allStarData.filter(star => {
+                const starDate = new Date(star.starred_at)
+                return starDate >= filterDate
+            })
+            
+            console.log(`[DEBUG] Stars after filter date: ${starsAfterFilter.length}`)
+            
+            // Build star records with proper baseline
+            const starRecordsMap: Map<string, number> = new Map()
+            
+            // Add baseline point at the filter date
+            starRecordsMap.set(utils.getDateString(filterDate), starsBeforeFilter)
+            
+            // Build incremental history from the filter date onwards
+            let incrementalCount = 0
+            starsAfterFilter.forEach((star) => {
+                const date = utils.getDateString(star.starred_at)
+                incrementalCount++
+                const totalCount = starsBeforeFilter + incrementalCount
+                starRecordsMap.set(date, totalCount)
+            })
+            
+            // Add current total at the end
+            starRecordsMap.set(utils.getDateString(Date.now()), totalStarCount)
+            
+            const starRecords: { date: string; count: number }[] = []
+            starRecordsMap.forEach((v, k) => {
+                starRecords.push({ date: k, count: v })
+            })
+            
+            // Sort by date
+            starRecords.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+            console.log(`[DEBUG] Final star records: ${starRecords.length}`)
+            return starRecords
+        }
+        
+        // Original logic for when no dateFrom is provided
         const patchRes = await getRepoStargazers(repo, token)
 
         const headerLink = patchRes.headers["link"] || ""
@@ -105,15 +189,6 @@ namespace api {
                 count: v
             })
         })
-
-        // Filter by dateFrom if provided
-        if (dateFrom) {
-            const filterDate = new Date(dateFrom)
-            return starRecords.filter(record => {
-                const recordDate = new Date(record.date)
-                return recordDate >= filterDate
-            })
-        }
 
         return starRecords
     }

@@ -40,111 +40,67 @@ namespace api {
             const totalStarCount = await getRepoStargazersCount(repo, token)
             console.log(`[DEBUG] Total star count: ${totalStarCount}`)
             
-            // Get the first page to understand pagination
-            const firstPageRes = await getRepoStargazers(repo, token, 1)
-            const headerLink = firstPageRes.headers["link"] || ""
-            let totalPages = 1
-            const regResult = /next.*&page=(\d*).*last/.exec(headerLink)
+            // Fetch all available star data to build proper history
+            const allStarData: { starred_at: string }[] = []
+            let page = 1
+            let hasMorePages = true
             
-            if (regResult) {
-                if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
-                    totalPages = Number(regResult[1])
+            // Fetch pages until we have enough data or reach the end
+            while (hasMorePages && allStarData.length < maxRequestAmount * 10) {
+                try {
+                    const response = await getRepoStargazers(repo, token, page)
+                    const { data } = response
+                    
+                    if (data.length === 0) {
+                        hasMorePages = false
+                    } else {
+                        allStarData.push(...data)
+                        page++
+                    }
+                } catch (error) {
+                    console.log(`[DEBUG] Error fetching page ${page}:`, error)
+                    hasMorePages = false
                 }
             }
-            console.log(`[DEBUG] Total pages: ${totalPages}`)
             
-            // For date filtering, we need to fetch more pages to get enough data points
-            // We'll fetch pages from the end (most recent) backwards to build the history
-            const pagesToFetch = Math.min(maxRequestAmount * 2, totalPages) // Fetch more pages for better data
-            const startPage = Math.max(1, totalPages - pagesToFetch + 1)
-            const requestPages = utils.range(startPage, totalPages)
-            console.log(`[DEBUG] Fetching pages: ${startPage} to ${totalPages}`)
-            
-            const resArray = await Promise.all(
-                requestPages.map((page) => {
-                    return getRepoStargazers(repo, token, page)
-                })
-            )
-            
-            // Collect all star data and sort by date
-            const allStarData: { starred_at: string }[] = []
-            resArray.forEach((res) => {
-                const { data } = res
-                allStarData.push(...data)
-            })
             console.log(`[DEBUG] Total star records fetched: ${allStarData.length}`)
             
             // Sort by date (oldest first)
             allStarData.sort((a, b) => new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime())
             
-            // Filter by date and build star history
-            const filteredStarData = allStarData.filter(star => {
+            // Calculate the baseline star count at the filter date
+            const starsBeforeFilter = allStarData.filter(star => {
+                const starDate = new Date(star.starred_at)
+                return starDate < filterDate
+            }).length
+            
+            console.log(`[DEBUG] Stars before filter date: ${starsBeforeFilter}`)
+            
+            // Get stars after the filter date
+            const starsAfterFilter = allStarData.filter(star => {
                 const starDate = new Date(star.starred_at)
                 return starDate >= filterDate
             })
-            console.log(`[DEBUG] Filtered star records: ${filteredStarData.length}`)
             
-            // If we don't have enough data, we need to fetch earlier pages
-            if (filteredStarData.length < 5 && startPage > 1) {
-                console.log(`[DEBUG] Not enough data, fetching earlier pages`)
-                const earlierPages = utils.range(Math.max(1, startPage - 10), startPage - 1)
-                const earlierResArray = await Promise.all(
-                    earlierPages.map((page) => {
-                        return getRepoStargazers(repo, token, page)
-                    })
-                )
-                
-                earlierResArray.forEach((res) => {
-                    const { data } = res
-                    allStarData.push(...data)
-                })
-                
-                // Re-sort and filter
-                allStarData.sort((a, b) => new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime())
-                const allFilteredData = allStarData.filter(star => {
-                    const starDate = new Date(star.starred_at)
-                    return starDate >= filterDate
-                })
-                console.log(`[DEBUG] After fetching earlier pages, filtered records: ${allFilteredData.length}`)
-                
-                // Build star records from filtered data
-                const starRecordsMap: Map<string, number> = new Map()
-                let starCount = 0
-                
-                // First, add the current total count
-                starRecordsMap.set(utils.getDateString(Date.now()), totalStarCount)
-                
-                // Then build the history from the filtered data
-                allFilteredData.forEach((star) => {
-                    const date = utils.getDateString(star.starred_at)
-                    starCount++
-                    starRecordsMap.set(date, starCount)
-                })
-                
-                const starRecords: { date: string; count: number }[] = []
-                starRecordsMap.forEach((v, k) => {
-                    starRecords.push({ date: k, count: v })
-                })
-                
-                // Sort by date
-                starRecords.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-                console.log(`[DEBUG] Final star records: ${starRecords.length}`)
-                return starRecords
-            }
+            console.log(`[DEBUG] Stars after filter date: ${starsAfterFilter.length}`)
             
-            // Build star records from filtered data
+            // Build star records with proper baseline
             const starRecordsMap: Map<string, number> = new Map()
-            let starCount = 0
             
-            // First, add the current total count
-            starRecordsMap.set(utils.getDateString(Date.now()), totalStarCount)
+            // Add baseline point at the filter date
+            starRecordsMap.set(utils.getDateString(filterDate), starsBeforeFilter)
             
-            // Then build the history from the filtered data
-            filteredStarData.forEach((star) => {
+            // Build incremental history from the filter date onwards
+            let incrementalCount = 0
+            starsAfterFilter.forEach((star) => {
                 const date = utils.getDateString(star.starred_at)
-                starCount++
-                starRecordsMap.set(date, starCount)
+                incrementalCount++
+                const totalCount = starsBeforeFilter + incrementalCount
+                starRecordsMap.set(date, totalCount)
             })
+            
+            // Add current total at the end
+            starRecordsMap.set(utils.getDateString(Date.now()), totalStarCount)
             
             const starRecords: { date: string; count: number }[] = []
             starRecordsMap.forEach((v, k) => {
