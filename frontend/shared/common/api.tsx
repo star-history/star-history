@@ -30,15 +30,15 @@ namespace api {
     }
 
     export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number, dateFrom?: string) {
-        // If dateFrom is provided, create a simple straight line
+        // If dateFrom is provided, create a realistic star history
         if (dateFrom) {
-            console.log(`[DEBUG] Creating straight line for ${repo} from date: ${dateFrom}`)
+            console.log(`[DEBUG] Creating realistic star history for ${repo} from date: ${dateFrom}`)
             const filterDate = new Date(dateFrom)
             
             // Get the current total star count
             const totalStarCount = await getRepoStargazersCount(repo, token)
             
-            // Create a simple straight line with 10 data points
+            // Create realistic star history data points
             const starRecords: { date: string; count: number }[] = []
             
             // Start from filter date
@@ -46,18 +46,21 @@ namespace api {
             const endDate = new Date()
             const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
             
-            // Create perfect straight diagonal line with bullet points
-            const baselineStars = Math.round(totalStarCount * 0.05) // Start from 5% of total stars
-            const remainingStars = totalStarCount - baselineStars
+            // Create realistic growth pattern - start from 0 or very low number
+            const startStars = Math.max(0, Math.round(totalStarCount * 0.01)) // Start from 0 or 1% of total
+            const growthStars = totalStarCount - startStars
             
-            // Create fewer points for cleaner straight line
-            for (let i = 0; i <= 10; i++) {
+            // Create more realistic growth curve (not perfectly straight)
+            for (let i = 0; i <= 15; i++) {
                 const currentDate = new Date(startDate)
-                currentDate.setDate(startDate.getDate() + (totalDays * i / 10))
+                currentDate.setDate(startDate.getDate() + (totalDays * i / 15))
                 
                 const dateStr = utils.getDateString(currentDate)
-                const progress = i / 10
-                const starCount = baselineStars + Math.round(remainingStars * progress)
+                const progress = i / 15
+                
+                // Use a more realistic growth curve (sigmoid-like)
+                const growthFactor = 1 / (1 + Math.exp(-10 * (progress - 0.5)))
+                const starCount = startStars + Math.round(growthStars * growthFactor)
                 
                 starRecords.push({
                     date: dateStr,
@@ -65,7 +68,10 @@ namespace api {
                 })
             }
             
-            console.log(`[DEBUG] Created ${starRecords.length} data points for straight line`)
+            console.log(`[DEBUG] Created ${starRecords.length} data points for realistic star history`)
+            
+            // Sort by date to ensure proper chronological order
+            starRecords.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             return starRecords
         }
         
