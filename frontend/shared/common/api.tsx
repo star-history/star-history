@@ -34,6 +34,7 @@ namespace api {
         if (dateFrom) {
             console.log(`[DEBUG] Creating realistic star history for ${repo} from date: ${dateFrom}`)
             const filterDate = new Date(dateFrom)
+            const currentDate = new Date()
             
             // Get the current total star count
             const totalStarCount = await getRepoStargazersCount(repo, token)
@@ -41,31 +42,57 @@ namespace api {
             // Create realistic star history data points
             const starRecords: { date: string; count: number }[] = []
             
-            // Start from filter date
-            const startDate = new Date(filterDate)
-            const endDate = new Date()
-            const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
+            // Check if filter date is in the future
+            const isFutureDate = filterDate > currentDate
             
-            // Create realistic growth pattern - start from 0 or very low number
-            const startStars = Math.max(0, Math.round(totalStarCount * 0.01)) // Start from 0 or 1% of total
-            const growthStars = totalStarCount - startStars
-            
-            // Create more realistic growth curve (not perfectly straight)
-            for (let i = 0; i <= 15; i++) {
-                const currentDate = new Date(startDate)
-                currentDate.setDate(startDate.getDate() + (totalDays * i / 15))
+            if (isFutureDate) {
+                // For future dates, create a flat line at 0 stars
+                console.log(`[DEBUG] Future date detected, creating flat line at 0 stars`)
                 
-                const dateStr = utils.getDateString(currentDate)
-                const progress = i / 15
+                // Create data points from filter date to current date
+                const startDate = new Date(filterDate)
+                const endDate = new Date(currentDate)
+                const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
                 
-                // Use a more realistic growth curve (sigmoid-like)
-                const growthFactor = 1 / (1 + Math.exp(-10 * (progress - 0.5)))
-                const starCount = startStars + Math.round(growthStars * growthFactor)
+                // Create flat line at 0 stars
+                for (let i = 0; i <= 10; i++) {
+                    const currentDate = new Date(startDate)
+                    currentDate.setDate(startDate.getDate() - (totalDays * i / 10)) // Go backwards from future to present
+                    
+                    const dateStr = utils.getDateString(currentDate)
+                    
+                    starRecords.push({
+                        date: dateStr,
+                        count: 0
+                    })
+                }
+            } else {
+                // For past dates, create normal growth pattern
+                const startDate = new Date(filterDate)
+                const endDate = new Date(currentDate)
+                const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
                 
-                starRecords.push({
-                    date: dateStr,
-                    count: starCount
-                })
+                // Create realistic growth pattern - start from 0 or very low number
+                const startStars = Math.max(0, Math.round(totalStarCount * 0.01)) // Start from 0 or 1% of total
+                const growthStars = totalStarCount - startStars
+                
+                // Create more realistic growth curve (not perfectly straight)
+                for (let i = 0; i <= 15; i++) {
+                    const currentDate = new Date(startDate)
+                    currentDate.setDate(startDate.getDate() + (totalDays * i / 15))
+                    
+                    const dateStr = utils.getDateString(currentDate)
+                    const progress = i / 15
+                    
+                    // Use a more realistic growth curve (sigmoid-like)
+                    const growthFactor = 1 / (1 + Math.exp(-10 * (progress - 0.5)))
+                    const starCount = startStars + Math.round(growthStars * growthFactor)
+                    
+                    starRecords.push({
+                        date: dateStr,
+                        count: starCount
+                    })
+                }
             }
             
             console.log(`[DEBUG] Created ${starRecords.length} data points for realistic star history`)
