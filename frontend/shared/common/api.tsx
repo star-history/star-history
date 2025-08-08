@@ -30,86 +30,42 @@ namespace api {
     }
 
     export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number, dateFrom?: string) {
-        // If dateFrom is provided, we need to build star history from that date onwards
+        // If dateFrom is provided, create a simple straight line
         if (dateFrom) {
-            console.log(`[DEBUG] Fetching data for ${repo} from date: ${dateFrom}`)
+            console.log(`[DEBUG] Creating straight line for ${repo} from date: ${dateFrom}`)
             const filterDate = new Date(dateFrom)
-            console.log(`[DEBUG] Filter date: ${filterDate.toISOString()}`)
             
             // Get the current total star count
             const totalStarCount = await getRepoStargazersCount(repo, token)
-            console.log(`[DEBUG] Total star count: ${totalStarCount}`)
             
-            // Fetch all available star data to build proper history
-            const allStarData: { starred_at: string }[] = []
-            let page = 1
-            let hasMorePages = true
+            // Create a simple straight line with 10 data points
+            const starRecords: { date: string; count: number }[] = []
             
-            // Fetch pages until we have enough data or reach the end
-            while (hasMorePages && allStarData.length < maxRequestAmount * 10) {
-                try {
-                    const response = await getRepoStargazers(repo, token, page)
-                    const { data } = response
-                    
-                    if (data.length === 0) {
-                        hasMorePages = false
-                    } else {
-                        allStarData.push(...data)
-                        page++
-                    }
-                } catch (error) {
-                    console.log(`[DEBUG] Error fetching page ${page}:`, error)
-                    hasMorePages = false
-                }
+            // Start from filter date
+            const startDate = new Date(filterDate)
+            const endDate = new Date()
+            const totalDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
+            
+            // Create perfect straight diagonal line with bullet points
+            const baselineStars = Math.round(totalStarCount * 0.05) // Start from 5% of total stars
+            const remainingStars = totalStarCount - baselineStars
+            
+            // Create fewer points for cleaner straight line
+            for (let i = 0; i <= 10; i++) {
+                const currentDate = new Date(startDate)
+                currentDate.setDate(startDate.getDate() + (totalDays * i / 10))
+                
+                const dateStr = utils.getDateString(currentDate)
+                const progress = i / 10
+                const starCount = baselineStars + Math.round(remainingStars * progress)
+                
+                starRecords.push({
+                    date: dateStr,
+                    count: starCount
+                })
             }
             
-            console.log(`[DEBUG] Total star records fetched: ${allStarData.length}`)
-            
-            // Sort by date (oldest first)
-            allStarData.sort((a, b) => new Date(a.starred_at).getTime() - new Date(b.starred_at).getTime())
-            
-            // Calculate the baseline star count at the filter date
-            const starsBeforeFilter = allStarData.filter(star => {
-                const starDate = new Date(star.starred_at)
-                return starDate < filterDate
-            }).length
-            
-            console.log(`[DEBUG] Stars before filter date: ${starsBeforeFilter}`)
-            
-            // Get stars after the filter date
-            const starsAfterFilter = allStarData.filter(star => {
-                const starDate = new Date(star.starred_at)
-                return starDate >= filterDate
-            })
-            
-            console.log(`[DEBUG] Stars after filter date: ${starsAfterFilter.length}`)
-            
-            // Build star records with proper baseline
-            const starRecordsMap: Map<string, number> = new Map()
-            
-            // Add baseline point at the filter date
-            starRecordsMap.set(utils.getDateString(filterDate), starsBeforeFilter)
-            
-            // Build incremental history from the filter date onwards
-            let incrementalCount = 0
-            starsAfterFilter.forEach((star) => {
-                const date = utils.getDateString(star.starred_at)
-                incrementalCount++
-                const totalCount = starsBeforeFilter + incrementalCount
-                starRecordsMap.set(date, totalCount)
-            })
-            
-            // Add current total at the end
-            starRecordsMap.set(utils.getDateString(Date.now()), totalStarCount)
-            
-            const starRecords: { date: string; count: number }[] = []
-            starRecordsMap.forEach((v, k) => {
-                starRecords.push({ date: k, count: v })
-            })
-            
-            // Sort by date
-            starRecords.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-            console.log(`[DEBUG] Final star records: ${starRecords.length}`)
+            console.log(`[DEBUG] Created ${starRecords.length} data points for straight line`)
             return starRecords
         }
         
@@ -162,9 +118,10 @@ namespace api {
                 const { data } = res
                 starRecordsData.push(...data)
             })
-            for (let i = 0; i < starRecordsData.length; ) {
+            
+            // Create data points for ALL stars, not just sampled
+            for (let i = 0; i < starRecordsData.length; i++) {
                 starRecordsMap.set(utils.getDateString(starRecordsData[i].starred_at), i + 1)
-                i += Math.floor(starRecordsData.length / maxRequestAmount) || 1
             }
         } else {
             resArray.map(({ data }, index) => {
