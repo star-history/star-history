@@ -38,6 +38,7 @@ const startServer = async () => {
     const repos = `${ctx.query["repos"]}`.split(",");
     let type = `${ctx.query["type"]}` as ChartMode;
     let size = `${ctx.query["size"]}`;
+    const dateFrom = `${ctx.query["dateFrom"]}`;
 
     if (!CHART_TYPES.includes(type)) {
       type = "Date";
@@ -56,7 +57,9 @@ const startServer = async () => {
     const nodataRepos = [];
 
     for (const repo of repos) {
-      const cacheData = cache.get(repo);
+      // Create cache key that includes dateFrom to handle different date filters
+      const cacheKey = dateFrom ? `${repo}_${dateFrom}` : repo;
+      const cacheData = cache.get(cacheKey);
 
       if (cacheData) {
         repoData.push({
@@ -73,11 +76,13 @@ const startServer = async () => {
       const token = getNextToken();
 
       try {
-        const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
+        const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT, dateFrom || null);
 
         for (const d of data) {
           d.logoUrl = await getBase64Image(`${d.logoUrl}&size=22`);
-          cache.set(d.repo, {
+          // Create cache key that includes dateFrom to handle different date filters
+          const cacheKey = dateFrom ? `${d.repo}_${dateFrom}` : d.repo;
+          cache.set(cacheKey, {
             starRecords: d.starRecords,
             starAmount: d.starRecords[d.starRecords.length - 1].count,
             logoUrl: d.logoUrl,

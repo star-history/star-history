@@ -7,12 +7,12 @@ export const DEFAULT_MAX_REQUEST_AMOUNT = 15
 
 const STAR_HISTORY_LOGO_URL = "https://avatars.githubusercontent.com/u/124480067"
 
-export const getReposStarData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT): Promise<RepoStarData[]> => {
+export const getReposStarData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT, dateFrom?: string): Promise<RepoStarData[]> => {
     const repoStarDataCacheMap = new Map()
 
     for (const repo of repos) {
         try {
-            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount)
+            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount, dateFrom)
             repoStarDataCacheMap.set(repo, starRecords)
         } catch (error: any) {
             let message = ""
@@ -58,7 +58,7 @@ export const getReposStarData = async (repos: string[], token = "", maxRequestAm
     })
 }
 
-export const getRepoData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT): Promise<RepoData[]> => {
+export const getRepoData = async (repos: string[], token = "", maxRequestAmount = DEFAULT_MAX_REQUEST_AMOUNT, dateFrom?: string): Promise<RepoData[]> => {
     const repoDataCacheMap: Map<
         string,
         {
@@ -72,7 +72,7 @@ export const getRepoData = async (repos: string[], token = "", maxRequestAmount 
 
     for (const repo of repos) {
         try {
-            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount)
+            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount, dateFrom)
             const logo = await api.getRepoLogoUrl(repo, token)
             repoDataCacheMap.set(repo, { star: starRecords, logo })
         } catch (error: any) {
