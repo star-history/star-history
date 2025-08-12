@@ -60,6 +60,14 @@ const sponsors: Sponsor[] = [
       logoSlogan: "MemU: make your LLM and agent have better memory than GPT-5 and Claude.",
       landingSlogan: "Make your LLM and agent have better memory than GPT-5 and Claude."
     },
+    {
+      name: "pgschema",
+      logo: utils.absolutifyLink("/assets/sponsors/pgschema/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/sponsors/pgschema/landing.webp"),
+      link: "https://github.com/pgschema/pgschema/?utm_source=star-history",
+      logoSlogan: "pgschema: Postgres declarative schema migration, like Terraform.",
+      landingSlogan: "Postgres declarative schema migration, like Terraform."
+    },
 ]
 
 export const randomSponsors = sampleSize(sponsors, sponsors.length)
