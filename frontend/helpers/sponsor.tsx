@@ -18,16 +18,16 @@ interface Sponsor {
 
 // The list of current sponsors.
 const sponsors: Sponsor[] = [
-    {
-      name: "Bytebase",
-      logo: utils.absolutifyLink("/assets/sponsors/bytebase/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/bytebase/landing.webp"),
-      link: "https://bytebase.com?utm_source=star-history",
-      logoSlogan:
-        "Bytebase: Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
-      landingSlogan:
-        "Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
-    },
+    // {
+    //   name: "Bytebase",
+    //   logo: utils.absolutifyLink("/assets/sponsors/bytebase/logo.webp"),
+    //   landingImage: utils.absolutifyLink("/assets/sponsors/bytebase/landing.webp"),
+    //   link: "https://bytebase.com?utm_source=star-history",
+    //   logoSlogan:
+    //     "Bytebase: Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
+    //   landingSlogan:
+    //     "Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
+    // },
     {
         name: "Dify",
         logo: utils.absolutifyLink("/assets/sponsors/dify/logo.webp"),
@@ -36,14 +36,14 @@ const sponsors: Sponsor[] = [
         logoSlogan: "Dify: Open-source platform for building LLM apps, from agents to AI workflows.",
         landingSlogan: "Open-source platform for building LLM apps, from agents to AI workflows."
     },
-    {
-      name: "DBHub",
-      logo: utils.absolutifyLink("/assets/sponsors/dbhub/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/dbhub/landing.webp"),
-      link: "https://github.com/bytebase/dbhub/?utm_source=star-history",
-      logoSlogan: "DBHub: Universal Database MCP Server.",
-      landingSlogan: "Universal Database MCP Server."
-    },
+    // {
+    //   name: "DBHub",
+    //   logo: utils.absolutifyLink("/assets/sponsors/dbhub/logo.webp"),
+    //   landingImage: utils.absolutifyLink("/assets/sponsors/dbhub/landing.webp"),
+    //   link: "https://github.com/bytebase/dbhub/?utm_source=star-history",
+    //   logoSlogan: "DBHub: Universal Database MCP Server.",
+    //   landingSlogan: "Universal Database MCP Server."
+    // },
     {
       name: "Apache Gravitino™",
       logo: utils.absolutifyLink("/assets/sponsors/gravitino/logo.webp"),
@@ -51,6 +51,14 @@ const sponsors: Sponsor[] = [
       link: "https://github.com/apache/gravitino/?utm_source=star-history",
       logoSlogan: "Apache Gravitino™: Unify Your Metadata. Federate Your Lakehouse. Power Your AI.",
       landingSlogan: "Open-source data and AI catalog that powers a unified metadata lake for federated, real-time, and AI-native workloads."
+    },
+    {
+      name: "MemU",
+      logo: utils.absolutifyLink("/assets/sponsors/memu/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/sponsors/memu/landing.webp"),
+      link: "https://github.com/NevaMind-AI/memU/?utm_source=star-history",
+      logoSlogan: "MemU: make your LLM and agent have better memory than GPT-5 and Claude.",
+      landingSlogan: "Make your LLM and agent have better memory than GPT-5 and Claude."
     },
 ]
 
