@@ -7,7 +7,7 @@ export default function SponsorStaticBanner() {
     const [hideModal, setHideModal] = useState(false)
 
     return (
-        <div className={`fixed right-0 top-32 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-10 ${hideModal ? "!hidden" : ""}`}>
+        <div className={`fixed right-0 top-16 hidden lg:flex flex-col justify-start items-start transition-all bg-white w-48 xl:w-56 p-2 z-10 ${hideModal ? "!hidden" : ""}`}>
             <div className="w-full flex justify-between items-center mb-2">
                 <p className="text-xs text-gray-400">Sponsors (random order)</p>
 
