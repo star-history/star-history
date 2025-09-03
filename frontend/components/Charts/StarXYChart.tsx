@@ -6,10 +6,11 @@ interface Props {
     classname?: string
     data?: XYChartData
     chartMode?: string
+    useLogScale?: boolean
     timeFormat?: string
     id?: string
 }
-const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date" }) => {
+const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", useLogScale = false }) => {
     const chartContainerElRef = useRef<HTMLDivElement | null>(null)
     const svgElRef = useRef<SVGSVGElement | null>(null)
 
@@ -32,12 +33,13 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                     },
                     {
                         xTickLabelType: chartMode === "Date" ? "Date" : "Number",
-                        envType: "browser"
+                        envType: "browser",
+                        useLogScale: useLogScale
                     }
                 )
             }
         },
-        [chartMode]
+        [chartMode, useLogScale]
     )
 
     useEffect(() => {

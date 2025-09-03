@@ -118,13 +118,16 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
             let hash = ""
             if (store.state.repos.length > 0) {
                 hash = `#${store.state.repos.join("&")}&${store.state.chartMode}`
+                if (store.state.useLogScale) {
+                    hash += "&LogScale"
+                }
             }
             // Sync location hash only right here
             window.location.hash = hash
         }
 
         handleWatch()
-    }, [store.state.repos, store.state.chartMode, state.repos])
+    }, [store.state.repos, store.state.chartMode, store.state.useLogScale, state.repos])
 
     const handleAddRepoBtnClick = () => {
         if (store.isFetching) {

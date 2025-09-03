@@ -8,6 +8,7 @@ interface AppState {
     token: string;
     repos: string[];
     chartMode: ChartMode;
+    useLogScale: boolean;
 }
 
 interface AppStateContextProps {
@@ -16,6 +17,7 @@ interface AppStateContextProps {
     isFetching: boolean;
     repos: string[];
     chartMode: ChartMode;
+    useLogScale: boolean;
     token: string;
     state: AppState;
     actions: {
@@ -25,6 +27,7 @@ interface AppStateContextProps {
         setToken(token: string): void;
         setIsFetching(isFetching: boolean): void;
         setChartMode(chartMode: ChartMode): void;
+        setUseLogScale(useLogScale: boolean): void;
     };
 }
 
@@ -36,6 +39,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         token: "",
         repos: [],
         chartMode: "Date",
+        useLogScale: false,
     });
 
     const router = useRouter();
@@ -46,10 +50,13 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             const params = hash.split("&").filter((i) => Boolean(i));
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
+            let useLogScale = false;
     
             for (const value of params) {
                 if (value === "Date" || value === "Timeline") {
                     chartMode = value as ChartMode;
+                } else if (value === "LogScale") {
+                    useLogScale = true;
                 } else {
                     repos.push(value);
                 }
@@ -61,6 +68,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 token: accessTokenCache || "",
                 repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
                 chartMode: chartMode,
+                useLogScale: useLogScale,
             });
         };
     
@@ -102,12 +110,16 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setChartMode: (chartMode: ChartMode) => {
             setState((prev) => ({ ...prev, chartMode }));
         },
+        setUseLogScale: (useLogScale: boolean) => {
+            setState((prev) => ({ ...prev, useLogScale }));
+        },
     };
 
     const store: AppStateContextProps = {
         isFetching: state.isFetching,
         repos: state.repos,
         chartMode: state.chartMode,
+        useLogScale: state.useLogScale,
         token: state.token,
         state,
         actions,

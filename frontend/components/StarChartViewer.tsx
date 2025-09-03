@@ -16,6 +16,7 @@ import api from "shared/common/api"
 
 interface State {
     chartMode: "Date" | "Timeline"
+    useLogScale: boolean
     repoCacheMap: Map<
         string,
         {
@@ -39,6 +40,7 @@ function StarChartViewer() {
 
     const [state, setState] = useState<State>({
         chartMode: "Date",
+        useLogScale: false,
         repoCacheMap: new Map(),
         chartData: undefined,
         isGeneratingImage: false,
@@ -110,10 +112,13 @@ function StarChartViewer() {
         const handleHashChange = () => {
             const hash = window.location.hash;
             const alignTimeline = hash.includes("Timeline");
+            const useLogScale = hash.includes("LogScale");
             if (alignTimeline) {
                 const newChartMode = "Timeline";
-                setState(prevState => ({ ...prevState, chartMode: newChartMode }));
+                setState(prevState => ({ ...prevState, chartMode: newChartMode, useLogScale }));
                 fetchReposData(store.repos, newChartMode);
+            } else {
+                setState(prevState => ({ ...prevState, useLogScale }));
             }
         };
 
@@ -303,6 +308,16 @@ function StarChartViewer() {
         fetchReposData(store.repos, newChartMode)
     }, [state.chartMode, store.actions, store.repos, fetchReposData])
 
+    const handleToggleLogScaleBtnClick = React.useCallback(() => {
+        const newUseLogScale = !state.useLogScale
+        store.actions.setUseLogScale(newUseLogScale)
+
+        setState((prevState) => {
+            return { ...prevState, useLogScale: newUseLogScale }
+        })
+        fetchReposData(store.repos, state.chartMode)
+    }, [state.useLogScale, state.chartMode, store.actions, store.repos, fetchReposData])
+
     const handleSetTokenDialogClose = () => {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
     }
@@ -319,6 +334,13 @@ function StarChartViewer() {
                     <div className="absolute top-0 right-1 p-2 flex flex-row">
                         <div
                             className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+                            onClick={handleToggleLogScaleBtnClick}
+                        >
+                            <input className="mr-2" type="checkbox" checked={state.useLogScale} />
+                            Log scale
+                        </div>
+                        <div
+                            className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                             onClick={handleToggleChartBtnClick}
                         >
                             <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
@@ -326,7 +348,7 @@ function StarChartViewer() {
                         </div>
                     </div>
                 )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} />}</div>
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog

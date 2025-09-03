@@ -1,4 +1,4 @@
-import { scaleLinear, scaleTime } from "d3-scale"
+import { scaleLinear, scaleTime, scaleLog, scaleSymlog } from "d3-scale"
 import { select } from "d3-selection"
 import { line, curveMonotoneX } from "d3-shape"
 import { AxisScale } from "d3-axis";
@@ -66,6 +66,7 @@ export interface XYChartOptions {
     backgroundColor: string
     strokeColor: string
     chartWidth?: number
+    useLogScale?: boolean
 }
 
 const getDefaultOptions = (transparent: boolean): XYChartOptions => {
@@ -183,9 +184,22 @@ const XYChart = (
         .range([0, chartWidth]);
     }
 
-    const yScale = scaleLinear()
-        .domain([Math.min(...allYData), Math.max(...allYData)])
-        .range([chartHeight, 0])
+    let yScale: AxisScale<number>
+    if (options.useLogScale) {
+        // Use scaleSymlog which naturally handles zero and negative values
+        // It transitions smoothly between linear (near zero) and logarithmic (far from zero)
+        const minYData = Math.min(...allYData)
+        const maxYData = Math.max(...allYData)
+        
+        yScale = scaleSymlog()
+            .domain([minYData, maxYData])
+            .range([chartHeight, 0])
+            .constant(1) // Transition point - values below this use linear scale
+    } else {
+        yScale = scaleLinear()
+            .domain([Math.min(...allYData), Math.max(...allYData)])
+            .range([chartHeight, 0])
+    }
 
     const svgChart = chart.append("g").attr("pointer-events", "all")
 
@@ -236,7 +250,7 @@ const XYChart = (
     if (options.showLine) {
         const drawLine = line<XYPoint>()
             .x((d) => xScale(d.x) || 0)
-            .y((d) => yScale(d.y))
+            .y((d) => yScale(d.y) || 0)
             .curve(curveMonotoneX)
 
         svgChart
@@ -278,7 +292,7 @@ const XYChart = (
             })
             .attr("r", dotInitSize)
             .attr("cx", (d) => xScale(d.x) || 0)
-            .attr("cy", (d) => yScale(d.y))
+            .attr("cy", (d) => yScale(d.y) || 0)
             .attr("pointer-events", "all")
             .on("mouseover", (event, d) => {
                 if (window === undefined) return
@@ -288,7 +302,7 @@ const XYChart = (
                 select(nodes[i]).attr("r", dotHoverSize)
 
                 const tipX = (xScale(d.x) || 0) + margin.left + 5
-                const tipY = yScale(d.y) + margin.top + 5
+                const tipY = (yScale(d.y) || 0) + margin.top + 5
                 let tooltipPositionType : Position = "down_right"
                 if (tipX > chartWidth / 2 && tipY < chartHeight / 2) {
                     tooltipPositionType = "down_left"
