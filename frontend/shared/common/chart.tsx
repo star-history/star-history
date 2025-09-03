@@ -142,16 +142,27 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
     if (chartMode === "Date") {
         const datasets: XYData[] = reposStarData.map((item) => {
             const { repo, starRecords } = item
+            const chartData = starRecords.map((item) => {
+                return {
+                    x: new Date(item.date),
+                    y: Number(item.count)
+                }
+            })
+            
+            // Add initial zero point at the beginning
+            if (chartData.length > 0 && chartData[0].y > 0) {
+                const firstDate = new Date(chartData[0].x)
+                firstDate.setDate(firstDate.getDate() - 1) // One day before first star
+                chartData.unshift({
+                    x: firstDate,
+                    y: 0
+                })
+            }
 
             return {
                 label: repo,
                 logo: "",
-                data: starRecords.map((item) => {
-                    return {
-                        x: new Date(item.date),
-                        y: Number(item.count)
-                    }
-                })
+                data: chartData
             }
         })
 
@@ -163,16 +174,25 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
             const { repo, starRecords } = item
 
             const started = starRecords[0].date
+            const chartData = starRecords.map((item) => {
+                return {
+                    x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(started)),
+                    y: Number(item.count)
+                }
+            })
+            
+            // Add initial zero point at the beginning
+            if (chartData.length > 0 && chartData[0].y > 0) {
+                chartData.unshift({
+                    x: -1, // One day before in timeline mode
+                    y: 0
+                })
+            }
 
             return {
                 label: repo,
                 logo: "",
-                data: starRecords.map((item) => {
-                    return {
-                        x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(started)),
-                        y: Number(item.count)
-                    }
-                })
+                data: chartData
             }
         })
 
@@ -184,29 +204,55 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
 
 export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode): XYChartData => {
     if (chartMode === "Date") {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
-            label: repo,
-            logo: logoUrl,
-            data: starRecords.map((item) => {
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
+            const chartData = starRecords.map((item) => {
                 return {
                     x: new Date(item.date),
                     y: Number(item.count)
                 }
             })
-        }))
+            
+            // Add initial zero point at the beginning
+            if (chartData.length > 0 && chartData[0].y > 0) {
+                const firstDate = new Date(chartData[0].x)
+                firstDate.setDate(firstDate.getDate() - 1) // One day before first star
+                chartData.unshift({
+                    x: firstDate,
+                    y: 0
+                })
+            }
+            
+            return {
+                label: repo,
+                logo: logoUrl,
+                data: chartData
+            }
+        })
 
         return { datasets }
     } else {
-        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => ({
-            label: repo,
-            logo: logoUrl,
-            data: starRecords.map((item) => {
+        const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
+            const chartData = starRecords.map((item) => {
                 return {
                     x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
                     y: Number(item.count)
                 }
             })
-        }))
+            
+            // Add initial zero point at the beginning
+            if (chartData.length > 0 && chartData[0].y > 0) {
+                chartData.unshift({
+                    x: -1, // One day before in timeline mode
+                    y: 0
+                })
+            }
+            
+            return {
+                label: repo,
+                logo: logoUrl,
+                data: chartData
+            }
+        })
 
         return { datasets }
     }

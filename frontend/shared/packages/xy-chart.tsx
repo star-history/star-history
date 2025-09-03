@@ -188,16 +188,15 @@ const XYChart = (
     if (options.useLogScale) {
         // Use scaleSymlog which naturally handles zero and negative values
         // It transitions smoothly between linear (near zero) and logarithmic (far from zero)
-        const minYData = Math.min(...allYData)
         const maxYData = Math.max(...allYData)
         
         yScale = scaleSymlog()
-            .domain([minYData, maxYData])
+            .domain([0, maxYData]) // Always start from 0 to show true starting point
             .range([chartHeight, 0])
-            .constant(1) // Transition point - values below this use linear scale
+            .constant(10) // Higher constant for smoother log transition
     } else {
         yScale = scaleLinear()
-            .domain([Math.min(...allYData), Math.max(...allYData)])
+            .domain([0, Math.max(...allYData)]) // Always start from 0 for linear scale
             .range([chartHeight, 0])
     }
 
@@ -243,7 +242,8 @@ const XYChart = (
         yScale,
         tickCount: options.yTickCount,
         fontFamily: fontFamily,
-        stroke: options.strokeColor
+        stroke: options.strokeColor,
+        useLogScale: options.useLogScale
     })
 
     // draw lines
