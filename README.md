@@ -57,12 +57,6 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
-### Apache Gravitino™
-
-[Apache Gravitino™](https://github.com/apache/gravitino?utm_source=star-history) is an open-source data and AI catalog that powers a unified metadata lake for federated, real-time, and AI-native workloads.
-
-<a href="https://github.com/apache/gravitino/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/gravitino/landing.webp" /></a>
-
 ### MemU
 
 [MemU](https://github.com/NevaMind-AI/memU?utm_source=star-history) makes your LLM and agent have better memory than GPT-5 and Claude
