@@ -45,12 +45,12 @@ const sponsors: Sponsor[] = [
     //   landingSlogan: "Universal Database MCP Server."
     // },
     {
-      name: "Apache Gravitino™",
-      logo: utils.absolutifyLink("/assets/sponsors/gravitino/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/gravitino/landing.webp"),
-      link: "https://github.com/apache/gravitino/?utm_source=star-history",
-      logoSlogan: "Apache Gravitino™: Unify Your Metadata. Federate Your Lakehouse. Power Your AI.",
-      landingSlogan: "Open-source data and AI catalog that powers a unified metadata lake for federated, real-time, and AI-native workloads."
+      name: "Parlant",
+      logo: utils.absolutifyLink("/assets/sponsors/parlant/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/sponsors/parlant/landing.webp"),
+      link: "https://github.com/emcie-co/parlant/?utm_source=star-history",
+      logoSlogan: "Parlant: The Open-Source Conversational AI Framework.",
+      landingSlogan: "The Open-Source Conversational AI Framework."
     },
     {
       name: "MemU",
