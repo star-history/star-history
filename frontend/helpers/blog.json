@@ -1,5 +1,14 @@
 [
     {
+    "title": "Star History Monthly September 2025 | Proprietary AI Alternatives",
+    "slug": "proprietary-ai-alternatives",
+    "author": "Adela",
+    "featured": true,
+    "featureImage": "/assets/blog/proprietary-ai-alternatives/banner.webp",
+    "publishedDate": "2025-09-15:12:00.000Z",
+    "excerpt": "Proprietary AI softwares like ChatGPT, Midjourney, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization."
+    },
+    {
         "title": "Star History Monthly August 2025 | Vertical LLM",
         "slug": "vertical-llm",
         "author": "ayra",
