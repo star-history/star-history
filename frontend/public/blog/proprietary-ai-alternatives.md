@@ -13,7 +13,6 @@ This month, we highlight six outstanding projects shaping the "open vs proprieta
 | **Wan2.2**  | **cinematic video generation, open and hackable** |
 | **OpenHands**  | the **community’s Devin** 
 | **Perplexica**  | the **open-source Perplexity AI** |
->>>>>>> main
 | **Firecrawl**  | the **building blocks of Lovable-like app builders** |
 |  |  |
 
@@ -33,8 +32,6 @@ LocalAI is not a model, but an **inference layer** that wraps open models (LLaMA
 
 👉 The **closest open-source alternative to GPT APIs**. Not raw parity, but all about **control, cost, and freedom**.
 
----
-
 ## [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
 #### → Midjourney / Runway
 
@@ -48,8 +45,6 @@ ComfyUI is a **node-based workflow editor** for diffusion models. Artists can wi
 * **Community & Marketing**: [comfy.org](https://www.comfy.org/) acts as both product site and gallery, showcasing user creations and workflows. Messaging is clear: *ComfyUI is for artists of the future*.
 
 👉 Midjourney is easy but closed. ComfyUI is harder to learn but infinitely more flexible. Its rise shows creators want **control and community**, not just outputs.
-
----
 
 ## [Wan2.2](https://github.com/Wan-Video/Wan2.2)
 #### → Google DeepMind VEO 3
@@ -66,8 +61,6 @@ Developed by **Alibaba**, Wan2.2 is an ambitious open video generation model. It
 
 👉 Proof that **open video generation is real** — and people are already experimenting with it despite the cost.
 
----
-
 ## [OpenHands](https://github.com/All-Hands-AI/OpenHands) 
 #### → Devin
 
@@ -83,8 +76,6 @@ Devin sparked huge buzz as the “AI software engineer,” but it’s closed. **
 
 👉 The **first step toward an open Devin** developers can actually use and extend.
 
----
-
 ## [Perplexica](https://github.com/ItzCrazyKns/Perplexica)
 #### → Perplexity AI
 
@@ -99,8 +90,6 @@ Perplexica is an **AI-powered search engine** that serves as an open-source alte
 * **Limitations**: Requires technical setup, dependent on external search engines (SearXNG), and needs API keys for AI models.
 
 👉 The **open alternative to Perplexity AI** — giving users control over their AI-powered search experience without vendor lock-in.
-
----
 
 ## [Firecrawl](https://github.com/firecrawl/firecrawl)
 #### (with Open-Lovable demo) → Lovable
