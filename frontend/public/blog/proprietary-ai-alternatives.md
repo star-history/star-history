@@ -11,8 +11,9 @@ This month, we highlight six outstanding projects shaping the "open vs proprieta
 | **LocalAI**  | the **self-hosted GPT API** |
 | **ComfyUI**  | the **power user’s Midjourney** |
 | **Wan2.2**  | **cinematic video generation, open and hackable** |
-| **OpenHands**  | the **community’s Devin** |
+| **OpenHands**  | the **community’s Devin** 
 | **Perplexica**  | the **open-source Perplexity AI** |
+>>>>>>> main
 | **Firecrawl**  | the **building blocks of Lovable-like app builders** |
 |  |  |
 
