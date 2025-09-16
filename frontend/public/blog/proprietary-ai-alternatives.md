@@ -1,7 +1,7 @@
 
 ---
 
-As proprietary AI softwares like ChatGPT, Midjourney, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization.
+As proprietary AI softwares like ChatGPT, Midjourney, Perplexity, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization.
 
 This month, we highlight six outstanding projects shaping the "open vs proprietary" landscape:
 
