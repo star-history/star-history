@@ -45,14 +45,6 @@ const sponsors: Sponsor[] = [
     //   landingSlogan: "Universal Database MCP Server."
     // },
     {
-      name: "MemU",
-      logo: utils.absolutifyLink("/assets/sponsors/memu/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/memu/landing.webp"),
-      link: "https://github.com/NevaMind-AI/memU/?utm_source=star-history",
-      logoSlogan: "MemU: make your LLM and agent have better memory than GPT-5 and Claude.",
-      landingSlogan: "Make your LLM and agent have better memory than GPT-5 and Claude."
-    },
-    {
       name: "pgschema",
       logo: utils.absolutifyLink("/assets/sponsors/pgschema/logo.webp"),
       landingImage: utils.absolutifyLink("/assets/sponsors/pgschema/landing.webp"),

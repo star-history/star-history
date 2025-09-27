@@ -57,12 +57,6 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
-### MemU
-
-[MemU](https://github.com/NevaMind-AI/memU?utm_source=star-history) makes your LLM and agent have better memory than GPT-5 and Claude
-
-<a href="https://github.com/NevaMind-AI/memU?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/memu/landing.webp" /></a>
-
 ## 💜 Token Contributor
 
 We need zero-scope individual tokens to bypass GitHub API rate limiter, thanks to all our donators:
