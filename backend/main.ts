@@ -31,20 +31,42 @@ const startServer = async () => {
   });
 
   // Example request link:
-  // /svg?repos=star-history/star-history&type=Date
+  // /svg?repos=star-history/star-history&type=timeline&logscale&legend=bottom-right
   router.get("/svg", async (ctx) => {
     const theme = `${ctx.query["theme"]}`;
     const transparent = `${ctx.query["transparent"]}`
     const repos = `${ctx.query["repos"]}`.split(",");
     const typeParam = `${ctx.query["type"]}`;
+    const timelineParam = ctx.query["timeline"];
+    const dateParam = ctx.query["date"];
+    const logscaleParam = ctx.query["logscale"];
+    const legendParam = `${ctx.query["legend"]}`;
     let type: ChartMode = "Date";
     let size = `${ctx.query["size"]}`;
 
-    // Accept both lowercase and capitalized for backward compatibility
-    if (typeParam.toLowerCase() === "date") {
-      type = "Date";
-    } else if (typeParam.toLowerCase() === "timeline") {
+    // Parse chart type - support both type=timeline/date (preferred) and naked timeline/date (backward compatibility)
+    if (typeParam && typeParam !== "undefined") {
+      const lowerType = typeParam.toLowerCase();
+      if (lowerType === "timeline") {
+        type = "Timeline";
+      } else if (lowerType === "date") {
+        type = "Date";
+      }
+    } else if (timelineParam !== undefined) {
+      // Backward compatibility: naked timeline parameter
       type = "Timeline";
+    } else if (dateParam !== undefined) {
+      // Backward compatibility: naked date parameter
+      type = "Date";
+    }
+
+    // Parse logscale parameter - presence of parameter means enabled
+    const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
+
+    // Parse legend position parameter
+    let legendPosition: "top-left" | "bottom-right" = "top-left";
+    if (legendParam === "bottom-right") {
+      legendPosition = "bottom-right";
     }
 
     if (!CHART_SIZES.includes(size)) {
@@ -132,6 +154,8 @@ const startServer = async () => {
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
           chartWidth: getChartWidthWithSize(size),
+          useLogScale: useLogScale,
+          legendPosition: legendPosition,
         }
       );
     } catch (error) {

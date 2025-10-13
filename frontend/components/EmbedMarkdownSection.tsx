@@ -20,6 +20,9 @@ const EmbedChart: React.FC = () => {
         if (theme) {
             params += `&theme=${theme}`
         }
+        if (store.useLogScale) {
+            params += `&logscale`
+        }
         params += `&legend=${store.legendPosition}`
         return params
     }
