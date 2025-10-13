@@ -9,7 +9,9 @@ import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "shared/packages/xy-chart"
 import { convertDataToChartData, getRepoData } from "shared/common/chart"
 import toast from "helpers/toast"
-import { ChartMode, RepoData } from "shared/types/chart"
+import { ChartMode, RepoData, LegendPosition } from "shared/types/chart"
+
+const VALID_LEGEND_POSITIONS: LegendPosition[] = ["top-left", "bottom-right"]
 import BytebaseBanner from "./SponsorView"
 import utils from "shared/common/utils"
 import api from "shared/common/api"
@@ -17,6 +19,7 @@ import api from "shared/common/api"
 interface State {
     chartMode: "Date" | "Timeline"
     useLogScale: boolean
+    legendPosition: LegendPosition
     repoCacheMap: Map<
         string,
         {
@@ -41,6 +44,7 @@ function StarChartViewer() {
     const [state, setState] = useState<State>({
         chartMode: "Date",
         useLogScale: false,
+        legendPosition: "top-left",
         repoCacheMap: new Map(),
         chartData: undefined,
         isGeneratingImage: false,
@@ -113,21 +117,33 @@ function StarChartViewer() {
             const hash = window.location.hash;
             const alignTimeline = hash.includes("Timeline");
             const useLogScale = hash.includes("LogScale");
+
+            // Parse legend position from hash
+            let legendPosition: LegendPosition = "top-left";
+            const legendRegex = new RegExp(`legend=(${VALID_LEGEND_POSITIONS.join("|")})`);
+            const legendMatch = hash.match(legendRegex);
+            if (legendMatch) {
+                const position = legendMatch[1] as LegendPosition;
+                if (VALID_LEGEND_POSITIONS.includes(position)) {
+                    legendPosition = position;
+                }
+            }
+
             if (alignTimeline) {
                 const newChartMode = "Timeline";
-                setState(prevState => ({ ...prevState, chartMode: newChartMode, useLogScale }));
+                setState(prevState => ({ ...prevState, chartMode: newChartMode, useLogScale, legendPosition }));
                 fetchReposData(store.repos, newChartMode);
             } else {
-                setState(prevState => ({ ...prevState, useLogScale }));
+                setState(prevState => ({ ...prevState, useLogScale, legendPosition }));
             }
         };
 
         handleHashChange();
-    
+
         window.addEventListener("hashchange", handleHashChange);
-    
+
         fetchReposData(store.repos, state.chartMode);
-    
+
         return () => {
             window.removeEventListener("hashchange", handleHashChange);
         };
@@ -318,6 +334,15 @@ function StarChartViewer() {
         fetchReposData(store.repos, state.chartMode)
     }, [state.useLogScale, state.chartMode, store.actions, store.repos, fetchReposData])
 
+    const handleLegendPositionChange = React.useCallback((position: LegendPosition) => {
+        store.actions.setLegendPosition(position)
+
+        setState((prevState) => {
+            return { ...prevState, legendPosition: position }
+        })
+        fetchReposData(store.repos, state.chartMode)
+    }, [state.chartMode, store.actions, store.repos, fetchReposData])
+
     const handleSetTokenDialogClose = () => {
         setState((prevState) => ({ ...prevState, showSetTokenDialog: false }))
     }
@@ -332,6 +357,29 @@ function StarChartViewer() {
                 )}
                 {state.chartData && (
                     <div className="absolute top-0 right-1 p-2 flex flex-row">
+                        <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                            <span className="mr-2">Legend</span>
+                            <label className="mr-2 cursor-pointer hover:opacity-80 flex items-center">
+                                <input
+                                    className="mr-1"
+                                    type="radio"
+                                    name="legendPosition"
+                                    checked={state.legendPosition === "top-left"}
+                                    onChange={() => handleLegendPositionChange("top-left")}
+                                />
+                                Top left
+                            </label>
+                            <label className="cursor-pointer hover:opacity-80 flex items-center">
+                                <input
+                                    className="mr-1"
+                                    type="radio"
+                                    name="legendPosition"
+                                    checked={state.legendPosition === "bottom-right"}
+                                    onChange={() => handleLegendPositionChange("bottom-right")}
+                                />
+                                Bottom right
+                            </label>
+                        </div>
                         <div
                             className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                             onClick={handleToggleLogScaleBtnClick}
@@ -348,7 +396,7 @@ function StarChartViewer() {
                         </div>
                     </div>
                 )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-4" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} />}</div>
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-6" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog

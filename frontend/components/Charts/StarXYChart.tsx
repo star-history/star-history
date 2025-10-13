@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from "react"
 import XYChart, { XYChartData } from "../../shared/packages/xy-chart"
 import { MIN_CHART_WIDTH } from "../../helpers/consts"
+import { LegendPosition } from "../../shared/types/chart"
 
 interface Props {
     classname?: string
     data?: XYChartData
     chartMode?: string
     useLogScale?: boolean
+    legendPosition?: LegendPosition
     timeFormat?: string
     id?: string
 }
-const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", useLogScale = false }) => {
+const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", useLogScale = false, legendPosition = "top-left" }) => {
     const chartContainerElRef = useRef<HTMLDivElement | null>(null)
     const svgElRef = useRef<SVGSVGElement | null>(null)
 
@@ -34,12 +36,13 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                     {
                         xTickLabelType: chartMode === "Date" ? "Date" : "Number",
                         envType: "browser",
-                        useLogScale: useLogScale
+                        useLogScale: useLogScale,
+                        legendPosition: legendPosition
                     }
                 )
             }
         },
-        [chartMode, useLogScale]
+        [chartMode, useLogScale, legendPosition]
     )
 
     useEffect(() => {

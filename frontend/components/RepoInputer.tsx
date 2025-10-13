@@ -121,13 +121,14 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                 if (store.state.useLogScale) {
                     hash += "&LogScale"
                 }
+                hash += `&legend=${store.state.legendPosition}`
             }
             // Sync location hash only right here
             window.location.hash = hash
         }
 
         handleWatch()
-    }, [store.state.repos, store.state.chartMode, store.state.useLogScale, state.repos])
+    }, [store.state.repos, store.state.chartMode, store.state.useLogScale, store.state.legendPosition, state.repos])
 
     const handleAddRepoBtnClick = () => {
         if (store.isFetching) {
