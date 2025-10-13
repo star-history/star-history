@@ -23,9 +23,10 @@ const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ onClo
     })
     const generateEmbedCode = React.useCallback(() => {
         const secret = btoa(state.token)
+        const chartModeParam = store.chartMode === "Date" ? "date" : "timeline"
         setState({
             ...state,
-            embedCode: `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${window.location.origin}/embed?secret=${secret}#${store.repos.join("&")}&${store.chartMode}" frameBorder="0"></iframe>`
+            embedCode: `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${window.location.origin}/embed?secret=${secret}#${store.repos.join("&")}&${chartModeParam}" frameBorder="0"></iframe>`
         })
     }, [store.repos, store.chartMode, state])
 
