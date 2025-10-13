@@ -1,5 +1,7 @@
 export type ChartMode = "Date" | "Timeline"
 
+export type LegendPosition = "top-left" | "bottom-right"
+
 export interface StarRecord {
     date: string
     count: number

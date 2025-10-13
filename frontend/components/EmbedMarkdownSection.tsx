@@ -13,9 +13,19 @@ const EmbedChart: React.FC = () => {
 
     const repoText = singleRepo ? singleRepo.split("/")[1] : "your repository's"
 
-    const embedCode = `## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode})](${typeof window !== "undefined" ? window.location.href : ""})`
+    // Build query parameters
+    const buildQueryParams = (theme?: string) => {
+        let params = `repos=${store.repos.join(",")}&type=${store.chartMode}`
+        if (theme) {
+            params += `&theme=${theme}`
+        }
+        params += `&legend=${store.legendPosition}`
+        return params
+    }
 
-    const embedDarkModeCode = `## Star History\n\n<a href="${typeof window !== "undefined" ? window.location.href : ""}">\n <picture>\n   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}&theme=dark" />\n   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}" />\n   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=${store.repos.join(",")}&type=${store.chartMode}" />\n </picture>\n</a>`
+    const embedCode = `## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?${buildQueryParams()})](${typeof window !== "undefined" ? window.location.href : ""})`
+
+    const embedDarkModeCode = `## Star History\n\n<a href="${typeof window !== "undefined" ? window.location.href : ""}">\n <picture>\n   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?${buildQueryParams("dark")}" />\n   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?${buildQueryParams()}" />\n   <img alt="Star History Chart" src="https://api.star-history.com/svg?${buildQueryParams()}" />\n </picture>\n</a>`
 
     const handleCopyBtnClick = () => {
         utils.copyTextToClipboard(embedCode)

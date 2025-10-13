@@ -12,7 +12,7 @@ import { drawTitle, drawXLabel, drawYLabel } from "./utils/drawLabels"
 import drawLegend from "./utils/drawLegend"
 import { drawWatermark } from "./utils/drawWatermark"
 import getFormatTimeline, { getTimestampFormatUnit } from "./utils/getFormatTimeline"
-import { D3Selection, Position } from "./types"
+import { D3Selection, Position, LegendPosition } from "./types"
 
 const colors = ["#dd4528", "#28a3dd", "#f3db52", "#ed84b5", "#4ab74e", "#9179c0", "#8e6d5a", "#f19839", "#949494"]
 
@@ -67,6 +67,7 @@ export interface XYChartOptions {
     strokeColor: string
     chartWidth?: number
     useLogScale?: boolean
+    legendPosition?: LegendPosition
 }
 
 const getDefaultOptions = (transparent: boolean): XYChartOptions => {
@@ -81,7 +82,8 @@ const getDefaultOptions = (transparent: boolean): XYChartOptions => {
         dataColors: colors,
         fontFamily: "xkcd",
         backgroundColor: transparent ? "transparent" : "white",
-        strokeColor: "black"
+        strokeColor: "black",
+        legendPosition: "top-left"
     }
 }
 
@@ -357,7 +359,10 @@ const XYChart = (
     drawLegend(svgChart, {
         items: legendItems,
         strokeColor: options.strokeColor,
-        backgroundColor: options.backgroundColor
+        backgroundColor: options.backgroundColor,
+        legendPosition: options.legendPosition || "top-left",
+        chartWidth,
+        chartHeight
     })
 }
 

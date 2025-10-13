@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import storage from "../helpers/storage";
-import { ChartMode } from "../shared/types/chart";
+import { ChartMode, LegendPosition } from "../shared/types/chart";
 import { useRouter } from "next/router";
 
 interface AppState {
@@ -9,6 +9,7 @@ interface AppState {
     repos: string[];
     chartMode: ChartMode;
     useLogScale: boolean;
+    legendPosition: LegendPosition;
 }
 
 interface AppStateContextProps {
@@ -18,6 +19,7 @@ interface AppStateContextProps {
     repos: string[];
     chartMode: ChartMode;
     useLogScale: boolean;
+    legendPosition: LegendPosition;
     token: string;
     state: AppState;
     actions: {
@@ -28,6 +30,7 @@ interface AppStateContextProps {
         setIsFetching(isFetching: boolean): void;
         setChartMode(chartMode: ChartMode): void;
         setUseLogScale(useLogScale: boolean): void;
+        setLegendPosition(legendPosition: LegendPosition): void;
     };
 }
 
@@ -40,6 +43,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         repos: [],
         chartMode: "Date",
         useLogScale: false,
+        legendPosition: "top-left",
     });
 
     const router = useRouter();
@@ -51,17 +55,25 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
-    
+            let legendPosition: LegendPosition = "top-left";
+
+            const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
+
             for (const value of params) {
                 if (value === "Date" || value === "Timeline") {
                     chartMode = value as ChartMode;
                 } else if (value === "LogScale") {
                     useLogScale = true;
+                } else if (value.startsWith("legend=")) {
+                    const position = value.split("=")[1] as LegendPosition;
+                    if (validLegendPositions.includes(position)) {
+                        legendPosition = position;
+                    }
                 } else {
                     repos.push(value);
                 }
             }
-    
+
             setState({
                 ...state,
                 isFetching: false,
@@ -69,6 +81,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
                 chartMode: chartMode,
                 useLogScale: useLogScale,
+                legendPosition: legendPosition,
             });
         };
     
@@ -113,6 +126,9 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setUseLogScale: (useLogScale: boolean) => {
             setState((prev) => ({ ...prev, useLogScale }));
         },
+        setLegendPosition: (legendPosition: LegendPosition) => {
+            setState((prev) => ({ ...prev, legendPosition }));
+        },
     };
 
     const store: AppStateContextProps = {
@@ -120,6 +136,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         repos: state.repos,
         chartMode: state.chartMode,
         useLogScale: state.useLogScale,
+        legendPosition: state.legendPosition,
         token: state.token,
         state,
         actions,
