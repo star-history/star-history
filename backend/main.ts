@@ -36,11 +36,15 @@ const startServer = async () => {
     const theme = `${ctx.query["theme"]}`;
     const transparent = `${ctx.query["transparent"]}`
     const repos = `${ctx.query["repos"]}`.split(",");
-    let type = `${ctx.query["type"]}` as ChartMode;
+    const typeParam = `${ctx.query["type"]}`;
+    let type: ChartMode = "Date";
     let size = `${ctx.query["size"]}`;
 
-    if (!CHART_TYPES.includes(type)) {
+    // Accept both lowercase and capitalized for backward compatibility
+    if (typeParam.toLowerCase() === "date") {
       type = "Date";
+    } else if (typeParam.toLowerCase() === "timeline") {
+      type = "Timeline";
     }
 
     if (!CHART_SIZES.includes(size)) {

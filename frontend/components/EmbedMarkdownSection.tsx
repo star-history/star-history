@@ -15,7 +15,8 @@ const EmbedChart: React.FC = () => {
 
     // Build query parameters
     const buildQueryParams = (theme?: string) => {
-        let params = `repos=${store.repos.join(",")}&type=${store.chartMode}`
+        const chartModeParam = store.chartMode === "Date" ? "date" : "timeline"
+        let params = `repos=${store.repos.join(",")}&type=${chartModeParam}`
         if (theme) {
             params += `&theme=${theme}`
         }

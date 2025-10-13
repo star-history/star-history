@@ -115,8 +115,8 @@ function StarChartViewer() {
     useEffect(() => {
         const handleHashChange = () => {
             const hash = window.location.hash;
-            const alignTimeline = hash.includes("Timeline");
-            const useLogScale = hash.includes("LogScale");
+            const alignTimeline = hash.includes("timeline") || hash.includes("Timeline");
+            const useLogScale = hash.includes("logscale") || hash.includes("LogScale");
 
             // Parse legend position from hash
             let legendPosition: LegendPosition = "top-left";

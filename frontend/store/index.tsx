@@ -60,9 +60,11 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
 
             for (const value of params) {
-                if (value === "Date" || value === "Timeline") {
-                    chartMode = value as ChartMode;
-                } else if (value === "LogScale") {
+                if (value === "date" || value === "Date") {
+                    chartMode = "Date";
+                } else if (value === "timeline" || value === "Timeline") {
+                    chartMode = "Timeline";
+                } else if (value === "logscale" || value === "LogScale") {
                     useLogScale = true;
                 } else if (value.startsWith("legend=")) {
                     const position = value.split("=")[1] as LegendPosition;

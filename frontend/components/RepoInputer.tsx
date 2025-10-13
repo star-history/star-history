@@ -117,9 +117,10 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
 
             let hash = ""
             if (store.state.repos.length > 0) {
-                hash = `#${store.state.repos.join("&")}&${store.state.chartMode}`
+                const chartModeParam = store.state.chartMode === "Date" ? "date" : "timeline"
+                hash = `#${store.state.repos.join("&")}&${chartModeParam}`
                 if (store.state.useLogScale) {
-                    hash += "&LogScale"
+                    hash += "&logscale"
                 }
                 hash += `&legend=${store.state.legendPosition}`
             }
