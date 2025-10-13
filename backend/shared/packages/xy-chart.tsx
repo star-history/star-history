@@ -1,4 +1,4 @@
-import { scaleLinear, scaleTime } from "d3-scale"
+import { scaleLinear, scaleTime, scaleSymlog } from "d3-scale"
 import { select } from "d3-selection"
 import { line, curveMonotoneX } from "d3-shape"
 import { AxisScale } from "d3-axis";
@@ -66,6 +66,7 @@ export interface XYChartOptions {
     backgroundColor: string
     strokeColor: string
     chartWidth?: number
+    useLogScale?: boolean
     legendPosition?: LegendPosition
 }
 
@@ -185,9 +186,21 @@ const XYChart = (
         .range([0, chartWidth]);
     }
 
-    const yScale = scaleLinear()
-        .domain([Math.min(...allYData), Math.max(...allYData)])
-        .range([chartHeight, 0])
+    let yScale: AxisScale<number>
+    if (options.useLogScale) {
+        // Use scaleSymlog which naturally handles zero and negative values
+        // It transitions smoothly between linear (near zero) and logarithmic (far from zero)
+        const maxYData = Math.max(...allYData)
+
+        yScale = scaleSymlog()
+            .domain([0, maxYData]) // Always start from 0 to show true starting point
+            .range([chartHeight, 0])
+            .constant(10) // Higher constant for smoother log transition
+    } else {
+        yScale = scaleLinear()
+            .domain([0, Math.max(...allYData)]) // Always start from 0 for linear scale
+            .range([chartHeight, 0])
+    }
 
     const svgChart = chart.append("g").attr("pointer-events", "all")
 
@@ -231,7 +244,8 @@ const XYChart = (
         yScale,
         tickCount: options.yTickCount,
         fontFamily: fontFamily,
-        stroke: options.strokeColor
+        stroke: options.strokeColor,
+        useLogScale: options.useLogScale
     })
 
     // draw lines
