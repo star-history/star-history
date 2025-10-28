@@ -211,6 +211,10 @@ const blogSectionList: BlogSection[] = [
                 path: "/blog/list-your-open-source-project"
             },
             {
+                title: "Issue #30 - NPC Shell",
+                path: "/blog/npcsh",
+            },
+            {
                 title: "Issue #29 - Agentic Security",
                 path: "/blog/agentic-security",
             },
