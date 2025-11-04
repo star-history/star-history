@@ -74,11 +74,11 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                         ) : (
                             <div className="w-full flex flex-col justify-start sm:-ml-4">
                                 <div className="w-full mt-6 h-full flex flex-col justify-start">
-                                    <img className="hidden md:block w-auto max-w-full object-scale-down" src={blog.featureImage || ""} alt="" />
-                                    <div className="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center">
-                                        <h1 className="leading-16">{blog.title}</h1>
+                                    <img className="hidden md:block w-auto max-w-3xl object-scale-down mx-auto" src={blog.featureImage || ""} alt="" />
+                                    <div className="w-auto max-w-6xl mt-6 md:mt-8 prose prose-indigo prose-base md:prose-lg flex flex-col justify-center items-center">
+                                        <h1 className="leading-16 font-normal">{blog.title}</h1>
                                     </div>
-                                    <div className="w-full mt-8 mb-2 max-w-6xl px-2 flex flex-row items-center justify-center text-sm text-gray-900 font-semibold trackingwide uppercase">
+                                    <div className="w-full mt-6 mb-2 max-w-6xl px-2 flex flex-row items-center justify-center text-sm text-gray-900 font-semibold trackingwide uppercase">
                                         <div className="flex space-x-1 text-gray-500">
                                             <span className="text-gray-900">{blog.author}</span>
                                             <span aria-hidden="true"> &middot; </span>
@@ -89,12 +89,12 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                                     day: "numeric"
                                                 })}
                                             </time>
-        
+
                                             <span aria-hidden="true"> &middot; </span>
                                             <span> {blog.readingTime} min read </span>
                                         </div>
                                     </div>
-                                    <div className="mt-8 w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
+                                    <div className="mt-10 md:mt-12 w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                                 </div>
 
                                 <SponsorFooterBanner className="mt-16 mb-8" />
