@@ -270,7 +270,12 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     return (
         <div className="w-full px-3 shrink-0 flex flex-col justify-start items-center">
             <div className={`w-auto mx-auto mt-6 mb-2 flex flex-row justify-center items-center flex-wrap ${state.latestBlog ? "" : "invisible"}`}>
-                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">{"What's new"}</span>
+                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">
+                    {state.latestBlog?.publishedDate ? (() => {
+                        const dateStr = state.latestBlog.publishedDate.split(":")[0];
+                        return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+                    })() : "What's new"}
+                </span>
                 <div className="flex items-center">
                     <Link className="text-gray-700 hover:underline" href={`/blog/${state.latestBlog?.slug}`}>
                         {state.latestBlog?.title} <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>

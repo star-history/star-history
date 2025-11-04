@@ -83,11 +83,14 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                             <span className="text-gray-900">{blog.author}</span>
                                             <span aria-hidden="true"> &middot; </span>
                                             <time dateTime={blog.publishedDate}>
-                                                {new Date(blog.publishedDate || "").toLocaleDateString("en-US", {
-                                                    year: "numeric",
-                                                    month: "short",
-                                                    day: "numeric"
-                                                })}
+                                                {(() => {
+                                                    const dateStr = (blog.publishedDate || "").split(":")[0];
+                                                    return new Date(dateStr).toLocaleDateString("en-US", {
+                                                        year: "numeric",
+                                                        month: "short",
+                                                        day: "numeric"
+                                                    });
+                                                })()}
                                             </time>
 
                                             <span aria-hidden="true"> &middot; </span>

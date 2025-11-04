@@ -23,7 +23,7 @@ const RightSidebar: React.FC = () => {
                     target="_blank"
                     className="w-full p-2 text-center bg-gray-50 text-xs leading-6 text-gray-400 rounded hover:underline hover:text-blue-600"
                 >
-                    📨 Your logo
+                    📨 Promote your project
                 </a>
 
                 {/* Newsletter Subscribe Button */}
