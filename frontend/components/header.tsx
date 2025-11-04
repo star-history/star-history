@@ -56,21 +56,17 @@ useEffect(() => {
               <Link href="/" className="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800">
                 <img className="w-7 h-auto" src="/assets/icon.png" alt="Logo" />
               </Link>
-              <Link href="/blog"className="h-full flex flex-row justify-center items-center text-base px-3 hover:bg-zinc-800">
-                <span className="text-white font-semibold -2">Blog</span>
+              <Link href="/blog"className="h-full flex flex-row justify-center items-center text-base px-2 hover:bg-zinc-800">
+                <span className="text-white -2">Blog</span>
               </Link>
               <span
-                className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-3 font-semibold mr-2 hover:bg-zinc-800"
+                className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-2 hover:bg-zinc-800"
                 onClick={handleSetTokenBtnClick}
               >
                 {headerText}
               </span>
-            </div>
-            <div className="hidden h-full md:flex flex-row justify-center items-center px-4">
-              <Link href="/blog/how-to-use-github-star-history">
-                <span className="text-sm bg-green-600 hover:bg-green-700 text-white font-medium py-1 px-3 rounded transition-colors cursor-pointer inline-block">
-                  How to use Star History
-                </span>
+              <Link href="/blog/how-to-use-github-star-history" className="h-full flex flex-row justify-center items-center text-base px-2 hover:bg-zinc-800">
+                <span className="text-white ">📕 How to Use</span>
               </Link>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
