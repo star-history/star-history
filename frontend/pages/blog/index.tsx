@@ -75,20 +75,6 @@ const BlogPage: NextPageWithLayout = () => {
                             <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
                                 Star History Blog
                             </h1>
-                            <div className="mb-4">
-                                <iframe
-                                    src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                                    data-test-id="beehiiv-embed"
-                                    height="52"
-                                    frameBorder="0"
-                                    scrolling="no"
-                                    style={{
-                                        margin: 0,
-                                        borderRadius: "0px !important",
-                                        backgroundColor: "transparent"
-                                    }}
-                                ></iframe>
-                            </div>
                             {isLoading && (
                                 <div className="grow w-full flex flex-col justify-center items-center">
                                     <i className="fas fa-spinner animate-spin text-4xl z-10"></i>

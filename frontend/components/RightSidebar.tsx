@@ -25,6 +25,16 @@ const RightSidebar: React.FC = () => {
                 >
                     Your logo
                 </a>
+
+                {/* Newsletter Subscribe Button */}
+                <a
+                    href="https://newsletter.star-history.com/subscribe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-4 p-3 text-center bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded transition-colors"
+                >
+                    Subscribe to Newsletter
+                </a>
             </div>
         </div>
     )

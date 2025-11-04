@@ -96,21 +96,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                     </div>
                                     <div className="mt-8 w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                                 </div>
-                        
-                                <div className="mt-12">
-                                    <iframe
-                                        src="https://embeds.beehiiv.com/2803dbaa-d8dd-4486-8880-4b843f3a7da6?slim=true"
-                                        data-test-id="beehiiv-embed"
-                                        height="52"
-                                        frameBorder="0"
-                                        scrolling="no"
-                                        style={{
-                                            margin: 0,
-                                            borderRadius: "0px !important",
-                                            backgroundColor: "transparent"
-                                        }}
-                                    />
-                                </div>
+
                                 <SponsorFooterBanner className="mt-16 mb-8" />
                             </div>
                         )
