@@ -438,10 +438,10 @@ function StarChartViewer() {
                                     <i className="far fa-copy"></i> Link{" "}
                                 </button>
                                 <button
-                                    className="shadow-inner ml-2 mb-2 rounded leading-9 px-4 cursor-pointer bg-green-600 border border-transparent text-white hover:bg-green-700"
+                                    className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
                                     onClick={handleShareToTwitterBtnClick}
                                 >
-                                    <i className="relative -bottom-px fab fa-twitter"></i> Share on Twitter{" "}
+                                    <i className="fab fa-twitter"></i> Share on Twitter{" "}
                                 </button>
                             </div>
                         </div>
