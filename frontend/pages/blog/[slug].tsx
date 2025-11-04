@@ -5,7 +5,7 @@ import Footer from "../../components/footer"
 import Header from "../../components/header"
 import SponsorFooterBanner from "../../components/SponsorView"
 import SponsorRightBanner from "../../components/SponsorStaticBanner"
-import HighlightBlogSection from "../../components/HighlightBlogSection"
+import HowToUseSection from "../../components/HowToUseSection"
 import { GetStaticPropsContext, GetStaticPaths } from "next"
 import path from "path"
 import fs from "fs/promises"
@@ -57,10 +57,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                 }
 
                 <Header />
-                <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
-                    <div className="w-full hidden lg:block">
-                        <HighlightBlogSection />
-                    </div>
+                <div className="w-full h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
                     {
                         blog == null ? (
                             <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -118,7 +115,9 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             </div>
                         )
                     }
-                    <div className="w-full hidden lg:block"></div>
+                    <div className="w-full hidden lg:block">
+                        <HowToUseSection />
+                    </div>
                 </div>
                 <Footer />
                 <SponsorRightBanner />

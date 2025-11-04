@@ -5,7 +5,7 @@ import Header from "../../components/header"
 import Footer from "../../components/footer"
 import SponsorBanner from "../../components/SponsorStaticBanner"
 import BytebaseBanner from "../../components/SponsorView"
-import HighlightBlogSection from "../../components/HighlightBlogSection"
+import HowToUseSection from "../../components/HowToUseSection"
 import Link from "next/link"
 import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
@@ -69,10 +69,7 @@ const BlogPage: NextPageWithLayout = () => {
             </Head>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
                 <Header />
-                <div className="w-full h-auto grow lg:grid lg:grid-cols-[256px_1fr_256px]">
-                    <div className="w-full hidden lg:block">
-                        <HighlightBlogSection />
-                    </div>
+                <div className="w-full h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
                     <div className="w-full flex flex-col justify-start items-center">
                         <section className="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center">
                             <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
@@ -179,7 +176,9 @@ const BlogPage: NextPageWithLayout = () => {
                         </section>
                         <BytebaseBanner className="mb-8" />
                     </div>
-                    <div className="w-full hidden lg:block"></div>
+                    <div className="w-full hidden lg:block">
+                        <HowToUseSection />
+                    </div>
                 </div>
                 <Footer />
                 <SponsorBanner />
