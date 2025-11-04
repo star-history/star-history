@@ -1,4 +1,4 @@
-[   
+[
     {
         "title": "Starlet #30 NPC Shell: Intelligent Bash Environment with AI Agents",
         "slug": "npcsh",
@@ -9,22 +9,22 @@
         "excerpt": "NPC Shell extends the traditional bash environment with intelligent AI capabilities, providing seamless access to various LLM providers and specialized agents through a unified command-line interface."
     },
     {
-    "title": "Star History Monthly October 2025 | Declarative",
-    "slug": "declarative",
-    "author": "Adela",
-    "featured": true,
-    "featureImage": "/assets/blog/declarative/banner.webp",
-    "publishedDate": "2025-10-16:12:00.000Z",
-    "excerpt": "The declarative programming paradigm, which focuses on describing what you want to achieve rather than how to achieve it, is rapidly becoming the standard for managing complex systems. From infrastructure and databases to even diagramming, the declarative approach offers a more predictable, maintainable, and automated way to work. This shift is empowering developers to manage complexity with greater confidence and ease."
+        "title": "Star History Monthly October 2025 | Declarative",
+        "slug": "declarative",
+        "author": "Adela",
+        "featured": true,
+        "featureImage": "/assets/blog/declarative/banner.webp",
+        "publishedDate": "2025-10-16:12:00.000Z",
+        "excerpt": "The declarative programming paradigm, which focuses on describing what you want to achieve rather than how to achieve it, is rapidly becoming the standard for managing complex systems. From infrastructure and databases to even diagramming, the declarative approach offers a more predictable, maintainable, and automated way to work. This shift is empowering developers to manage complexity with greater confidence and ease."
     },
     {
-    "title": "Star History Monthly September 2025 | Proprietary AI Alternatives",
-    "slug": "proprietary-ai-alternatives",
-    "author": "Adela",
-    "featured": true,
-    "featureImage": "/assets/blog/proprietary-ai-alternatives/banner.webp",
-    "publishedDate": "2025-09-15:12:00.000Z",
-    "excerpt": "Proprietary AI softwares like ChatGPT, Midjourney, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization."
+        "title": "Star History Monthly September 2025 | Proprietary AI Alternatives",
+        "slug": "proprietary-ai-alternatives",
+        "author": "Adela",
+        "featured": true,
+        "featureImage": "/assets/blog/proprietary-ai-alternatives/banner.webp",
+        "publishedDate": "2025-09-15:12:00.000Z",
+        "excerpt": "Proprietary AI softwares like ChatGPT, Midjourney, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization."
     },
     {
         "title": "Star History Monthly August 2025 | Vertical LLM",
@@ -669,7 +669,7 @@
         "title": "📕 How to use GitHub Star History",
         "slug": "how-to-use-github-star-history",
         "author": "Mila",
-        "featureImage": "/assets/blog/how-to-use-github-star-history/how-to-use-github-star-history.webp",
+        "featureImage": "/assets/blog/how-to-use-github-star-history/banner.webp",
         "publishedDate": "2023-02-21T09:50:06.000Z",
         "excerpt": "When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?"
     },

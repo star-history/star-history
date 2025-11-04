@@ -8,8 +8,6 @@ Here's one obvious metric I'm sure you will also investigate: its GitHub stars.
 
 We know, you can't fully trust a project's GitHub stars alone. It is, however, a good way to determine if a tool is an adequate one and if it's likely to grow, if you use it correctly.
 
-![book](/assets/blog/how-to-use-github-star-history/book.webp)
-
 Even if a project has hundreds of millions of stars now, doesn't mean that it's still gaining popularity or maintained. Or if the project had an explosive breakout in the past? There's no way of knowing these simply from gazing at the stars count. Here's when Star History comes in handy: it shows how the number of GitHub stars of a project is increasing over the years. And - it's free and [open-source](https://github.com/star-history/star-history).
 
 ## User Manual
