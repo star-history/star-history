@@ -72,8 +72,8 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                 </p>
                             </div>
                         ) : (
-                            <div className="w-full flex flex-col justify-start">
-                                <div className="w-full px-4 mt-6 h-full flex flex-col justify-start">
+                            <div className="w-full flex flex-col justify-start sm:-ml-4">
+                                <div className="w-full mt-6 h-full flex flex-col justify-start">
                                     <img className="hidden md:block w-auto max-w-full object-scale-down" src={blog.featureImage || ""} alt="" />
                                     <div className="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center">
                                         <h1 className="leading-16">{blog.title}</h1>
