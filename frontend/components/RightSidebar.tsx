@@ -4,7 +4,7 @@ import { randomSponsors } from "../helpers/sponsor"
 
 const RightSidebar: React.FC = () => {
     return (
-        <div className="sticky top-16 flex flex-col justify-start items-start w-full h-fit">
+        <div className="sticky top-14 flex flex-col justify-start items-start w-full h-fit">
             {/* Sponsors Section */}
             <div className="w-full px-2 pt-4 flex flex-col justify-start items-start">
                 {randomSponsors.map((sponsor) => (
