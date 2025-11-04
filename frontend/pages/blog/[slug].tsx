@@ -57,7 +57,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
 
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_320px]">
+                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
                         {
                             blog == null ? (
                                 <div className="w-full h-10 flex flex-col justify-center items-center">
