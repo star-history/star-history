@@ -101,7 +101,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             </div>
                         )
                         }
-                        <div className="w-full hidden lg:block">
+                        <div className="w-full hidden lg:block sm:-mr-4">
                             <RightSidebar />
                         </div>
                     </div>

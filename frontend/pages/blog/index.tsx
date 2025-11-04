@@ -162,7 +162,7 @@ const BlogPage: NextPageWithLayout = () => {
                         </section>
                         <BytebaseBanner className="mb-8" />
                         </div>
-                        <div className="w-full hidden lg:block">
+                        <div className="w-full hidden lg:block sm:-mr-4">
                             <RightSidebar />
                         </div>
                     </div>

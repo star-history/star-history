@@ -53,7 +53,7 @@ const Index: NextPage<IndexProps> = () => {
                                 {isChartVisible && <StarChartViewer />}
                             </div>
 
-                            <div className="hidden lg:block">
+                            <div className="hidden lg:block sm:-mr-4">
                                 <RightSidebar />
                             </div>
                             </div>
