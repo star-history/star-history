@@ -87,73 +87,34 @@ const BlogPage: NextPageWithLayout = () => {
                             )}
                             {!isLoading && featuredBlogs.length + blogs.length > 0 && (
                                 <div className="w-full flex flex-col justify-start items-center">
-                                    <div className="w-full mt-8 flex flex-col justify-start items-start">
+                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                         {featuredBlogs.map((blog) => (
-                                            <div key={blog.slug} className="w-full h-auto flex flex-col border rounded-md mb-8">
+                                            <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
                                                 <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
-                                                    <img className="h-full w-auto flex-shrink-0 object-cover rounded-t-md" src={blog.featureImage} alt="" />
+                                                    <img className="h-48 w-full object-cover rounded-t-md" src={blog.featureImage} alt="" />
                                                 </Link>
 
                                                 <div className="w-full p-6 py-4 flex flex-col justify-start">
-                                                    <div className="mt-2 w-full flex flex-col justify-start items-start">
-                                                        <Link href={`/blog/${blog.slug}`}>
-                                                            <p className="text-xl font-semibold text-dark">{blog.title}</p>
-                                                        </Link>
-                                                        <p className="mt-3 text-base text-gray-500 line-clamp-3">{blog.excerpt}</p>
-                                                    </div>
-                                                    <div className="mt-3 flex flex-row justify-start items-center">
-                                                        <p className="flex space-x-1 text-sm text-gray-500">
-                                                            <span className="text-sm font-medium text-gray-900">{blog.author}</span>
-                                                            <span aria-hidden="true"> &middot; </span>
-                                                            <time dateTime={blog.publishedDate}>
-                                                                {new Date(blog.publishedDate).toLocaleString("default", {
-                                                                    year: "numeric",
-                                                                    month: "short",
-                                                                    day: "numeric"
-                                                                })}
-                                                            </time>
-                                                            <span aria-hidden="true"> &middot; </span>
-                                                            <span> {blog.readingTime} </span>
-                                                        </p>
-                                                    </div>
+                                                    <Link href={`/blog/${blog.slug}`}>
+                                                        <p className="text-xl font-normal text-dark">{blog.title}</p>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="w-full flex flex-col justify-start items-start grow mb-16">
+                                    <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                                         {blogs.map((blog) => (
-                                            <div key={blog.slug} className="w-full h-auto flex flex-col-reverse justify-start lg:flex-row lg:justify-between border rounded-md mb-4">
-                                                <div className="p-6 pr-4 w-full flex flex-col justify-start items-start">
-                                                    <div className="w-full flex flex-col justify-start items-start">
-                                                        <Link href={`/blog/${blog.slug}`}>
-                                                            <p className="text-xl font-semibold text-dark">{blog.title}</p>
-                                                        </Link>
-                                                        <p className="w-full mt-3 text-base text-gray-500 break-words line-clamp-3">{blog.excerpt}</p>
-                                                    </div>
-                                                    <div className="grow"></div>
-                                                    <div className="flex flex-row justify-start items-center">
-                                                        <p className="flex ml-2 space-x-1 text-sm text-gray-500">
-                                                            <span className="text-sm ml-2 font-medium text-gray-900">{blog.author}</span>
-                                                            <span aria-hidden="true"> &middot; </span>
-                                                            <time dateTime={blog.publishedDate}>
-                                                                {new Date(blog.publishedDate).toLocaleString("default", {
-                                                                    year: "numeric",
-                                                                    month: "short",
-                                                                    day: "numeric"
-                                                                })}
-                                                            </time>
-                                                            <span aria-hidden="true"> &middot; </span>
-                                                            <span> {blog.readingTime} </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                            <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
                                                 {blog.featureImage && (
-                                                    <img
-                                                        className="shrink-0 w-full h-60 object-cover rounded-t-md lg:w-auto lg:h-auto lg:max-h-full lg:max-w-xs lg:m-2 lg:rounded-md"
-                                                        src={blog.featureImage}
-                                                        alt=""
-                                                    />
+                                                    <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
+                                                        <img className="h-48 w-full object-cover rounded-t-md" src={blog.featureImage} alt="" />
+                                                    </Link>
                                                 )}
+                                                <div className="w-full p-6 py-4 flex flex-col justify-start">
+                                                    <Link href={`/blog/${blog.slug}`}>
+                                                        <p className="text-xl font-normal text-dark">{blog.title}</p>
+                                                    </Link>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
