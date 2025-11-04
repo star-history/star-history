@@ -3,9 +3,8 @@ import { useEffect, useState } from "react"
 import Head from "next/head"
 import Header from "../../components/header"
 import Footer from "../../components/footer"
-import SponsorBanner from "../../components/SponsorStaticBanner"
 import BytebaseBanner from "../../components/SponsorView"
-import HowToUseSection from "../../components/HowToUseSection"
+import RightSidebar from "../../components/RightSidebar"
 import Link from "next/link"
 import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
@@ -69,9 +68,10 @@ const BlogPage: NextPageWithLayout = () => {
             </Head>
             <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
                 <Header />
-                <div className="w-full h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
-                    <div className="w-full flex flex-col justify-start items-center">
-                        <section className="w-full grow px-3 md:w-5/6 lg:max-w-6xl h-auto flex flex-col justify-start items-center self-center">
+                <div className="w-full h-auto grow flex flex-row justify-center">
+                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
+                        <div className="w-full flex flex-col justify-start">
+                            <section className="w-full px-4 h-auto flex flex-col justify-start items-start">
                             <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
                                 Star History Blog
                             </h1>
@@ -175,13 +175,13 @@ const BlogPage: NextPageWithLayout = () => {
                             )}
                         </section>
                         <BytebaseBanner className="mb-8" />
-                    </div>
-                    <div className="w-full hidden lg:block">
-                        <HowToUseSection />
+                        </div>
+                        <div className="w-full hidden lg:block">
+                            <RightSidebar />
+                        </div>
                     </div>
                 </div>
                 <Footer />
-                <SponsorBanner />
             </div>
         </AppStateProvider>
     )

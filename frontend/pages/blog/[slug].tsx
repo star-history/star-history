@@ -4,8 +4,7 @@ import Link from "next/link"
 import Footer from "../../components/footer"
 import Header from "../../components/header"
 import SponsorFooterBanner from "../../components/SponsorView"
-import SponsorRightBanner from "../../components/SponsorStaticBanner"
-import HowToUseSection from "../../components/HowToUseSection"
+import RightSidebar from "../../components/RightSidebar"
 import { GetStaticPropsContext, GetStaticPaths } from "next"
 import path from "path"
 import fs from "fs/promises"
@@ -57,10 +56,11 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                 }
 
                 <Header />
-                <div className="w-full h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
-                    {
-                        blog == null ? (
-                            <div className="w-full h-10 flex flex-col justify-center items-center">
+                <div className="w-full h-auto grow flex flex-row justify-center">
+                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
+                        {
+                            blog == null ? (
+                                <div className="w-full h-10 flex flex-col justify-center items-center">
                                 <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
                                 <p className="text-center leading-8 text-lg text-dark font-medium">
                                     <Link href="/blog">
@@ -72,8 +72,8 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                 </p>
                             </div>
                         ) : (
-                            <div className="w-full flex flex-col justify-start items-center">
-                                <div className="w-full p-4 md:p-0 mt-6 md:w-5/6 lg:max-w-6xl h-full flex flex-col justify-start items-center self-center">
+                            <div className="w-full flex flex-col justify-start">
+                                <div className="w-full px-4 mt-6 h-full flex flex-col justify-start">
                                     <img className="hidden md:block w-auto max-w-full object-scale-down" src={blog.featureImage || ""} alt="" />
                                     <div className="w-auto max-w-6xl mt-4 md:mt-12 prose prose-indigo prose-xl md:prose-2xl flex flex-col justify-center items-center">
                                         <h1 className="leading-16">{blog.title}</h1>
@@ -114,13 +114,13 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                 <SponsorFooterBanner className="mt-16 mb-8" />
                             </div>
                         )
-                    }
-                    <div className="w-full hidden lg:block">
-                        <HowToUseSection />
+                        }
+                        <div className="w-full hidden lg:block">
+                            <RightSidebar />
+                        </div>
                     </div>
                 </div>
                 <Footer />
-                <SponsorRightBanner />
             </div>
         </AppStateProvider>
     )

@@ -67,12 +67,11 @@ useEffect(() => {
               </span>
             </div>
             <div className="hidden h-full md:flex flex-row justify-center items-center px-4">
-              <button 
-                onClick={() => window.open('https://newsletter.star-history.com/subscribe', '_blank')}
-                className="text-sm bg-green-600 hover:bg-green-700 text-white font-medium py-1 px-3 rounded transition-colors"
-              >
-                Subscribe to Newsletter
-              </button>
+              <Link href="/blog/how-to-use-github-star-history">
+                <span className="text-sm bg-green-600 hover:bg-green-700 text-white font-medium py-1 px-3 rounded transition-colors cursor-pointer inline-block">
+                  How to use Star History
+                </span>
+              </Link>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
               <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
@@ -97,12 +96,6 @@ useEffect(() => {
           </div>
         </header>
         <div className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${state.showDropMenu ? "flex" : "hidden"}`}>
-          <Link
-            href="/blog/how-to-use-github-star-history"
-            className="h-12 text-base px-3 w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
-          >
-            📕 How to use this site
-          </Link>
           <span
             className="h-12 px-3 text-base w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
             onClick={handleSetTokenBtnClick}

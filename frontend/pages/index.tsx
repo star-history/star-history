@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import Header from "../components/header"
 import Footer from "../components/footer"
-import HowToUseSection from "../components/HowToUseSection"
-import SponsorBanner from "../components/SponsorStaticBanner"
+import RightSidebar from "../components/RightSidebar"
 import RepoInputer from "../components/RepoInputer"
 import { AppStateProvider } from "../store"
 import type { NextPage } from "next"
@@ -47,8 +46,9 @@ const Index: NextPage<IndexProps> = () => {
                 <AppStateProvider>
                     <div className="relative w-full h-auto min-h-screen overflow-auto flex flex-col">
                         <Header />
-                        <div className="w-full h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
-                            <div className="w-full flex flex-col justify-start items-center">
+                        <div className="w-full h-auto grow flex flex-row justify-center">
+                            <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_256px]">
+                                <div className="w-full flex flex-col justify-start pl-4">
                                 <RepoInputer isChartVisible={isChartVisible} setChartVisibility={setChartVisibility} />
                                 {isChartVisible && <StarChartViewer />}
                                 <div className="flex justify-center mb-12">
@@ -68,12 +68,12 @@ const Index: NextPage<IndexProps> = () => {
                             </div>
 
                             <div className="hidden lg:block">
-                                <HowToUseSection />
+                                <RightSidebar />
+                            </div>
                             </div>
                         </div>
 
                         <Footer />
-                        <SponsorBanner />
                     </div>
                 </AppStateProvider>
             </section>
