@@ -42,8 +42,8 @@ export interface XYChartData {
 
 export interface XYChartConfig {
     title: string
-    xLabel: string
-    yLabel: string
+    xLabel?: string
+    yLabel?: string
     data: XYChartData
     showDots: boolean
     transparent: boolean
