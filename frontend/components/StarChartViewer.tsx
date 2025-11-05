@@ -356,45 +356,49 @@ function StarChartViewer() {
                     </div>
                 )}
                 {state.chartData && (
-                    <div className="absolute top-0 right-1 p-2 flex flex-row">
-                        <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
-                            <span className="mr-2">Legend</span>
-                            <label className="mr-2 cursor-pointer hover:opacity-80 flex items-center">
-                                <input
-                                    className="mr-1"
-                                    type="radio"
-                                    name="legendPosition"
-                                    checked={state.legendPosition === "top-left"}
-                                    onChange={() => handleLegendPositionChange("top-left")}
-                                />
-                                Top left
-                            </label>
-                            <label className="cursor-pointer hover:opacity-80 flex items-center">
-                                <input
-                                    className="mr-1"
-                                    type="radio"
-                                    name="legendPosition"
-                                    checked={state.legendPosition === "bottom-right"}
-                                    onChange={() => handleLegendPositionChange("bottom-right")}
-                                />
-                                Bottom right
-                            </label>
+                    <>
+                        <div className="absolute top-0 left-1 p-2 flex flex-row">
+                            <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                                <span className="mr-2">Legend</span>
+                                <label className="mr-2 cursor-pointer hover:opacity-80 flex items-center">
+                                    <input
+                                        className="mr-1"
+                                        type="radio"
+                                        name="legendPosition"
+                                        checked={state.legendPosition === "top-left"}
+                                        onChange={() => handleLegendPositionChange("top-left")}
+                                    />
+                                    Top left
+                                </label>
+                                <label className="cursor-pointer hover:opacity-80 flex items-center">
+                                    <input
+                                        className="mr-1"
+                                        type="radio"
+                                        name="legendPosition"
+                                        checked={state.legendPosition === "bottom-right"}
+                                        onChange={() => handleLegendPositionChange("bottom-right")}
+                                    />
+                                    Bottom right
+                                </label>
+                            </div>
                         </div>
-                        <div
-                            className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
-                            onClick={handleToggleLogScaleBtnClick}
-                        >
-                            <input className="mr-2" type="checkbox" checked={state.useLogScale} />
-                            Log scale
+                        <div className="absolute top-0 right-1 p-2 flex flex-row">
+                            <div
+                                className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+                                onClick={handleToggleLogScaleBtnClick}
+                            >
+                                <input className="mr-2" type="checkbox" checked={state.useLogScale} />
+                                Log scale
+                            </div>
+                            <div
+                                className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
+                                onClick={handleToggleChartBtnClick}
+                            >
+                                <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
+                                {state.chartMode === "Timeline" ? "Align timeline" : "Align timeline"}
+                            </div>
                         </div>
-                        <div
-                            className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
-                            onClick={handleToggleChartBtnClick}
-                        >
-                            <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
-                            {state.chartMode === "Timeline" ? "Align timeline" : "Align timeline"}
-                        </div>
-                    </div>
+                    </>
                 )}
                 <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-6" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
                 {/* ... rest of the JSX here */}
