@@ -57,7 +57,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
 
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-0 sm:px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
+                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
                         {
                             blog == null ? (
                                 <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -72,7 +72,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                 </p>
                             </div>
                         ) : (
-                            <div className="w-full flex flex-col justify-start sm:-ml-4">
+                            <div className="w-full flex flex-col justify-start">
                                 <div className="w-full mt-6 h-full flex flex-col justify-start">
                                     <img className="hidden md:block w-auto max-w-3xl object-scale-down mx-auto" src={blog.featureImage || ""} alt="" />
                                     <div className="w-auto max-w-6xl mt-6 md:mt-8 prose prose-indigo prose-base md:prose-lg flex flex-col justify-center items-center">
@@ -104,7 +104,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                             </div>
                         )
                         }
-                        <div className="w-full hidden lg:block sm:-mr-4">
+                        <div className="w-full hidden lg:block">
                             <RightSidebar />
                         </div>
                     </div>
