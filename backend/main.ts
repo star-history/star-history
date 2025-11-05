@@ -144,8 +144,6 @@ const startServer = async () => {
         svg,
         {
           title: "Star History",
-          xLabel: type === "Date" ? "Date" : "Timeline",
-          yLabel: "GitHub Stars",
           data: convertDataToChartData(repoData, type),
           showDots: false,
           transparent: transparent.toLowerCase() === "true",

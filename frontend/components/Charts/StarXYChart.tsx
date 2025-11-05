@@ -25,8 +25,6 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                     svgElRef.current,
                     {
                         title: "Star History",
-                        xLabel: chartMode === "Timeline" ? "Timeline" : "Date",
-                        yLabel: "GitHub Stars",
                         data: {
                             datasets: data.datasets
                         },

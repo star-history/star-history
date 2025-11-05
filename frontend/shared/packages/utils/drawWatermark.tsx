@@ -14,7 +14,7 @@ export const drawWatermark = (selection: D3Selection, chartWidth: number, chartH
 
     selection
         .append("image")
-        .attr("transform", `translate(${chartWidth - 135},${chartHeight + 24})`)
+        .attr("transform", `translate(${chartWidth - 135},${chartHeight + 25})`)
         .attr("height", 20)
         .attr("width", 20)
         .attr("href", iconBase64)
