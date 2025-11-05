@@ -87,7 +87,7 @@ const BlogPage: NextPageWithLayout = () => {
                             )}
                             {!isLoading && featuredBlogs.length + blogs.length > 0 && (
                                 <div className="w-full flex flex-col justify-start items-center">
-                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {featuredBlogs.map((blog) => (
                                             <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
                                                 <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
@@ -102,7 +102,7 @@ const BlogPage: NextPageWithLayout = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                                    <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                                         {blogs.map((blog) => (
                                             <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
                                                 {blog.featureImage && (
