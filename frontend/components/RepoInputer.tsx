@@ -278,9 +278,18 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                 </span>
                 <div className="flex items-center">
                     <Link className="text-gray-700 hover:underline" href={`/blog/${state.latestBlog?.slug}`}>
-                        {state.latestBlog?.title} <i className="fas fa-chevron-right mr-1 text-gray-500 text-sm"></i>
+                        {state.latestBlog?.title}
                     </Link>
                 </div>
+                <span className="mx-2 text-gray-300">|</span>
+                <a
+                    href="https://newsletter.star-history.com/subscribe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:underline"
+                >
+                   🗞️ Subscribe 
+                </a>
             </div>
             <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
                 <input
