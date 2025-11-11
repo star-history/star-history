@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly November 2025 | Agent SDK/Framework",
+        "slug": "agent-sdk-framework",
+        "author": "Adela",
+        "featured": true,
+        "featureImage": "/assets/blog/agent-sdk-framework/banner.webp",
+        "publishedDate": "2025-11-11:12:00.000Z",
+        "excerpt": "Agent SDK/Framework are shaping how developers turn large language models into production-ready, intelligent applications."
+    },
+    {
         "title": "Starlet #30 NPC Shell: Intelligent Bash Environment with AI Agents",
         "slug": "npcsh",
         "author": "NPC Worldwide",
