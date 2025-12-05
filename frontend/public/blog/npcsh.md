@@ -1,3 +1,12 @@
+---
+title: "Starlet #30 NPC Shell: Intelligent Bash Environment with AI Agents"
+author: "NPC Worldwide"
+featured: true
+featureImage: "/assets/blog/npcsh/banner.webp"
+publishedDate: "2025-10-28T12:00:00.000Z"
+description: "NPC Shell extends the traditional bash environment with intelligent AI capabilities, providing seamless access to various LLM providers and specialized agents through a unified command-line interface."
+---
+
 *This is the 30th issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---

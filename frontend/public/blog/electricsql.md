@@ -1,3 +1,12 @@
+---
+title: "Starlet #9 Electric SQL - Build reactive, realtime, local-first apps directly on Postgres"
+author: "Sam Willis"
+featured: true
+featureImage: "/assets/blog/electricsql/banner.webp"
+publishedDate: "2023-10-11T00:00:00.000Z"
+description: "Use ElectricSQL to build super fast, collaborative, offline-capable apps directly on Postgres by syncing to a local SQLite database."
+---
+
 _This is the ninth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

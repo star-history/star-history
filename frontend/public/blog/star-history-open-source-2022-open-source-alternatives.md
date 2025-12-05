@@ -1,3 +1,12 @@
+---
+title: "Star History Open Source Best of 2022 | Open-Source Alternatives"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/yearly-pick-open-source-alternatives-2022/star-history-open-source-alternatives-2022.webp"
+publishedDate: "2023-02-02T09:50:06.000Z"
+description: "When choosing which tools to use, do you prefer open or closed-source? What are the differences? In this post, let’s take a look at some of the most famous open-source alternatives on the market."
+---
+
 When choosing which tools to use, do you prefer open or closed-source? What are the differences? In this post, let’s take a look at some of the most famous open-source alternatives on the market.
 
 BTW: open-source =! free, closed source =! paid. While some of the open-source tools are completely free, some tools offer commercial versions and support, while their non-open-source counterparts are instead, free.

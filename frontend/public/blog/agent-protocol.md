@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly May 2025 | Agent Protocol"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/agent-protocol/banner.webp"
+publishedDate: "2025-05-09T12:00:00.000Z"
+description: "Exploring outstanding agent protocols that set the standards how AI agents communicate with tools, data sources, and other agents."
+---
+
 As AI agents become increasingly powerful and widely deployed, a critical challenge has emerged: how should these agents communicate with external tools, data sources, and other agents? Agent protocols provide standardized frameworks that enable seamless interaction between AI systems.
 
 Today, we'll explore three groundbreaking open-source protocols that are setting the standards for AI agent communication:

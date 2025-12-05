@@ -1,3 +1,12 @@
+---
+title: "Starlet #14 Proton: A streaming SQL analytical engine, powered by ClickHouse"
+author: "Jove Zhong"
+featured: true
+featureImage: "/assets/blog/proton/banner.webp"
+publishedDate: "2023-12-14T00:00:00.000Z"
+description: "Proton is a new open-source streaming SQL analytical engine that combines the power of OLAP processing with responsive real-time streaming analytics."
+---
+
 _This is the fourteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

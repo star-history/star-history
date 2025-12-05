@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Dec 2023 | Open-source GPT Wrappers"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/gpt-wrappers/banner.webp"
+publishedDate: "2024-01-19T09:50:06.000Z"
+description: "GPT wrappers offer a service by wrapping around ChatGPT API to provide an additional functionality not offered directly by OpenAI itself."
+---
+
 GPT wrapper tools offer a service by "wrapping" around ChatGPT API, leveraging the underlying technology to provide an additional functionality not offered directly by OpenAI. What these tools have in common is：
 
 -   An easy-to-use UI.

@@ -1,3 +1,12 @@
+---
+title: "Tabby: Self-hosted AI Coding Assistant"
+author: "Tianzhou"
+featured: false
+featureImage: "/assets/blog/tabby/banner.webp"
+publishedDate: "2023-04-15T09:50:06.000Z"
+description: "Tabby is an AI coding assistant that's designed as an open-source tool to help developers code faster. Think of it as an open-source/on-prem alternative to GitHub Copilot."
+---
+
 [Tabby](https://www.tabbyml.com) ([GitHub](https://github.com/TabbyML/tabby)) is an AI coding assistant that's designed as an open-source tool to help developers code faster. It debuted on [HackerNews](https://news.ycombinator.com/item?id=35470915) last week and caught our attention.
 
 ![tabby](/assets/blog/tabby/hn.webp)

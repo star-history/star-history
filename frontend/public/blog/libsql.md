@@ -1,3 +1,12 @@
+---
+title: "Starlet #11 libSQL: SQLite for modern applications"
+author: "Glauber Costa"
+featured: true
+featureImage: "/assets/blog/libsql.webp"
+publishedDate: "2023-10-30T00:00:00.000Z"
+description: "libSQL is an Open Source and Open Contribution fork of SQLite"
+---
+
 _This is the eleventh issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

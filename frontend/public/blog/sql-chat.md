@@ -1,3 +1,12 @@
+---
+title: "SQL Chat - Chat With Your Database"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/sql-chat/banner.webp"
+publishedDate: "2023-04-20T09:50:06.000Z"
+description: "SQL Chat is an open-source chat-based SQL client, powered by OpenAI, with built-in capabilities to connect to and query your databases."
+---
+
 [SQL Chat](https://github.com/sqlchat/sqlchat) is an open-source chat-based SQL client. It’s built by the folks at Bytebase, a database DevOps tool for teams to manage database changes efficiently, you can see why this combination can’t go wrong: a SQL client hand-crafted by a team that deals with databases. Bytebase has actually already integrated ChatGPT capabilities into their product in an older version, but apparently, it didn’t meet their expectations. They came out with a great replacement instead: SQL Chat.
 
 ![sql-chat](/assets/blog/sql-chat/sqlchat.webp)

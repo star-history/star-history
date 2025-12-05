@@ -1,4 +1,10 @@
-
+---
+title: "Star History Monthly September 2025 | Proprietary AI Alternatives"
+author: "Adela"
+featured: true
+featureImage: "/assets/blog/proprietary-ai-alternatives/banner.webp"
+publishedDate: "2025-09-15T12:00:00.000Z"
+description: "Proprietary AI softwares like ChatGPT, Midjourney, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization."
 ---
 
 As proprietary AI softwares like ChatGPT, Midjourney, Perplexity, Claude, Devin, Lovable, VEO continue to dominate the headlines, open-source counterparts are not far behind. Developers and hobbyists wish to take back control: running models locally, avoiding vendor lock-in, and trying out infinite possibilities of customization.

@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly July 2025 | IDE for Vibe Coding"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/ide-vibe-coding/banner.webp"
+publishedDate: "2025-07-31T12:00:00.000Z"
+description: "Development environment optimized for AI-assisted programming, enabling real-time natural language-to-code generation and automated debugging."
+---
+
 As AI transforms software development, the traditional IDE is evolving into something far more powerful. Vibe Coding represents a paradigm shift where development environments become intelligent partners, enabling real-time natural language-to-code generation and automated debugging through seamless AI integration.
 
 Today we'll explore four cutting-edge IDEs that are pioneering the Vibe Coding revolution:

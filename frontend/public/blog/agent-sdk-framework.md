@@ -1,4 +1,10 @@
-
+---
+title: "Star History Monthly November 2025 | Agent SDK/Framework"
+author: "Adela"
+featured: true
+featureImage: "/assets/blog/agent-sdk-framework/banner.webp"
+publishedDate: "2025-11-11T12:00:00.000Z"
+description: "Agent SDK/Framework are shaping how developers turn large language models into production-ready, intelligent applications."
 ---
 
 AI agents are no longer just prototypes - they’re becoming the backbone of production systems. Developers are building **structured, autonomous software** that reasons, uses tools, and collaborates with users - powered by a fast-growing ecosystem of SDKs and frameworks.

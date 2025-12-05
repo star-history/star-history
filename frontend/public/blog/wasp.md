@@ -1,3 +1,12 @@
+---
+title: "Starlet #12 Wasp: the fastest way to develop full-stack web apps with React & Node.js"
+author: "Matija Sosic"
+featured: true
+featureImage: "/assets/blog/wasp/banner.webp"
+publishedDate: "2023-11-13T00:00:00.000Z"
+description: "Wasp is a fully open-source, full-stack web framework for React, Node.js, and Prisma"
+---
+
 _This is the twelfth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

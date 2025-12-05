@@ -1,3 +1,12 @@
+---
+title: "Starlet #22 Giskard: Open-Source Evaluation & Testing for LLMs and ML models"
+author: "Blanca Rivera Campos"
+featured: true
+featureImage: "/assets/blog/giskard/banner.webp"
+publishedDate: "2024-06-21T00:00:00.000Z"
+description: "Giskard develops an open-source AI testing framework that helps to identify risks of AI models  - with a specific focus on LLM agents."
+---
+
 *This is the twenty-second issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---

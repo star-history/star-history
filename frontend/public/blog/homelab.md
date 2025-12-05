@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly October 2024 | Homelab"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/homelab/banner.webp"
+publishedDate: "2024-10-12T00:00:00.000Z"
+description: "Homelab provides you with extra space of good privacy to experiment and develop with little cost."
+---
+
 Homelab is a server that resides locally in one's home to host several applications and virtualized systems for testing, developing, home or functional usage.
 
 Homelab isn't a necessity. However, it provides you with extra space of good privacy to experiment and develop with little cost.

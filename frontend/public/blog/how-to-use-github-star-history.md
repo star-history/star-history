@@ -1,3 +1,12 @@
+---
+title: "📕 How to use GitHub Star History"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/how-to-use-github-star-history/banner.webp"
+publishedDate: "2023-02-21T09:50:06.000Z"
+description: "When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?"
+---
+
 When choosing a tool (especially an open-source one) to use, what's your thought process? What are the factors that matter to you?
 
 -   Any other users out there?

@@ -1,3 +1,12 @@
+---
+title: "Starlet #2 DLTA-AI - Data Labeling, Tracking and Annotation with AI"
+author: "Usama Ahmed"
+featured: true
+featureImage: "/assets/blog/dlta-ai/banner.webp"
+publishedDate: "2023-07-20T00:00:00.000Z"
+description: "DLTA-AI is the next generation of annotation tools, integrating the Computer Vision SOTA models to Labelme in a seamless expirence and intuitive workflow to make creating image datasets easier than ever before."
+---
+
 _This is the second issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

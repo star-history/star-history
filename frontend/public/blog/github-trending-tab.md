@@ -1,3 +1,12 @@
+---
+title: "Re: GitHub's plan to remove Trending tab"
+author: "Tianzhou"
+featured: true
+featureImage: "/assets/blog/github-trending-tab/github-trending-tab.webp"
+publishedDate: "2022-09-02T09:50:06.000Z"
+description: "Our take on GitHub's intention to deprecate GitHub Trending Tab."
+---
+
 ## News
 
 When I learned GitHub’s plan to remove the Trending tab. My immediate reaction was:

@@ -1,3 +1,12 @@
+---
+title: "Starlet #18 Prisma ORM: Simplify Working and Interacting with Databases"
+author: "Nikolas Burk"
+featured: true
+featureImage: "/assets/blog/prisma/banner.webp"
+publishedDate: "2024-03-14T00:00:00.000Z"
+description: "Prisma ORM is a toolkit that makes it easy for developers to work with databases, and is committed to creating a great developer experience for developers that are building data-driven applications."
+---
+
 _This is the eighteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

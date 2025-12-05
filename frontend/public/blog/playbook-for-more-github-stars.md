@@ -1,3 +1,12 @@
+---
+title: "The (Detailed & Creative) Playbook for Getting More GitHub Stars"
+author: "Zevi Reinitz"
+featured: true
+featureImage: "/assets/blog/playbook-for-more-github-stars/banner.webp"
+publishedDate: "2023-08-24T09:50:06.000Z"
+description: "A team that just launched an open source tool for developers shares their first-hand experience on how to grow your own project."
+---
+
 ## TL;DR
 
 -   My team and I recently launched an [open source tool for developers](https://github.com/livecycle/preevy)

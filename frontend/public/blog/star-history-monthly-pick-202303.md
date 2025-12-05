@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Pick | March 2023 / ChatGPT Edition"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/star-history-monthly-pick-202303/banner.webp"
+publishedDate: "2023-04-14T09:50:06.000Z"
+description: "ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. We are taking a look at a few handy AI-enhanced tools to make your life easier."
+---
+
 ChatGPT is getting all the heat these days, and the new trend in the DevTools department seems to be ChatGPT-based. Let's take a look at a few handy AI-enhanced tools to make your life easier😋.
 
 ## Auto-GPT

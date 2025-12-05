@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly August 2025 | Vertical LLM"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/vertical-llm/banner.webp"
+publishedDate: "2025-08-06T12:00:00.000Z"
+description: "Vertical LLMs are specialized language models that are fine-tuned for specific industries or domains, enhancing their performance and relevance in those areas."
+---
+
 As AI capabilities expand across industries, the era of one-size-fits-all language models is giving way to specialized solutions. Vertical LLMs represent a paradigm shift where domain-specific models deliver superior performance by focusing on particular industries, use cases, and data types through targeted training and optimization.
 
 Today we'll explore four cutting-edge vertical LLMs that are pioneering domain-specific AI excellence:

@@ -1,3 +1,12 @@
+---
+title: "Ockam - Build Secure-by-Design Applications at Massive Scale"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/ockam/banner.webp"
+publishedDate: "2023-03-15T09:50:06.000Z"
+description: "Ockam is a suite of open source tools, programming libraries, and managed cloud services to orchestrate end-to-end encryption, mutual authentication, key management, credential management, and authorization policy enforcement – at massive scale."
+---
+
 🍾️ Welcome Ockam as Star History's first [GitHub Sponsor](https://github.com/sponsors/star-history).
 
 [Ockam](https://github.com/build-trust/ockam) is a suite of open source tools, programming libraries, and managed cloud services to orchestrate end-to-end encryption, mutual authentication, key management, credential management, and authorization policy enforcement – at massive scale.

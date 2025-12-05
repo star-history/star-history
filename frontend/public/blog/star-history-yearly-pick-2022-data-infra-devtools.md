@@ -1,3 +1,12 @@
+---
+title: "Star History Open Source Best of 2022 | Data, Infra & DevTools"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/yearly-pick-data-infra-devtools-2022/yearly-pick-data-infra-devtools-2022.webp"
+publishedDate: "2023-01-11T09:50:06.000Z"
+description: "Following up on the previous roundup of top front-end os projects, Star History looks at some of the lesser known open-source projects under the category of data/infra/tools in 2022."
+---
+
 Following up on our previous roundup of [Top Front-end open-source projects in 2022](/blog/star-history-yearly-pick-2022-frontend), Star History will round up the open-source projects that stood out in the **Data, Infra, and DevTools** section in 2022.
 
 If you didn’t know, [star-history.com](/) is a place to view and compare the star history of GitHub repos. We are proud to say that it is the de facto place people turn to for GitHub stars: it is, after all, the first (and second) result on Google. 😆

@@ -1,3 +1,12 @@
+---
+title: "Star History Open Source Best of 2022 | Front-end"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/yearly-pick-frontend-2022/star-history-frontend-2022.webp"
+publishedDate: "2023-01-04T09:50:06.000Z"
+description: "As a proper goodbye to 2022, Star History picks some of the most interesting open-source front-end projects in 2022."
+---
+
 As a proper goodbye to 2022, Star History looks at some of the most interesting open-source projects in the year that passed. Some projects came out of nowhere and made a big bang; some released new versions, while some renovated their websites.
 
 In today’s post, we are covering front-end projects.

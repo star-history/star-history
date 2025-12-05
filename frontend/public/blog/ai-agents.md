@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly September 2024 | AI Agents"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/ai-agents/banner.webp"
+publishedDate: "2024-09-19T00:00:00.000Z"
+description: "Some capable AI agents that independently choose the best approach to those human-set goals."
+---
+
 AI agents independently choose the best approach to human-set goals. AI Agent has planning skills, memory, and tool use ability, so it's able to solve general problems, far more intelligent than previous proprietary AI. Here are some capable AI agents.
 
 -   [AutoGen](#autogen)

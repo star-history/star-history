@@ -1,3 +1,12 @@
+---
+title: "Starlet #4 chatgpt.js - Client-side JavaScript library for ChatGPT"
+author: "Adam Lui"
+featured: true
+featureImage: "/assets/blog/chatgpt-js/banner.webp"
+publishedDate: "2023-08-10T00:00:00.000Z"
+description: "chatgpt.js is a JavaScript library that supports this ecosystem by allowing for super-easy interaction with the ChatGPT DOM."
+---
+
 _This is the fourth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

@@ -1,3 +1,12 @@
+---
+title: "Starlet #13 Earthly: Fast, consistent builds with an instantly familiar syntax - like Dockerfile and Makefile had a baby"
+author: "Gavin Johnson"
+featured: true
+featureImage: "/assets/blog/earthly/banner.webp"
+publishedDate: "2023-12-01T00:00:00.000Z"
+description: "Earthly is like a combination of Docker and Make, running build scripts in Docker containers for consistent results in any environment."
+---
+
 _This is the thirteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

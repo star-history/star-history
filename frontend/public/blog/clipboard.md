@@ -1,3 +1,12 @@
+---
+title: "Starlet #7 Clipboard – Remember Anything, Anytime, Anywhere at Breakneck Speed"
+author: "Jackson Huff"
+featured: true
+featureImage: "/assets/blog/clipboard-banner.webp"
+publishedDate: "2023-09-11T00:00:00.000Z"
+description: "The Clipboard Project is a new and upcoming open source tool designed to supercharge your productivity by making it easy to remember anything, anytime, anywhere."
+---
+
 _This is the seventh issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

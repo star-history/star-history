@@ -1,3 +1,12 @@
+---
+title: "Starlet #16 Apache Answer: Thrive the Community. Unleash Collective Knowledge."
+author: "Anne Zhu"
+featured: true
+featureImage: "/assets/blog/answer/banner.webp"
+publishedDate: "2024-01-26T00:00:00.000Z"
+description: "Apache Answer is an open-source Q&A platform software for teams at any scale, now incubating in Apache Software Foundation."
+---
+
 _This is the sixteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

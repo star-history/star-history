@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly January 2025 | Knowledge Management"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/knowledge-management/banner.webp"
+publishedDate: "2025-01-21T00:00:00.000Z"
+description: "Knowledge management tools for effectively using organizational knowledge to achieve objectives and enhance decision-making."
+---
+
 Knowledge management is the systematic process of creating, capturing, sharing, and effectively using organizational knowledge to achieve objectives and enhance decision-making. Here are some recommended tools to help you with this.
 
 -   [SiYuan](#siyuan)

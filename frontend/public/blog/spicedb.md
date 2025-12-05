@@ -1,3 +1,12 @@
+---
+title: "Starlet #17 SpiceDB: Google Zanzibar-inspired Authorization System"
+author: "Pablo Macias"
+featured: true
+featureImage: "/assets/blog/spicedb-banner.webp"
+publishedDate: "2024-02-23T00:00:00.000Z"
+description: "SpiceDB is an open source, Google Zanzibar-inspired database for creating and managing security-critical application permissions."
+---
+
 *This is the seventeenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---
