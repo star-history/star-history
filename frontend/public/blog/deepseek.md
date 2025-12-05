@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly February 2025 | DeepSeek"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/deepseek/banner.webp"
+publishedDate: "2025-02-18T00:00:00.000Z"
+description: "Some projects that integrated DeepSeek to enhance their capabilities for more context-aware solutions."
+---
+
 Recently, DeepSeek has gone viral and broken into the mainstream for its Enhanced contextual understanding, improved response accuracy and advanced learning capabilities.
 
 Lots of open-source projects have integrated DeepSeek to enhance their capabilities in natural language processing, streamline user interactions, and deliver more intelligent, context-aware solutions. Among them are some out-standing projects as follows:

@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly June 2024 | Open Source AI Searches"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/ai-search/banner.webp"
+publishedDate: "2024-06-28T00:00:00.000Z"
+description: "We present you with a few different open-source options that utilize AI to enhance our search experience and efficiency."
+---
+
 AI is transforming the search experience, making it more intelligent, personalized, and efficient for us.
 
 You might think, "but Google works well enough!" First of all, search relevance and personalisation comes at a price with Google, and what about searches across different media types for the most relevant information formats, or even automation of certain tasks, like [crawling websites](https://star-history.com/blog/ai-web-scraper), indexing content, and search engine optimization.

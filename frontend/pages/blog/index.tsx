@@ -13,10 +13,9 @@ import { AppStateProvider } from "store"
 interface Blog {
     slug: string
     title: string
-    excerpt: string
+    description: string
     author: string
     publishedDate: string
-    readingTime?: string
     featured?: boolean
     featureImage?: string
 }
@@ -27,38 +26,13 @@ const BlogPage: NextPageWithLayout = () => {
     const [featuredBlogs, setFeaturedBlogs] = useState<Blog[]>([])
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const rawBlogList = blogData
-                const blogList: Blog[] = await Promise.all(
-                    rawBlogList.map(async (raw: Blog) => {
-                        const contentRes = await fetch(`/blog/${raw.slug}.md`)
-                        const content = await contentRes.text()
+        const blogList = blogData as Blog[]
+        const featuredBlogs = blogList.filter((blog) => blog.featured)
+        const blogs = blogList.filter((blog) => !blog.featured)
 
-                        // Calculate reading time based on the content
-                        const wordsPerMinute = 200
-                        const wordCount = content.split(" ").length
-                        const readingTime = Math.ceil(wordCount / wordsPerMinute)
-                        return {
-                            ...raw,
-                            readingTime: `${readingTime} min read`
-                        }
-                    })
-                )
-
-                const featuredBlogs = blogList.filter((blog) => blog.featured)
-                const blogs = blogList.filter((blog) => !blog.featured)
-
-                setFeaturedBlogs(featuredBlogs)
-                setBlogs(blogs)
-                setIsLoading(false)
-            } catch (error) {
-                console.error("Error fetching data:", error)
-                setIsLoading(false)
-            }
-        }
-
-        fetchData()
+        setFeaturedBlogs(featuredBlogs)
+        setBlogs(blogs)
+        setIsLoading(false)
     }, [])
 
     return (

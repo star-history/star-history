@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { marked } from "marked"
+import matter from "gray-matter"
 import Link from "next/link"
 import Footer from "../../components/footer"
 import Header from "../../components/header"
@@ -15,11 +16,10 @@ interface Blog {
     title: string
     slug: string
     author: string
-    excerpt: string
+    description: string
     publishedDate: string
     featureImage?: string
-    readingTime?: number
-    featured?: boolean // Add this line if 'featured' is part of your data
+    featured?: boolean
 }
 
 interface State {
@@ -36,20 +36,20 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                     blog && (
                         <>
                             {/* Standard Meta Tags */}
-                            <meta name="description" content={blog.excerpt} />
+                            <meta name="description" content={blog.description} />
 
                             {/* Open Graph / Facebook */}
                             <meta property="og:type" content="website" />
                             <meta property="og:url" content={`https://star-history.com/blog/${blog.slug}`} />
                             <meta property="og:title" content={blog.title} />
-                            <meta property="og:description" content={blog.excerpt} />
+                            <meta property="og:description" content={blog.description} />
                             <meta property="og:image" content={`https://star-history.com${blog.featureImage}`} />
 
                             {/* Twitter */}
                             <meta name="twitter:card" content="summary_large_image" />
                             <meta name="twitter:url" content={`https://star-history.com/blog/${blog.slug}`} />
                             <meta name="twitter:title" content={blog.title} />
-                            <meta name="twitter:description" content={blog.excerpt} />
+                            <meta name="twitter:description" content={blog.description} />
                             <meta name="twitter:image" content={`https://star-history.com${blog.featureImage}`} />
                         </>
                     )
@@ -83,18 +83,12 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
                                             <span className="text-gray-900">{blog.author}</span>
                                             <span aria-hidden="true"> &middot; </span>
                                             <time dateTime={blog.publishedDate}>
-                                                {(() => {
-                                                    const dateStr = (blog.publishedDate || "").split(":")[0];
-                                                    return new Date(dateStr).toLocaleDateString("en-US", {
-                                                        year: "numeric",
-                                                        month: "short",
-                                                        day: "numeric"
-                                                    });
-                                                })()}
+                                                {new Date(blog.publishedDate).toLocaleDateString("en-US", {
+                                                    year: "numeric",
+                                                    month: "short",
+                                                    day: "numeric"
+                                                })}
                                             </time>
-
-                                            <span aria-hidden="true"> &middot; </span>
-                                            <span> {blog.readingTime} min read </span>
                                         </div>
                                     </div>
                                     <div className="mt-10 md:mt-12 w-full max-w-5xl prose prose-indigo prose-xl md:prose-2xl" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
@@ -120,7 +114,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         props: {
             blog: null as Blog | null,
             parsedBlogHTML: ""
-            // readingTime: 0,
         }
     }
 
@@ -133,20 +126,12 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         }
 
         const filePath = path.join(process.cwd(), "public", `blog/${blogSlug}.md`)
-        const content = await fs.readFile(filePath, "utf8")
+        const fileContent = await fs.readFile(filePath, "utf8")
+        const { content } = matter(fileContent)
 
-        // Calculate reading time
-        const wordsPerMinute = 200
-        const wordCount = content.split(" ").length
-        const readingTime = Math.ceil(wordCount / wordsPerMinute)
-
-        // Update return object with blog data, reading time
         returnObj = {
             props: {
-                blog: {
-                    ...blog,
-                    readingTime: readingTime // Add reading time to the blog object
-                },
+                blog: blog,
                 parsedBlogHTML: marked.parse(content)
             }
         }

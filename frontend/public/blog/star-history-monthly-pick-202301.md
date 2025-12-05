@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Pick | January 2023"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/star-history-monthly-pick-202301/star-history-monthly-pick-202301.webp"
+publishedDate: "2023-02-14T09:50:06.000Z"
+description: "Some of the most fascinating open-source projects and the stories behind these projects we discovered over the past month."
+---
+
 Happy February! Hope you all had a lovely January. Can't believe it's already time to share Star History's January open-source picks!
 
 In case you don't know, each month Star History picks out some of the most fascinating open-source projects that we share over [@StarHistoryHQ](https://twitter.com/StarHistoryHQ), and also try to explore the stories behind these projects.

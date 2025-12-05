@@ -1,3 +1,12 @@
+---
+title: "Starlet #8 Prompt flow - Developer Tool for Building High-Quality LLM Applications"
+author: "Jie Tong"
+featured: true
+featureImage: "/assets/blog/prompt-flow/banner.webp"
+publishedDate: "2023-09-26T00:00:00.000Z"
+description: "Fresh open-sourced by Microsoft, Prompt flow is a suite of devtools designed to streamline the end-to-end development cycle of LLM-based AI applications."
+---
+
 _This is the eighth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

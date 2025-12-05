@@ -1,3 +1,12 @@
+---
+title: "Star History Best of 2023"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/best-of-2023/banner.webp"
+publishedDate: "2024-03-01T00:00:00.000Z"
+description: "Time for an End of Year Review of our favourite open-source projects that stood out in 2023!"
+---
+
 Time for an End of Year Review for 2023! 🎉
 
 AI is the keyword of 2023, but there is so much more to this past year in the realm of open source! We at Star History HQ gathered a few categories and picked our favorite project for each category, including:

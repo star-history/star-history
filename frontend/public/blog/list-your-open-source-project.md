@@ -1,3 +1,12 @@
+---
+title: "🙋‍♂️ The Starlet List - Nominate Your Open Source Project"
+author: "Tianzhou"
+featured: true
+featureImage: "/assets/blog/list-your-open-source-project/banner.webp"
+publishedDate: "2023-07-01T00:00:00.000Z"
+description: "List your open source project to be seen by thousands of visitors every month."
+---
+
 **💡We are a bit overwhelmed by the nominations. We do review every request and will contact you if
 your project is selected.**
 

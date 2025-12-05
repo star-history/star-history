@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly May 2024 | Open Source AI Web Scrapers"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/ai-web-scraper/banner.webp"
+publishedDate: "2024-05-23T00:00:00.000Z"
+description: "With the help of AI web scrapers, the limitations associated with traditional scrapers can be addressed: dynamic or unstructured websites can easily be handled."
+---
+
 Web scraping, in simpler words, is to scrape data and content from websites, the data is then saved in the form of XML, Excel, or SQL. On top of lead generation, competitor monitoring, market research, web scrapers can also be used to automate your data collection process.
 
 With the help of AI web scraping tools, the limitations associated with manual or purely code-based scraping tools can be addressed: dynamic or unstructured websites can easily be handled, all without human intervention.

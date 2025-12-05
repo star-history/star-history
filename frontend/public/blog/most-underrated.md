@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Feb 2024 | Underrated Open Source Projects"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/most-underrated/banner.webp"
+publishedDate: "2024-03-20T00:00:00.000Z"
+description: "We are taking a look at some underrated open source projects that deserve more recognition."
+---
+
 For Star History's Feb edition, we were fully inspired by [this](https://news.ycombinator.com/item?id=39635486) post discussing underrated open source projects that deserve more recognition, and we dived DEEP into the threads to see what we were missing out! Here are some of our favourites:
 
 -   [Cryptpad](#cryptpad)

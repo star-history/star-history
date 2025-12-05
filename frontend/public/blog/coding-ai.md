@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Sep 2023 | Open-source GitHub Copilot alternatives"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/coding-ai/banner.webp"
+publishedDate: "2023-10-26T09:50:06.000Z"
+description: "One of the places where AI has made a major breakthrough is in helping with coding. Here, we gathered a few open-source AI coding assistants to boost your productivity."
+---
+
 One of the places where AI has made a major breakthrough is in helping with coding. Who doesn't like a productivity boost? For software development at least, generative AI is definitely the new standard.
 
 Here, we gathered a few open-source AI coding assistants to boost your productivity, but with privacy and safety in mind.

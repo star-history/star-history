@@ -1,3 +1,12 @@
+---
+title: "Starlet #20 ParadeDB: Postgres for Search & Analytics"
+author: "Ming Ying"
+featured: true
+featureImage: "/assets/blog/paradedb/banner.webp"
+publishedDate: "2024-04-18T00:00:00.000Z"
+description: "ParadeDB is an Elasticsearch alternative built on Postgres!"
+---
+
 *This is the 20th issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---

@@ -1,3 +1,12 @@
+---
+title: "Star History Best of 2024"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/best-of-2024/banner.webp"
+publishedDate: "2025-01-01T00:00:00.000Z"
+description: "Time for an End of Year Review of our favourite open-source projects that stood out in 2024!"
+---
+
 Time for an End of Year Review for 2024! 🎉
 
 This year, many outstanding open-source tools have emerged and quickly gained widespread recognition. The following highlights some particularly prominent and rapidly growing open-source tools of 2024.

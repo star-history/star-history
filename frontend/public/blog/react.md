@@ -1,6 +1,11 @@
-
 ---
-
+title: "Star History Monthly December 2025 | React"
+author: "Adela"
+featured: true
+featureImage: "/assets/blog/react/banner.webp"
+publishedDate: "2025-12-04T12:00:00.000Z"
+description: "React tools that are shaping how teams build interfaces, data flows, dashboards, and developer tooling."
+---
 
 [React](https://react.dev/) entering the **Linux Foundation** this year marks a new chapter for one of the world’s most influential open-source projects. Governance is opening, the ecosystem is expanding, and developers are rallying around tools that push React toward a faster, more modular future.
 

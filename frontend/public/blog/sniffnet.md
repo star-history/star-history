@@ -1,3 +1,12 @@
+---
+title: "Starlet #1 Sniffnet - Cross-platform Internet Traffic Monitor"
+author: "Giuliano"
+featured: true
+featureImage: "/assets/blog/sniffnet/banner.webp"
+publishedDate: "2023-07-03T00:00:00.000Z"
+description: "Sniffnet is an open-source network monitoring tool to help everyone analyze their Internet traffic with ease."
+---
+
 _This is the first issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

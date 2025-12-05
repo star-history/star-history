@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Pick | June 2023"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/star-history-monthly-pick-202306/banner.webp"
+publishedDate: "2023-07-14T09:50:06.000Z"
+description: "This month we pivot back to a selection of DevTools."
+---
+
 Last month's [post](/blog/star-history-monthly-pick-202305) was for marketers and analysts, but this issue returns to the DevTools category. In June, we discovered quite a few great tools for you devs!
 
 ## AI Getting Started

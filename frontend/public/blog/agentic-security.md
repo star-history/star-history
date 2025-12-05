@@ -1,3 +1,12 @@
+---
+title: "Starlet #29 Agentic Security: Open-Source Vulnerability Scanner for AI Systems"
+author: "Alexander Myasoedov"
+featured: true
+featureImage: "/assets/blog/agentic-security/banner.webp"
+publishedDate: "2025-03-05T00:00:00.000Z"
+description: "Agentic Security is a vulnerability scanner to protect Agent Workflows and LLMs."
+---
+
 *This is the twenty-ninth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---

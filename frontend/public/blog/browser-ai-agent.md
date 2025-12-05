@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly June 2025 | Agent Browser"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/browser-ai-agent/banner.webp"
+publishedDate: "2025-06-25T12:00:00.000Z"
+description: "Browser AI agents enable natural language automation of complex tasks that traditionally required manual intervention."
+---
+
 As AI agents become increasingly sophisticated, the browser has emerged as the primary interface for digital interaction. Browser AI agents represent a revolutionary shift in how we interact with the web, enabling natural language automation of complex tasks that traditionally required manual intervention.
 
 Today we'll explore five browser AI agent frameworks that are transforming web automation:

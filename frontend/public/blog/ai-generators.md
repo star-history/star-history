@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly July 2024 | Fun AI Generators"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/ai-generators/banner.webp"
+publishedDate: "2024-08-06T00:00:00.000Z"
+description: "Some fun ideas of AI generators that have done well in broadening the boundaries of AI's application."
+---
+
 AI generators emerge in delicate divisions of our lives, some of which entertain us, some bring convenience. For this edition, we present some fun ideas of AI generators that have done well in broadening the boundaries of AI's application.
 
 -   [flux(image generator)](#flux)

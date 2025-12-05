@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Mar 2024 | Non-AI Open Source Projects that are 🔥"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/non-ai/banner.webp"
+publishedDate: "2024-04-04T00:00:00.000Z"
+description: "We see so many AI products and launches out there, anyone working on non-AI products?"
+---
+
 Almost 70% of the YC [W24 batch](https://www.ycombinator.com/companies?batch=W24) are building AI tools. This is a good indication of how the world of tech has come to.
 
 BUT we are looking the other way this time: of all the AI products and launches, there are still products that are non-AI (or at least, not directly related to AI) and are fire🔥 ATM. What are they? How did they break through the AI storm?

@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Apr 2024 | Open Source Prompt Engineering Guides & Tools"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/prompt-engineering/banner.webp"
+publishedDate: "2024-05-01T00:00:00.000Z"
+description: "Prompt Engineering is to design and refine prompts or instructions given to a language model, in order to elicit desired responses."
+---
+
 Prompt Engineering is to design and refine prompts or instructions given to a language model, in order to elicit desired responses. To make the most of the language model's capabilities while ensuring the responses are accurate and tailored to their needs, you often need to carefully craft the input provided to the model to guide its output towards specific objectives.
 
 For the selections, we divided them into two sections: The guides which will take you through the basics of prompt engineering, and the tools for managing your prompts.

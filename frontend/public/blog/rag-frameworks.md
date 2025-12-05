@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly August 2024 | RAG Frameworks"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/rag-frameworks/banner.webp"
+publishedDate: "2024-08-29T00:00:00.000Z"
+description: "Retrieval-Augmented Generation (RAG) that enhance the capabilities of large language models."
+---
+
 Retrieval-Augmented Generation (RAG) is an AI framework that enhances the capabilities of large language models (LLMs) by incorporating external knowledge sources. It helps overcome limitations such as knowledge cutoff dates and reduces the risk of hallucinations in LLM outputs.
 
 RAG works by retrieving relevant information from a knowledge base and using it to augment the LLM’s input, allowing the model to generate more accurate, up-to-date, and contextually relevant responses.

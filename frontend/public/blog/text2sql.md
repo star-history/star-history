@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Jan 2024 | Open-source Text2SQL Tools"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/text2sql/banner.webp"
+publishedDate: "2024-01-31T09:50:06.000Z"
+description: "Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!"
+---
+
 Text2SQL, or Chat2SQL tools convert natural language or questions into SQL queries. Imagine having ChatGPT write beautiful, correct and useful SQL queries for you!
 
 ![gpt](/assets/blog/text2sql/gpt.gif)

@@ -1,3 +1,12 @@
+---
+title: "A Message to GitHub Star History Users about Ongoing Broken Live Chart"
+author: "tianzhou"
+featured: true
+featureImage: "/assets/blog/a-message-to-github-star-history-users/banner.webp"
+publishedDate: "2025-03-28T00:00:00.000Z"
+description: "Explain the current situation about broken GitHub Star History live chart image."
+---
+
 > Update: We have restored the API service on Mar 29, 2025.
 
 We enable users to embed a live GitHub star history chart directly into their repositories, with many maintainers already incorporating it into their READMEs to showcase project growth.

@@ -1,3 +1,12 @@
+---
+title: "Starlet #10 PostgresML: The GPU-powered AI application database"
+author: "Montana Low"
+featured: true
+featureImage: "/assets/blog/postgresml/banner.webp"
+publishedDate: "2023-10-19T00:00:00.000Z"
+description: "PostgresML is the first GPU-powered AI application database - build chatbots, search engines, forecasting apps and more with the latest NLP, LLM and ML models using the simplicity and power of SQL."
+---
+
 _This is the tenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

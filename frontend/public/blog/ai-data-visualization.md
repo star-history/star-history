@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly December 2024 | AI Data Visualization"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/ai-data-visualization/banner.webp"
+publishedDate: "2024-12-19T00:00:00.000Z"
+description: "AI Data Visualization tools to help you visualize your data."
+---
+
 AI data visualization tools are insightful integrations of AI and traditional data analytics tools that help you better understand your data in a more intuitive way. Here are some promising open-source tools that can help streamline your AI data visualization workflow.
 
 -   [PandasAI](#pandas-ai)

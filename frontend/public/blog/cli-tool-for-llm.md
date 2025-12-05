@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Pick | CLI Tools for Working with LLMs"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/cli-tool-for-llm/banner.webp"
+publishedDate: "2023-09-22T09:50:06.000Z"
+description: "This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs."
+---
+
 Hey all, welcome to the August edition of Star History Monthly! This time we are taking a look at a few open-source CLI tools for working with ChatGPT and other LLMs.
 
 The inspiration for this topic actually came from [this Tweet](https://twitter.com/hellokillian/status/1699540666953629722).

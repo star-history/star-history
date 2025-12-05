@@ -1,3 +1,12 @@
+---
+title: "Add a live star-history chart to your GitHub README"
+author: "Steven"
+featured: true
+featureImage: "/assets/blog/star-history-in-github-readme.png"
+publishedDate: "2022-03-21T09:39:06.000Z"
+description: "Now we support embedding a live star history chart into your GitHub README. This feature is quite handy. A snippet would appear after querying the repository from our star-history.com main page; the only thing you need to do is simply copy that snippet into your GitHub README markdown file."
+---
+
 ![star-history-svg-example](/assets/blog/star-history-svg-example.png)
 Now we support embedding a live star history chart into your GitHub README.  Above is the screenshot from our own [GitHub start history repo](https://github.com/star-history/star-history).
 

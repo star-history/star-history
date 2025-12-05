@@ -1,3 +1,12 @@
+---
+title: "Starlet #3 Mockoon - Mock your API in seconds"
+author: "Guillaume (255kb)"
+featured: true
+featureImage: "/assets/blog/mockoon/banner.webp"
+publishedDate: "2023-08-01T00:00:00.000Z"
+description: "Mockoon is a versatile API mocking tool with a desktop application and a CLI. It is simple and easy to use, yet powerful and heavily customizable."
+---
+
 _This is the third issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project)._
 
 ---

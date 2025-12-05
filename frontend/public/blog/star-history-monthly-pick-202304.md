@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly Pick | April 2023"
+author: "Mila"
+featured: true
+featureImage: "/assets/blog/star-history-monthly-pick-202304/banner.webp"
+publishedDate: "2023-05-30T09:50:06.000Z"
+description: "AIGC-related projects are getting all the heat, but we still managed to find some interesting open-source projects that are not ChatGPT-based."
+---
+
 AI is still the trend of April. But amidst the AICG wave, we still managed to locate some interesting projects that are not directly related to ChatGPT / LLM / AI / ML, kudos to us!
 
 ## Azimutt

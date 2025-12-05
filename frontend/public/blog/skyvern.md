@@ -1,3 +1,12 @@
+---
+title: "Starlet #19 Skyvern: Browser automation using LLMs and computer vision"
+author: "Kerem Yilmaz"
+featured: true
+featureImage: "/assets/blog/skyvern/banner.webp"
+publishedDate: "2024-03-28T00:00:00.000Z"
+description: "Skyvern is an open-source tool that uses LLMs and computer vision to help companies automate and scale browser-based workflows."
+---
+
 *This is the nineteenth issue of The Starlet List. If you want to prompt your open source project on star-history.com for free, please check out our [announcement](/blog/list-your-open-source-project).*
 
 ---

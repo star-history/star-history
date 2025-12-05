@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly April 2025 | AI Verse"
+author: "ayra"
+featured: true
+featureImage: "/assets/blog/ai-verse/banner.webp"
+publishedDate: "2025-04-16T12:00:00.000Z"
+description: "Exploring most advanced AI verse projects in terms of digital twins, geographical visualization, and robotic simulation."
+---
+
 Recently, the concept of an "AI Verse" (AI-powered virtual spaces and ecosystems) is gaining momentum as developers create increasingly sophisticated tools for building intelligent virtual entities and environments.
 
 Today, we'll explore three cutting-edge open-source projects that are pushing the boundaries of what's possible in this exciting space:

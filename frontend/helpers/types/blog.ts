@@ -5,6 +5,5 @@ export interface Blog {
     featured: boolean
     featureImage: string
     publishedDate: string
-    excerpt: string
-    readingTime: string
+    description: string
 }

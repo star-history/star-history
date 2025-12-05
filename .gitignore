@@ -40,3 +40,6 @@ next-env.d.ts
 
 # server
 token.env
+
+# generated files
+frontend/helpers/blog.json

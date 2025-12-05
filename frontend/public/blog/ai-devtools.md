@@ -1,3 +1,12 @@
+---
+title: "Star History Monthly November 2024 | AI DevTools"
+author: "dec"
+featured: true
+featureImage: "/assets/blog/ai-devtools/banner.webp"
+publishedDate: "2024-11-20T00:00:00.000Z"
+description: "AI DevTools are tools that help developers build, test, and deploy AI applications."
+---
+
 AI development tools are essential for modern developers to build, test, and monitor AI applications efficiently. Here are some promising open-source tools that can help streamline your AI development workflow.
 
 -   [Vespper](#vespper)
