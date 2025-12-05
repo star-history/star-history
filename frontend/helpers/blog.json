@@ -1,5 +1,14 @@
 [
     {
+        "title": "Star History Monthly December 2025 | React",
+        "slug": "react",
+        "author": "Adela",
+        "featured": true,
+        "featureImage": "/assets/blog/react/banner.webp",
+        "publishedDate": "2025-12-04:12:00.000Z",
+        "excerpt": "React tools that are shaping how teams build interfaces, data flows, dashboards, and developer tooling."
+    },
+    {
         "title": "Star History Monthly November 2025 | Agent SDK/Framework",
         "slug": "agent-sdk-framework",
         "author": "Adela",
