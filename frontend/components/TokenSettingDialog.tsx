@@ -18,7 +18,7 @@ export default function TokenSettingDialog({ onClose, tokenCache }: TokenSetting
     useEffect(() => {
         setHasToken(!!(tokenCache || store.token))
         if (!hasToken && token === "") {
-            setToken(""); // Clear token state if token status is "Add Access Token" and token is empty
+            setToken("");
         }
     }, [tokenCache, store.token, hasToken, token])
 

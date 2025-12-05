@@ -8,7 +8,7 @@ import { AppStateProvider, useAppStore } from "../store";
 const Header: React.FC = () => {
   const store = useAppStore()
   const [showSetTokenDialog, setShowSetTokenDialog] = useState(false);
-  const [headerText, setHeaderText] = useState("Add Access Token");
+  const [headerText, setHeaderText] = useState("Add access token");
   const [state, setState] = useState<State>({
     showDropMenu: false,
     showSetTokenDialog: false,
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
   };
 
 useEffect(() => {
-  setHeaderText(store.token ? "Edit Access Token" : "Add Access Token")
+  setHeaderText(store.token ? "Edit access token" : "Add access token")
 }, [store.token]);
 
   return (
@@ -68,7 +68,7 @@ useEffect(() => {
             </div>
             <div className="hidden md:flex flex-row justify-center items-center">
               <Link href="/blog/how-to-use-github-star-history" className="flex flex-row items-center text-base px-2 hover:underline">
-                <span className="text-white">📕 How to Use</span>
+                <span className="text-white">📕 How to use this site</span>
               </Link>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
