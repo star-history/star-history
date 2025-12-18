@@ -41,8 +41,8 @@ const sponsors: Sponsor[] = [
       logo: utils.absolutifyLink("/assets/sponsors/dbhub/logo.webp"),
       landingImage: utils.absolutifyLink("/assets/sponsors/dbhub/landing.webp"),
       link: "https://dbhub.ai?utm_source=star-history",
-      logoSlogan: "DBHub: Universal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
-      landingSlogan: "Universal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB."
+      logoSlogan: "DBHub: Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
+      landingSlogan: "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB."
     },
     // {
     //   name: "pgschema",
