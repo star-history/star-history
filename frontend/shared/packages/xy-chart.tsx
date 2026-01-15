@@ -238,7 +238,8 @@ const XYChart = (
         moveDown: chartHeight,
         fontFamily: fontFamily,
         stroke: options.strokeColor,
-        type: options.xTickLabelType
+        type: options.xTickLabelType,
+        dateFormat: options.dateFormat
     })
     drawYAxis(svgChart, {
         yScale,

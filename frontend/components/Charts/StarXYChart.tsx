@@ -9,10 +9,10 @@ interface Props {
     chartMode?: string
     useLogScale?: boolean
     legendPosition?: LegendPosition
-    timeFormat?: string
+    dateFormat?: string
     id?: string
 }
-const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", useLogScale = false, legendPosition = "top-left" }) => {
+const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date", useLogScale = false, legendPosition = "top-left", dateFormat }) => {
     const chartContainerElRef = useRef<HTMLDivElement | null>(null)
     const svgElRef = useRef<SVGSVGElement | null>(null)
 
@@ -37,12 +37,13 @@ const StarXYChart: React.FC<Props> = ({ classname = "", data, chartMode = "Date"
                         xTickLabelType: chartMode === "Date" ? "Date" : "Number",
                         envType: "browser",
                         useLogScale: useLogScale,
-                        legendPosition: legendPosition
+                        legendPosition: legendPosition,
+                        dateFormat: dateFormat
                     }
                 )
             }
         },
-        [chartMode, useLogScale, legendPosition]
+        [chartMode, useLogScale, legendPosition, dateFormat]
     )
 
     useEffect(() => {

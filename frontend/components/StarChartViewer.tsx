@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from "react"
+import dayjs from "dayjs"
 import StarXYChart from "./Charts/StarXYChart"
 import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
@@ -288,7 +289,8 @@ function StarChartViewer() {
                 "data:text/csv;charset=utf-8," +
                 state.chartData.datasets.reduce((acc: string, dataset: any) => {
                     dataset.data.forEach((dataPoint: any) => {
-                        acc += `${dataset.label},${new Date(dataPoint.x).toString()},${dataPoint.y}\n`
+                        const xValue = state.chartMode === "Date" ? dayjs(dataPoint.x).format(store.state.dateFormat) : String(dataPoint.x)
+                        acc += `${dataset.label},${xValue},${dataPoint.y}\n`
                     })
                     return acc
                 }, "Repository,Date,Stars\n")
@@ -390,6 +392,19 @@ function StarChartViewer() {
                                 <input className="mr-2" type="checkbox" checked={state.useLogScale} />
                                 Log scale
                             </div>
+                            <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                                <span className="mr-2">Date format</span>
+                                <select
+                                    className="h-8 px-2 border rounded bg-white"
+                                    value={store.state.dateFormat}
+                                    onChange={(e) => store.actions.setDateFormat(e.target.value)}
+                                >
+                                    <option value="MMM DD, YYYY">MMM DD, YYYY</option>
+                                    <option value="YYYY-MM-DD">yyyy-mm-dd</option>
+                                    <option value="YYYY/MM/DD">yyyy/mm/dd</option>
+                                    <option value="DD/MM/YYYY">dd/mm/yyyy</option>
+                                </select>
+                            </div>
                             <div
                                 className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                                 onClick={handleToggleChartBtnClick}
@@ -400,7 +415,7 @@ function StarChartViewer() {
                         </div>
                     </>
                 )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-6" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-6" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} dateFormat={store.state.dateFormat} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog

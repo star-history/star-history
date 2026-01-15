@@ -10,6 +10,7 @@ interface AppState {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    dateFormat: string;
 }
 
 interface AppStateContextProps {
@@ -20,6 +21,7 @@ interface AppStateContextProps {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    dateFormat: string;
     token: string;
     state: AppState;
     actions: {
@@ -31,6 +33,7 @@ interface AppStateContextProps {
         setChartMode(chartMode: ChartMode): void;
         setUseLogScale(useLogScale: boolean): void;
         setLegendPosition(legendPosition: LegendPosition): void;
+        setDateFormat(dateFormat: string): void;
     };
 }
 
@@ -44,6 +47,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         chartMode: "Date",
         useLogScale: false,
         legendPosition: "top-left",
+        dateFormat: "MMM DD, YYYY",
     });
 
     const router = useRouter();
@@ -56,6 +60,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
             let legendPosition: LegendPosition = "top-left";
+            let dateFormat = state.dateFormat || "MMM DD, YYYY";
 
             const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
 
@@ -81,6 +86,11 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                     if (validLegendPositions.includes(position)) {
                         legendPosition = position;
                     }
+                } else if (value.startsWith("dateFormat=")) {
+                    const raw = value.split("=").slice(1).join("=")
+                    if (raw) {
+                        dateFormat = decodeURIComponent(raw)
+                    }
                 } else {
                     repos.push(value);
                 }
@@ -94,6 +104,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 chartMode: chartMode,
                 useLogScale: useLogScale,
                 legendPosition: legendPosition,
+                dateFormat: dateFormat,
             });
         };
     
@@ -141,6 +152,9 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setLegendPosition: (legendPosition: LegendPosition) => {
             setState((prev) => ({ ...prev, legendPosition }));
         },
+        setDateFormat: (dateFormat: string) => {
+            setState((prev) => ({ ...prev, dateFormat }));
+        },
     };
 
     const store: AppStateContextProps = {
@@ -149,6 +163,7 @@ export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         chartMode: state.chartMode,
         useLogScale: state.useLogScale,
         legendPosition: state.legendPosition,
+        dateFormat: state.dateFormat,
         token: state.token,
         state,
         actions,

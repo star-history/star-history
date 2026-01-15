@@ -41,6 +41,7 @@ const startServer = async () => {
     const dateParam = ctx.query["date"];
     const logscaleParam = ctx.query["logscale"];
     const legendParam = `${ctx.query["legend"]}`;
+    const dateFormatParam = `${ctx.query["dateFormat"]}`;
     let type: ChartMode = "Date";
     let size = `${ctx.query["size"]}`;
 
@@ -153,6 +154,7 @@ const startServer = async () => {
         },
         {
           xTickLabelType: type === "Date" ? "Date" : "Number",
+          dateFormat: dateFormatParam && dateFormatParam !== "undefined" ? dateFormatParam : undefined,
           chartWidth: getChartWidthWithSize(size),
           useLogScale: useLogScale,
           legendPosition: legendPosition,

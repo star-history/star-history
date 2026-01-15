@@ -24,6 +24,7 @@ const EmbedChart: React.FC = () => {
             params += `&logscale`
         }
         params += `&legend=${store.legendPosition}`
+        params += `&dateFormat=${encodeURIComponent(store.dateFormat)}`
         return params
     }
 

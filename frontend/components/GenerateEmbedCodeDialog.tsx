@@ -26,11 +26,12 @@ const GenerateEmbedCodeDialog: React.FC<GenerateEmbedCodeDialogProps> = ({ onClo
         const chartModeParam = store.chartMode === "Date" ? "type=date" : "type=timeline"
         const logScaleParam = store.useLogScale ? "&logscale" : ""
         const legendParam = `&legend=${store.legendPosition}`
+        const dateFormatParam = `&dateFormat=${encodeURIComponent(store.dateFormat)}`
         setState({
             ...state,
-            embedCode: `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${window.location.origin}/embed?secret=${secret}#${store.repos.join("&")}&${chartModeParam}${logScaleParam}${legendParam}" frameBorder="0"></iframe>`
+            embedCode: `<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="${window.location.origin}/embed?secret=${secret}#${store.repos.join("&")}&${chartModeParam}${logScaleParam}${legendParam}${dateFormatParam}" frameBorder="0"></iframe>`
         })
-    }, [store.repos, store.chartMode, store.useLogScale, store.legendPosition, state])
+    }, [store.repos, store.chartMode, store.useLogScale, store.legendPosition, store.dateFormat, state])
 
     useEffect(() => {
         generateEmbedCode()

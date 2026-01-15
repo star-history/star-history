@@ -1,4 +1,5 @@
 import { axisBottom, axisLeft, AxisScale } from "d3-axis"
+import dayjs from "dayjs"
 import { D3Selection } from "../types"
 import getFormatNumber, { getNumberFormatUnit, NumberUnitType } from "./getFormatNumber.js"
 import getFormatTimeline, { DurationUnitType, getTimestampFormatUnit } from "./getFormatTimeline.js"
@@ -10,10 +11,15 @@ interface DrawXAxisConfig {
     fontFamily: string
     stroke: string
     type: "Date" | "Number"
+    dateFormat?: string
 }
 
-export const drawXAxis = (selection: D3Selection, { xScale, tickCount, moveDown, fontFamily, stroke, type }: DrawXAxisConfig) => {
+export const drawXAxis = (selection: D3Selection, { xScale, tickCount, moveDown, fontFamily, stroke, type, dateFormat }: DrawXAxisConfig) => {
     const xAxisGenerator = axisBottom(xScale).tickSize(0).tickPadding(6).ticks(tickCount)
+
+    if (type === "Date" && dateFormat) {
+        xAxisGenerator.tickFormat((d) => dayjs(d as any).format(dateFormat))
+    }
 
     if (type === "Number") {
         let index = 1
