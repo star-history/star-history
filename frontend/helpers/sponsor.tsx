@@ -20,8 +20,8 @@ interface Sponsor {
 const sponsors: Sponsor[] = [
     {
       name: "Bytebase",
-      logo: utils.absolutifyLink("/assets/sponsors/bytebase/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/bytebase/landing.webp"),
+      logo: utils.absolutifyLink("/assets/ft/bytebase/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/ft/bytebase/landing.webp"),
       link: "https://bytebase.com?utm_source=star-history",
       logoSlogan:
         "Bytebase: Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
@@ -30,24 +30,24 @@ const sponsors: Sponsor[] = [
     },
     {
         name: "Dify",
-        logo: utils.absolutifyLink("/assets/sponsors/dify/logo.webp"),
-        landingImage: utils.absolutifyLink("/assets/sponsors/dify/landing.webp"),
+        logo: utils.absolutifyLink("/assets/ft/dify/logo.webp"),
+        landingImage: utils.absolutifyLink("/assets/ft/dify/landing.webp"),
         link: "https://dify.ai/?utm_source=star-history",
         logoSlogan: "Dify: Open-source platform for building LLM apps, from agents to AI workflows.",
         landingSlogan: "Open-source platform for building LLM apps, from agents to AI workflows."
     },
     {
       name: "DBHub",
-      logo: utils.absolutifyLink("/assets/sponsors/dbhub/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/sponsors/dbhub/landing.webp"),
+      logo: utils.absolutifyLink("/assets/ft/dbhub/logo.webp"),
+      landingImage: utils.absolutifyLink("/assets/ft/dbhub/landing.webp"),
       link: "https://dbhub.ai?utm_source=star-history",
       logoSlogan: "DBHub: Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
       landingSlogan: "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB."
     },
     // {
     //   name: "pgschema",
-    //   logo: utils.absolutifyLink("/assets/sponsors/pgschema/logo.webp"),
-    //   landingImage: utils.absolutifyLink("/assets/sponsors/pgschema/landing.webp"),
+    //   logo: utils.absolutifyLink("/assets/ft/pgschema/logo.webp"),
+    //   landingImage: utils.absolutifyLink("/assets/ft/pgschema/landing.webp"),
     //   link: "https://github.com/pgschema/pgschema/?utm_source=star-history",
     //   logoSlogan: "pgschema: Postgres declarative schema migration, like Terraform.",
     //   landingSlogan: "Postgres declarative schema migration, like Terraform."
