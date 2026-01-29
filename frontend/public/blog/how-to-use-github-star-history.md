@@ -95,7 +95,7 @@ When you are done, click **Generate token** at the bottom of the page.
 
 ![edit-gh-access-token](/assets/blog/how-to-use-github-star-history/edit-gh-access-token.webp)
 
-### How to embed a live star history chart inside your GitHub project [README.md](http://README.md)
+### How to embed a live star history chart inside your GitHub project README.md
 
 1. Click **Embed** below the chart.
 
@@ -107,7 +107,7 @@ When you are done, click **Generate token** at the bottom of the page.
 
 ![gh-readme](/assets/blog/how-to-use-github-star-history/gh-readme.webp)
 
-### Chrome extension
+## Chrome extension
 
 1. Visit [extension page](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
    ![home-chrome-extension](/assets/blog/how-to-use-github-star-history/home-chrome-extension.webp)
