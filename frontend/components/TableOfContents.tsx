@@ -40,7 +40,7 @@ const TableOfContents: React.FC<Props> = ({ items }) => {
     }
 
     return (
-        <div className="sticky top-4 flex flex-col justify-start items-start w-full h-fit">
+        <div className="sticky top-28 flex flex-col justify-start items-start w-full h-fit">
             <div className="w-full px-2 pt-4 flex flex-col justify-start items-start">
                 <h3 className="text-sm font-semibold text-gray-900 mb-3">On this page</h3>
                 <nav className="w-full">
