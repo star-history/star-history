@@ -6,6 +6,7 @@ import Footer from "../../components/footer"
 import Header from "../../components/header"
 import SponsorFooterBanner from "../../components/SponsorView"
 import RightSidebar from "../../components/RightSidebar"
+import TableOfContents, { TocItem } from "../../components/TableOfContents"
 import { GetStaticPropsContext, GetStaticPaths } from "next"
 import path from "path"
 import fs from "fs/promises"
@@ -25,9 +26,20 @@ interface Blog {
 interface State {
     blog: Blog
     parsedBlogHTML?: string
+    tocItems: TocItem[]
 }
 
-const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
+// Generate a slug from heading text
+function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .trim()
+}
+
+const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
     return (
         <AppStateProvider>
             <div className="relative w-full h-auto min-h-screen flex flex-col">
@@ -57,7 +69,10 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML }) => {
 
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
+                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[200px_1fr_256px]">
+                        <div className="w-full hidden lg:block">
+                            <TableOfContents items={tocItems} />
+                        </div>
                         {
                             blog == null ? (
                                 <div className="w-full h-10 flex flex-col justify-center items-center">
@@ -113,7 +128,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     let returnObj = {
         props: {
             blog: null as Blog | null,
-            parsedBlogHTML: ""
+            parsedBlogHTML: "",
+            tocItems: [] as TocItem[]
         }
     }
 
@@ -129,10 +145,59 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         const fileContent = await fs.readFile(filePath, "utf8")
         const { content } = matter(fileContent)
 
+        // Extract headings for TOC
+        const tokens = marked.lexer(content)
+        const tocItems: TocItem[] = []
+        const slugCounts: Record<string, number> = {}
+
+        tokens.forEach((token) => {
+            if (token.type === "heading") {
+                const headingToken = token as { type: "heading"; depth: number; text: string }
+                if (headingToken.depth >= 2 && headingToken.depth <= 3) {
+                    let slug = slugify(headingToken.text)
+
+                    // Handle duplicate slugs by appending a number
+                    if (slugCounts[slug] !== undefined) {
+                        slugCounts[slug]++
+                        slug = `${slug}-${slugCounts[slug]}`
+                    } else {
+                        slugCounts[slug] = 0
+                    }
+
+                    tocItems.push({
+                        id: slug,
+                        text: headingToken.text,
+                        level: headingToken.depth
+                    })
+                }
+            }
+        })
+
+        // Configure marked to add IDs to headings
+        const renderer = new marked.Renderer()
+        const headingSlugCounts: Record<string, number> = {}
+
+        renderer.heading = function (text: string, level: number) {
+            let slug = slugify(text.replace(/<[^>]+>/g, ''))
+
+            // Handle duplicate slugs
+            if (headingSlugCounts[slug] !== undefined) {
+                headingSlugCounts[slug]++
+                slug = `${slug}-${headingSlugCounts[slug]}`
+            } else {
+                headingSlugCounts[slug] = 0
+            }
+
+            return `<h${level} id="${slug}">${text}</h${level}>\n`
+        }
+
+        const parsedBlogHTML = marked.parse(content, { renderer }) as string
+
         returnObj = {
             props: {
                 blog: blog,
-                parsedBlogHTML: marked.parse(content)
+                parsedBlogHTML,
+                tocItems
             }
         }
     } catch (error) {
