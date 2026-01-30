@@ -31,9 +31,7 @@ const drawLegend = (selection: D3Selection, { items, strokeColor, backgroundColo
 
     // Calculate background dimensions first
     items.forEach((item) => {
-        // Add extra length for lobster emoji on moltbot
-        const extraLength = item.text.toLowerCase() === "moltbot/moltbot" ? 3 : 0
-        maxTextLength = Math.max(item.text.length + extraLength, maxTextLength)
+        maxTextLength = Math.max(item.text.length, maxTextLength)
     })
 
     let bboxWidth = maxTextLength * (xkcdCharWidth + 0.5) + colorBlockWidth + legendXPadding
@@ -80,26 +78,13 @@ const drawLegend = (selection: D3Selection, { items, strokeColor, backgroundColo
                 .attr("clip-path", `url(#clip-circle-title-${item.text})`)
         }
         // draw text
-        const textX = legendX + legendXPadding + colorBlockWidth + (shouldDrawLogo ? legendXPadding + logoSize : 0) + 6
-        const textY = legendY + 12 + xkcdCharHeight * i + 8
         textLayer
             .append("text")
             .style("font-size", "15px")
             .style("fill", strokeColor)
-            .attr("x", textX)
-            .attr("y", textY)
+            .attr("x", legendX + legendXPadding + colorBlockWidth + (shouldDrawLogo ? legendXPadding + logoSize : 0) + 6)
+            .attr("y", legendY + 12 + xkcdCharHeight * i + 8)
             .text(item.text)
-
-        // Add lobster emoji for moltbot (browser-only, removed during image export)
-        if (item.text.toLowerCase() === "moltbot/moltbot") {
-            textLayer
-                .append("text")
-                .attr("class", "browser-only")
-                .style("font-size", "15px")
-                .attr("x", textX + item.text.length * xkcdCharWidth + 4)
-                .attr("y", textY)
-                .text("🦞")
-        }
     })
 
     // Update bboxWidth with actual width if possible
