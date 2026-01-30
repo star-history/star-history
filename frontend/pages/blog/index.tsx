@@ -23,15 +23,10 @@ interface Blog {
 const BlogPage: NextPageWithLayout = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [blogs, setBlogs] = useState<Blog[]>([])
-    const [featuredBlogs, setFeaturedBlogs] = useState<Blog[]>([])
 
     useEffect(() => {
         const blogList = blogData as Blog[]
-        const featuredBlogs = blogList.filter((blog) => blog.featured)
-        const blogs = blogList.filter((blog) => !blog.featured)
-
-        setFeaturedBlogs(featuredBlogs)
-        setBlogs(blogs)
+        setBlogs(blogList)
         setIsLoading(false)
     }, [])
 
@@ -54,29 +49,14 @@ const BlogPage: NextPageWithLayout = () => {
                                     <i className="fas fa-spinner animate-spin text-4xl z-10"></i>
                                 </div>
                             )}
-                            {!isLoading && featuredBlogs.length + blogs.length === 0 && (
+                            {!isLoading && blogs.length === 0 && (
                                 <div className="w-full h-10 flex flex-col justify-center items-center">
                                     <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
                                 </div>
                             )}
-                            {!isLoading && featuredBlogs.length + blogs.length > 0 && (
+                            {!isLoading && blogs.length > 0 && (
                                 <div className="w-full flex flex-col justify-start items-center">
-                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {featuredBlogs.map((blog) => (
-                                            <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
-                                                <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
-                                                    <img className="h-48 w-full object-cover rounded-t-md" src={blog.featureImage} alt="" />
-                                                </Link>
-
-                                                <div className="w-full p-6 py-4 flex flex-col justify-start">
-                                                    <Link href={`/blog/${blog.slug}`}>
-                                                        <p className="text-xl font-normal text-dark">{blog.title}</p>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                                         {blogs.map((blog) => (
                                             <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
                                                 {blog.featureImage && (
