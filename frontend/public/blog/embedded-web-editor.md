@@ -1,7 +1,7 @@
 ---
 title: "Star History Monthly January 2026 | Embedded Web Editor"
 author: "Adela"
-featured: true
+featured: false
 featureImage: "/assets/blog/embedded-web-editor/banner.webp"
 publishedDate: "2026-01-23T12:00:00.000Z"
 description: "A categorized overview of open-source web editors designed for embedding, comparing native textarea, CodeMirror-based, and document-model approaches."
