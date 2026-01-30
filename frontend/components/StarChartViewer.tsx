@@ -175,6 +175,7 @@ function StarChartViewer() {
 
         const svgElement = containerElRef.current?.querySelector("svg")?.cloneNode(true) as SVGSVGElement
         svgElement.querySelectorAll(".chart-tooltip-dot").forEach((d) => d.remove())
+        svgElement.querySelectorAll(".browser-only").forEach((d) => d.remove())
         // convert images from url href to data url href
         for (const i of Array.from(svgElement.querySelectorAll("image"))) {
             const url = i.getAttribute("href")
