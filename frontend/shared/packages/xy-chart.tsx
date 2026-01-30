@@ -265,6 +265,59 @@ const XYChart = (
             .attr("fill", "none")
             .attr("stroke", (_, i) => options.dataColors[i])
             .attr("filter", filter)
+
+        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot line when comparing multiple repos
+        // Add prey emojis to repos with more stars than moltbot (the lobster is coming for them!)
+        if (data.datasets.length >= 2) {
+            const moltbotDataset = data.datasets.find(d => d.label.toLowerCase() === "moltbot/moltbot")
+            if (moltbotDataset && moltbotDataset.data.length > 0) {
+                const moltbotLastPoint = moltbotDataset.data[moltbotDataset.data.length - 1]
+                const moltbotStars = moltbotLastPoint.y
+
+                // Add lobster emoji to moltbot
+                svgChart
+                    .append("text")
+                    .attr("class", "moltbot-emoji")
+                    .text("🦞")
+                    .attr("x", xScale(moltbotLastPoint.x) || 0)
+                    .attr("y", (yScale(moltbotLastPoint.y) || 0) - 10)
+                    .style("font-size", "20px")
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "auto")
+
+                // Add prey emojis to repos with more stars than moltbot
+                const preyEmojis = ["🐟", "🦐", "🦀", "🐚", "🐌", "🪱"]
+                const usedEmojis: string[] = []
+
+                data.datasets.forEach((dataset) => {
+                    if (dataset.label.toLowerCase() === "moltbot/moltbot") return
+                    if (dataset.data.length === 0) return
+
+                    const lastPoint = dataset.data[dataset.data.length - 1]
+                    if (lastPoint.y > moltbotStars) {
+                        // Pick a random emoji, avoiding duplicates until all are used
+                        let availableEmojis = preyEmojis.filter(e => !usedEmojis.includes(e))
+                        if (availableEmojis.length === 0) {
+                            availableEmojis = [...preyEmojis]
+                            usedEmojis.length = 0
+                        }
+                        const randomIndex = Math.floor(Math.random() * availableEmojis.length)
+                        const emoji = availableEmojis[randomIndex]
+                        usedEmojis.push(emoji)
+
+                        svgChart
+                            .append("text")
+                            .attr("class", "prey-emoji")
+                            .text(emoji)
+                            .attr("x", xScale(lastPoint.x) || 0)
+                            .attr("y", (yScale(lastPoint.y) || 0) - 10)
+                            .style("font-size", "20px")
+                            .attr("text-anchor", "middle")
+                            .attr("dominant-baseline", "auto")
+                    }
+                })
+            }
+        }
     }
 
     if (showDots) {
