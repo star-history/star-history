@@ -283,9 +283,9 @@ const XYChart = (
             .attr("stroke", (_, i) => options.dataColors[i])
             .attr("filter", filter)
 
-        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot or openclaws/openclaws line (always)
+        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot or openclaw/openclaw line (always)
         // Elements have "browser-only" class and are removed during image export
-        const lobsterRepos = ["moltbot/moltbot", "openclaws/openclaws"]
+        const lobsterRepos = ["moltbot/moltbot", "openclaw/openclaw"]
         const moltbotDataset = data.datasets.find(d => lobsterRepos.includes(d.label.toLowerCase()))
         if (moltbotDataset && moltbotDataset.data.length > 0) {
             const moltbotLastPoint = moltbotDataset.data[moltbotDataset.data.length - 1]
