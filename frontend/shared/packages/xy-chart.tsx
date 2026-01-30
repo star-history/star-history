@@ -283,14 +283,15 @@ const XYChart = (
             .attr("stroke", (_, i) => options.dataColors[i])
             .attr("filter", filter)
 
-        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot line (always)
+        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot or openclaws/openclaws line (always)
         // Elements have "browser-only" class and are removed during image export
-        const moltbotDataset = data.datasets.find(d => d.label.toLowerCase() === "moltbot/moltbot")
+        const lobsterRepos = ["moltbot/moltbot", "openclaws/openclaws"]
+        const moltbotDataset = data.datasets.find(d => lobsterRepos.includes(d.label.toLowerCase()))
         if (moltbotDataset && moltbotDataset.data.length > 0) {
             const moltbotLastPoint = moltbotDataset.data[moltbotDataset.data.length - 1]
             const moltbotStars = moltbotLastPoint.y
 
-            // Add lobster emoji to moltbot
+            // Add lobster emoji to moltbot/openclaws
             svgChart
                 .append("text")
                 .attr("class", "moltbot-emoji browser-only")
@@ -301,14 +302,14 @@ const XYChart = (
                 .attr("text-anchor", "middle")
                 .attr("dominant-baseline", "auto")
 
-            // Add prey emojis to repos with more stars than moltbot (the lobster is coming for them!)
+            // Add prey emojis to repos with more stars (the lobster is coming for them!)
             // Only when comparing multiple repos
             if (data.datasets.length >= 2) {
                 const preyEmojis = ["🐟", "🦐", "🦀", "🐚", "🐌", "🪱"]
                 const usedEmojis: string[] = []
 
                 data.datasets.forEach((dataset) => {
-                    if (dataset.label.toLowerCase() === "moltbot/moltbot") return
+                    if (lobsterRepos.includes(dataset.label.toLowerCase())) return
                     if (dataset.data.length === 0) return
 
                     const lastPoint = dataset.data[dataset.data.length - 1]
