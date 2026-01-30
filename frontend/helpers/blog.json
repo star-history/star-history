@@ -1,14 +1,5 @@
 [
     {
-        "title": "Star History Monthly January 2026 | Embedded Web Editor",
-        "slug": "embedded-web-editor",
-        "author": "Adela",
-        "featured": true,
-        "featureImage": "/assets/blog/embedded-web-editor/banner.webp",
-        "publishedDate": "2026-01-23T12:00:00.000Z",
-        "description": "A categorized overview of open-source web editors designed for embedding, comparing native textarea, CodeMirror-based, and document-model approaches."
-    },
-    {
         "title": "star-history.com in 2025",
         "slug": "star-history-2025",
         "author": "Tianzhou",
@@ -16,6 +7,15 @@
         "featureImage": "/assets/blog/star-history-2025/banner.webp",
         "publishedDate": "2026-01-01T09:00:00.000Z",
         "description": "A look back at star-history.com in 2025"
+    },
+    {
+        "title": "Star History Monthly January 2026 | Embedded Web Editor",
+        "slug": "embedded-web-editor",
+        "author": "Adela",
+        "featured": true,
+        "featureImage": "/assets/blog/embedded-web-editor/banner.webp",
+        "publishedDate": "2026-01-23T12:00:00.000Z",
+        "description": "A categorized overview of open-source web editors designed for embedding, comparing native textarea, CodeMirror-based, and document-model approaches."
     },
     {
         "title": "Star History Monthly December 2025 | React",
