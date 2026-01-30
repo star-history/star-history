@@ -144,6 +144,23 @@ const XYChart = (
     addFont(d3Selection)
     addFilter(d3Selection)
 
+    // Add animation styles for moltbot lobster emoji (browser only, skip for image generation)
+    if (options.envType === "browser") {
+        d3Selection.append("style").text(`
+            @keyframes lobster-swim {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(2px, -3px) rotate(-5deg); }
+                50% { transform: translate(0, -5px) rotate(0deg); }
+                75% { transform: translate(-2px, -3px) rotate(5deg); }
+            }
+            .moltbot-emoji {
+                animation: lobster-swim 1.5s ease-in-out infinite;
+                transform-origin: center;
+                transform-box: fill-box;
+            }
+        `)
+    }
+
     const chart = d3Selection.append("g").attr("transform", `translate(${margin.left},${margin.top})`)
 
     const tooltip = new ToolTip({
@@ -265,6 +282,60 @@ const XYChart = (
             .attr("fill", "none")
             .attr("stroke", (_, i) => options.dataColors[i])
             .attr("filter", filter)
+
+        // Add lobster emoji (🦞) at the endpoint of moltbot/moltbot line (always)
+        // Elements have "browser-only" class and are removed during image export
+        const moltbotDataset = data.datasets.find(d => d.label.toLowerCase() === "moltbot/moltbot")
+        if (moltbotDataset && moltbotDataset.data.length > 0) {
+            const moltbotLastPoint = moltbotDataset.data[moltbotDataset.data.length - 1]
+            const moltbotStars = moltbotLastPoint.y
+
+            // Add lobster emoji to moltbot
+            svgChart
+                .append("text")
+                .attr("class", "moltbot-emoji browser-only")
+                .text("🦞")
+                .attr("x", xScale(moltbotLastPoint.x) || 0)
+                .attr("y", (yScale(moltbotLastPoint.y) || 0) - 10)
+                .style("font-size", "20px")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "auto")
+
+            // Add prey emojis to repos with more stars than moltbot (the lobster is coming for them!)
+            // Only when comparing multiple repos
+            if (data.datasets.length >= 2) {
+                const preyEmojis = ["🐟", "🦐", "🦀", "🐚", "🐌", "🪱"]
+                const usedEmojis: string[] = []
+
+                data.datasets.forEach((dataset) => {
+                    if (dataset.label.toLowerCase() === "moltbot/moltbot") return
+                    if (dataset.data.length === 0) return
+
+                    const lastPoint = dataset.data[dataset.data.length - 1]
+                    if (lastPoint.y > moltbotStars) {
+                        // Pick a random emoji, avoiding duplicates until all are used
+                        let availableEmojis = preyEmojis.filter(e => !usedEmojis.includes(e))
+                        if (availableEmojis.length === 0) {
+                            availableEmojis = [...preyEmojis]
+                            usedEmojis.length = 0
+                        }
+                        const randomIndex = Math.floor(Math.random() * availableEmojis.length)
+                        const emoji = availableEmojis[randomIndex]
+                        usedEmojis.push(emoji)
+
+                        svgChart
+                            .append("text")
+                            .attr("class", "prey-emoji browser-only")
+                            .text(emoji)
+                            .attr("x", xScale(lastPoint.x) || 0)
+                            .attr("y", (yScale(lastPoint.y) || 0) - 10)
+                            .style("font-size", "20px")
+                            .attr("text-anchor", "middle")
+                            .attr("dominant-baseline", "auto")
+                    }
+                })
+            }
+        }
     }
 
     if (showDots) {
