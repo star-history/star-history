@@ -49,7 +49,7 @@ useEffect(() => {
       )}
 
       <AppStateProvider>
-        {/* <TopBanner /> */}
+        { <TopBanner /> }
         <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
           <div className="w-full md:max-w-5xl lg:max-w-7xl h-full flex flex-row justify-between items-center px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">

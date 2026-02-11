@@ -1,13 +1,12 @@
-import Link from "next/link";
 
 const TopBanner: React.FC = () => {
     return (
         <nav>
             <div className="flex justify-center items-center gap-x-6 bg-green-600 px-6 py-1 sm:px-3.5 ">
                 <p className="text-sm leading-6 text-white">
-                    <Link href="/blog/list-your-open-source-project">
-                        Want to promote your open source project? Be on our ⭐️Starlet List⭐️ for FREE
-                    </Link>
+                    <a href="http://www.pgconsole.com/?utm_source=star-history" target="_blank" rel="noopener noreferrer">
+                        Treat your Postgres to a better interface. Try pgconsole 👈
+                    </a>
                 </p>
             </div>
         </nav>
