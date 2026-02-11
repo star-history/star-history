@@ -12,7 +12,7 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-row flex-wrap items-center space-x-4">
                     <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
-                        <img className="h-4 mt-2 mr-2" src="/assets/pgconsole.webp" alt="pgconsole" />
+                        <img className="h-4 mt-2 mr-2" src="/assets/pgconsole.svg" alt="pgconsole" />
                         <a href="https://www.pgconsole.com" target="_blank" rel="noopener noreferrer">
                             {" "}
                             pgconsole{" "}
