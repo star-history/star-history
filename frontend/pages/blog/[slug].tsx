@@ -12,6 +12,7 @@ import path from "path"
 import fs from "fs/promises"
 import blogs from "helpers/blog.json"
 import { AppStateProvider } from "store"
+import Head from "next/head"
 
 interface Blog {
     title: string
@@ -42,7 +43,7 @@ function slugify(text: string): string {
 const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
     return (
         <AppStateProvider>
-            <div className="relative w-full h-auto min-h-screen flex flex-col">
+            <Head>
                 <title>{blog ? `${blog.title}` : "GitHub Star History"}</title>
                 {
                     blog && (
@@ -66,7 +67,8 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
                         </>
                     )
                 }
-
+            </Head>
+            <div className="relative w-full h-auto min-h-screen flex flex-col">
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
                     <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[200px_1fr_256px]">
