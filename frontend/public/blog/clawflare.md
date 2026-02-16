@@ -95,7 +95,7 @@ Cloudflare's official OpenClaw deployment runs the agent in a Sandbox container 
 
 - **Tradeoffs**
 
-  - Production-ready means production-priced. At roughly $34.50/month for 24/7 operation on a standard container, plus the $5/month Workers paid plan, this is the most expensive option in the Claw Cast. The setup requires familiarity with Cloudflare's ecosystem — Access, R2, Wrangler, API secrets. And it's explicitly a proof-of-concept that "may break without notice."
+  - Production-ready means production-priced. At roughly $34.50/month for 24/7 operation on a standard container, plus the $5/month Workers paid plan, this is the most expensive option in the Clawflare. The setup requires familiarity with Cloudflare's ecosystem — Access, R2, Wrangler, API secrets. And it's explicitly a proof-of-concept that "may break without notice."
 
 - **Best for:** teams and power users who need a reliable, high-availability OpenClaw deployment without the burden of managing their own infrastructure.
 
@@ -165,4 +165,4 @@ Here's the problem: you give your agent tools to browse the web, and it immediat
 
 The rise of OpenClaw in January 2026 was more than just another viral repository. It signaled a shift toward a more decentralized, privacy-focused, and agentic model of AI. The ecosystem that has sprung up around it is not defined by a single product, but by a diversity of approaches — from a curated catalog of 3,000 skills to a philosophy that says your agent should write its own.
 
-Choosing a project from the "Clawflare" is about more than a feature list; it is about choosing a philosophy. Whether you believe in the power of the cloud, the privacy of bare metal, the elegance of serverless, or the autonomy of a self-extending agent, there is a lobster 🦞 in this cast for you.
+Choosing a project from the "Clawflare" is about more than a feature list; it is about choosing a philosophy. Whether you believe in the power of the cloud, the privacy of bare metal, the elegance of serverless, or the autonomy of a self-extending agent, there is a lobster 🦞 in this flare for you.
