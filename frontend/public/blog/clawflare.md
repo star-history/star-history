@@ -1,15 +1,15 @@
 ---
-title: "Star History Monthly February 2026 | The Claw Cast"
+title: "Star History Monthly February 2026 | Clawflare"
 author: "Adela"
 featured: true
-featureImage: "/assets/blog/claw-cast/banner.webp"
+featureImage: "/assets/blog/clawflare/banner.webp"
 publishedDate: "2026-02-13T12:00:00.000Z"
 description: "A categorized overview of the OpenClaw ecosystem: the skill catalog, the core toolkit, three deployment architectures, and the agent browser that ties it all together."
 ---
 
 January 2026 will be remembered for the explosive arrival of **OpenClaw**, an open-source AI agent that captivated the developer world. What began as a weekend project in late 2025 spiraled into a viral phenomenon, amassing over 145,000 GitHub stars in just ten weeks and drawing two million website visitors in a single week. Peter, the project's creator, embedded the [Star History chart](https://star-history.com/#openclaw/openclaw&Date) in OpenClaw's README to illustrate the speed of its rise — and frankly, the chart speaks for itself. After a few chaotic name changes — from Clawdbot to Moltbot, and finally to OpenClaw — the project has stabilized, but its impact is just beginning to be understood.
 
-![OpenClaw](/assets/blog/claw-cast/openclaw.webp)
+![OpenClaw](/assets/blog/clawflare/openclaw.webp)
 
 Unlike monolithic AI assistants, OpenClaw is a locally-run, privacy-first gateway that connects powerful large language models to the chat applications users already have. This has given rise to a vibrant ecosystem of tools, extensions, and deployment strategies. By February 2026, this ecosystem has settled into **four distinct layers**.
 
@@ -39,7 +39,7 @@ Unlike monolithic AI assistants, OpenClaw is a locally-run, privacy-first gatewa
 
 The OpenClaw skill registry, ClawHub, now lists over 3,000 community-built skills. That's the good news. The bad news is that a significant number of them are spam, duplicates, or outright malicious. `awesome-openclaw-skills` is the community's answer: a curated, categorized, and security-audited list that filters the registry down to what's actually worth installing.
 
-![clawhub](/assets/blog/claw-cast/clawhub.webp)
+![clawhub](/assets/blog/clawflare/clawhub.webp)
 
 - **Why it exists**
 
@@ -87,7 +87,7 @@ Cloudflare's official OpenClaw deployment runs the agent in a Sandbox container 
 
 (And yes — I'm disappointed you don't call it Clawflare.)
 
-![moltworker](/assets/blog/claw-cast/moltworker.webp)
+![moltworker](/assets/blog/clawflare/moltworker.webp)
 
 - **Why it exists**
 
@@ -107,7 +107,7 @@ Cloudflare's official OpenClaw deployment runs the agent in a Sandbox container 
 
 At the opposite end of the spectrum from `moltworker` lies `mimiclaw`. This project is a remarkable feat of engineering: a complete reimplementation of the OpenClaw agent architecture in pure C, designed to run on a tiny, $5 ESP32-S3 microcontroller.
 
-![mimiclaw](/assets/blog/claw-cast/mimiclaw.webp)
+![mimiclaw](/assets/blog/clawflare/mimiclaw.webp)
 
 - **Why it exists**
 
@@ -127,7 +127,7 @@ At the opposite end of the spectrum from `moltworker` lies `mimiclaw`. This proj
 
 `gitclaw` runs an OpenClaw assistant entirely within GitHub Actions. You interact with it by opening Issues and leaving comments. The agent's memory, conversation history, and state are all committed to the Git repository itself — giving it persistent, searchable, version-controlled memory across sessions.
 
-![gitclaw](/assets/blog/claw-cast/gitclaw.webp)
+![gitclaw](/assets/blog/clawflare/gitclaw.webp)
 
 - **Why it exists**
 
@@ -149,7 +149,7 @@ At the opposite end of the spectrum from `moltworker` lies `mimiclaw`. This proj
 
 Here's the problem: you give your agent tools to browse the web, and it immediately gets blocked by Cloudflare, Google, and every other bot-detection system. Stealth plugins? They become detectable fingerprints themselves. `camofox-browser` solves this at the deepest level — it's a headless browser server built on Camoufox (a Firefox fork) that implements anti-detection at the C++ level, not through JavaScript shims.
 
-![camofox-browser](/assets/blog/claw-cast/camofox-browser.webp)
+![camofox-browser](/assets/blog/clawflare/camofox-browser.webp)
 
 - **Why it exists**
 
@@ -165,4 +165,4 @@ Here's the problem: you give your agent tools to browse the web, and it immediat
 
 The rise of OpenClaw in January 2026 was more than just another viral repository. It signaled a shift toward a more decentralized, privacy-focused, and agentic model of AI. The ecosystem that has sprung up around it is not defined by a single product, but by a diversity of approaches — from a curated catalog of 3,000 skills to a philosophy that says your agent should write its own.
 
-Choosing a project from the "Claw Cast" is about more than a feature list; it is about choosing a philosophy. Whether you believe in the power of the cloud, the privacy of bare metal, the elegance of serverless, or the autonomy of a self-extending agent, there is a lobster 🦞 in this cast for you.
+Choosing a project from the "Clawflare" is about more than a feature list; it is about choosing a philosophy. Whether you believe in the power of the cloud, the privacy of bare metal, the elegance of serverless, or the autonomy of a self-extending agent, there is a lobster 🦞 in this cast for you.
