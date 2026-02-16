@@ -7,7 +7,11 @@ publishedDate: "2026-02-13T12:00:00.000Z"
 description: "A categorized overview of the OpenClaw ecosystem: the skill catalog, the core toolkit, three deployment architectures, and the agent browser that ties it all together."
 ---
 
-**[OpenClaw](https://github.com/openclaw/openclaw)**, an open-source, locally-run AI agent, went from a weekend project to over 145,000 GitHub stars in just ten weeks — drawing two million website visitors in a single week. Peter, the project's creator, embedded the [Star History chart](https://star-history.com/#openclaw/openclaw&Date) in OpenClaw's README to show the speed of its rise, and the chart speaks for itself. After a few chaotic name changes — from Clawdbot to Moltbot, and finally to OpenClaw — the project has found its footing, and now its creator is making his next move: Peter [announced](https://steipete.me/posts/2026/openclaw) he is joining OpenAI to work on AI agents, and is transitioning OpenClaw into an independent, OpenAI-sponsored foundation — open-source, multi-model, and vendor-neutral.
+**[OpenClaw](https://github.com/openclaw/openclaw)**, an open-source, locally-run AI agent, went from a weekend project to over 199,000 GitHub stars in just ten weeks — drawing two million website visitors in a single week. Peter, the project's creator, embedded the [Star History chart](https://star-history.com/#openclaw/openclaw&Date) in OpenClaw's README to show the speed of its rise, and the chart speaks for itself.
+
+![openclaw-star-history](/assets/blog/clawflare/openclaw-star-history.webp)
+
+After a few chaotic name changes — from Clawdbot to Moltbot, and finally to OpenClaw — the project has found its footing, and now its creator is making his next move: Peter [announced](https://steipete.me/posts/2026/openclaw) he is joining OpenAI to work on AI agents, and is transitioning OpenClaw into an independent, OpenAI-sponsored foundation — open-source, multi-model, and vendor-neutral.
 
 ![OpenClaw](/assets/blog/clawflare/openclaw.webp)
 
