@@ -54,4 +54,6 @@ const sponsors: Sponsor[] = [
     // },
 ]
 
+export const sponsorList = sponsors
+
 export const randomSponsors = sampleSize(sponsors, sponsors.length)

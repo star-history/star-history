@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react"
-import { randomSponsors } from "../helpers/sponsor"
+import { sponsorList } from "../helpers/sponsor"
 import Link from "next/link"
 
 type Sponsor = {
@@ -8,12 +7,7 @@ type Sponsor = {
 }
 
 const BytebaseBanner: React.FC<Sponsor> = ({ className }) => {
-    const [isClient, setIsClient] = useState(false)
-    const sponsor = isClient ? randomSponsors[0] : null
-
-    useEffect(() => {
-        setIsClient(true)
-    }, [])
+    const sponsor = sponsorList[0]
 
     if (!sponsor) {
         return null // or a loading state if needed

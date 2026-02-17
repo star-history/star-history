@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react"
-import { randomSponsors } from "../helpers/sponsor"
+import { sponsorList } from "../helpers/sponsor"
 
 const RightSidebar: React.FC = () => {
     return (
         <div className="sticky top-28 flex flex-col justify-start items-start w-full h-fit">
             <div className="w-full px-2 pt-4 flex flex-col justify-start items-start">
-                {randomSponsors.map((sponsor) => (
+                {sponsorList.map((sponsor) => (
                     <a
                         key={sponsor.name}
                         href={sponsor.link}
