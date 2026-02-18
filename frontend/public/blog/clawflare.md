@@ -35,7 +35,7 @@ Unlike monolithic AI assistants, OpenClaw is a privacy-first gateway that connec
 
 ## The Skill Ecosystem
 
-### **awesome-openclaw-skills**
+### awesome-openclaw-skills
 
 🔗 [https://github.com/VoltAgent/awesome-openclaw-skills](https://github.com/VoltAgent/awesome-openclaw-skills)
 
@@ -57,7 +57,7 @@ The OpenClaw skill registry, ClawHub, now lists over 3,000 community-built skill
 
 ## The Core Toolkit
 
-### **pi-mono**
+### pi-mono
 
 🔗 [https://github.com/badlogic/pi-mono](https://github.com/badlogic/pi-mono)
 
@@ -81,7 +81,7 @@ In January, Armin Ronacher published [a post](https://lucumr.pocoo.org/2026/1/31
 
 By early 2026, the deployment landscape has split into three camps, each representing a clear philosophical tradeoff: the power of the cloud, the privacy of bare metal, and the elegance of serverless.
 
-### **moltworker**
+### moltworker
 
 🔗 [https://github.com/cloudflare/moltworker](https://github.com/cloudflare/moltworker)
 
@@ -103,7 +103,7 @@ Cloudflare's official OpenClaw deployment runs the agent in a Sandbox container 
 
 - **Best for:** teams and power users who need a reliable, high-availability OpenClaw deployment without the burden of managing their own infrastructure.
 
-### **mimiclaw**
+### mimiclaw
 
 🔗 [https://github.com/memovai/mimiclaw](https://github.com/memovai/mimiclaw)
 
@@ -123,7 +123,7 @@ At the opposite end of the spectrum from `moltworker` lies `mimiclaw`. This proj
 
 - **Best for:** tinkerers, privacy advocates, and embedded developers. `mimiclaw` is a compelling glimpse into a future where powerful AI can be truly decentralized and owned by the individual.
 
-### **gitclaw**
+### gitclaw
 
 🔗 [https://github.com/SawyerHood/gitclaw](https://github.com/SawyerHood/gitclaw)
 
@@ -145,7 +145,7 @@ At the opposite end of the spectrum from `moltworker` lies `mimiclaw`. This proj
 
 ## The Agent's Browser
 
-### **camofox-browser**
+### camofox-browser
 
 🔗 [https://github.com/jo-inc/camofox-browser](https://github.com/jo-inc/camofox-browser)
 
