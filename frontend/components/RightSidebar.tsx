@@ -1,12 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react"
-import { sponsorList } from "../helpers/sponsor"
+import React, { useEffect, useState } from "react"
+import { sponsorList, randomSponsors } from "../helpers/sponsor"
 
 const RightSidebar: React.FC = () => {
+    const [sponsors, setSponsors] = useState(sponsorList)
+
+    useEffect(() => {
+        setSponsors(randomSponsors)
+    }, [])
+
     return (
         <div className="sticky top-28 flex flex-col justify-start items-start w-full h-fit">
             <div className="w-full px-2 pt-4 flex flex-col justify-start items-start">
-                {sponsorList.map((sponsor) => (
+                {sponsors.map((sponsor) => (
                     <a
                         key={sponsor.name}
                         href={sponsor.link}
