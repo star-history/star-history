@@ -28,6 +28,7 @@ const sponsors: Sponsor[] = [
       landingSlogan:
         "Database DevSecOps for MySQL, PG, Oracle, SQL Server, Snowflake, ClickHouse, Mongo, Redis",
     },
+    // 2026.12.31
     {
         name: "Dify",
         logo: utils.absolutifyLink("/assets/ft/dify/logo.webp"),
@@ -36,14 +37,23 @@ const sponsors: Sponsor[] = [
         logoSlogan: "Dify: Open-source platform for building LLM apps, from agents to AI workflows.",
         landingSlogan: "Open-source platform for building LLM apps, from agents to AI workflows."
     },
+    // 2027.02.20
     {
-      name: "DBHub",
-      logo: utils.absolutifyLink("/assets/ft/dbhub/logo.webp"),
-      landingImage: utils.absolutifyLink("/assets/ft/dbhub/landing.webp"),
-      link: "https://dbhub.ai?utm_source=star-history",
-      logoSlogan: "DBHub: Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
-      landingSlogan: "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB."
+        name: "SerpApi",
+        logo: utils.absolutifyLink("/assets/ft/serpapi/logo.webp"),
+        landingImage: utils.absolutifyLink("/assets/ft/serpapi/landing.webp"),
+        link: "https://serpapi.com/?utm_source=starhistory",
+        logoSlogan: "Scrape search engine results easily using a simple API, including Google, Google Maps, Amazon, and more!",
+        landingSlogan: "Scrape search engine results easily using a simple API, including Google, Google Maps, Amazon, and more!"
     },
+    // {
+    //   name: "DBHub",
+    //   logo: utils.absolutifyLink("/assets/ft/dbhub/logo.webp"),
+    //   landingImage: utils.absolutifyLink("/assets/ft/dbhub/landing.webp"),
+    //   link: "https://dbhub.ai?utm_source=star-history",
+    //   logoSlogan: "DBHub: Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
+    //   landingSlogan: "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB."
+    // },
     // {
     //   name: "pgschema",
     //   logo: utils.absolutifyLink("/assets/ft/pgschema/logo.webp"),

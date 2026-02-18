@@ -57,6 +57,12 @@
 
 <a href="https://dify.ai/?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/dify/landing.webp" /></a>
 
+### SerpApi
+
+[SerpApi](https://serpapi.com/?utm_source=starhistory) scrapes search engine results easily using a simple API, including Google, Google Maps, Amazon, and more
+
+<a href="https://serpapi.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/sponsors/serpapi/landing.webp" /></a>
+
 ## 💜 Token Contributor
 
 We need zero-scope individual tokens to bypass GitHub API rate limiter, thanks to all our donators:
