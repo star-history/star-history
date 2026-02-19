@@ -28,7 +28,14 @@ const Footer = () => {
                         <img className="h-4 mt-2 mr-1" src="/assets/dbhub.svg" alt="dbhub" />
                         <a href="https://dbhub.ai" target="_blank" rel="noopener noreferrer">
                             {" "}
-                            dbhub{" "}
+                            DBHub{" "}
+                        </a>
+                    </div>
+                    <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
+                        <img className="h-4 mt-2 mr-1" src="/assets/arfak.webp" alt="arfak" />
+                        <a href="https://www.arfak.ai" target="_blank" rel="noopener noreferrer">
+                            {" "}
+                            Arfak{" "}
                         </a>
                     </div>
                 </div>
