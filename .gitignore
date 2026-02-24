@@ -22,6 +22,7 @@ robots.txt
 # misc
 .DS_Store
 *.pem
+plans/
 
 # debug
 npm-debug.log*
@@ -30,6 +31,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+arena/gcp-service-account.json
+arena/github-token.env
+arena/*.db-shm
+arena/*.db-wal
 
 # vercel
 .vercel

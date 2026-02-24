@@ -1,6 +1,19 @@
 export interface QualifyingRepo {
   name: string;
   star_count: number;
+  description: string | null;
+  language: string | null;
+  topics: string[];
+  license: string | null;
+  homepage: string | null;
+  created_at: string;
+  updated_at: string;
+  pushed_at: string;
+  forks_count: number;
+  open_issues_count: number;
+  size: number;
+  archived: boolean;
+  owner_type: string;
 }
 
 export interface RepoStats {

@@ -1,5 +1,6 @@
 import { createDatabase, insertRepos, insertStats } from "./db.js";
-import { fetchQualifyingRepos, fetchRepoStats } from "./bigquery.js";
+import { fetchQualifyingRepos } from "./github.js";
+import { fetchRepoStats } from "./bigquery.js";
 
 function getTargetMonth(arg?: string): string {
   if (arg) {
@@ -21,8 +22,8 @@ async function main() {
   const targetMonth = getTargetMonth(process.argv[2]);
   console.log(`\nTarget month: ${targetMonth}\n`);
 
-  // Pass 1: Find qualifying repos
-  const qualifyingRepos = await fetchQualifyingRepos(targetMonth);
+  // Pass 1: Find qualifying repos via GitHub API
+  const qualifyingRepos = await fetchQualifyingRepos();
   if (qualifyingRepos.length === 0) {
     console.log("No qualifying repos found. Exiting.");
     process.exit(0);

@@ -16,8 +16,34 @@ export function createDatabase(): Database.Database {
 
     CREATE TABLE repos (
       name TEXT PRIMARY KEY,
-      stars_total INTEGER NOT NULL
+      owner TEXT NOT NULL,
+      stars_total INTEGER NOT NULL,
+      description TEXT,
+      language TEXT,
+      topics TEXT,
+      license TEXT,
+      homepage TEXT,
+      created_at TEXT,
+      updated_at TEXT,
+      pushed_at TEXT,
+      forks_count INTEGER NOT NULL DEFAULT 0,
+      open_issues_count INTEGER NOT NULL DEFAULT 0,
+      size INTEGER NOT NULL DEFAULT 0,
+      archived INTEGER NOT NULL DEFAULT 0,
+      owner_type TEXT NOT NULL DEFAULT 'User'
     );
+
+    CREATE VIEW owners AS
+    SELECT
+      owner,
+      owner_type,
+      COUNT(*) AS repo_count,
+      SUM(stars_total) AS stars_total,
+      SUM(forks_count) AS forks_total,
+      SUM(open_issues_count) AS open_issues_total,
+      SUM(size) AS size_total
+    FROM repos
+    GROUP BY owner, owner_type;
 
     CREATE TABLE monthly_stats (
       repo_name TEXT NOT NULL,
@@ -36,16 +62,34 @@ export function createDatabase(): Database.Database {
       PRIMARY KEY (repo_name, month),
       FOREIGN KEY (repo_name) REFERENCES repos(name)
     );
+
+    CREATE INDEX idx_repos_owner ON repos(owner);
+    CREATE INDEX idx_repos_stars ON repos(stars_total DESC);
+    CREATE INDEX idx_repos_language ON repos(language);
+    CREATE INDEX idx_stats_month ON monthly_stats(month, new_stars DESC);
   `);
 
   return db;
 }
 
 export function insertRepos(db: Database.Database, repos: QualifyingRepo[]): void {
-  const stmt = db.prepare("INSERT INTO repos (name, stars_total) VALUES (?, ?)");
+  const stmt = db.prepare(`
+    INSERT INTO repos (
+      name, owner, stars_total, description, language, topics, license,
+      homepage, created_at, updated_at, pushed_at,
+      forks_count, open_issues_count, size, archived, owner_type
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
   const insertMany = db.transaction((items: QualifyingRepo[]) => {
     for (const repo of items) {
-      stmt.run(repo.name, repo.star_count);
+      const owner = repo.name.split("/")[0];
+      stmt.run(
+        repo.name, owner, repo.star_count, repo.description, repo.language,
+        JSON.stringify(repo.topics), repo.license,
+        repo.homepage, repo.created_at, repo.updated_at, repo.pushed_at,
+        repo.forks_count, repo.open_issues_count, repo.size,
+        repo.archived ? 1 : 0, repo.owner_type
+      );
     }
   });
   insertMany(repos);

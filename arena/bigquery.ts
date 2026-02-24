@@ -1,54 +1,57 @@
 import { BigQuery } from "@google-cloud/bigquery";
-import type { QualifyingRepo, RepoStats } from "./types.js";
+import { readFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import type { RepoStats } from "./types.js";
 
-function createClient(): BigQuery {
-  const saKey = process.env.GCP_SA_KEY;
-  if (!saKey) {
-    throw new Error("GCP_SA_KEY environment variable is required");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function loadCredentials(): Record<string, string> {
+  if (process.env.GCP_SERVICE_ACCOUNT_BIGQUERY) {
+    return JSON.parse(process.env.GCP_SERVICE_ACCOUNT_BIGQUERY);
   }
-  const credentials = JSON.parse(saKey);
-  return new BigQuery({
-    credentials,
-    projectId: credentials.project_id,
-  });
-}
 
-function getTableId(month: string): string {
-  // month is "YYYY-MM", table is "YYYYMM"
-  return month.replace("-", "");
-}
-
-export async function fetchQualifyingRepos(month: string): Promise<QualifyingRepo[]> {
-  const client = createClient();
-  const tableId = getTableId(month);
-
-  const query = `
-    SELECT repo.name as name, COUNT(*) as star_count
-    FROM \`githubarchive.month.${tableId}\`
-    WHERE type = 'WatchEvent'
-    GROUP BY repo.name
-    HAVING star_count >= 100
-    ORDER BY star_count DESC
-  `;
-
-  console.log(`[Pass 1] Finding repos with >= 100 stars in ${month}...`);
-  const [rows] = await client.query({ query });
-  console.log(`[Pass 1] Found ${rows.length} qualifying repos`);
-
-  return rows.map((row: any) => ({
-    name: row.name,
-    star_count: Number(row.star_count),
-  }));
+  const keyPath = path.join(__dirname, "gcp-service-account.json");
+  try {
+    return JSON.parse(readFileSync(keyPath, "utf-8"));
+  } catch {
+    throw new Error(
+      "GCP credentials not found. Set GCP_SERVICE_ACCOUNT_BIGQUERY env var or place arena/gcp-service-account.json"
+    );
+  }
 }
 
 export async function fetchRepoStats(
   month: string,
   repoNames: string[]
 ): Promise<RepoStats[]> {
-  const client = createClient();
-  const tableId = getTableId(month);
+  const credentials = loadCredentials();
+  const client = new BigQuery({
+    credentials,
+    projectId: credentials.project_id,
+  });
+  const tableId = month.replace("-", "");
 
-  // BigQuery has a query size limit, so batch repos into chunks
+  const query = `
+    SELECT
+      repo.name as repo_name,
+      COUNTIF(type = 'WatchEvent') as new_stars,
+      COUNTIF(type = 'ForkEvent') as new_forks,
+      COUNTIF(type = 'IssuesEvent' AND JSON_VALUE(payload, '$.action') = 'opened') as issues_opened,
+      COUNTIF(type = 'IssuesEvent' AND JSON_VALUE(payload, '$.action') = 'closed') as issues_closed,
+      COUNTIF(type = 'PullRequestEvent' AND JSON_VALUE(payload, '$.action') = 'opened') as prs_opened,
+      COUNTIF(type = 'PullRequestEvent' AND JSON_VALUE(payload, '$.action') = 'closed'
+        AND JSON_VALUE(payload, '$.pull_request.merged') = 'true') as prs_merged,
+      COUNTIF(type = 'PushEvent') as pushes,
+      SUM(IF(type = 'PushEvent', CAST(JSON_VALUE(payload, '$.size') AS INT64), 0)) as commits,
+      COUNTIF(type = 'ReleaseEvent') as releases,
+      COUNTIF(type = 'PullRequestReviewCommentEvent') as review_comments,
+      COUNT(DISTINCT actor.login) as unique_contributors
+    FROM \`githubarchive.month.${tableId}\`
+    WHERE repo.name IN UNNEST(@repos)
+    GROUP BY repo.name
+  `;
+
   const BATCH_SIZE = 5000;
   const allStats: RepoStats[] = [];
 
@@ -57,26 +60,6 @@ export async function fetchRepoStats(
     const batchNum = Math.floor(i / BATCH_SIZE) + 1;
     const totalBatches = Math.ceil(repoNames.length / BATCH_SIZE);
     console.log(`[Pass 2] Fetching stats batch ${batchNum}/${totalBatches} (${batch.length} repos)...`);
-
-    const query = `
-      SELECT
-        repo.name as repo_name,
-        COUNTIF(type = 'WatchEvent') as new_stars,
-        COUNTIF(type = 'ForkEvent') as new_forks,
-        COUNTIF(type = 'IssuesEvent' AND JSON_VALUE(payload, '$.action') = 'opened') as issues_opened,
-        COUNTIF(type = 'IssuesEvent' AND JSON_VALUE(payload, '$.action') = 'closed') as issues_closed,
-        COUNTIF(type = 'PullRequestEvent' AND JSON_VALUE(payload, '$.action') = 'opened') as prs_opened,
-        COUNTIF(type = 'PullRequestEvent' AND JSON_VALUE(payload, '$.action') = 'closed'
-          AND JSON_VALUE(payload, '$.pull_request.merged') = 'true') as prs_merged,
-        COUNTIF(type = 'PushEvent') as pushes,
-        SUM(IF(type = 'PushEvent', CAST(JSON_VALUE(payload, '$.size') AS INT64), 0)) as commits,
-        COUNTIF(type = 'ReleaseEvent') as releases,
-        COUNTIF(type = 'PullRequestReviewCommentEvent') as review_comments,
-        COUNT(DISTINCT actor.login) as unique_contributors
-      FROM \`githubarchive.month.${tableId}\`
-      WHERE repo.name IN UNNEST(@repos)
-      GROUP BY repo.name
-    `;
 
     const [rows] = await client.query({
       query,
