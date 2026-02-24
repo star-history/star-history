@@ -1,0 +1,23 @@
+{
+  "name": "arena",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "fetch": "tsx fetch.ts",
+    "test": "tsx --test test.ts"
+  },
+  "dependencies": {
+    "@google-cloud/bigquery": "^7.9.0",
+    "better-sqlite3": "^11.7.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "tsx": "^4.19.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}
