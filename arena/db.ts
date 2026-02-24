@@ -1,4 +1,5 @@
 import Database from "better-sqlite3";
+import { writeFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import type { QualifyingRepo, RepoStats } from "./types.js";
@@ -93,6 +94,16 @@ export function insertRepos(db: Database.Database, repos: QualifyingRepo[]): voi
     }
   });
   insertMany(repos);
+}
+
+export function exportLeaderboard(db: Database.Database, limit = 20): void {
+  const rows = db.prepare(
+    "SELECT name, stars_total FROM repos ORDER BY stars_total DESC LIMIT ?"
+  ).all(limit) as { name: string; stars_total: number }[];
+
+  const outPath = path.join(__dirname, "..", "frontend", "helpers", "leaderboard.json");
+  writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
+  console.log(`Exported top ${rows.length} repos to leaderboard.json`);
 }
 
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {

@@ -3,7 +3,7 @@ import { FaTwitter, FaEnvelope, FaGithub } from "react-icons/fa"
 const Footer = () => {
     return (
         <footer className="relative w-full shrink-0 h-auto mt-6 flex flex-col justify-end items-center">
-            <div className="w-full py-2 px-3 md:w-5/6 lg:max-w-7xl flex flex-row flex-wrap justify-between items-center text-neutral-700 border-t">
+            <div className="w-full py-2 px-3 flex flex-row flex-wrap justify-between items-center text-neutral-700 border-t">
                 <div className="text-sm leading-8 flex flex-row flex-wrap justify-start items-center">
                     <div className="h-full text-gray-600">The de facto GitHub star history graph</div>
                     <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="mailto:star@bytebase.com" target="_blank" rel="noopener noreferrer">

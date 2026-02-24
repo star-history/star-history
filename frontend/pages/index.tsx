@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Header from "../components/header"
 import Footer from "../components/footer"
+import LeftSidebar from "../components/LeftSidebar"
 import RightSidebar from "../components/RightSidebar"
 import RepoInputer from "../components/RepoInputer"
 import { AppStateProvider } from "../store"
@@ -47,15 +48,19 @@ const Index: NextPage<IndexProps> = () => {
                     <div className="relative w-full h-auto min-h-screen flex flex-col">
                         <Header />
                         <div className="w-full h-auto grow flex flex-row justify-center">
-                            <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
-                                <div className="w-full flex flex-col justify-start">
-                                <RepoInputer isChartVisible={isChartVisible} setChartVisibility={setChartVisibility} />
-                                {isChartVisible && <StarChartViewer />}
-                            </div>
+                            <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[240px_1fr_288px] lg:gap-24">
+                                <div className="hidden lg:block">
+                                    <LeftSidebar />
+                                </div>
 
-                            <div className="w-full hidden lg:block">
-                                <RightSidebar />
-                            </div>
+                                <div className="w-full flex flex-col justify-start">
+                                    <RepoInputer isChartVisible={isChartVisible} setChartVisibility={setChartVisibility} />
+                                    {isChartVisible && <StarChartViewer />}
+                                </div>
+
+                                <div className="hidden lg:block">
+                                    <RightSidebar />
+                                </div>
                             </div>
                         </div>
 

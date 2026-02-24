@@ -31,59 +31,11 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
 
     const inputElRef = useRef<HTMLInputElement | null>(null)
 
-    
     useEffect(() => {
-        if (store.repos.length === 0) {
-            const fetchData = async () => {
-                const blogList = blogs as Blog[]
-                for (const blog of blogList) {
-                    if (blog.featured) {
-                        setState((prev) => ({ ...prev, latestBlog: blog }))
-                        break
-                    }
-                }
-
-                if (state.repos.length === 0) {
-                    setState((prev) => ({ ...prev, repos: [] }))
-                }
-            }
-
-            fetchData()
+        const latest = (blogs as Blog[]).find(blog => blog.featured);
+        if (latest) {
+            setState(prev => ({ ...prev, latestBlog: latest }));
         }
-    }, [state.repos.length, store.repos.length])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const blogList = blogs as Blog[];
-            for (const blog of blogList) {
-                if (blog.featured) {
-                    setState((prev) => ({ ...prev, latestBlog: blog }));
-                    break;
-                }
-            }
-    
-            if (state.repos.length === 0) {
-                setState((prev) => ({ ...prev, repos: [] }));
-            }
-        };
-    
-        fetchData();
-    }, [state.repos.length]);
-    
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const blogList = blogs as Blog[];
-                const latest = blogList.find(blog => blog.featured);
-                if (latest) {
-                    setState(prevState => ({ ...prevState, latestBlog: latest }));
-                }
-            } catch (error) {
-                console.error("Error fetching latest blog:", error);
-            }
-        };
-    
-        fetchData();
     }, []);
     
 
@@ -103,6 +55,21 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     }, []);
 
     
+
+    // Sync local state when store repos change (e.g. from sidebar click)
+    useEffect(() => {
+        const localNames = state.repos.map(r => r.name)
+        const newRepos = store.state.repos.filter(name => !localNames.includes(name))
+        if (newRepos.length > 0) {
+            setState(prev => ({
+                ...prev,
+                repos: [
+                    ...prev.repos,
+                    ...newRepos.map(name => ({ name, visible: true }))
+                ]
+            }))
+        }
+    }, [store.state.repos])
 
     useEffect(() => {
         const handleWatch = () => {
@@ -214,12 +181,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
             // Set the chart visibility based on whether any repo is visible
             setChartVisibility(anyRepoVisible)
 
-            // Update the store with the new list of visible repos
             store.actions.setRepos(newRepos.filter((r) => r.visible).map((r) => r.name))
-
-            // if (newRepos.filter((r) => r.visible).length === 0) {
-            //     setChartVisibility(false)
-            // }
         },
         [state.repos, store.actions, setChartVisibility]
     )

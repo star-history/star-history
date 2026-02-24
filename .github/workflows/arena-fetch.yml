@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add arena/data.db
+          git add arena/data.db frontend/helpers/leaderboard.json
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git commit -m "data(arena): update $(date +%Y-%m) arena stats"
           git push
