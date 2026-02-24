@@ -21,7 +21,7 @@ const LeftSidebar: React.FC = () => {
         <div className="sticky top-28 flex flex-col w-full h-fit">
             <div className="pt-4">
                 <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-                    Top Repos
+                    All-time Stars
                 </h3>
                 <ol className="space-y-0.5">
                     {leaderboard.map((repo, i) => {
