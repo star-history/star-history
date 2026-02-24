@@ -37,7 +37,7 @@ const LeftSidebar: React.FC = () => {
                                         {i + 1}
                                     </span>
                                     <span className="truncate text-gray-700 group-hover:text-blue-600">
-                                        {repoName}
+                                        {repoName}{repo.name === "openclaw/openclaw" && " 🦞"}
                                     </span>
                                     <span className="ml-auto text-xs text-gray-400 shrink-0">
                                         {formatStars(repo.stars_total)}
