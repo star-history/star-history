@@ -7,9 +7,9 @@
     "packageManager": "pnpm@9.15.4",
     "scripts": {
         "generate:blog": "npx ts-node scripts/generateBlogJson.mts",
-        "dev": "npm run generate:blog && node server.js",
+        "dev": "npm run generate:blog && next dev",
         "build": "npm run generate:blog && next build && next-sitemap",
-        "start": "NODE_ENV=production node server.js",
+        "start": "next start",
         "lint": "next lint",
         "prettier": "prettier --write ."
     },
@@ -37,7 +37,6 @@
         "d3-shape": "^2.1.0",
         "dayjs": "^1.11.10",
         "eslint-config-next": "^14.1.0",
-        "find-free-port": "^2.0.0",
         "gray-matter": "^4.0.3",
         "lodash": "^4.17.21",
         "marked": "^9.1.6",
