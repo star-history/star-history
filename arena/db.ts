@@ -3,6 +3,7 @@ import { writeFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import type { QualifyingRepo, RepoStats } from "./types.js";
+import { MIN_STARS } from "./github.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, "data.db");
@@ -133,7 +134,23 @@ export function exportRepos(db: Database.Database): void {
 }
 
 export function exportRepoCards(db: Database.Database): void {
+  // Aggregate weekly_stats over last 8 weeks per repo
   const rows = db.prepare(`
+    WITH recent AS (
+      SELECT week FROM weekly_stats GROUP BY week ORDER BY week DESC LIMIT 8
+    ),
+    agg AS (
+      SELECT
+        w.repo_name,
+        SUM(w.new_stars) AS agg_new_stars,
+        SUM(w.prs_opened + w.pushes) AS agg_activity,
+        SUM(w.unique_contributors) AS agg_contributors,
+        SUM(w.issues_opened) AS agg_issues_opened,
+        SUM(w.issues_closed) AS agg_issues_closed
+      FROM weekly_stats w
+      WHERE w.week IN (SELECT week FROM recent)
+      GROUP BY w.repo_name
+    )
     SELECT
       r.name,
       r.owner,
@@ -148,12 +165,51 @@ export function exportRepoCards(db: Database.Database): void {
       r.created_at,
       r.archived,
       r.size,
+      COALESCE(a.agg_new_stars, 0) AS agg_new_stars,
+      COALESCE(a.agg_activity, 0) AS agg_activity,
+      COALESCE(a.agg_contributors, 0) AS agg_contributors,
+      COALESCE(a.agg_issues_opened, 0) AS agg_issues_opened,
+      COALESCE(a.agg_issues_closed, 0) AS agg_issues_closed,
       ROW_NUMBER() OVER (ORDER BY r.stars_total DESC) AS rank
     FROM repos r
+    LEFT JOIN agg a ON a.repo_name = r.name
     ORDER BY r.stars_total DESC
   `).all() as any[];
 
-  const cards = rows.map((r) => {
+  const totalRepos = rows.length;
+
+  // Compute raw values for percentile ranking
+  const rawValues = {
+    popularity: rows.map((r) => r.stars_total as number),
+    momentum: rows.map((r) => r.agg_new_stars as number),
+    activity: rows.map((r) => r.agg_activity as number),
+    community: rows.map((r) => r.agg_contributors as number),
+    health: rows.map((r) => {
+      const opened = r.agg_issues_opened as number;
+      return opened > 0 ? (r.agg_issues_closed as number) / opened : 0;
+    }),
+    influence: rows.map((r) => r.forks_count as number),
+  };
+
+  // Percentile: fraction of values strictly less than this value, scaled to 0-99
+  function percentile(sorted: number[], value: number): number {
+    let count = 0;
+    for (const v of sorted) {
+      if (v < value) count++;
+    }
+    return Math.round((count / sorted.length) * 99);
+  }
+
+  const sorted = {
+    popularity: [...rawValues.popularity].sort((a, b) => a - b),
+    momentum: [...rawValues.momentum].sort((a, b) => a - b),
+    activity: [...rawValues.activity].sort((a, b) => a - b),
+    community: [...rawValues.community].sort((a, b) => a - b),
+    health: [...rawValues.health].sort((a, b) => a - b),
+    influence: [...rawValues.influence].sort((a, b) => a - b),
+  };
+
+  const cards = rows.map((r, i) => {
     let topics: string[] = [];
     try {
       topics = r.topics ? JSON.parse(r.topics) : [];
@@ -176,11 +232,21 @@ export function exportRepoCards(db: Database.Database): void {
       archived: r.archived === 1,
       size: r.size,
       rank: r.rank,
+      total_repos: totalRepos,
+      attributes: {
+        popularity: percentile(sorted.popularity, rawValues.popularity[i]),
+        momentum: percentile(sorted.momentum, rawValues.momentum[i]),
+        activity: percentile(sorted.activity, rawValues.activity[i]),
+        community: percentile(sorted.community, rawValues.community[i]),
+        health: percentile(sorted.health, rawValues.health[i]),
+        influence: percentile(sorted.influence, rawValues.influence[i]),
+      },
     };
   });
 
+  const output = { min_stars: MIN_STARS, repos: cards };
   const outPath = path.join(__dirname, "..", "frontend", "helpers", "repo-cards.json");
-  writeFileSync(outPath, JSON.stringify(cards, null, 2) + "\n");
+  writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
   console.log(`Exported ${cards.length} repo cards to repo-cards.json`);
 }
 

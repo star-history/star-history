@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react"
+import { useRouter } from "next/router"
+import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import { AppStateProvider } from "../store"
 import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
@@ -18,6 +21,15 @@ const LANGUAGE_COLORS: Record<string, string> = {
     OCaml: "#3be133",
 }
 
+interface RepoAttributes {
+    popularity: number
+    momentum: number
+    activity: number
+    community: number
+    health: number
+    influence: number
+}
+
 interface RepoCardData {
     name: string
     owner: string
@@ -33,10 +45,13 @@ interface RepoCardData {
     archived: boolean
     size: number
     rank: number
+    total_repos: number
+    attributes: RepoAttributes
 }
 
 interface RepoPageProps {
-    repo: RepoCardData
+    repo: RepoCardData | null
+    minStars: number
 }
 
 function formatNumber(n: number): string {
@@ -45,21 +60,98 @@ function formatNumber(n: number): string {
     return n.toString()
 }
 
-function formatSize(kb: number): string {
-    if (kb >= 1_000_000) return (kb / 1_000_000).toFixed(1).replace(/\.0$/, "") + " GB"
-    if (kb >= 1_000) return (kb / 1_000).toFixed(1).replace(/\.0$/, "") + " MB"
-    return kb + " KB"
+function formatDate(dateStr: string): string {
+    const d = new Date(dateStr)
+    return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
 
-function repoAge(created: string): string {
-    const diff = Date.now() - new Date(created).getTime()
-    const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000))
-    if (years >= 1) return `${years}y`
-    const months = Math.floor(diff / (30.44 * 24 * 60 * 60 * 1000))
-    return `${months}mo`
+const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string; color: string }[] = [
+    { key: "popularity", label: "Popularity", color: "bg-yellow-400" },
+    { key: "momentum", label: "Momentum", color: "bg-green-500" },
+    { key: "activity", label: "Activity", color: "bg-red-500" },
+    { key: "community", label: "Community", color: "bg-blue-500" },
+    { key: "health", label: "Health", color: "bg-purple-500" },
+    { key: "influence", label: "Influence", color: "bg-orange-500" },
+]
+
+function NavInput() {
+    const router = useRouter()
+    const [navInput, setNavInput] = useState("")
+
+    const handleNavSubmit = () => {
+        let raw = navInput.trim()
+        if (!raw) return
+
+        if (GITHUB_REPO_URL_REG.test(raw)) {
+            const match = raw.match(GITHUB_REPO_URL_REG)
+            if (match) raw = match[1]
+        }
+
+        const parts = raw.split("/").filter(Boolean)
+        if (parts.length === 1) {
+            router.push(`/${parts[0]}/${parts[0]}`)
+        } else if (parts.length >= 2) {
+            router.push(`/${parts[0]}/${parts[1]}`)
+        }
+    }
+
+    return (
+        <div className="w-full max-w-2xl mb-4 flex items-center rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden">
+            <input
+                type="text"
+                value={navInput}
+                onChange={(e) => setNavInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleNavSubmit()}
+                placeholder="star-history or star-history/star-history or https://github.com/star-history/star-history"
+                className="flex-1 h-10 px-4 text-sm outline-none placeholder:text-neutral-400"
+            />
+            <button
+                onClick={handleNavSubmit}
+                className="h-10 px-4 text-sm text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 border-l border-neutral-200 transition-colors"
+            >
+                Go
+            </button>
+        </div>
+    )
 }
 
-const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
+function PageShell({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-neutral-900 antialiased">
+            <div className="flex flex-col items-center px-4 py-8 md:py-12">
+                <NavInput />
+                {children}
+                <div className="mt-6 text-sm text-neutral-400">
+                    <Link href="/" className="hover:text-neutral-600 transition-colors">star-history.com</Link>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
+    const router = useRouter()
+    const slug = router.query.slug
+    const repoName = Array.isArray(slug) ? slug.join("/") : ""
+
+    if (!repo) {
+        return (
+            <PageShell>
+                <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div className="px-5 py-16 text-center">
+                        <p className="text-4xl mb-3">🔭</p>
+                        <h1 className="text-lg font-semibold text-neutral-800">
+                            {repoName ? <span className="font-mono">{repoName}</span> : "Repository"} not found
+                        </h1>
+                        <p className="text-sm text-neutral-500 mt-2">
+                            We only track repositories with over {formatNumber(minStars)} stars. Try another repository in the search box above.
+                        </p>
+                    </div>
+                </div>
+            </PageShell>
+        )
+    }
+
     const title = `${repo.name} Star History`
     const description = repo.description
         ? `Star history and stats for ${repo.name}: ${repo.description}`
@@ -69,14 +161,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
     const repoShortName = repo.name.split("/")[1]
     const avatarUrl = `https://github.com/${repo.owner}.png?size=80`
-
-    const stats: { label: string; value: string }[] = [
-        { label: "Stars", value: formatNumber(repo.stars_total) },
-        { label: "Forks", value: formatNumber(repo.forks_count) },
-        { label: "Open issues", value: formatNumber(repo.open_issues_count) },
-        { label: "Size", value: formatSize(repo.size) },
-        { label: "Age", value: repo.created_at ? repoAge(repo.created_at) : "—" },
-    ]
+    const hasAttributes = repo.attributes && Object.values(repo.attributes).some(v => v > 0)
 
     return (
         <>
@@ -96,125 +181,119 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                 <meta name="twitter:image" content={ogImage} />
             </Head>
             <AppStateProvider initialRepos={[repo.name]}>
-                <div className="min-h-screen bg-white text-neutral-900 antialiased">
-                    <div className="max-w-[1400px] mx-auto p-4 md:p-8 space-y-6">
+                <PageShell>
+                    {/* Card */}
+                    <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
 
-                        {/* Identity */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src={avatarUrl}
-                                alt={repo.owner}
-                                className="w-10 h-10 rounded-full"
-                                loading="lazy"
-                            />
-                            <div className="min-w-0 flex-1">
-                                <div className="flex items-center gap-2 flex-wrap">
-                                    <h1 className="text-2xl font-semibold">
-                                        <Link href={`https://github.com/${repo.owner}`} className="text-neutral-400 hover:underline">{repo.owner}</Link>
-                                        <span className="text-neutral-300 mx-0.5">/</span>
-                                        <Link href={`https://github.com/${repo.name}`} className="hover:underline">{repoShortName}</Link>
-                                    </h1>
-                                    {repo.archived && (
-                                        <span className="text-xs text-yellow-700 bg-yellow-100 px-1.5 py-0.5 rounded font-medium">archived</span>
-                                    )}
-                                </div>
-                                {repo.description && (
-                                    <p className="text-sm text-neutral-600 mt-1 leading-relaxed">{repo.description}</p>
+                        {/* Type bar */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500">
+                            <div className="flex items-center gap-3">
+                                {repo.language && (
+                                    <span className="flex items-center gap-1.5 font-medium">
+                                        <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: langColor! }} />
+                                        {repo.language}
+                                    </span>
                                 )}
-                                <div className="flex items-center gap-3 mt-2 text-xs text-neutral-400 flex-wrap">
-                                    {repo.language && (
-                                        <span className="flex items-center gap-1">
-                                            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: langColor! }} />
-                                            {repo.language}
-                                        </span>
-                                    )}
-                                    {repo.license && <span>{repo.license}</span>}
-                                    {repo.topics.length > 0 && repo.topics.slice(0, 5).map((t) => (
-                                        <span key={t} className="text-neutral-500">{t}</span>
-                                    ))}
-                                </div>
+                                {repo.license && (
+                                    <span className="text-neutral-400">{repo.license}</span>
+                                )}
                             </div>
-                            {repo.rank > 0 && (
-                                <div className="shrink-0 text-right">
-                                    <span className="text-3xl font-bold font-mono text-neutral-900">#{repo.rank}</span>
-                                    <p className="text-xs text-neutral-400 mt-0.5">Global Rank</p>
-                                </div>
+                            {repo.rank > 0 && repo.total_repos > 0 && (
+                                <span className="font-mono font-semibold text-neutral-700">
+                                    #{repo.rank} <span className="text-neutral-400 font-normal">of {repo.total_repos}</span>
+                                </span>
                             )}
                         </div>
 
-                        {/* Stats table */}
-                        <div className="border border-neutral-200 rounded-md overflow-hidden">
-                            <table className="w-full text-sm">
-                                <thead>
-                                    <tr className="border-b border-neutral-200 bg-neutral-50">
-                                        {stats.map((s) => (
-                                            <th key={s.label} className="px-4 py-2 text-left font-medium text-neutral-500 text-xs uppercase tracking-wide">
-                                                {s.label}
-                                            </th>
-                                        ))}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        {stats.map((s) => (
-                                            <td key={s.label} className="px-4 py-3 font-mono font-semibold text-neutral-900">
-                                                {s.value}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                </tbody>
-                            </table>
+                        {/* Identity */}
+                        <div className="px-5 pt-5 pb-4">
+                            <div className="flex items-start gap-3">
+                                <img
+                                    src={avatarUrl}
+                                    alt={repo.owner}
+                                    className="w-12 h-12 rounded-full shrink-0"
+                                    loading="lazy"
+                                />
+                                <div className="min-w-0 flex-1">
+                                    <h1 className="text-xl font-bold leading-tight">
+                                        <span className="text-neutral-400 font-normal">{repo.owner}</span>
+                                        <span className="text-neutral-300 mx-0.5">/</span>
+                                        <span>{repoShortName}</span>
+                                    </h1>
+                                    {repo.description && (
+                                        <p className="text-sm text-neutral-600 mt-1.5 leading-relaxed">{repo.description}</p>
+                                    )}
+                                    {repo.topics.length > 0 && (
+                                        <div className="flex flex-wrap gap-1.5 mt-2">
+                                            {repo.topics.slice(0, 5).map((t) => (
+                                                <span key={t} className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">{t}</span>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
 
                         {/* Chart */}
-                        <div className="border border-neutral-200 rounded-md p-2 md:p-4">
+                        <div className="border-t border-b border-neutral-100 px-2 py-2 md:px-4 md:py-3">
                             <StarChartViewer compact />
                         </div>
 
-                        {/* Bottom panels */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            {/* Placeholder: Recent activity */}
-                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
-                                <span className="text-sm text-neutral-400">Recent Activity (commits, PRs, releases)</span>
+                        {/* Attributes */}
+                        {hasAttributes && (
+                            <div className="px-5 py-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                                    {ATTRIBUTE_CONFIG.map(({ key, label, color }) => {
+                                        const value = repo.attributes[key]
+                                        return (
+                                            <div key={key} className="flex items-center gap-2">
+                                                <span className="text-xs text-neutral-500 w-20 shrink-0">{label}</span>
+                                                <div className="flex-1 h-3 bg-neutral-100 rounded-full overflow-hidden">
+                                                    <div
+                                                        className={`h-full rounded-full ${color}`}
+                                                        style={{ width: `${value}%` }}
+                                                    />
+                                                </div>
+                                                <span className="text-xs font-mono font-semibold text-neutral-700 w-6 text-right">{value}</span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
+                        )}
 
-                            {/* Placeholder: Contributors */}
-                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
-                                <span className="text-sm text-neutral-400">Top Contributors</span>
+                        {/* Footer */}
+                        <div className="flex items-center justify-between px-5 py-3 border-t border-neutral-100 text-sm text-neutral-500">
+                            <div className="flex items-center gap-4 flex-wrap">
+                                <span className="font-mono font-semibold text-neutral-800">⭐ {formatNumber(repo.stars_total)}</span>
+                                <span className="font-mono text-neutral-600">🍴 {formatNumber(repo.forks_count)}</span>
+                                {repo.created_at && (
+                                    <span className="text-neutral-400">📅 {formatDate(repo.created_at)}</span>
+                                )}
                             </div>
-
-                            {/* Placeholder: Growth sparkline */}
-                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
-                                <span className="text-sm text-neutral-400">Weekly Star Growth Sparkline</span>
-                            </div>
-                        </div>
-
-                        {/* Footer links */}
-                        <div className="flex items-center gap-4 text-sm pt-2 pb-4">
-                            <a
-                                href={`https://github.com/${repo.name}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2"
-                            >
-                                GitHub
-                            </a>
-                            {repo.homepage && (
+                            <div className="flex items-center gap-3">
                                 <a
-                                    href={repo.homepage}
+                                    href={`https://github.com/${repo.name}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2"
+                                    className="text-neutral-500 hover:text-neutral-800 transition-colors"
                                 >
-                                    Website
+                                    GitHub ↗
                                 </a>
-                            )}
-                            <Link href="/" className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2">
-                                star-history.com
-                            </Link>
+                                {repo.homepage && (
+                                    <a
+                                        href={repo.homepage}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-neutral-500 hover:text-neutral-800 transition-colors"
+                                    >
+                                        Web ↗
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </PageShell>
             </AppStateProvider>
         </>
     )
@@ -222,12 +301,15 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
 
 // --- Data loading ---
 
-function loadRepoCards(): RepoCardData[] {
+const DEFAULT_MIN_STARS = 100000
+
+function loadRepoCards(): { min_stars: number; repos: RepoCardData[] } {
     try {
         const filePath = path.join(process.cwd(), "helpers", "repo-cards.json")
-        return JSON.parse(fs.readFileSync(filePath, "utf-8"))
+        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"))
+        return { min_stars: data.min_stars ?? DEFAULT_MIN_STARS, repos: data.repos ?? [] }
     } catch {
-        return []
+        return { min_stars: DEFAULT_MIN_STARS, repos: [] }
     }
 }
 
@@ -255,7 +337,7 @@ function loadLegacyRepos(): LegacyRepoRow[] {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const cards = loadRepoCards()
+    const { repos: cards } = loadRepoCards()
     const legacyRepos = loadLegacyRepos()
     const cardNames = new Set(cards.map(c => c.name.toLowerCase()))
 
@@ -269,21 +351,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
     }
 
-    return { paths, fallback: false }
+    return { paths, fallback: "blocking" }
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
+    const { min_stars: minStars, repos: cards } = loadRepoCards()
+
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {
-        return { notFound: true }
+        return { props: { repo: null, minStars } }
     }
 
     const fullName = slug.join("/")
-    const cards = loadRepoCards()
     const cardData = cards.find((c) => c.name.toLowerCase() === fullName.toLowerCase())
 
     if (cardData) {
-        return { props: { repo: cardData } }
+        return { props: { repo: cardData, minStars } }
     }
 
     // Fallback to legacy repos.json
@@ -291,7 +374,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
     const repoData = legacyRepos.find((r) => r.name.toLowerCase() === fullName.toLowerCase())
 
     if (!repoData) {
-        return { notFound: true }
+        return { props: { repo: null, minStars } }
     }
 
     let topics: string[] = []
@@ -303,6 +386,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
 
     return {
         props: {
+            minStars,
             repo: {
                 name: repoData.name,
                 owner: repoData.name.split("/")[0],
@@ -318,6 +402,8 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
                 archived: repoData.archived === 1,
                 size: 0,
                 rank: 0,
+                total_repos: 0,
+                attributes: { popularity: 0, momentum: 0, activity: 0, community: 0, health: 0, influence: 0 },
             },
         },
     }
