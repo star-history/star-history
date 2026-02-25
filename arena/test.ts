@@ -1,6 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 import Database from "better-sqlite3";
+import { weekToDays } from "./bigquery.js";
 
 function createTestDb(): Database.Database {
   const db = new Database(":memory:");
@@ -34,9 +35,9 @@ function createTestDb(): Database.Database {
       SUM(size) AS size_total
     FROM repos
     GROUP BY owner, owner_type;
-    CREATE TABLE monthly_stats (
+    CREATE TABLE weekly_stats (
       repo_name TEXT NOT NULL,
-      month TEXT NOT NULL,
+      week TEXT NOT NULL,
       new_stars INTEGER NOT NULL DEFAULT 0,
       new_forks INTEGER NOT NULL DEFAULT 0,
       issues_opened INTEGER NOT NULL DEFAULT 0,
@@ -48,7 +49,7 @@ function createTestDb(): Database.Database {
       releases INTEGER NOT NULL DEFAULT 0,
       review_comments INTEGER NOT NULL DEFAULT 0,
       unique_contributors INTEGER NOT NULL DEFAULT 0,
-      PRIMARY KEY (repo_name, month),
+      PRIMARY KEY (repo_name, week),
       FOREIGN KEY (repo_name) REFERENCES repos(name)
     );
   `);
@@ -90,7 +91,7 @@ describe("SQLite schema", () => {
     db.close();
   });
 
-  it("inserts and queries monthly_stats", () => {
+  it("inserts and queries weekly_stats", () => {
     const db = createTestDb();
     db.prepare(INSERT_REPO).run(
       "owner/repo", "owner", 500, null, null, "[]", null, null,
@@ -98,16 +99,17 @@ describe("SQLite schema", () => {
       0, 0, 0, 0, "User"
     );
     db.prepare(`
-      INSERT INTO monthly_stats (
-        repo_name, month, new_stars, new_forks,
+      INSERT INTO weekly_stats (
+        repo_name, week, new_stars, new_forks,
         issues_opened, issues_closed, prs_opened, prs_merged,
         pushes, commits, releases, review_comments, unique_contributors
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run("owner/repo", "2026-01", 150, 30, 45, 20, 35, 25, 200, 500, 3, 80, 42);
+    `).run("owner/repo", "2026-W03", 150, 30, 45, 20, 35, 25, 200, 500, 3, 80, 42);
 
-    const row = db.prepare("SELECT * FROM monthly_stats WHERE repo_name = ?").get("owner/repo") as any;
+    const row = db.prepare("SELECT * FROM weekly_stats WHERE repo_name = ?").get("owner/repo") as any;
     assert.strictEqual(row.new_stars, 150);
     assert.strictEqual(row.unique_contributors, 42);
+    assert.strictEqual(row.week, "2026-W03");
     db.close();
   });
 
@@ -141,18 +143,18 @@ describe("SQLite schema", () => {
       150, 30, 8000, 0, "Organization"
     );
     db.prepare(`
-      INSERT INTO monthly_stats VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run("org/alpha", "2026-01", 200, 50, 60, 40, 30, 20, 100, 300, 5, 40, 80);
+      INSERT INTO weekly_stats VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run("org/alpha", "2026-W03", 200, 50, 60, 40, 30, 20, 100, 300, 5, 40, 80);
     db.prepare(`
-      INSERT INTO monthly_stats VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run("org/beta", "2026-01", 150, 70, 80, 60, 50, 40, 150, 400, 8, 60, 100);
+      INSERT INTO weekly_stats VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run("org/beta", "2026-W03", 150, 70, 80, 60, 50, 40, 150, 400, 8, 60, 100);
 
     const rows = db.prepare(`
       SELECT r.name, r.stars_total, r.language, r.license, s.*
       FROM repos r
-      JOIN monthly_stats s ON r.name = s.repo_name
+      JOIN weekly_stats s ON r.name = s.repo_name
       WHERE r.name IN ('org/alpha', 'org/beta')
-      AND s.month = '2026-01'
+      AND s.week = '2026-W03'
       ORDER BY s.new_stars DESC
     `).all() as any[];
 
@@ -184,5 +186,29 @@ describe("SQLite schema", () => {
     assert.strictEqual(row.forks_total, 150);
     assert.strictEqual(row.size_total, 5000);
     db.close();
+  });
+});
+
+describe("weekToDays", () => {
+  it("computes correct 7 days for 2026-W01", () => {
+    // Jan 1, 2026 is Thursday. ISO W01 Monday = Dec 29, 2025.
+    const days = weekToDays("2026-W01");
+    assert.strictEqual(days.length, 7);
+    assert.strictEqual(days[0], "20251229"); // Monday
+    assert.strictEqual(days[6], "20260104"); // Sunday
+  });
+
+  it("computes correct 7 days for 2026-W08", () => {
+    // Week 8 of 2026: Monday Feb 16 – Sunday Feb 22
+    const days = weekToDays("2026-W08");
+    assert.strictEqual(days.length, 7);
+    assert.strictEqual(days[0], "20260216");
+    assert.strictEqual(days[6], "20260222");
+  });
+
+  it("rejects invalid format", () => {
+    assert.throws(() => weekToDays("2026-01"), /Invalid week format/);
+    assert.throws(() => weekToDays("2026-W00"), /Invalid week number/);
+    assert.throws(() => weekToDays("2026-W54"), /Invalid week number/);
   });
 });

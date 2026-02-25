@@ -21,8 +21,42 @@ function loadCredentials(): Record<string, string> {
   }
 }
 
+/**
+ * Convert an ISO week string (YYYY-Wnn) to an array of 7 YYYYMMDD strings
+ * (Monday through Sunday) for BigQuery daily table names.
+ */
+export function weekToDays(week: string): string[] {
+  const match = week.match(/^(\d{4})-W(\d{2})$/);
+  if (!match) throw new Error(`Invalid week format: ${week}. Expected YYYY-Wnn`);
+
+  const year = parseInt(match[1]);
+  const weekNum = parseInt(match[2]);
+  if (weekNum < 1 || weekNum > 53) throw new Error(`Invalid week number: ${weekNum}`);
+
+  // ISO 8601: Week 1 contains January 4th.
+  const jan4 = new Date(Date.UTC(year, 0, 4));
+  const dayOfWeek = jan4.getUTCDay() || 7; // Sunday=0 → 7
+  const week1Monday = new Date(jan4);
+  week1Monday.setUTCDate(jan4.getUTCDate() - dayOfWeek + 1);
+
+  // Monday of target week
+  const targetMonday = new Date(week1Monday);
+  targetMonday.setUTCDate(week1Monday.getUTCDate() + (weekNum - 1) * 7);
+
+  const fmt = (d: Date) =>
+    `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, "0")}${String(d.getUTCDate()).padStart(2, "0")}`;
+
+  const days: string[] = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(targetMonday);
+    d.setUTCDate(targetMonday.getUTCDate() + i);
+    days.push(fmt(d));
+  }
+  return days;
+}
+
 export async function fetchRepoStats(
-  month: string,
+  week: string,
   repoNames: string[]
 ): Promise<RepoStats[]> {
   const credentials = loadCredentials();
@@ -30,7 +64,13 @@ export async function fetchRepoStats(
     credentials,
     projectId: credentials.project_id,
   });
-  const tableId = month.replace("-", "");
+
+  const days = weekToDays(week);
+
+  // Union individual day tables to avoid the wildcard view issue
+  const unionAll = days
+    .map((d) => `SELECT * FROM \`githubarchive.day.${d}\``)
+    .join(" UNION ALL\n    ");
 
   const query = `
     SELECT
@@ -47,7 +87,7 @@ export async function fetchRepoStats(
       COUNTIF(type = 'ReleaseEvent') as releases,
       COUNTIF(type = 'PullRequestReviewCommentEvent') as review_comments,
       COUNT(DISTINCT actor.login) as unique_contributors
-    FROM \`githubarchive.month.${tableId}\`
+    FROM (${unionAll})
     WHERE repo.name IN UNNEST(@repos)
     GROUP BY repo.name
   `;
@@ -59,29 +99,38 @@ export async function fetchRepoStats(
     const batch = repoNames.slice(i, i + BATCH_SIZE);
     const batchNum = Math.floor(i / BATCH_SIZE) + 1;
     const totalBatches = Math.ceil(repoNames.length / BATCH_SIZE);
-    console.log(`[Pass 2] Fetching stats batch ${batchNum}/${totalBatches} (${batch.length} repos)...`);
+    console.log(`[Pass 2] Fetching stats batch ${batchNum}/${totalBatches} (${batch.length} repos, ${days[0]}..${days[6]})...`);
 
-    const [rows] = await client.query({
-      query,
-      params: { repos: batch },
-    });
-
-    for (const row of rows) {
-      allStats.push({
-        repo_name: row.repo_name,
-        month,
-        new_stars: Number(row.new_stars),
-        new_forks: Number(row.new_forks),
-        issues_opened: Number(row.issues_opened),
-        issues_closed: Number(row.issues_closed),
-        prs_opened: Number(row.prs_opened),
-        prs_merged: Number(row.prs_merged),
-        pushes: Number(row.pushes),
-        commits: Number(row.commits),
-        releases: Number(row.releases),
-        review_comments: Number(row.review_comments),
-        unique_contributors: Number(row.unique_contributors),
+    try {
+      const [rows] = await client.query({
+        query,
+        params: { repos: batch },
       });
+
+      for (const row of rows) {
+        allStats.push({
+          repo_name: row.repo_name,
+          week,
+          new_stars: Number(row.new_stars),
+          new_forks: Number(row.new_forks),
+          issues_opened: Number(row.issues_opened),
+          issues_closed: Number(row.issues_closed),
+          prs_opened: Number(row.prs_opened),
+          prs_merged: Number(row.prs_merged),
+          pushes: Number(row.pushes),
+          commits: Number(row.commits),
+          releases: Number(row.releases),
+          review_comments: Number(row.review_comments),
+          unique_contributors: Number(row.unique_contributors),
+        });
+      }
+    } catch (err: any) {
+      // Skip weeks where day tables don't exist (e.g. future dates)
+      if (err?.code === 404 || err?.message?.includes("Not found")) {
+        console.warn(`[Pass 2] Skipping ${week} batch ${batchNum}: table not found`);
+      } else {
+        throw err;
+      }
     }
   }
 

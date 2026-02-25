@@ -18,7 +18,7 @@ export interface QualifyingRepo {
 
 export interface RepoStats {
   repo_name: string;
-  month: string;
+  week: string;
   new_stars: number;
   new_forks: number;
   issues_opened: number;

@@ -12,7 +12,7 @@ export function createDatabase(): Database.Database {
   db.pragma("journal_mode = WAL");
 
   db.exec(`
-    DROP TABLE IF EXISTS monthly_stats;
+    DROP TABLE IF EXISTS weekly_stats;
     DROP TABLE IF EXISTS repos;
 
     CREATE TABLE repos (
@@ -46,9 +46,9 @@ export function createDatabase(): Database.Database {
     FROM repos
     GROUP BY owner, owner_type;
 
-    CREATE TABLE monthly_stats (
+    CREATE TABLE weekly_stats (
       repo_name TEXT NOT NULL,
-      month TEXT NOT NULL,
+      week TEXT NOT NULL,
       new_stars INTEGER NOT NULL DEFAULT 0,
       new_forks INTEGER NOT NULL DEFAULT 0,
       issues_opened INTEGER NOT NULL DEFAULT 0,
@@ -60,14 +60,14 @@ export function createDatabase(): Database.Database {
       releases INTEGER NOT NULL DEFAULT 0,
       review_comments INTEGER NOT NULL DEFAULT 0,
       unique_contributors INTEGER NOT NULL DEFAULT 0,
-      PRIMARY KEY (repo_name, month),
+      PRIMARY KEY (repo_name, week),
       FOREIGN KEY (repo_name) REFERENCES repos(name)
     );
 
     CREATE INDEX idx_repos_owner ON repos(owner);
     CREATE INDEX idx_repos_stars ON repos(stars_total DESC);
     CREATE INDEX idx_repos_language ON repos(language);
-    CREATE INDEX idx_stats_month ON monthly_stats(month, new_stars DESC);
+    CREATE INDEX idx_stats_week ON weekly_stats(week, new_stars DESC);
   `);
 
   return db;
@@ -106,10 +106,25 @@ export function exportLeaderboard(db: Database.Database, limit = 20): void {
   console.log(`Exported top ${rows.length} repos to leaderboard.json`);
 }
 
+export function exportWeeklyRanking(db: Database.Database, limit = 20): void {
+  const rows = db.prepare(`
+    SELECT w.repo_name AS name, w.new_stars, r.stars_total
+    FROM weekly_stats w
+    JOIN repos r ON r.name = w.repo_name
+    WHERE w.week = (SELECT MAX(week) FROM weekly_stats)
+    ORDER BY w.new_stars DESC
+    LIMIT ?
+  `).all(limit) as { name: string; new_stars: number; stars_total: number }[];
+
+  const outPath = path.join(__dirname, "..", "frontend", "helpers", "weekly-ranking.json");
+  writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
+  console.log(`Exported top ${rows.length} repos by weekly stars to weekly-ranking.json`);
+}
+
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {
   const stmt = db.prepare(`
-    INSERT INTO monthly_stats (
-      repo_name, month, new_stars, new_forks,
+    INSERT INTO weekly_stats (
+      repo_name, week, new_stars, new_forks,
       issues_opened, issues_closed, prs_opened, prs_merged,
       pushes, commits, releases, review_comments, unique_contributors
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -117,7 +132,7 @@ export function insertStats(db: Database.Database, stats: RepoStats[]): void {
   const insertMany = db.transaction((items: RepoStats[]) => {
     for (const s of items) {
       stmt.run(
-        s.repo_name, s.month, s.new_stars, s.new_forks,
+        s.repo_name, s.week, s.new_stars, s.new_forks,
         s.issues_opened, s.issues_closed, s.prs_opened, s.prs_merged,
         s.pushes, s.commits, s.releases, s.review_comments, s.unique_contributors
       );
