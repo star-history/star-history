@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-- `npm run dev` - Start development server (uses custom server.js with auto port finding)
-- `npm run build` - Production build + sitemap generation  
-- `npm start` - Production server
-- `npm run lint` - ESLint linting
-- `npm run prettier` - Code formatting
+- `pnpm run dev` - Start development server (uses custom server.js with auto port finding)
+- `pnpm run build` - Production build + sitemap generation  
+- `pnpm start` - Production server
+- `pnpm run lint` - ESLint linting
+- `pnpm run prettier` - Code formatting
 
 ## Architecture Overview
 

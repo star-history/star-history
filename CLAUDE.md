@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Package Manager
+
+Use **pnpm** (not npm/yarn) for all commands: `pnpm install`, `pnpm run dev`, `pnpm run build`, etc.
+
 ## Plans
 
 Save all design docs and implementation plans to `plans/` at the repo root. This directory is gitignored.
