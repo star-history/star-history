@@ -6,7 +6,7 @@
     "private": true,
     "packageManager": "pnpm@9.15.4",
     "scripts": {
-        "generate:blog": "npx ts-node scripts/generateBlogJson.mts",
+        "generate:blog": "npx tsx scripts/generateBlogJson.mts",
         "dev": "npm run generate:blog && next dev",
         "build": "npm run generate:blog && next build && next-sitemap",
         "start": "npx serve out",
