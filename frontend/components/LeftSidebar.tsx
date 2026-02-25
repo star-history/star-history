@@ -15,7 +15,7 @@ function formatStars(count: number): string {
 type Tab = "weekly" | "alltime"
 
 const tabs: { key: Tab; label: string }[] = [
-    { key: "weekly", label: "Last Week" },
+    { key: "weekly", label: "Weekly" },
     { key: "alltime", label: "All-time" },
 ]
 
@@ -40,10 +40,10 @@ const LeftSidebar: React.FC = () => {
                         <button
                             key={tab.key}
                             onClick={() => setActiveTab(tab.key)}
-                            className={`text-xs font-semibold uppercase tracking-wider pb-1 border-b-2 transition-colors ${
+                            className={`text-xs font-medium pb-1 border-b-2 transition-colors ${
                                 activeTab === tab.key
-                                    ? "text-gray-700 border-gray-700"
-                                    : "text-gray-400 border-transparent hover:text-gray-500"
+                                    ? "text-gray-900 border-gray-900"
+                                    : "text-gray-400 border-transparent hover:text-gray-600"
                             }`}
                         >
                             {tab.label}
@@ -60,7 +60,7 @@ const LeftSidebar: React.FC = () => {
                                     onClick={(e) => handleClick(e, item.name)}
                                     className="flex items-center gap-2 py-1 text-sm group cursor-pointer"
                                 >
-                                    <span className="text-xs text-gray-300 w-4 shrink-0">
+                                    <span className="text-xs text-gray-400 w-4 shrink-0">
                                         {i + 1}
                                     </span>
                                     <span className="truncate text-gray-700 group-hover:text-blue-600">
