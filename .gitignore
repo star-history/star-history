@@ -48,3 +48,4 @@ token.env
 
 # generated files
 frontend/helpers/blog.json
+frontend/helpers/repos.json

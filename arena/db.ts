@@ -121,6 +121,17 @@ export function exportWeeklyRanking(db: Database.Database, limit = 20): void {
   console.log(`Exported top ${rows.length} repos by weekly stars to weekly-ranking.json`);
 }
 
+export function exportRepos(db: Database.Database): void {
+  const rows = db.prepare(
+    `SELECT name, stars_total, description, language, topics, license,
+            homepage, forks_count, open_issues_count, created_at, archived
+     FROM repos ORDER BY stars_total DESC`
+  ).all();
+  const outPath = path.join(__dirname, "..", "frontend", "helpers", "repos.json");
+  writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
+  console.log(`Exported ${rows.length} repos to repos.json`);
+}
+
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {
   const stmt = db.prepare(`
     INSERT INTO weekly_stats (

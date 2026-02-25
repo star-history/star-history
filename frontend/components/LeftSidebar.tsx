@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useAppStore } from "../store"
+import Link from "next/link"
 import leaderboard from "../helpers/leaderboard.json"
 import weeklyRankingData from "../helpers/weekly-ranking.json"
 
@@ -20,13 +20,7 @@ const tabs: { key: Tab; label: string }[] = [
 ]
 
 const LeftSidebar: React.FC = () => {
-    const store = useAppStore()
     const [activeTab, setActiveTab] = useState<Tab>(weeklyRanking.length > 0 ? "weekly" : "alltime")
-
-    const handleClick = (e: React.MouseEvent, repoName: string) => {
-        e.preventDefault()
-        store.actions.setRepos([repoName])
-    }
 
     const items = activeTab === "weekly"
         ? weeklyRanking.map((r) => ({ name: r.name, metric: `+${formatStars(r.new_stars)}`, metricClass: "text-green-600" }))
@@ -55,9 +49,8 @@ const LeftSidebar: React.FC = () => {
                         const repoName = item.name.split("/")[1]
                         return (
                             <li key={item.name}>
-                                <a
-                                    href={`/#${item.name}`}
-                                    onClick={(e) => handleClick(e, item.name)}
+                                <Link
+                                    href={`/${item.name.toLowerCase()}`}
                                     className="flex items-center gap-2 py-1 text-sm group cursor-pointer"
                                 >
                                     <span className="text-xs text-gray-400 w-4 shrink-0">
@@ -69,7 +62,7 @@ const LeftSidebar: React.FC = () => {
                                     <span className={`ml-auto text-xs shrink-0 ${item.metricClass}`}>
                                         {item.metric}
                                     </span>
-                                </a>
+                                </Link>
                             </li>
                         )
                     })}

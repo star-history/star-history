@@ -36,11 +36,14 @@ interface AppStateContextProps {
 
 const AppStateContext = createContext<AppStateContextProps | undefined>(undefined);
 
-export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AppStateProvider: React.FC<{
+    children: React.ReactNode;
+    initialRepos?: string[];
+}> = ({ children, initialRepos }) => {
     const [state, setState] = useState<AppState>({
         isFetching: false,
         token: "",
-        repos: [],
+        repos: initialRepos || [],
         chartMode: "Date",
         useLogScale: false,
         legendPosition: "top-left",
