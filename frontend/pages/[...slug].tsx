@@ -1,14 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react"
-import { useRouter } from "next/router"
-import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import { AppStateProvider } from "../store"
 import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
-import Link from "next/link"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import fs from "fs"
-import path from "path"
+import { formatNumber } from "../helpers/format"
+import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
+import type { RepoCardData, RepoAttributes } from "../helpers/repo-data"
+import PageShell from "../components/PageShell"
 
 const LANGUAGE_COLORS: Record<string, string> = {
     TypeScript: "#3178c6", JavaScript: "#f1e05a", Python: "#3572A5",
@@ -21,43 +19,8 @@ const LANGUAGE_COLORS: Record<string, string> = {
     OCaml: "#3be133",
 }
 
-interface RepoAttributes {
-    popularity: number
-    momentum: number
-    activity: number
-    community: number
-    health: number
-    influence: number
-}
-
-interface RepoCardData {
-    name: string
-    owner: string
-    stars_total: number
-    description: string | null
-    language: string | null
-    topics: string[]
-    license: string | null
-    homepage: string | null
-    forks_count: number
-    open_issues_count: number
-    created_at: string | null
-    archived: boolean
-    size: number
-    rank: number
-    total_repos: number
-    attributes: RepoAttributes
-}
-
 interface RepoPageProps {
-    repo: RepoCardData | null
-    minStars: number
-}
-
-function formatNumber(n: number): string {
-    if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M"
-    if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "k"
-    return n.toString()
+    repo: RepoCardData
 }
 
 function formatDate(dateStr: string): string {
@@ -74,84 +37,7 @@ const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string; color: strin
     { key: "influence", label: "Influence", color: "bg-orange-500" },
 ]
 
-function NavInput() {
-    const router = useRouter()
-    const [navInput, setNavInput] = useState("")
-
-    const handleNavSubmit = () => {
-        let raw = navInput.trim()
-        if (!raw) return
-
-        if (GITHUB_REPO_URL_REG.test(raw)) {
-            const match = raw.match(GITHUB_REPO_URL_REG)
-            if (match) raw = match[1]
-        }
-
-        const parts = raw.split("/").filter(Boolean)
-        if (parts.length === 1) {
-            router.push(`/${parts[0]}/${parts[0]}`)
-        } else if (parts.length >= 2) {
-            router.push(`/${parts[0]}/${parts[1]}`)
-        }
-    }
-
-    return (
-        <div className="w-full max-w-2xl mb-4 flex items-center rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden">
-            <input
-                type="text"
-                value={navInput}
-                onChange={(e) => setNavInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleNavSubmit()}
-                placeholder="star-history or star-history/star-history or https://github.com/star-history/star-history"
-                className="flex-1 h-10 px-4 text-sm outline-none placeholder:text-neutral-400"
-            />
-            <button
-                onClick={handleNavSubmit}
-                className="h-10 px-4 text-sm text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 border-l border-neutral-200 transition-colors"
-            >
-                Go
-            </button>
-        </div>
-    )
-}
-
-function PageShell({ children }: { children: React.ReactNode }) {
-    return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-neutral-900 antialiased">
-            <div className="flex flex-col items-center px-4 py-8 md:py-12">
-                <NavInput />
-                {children}
-                <div className="mt-6 text-sm text-neutral-400">
-                    <Link href="/" className="hover:text-neutral-600 transition-colors">star-history.com</Link>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
-    const router = useRouter()
-    const slug = router.query.slug
-    const repoName = Array.isArray(slug) ? slug.join("/") : ""
-
-    if (!repo) {
-        return (
-            <PageShell>
-                <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
-                    <div className="px-5 py-16 text-center">
-                        <p className="text-4xl mb-3">🔭</p>
-                        <h1 className="text-lg font-semibold text-neutral-800">
-                            {repoName ? <span className="font-mono">{repoName}</span> : "Repository"} not found
-                        </h1>
-                        <p className="text-sm text-neutral-500 mt-2">
-                            We only track repositories with over {formatNumber(minStars)} stars. Try another repository in the search box above.
-                        </p>
-                    </div>
-                </div>
-            </PageShell>
-        )
-    }
-
+const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const title = `${repo.name} Star History`
     const description = repo.description
         ? `Star history and stats for ${repo.name}: ${repo.description}`
@@ -301,41 +187,6 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
 
 // --- Data loading ---
 
-const DEFAULT_MIN_STARS = 100000
-
-function loadRepoCards(): { min_stars: number; repos: RepoCardData[] } {
-    try {
-        const filePath = path.join(process.cwd(), "helpers", "repo-cards.json")
-        const data = JSON.parse(fs.readFileSync(filePath, "utf-8"))
-        return { min_stars: data.min_stars ?? DEFAULT_MIN_STARS, repos: data.repos ?? [] }
-    } catch {
-        return { min_stars: DEFAULT_MIN_STARS, repos: [] }
-    }
-}
-
-interface LegacyRepoRow {
-    name: string
-    stars_total: number
-    description: string | null
-    language: string | null
-    topics: string | null
-    license: string | null
-    homepage: string | null
-    forks_count: number
-    open_issues_count: number
-    created_at: string | null
-    archived: number
-}
-
-function loadLegacyRepos(): LegacyRepoRow[] {
-    try {
-        const filePath = path.join(process.cwd(), "helpers", "repos.json")
-        return JSON.parse(fs.readFileSync(filePath, "utf-8"))
-    } catch {
-        return []
-    }
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
     const { repos: cards } = loadRepoCards()
     const legacyRepos = loadLegacyRepos()
@@ -351,22 +202,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
         }
     }
 
-    return { paths, fallback: "blocking" }
+    return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
-    const { min_stars: minStars, repos: cards } = loadRepoCards()
+    const { repos: cards } = loadRepoCards()
 
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {
-        return { props: { repo: null, minStars } }
+        return { notFound: true }
     }
 
     const fullName = slug.join("/")
     const cardData = cards.find((c) => c.name.toLowerCase() === fullName.toLowerCase())
 
     if (cardData) {
-        return { props: { repo: cardData, minStars } }
+        return { props: { repo: cardData } }
     }
 
     // Fallback to legacy repos.json
@@ -374,7 +225,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
     const repoData = legacyRepos.find((r) => r.name.toLowerCase() === fullName.toLowerCase())
 
     if (!repoData) {
-        return { props: { repo: null, minStars } }
+        return { notFound: true }
     }
 
     let topics: string[] = []
@@ -386,7 +237,6 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
 
     return {
         props: {
-            minStars,
             repo: {
                 name: repoData.name,
                 owner: repoData.name.split("/")[0],
