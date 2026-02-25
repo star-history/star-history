@@ -33,7 +33,6 @@ interface RepoCardData {
     archived: boolean
     size: number
     rank: number
-    total_repos: number
 }
 
 interface RepoPageProps {
@@ -67,9 +66,17 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
         : `View the star history chart for ${repo.name} on GitHub.`
     const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date`
-    const langColor = repo.language ? LANGUAGE_COLORS[repo.language] || "#6b7280" : null
+    const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
     const repoShortName = repo.name.split("/")[1]
     const avatarUrl = `https://github.com/${repo.owner}.png?size=80`
+
+    const stats: { label: string; value: string }[] = [
+        { label: "Stars", value: formatNumber(repo.stars_total) },
+        { label: "Forks", value: formatNumber(repo.forks_count) },
+        { label: "Open issues", value: formatNumber(repo.open_issues_count) },
+        { label: "Size", value: formatSize(repo.size) },
+        { label: "Age", value: repo.created_at ? repoAge(repo.created_at) : "—" },
+    ]
 
     return (
         <>
@@ -89,145 +96,127 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                 <meta name="twitter:image" content={ogImage} />
             </Head>
             <AppStateProvider initialRepos={[repo.name]}>
-                <div className="w-full h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-auto">
-                    {/* Full-width landscape dashboard */}
-                    <div className="w-full h-full flex flex-col p-4 lg:p-6 gap-4 lg:gap-5">
+                <div className="min-h-screen bg-white text-neutral-900 antialiased">
+                    <div className="max-w-[1400px] mx-auto p-4 md:p-8 space-y-6">
 
-                        {/* === TOP ROW: Identity + Stats === */}
-                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 shrink-0">
-
-                            {/* Identity panel */}
-                            <div className="flex-1 bg-slate-800/60 rounded-xl border border-slate-700/50 p-5 flex flex-col gap-3">
-                                <div className="flex items-center gap-4">
-                                    <img
-                                        src={avatarUrl}
-                                        alt={repo.owner}
-                                        className="w-14 h-14 rounded-xl ring-2 ring-slate-600"
-                                        loading="lazy"
-                                    />
-                                    <div className="min-w-0 flex-1">
-                                        <div className="flex items-center gap-2 mb-1">
-                                            <h1 className="text-xl lg:text-2xl font-bold truncate">
-                                                <span className="text-slate-400 font-normal">{repo.owner}/</span>{repoShortName}
-                                            </h1>
-                                            {repo.archived && (
-                                                <span className="text-[10px] text-yellow-400 bg-yellow-400/10 px-1.5 py-0.5 rounded font-medium shrink-0">
-                                                    ARCHIVED
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="flex items-center gap-3 text-xs text-slate-400">
-                                            {repo.language && (
-                                                <span className="flex items-center gap-1">
-                                                    <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: langColor || "#6b7280" }} />
-                                                    {repo.language}
-                                                </span>
-                                            )}
-                                            {repo.license && <span>{repo.license}</span>}
-                                            <span className="text-slate-500">#{repo.rank} of {repo.total_repos}</span>
-                                        </div>
-                                    </div>
+                        {/* Identity */}
+                        <div className="flex items-start gap-4">
+                            <img
+                                src={avatarUrl}
+                                alt={repo.owner}
+                                className="w-10 h-10 rounded-full"
+                                loading="lazy"
+                            />
+                            <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                    <h1 className="text-2xl font-semibold">
+                                        <Link href={`https://github.com/${repo.owner}`} className="text-neutral-400 hover:underline">{repo.owner}</Link>
+                                        <span className="text-neutral-300 mx-0.5">/</span>
+                                        <Link href={`https://github.com/${repo.name}`} className="hover:underline">{repoShortName}</Link>
+                                    </h1>
+                                    {repo.archived && (
+                                        <span className="text-xs text-yellow-700 bg-yellow-100 px-1.5 py-0.5 rounded font-medium">archived</span>
+                                    )}
                                 </div>
                                 {repo.description && (
-                                    <p className="text-sm text-slate-300 leading-relaxed line-clamp-2">{repo.description}</p>
+                                    <p className="text-sm text-neutral-600 mt-1 leading-relaxed">{repo.description}</p>
                                 )}
-                                {repo.topics.length > 0 && (
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {repo.topics.slice(0, 5).map((t) => (
-                                            <span key={t} className="px-2 py-0.5 bg-slate-700/60 text-slate-300 text-[11px] rounded-full">{t}</span>
+                                <div className="flex items-center gap-3 mt-2 text-xs text-neutral-400 flex-wrap">
+                                    {repo.language && (
+                                        <span className="flex items-center gap-1">
+                                            <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: langColor! }} />
+                                            {repo.language}
+                                        </span>
+                                    )}
+                                    {repo.license && <span>{repo.license}</span>}
+                                    {repo.topics.length > 0 && repo.topics.slice(0, 5).map((t) => (
+                                        <span key={t} className="text-neutral-500">{t}</span>
+                                    ))}
+                                </div>
+                            </div>
+                            {repo.rank > 0 && (
+                                <div className="shrink-0 text-right">
+                                    <span className="text-3xl font-bold font-mono text-neutral-900">#{repo.rank}</span>
+                                    <p className="text-xs text-neutral-400 mt-0.5">Global Rank</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Stats table */}
+                        <div className="border border-neutral-200 rounded-md overflow-hidden">
+                            <table className="w-full text-sm">
+                                <thead>
+                                    <tr className="border-b border-neutral-200 bg-neutral-50">
+                                        {stats.map((s) => (
+                                            <th key={s.label} className="px-4 py-2 text-left font-medium text-neutral-500 text-xs uppercase tracking-wide">
+                                                {s.label}
+                                            </th>
                                         ))}
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Raw stats grid */}
-                            <div className="grid grid-cols-3 gap-3 lg:w-[420px] shrink-0">
-                                <StatCard label="Stars" value={formatNumber(repo.stars_total)} icon="fas fa-star" iconColor="text-yellow-400" />
-                                <StatCard label="Forks" value={formatNumber(repo.forks_count)} icon="fas fa-code-branch" iconColor="text-blue-400" />
-                                <StatCard label="Issues" value={formatNumber(repo.open_issues_count)} icon="fas fa-exclamation-circle" iconColor="text-green-400" />
-                                <StatCard label="Size" value={formatSize(repo.size)} icon="fas fa-database" iconColor="text-purple-400" />
-                                <StatCard
-                                    label="Age"
-                                    value={repo.created_at ? repoAge(repo.created_at) : "—"}
-                                    icon="fas fa-calendar"
-                                    iconColor="text-orange-400"
-                                />
-                                <StatCard label="Rank" value={`#${repo.rank}`} icon="fas fa-trophy" iconColor="text-amber-400" />
-                            </div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {stats.map((s) => (
+                                            <td key={s.label} className="px-4 py-3 font-mono font-semibold text-neutral-900">
+                                                {s.value}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
-                        {/* === MIDDLE ROW: Chart (dominant) === */}
-                        <div className="flex-1 min-h-0 bg-slate-800/60 rounded-xl border border-slate-700/50 p-3 lg:p-4 flex flex-col">
-                            <div className="flex-1 min-h-0 [&_svg]:!max-h-full">
-                                <StarChartViewer compact />
-                            </div>
+                        {/* Chart */}
+                        <div className="border border-neutral-200 rounded-md p-2 md:p-4">
+                            <StarChartViewer compact />
                         </div>
 
-                        {/* === BOTTOM ROW: Placeholder panels + Links === */}
-                        <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 shrink-0">
-
+                        {/* Bottom panels */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* Placeholder: Recent activity */}
-                            <div className="flex-1 bg-slate-800/40 rounded-xl border border-dashed border-slate-600/50 p-5 flex items-center justify-center">
-                                <span className="text-sm text-slate-500">Recent Activity (commits, PRs, releases)</span>
+                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
+                                <span className="text-sm text-neutral-400">Recent Activity (commits, PRs, releases)</span>
                             </div>
 
                             {/* Placeholder: Contributors */}
-                            <div className="flex-1 bg-slate-800/40 rounded-xl border border-dashed border-slate-600/50 p-5 flex items-center justify-center">
-                                <span className="text-sm text-slate-500">Top Contributors</span>
+                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
+                                <span className="text-sm text-neutral-400">Top Contributors</span>
                             </div>
 
                             {/* Placeholder: Growth sparkline */}
-                            <div className="flex-1 bg-slate-800/40 rounded-xl border border-dashed border-slate-600/50 p-5 flex items-center justify-center">
-                                <span className="text-sm text-slate-500">Weekly Star Growth Sparkline</span>
+                            <div className="border border-dashed border-neutral-300 rounded-md p-6 flex items-center justify-center min-h-[120px]">
+                                <span className="text-sm text-neutral-400">Weekly Star Growth Sparkline</span>
                             </div>
+                        </div>
 
-                            {/* Links panel */}
-                            <div className="lg:w-48 shrink-0 bg-slate-800/60 rounded-xl border border-slate-700/50 p-4 flex flex-col gap-2">
+                        {/* Footer links */}
+                        <div className="flex items-center gap-4 text-sm pt-2 pb-4">
+                            <a
+                                href={`https://github.com/${repo.name}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2"
+                            >
+                                GitHub
+                            </a>
+                            {repo.homepage && (
                                 <a
-                                    href={`https://github.com/${repo.name}`}
+                                    href={repo.homepage}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-3 py-2 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-sm transition-colors"
+                                    className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2"
                                 >
-                                    <i className="fab fa-github text-white"></i>
-                                    GitHub
+                                    Website
                                 </a>
-                                {repo.homepage && (
-                                    <a
-                                        href={repo.homepage}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-3 py-2 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-sm transition-colors"
-                                    >
-                                        <i className="fas fa-external-link-alt text-slate-400"></i>
-                                        Website
-                                    </a>
-                                )}
-                                <Link
-                                    href="/"
-                                    className="flex items-center gap-2 px-3 py-2 bg-slate-700/50 hover:bg-slate-700 rounded-lg text-sm transition-colors"
-                                >
-                                    <img src="/assets/icon.png" alt="" className="w-4 h-4" />
-                                    star-history.com
-                                </Link>
-                            </div>
+                            )}
+                            <Link href="/" className="text-neutral-600 hover:text-neutral-900 underline underline-offset-2">
+                                star-history.com
+                            </Link>
                         </div>
                     </div>
                 </div>
             </AppStateProvider>
         </>
-    )
-}
-
-function StatCard({ label, value, icon, iconColor }: {
-    label: string; value: string; icon: string; iconColor: string
-}) {
-    return (
-        <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-3 lg:p-4 flex flex-col items-center justify-center text-center gap-1">
-            <i className={`${icon} ${iconColor} text-lg`}></i>
-            <span className="text-lg lg:text-xl font-bold tabular-nums">{value}</span>
-            <span className="text-[11px] text-slate-400 uppercase tracking-wider">{label}</span>
-        </div>
     )
 }
 
@@ -329,7 +318,6 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
                 archived: repoData.archived === 1,
                 size: 0,
                 rank: 0,
-                total_repos: 0,
             },
         },
     }

@@ -153,8 +153,6 @@ export function exportRepoCards(db: Database.Database): void {
     ORDER BY r.stars_total DESC
   `).all() as any[];
 
-  const total = rows.length;
-
   const cards = rows.map((r) => {
     let topics: string[] = [];
     try {
@@ -178,7 +176,6 @@ export function exportRepoCards(db: Database.Database): void {
       archived: r.archived === 1,
       size: r.size,
       rank: r.rank,
-      total_repos: total,
     };
   });
 
