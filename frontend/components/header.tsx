@@ -50,17 +50,17 @@ useEffect(() => {
 
       <AppStateProvider>
         { <TopBanner /> }
-        <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-[#363636] text-light">
+        <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-dark text-light">
           <div className="w-full h-full flex flex-row justify-between items-center px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
-              <Link href="/" className="h-full flex flex-row justify-center items-center px-3 hover:bg-zinc-800">
+              <Link href="/" className="header-link px-3">
                 <img className="w-7 h-auto" src="/assets/icon.png" alt="Logo" />
               </Link>
-              <Link href="/blog"className="h-full flex flex-row justify-center items-center text-base px-2 hover:bg-zinc-800">
+              <Link href="/blog" className="header-link text-base">
                 <span className="text-white -2">Blog</span>
               </Link>
               <span
-                className="h-full flex flex-row justify-center items-center cursor-pointer text-white text-base px-2 hover:bg-zinc-800"
+                className="header-link cursor-pointer text-white text-base"
                 onClick={handleSetTokenBtnClick}
               >
                 {headerText}
@@ -72,10 +72,10 @@ useEffect(() => {
               </Link>
             </div>
             <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
-              <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
+              <a className="header-link" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-twitter text-2xl text-blue-300"></i>
               </a>
-              <a className="h-full flex flex-row justify-center items-center px-2 hover:bg-zinc-800" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
+              <a className="header-link" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
                 <i className="fas fa-rss text-2xl text-orange-400"></i>
               </a>
               <GitHubStarButton />

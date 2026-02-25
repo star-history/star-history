@@ -81,7 +81,7 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
                                 <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
                                 <p className="text-center leading-8 text-lg text-dark font-medium">
                                     <Link href="/blog">
-                                        <button className="w-full px-4 py-2 h-full text-base rounded-md bg-gray-400 shadow-inner text-light hover:bg-gray-500">
+                                        <button className="w-full py-2 text-base btn-primary bg-gray-400 hover:bg-gray-500">
                                             <i className="fas fa-chevron-left mr-1"></i>
                                             Back to blog list
                                         </button>

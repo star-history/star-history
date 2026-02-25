@@ -428,22 +428,22 @@ function StarChartViewer() {
                                 </a>
                             </div>
                             <div className="flex flex-row flex-wrap justify-end items-center mb-2">
-                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateImageBtnClick}>
+                                <button className="ml-2 mb-2 btn-secondary" onClick={handleGenerateImageBtnClick}>
                                     <i className="fas fa-download"></i> Image
                                 </button>
 
-                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenerateCSVBtnClick}>
+                                <button className="ml-2 mb-2 btn-secondary" onClick={handleGenerateCSVBtnClick}>
                                     <i className="fas fa-download"></i> CSV
                                 </button>
 
-                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleGenEmbedCodeDialogBtnClick}>
+                                <button className="ml-2 mb-2 btn-secondary" onClick={handleGenEmbedCodeDialogBtnClick}>
                                     <i className="fas fa-code"></i> Embed
                                 </button>
-                                <button className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200" onClick={handleCopyLinkBtnClick}>
+                                <button className="ml-2 mb-2 btn-secondary" onClick={handleCopyLinkBtnClick}>
                                     <i className="far fa-copy"></i> Link{" "}
                                 </button>
                                 <button
-                                    className="ml-2 mb-2 rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200"
+                                    className="ml-2 mb-2 btn-secondary"
                                     onClick={handleShareToTwitterBtnClick}
                                 >
                                     <i className="fab fa-twitter"></i> Share on Twitter{" "}

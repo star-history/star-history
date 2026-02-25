@@ -11,27 +11,27 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className="flex flex-row flex-wrap items-center space-x-4">
-                    <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
+                    <div className="flex flex-row link-footer">
                         <img className="h-4 mt-2 mr-1" src="/assets/pgconsole.svg" alt="pgconsole" />
                         <a href="https://www.pgconsole.com" target="_blank" rel="noopener noreferrer">
                             {" "}
                             pgconsole{" "}
                         </a>
                     </div>
-                    <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
+                    <div className="flex flex-row link-footer">
                         <img className="h-4 mt-2 mr-1" src="/assets/pgschema.webp" alt="DB Cost" />
                         <a href="https://www.pgschema.com/" target="_blank" rel="noopener noreferrer">
                             pgschema
                         </a>
                     </div>
-                    <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
+                    <div className="flex flex-row link-footer">
                         <img className="h-4 mt-2 mr-1" src="/assets/dbhub.svg" alt="dbhub" />
                         <a href="https://dbhub.ai" target="_blank" rel="noopener noreferrer">
                             {" "}
                             DBHub{" "}
                         </a>
                     </div>
-                    <div className="flex flex-row text-sm leading-8 underline text-blue-700 hover:opacity-80">
+                    <div className="flex flex-row link-footer">
                         <img className="h-4 mt-2 mr-1" src="/assets/arfak.webp" alt="arfak" />
                         <a href="https://www.arfak.ai" target="_blank" rel="noopener noreferrer">
                             {" "}
@@ -42,11 +42,11 @@ const Footer = () => {
                 <div className="text-xs leading-8 flex flex-row flex-nowrap justify-end items-center">
                     <span className="text-gray-600">
                         Maintained by{" "}
-                        <a className="text-blue-500 hover:opacity-80" href="https://bytebase.com" target="_blank" rel="noopener noreferrer">
+                        <a className="link" href="https://bytebase.com" target="_blank" rel="noopener noreferrer">
                             Bytebase
                         </a>
                         , originally built by{" "}
-                        <a className="text-blue-500 hover:opacity-80" href="https://twitter.com/tim_qian" target="_blank" rel="noopener noreferrer">
+                        <a className="link" href="https://twitter.com/tim_qian" target="_blank" rel="noopener noreferrer">
                             @tim_qian
                         </a>
                     </span>

@@ -46,14 +46,14 @@ const EmbedChart: React.FC = () => {
             <p className="leading-8 mb-3">
                 🌟 Show real-time chart on {repoText}{" "}
                 {singleRepo ? (
-                    <a className="font-mono underline text-blue-500 hover:opacity-80" href={`https://github.com/${singleRepo}/blob/master/README.md`} target="_blank">
+                    <a className="link-mono" href={`https://github.com/${singleRepo}/blob/master/README.md`} target="_blank">
                         README.md
                     </a>
                 ) : (
                     <span className="font-mono text-gray-500">README.md</span>
                 )}{" "}
                 with the following code (
-                <a className="font-mono underline text-blue-500 hover:opacity-80" href="https://github.com/star-history/star-history?tab=readme-ov-file#sparkles-star-history-sparkles" target="_blank">
+                <a className="link-mono" href="https://github.com/star-history/star-history?tab=readme-ov-file#sparkles-star-history-sparkles" target="_blank">
                     example
                 </a>
                 ):

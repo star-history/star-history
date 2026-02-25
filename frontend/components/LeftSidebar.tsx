@@ -33,7 +33,7 @@ const LeftSidebar: React.FC = () => {
         : leaderboard.map((r) => ({ name: r.name, metric: formatStars(r.stars_total), metricClass: "text-gray-400" }))
 
     return (
-        <div className="sticky top-28 flex flex-col w-full h-fit">
+        <div className="sidebar-sticky">
             <div className="pt-4">
                 <div className="flex justify-center gap-4 mb-3">
                     {tabs.map((tab) => (

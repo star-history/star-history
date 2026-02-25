@@ -20,19 +20,19 @@ const EmbedChartGuideDialog: React.FC<EmbedCodeProps> = ({ onClose, embedCode })
 
     return (
         <Dialog>
-            <div className="w-160 max-w-full h-auto flex flex-col justify-start items-start bg-white rounded-md">
-                <header className="w-full flex flex-row justify-between items-center p-4 pr-5 bg-gray-100 rounded-t-lg">
-                    <span className="text-2xl">Step-to-step guide</span>
-                    <i className="fas fa-times-circle text-xl text-gray-400 cursor-pointer hover:text-gray-500" onClick={handleCloseBtnClick}></i>
+            <div className="dialog-panel w-160 max-w-full">
+                <header className="dialog-header">
+                    <span className="dialog-title">Step-to-step guide</span>
+                    <i className="dialog-close fas fa-times-circle" onClick={handleCloseBtnClick}></i>
                 </header>
-                <main className="w-full flex flex-col justify-start items-start p-4 pr-5">
+                <main className="dialog-body">
                     <p className="leading-7">{"It's very easy to add star-history chart into GitHub README, just two steps"}:</p>
                     <ol className="list-decimal pl-5 mt-3">
                         <li className="mb-2">
                             <p>Copy the raw markdown string below</p>
-                            <div className="relative w-full h-auto border mt-2 px-4 py-3 rounded-md shadow-inner">
-                                <pre className="font-mono break-all text-gray-600 text-sm whitespace-pre-wrap">{embedCode}</pre>
-                                <button className="absolute top-2 right-2 px-4 leading-8 text-sm rounded-md bg-green-600 shadow-inner text-white hover:bg-green-700" onClick={handleCopyBtnClick}>
+                            <div className="code-block mt-2">
+                                <pre className="code-text whitespace-pre-wrap">{embedCode}</pre>
+                                <button className="absolute top-2 right-2 btn-primary leading-8 text-sm" onClick={handleCopyBtnClick}>
                                     Copy
                                 </button>
                             </div>

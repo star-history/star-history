@@ -10,7 +10,7 @@ const RightSidebar: React.FC = () => {
     }, [])
 
     return (
-        <div className="sticky top-28 flex flex-col justify-start items-start w-full h-fit">
+        <div className="sidebar-sticky items-start">
             <div className="w-full px-2 pt-4 flex flex-col justify-start items-start">
                 {sponsors.map((sponsor) => (
                     <a
