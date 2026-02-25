@@ -38,7 +38,11 @@ interface State {
     showEmbedChartGuideDialog: boolean
 }
 
-function StarChartViewer() {
+interface StarChartViewerProps {
+    compact?: boolean
+}
+
+function StarChartViewer({ compact = false }: StarChartViewerProps) {
     const store = useAppStore()
 
     const [state, setState] = useState<State>({
@@ -356,7 +360,7 @@ function StarChartViewer() {
                         <FaSpinner className="animate-spin text-4xl z-10" />
                     </div>
                 )}
-                {state.chartData && (
+                {!compact && state.chartData && (
                     <>
                         <div className="absolute top-0 left-1 p-2 flex flex-row">
                             <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
@@ -401,7 +405,7 @@ function StarChartViewer() {
                         </div>
                     </>
                 )}
-                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname="w-full h-auto mt-6" data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
+                <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname={`w-full h-auto ${compact ? "" : "mt-6"}`} data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
                 {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog
@@ -413,7 +417,7 @@ function StarChartViewer() {
                 {state.showEmbedCodeDialog && <GenerateEmbedCodeDialog onClose={handleGenEmbedCodeDialogClose} show={state.showEmbedCodeDialog} />}
             </div>
 
-            {state.chartData && state.chartData.datasets.length > 0 && (
+            {!compact && state.chartData && state.chartData.datasets.length > 0 && (
                 <>
                     <div>
                         <div className="relative mt-4 mb-4 w-full px-3 mx-auto max-w-4xl flex flex-row flex-wrap justify-between items-center">

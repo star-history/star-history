@@ -132,6 +132,61 @@ export function exportRepos(db: Database.Database): void {
   console.log(`Exported ${rows.length} repos to repos.json`);
 }
 
+export function exportRepoCards(db: Database.Database): void {
+  const rows = db.prepare(`
+    SELECT
+      r.name,
+      r.owner,
+      r.stars_total,
+      r.description,
+      r.language,
+      r.topics,
+      r.license,
+      r.homepage,
+      r.forks_count,
+      r.open_issues_count,
+      r.created_at,
+      r.archived,
+      r.size,
+      ROW_NUMBER() OVER (ORDER BY r.stars_total DESC) AS rank
+    FROM repos r
+    ORDER BY r.stars_total DESC
+  `).all() as any[];
+
+  const total = rows.length;
+
+  const cards = rows.map((r) => {
+    let topics: string[] = [];
+    try {
+      topics = r.topics ? JSON.parse(r.topics) : [];
+    } catch {
+      topics = [];
+    }
+
+    return {
+      name: r.name,
+      owner: r.owner,
+      stars_total: r.stars_total,
+      description: r.description,
+      language: r.language,
+      topics,
+      license: r.license,
+      homepage: r.homepage,
+      forks_count: r.forks_count,
+      open_issues_count: r.open_issues_count,
+      created_at: r.created_at,
+      archived: r.archived === 1,
+      size: r.size,
+      rank: r.rank,
+      total_repos: total,
+    };
+  });
+
+  const outPath = path.join(__dirname, "..", "frontend", "helpers", "repo-cards.json");
+  writeFileSync(outPath, JSON.stringify(cards, null, 2) + "\n");
+  console.log(`Exported ${cards.length} repo cards to repo-cards.json`);
+}
+
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {
   const stmt = db.prepare(`
     INSERT INTO weekly_stats (
