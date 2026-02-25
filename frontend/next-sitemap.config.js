@@ -1,11 +1,12 @@
 module.exports = {
     siteUrl: 'https://www.star-history.com',
-    generateRobotsTxt: true, // (optional) Generate a robots.txt file
+    outDir: 'out',
+    generateRobotsTxt: true,
     robotsTxtOptions: {
         policies: [
             { userAgent: '*', disallow: '/_next/' },
             { userAgent: '*', disallow: '/embed' },
         ],
     },
-  };
+};
   
