@@ -8,7 +8,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
                 <NavInput />
                 {children}
                 <div className="mt-6 text-sm text-neutral-400">
-                    <Link href="/" className="hover:text-neutral-600 transition-colors">star-history.com</Link>
+                    <Link href="/" className="hover:text-neutral-600 transition-colors">Back to home</Link>
                 </div>
             </div>
         </div>
