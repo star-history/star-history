@@ -13,8 +13,11 @@ export function createDatabase(): Database.Database {
   db.pragma("journal_mode = WAL");
 
   db.exec(`
+    PRAGMA foreign_keys = OFF;
     DROP TABLE IF EXISTS weekly_stats;
+    DROP VIEW IF EXISTS owners;
     DROP TABLE IF EXISTS repos;
+    PRAGMA foreign_keys = ON;
 
     CREATE TABLE repos (
       name TEXT PRIMARY KEY,

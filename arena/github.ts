@@ -66,7 +66,7 @@ async function githubFetch(url: string, retries = 0): Promise<any> {
   return res.json();
 }
 
-export const MIN_STARS = 100000;
+export const MIN_STARS = 50000;
 
 export async function fetchQualifyingRepos(): Promise<QualifyingRepo[]> {
   loadTokens();

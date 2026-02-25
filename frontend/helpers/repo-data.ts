@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 
-export const DEFAULT_MIN_STARS = 100000
+export const DEFAULT_MIN_STARS = 50000
 
 export interface RepoCardData {
     name: string
