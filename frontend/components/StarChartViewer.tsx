@@ -353,7 +353,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
     }
     return (
         <>
-            <div ref={containerElRef} className="relative w-full h-auto min-h-400px self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0">
+            <div ref={containerElRef} className={`relative w-full h-auto self-center max-w-3xl 2xl:max-w-4xl sm:p-4 pt-0 ${compact ? "min-h-[200px]" : "min-h-400px"}`}>
                 {store.isFetching && (
                     <div className="absolute w-full h-full flex justify-center items-center z-10 top-0">
                         <div className="absolute w-full h-full blur-md bg-white bg-opacity-80"></div>
