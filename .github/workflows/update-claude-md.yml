@@ -5,6 +5,10 @@ on:
     - cron: "0 9 * * 1" # Monday 09:00 UTC
   workflow_dispatch:
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
