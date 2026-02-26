@@ -54,10 +54,20 @@ jobs:
             4. Only include files/directories that actually exist in the repo.
             5. Do not add any new sections beyond the ones listed above.
 
+      - name: Get GitHub App bot identity
+        id: app-user
+        run: |
+          app_slug="${{ steps.app-token.outputs.app-slug }}"
+          user_id=$(gh api "/users/${app_slug}[bot]" --jq .id)
+          echo "name=${app_slug}[bot]" >> "$GITHUB_OUTPUT"
+          echo "email=${user_id}+${app_slug}[bot]@users.noreply.github.com" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
       - name: Commit and push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ steps.app-user.outputs.name }}"
+          git config user.email "${{ steps.app-user.outputs.email }}"
           git add CLAUDE.md
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git commit -m "docs: auto-update CLAUDE.md from codebase inspection"
