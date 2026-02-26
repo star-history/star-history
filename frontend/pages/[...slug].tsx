@@ -101,14 +101,6 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                         >
                                             <i className="fab fa-github" />
                                         </a>
-                                        {repo.homepage && (
-                                            <a href={repo.homepage} target="_blank" rel="noopener noreferrer"
-                                                className="text-neutral-400 hover:text-neutral-700 transition-colors text-xs underline decoration-wavy decoration-1 underline-offset-2"
-                                                style={{ fontFamily: '"xkcd", cursive' }}
-                                            >
-                                                Web ↗
-                                            </a>
-                                        )}
                                     </div>
                                     {repo.description && (
                                         <p className="text-sm text-neutral-600 mt-1.5 leading-relaxed">{repo.description}</p>
