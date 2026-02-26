@@ -84,9 +84,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                     <span className="text-neutral-400">{repo.license}</span>
                                 )}
                             </div>
-                            {repo.rank > 0 && repo.total_repos > 0 && (
+                            {repo.rank > 0 && (
                                 <span className="font-mono font-semibold text-neutral-700">
-                                    #{repo.rank} <span className="text-neutral-400 font-normal">of {repo.total_repos}</span>
+                                    #{repo.rank}
                                 </span>
                             )}
                         </div>
