@@ -18,7 +18,7 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 ## Tech Stack
 
-Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2
+Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2 · FontAwesome ^6.4.2 · Lodash ^4.17.21 · Dayjs ^1.11.10 · Gray-matter ^4.0.3 · Marked ^9.1.6
 
 ## Project Structure
 
