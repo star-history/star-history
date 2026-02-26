@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head"
+import Link from "next/link"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
@@ -120,7 +121,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
 
                         {/* Radar Chart + Attribute Bars */}
                         {hasAttributes && (
-                            <div className="border-t border-b border-neutral-100 px-4 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
+                            <div className="border-t border-neutral-100 px-4 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                                 <RadarChart attributes={repo.attributes} />
                                 <div className="mt-4 space-y-2.5 px-1">
                                     {ATTRIBUTE_LABELS.map(({ key, label }, i) => {
@@ -155,11 +156,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         )}
 
                         {/* Footer – xkcd-style stats */}
-                        <div className="relative px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
-                            {/* Hand-drawn wobbly top border */}
-                            <svg className="absolute top-0 left-3 right-3 h-[3px]" preserveAspectRatio="none" viewBox="0 0 200 3">
-                                <path d="M0,1.5 C8,0.4 16,2.6 30,1.3 C44,0.3 56,2.7 75,1.5 C94,0.4 106,2.6 125,1.5 C144,0.3 156,2.7 175,1.3 C189,0.4 195,2.5 200,1.5" fill="none" stroke="#d4d4d4" strokeWidth="1.5" />
-                            </svg>
+                        <div className="border-t border-neutral-100 px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center justify-between flex-wrap gap-3">
                                 <div className="flex items-center gap-5 flex-wrap">
                                     <span className="inline-block text-lg text-neutral-800 -rotate-1">
@@ -174,9 +171,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                         </span>
                                     )}
                                 </div>
-                                <a href="/" className="opacity-60 hover:opacity-100 transition-opacity">
+                                <Link href="/" className="opacity-60 hover:opacity-100 transition-opacity">
                                     <img src="/assets/logo-full.svg" alt="star-history" className="h-5" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
