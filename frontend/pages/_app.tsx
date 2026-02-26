@@ -3,6 +3,7 @@ import { AppProps } from "next/app"
 import "../global.css"
 import "@fortawesome/fontawesome-free/css/all.css"
 import Head from "next/head"
+import Script from "next/script"
 
 export type NextPageWithLayout = NextPage & {
     getLayout?: (_page: React.ReactElement) => React.ReactNode
@@ -19,8 +20,8 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
         <>
             <Head>
                 <link rel="icon" href="/assets/favicon.ico" />
-                <script defer data-domain="star-history.com" src="https://plausible.io/js/script.js"></script>
             </Head>
+            <Script defer data-domain="star-history.com" src="https://plausible.io/js/script.js" strategy="afterInteractive" />
             {getLayout(<Component {...pageProps} />)}
         </>
     )
