@@ -3,7 +3,7 @@ import { scaleLinear } from "d3-scale"
 import addFilter from "./utils/addFilter"
 import addFont from "./utils/addFont"
 import ToolTip from "./components/ToolTip"
-import { D3Selection, Position } from "./types"
+import { D3Selection, Position, colors } from "./types"
 
 interface RadarChartDataset {
     label: string
@@ -166,8 +166,6 @@ const RadarChart = (
     })
 
     // Draw data polygons (sketchy, thick)
-    const colors = ["#28a3dd", "#dd4528", "#4ab74e"]
-
     datasets.forEach((dataset, di) => {
         const color = colors[di % colors.length]
 
