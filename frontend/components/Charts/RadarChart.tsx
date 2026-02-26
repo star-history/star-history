@@ -5,10 +5,10 @@ import type { RepoAttributes } from "../../helpers/repo-data"
 export const ATTRIBUTE_LABELS: { key: keyof RepoAttributes; label: string }[] = [
     { key: "stars", label: "Stars" },
     { key: "new_stars", label: "New Stars" },
-    { key: "pushes", label: "Pushes" },
-    { key: "contributors", label: "Contributors" },
-    { key: "issues_closed", label: "Issues Closed" },
     { key: "forks", label: "Forks" },
+    { key: "contributors", label: "Contributors" },
+    { key: "pushes", label: "Pushes" },
+    { key: "issues_closed", label: "Issues Closed" },
 ]
 
 interface Props {
