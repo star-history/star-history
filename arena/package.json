@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "fetch": "tsx fetch.ts",
+    "export": "tsx export.ts",
     "test": "tsx --test test.ts"
   },
   "dependencies": {

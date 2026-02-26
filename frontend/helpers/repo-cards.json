@@ -25,12 +25,12 @@
       "rank": 1,
       "total_repos": 374,
       "attributes": {
-        "popularity": 99,
-        "momentum": 97,
-        "activity": 35,
-        "community": 97,
-        "health": 98,
-        "influence": 93
+        "stars": 99,
+        "new_stars": 97,
+        "pushes": 37,
+        "contributors": 97,
+        "issues_closed": 66,
+        "forks": 93
       }
     },
     {
@@ -56,12 +56,12 @@
       "rank": 2,
       "total_repos": 374,
       "attributes": {
-        "popularity": 98,
-        "momentum": 97,
-        "activity": 43,
-        "community": 96,
-        "health": 35,
-        "influence": 89
+        "stars": 98,
+        "new_stars": 97,
+        "pushes": 0,
+        "contributors": 96,
+        "issues_closed": 39,
+        "forks": 89
       }
     },
     {
@@ -97,12 +97,12 @@
       "rank": 3,
       "total_repos": 374,
       "attributes": {
-        "popularity": 98,
-        "momentum": 77,
-        "activity": 88,
-        "community": 80,
-        "health": 56,
-        "influence": 93
+        "stars": 98,
+        "new_stars": 77,
+        "pushes": 87,
+        "contributors": 80,
+        "issues_closed": 88,
+        "forks": 93
       }
     },
     {
@@ -136,12 +136,12 @@
       "rank": 4,
       "total_repos": 374,
       "attributes": {
-        "popularity": 98,
-        "momentum": 95,
-        "activity": 54,
-        "community": 94,
-        "health": 96,
-        "influence": 92
+        "stars": 98,
+        "new_stars": 95,
+        "pushes": 26,
+        "contributors": 94,
+        "issues_closed": 55,
+        "forks": 92
       }
     },
     {
@@ -167,12 +167,12 @@
       "rank": 5,
       "total_repos": 374,
       "attributes": {
-        "popularity": 98,
-        "momentum": 87,
-        "activity": 39,
-        "community": 80,
-        "health": 98,
-        "influence": 97
+        "stars": 98,
+        "new_stars": 87,
+        "pushes": 37,
+        "contributors": 80,
+        "issues_closed": 55,
+        "forks": 97
       }
     },
     {
@@ -211,12 +211,12 @@
       "rank": 6,
       "total_repos": 374,
       "attributes": {
-        "popularity": 97,
-        "momentum": 85,
-        "activity": 64,
-        "community": 78,
-        "health": 87,
-        "influence": 93
+        "stars": 97,
+        "new_stars": 85,
+        "pushes": 64,
+        "contributors": 78,
+        "issues_closed": 66,
+        "forks": 93
       }
     },
     {
@@ -249,12 +249,12 @@
       "rank": 7,
       "total_repos": 374,
       "attributes": {
-        "popularity": 97,
-        "momentum": 73,
-        "activity": 14,
-        "community": 66,
-        "health": 0,
-        "influence": 98
+        "stars": 97,
+        "new_stars": 73,
+        "pushes": 0,
+        "contributors": 66,
+        "issues_closed": 0,
+        "forks": 98
       }
     },
     {
@@ -288,12 +288,12 @@
       "rank": 8,
       "total_repos": 374,
       "attributes": {
-        "popularity": 97,
-        "momentum": 91,
-        "activity": 30,
-        "community": 88,
-        "health": 0,
-        "influence": 96
+        "stars": 97,
+        "new_stars": 91,
+        "pushes": 0,
+        "contributors": 88,
+        "issues_closed": 0,
+        "forks": 96
       }
     },
     {
@@ -320,12 +320,12 @@
       "rank": 9,
       "total_repos": 374,
       "attributes": {
-        "popularity": 97,
-        "momentum": 93,
-        "activity": 61,
-        "community": 91,
-        "health": 0,
-        "influence": 84
+        "stars": 97,
+        "new_stars": 93,
+        "pushes": 60,
+        "contributors": 91,
+        "issues_closed": 0,
+        "forks": 84
       }
     },
     {
@@ -345,12 +345,12 @@
       "rank": 10,
       "total_repos": 374,
       "attributes": {
-        "popularity": 96,
-        "momentum": 32,
-        "activity": 0,
-        "community": 23,
-        "health": 0,
-        "influence": 79
+        "stars": 96,
+        "new_stars": 32,
+        "pushes": 0,
+        "contributors": 23,
+        "issues_closed": 0,
+        "forks": 79
       }
     },
     {
@@ -379,12 +379,12 @@
       "rank": 11,
       "total_repos": 374,
       "attributes": {
-        "popularity": 96,
-        "momentum": 94,
-        "activity": 42,
-        "community": 92,
-        "health": 0,
-        "influence": 62
+        "stars": 96,
+        "new_stars": 94,
+        "pushes": 49,
+        "contributors": 92,
+        "issues_closed": 0,
+        "forks": 62
       }
     },
     {
@@ -413,12 +413,12 @@
       "rank": 12,
       "total_repos": 374,
       "attributes": {
-        "popularity": 96,
-        "momentum": 91,
-        "activity": 24,
-        "community": 88,
-        "health": 0,
-        "influence": 89
+        "stars": 96,
+        "new_stars": 91,
+        "pushes": 0,
+        "contributors": 88,
+        "issues_closed": 0,
+        "forks": 89
       }
     },
     {
@@ -445,12 +445,12 @@
       "rank": 13,
       "total_repos": 374,
       "attributes": {
-        "popularity": 96,
-        "momentum": 66,
-        "activity": 77,
-        "community": 68,
-        "health": 77,
-        "influence": 95
+        "stars": 96,
+        "new_stars": 66,
+        "pushes": 74,
+        "contributors": 68,
+        "issues_closed": 80,
+        "forks": 95
       }
     },
     {
@@ -478,12 +478,12 @@
       "rank": 14,
       "total_repos": 374,
       "attributes": {
-        "popularity": 95,
-        "momentum": 99,
-        "activity": 98,
-        "community": 99,
-        "health": 51,
-        "influence": 93
+        "stars": 95,
+        "new_stars": 99,
+        "pushes": 96,
+        "contributors": 99,
+        "issues_closed": 98,
+        "forks": 93
       }
     },
     {
@@ -503,12 +503,12 @@
       "rank": 15,
       "total_repos": 374,
       "attributes": {
-        "popularity": 95,
-        "momentum": 92,
-        "activity": 57,
-        "community": 89,
-        "health": 0,
-        "influence": 97
+        "stars": 95,
+        "new_stars": 92,
+        "pushes": 63,
+        "contributors": 89,
+        "issues_closed": 0,
+        "forks": 97
       }
     },
     {
@@ -543,12 +543,12 @@
       "rank": 16,
       "total_repos": 374,
       "attributes": {
-        "popularity": 95,
-        "momentum": 74,
-        "activity": 57,
-        "community": 73,
-        "health": 43,
-        "influence": 95
+        "stars": 95,
+        "new_stars": 74,
+        "pushes": 30,
+        "contributors": 73,
+        "issues_closed": 39,
+        "forks": 95
       }
     },
     {
@@ -573,12 +573,12 @@
       "rank": 17,
       "total_repos": 374,
       "attributes": {
-        "popularity": 95,
-        "momentum": 24,
-        "activity": 32,
-        "community": 22,
-        "health": 0,
-        "influence": 90
+        "stars": 95,
+        "new_stars": 24,
+        "pushes": 0,
+        "contributors": 22,
+        "issues_closed": 0,
+        "forks": 90
       }
     },
     {
@@ -618,12 +618,12 @@
       "rank": 18,
       "total_repos": 374,
       "attributes": {
-        "popularity": 94,
-        "momentum": 93,
-        "activity": 14,
-        "community": 90,
-        "health": 0,
-        "influence": 62
+        "stars": 94,
+        "new_stars": 93,
+        "pushes": 0,
+        "contributors": 90,
+        "issues_closed": 0,
+        "forks": 62
       }
     },
     {
@@ -648,12 +648,12 @@
       "rank": 19,
       "total_repos": 374,
       "attributes": {
-        "popularity": 94,
-        "momentum": 73,
-        "activity": 31,
-        "community": 65,
-        "health": 0,
-        "influence": 82
+        "stars": 94,
+        "new_stars": 73,
+        "pushes": 33,
+        "contributors": 65,
+        "issues_closed": 30,
+        "forks": 82
       }
     },
     {
@@ -682,12 +682,12 @@
       "rank": 20,
       "total_repos": 374,
       "attributes": {
-        "popularity": 94,
-        "momentum": 35,
-        "activity": 24,
-        "community": 30,
-        "health": 67,
-        "influence": 88
+        "stars": 94,
+        "new_stars": 35,
+        "pushes": 26,
+        "contributors": 30,
+        "issues_closed": 30,
+        "forks": 88
       }
     },
     {
@@ -716,12 +716,12 @@
       "rank": 21,
       "total_repos": 374,
       "attributes": {
-        "popularity": 93,
-        "momentum": 51,
-        "activity": 98,
-        "community": 61,
-        "health": 67,
-        "influence": 98
+        "stars": 93,
+        "new_stars": 51,
+        "pushes": 98,
+        "contributors": 61,
+        "issues_closed": 78,
+        "forks": 98
       }
     },
     {
@@ -757,12 +757,12 @@
       "rank": 22,
       "total_repos": 374,
       "attributes": {
-        "popularity": 93,
-        "momentum": 62,
-        "activity": 47,
-        "community": 53,
-        "health": 96,
-        "influence": 83
+        "stars": 93,
+        "new_stars": 62,
+        "pushes": 42,
+        "contributors": 53,
+        "issues_closed": 61,
+        "forks": 83
       }
     },
     {
@@ -796,12 +796,12 @@
       "rank": 23,
       "total_repos": 374,
       "attributes": {
-        "popularity": 93,
-        "momentum": 26,
-        "activity": 24,
-        "community": 19,
-        "health": 0,
-        "influence": 89
+        "stars": 93,
+        "new_stars": 26,
+        "pushes": 30,
+        "contributors": 19,
+        "issues_closed": 30,
+        "forks": 89
       }
     },
     {
@@ -830,12 +830,12 @@
       "rank": 24,
       "total_repos": 374,
       "attributes": {
-        "popularity": 93,
-        "momentum": 32,
-        "activity": 0,
-        "community": 24,
-        "health": 0,
-        "influence": 95
+        "stars": 93,
+        "new_stars": 32,
+        "pushes": 0,
+        "contributors": 24,
+        "issues_closed": 0,
+        "forks": 95
       }
     },
     {
@@ -861,12 +861,12 @@
       "rank": 25,
       "total_repos": 374,
       "attributes": {
-        "popularity": 92,
-        "momentum": 73,
-        "activity": 97,
-        "community": 96,
-        "health": 63,
-        "influence": 91
+        "stars": 92,
+        "new_stars": 73,
+        "pushes": 98,
+        "contributors": 96,
+        "issues_closed": 98,
+        "forks": 91
       }
     },
     {
@@ -894,12 +894,12 @@
       "rank": 26,
       "total_repos": 374,
       "attributes": {
-        "popularity": 92,
-        "momentum": 69,
-        "activity": 92,
-        "community": 69,
-        "health": 51,
-        "influence": 94
+        "stars": 92,
+        "new_stars": 69,
+        "pushes": 93,
+        "contributors": 69,
+        "issues_closed": 71,
+        "forks": 94
       }
     },
     {
@@ -919,12 +919,12 @@
       "rank": 27,
       "total_repos": 374,
       "attributes": {
-        "popularity": 92,
-        "momentum": 71,
-        "activity": 0,
-        "community": 64,
-        "health": 99,
-        "influence": 96
+        "stars": 92,
+        "new_stars": 71,
+        "pushes": 0,
+        "contributors": 64,
+        "issues_closed": 73,
+        "forks": 96
       }
     },
     {
@@ -965,12 +965,12 @@
       "rank": 28,
       "total_repos": 374,
       "attributes": {
-        "popularity": 92,
-        "momentum": 95,
-        "activity": 97,
-        "community": 96,
-        "health": 81,
-        "influence": 96
+        "stars": 92,
+        "new_stars": 95,
+        "pushes": 97,
+        "contributors": 96,
+        "issues_closed": 96,
+        "forks": 96
       }
     },
     {
@@ -1010,12 +1010,12 @@
       "rank": 29,
       "total_repos": 374,
       "attributes": {
-        "popularity": 91,
-        "momentum": 51,
-        "activity": 92,
-        "community": 82,
-        "health": 82,
-        "influence": 86
+        "stars": 91,
+        "new_stars": 51,
+        "pushes": 91,
+        "contributors": 82,
+        "issues_closed": 95,
+        "forks": 86
       }
     },
     {
@@ -1043,12 +1043,12 @@
       "rank": 30,
       "total_repos": 374,
       "attributes": {
-        "popularity": 91,
-        "momentum": 24,
-        "activity": 59,
-        "community": 25,
-        "health": 92,
-        "influence": 98
+        "stars": 91,
+        "new_stars": 24,
+        "pushes": 59,
+        "contributors": 25,
+        "issues_closed": 61,
+        "forks": 98
       }
     },
     {
@@ -1071,12 +1071,12 @@
       "rank": 31,
       "total_repos": 374,
       "attributes": {
-        "popularity": 91,
-        "momentum": 59,
-        "activity": 30,
-        "community": 49,
-        "health": 0,
-        "influence": 98
+        "stars": 91,
+        "new_stars": 59,
+        "pushes": 0,
+        "contributors": 49,
+        "issues_closed": 0,
+        "forks": 98
       }
     },
     {
@@ -1113,12 +1113,12 @@
       "rank": 32,
       "total_repos": 374,
       "attributes": {
-        "popularity": 91,
-        "momentum": 91,
-        "activity": 37,
-        "community": 88,
-        "health": 67,
-        "influence": 71
+        "stars": 91,
+        "new_stars": 91,
+        "pushes": 42,
+        "contributors": 88,
+        "issues_closed": 75,
+        "forks": 71
       }
     },
     {
@@ -1145,12 +1145,12 @@
       "rank": 33,
       "total_repos": 374,
       "attributes": {
-        "popularity": 90,
-        "momentum": 89,
-        "activity": 48,
-        "community": 86,
-        "health": 67,
-        "influence": 63
+        "stars": 90,
+        "new_stars": 89,
+        "pushes": 37,
+        "contributors": 86,
+        "issues_closed": 43,
+        "forks": 63
       }
     },
     {
@@ -1186,12 +1186,12 @@
       "rank": 34,
       "total_repos": 374,
       "attributes": {
-        "popularity": 90,
-        "momentum": 89,
-        "activity": 84,
-        "community": 89,
-        "health": 77,
-        "influence": 68
+        "stars": 90,
+        "new_stars": 89,
+        "pushes": 85,
+        "contributors": 89,
+        "issues_closed": 92,
+        "forks": 68
       }
     },
     {
@@ -1228,12 +1228,12 @@
       "rank": 35,
       "total_repos": 374,
       "attributes": {
-        "popularity": 90,
-        "momentum": 66,
-        "activity": 35,
-        "community": 65,
-        "health": 42,
-        "influence": 86
+        "stars": 90,
+        "new_stars": 66,
+        "pushes": 0,
+        "contributors": 65,
+        "issues_closed": 43,
+        "forks": 86
       }
     },
     {
@@ -1260,12 +1260,12 @@
       "rank": 36,
       "total_repos": 374,
       "attributes": {
-        "popularity": 89,
-        "momentum": 43,
-        "activity": 14,
-        "community": 31,
-        "health": 0,
-        "influence": 69
+        "stars": 89,
+        "new_stars": 43,
+        "pushes": 0,
+        "contributors": 31,
+        "issues_closed": 0,
+        "forks": 69
       }
     },
     {
@@ -1305,12 +1305,12 @@
       "rank": 37,
       "total_repos": 374,
       "attributes": {
-        "popularity": 89,
-        "momentum": 77,
-        "activity": 91,
-        "community": 85,
-        "health": 61,
-        "influence": 88
+        "stars": 89,
+        "new_stars": 77,
+        "pushes": 92,
+        "contributors": 85,
+        "issues_closed": 87,
+        "forks": 88
       }
     },
     {
@@ -1343,12 +1343,12 @@
       "rank": 38,
       "total_repos": 374,
       "attributes": {
-        "popularity": 89,
-        "momentum": 39,
-        "activity": 38,
-        "community": 32,
-        "health": 67,
-        "influence": 94
+        "stars": 89,
+        "new_stars": 39,
+        "pushes": 42,
+        "contributors": 32,
+        "issues_closed": 30,
+        "forks": 94
       }
     },
     {
@@ -1376,12 +1376,12 @@
       "rank": 39,
       "total_repos": 374,
       "attributes": {
-        "popularity": 89,
-        "momentum": 96,
-        "activity": 22,
-        "community": 96,
-        "health": 0,
-        "influence": 4
+        "stars": 89,
+        "new_stars": 96,
+        "pushes": 30,
+        "contributors": 96,
+        "issues_closed": 0,
+        "forks": 4
       }
     },
     {
@@ -1409,12 +1409,12 @@
       "rank": 40,
       "total_repos": 374,
       "attributes": {
-        "popularity": 88,
-        "momentum": 93,
-        "activity": 67,
-        "community": 93,
-        "health": 77,
-        "influence": 60
+        "stars": 88,
+        "new_stars": 93,
+        "pushes": 62,
+        "contributors": 93,
+        "issues_closed": 92,
+        "forks": 60
       }
     },
     {
@@ -1449,12 +1449,12 @@
       "rank": 41,
       "total_repos": 374,
       "attributes": {
-        "popularity": 88,
-        "momentum": 17,
-        "activity": 19,
-        "community": 16,
-        "health": 88,
-        "influence": 83
+        "stars": 88,
+        "new_stars": 17,
+        "pushes": 0,
+        "contributors": 16,
+        "issues_closed": 43,
+        "forks": 83
       }
     },
     {
@@ -1493,12 +1493,12 @@
       "rank": 42,
       "total_repos": 374,
       "attributes": {
-        "popularity": 88,
-        "momentum": 74,
-        "activity": 51,
-        "community": 68,
-        "health": 0,
-        "influence": 77
+        "stars": 88,
+        "new_stars": 74,
+        "pushes": 56,
+        "contributors": 68,
+        "issues_closed": 0,
+        "forks": 77
       }
     },
     {
@@ -1525,12 +1525,12 @@
       "rank": 43,
       "total_repos": 374,
       "attributes": {
-        "popularity": 88,
-        "momentum": 82,
-        "activity": 95,
-        "community": 79,
-        "health": 74,
-        "influence": 39
+        "stars": 88,
+        "new_stars": 82,
+        "pushes": 95,
+        "contributors": 79,
+        "issues_closed": 77,
+        "forks": 39
       }
     },
     {
@@ -1555,12 +1555,12 @@
       "rank": 44,
       "total_repos": 374,
       "attributes": {
-        "popularity": 87,
-        "momentum": 89,
-        "activity": 0,
-        "community": 84,
-        "health": 38,
-        "influence": 55
+        "stars": 87,
+        "new_stars": 89,
+        "pushes": 0,
+        "contributors": 84,
+        "issues_closed": 43,
+        "forks": 55
       }
     },
     {
@@ -1580,12 +1580,12 @@
       "rank": 45,
       "total_repos": 374,
       "attributes": {
-        "popularity": 87,
-        "momentum": 34,
-        "activity": 0,
-        "community": 29,
-        "health": 88,
-        "influence": 53
+        "stars": 87,
+        "new_stars": 34,
+        "pushes": 0,
+        "contributors": 29,
+        "issues_closed": 43,
+        "forks": 53
       }
     },
     {
@@ -1620,12 +1620,12 @@
       "rank": 46,
       "total_repos": 374,
       "attributes": {
-        "popularity": 87,
-        "momentum": 59,
-        "activity": 96,
-        "community": 80,
-        "health": 67,
-        "influence": 87
+        "stars": 87,
+        "new_stars": 59,
+        "pushes": 97,
+        "contributors": 80,
+        "issues_closed": 88,
+        "forks": 87
       }
     },
     {
@@ -1656,12 +1656,12 @@
       "rank": 47,
       "total_repos": 374,
       "attributes": {
-        "popularity": 87,
-        "momentum": 61,
-        "activity": 24,
-        "community": 50,
-        "health": 0,
-        "influence": 73
+        "stars": 87,
+        "new_stars": 61,
+        "pushes": 26,
+        "contributors": 50,
+        "issues_closed": 0,
+        "forks": 73
       }
     },
     {
@@ -1690,12 +1690,12 @@
       "rank": 48,
       "total_repos": 374,
       "attributes": {
-        "popularity": 86,
-        "momentum": 79,
-        "activity": 47,
-        "community": 73,
-        "health": 37,
-        "influence": 63
+        "stars": 86,
+        "new_stars": 79,
+        "pushes": 51,
+        "contributors": 73,
+        "issues_closed": 50,
+        "forks": 63
       }
     },
     {
@@ -1724,12 +1724,12 @@
       "rank": 49,
       "total_repos": 374,
       "attributes": {
-        "popularity": 86,
-        "momentum": 60,
-        "activity": 22,
-        "community": 48,
-        "health": 67,
-        "influence": 80
+        "stars": 86,
+        "new_stars": 60,
+        "pushes": 33,
+        "contributors": 48,
+        "issues_closed": 48,
+        "forks": 80
       }
     },
     {
@@ -1754,12 +1754,12 @@
       "rank": 50,
       "total_repos": 374,
       "attributes": {
-        "popularity": 86,
-        "momentum": 53,
-        "activity": 73,
-        "community": 69,
-        "health": 63,
-        "influence": 76
+        "stars": 86,
+        "new_stars": 53,
+        "pushes": 75,
+        "contributors": 69,
+        "issues_closed": 94,
+        "forks": 76
       }
     },
     {
@@ -1800,12 +1800,12 @@
       "rank": 51,
       "total_repos": 374,
       "attributes": {
-        "popularity": 86,
-        "momentum": 92,
-        "activity": 95,
-        "community": 92,
-        "health": 74,
-        "influence": 78
+        "stars": 86,
+        "new_stars": 92,
+        "pushes": 96,
+        "contributors": 92,
+        "issues_closed": 96,
+        "forks": 78
       }
     },
     {
@@ -1838,12 +1838,12 @@
       "rank": 52,
       "total_repos": 374,
       "attributes": {
-        "popularity": 85,
-        "momentum": 83,
-        "activity": 84,
-        "community": 86,
-        "health": 50,
-        "influence": 34
+        "stars": 85,
+        "new_stars": 83,
+        "pushes": 86,
+        "contributors": 86,
+        "issues_closed": 94,
+        "forks": 34
       }
     },
     {
@@ -1883,12 +1883,12 @@
       "rank": 53,
       "total_repos": 374,
       "attributes": {
-        "popularity": 85,
-        "momentum": 88,
-        "activity": 86,
-        "community": 86,
-        "health": 65,
-        "influence": 79
+        "stars": 85,
+        "new_stars": 88,
+        "pushes": 85,
+        "contributors": 86,
+        "issues_closed": 83,
+        "forks": 79
       }
     },
     {
@@ -1922,12 +1922,12 @@
       "rank": 54,
       "total_repos": 374,
       "attributes": {
-        "popularity": 85,
-        "momentum": 40,
-        "activity": 19,
-        "community": 31,
-        "health": 0,
-        "influence": 61
+        "stars": 85,
+        "new_stars": 40,
+        "pushes": 30,
+        "contributors": 31,
+        "issues_closed": 0,
+        "forks": 61
       }
     },
     {
@@ -1956,12 +1956,12 @@
       "rank": 55,
       "total_repos": 374,
       "attributes": {
-        "popularity": 84,
-        "momentum": 34,
-        "activity": 83,
-        "community": 58,
-        "health": 56,
-        "influence": 82
+        "stars": 84,
+        "new_stars": 34,
+        "pushes": 82,
+        "contributors": 58,
+        "issues_closed": 74,
+        "forks": 82
       }
     },
     {
@@ -1997,12 +1997,12 @@
       "rank": 56,
       "total_repos": 374,
       "attributes": {
-        "popularity": 84,
-        "momentum": 90,
-        "activity": 86,
-        "community": 91,
-        "health": 54,
-        "influence": 75
+        "stars": 84,
+        "new_stars": 90,
+        "pushes": 85,
+        "contributors": 91,
+        "issues_closed": 91,
+        "forks": 75
       }
     },
     {
@@ -2043,12 +2043,12 @@
       "rank": 57,
       "total_repos": 374,
       "attributes": {
-        "popularity": 84,
-        "momentum": 96,
-        "activity": 43,
-        "community": 97,
-        "health": 44,
-        "influence": 88
+        "stars": 84,
+        "new_stars": 96,
+        "pushes": 46,
+        "contributors": 97,
+        "issues_closed": 48,
+        "forks": 88
       }
     },
     {
@@ -2080,12 +2080,12 @@
       "rank": 58,
       "total_repos": 374,
       "attributes": {
-        "popularity": 84,
-        "momentum": 65,
-        "activity": 54,
-        "community": 58,
-        "health": 0,
-        "influence": 69
+        "stars": 84,
+        "new_stars": 65,
+        "pushes": 59,
+        "contributors": 58,
+        "issues_closed": 51,
+        "forks": 69
       }
     },
     {
@@ -2110,12 +2110,12 @@
       "rank": 59,
       "total_repos": 374,
       "attributes": {
-        "popularity": 83,
-        "momentum": 57,
-        "activity": 85,
-        "community": 85,
-        "health": 82,
-        "influence": 92
+        "stars": 83,
+        "new_stars": 57,
+        "pushes": 83,
+        "contributors": 85,
+        "issues_closed": 91,
+        "forks": 92
       }
     },
     {
@@ -2145,12 +2145,12 @@
       "rank": 60,
       "total_repos": 374,
       "attributes": {
-        "popularity": 83,
-        "momentum": 42,
-        "activity": 87,
-        "community": 60,
-        "health": 78,
-        "influence": 74
+        "stars": 83,
+        "new_stars": 42,
+        "pushes": 87,
+        "contributors": 60,
+        "issues_closed": 82,
+        "forks": 74
       }
     },
     {
@@ -2173,12 +2173,12 @@
       "rank": 61,
       "total_repos": 374,
       "attributes": {
-        "popularity": 83,
-        "momentum": 63,
-        "activity": 59,
-        "community": 59,
-        "health": 0,
-        "influence": 60
+        "stars": 83,
+        "new_stars": 63,
+        "pushes": 52,
+        "contributors": 59,
+        "issues_closed": 0,
+        "forks": 60
       }
     },
     {
@@ -2206,12 +2206,12 @@
       "rank": 62,
       "total_repos": 374,
       "attributes": {
-        "popularity": 83,
-        "momentum": 87,
-        "activity": 80,
-        "community": 84,
-        "health": 40,
-        "influence": 62
+        "stars": 83,
+        "new_stars": 87,
+        "pushes": 83,
+        "contributors": 84,
+        "issues_closed": 60,
+        "forks": 62
       }
     },
     {
@@ -2246,12 +2246,12 @@
       "rank": 63,
       "total_repos": 374,
       "attributes": {
-        "popularity": 82,
-        "momentum": 22,
-        "activity": 0,
-        "community": 17,
-        "health": 0,
-        "influence": 86
+        "stars": 82,
+        "new_stars": 22,
+        "pushes": 0,
+        "contributors": 17,
+        "issues_closed": 0,
+        "forks": 86
       }
     },
     {
@@ -2281,12 +2281,12 @@
       "rank": 64,
       "total_repos": 374,
       "attributes": {
-        "popularity": 82,
-        "momentum": 54,
-        "activity": 83,
-        "community": 76,
-        "health": 60,
-        "influence": 90
+        "stars": 82,
+        "new_stars": 54,
+        "pushes": 81,
+        "contributors": 76,
+        "issues_closed": 86,
+        "forks": 90
       }
     },
     {
@@ -2313,12 +2313,12 @@
       "rank": 65,
       "total_repos": 374,
       "attributes": {
-        "popularity": 82,
-        "momentum": 20,
-        "activity": 14,
-        "community": 14,
-        "health": 67,
-        "influence": 80
+        "stars": 82,
+        "new_stars": 20,
+        "pushes": 0,
+        "contributors": 14,
+        "issues_closed": 39,
+        "forks": 80
       }
     },
     {
@@ -2344,12 +2344,12 @@
       "rank": 66,
       "total_repos": 374,
       "attributes": {
-        "popularity": 82,
-        "momentum": 89,
-        "activity": 70,
-        "community": 88,
-        "health": 80,
-        "influence": 21
+        "stars": 82,
+        "new_stars": 89,
+        "pushes": 71,
+        "contributors": 88,
+        "issues_closed": 98,
+        "forks": 21
       }
     },
     {
@@ -2382,12 +2382,12 @@
       "rank": 67,
       "total_repos": 374,
       "attributes": {
-        "popularity": 81,
-        "momentum": 52,
-        "activity": 82,
-        "community": 53,
-        "health": 83,
-        "influence": 91
+        "stars": 81,
+        "new_stars": 52,
+        "pushes": 82,
+        "contributors": 53,
+        "issues_closed": 81,
+        "forks": 91
       }
     },
     {
@@ -2407,12 +2407,12 @@
       "rank": 68,
       "total_repos": 374,
       "attributes": {
-        "popularity": 81,
-        "momentum": 98,
-        "activity": 96,
-        "community": 98,
-        "health": 43,
-        "influence": 54
+        "stars": 81,
+        "new_stars": 98,
+        "pushes": 96,
+        "contributors": 98,
+        "issues_closed": 97,
+        "forks": 54
       }
     },
     {
@@ -2436,12 +2436,12 @@
       "rank": 69,
       "total_repos": 374,
       "attributes": {
-        "popularity": 81,
-        "momentum": 67,
-        "activity": 97,
-        "community": 87,
-        "health": 61,
-        "influence": 68
+        "stars": 81,
+        "new_stars": 67,
+        "pushes": 97,
+        "contributors": 87,
+        "issues_closed": 93,
+        "forks": 68
       }
     },
     {
@@ -2467,12 +2467,12 @@
       "rank": 70,
       "total_repos": 374,
       "attributes": {
-        "popularity": 80,
-        "momentum": 14,
-        "activity": 63,
-        "community": 21,
-        "health": 67,
-        "influence": 57
+        "stars": 80,
+        "new_stars": 14,
+        "pushes": 64,
+        "contributors": 21,
+        "issues_closed": 55,
+        "forks": 57
       }
     },
     {
@@ -2512,12 +2512,12 @@
       "rank": 71,
       "total_repos": 374,
       "attributes": {
-        "popularity": 80,
-        "momentum": 81,
-        "activity": 64,
-        "community": 82,
-        "health": 42,
-        "influence": 72
+        "stars": 80,
+        "new_stars": 81,
+        "pushes": 64,
+        "contributors": 82,
+        "issues_closed": 68,
+        "forks": 72
       }
     },
     {
@@ -2542,12 +2542,12 @@
       "rank": 72,
       "total_repos": 374,
       "attributes": {
-        "popularity": 80,
-        "momentum": 39,
-        "activity": 64,
-        "community": 49,
-        "health": 49,
-        "influence": 64
+        "stars": 80,
+        "new_stars": 39,
+        "pushes": 63,
+        "contributors": 49,
+        "issues_closed": 76,
+        "forks": 64
       }
     },
     {
@@ -2577,12 +2577,12 @@
       "rank": 73,
       "total_repos": 374,
       "attributes": {
-        "popularity": 80,
-        "momentum": 86,
-        "activity": 28,
-        "community": 77,
-        "health": 0,
-        "influence": 49
+        "stars": 80,
+        "new_stars": 86,
+        "pushes": 0,
+        "contributors": 77,
+        "issues_closed": 0,
+        "forks": 49
       }
     },
     {
@@ -2611,12 +2611,12 @@
       "rank": 74,
       "total_repos": 374,
       "attributes": {
-        "popularity": 79,
-        "momentum": 84,
-        "activity": 77,
-        "community": 83,
-        "health": 93,
-        "influence": 35
+        "stars": 79,
+        "new_stars": 84,
+        "pushes": 75,
+        "contributors": 83,
+        "issues_closed": 89,
+        "forks": 35
       }
     },
     {
@@ -2644,12 +2644,12 @@
       "rank": 75,
       "total_repos": 374,
       "attributes": {
-        "popularity": 79,
-        "momentum": 76,
-        "activity": 84,
-        "community": 90,
-        "health": 58,
-        "influence": 81
+        "stars": 79,
+        "new_stars": 76,
+        "pushes": 61,
+        "contributors": 90,
+        "issues_closed": 95,
+        "forks": 81
       }
     },
     {
@@ -2684,12 +2684,12 @@
       "rank": 76,
       "total_repos": 374,
       "attributes": {
-        "popularity": 79,
-        "momentum": 75,
-        "activity": 71,
-        "community": 79,
-        "health": 97,
-        "influence": 97
+        "stars": 79,
+        "new_stars": 75,
+        "pushes": 73,
+        "contributors": 79,
+        "issues_closed": 43,
+        "forks": 97
       }
     },
     {
@@ -2709,12 +2709,12 @@
       "rank": 77,
       "total_repos": 374,
       "attributes": {
-        "popularity": 79,
-        "momentum": 64,
-        "activity": 0,
-        "community": 53,
-        "health": 0,
-        "influence": 65
+        "stars": 79,
+        "new_stars": 64,
+        "pushes": 0,
+        "contributors": 53,
+        "issues_closed": 0,
+        "forks": 65
       }
     },
     {
@@ -2739,12 +2739,12 @@
       "rank": 78,
       "total_repos": 374,
       "attributes": {
-        "popularity": 78,
-        "momentum": 37,
-        "activity": 80,
-        "community": 49,
-        "health": 53,
-        "influence": 23
+        "stars": 78,
+        "new_stars": 37,
+        "pushes": 78,
+        "contributors": 49,
+        "issues_closed": 84,
+        "forks": 23
       }
     },
     {
@@ -2783,12 +2783,12 @@
       "rank": 79,
       "total_repos": 374,
       "attributes": {
-        "popularity": 78,
-        "momentum": 23,
-        "activity": 14,
-        "community": 18,
-        "health": 67,
-        "influence": 53
+        "stars": 78,
+        "new_stars": 23,
+        "pushes": 0,
+        "contributors": 18,
+        "issues_closed": 30,
+        "forks": 53
       }
     },
     {
@@ -2819,12 +2819,12 @@
       "rank": 80,
       "total_repos": 374,
       "attributes": {
-        "popularity": 78,
-        "momentum": 69,
-        "activity": 43,
-        "community": 62,
-        "health": 81,
-        "influence": 69
+        "stars": 78,
+        "new_stars": 69,
+        "pushes": 46,
+        "contributors": 62,
+        "issues_closed": 71,
+        "forks": 69
       }
     },
     {
@@ -2851,12 +2851,12 @@
       "rank": 81,
       "total_repos": 374,
       "attributes": {
-        "popularity": 78,
-        "momentum": 88,
-        "activity": 85,
-        "community": 89,
-        "health": 44,
-        "influence": 59
+        "stars": 78,
+        "new_stars": 88,
+        "pushes": 86,
+        "contributors": 89,
+        "issues_closed": 89,
+        "forks": 59
       }
     },
     {
@@ -2880,12 +2880,12 @@
       "rank": 82,
       "total_repos": 374,
       "attributes": {
-        "popularity": 77,
-        "momentum": 4,
-        "activity": 24,
-        "community": 6,
-        "health": 0,
-        "influence": 84
+        "stars": 77,
+        "new_stars": 4,
+        "pushes": 0,
+        "contributors": 6,
+        "issues_closed": 0,
+        "forks": 84
       }
     },
     {
@@ -2913,12 +2913,12 @@
       "rank": 83,
       "total_repos": 374,
       "attributes": {
-        "popularity": 77,
-        "momentum": 72,
-        "activity": 14,
-        "community": 62,
-        "health": 0,
-        "influence": 26
+        "stars": 77,
+        "new_stars": 72,
+        "pushes": 0,
+        "contributors": 62,
+        "issues_closed": 0,
+        "forks": 26
       }
     },
     {
@@ -2946,12 +2946,12 @@
       "rank": 84,
       "total_repos": 374,
       "attributes": {
-        "popularity": 77,
-        "momentum": 75,
-        "activity": 72,
-        "community": 72,
-        "health": 48,
-        "influence": 8
+        "stars": 77,
+        "new_stars": 75,
+        "pushes": 73,
+        "contributors": 72,
+        "issues_closed": 71,
+        "forks": 8
       }
     },
     {
@@ -2983,12 +2983,12 @@
       "rank": 85,
       "total_repos": 374,
       "attributes": {
-        "popularity": 77,
-        "momentum": 42,
-        "activity": 68,
-        "community": 48,
-        "health": 53,
-        "influence": 43
+        "stars": 77,
+        "new_stars": 42,
+        "pushes": 69,
+        "contributors": 48,
+        "issues_closed": 76,
+        "forks": 43
       }
     },
     {
@@ -3008,12 +3008,12 @@
       "rank": 86,
       "total_repos": 374,
       "attributes": {
-        "popularity": 76,
-        "momentum": 54,
-        "activity": 14,
-        "community": 46,
-        "health": 87,
-        "influence": 73
+        "stars": 76,
+        "new_stars": 54,
+        "pushes": 0,
+        "contributors": 46,
+        "issues_closed": 67,
+        "forks": 73
       }
     },
     {
@@ -3041,12 +3041,12 @@
       "rank": 87,
       "total_repos": 374,
       "attributes": {
-        "popularity": 76,
-        "momentum": 27,
-        "activity": 88,
-        "community": 56,
-        "health": 76,
-        "influence": 84
+        "stars": 76,
+        "new_stars": 27,
+        "pushes": 88,
+        "contributors": 56,
+        "issues_closed": 87,
+        "forks": 84
       }
     },
     {
@@ -3086,12 +3086,12 @@
       "rank": 88,
       "total_repos": 374,
       "attributes": {
-        "popularity": 76,
-        "momentum": 74,
-        "activity": 54,
-        "community": 66,
-        "health": 37,
-        "influence": 32
+        "stars": 76,
+        "new_stars": 74,
+        "pushes": 56,
+        "contributors": 66,
+        "issues_closed": 30,
+        "forks": 32
       }
     },
     {
@@ -3120,12 +3120,12 @@
       "rank": 89,
       "total_repos": 374,
       "attributes": {
-        "popularity": 75,
-        "momentum": 93,
-        "activity": 71,
-        "community": 93,
-        "health": 54,
-        "influence": 31
+        "stars": 75,
+        "new_stars": 93,
+        "pushes": 73,
+        "contributors": 93,
+        "issues_closed": 88,
+        "forks": 31
       }
     },
     {
@@ -3151,12 +3151,12 @@
       "rank": 90,
       "total_repos": 374,
       "attributes": {
-        "popularity": 75,
-        "momentum": 61,
-        "activity": 0,
-        "community": 50,
-        "health": 0,
-        "influence": 54
+        "stars": 75,
+        "new_stars": 61,
+        "pushes": 0,
+        "contributors": 50,
+        "issues_closed": 0,
+        "forks": 54
       }
     },
     {
@@ -3196,12 +3196,12 @@
       "rank": 91,
       "total_repos": 374,
       "attributes": {
-        "popularity": 75,
-        "momentum": 79,
-        "activity": 94,
-        "community": 85,
-        "health": 48,
-        "influence": 58
+        "stars": 75,
+        "new_stars": 79,
+        "pushes": 94,
+        "contributors": 85,
+        "issues_closed": 79,
+        "forks": 58
       }
     },
     {
@@ -3227,12 +3227,12 @@
       "rank": 92,
       "total_repos": 374,
       "attributes": {
-        "popularity": 75,
-        "momentum": 26,
-        "activity": 84,
-        "community": 36,
-        "health": 92,
-        "influence": 88
+        "stars": 75,
+        "new_stars": 26,
+        "pushes": 86,
+        "contributors": 36,
+        "issues_closed": 71,
+        "forks": 88
       }
     },
     {
@@ -3258,12 +3258,12 @@
       "rank": 93,
       "total_repos": 374,
       "attributes": {
-        "popularity": 74,
-        "momentum": 45,
-        "activity": 14,
-        "community": 32,
-        "health": 0,
-        "influence": 40
+        "stars": 74,
+        "new_stars": 45,
+        "pushes": 26,
+        "contributors": 32,
+        "issues_closed": 0,
+        "forks": 40
       }
     },
     {
@@ -3292,12 +3292,12 @@
       "rank": 94,
       "total_repos": 374,
       "attributes": {
-        "popularity": 74,
-        "momentum": 63,
-        "activity": 99,
-        "community": 91,
-        "health": 85,
-        "influence": 84
+        "stars": 74,
+        "new_stars": 63,
+        "pushes": 99,
+        "contributors": 91,
+        "issues_closed": 96,
+        "forks": 84
       }
     },
     {
@@ -3325,12 +3325,12 @@
       "rank": 95,
       "total_repos": 374,
       "attributes": {
-        "popularity": 74,
-        "momentum": 29,
-        "activity": 86,
-        "community": 59,
-        "health": 79,
-        "influence": 95
+        "stars": 74,
+        "new_stars": 29,
+        "pushes": 87,
+        "contributors": 59,
+        "issues_closed": 88,
+        "forks": 95
       }
     },
     {
@@ -3362,12 +3362,12 @@
       "rank": 96,
       "total_repos": 374,
       "attributes": {
-        "popularity": 74,
-        "momentum": 87,
-        "activity": 51,
-        "community": 83,
-        "health": 62,
-        "influence": 67
+        "stars": 74,
+        "new_stars": 87,
+        "pushes": 52,
+        "contributors": 83,
+        "issues_closed": 85,
+        "forks": 67
       }
     },
     {
@@ -3392,12 +3392,12 @@
       "rank": 97,
       "total_repos": 374,
       "attributes": {
-        "popularity": 73,
-        "momentum": 95,
-        "activity": 55,
-        "community": 94,
-        "health": 47,
-        "influence": 67
+        "stars": 73,
+        "new_stars": 95,
+        "pushes": 53,
+        "contributors": 94,
+        "issues_closed": 51,
+        "forks": 67
       }
     },
     {
@@ -3425,12 +3425,12 @@
       "rank": 98,
       "total_repos": 374,
       "attributes": {
-        "popularity": 73,
-        "momentum": 64,
-        "activity": 85,
-        "community": 67,
-        "health": 90,
-        "influence": 28
+        "stars": 73,
+        "new_stars": 64,
+        "pushes": 83,
+        "contributors": 67,
+        "issues_closed": 89,
+        "forks": 28
       }
     },
     {
@@ -3452,12 +3452,12 @@
       "rank": 99,
       "total_repos": 374,
       "attributes": {
-        "popularity": 73,
-        "momentum": 86,
-        "activity": 88,
-        "community": 89,
-        "health": 66,
-        "influence": 70
+        "stars": 73,
+        "new_stars": 86,
+        "pushes": 86,
+        "contributors": 89,
+        "issues_closed": 91,
+        "forks": 70
       }
     },
     {
@@ -3485,12 +3485,12 @@
       "rank": 100,
       "total_repos": 374,
       "attributes": {
-        "popularity": 73,
-        "momentum": 92,
-        "activity": 97,
-        "community": 95,
-        "health": 79,
-        "influence": 58
+        "stars": 73,
+        "new_stars": 92,
+        "pushes": 97,
+        "contributors": 95,
+        "issues_closed": 98,
+        "forks": 58
       }
     },
     {
@@ -3531,12 +3531,12 @@
       "rank": 101,
       "total_repos": 374,
       "attributes": {
-        "popularity": 72,
-        "momentum": 69,
-        "activity": 81,
-        "community": 66,
-        "health": 84,
-        "influence": 41
+        "stars": 72,
+        "new_stars": 69,
+        "pushes": 82,
+        "contributors": 66,
+        "issues_closed": 48,
+        "forks": 41
       }
     },
     {
@@ -3559,12 +3559,12 @@
       "rank": 102,
       "total_repos": 374,
       "attributes": {
-        "popularity": 72,
-        "momentum": 30,
-        "activity": 14,
-        "community": 22,
-        "health": 0,
-        "influence": 9
+        "stars": 72,
+        "new_stars": 30,
+        "pushes": 0,
+        "contributors": 22,
+        "issues_closed": 0,
+        "forks": 9
       }
     },
     {
@@ -3593,12 +3593,12 @@
       "rank": 103,
       "total_repos": 374,
       "attributes": {
-        "popularity": 72,
-        "momentum": 36,
-        "activity": 68,
-        "community": 38,
-        "health": 67,
-        "influence": 70
+        "stars": 72,
+        "new_stars": 36,
+        "pushes": 72,
+        "contributors": 38,
+        "issues_closed": 64,
+        "forks": 70
       }
     },
     {
@@ -3618,12 +3618,12 @@
       "rank": 104,
       "total_repos": 374,
       "attributes": {
-        "popularity": 71,
-        "momentum": 74,
-        "activity": 0,
-        "community": 66,
-        "health": 0,
-        "influence": 59
+        "stars": 71,
+        "new_stars": 74,
+        "pushes": 0,
+        "contributors": 66,
+        "issues_closed": 0,
+        "forks": 59
       }
     },
     {
@@ -3651,12 +3651,12 @@
       "rank": 105,
       "total_repos": 374,
       "attributes": {
-        "popularity": 71,
-        "momentum": 17,
-        "activity": 14,
-        "community": 12,
-        "health": 0,
-        "influence": 62
+        "stars": 71,
+        "new_stars": 17,
+        "pushes": 0,
+        "contributors": 12,
+        "issues_closed": 0,
+        "forks": 62
       }
     },
     {
@@ -3685,12 +3685,12 @@
       "rank": 106,
       "total_repos": 374,
       "attributes": {
-        "popularity": 71,
-        "momentum": 17,
-        "activity": 41,
-        "community": 16,
-        "health": 93,
-        "influence": 85
+        "stars": 71,
+        "new_stars": 17,
+        "pushes": 44,
+        "contributors": 16,
+        "issues_closed": 39,
+        "forks": 85
       }
     },
     {
@@ -3718,12 +3718,12 @@
       "rank": 107,
       "total_repos": 374,
       "attributes": {
-        "popularity": 71,
-        "momentum": 70,
-        "activity": 56,
-        "community": 65,
-        "health": 41,
-        "influence": 18
+        "stars": 71,
+        "new_stars": 70,
+        "pushes": 55,
+        "contributors": 65,
+        "issues_closed": 55,
+        "forks": 18
       }
     },
     {
@@ -3753,12 +3753,12 @@
       "rank": 108,
       "total_repos": 374,
       "attributes": {
-        "popularity": 70,
-        "momentum": 26,
-        "activity": 77,
-        "community": 27,
-        "health": 96,
-        "influence": 45
+        "stars": 70,
+        "new_stars": 26,
+        "pushes": 79,
+        "contributors": 27,
+        "issues_closed": 55,
+        "forks": 45
       }
     },
     {
@@ -3795,12 +3795,12 @@
       "rank": 109,
       "total_repos": 374,
       "attributes": {
-        "popularity": 70,
-        "momentum": 90,
-        "activity": 94,
-        "community": 90,
-        "health": 61,
-        "influence": 17
+        "stars": 70,
+        "new_stars": 90,
+        "pushes": 95,
+        "contributors": 90,
+        "issues_closed": 90,
+        "forks": 17
       }
     },
     {
@@ -3820,12 +3820,12 @@
       "rank": 110,
       "total_repos": 374,
       "attributes": {
-        "popularity": 70,
-        "momentum": 28,
-        "activity": 0,
-        "community": 23,
-        "health": 47,
-        "influence": 58
+        "stars": 70,
+        "new_stars": 28,
+        "pushes": 0,
+        "contributors": 23,
+        "issues_closed": 55,
+        "forks": 58
       }
     },
     {
@@ -3859,12 +3859,12 @@
       "rank": 111,
       "total_repos": 374,
       "attributes": {
-        "popularity": 70,
-        "momentum": 58,
-        "activity": 52,
-        "community": 51,
-        "health": 47,
-        "influence": 48
+        "stars": 70,
+        "new_stars": 58,
+        "pushes": 56,
+        "contributors": 51,
+        "issues_closed": 51,
+        "forks": 48
       }
     },
     {
@@ -3894,12 +3894,12 @@
       "rank": 112,
       "total_repos": 374,
       "attributes": {
-        "popularity": 69,
-        "momentum": 64,
-        "activity": 14,
-        "community": 53,
-        "health": 0,
-        "influence": 51
+        "stars": 69,
+        "new_stars": 64,
+        "pushes": 0,
+        "contributors": 53,
+        "issues_closed": 0,
+        "forks": 51
       }
     },
     {
@@ -3939,12 +3939,12 @@
       "rank": 113,
       "total_repos": 374,
       "attributes": {
-        "popularity": 69,
-        "momentum": 6,
-        "activity": 0,
-        "community": 6,
-        "health": 67,
-        "influence": 87
+        "stars": 69,
+        "new_stars": 6,
+        "pushes": 0,
+        "contributors": 6,
+        "issues_closed": 30,
+        "forks": 87
       }
     },
     {
@@ -3985,12 +3985,12 @@
       "rank": 114,
       "total_repos": 374,
       "attributes": {
-        "popularity": 69,
-        "momentum": 24,
-        "activity": 87,
-        "community": 42,
-        "health": 81,
-        "influence": 48
+        "stars": 69,
+        "new_stars": 24,
+        "pushes": 88,
+        "contributors": 42,
+        "issues_closed": 81,
+        "forks": 48
       }
     },
     {
@@ -4016,12 +4016,12 @@
       "rank": 115,
       "total_repos": 374,
       "attributes": {
-        "popularity": 69,
-        "momentum": 46,
-        "activity": 76,
-        "community": 79,
-        "health": 78,
-        "influence": 91
+        "stars": 69,
+        "new_stars": 46,
+        "pushes": 70,
+        "contributors": 79,
+        "issues_closed": 78,
+        "forks": 91
       }
     },
     {
@@ -4049,12 +4049,12 @@
       "rank": 116,
       "total_repos": 374,
       "attributes": {
-        "popularity": 68,
-        "momentum": 29,
-        "activity": 46,
-        "community": 28,
-        "health": 45,
-        "influence": 40
+        "stars": 68,
+        "new_stars": 29,
+        "pushes": 44,
+        "contributors": 28,
+        "issues_closed": 39,
+        "forks": 40
       }
     },
     {
@@ -4082,12 +4082,12 @@
       "rank": 117,
       "total_repos": 374,
       "attributes": {
-        "popularity": 68,
-        "momentum": 78,
-        "activity": 34,
-        "community": 70,
-        "health": 43,
-        "influence": 19
+        "stars": 68,
+        "new_stars": 78,
+        "pushes": 35,
+        "contributors": 70,
+        "issues_closed": 43,
+        "forks": 19
       }
     },
     {
@@ -4120,12 +4120,12 @@
       "rank": 118,
       "total_repos": 374,
       "attributes": {
-        "popularity": 68,
-        "momentum": 69,
-        "activity": 93,
-        "community": 78,
-        "health": 59,
-        "influence": 12
+        "stars": 68,
+        "new_stars": 69,
+        "pushes": 93,
+        "contributors": 78,
+        "issues_closed": 92,
+        "forks": 12
       }
     },
     {
@@ -4165,12 +4165,12 @@
       "rank": 119,
       "total_repos": 374,
       "attributes": {
-        "popularity": 68,
-        "momentum": 36,
-        "activity": 31,
-        "community": 41,
-        "health": 88,
-        "influence": 97
+        "stars": 68,
+        "new_stars": 36,
+        "pushes": 0,
+        "contributors": 41,
+        "issues_closed": 51,
+        "forks": 97
       }
     },
     {
@@ -4200,12 +4200,12 @@
       "rank": 120,
       "total_repos": 374,
       "attributes": {
-        "popularity": 67,
-        "momentum": 42,
-        "activity": 71,
-        "community": 55,
-        "health": 0,
-        "influence": 89
+        "stars": 67,
+        "new_stars": 42,
+        "pushes": 65,
+        "contributors": 55,
+        "issues_closed": 0,
+        "forks": 89
       }
     },
     {
@@ -4233,12 +4233,12 @@
       "rank": 121,
       "total_repos": 374,
       "attributes": {
-        "popularity": 67,
-        "momentum": 58,
-        "activity": 68,
-        "community": 52,
-        "health": 80,
-        "influence": 37
+        "stars": 67,
+        "new_stars": 58,
+        "pushes": 68,
+        "contributors": 52,
+        "issues_closed": 83,
+        "forks": 37
       }
     },
     {
@@ -4264,12 +4264,12 @@
       "rank": 122,
       "total_repos": 374,
       "attributes": {
-        "popularity": 67,
-        "momentum": 41,
-        "activity": 66,
-        "community": 50,
-        "health": 56,
-        "influence": 96
+        "stars": 67,
+        "new_stars": 41,
+        "pushes": 61,
+        "contributors": 50,
+        "issues_closed": 61,
+        "forks": 96
       }
     },
     {
@@ -4298,12 +4298,12 @@
       "rank": 123,
       "total_repos": 374,
       "attributes": {
-        "popularity": 66,
-        "momentum": 57,
-        "activity": 75,
-        "community": 60,
-        "health": 52,
-        "influence": 41
+        "stars": 66,
+        "new_stars": 57,
+        "pushes": 78,
+        "contributors": 60,
+        "issues_closed": 57,
+        "forks": 41
       }
     },
     {
@@ -4340,12 +4340,12 @@
       "rank": 124,
       "total_repos": 374,
       "attributes": {
-        "popularity": 66,
-        "momentum": 85,
-        "activity": 45,
-        "community": 80,
-        "health": 93,
-        "influence": 64
+        "stars": 66,
+        "new_stars": 85,
+        "pushes": 49,
+        "contributors": 80,
+        "issues_closed": 39,
+        "forks": 64
       }
     },
     {
@@ -4369,12 +4369,12 @@
       "rank": 125,
       "total_repos": 374,
       "attributes": {
-        "popularity": 66,
-        "momentum": 35,
-        "activity": 82,
-        "community": 46,
-        "health": 64,
-        "influence": 15
+        "stars": 66,
+        "new_stars": 35,
+        "pushes": 84,
+        "contributors": 46,
+        "issues_closed": 81,
+        "forks": 15
       }
     },
     {
@@ -4414,12 +4414,12 @@
       "rank": 126,
       "total_repos": 374,
       "attributes": {
-        "popularity": 66,
-        "momentum": 96,
-        "activity": 79,
-        "community": 95,
-        "health": 56,
-        "influence": 24
+        "stars": 66,
+        "new_stars": 96,
+        "pushes": 81,
+        "contributors": 95,
+        "issues_closed": 51,
+        "forks": 24
       }
     },
     {
@@ -4448,12 +4448,12 @@
       "rank": 127,
       "total_repos": 374,
       "attributes": {
-        "popularity": 65,
-        "momentum": 59,
-        "activity": 95,
-        "community": 94,
-        "health": 74,
-        "influence": 91
+        "stars": 65,
+        "new_stars": 59,
+        "pushes": 94,
+        "contributors": 94,
+        "issues_closed": 97,
+        "forks": 91
       }
     },
     {
@@ -4478,12 +4478,12 @@
       "rank": 128,
       "total_repos": 374,
       "attributes": {
-        "popularity": 65,
-        "momentum": 71,
-        "activity": 38,
-        "community": 63,
-        "health": 67,
-        "influence": 31
+        "stars": 65,
+        "new_stars": 71,
+        "pushes": 37,
+        "contributors": 63,
+        "issues_closed": 30,
+        "forks": 31
       }
     },
     {
@@ -4503,12 +4503,12 @@
       "rank": 129,
       "total_repos": 374,
       "attributes": {
-        "popularity": 65,
-        "momentum": 78,
-        "activity": 34,
-        "community": 74,
-        "health": 36,
-        "influence": 10
+        "stars": 65,
+        "new_stars": 78,
+        "pushes": 39,
+        "contributors": 74,
+        "issues_closed": 76,
+        "forks": 10
       }
     },
     {
@@ -4541,12 +4541,12 @@
       "rank": 130,
       "total_repos": 374,
       "attributes": {
-        "popularity": 65,
-        "momentum": 60,
-        "activity": 65,
-        "community": 60,
-        "health": 0,
-        "influence": 78
+        "stars": 65,
+        "new_stars": 60,
+        "pushes": 70,
+        "contributors": 60,
+        "issues_closed": 0,
+        "forks": 78
       }
     },
     {
@@ -4570,12 +4570,12 @@
       "rank": 131,
       "total_repos": 374,
       "attributes": {
-        "popularity": 64,
-        "momentum": 39,
-        "activity": 40,
-        "community": 33,
-        "health": 0,
-        "influence": 82
+        "stars": 64,
+        "new_stars": 39,
+        "pushes": 40,
+        "contributors": 33,
+        "issues_closed": 0,
+        "forks": 82
       }
     },
     {
@@ -4608,12 +4608,12 @@
       "rank": 132,
       "total_repos": 374,
       "attributes": {
-        "popularity": 64,
-        "momentum": 80,
-        "activity": 80,
-        "community": 77,
-        "health": 86,
-        "influence": 33
+        "stars": 64,
+        "new_stars": 80,
+        "pushes": 79,
+        "contributors": 77,
+        "issues_closed": 90,
+        "forks": 33
       }
     },
     {
@@ -4649,12 +4649,12 @@
       "rank": 133,
       "total_repos": 374,
       "attributes": {
-        "popularity": 64,
-        "momentum": 72,
-        "activity": 81,
-        "community": 71,
-        "health": 51,
-        "influence": 19
+        "stars": 64,
+        "new_stars": 72,
+        "pushes": 76,
+        "contributors": 71,
+        "issues_closed": 85,
+        "forks": 19
       }
     },
     {
@@ -4691,12 +4691,12 @@
       "rank": 134,
       "total_repos": 374,
       "attributes": {
-        "popularity": 64,
-        "momentum": 24,
-        "activity": 30,
-        "community": 21,
-        "health": 0,
-        "influence": 86
+        "stars": 64,
+        "new_stars": 24,
+        "pushes": 37,
+        "contributors": 21,
+        "issues_closed": 0,
+        "forks": 86
       }
     },
     {
@@ -4722,12 +4722,12 @@
       "rank": 135,
       "total_repos": 374,
       "attributes": {
-        "popularity": 63,
-        "momentum": 68,
-        "activity": 37,
-        "community": 61,
-        "health": 0,
-        "influence": 34
+        "stars": 63,
+        "new_stars": 68,
+        "pushes": 0,
+        "contributors": 61,
+        "issues_closed": 0,
+        "forks": 34
       }
     },
     {
@@ -4747,12 +4747,12 @@
       "rank": 136,
       "total_repos": 374,
       "attributes": {
-        "popularity": 63,
-        "momentum": 5,
-        "activity": 41,
-        "community": 4,
-        "health": 0,
-        "influence": 34
+        "stars": 63,
+        "new_stars": 5,
+        "pushes": 48,
+        "contributors": 4,
+        "issues_closed": 0,
+        "forks": 34
       }
     },
     {
@@ -4777,12 +4777,12 @@
       "rank": 137,
       "total_repos": 374,
       "attributes": {
-        "popularity": 63,
-        "momentum": 7,
-        "activity": 24,
-        "community": 5,
-        "health": 0,
-        "influence": 72
+        "stars": 63,
+        "new_stars": 7,
+        "pushes": 0,
+        "contributors": 5,
+        "issues_closed": 30,
+        "forks": 72
       }
     },
     {
@@ -4805,12 +4805,12 @@
       "rank": 138,
       "total_repos": 374,
       "attributes": {
-        "popularity": 62,
-        "momentum": 83,
-        "activity": 82,
-        "community": 84,
-        "health": 90,
-        "influence": 33
+        "stars": 62,
+        "new_stars": 83,
+        "pushes": 72,
+        "contributors": 84,
+        "issues_closed": 77,
+        "forks": 33
       }
     },
     {
@@ -4850,12 +4850,12 @@
       "rank": 139,
       "total_repos": 374,
       "attributes": {
-        "popularity": 62,
-        "momentum": 45,
-        "activity": 19,
-        "community": 44,
-        "health": 0,
-        "influence": 76
+        "stars": 62,
+        "new_stars": 45,
+        "pushes": 0,
+        "contributors": 44,
+        "issues_closed": 0,
+        "forks": 76
       }
     },
     {
@@ -4879,12 +4879,12 @@
       "rank": 140,
       "total_repos": 374,
       "attributes": {
-        "popularity": 62,
-        "momentum": 23,
-        "activity": 0,
-        "community": 17,
-        "health": 0,
-        "influence": 7
+        "stars": 62,
+        "new_stars": 23,
+        "pushes": 0,
+        "contributors": 17,
+        "issues_closed": 0,
+        "forks": 7
       }
     },
     {
@@ -4919,12 +4919,12 @@
       "rank": 141,
       "total_repos": 374,
       "attributes": {
-        "popularity": 62,
-        "momentum": 60,
-        "activity": 0,
-        "community": 47,
-        "health": 0,
-        "influence": 44
+        "stars": 62,
+        "new_stars": 60,
+        "pushes": 0,
+        "contributors": 47,
+        "issues_closed": 0,
+        "forks": 44
       }
     },
     {
@@ -4949,12 +4949,12 @@
       "rank": 142,
       "total_repos": 374,
       "attributes": {
-        "popularity": 61,
-        "momentum": 64,
-        "activity": 49,
-        "community": 58,
-        "health": 88,
-        "influence": 17
+        "stars": 61,
+        "new_stars": 64,
+        "pushes": 51,
+        "contributors": 58,
+        "issues_closed": 64,
+        "forks": 17
       }
     },
     {
@@ -4979,12 +4979,12 @@
       "rank": 143,
       "total_repos": 374,
       "attributes": {
-        "popularity": 61,
-        "momentum": 30,
-        "activity": 75,
-        "community": 45,
-        "health": 76,
-        "influence": 92
+        "stars": 61,
+        "new_stars": 30,
+        "pushes": 78,
+        "contributors": 45,
+        "issues_closed": 93,
+        "forks": 92
       }
     },
     {
@@ -5015,12 +5015,12 @@
       "rank": 144,
       "total_repos": 374,
       "attributes": {
-        "popularity": 61,
-        "momentum": 52,
-        "activity": 19,
-        "community": 43,
-        "health": 0,
-        "influence": 42
+        "stars": 61,
+        "new_stars": 52,
+        "pushes": 0,
+        "contributors": 43,
+        "issues_closed": 0,
+        "forks": 42
       }
     },
     {
@@ -5045,12 +5045,12 @@
       "rank": 145,
       "total_repos": 374,
       "attributes": {
-        "popularity": 61,
-        "momentum": 84,
-        "activity": 89,
-        "community": 83,
-        "health": 46,
-        "influence": 5
+        "stars": 61,
+        "new_stars": 84,
+        "pushes": 89,
+        "contributors": 83,
+        "issues_closed": 84,
+        "forks": 5
       }
     },
     {
@@ -5089,12 +5089,12 @@
       "rank": 146,
       "total_repos": 374,
       "attributes": {
-        "popularity": 60,
-        "momentum": 82,
-        "activity": 46,
-        "community": 75,
-        "health": 44,
-        "influence": 57
+        "stars": 60,
+        "new_stars": 82,
+        "pushes": 42,
+        "contributors": 75,
+        "issues_closed": 48,
+        "forks": 57
       }
     },
     {
@@ -5114,12 +5114,12 @@
       "rank": 147,
       "total_repos": 374,
       "attributes": {
-        "popularity": 60,
-        "momentum": 85,
-        "activity": 58,
-        "community": 81,
-        "health": 42,
-        "influence": 46
+        "stars": 60,
+        "new_stars": 85,
+        "pushes": 47,
+        "contributors": 81,
+        "issues_closed": 55,
+        "forks": 46
       }
     },
     {
@@ -5139,12 +5139,12 @@
       "rank": 148,
       "total_repos": 374,
       "attributes": {
-        "popularity": 60,
-        "momentum": 48,
-        "activity": 0,
-        "community": 35,
-        "health": 0,
-        "influence": 70
+        "stars": 60,
+        "new_stars": 48,
+        "pushes": 0,
+        "contributors": 35,
+        "issues_closed": 0,
+        "forks": 70
       }
     },
     {
@@ -5172,12 +5172,12 @@
       "rank": 149,
       "total_repos": 374,
       "attributes": {
-        "popularity": 60,
-        "momentum": 88,
-        "activity": 78,
-        "community": 86,
-        "health": 64,
-        "influence": 44
+        "stars": 60,
+        "new_stars": 88,
+        "pushes": 76,
+        "contributors": 86,
+        "issues_closed": 75,
+        "forks": 44
       }
     },
     {
@@ -5218,12 +5218,12 @@
       "rank": 150,
       "total_repos": 374,
       "attributes": {
-        "popularity": 59,
-        "momentum": 10,
-        "activity": 0,
-        "community": 7,
-        "health": 0,
-        "influence": 77
+        "stars": 59,
+        "new_stars": 10,
+        "pushes": 0,
+        "contributors": 7,
+        "issues_closed": 0,
+        "forks": 77
       }
     },
     {
@@ -5249,12 +5249,12 @@
       "rank": 151,
       "total_repos": 374,
       "attributes": {
-        "popularity": 59,
-        "momentum": 49,
-        "activity": 44,
-        "community": 75,
-        "health": 39,
-        "influence": 87
+        "stars": 59,
+        "new_stars": 49,
+        "pushes": 33,
+        "contributors": 75,
+        "issues_closed": 48,
+        "forks": 87
       }
     },
     {
@@ -5280,12 +5280,12 @@
       "rank": 152,
       "total_repos": 374,
       "attributes": {
-        "popularity": 59,
-        "momentum": 54,
-        "activity": 78,
-        "community": 59,
-        "health": 87,
-        "influence": 35
+        "stars": 59,
+        "new_stars": 54,
+        "pushes": 77,
+        "contributors": 59,
+        "issues_closed": 79,
+        "forks": 35
       }
     },
     {
@@ -5316,12 +5316,12 @@
       "rank": 153,
       "total_repos": 374,
       "attributes": {
-        "popularity": 59,
-        "momentum": 65,
-        "activity": 46,
-        "community": 57,
-        "health": 45,
-        "influence": 5
+        "stars": 59,
+        "new_stars": 65,
+        "pushes": 50,
+        "contributors": 57,
+        "issues_closed": 39,
+        "forks": 5
       }
     },
     {
@@ -5360,12 +5360,12 @@
       "rank": 154,
       "total_repos": 374,
       "attributes": {
-        "popularity": 58,
-        "momentum": 30,
-        "activity": 62,
-        "community": 38,
-        "health": 48,
-        "influence": 21
+        "stars": 58,
+        "new_stars": 30,
+        "pushes": 63,
+        "contributors": 38,
+        "issues_closed": 64,
+        "forks": 21
       }
     },
     {
@@ -5406,12 +5406,12 @@
       "rank": 155,
       "total_repos": 374,
       "attributes": {
-        "popularity": 58,
-        "momentum": 38,
-        "activity": 78,
-        "community": 40,
-        "health": 56,
-        "influence": 26
+        "stars": 58,
+        "new_stars": 38,
+        "pushes": 77,
+        "contributors": 40,
+        "issues_closed": 43,
+        "forks": 26
       }
     },
     {
@@ -5431,12 +5431,12 @@
       "rank": 156,
       "total_repos": 374,
       "attributes": {
-        "popularity": 58,
-        "momentum": 1,
-        "activity": 46,
-        "community": 2,
-        "health": 0,
-        "influence": 94
+        "stars": 58,
+        "new_stars": 1,
+        "pushes": 50,
+        "contributors": 2,
+        "issues_closed": 0,
+        "forks": 94
       }
     },
     {
@@ -5459,12 +5459,12 @@
       "rank": 157,
       "total_repos": 374,
       "attributes": {
-        "popularity": 57,
-        "momentum": 21,
-        "activity": 0,
-        "community": 17,
-        "health": 0,
-        "influence": 38
+        "stars": 57,
+        "new_stars": 21,
+        "pushes": 0,
+        "contributors": 17,
+        "issues_closed": 0,
+        "forks": 38
       }
     },
     {
@@ -5490,12 +5490,12 @@
       "rank": 158,
       "total_repos": 374,
       "attributes": {
-        "popularity": 57,
-        "momentum": 4,
-        "activity": 0,
-        "community": 2,
-        "health": 0,
-        "influence": 67
+        "stars": 57,
+        "new_stars": 4,
+        "pushes": 0,
+        "contributors": 2,
+        "issues_closed": 30,
+        "forks": 67
       }
     },
     {
@@ -5523,12 +5523,12 @@
       "rank": 159,
       "total_repos": 374,
       "attributes": {
-        "popularity": 57,
-        "momentum": 43,
-        "activity": 45,
-        "community": 37,
-        "health": 63,
-        "influence": 27
+        "stars": 57,
+        "new_stars": 43,
+        "pushes": 48,
+        "contributors": 37,
+        "issues_closed": 51,
+        "forks": 27
       }
     },
     {
@@ -5556,12 +5556,12 @@
       "rank": 160,
       "total_repos": 374,
       "attributes": {
-        "popularity": 57,
-        "momentum": 13,
-        "activity": 24,
-        "community": 15,
-        "health": 67,
-        "influence": 61
+        "stars": 57,
+        "new_stars": 13,
+        "pushes": 26,
+        "contributors": 15,
+        "issues_closed": 43,
+        "forks": 61
       }
     },
     {
@@ -5585,12 +5585,12 @@
       "rank": 161,
       "total_repos": 374,
       "attributes": {
-        "popularity": 56,
-        "momentum": 25,
-        "activity": 94,
-        "community": 74,
-        "health": 59,
-        "influence": 83
+        "stars": 56,
+        "new_stars": 25,
+        "pushes": 93,
+        "contributors": 74,
+        "issues_closed": 93,
+        "forks": 83
       }
     },
     {
@@ -5615,12 +5615,12 @@
       "rank": 162,
       "total_repos": 374,
       "attributes": {
-        "popularity": 56,
-        "momentum": 84,
-        "activity": 96,
-        "community": 92,
-        "health": 82,
-        "influence": 30
+        "stars": 56,
+        "new_stars": 84,
+        "pushes": 96,
+        "contributors": 92,
+        "issues_closed": 97,
+        "forks": 30
       }
     },
     {
@@ -5649,12 +5649,12 @@
       "rank": 163,
       "total_repos": 374,
       "attributes": {
-        "popularity": 56,
-        "momentum": 53,
-        "activity": 22,
-        "community": 43,
-        "health": 0,
-        "influence": 60
+        "stars": 56,
+        "new_stars": 53,
+        "pushes": 0,
+        "contributors": 43,
+        "issues_closed": 0,
+        "forks": 60
       }
     },
     {
@@ -5681,12 +5681,12 @@
       "rank": 164,
       "total_repos": 374,
       "attributes": {
-        "popularity": 56,
-        "momentum": 37,
-        "activity": 0,
-        "community": 28,
-        "health": 0,
-        "influence": 40
+        "stars": 56,
+        "new_stars": 37,
+        "pushes": 0,
+        "contributors": 28,
+        "issues_closed": 0,
+        "forks": 40
       }
     },
     {
@@ -5712,12 +5712,12 @@
       "rank": 165,
       "total_repos": 374,
       "attributes": {
-        "popularity": 55,
-        "momentum": 86,
-        "activity": 14,
-        "community": 78,
-        "health": 0,
-        "influence": 41
+        "stars": 55,
+        "new_stars": 86,
+        "pushes": 26,
+        "contributors": 78,
+        "issues_closed": 0,
+        "forks": 41
       }
     },
     {
@@ -5745,12 +5745,12 @@
       "rank": 166,
       "total_repos": 374,
       "attributes": {
-        "popularity": 55,
-        "momentum": 11,
-        "activity": 48,
-        "community": 10,
-        "health": 98,
-        "influence": 32
+        "stars": 55,
+        "new_stars": 11,
+        "pushes": 51,
+        "contributors": 10,
+        "issues_closed": 51,
+        "forks": 32
       }
     },
     {
@@ -5772,12 +5772,12 @@
       "rank": 167,
       "total_repos": 374,
       "attributes": {
-        "popularity": 55,
-        "momentum": 98,
-        "activity": 56,
-        "community": 98,
-        "health": 35,
-        "influence": 35
+        "stars": 55,
+        "new_stars": 98,
+        "pushes": 26,
+        "contributors": 98,
+        "issues_closed": 43,
+        "forks": 35
       }
     },
     {
@@ -5802,12 +5802,12 @@
       "rank": 168,
       "total_repos": 374,
       "attributes": {
-        "popularity": 55,
-        "momentum": 79,
-        "activity": 38,
-        "community": 72,
-        "health": 35,
-        "influence": 12
+        "stars": 55,
+        "new_stars": 79,
+        "pushes": 40,
+        "contributors": 72,
+        "issues_closed": 39,
+        "forks": 12
       }
     },
     {
@@ -5845,12 +5845,12 @@
       "rank": 169,
       "total_repos": 374,
       "attributes": {
-        "popularity": 54,
-        "momentum": 61,
-        "activity": 40,
-        "community": 52,
-        "health": 0,
-        "influence": 73
+        "stars": 54,
+        "new_stars": 61,
+        "pushes": 42,
+        "contributors": 52,
+        "issues_closed": 0,
+        "forks": 73
       }
     },
     {
@@ -5889,12 +5889,12 @@
       "rank": 170,
       "total_repos": 374,
       "attributes": {
-        "popularity": 54,
-        "momentum": 83,
-        "activity": 37,
-        "community": 74,
-        "health": 0,
-        "influence": 49
+        "stars": 54,
+        "new_stars": 83,
+        "pushes": 40,
+        "contributors": 74,
+        "issues_closed": 0,
+        "forks": 49
       }
     },
     {
@@ -5928,12 +5928,12 @@
       "rank": 171,
       "total_repos": 374,
       "attributes": {
-        "popularity": 54,
-        "momentum": 33,
-        "activity": 75,
-        "community": 33,
-        "health": 78,
-        "influence": 38
+        "stars": 54,
+        "new_stars": 33,
+        "pushes": 76,
+        "contributors": 33,
+        "issues_closed": 60,
+        "forks": 38
       }
     },
     {
@@ -5972,12 +5972,12 @@
       "rank": 172,
       "total_repos": 374,
       "attributes": {
-        "popularity": 53,
-        "momentum": 56,
-        "activity": 32,
-        "community": 47,
-        "health": 75,
-        "influence": 15
+        "stars": 53,
+        "new_stars": 56,
+        "pushes": 35,
+        "contributors": 47,
+        "issues_closed": 72,
+        "forks": 15
       }
     },
     {
@@ -6010,12 +6010,12 @@
       "rank": 173,
       "total_repos": 374,
       "attributes": {
-        "popularity": 53,
-        "momentum": 80,
-        "activity": 89,
-        "community": 75,
-        "health": 96,
-        "influence": 26
+        "stars": 53,
+        "new_stars": 80,
+        "pushes": 89,
+        "contributors": 75,
+        "issues_closed": 87,
+        "forks": 26
       }
     },
     {
@@ -6055,12 +6055,12 @@
       "rank": 174,
       "total_repos": 374,
       "attributes": {
-        "popularity": 53,
-        "momentum": 3,
-        "activity": 66,
-        "community": 9,
-        "health": 0,
-        "influence": 9
+        "stars": 53,
+        "new_stars": 3,
+        "pushes": 69,
+        "contributors": 9,
+        "issues_closed": 0,
+        "forks": 9
       }
     },
     {
@@ -6101,12 +6101,12 @@
       "rank": 175,
       "total_repos": 374,
       "attributes": {
-        "popularity": 53,
-        "momentum": 80,
-        "activity": 83,
-        "community": 82,
-        "health": 83,
-        "influence": 36
+        "stars": 53,
+        "new_stars": 80,
+        "pushes": 81,
+        "contributors": 82,
+        "issues_closed": 92,
+        "forks": 36
       }
     },
     {
@@ -6126,12 +6126,12 @@
       "rank": 176,
       "total_repos": 374,
       "attributes": {
-        "popularity": 52,
-        "momentum": 5,
-        "activity": 42,
-        "community": 5,
-        "health": 0,
-        "influence": 46
+        "stars": 52,
+        "new_stars": 5,
+        "pushes": 46,
+        "contributors": 5,
+        "issues_closed": 0,
+        "forks": 46
       }
     },
     {
@@ -6172,12 +6172,12 @@
       "rank": 177,
       "total_repos": 374,
       "attributes": {
-        "popularity": 52,
-        "momentum": 47,
-        "activity": 61,
-        "community": 50,
-        "health": 52,
-        "influence": 81
+        "stars": 52,
+        "new_stars": 47,
+        "pushes": 61,
+        "contributors": 50,
+        "issues_closed": 51,
+        "forks": 81
       }
     },
     {
@@ -6214,12 +6214,12 @@
       "rank": 178,
       "total_repos": 374,
       "attributes": {
-        "popularity": 52,
-        "momentum": 68,
-        "activity": 50,
-        "community": 62,
-        "health": 0,
-        "influence": 41
+        "stars": 52,
+        "new_stars": 68,
+        "pushes": 52,
+        "contributors": 62,
+        "issues_closed": 30,
+        "forks": 41
       }
     },
     {
@@ -6244,12 +6244,12 @@
       "rank": 179,
       "total_repos": 374,
       "attributes": {
-        "popularity": 52,
-        "momentum": 52,
-        "activity": 22,
-        "community": 42,
-        "health": 0,
-        "influence": 56
+        "stars": 52,
+        "new_stars": 52,
+        "pushes": 33,
+        "contributors": 42,
+        "issues_closed": 0,
+        "forks": 56
       }
     },
     {
@@ -6273,12 +6273,12 @@
       "rank": 180,
       "total_repos": 374,
       "attributes": {
-        "popularity": 51,
-        "momentum": 78,
-        "activity": 59,
-        "community": 70,
-        "health": 39,
-        "influence": 4
+        "stars": 51,
+        "new_stars": 78,
+        "pushes": 56,
+        "contributors": 70,
+        "issues_closed": 55,
+        "forks": 4
       }
     },
     {
@@ -6298,12 +6298,12 @@
       "rank": 181,
       "total_repos": 374,
       "attributes": {
-        "popularity": 51,
-        "momentum": 84,
-        "activity": 22,
-        "community": 78,
-        "health": 35,
-        "influence": 64
+        "stars": 51,
+        "new_stars": 84,
+        "pushes": 0,
+        "contributors": 78,
+        "issues_closed": 30,
+        "forks": 64
       }
     },
     {
@@ -6336,12 +6336,12 @@
       "rank": 182,
       "total_repos": 374,
       "attributes": {
-        "popularity": 51,
-        "momentum": 67,
-        "activity": 88,
-        "community": 67,
-        "health": 97,
-        "influence": 69
+        "stars": 51,
+        "new_stars": 67,
+        "pushes": 89,
+        "contributors": 67,
+        "issues_closed": 94,
+        "forks": 69
       }
     },
     {
@@ -6361,12 +6361,12 @@
       "rank": 183,
       "total_repos": 374,
       "attributes": {
-        "popularity": 51,
-        "momentum": 25,
-        "activity": 0,
-        "community": 20,
-        "health": 0,
-        "influence": 52
+        "stars": 51,
+        "new_stars": 25,
+        "pushes": 0,
+        "contributors": 20,
+        "issues_closed": 0,
+        "forks": 52
       }
     },
     {
@@ -6394,12 +6394,12 @@
       "rank": 184,
       "total_repos": 374,
       "attributes": {
-        "popularity": 50,
-        "momentum": 44,
-        "activity": 39,
-        "community": 34,
-        "health": 43,
-        "influence": 52
+        "stars": 50,
+        "new_stars": 44,
+        "pushes": 44,
+        "contributors": 34,
+        "issues_closed": 39,
+        "forks": 52
       }
     },
     {
@@ -6435,12 +6435,12 @@
       "rank": 185,
       "total_repos": 374,
       "attributes": {
-        "popularity": 50,
-        "momentum": 39,
-        "activity": 98,
-        "community": 83,
-        "health": 86,
-        "influence": 65
+        "stars": 50,
+        "new_stars": 39,
+        "pushes": 98,
+        "contributors": 83,
+        "issues_closed": 95,
+        "forks": 65
       }
     },
     {
@@ -6473,12 +6473,12 @@
       "rank": 186,
       "total_repos": 374,
       "attributes": {
-        "popularity": 50,
-        "momentum": 19,
-        "activity": 0,
-        "community": 13,
-        "health": 0,
-        "influence": 28
+        "stars": 50,
+        "new_stars": 19,
+        "pushes": 0,
+        "contributors": 13,
+        "issues_closed": 0,
+        "forks": 28
       }
     },
     {
@@ -6509,12 +6509,12 @@
       "rank": 187,
       "total_repos": 374,
       "attributes": {
-        "popularity": 50,
-        "momentum": 39,
-        "activity": 32,
-        "community": 29,
-        "health": 0,
-        "influence": 33
+        "stars": 50,
+        "new_stars": 39,
+        "pushes": 26,
+        "contributors": 29,
+        "issues_closed": 0,
+        "forks": 33
       }
     },
     {
@@ -6542,12 +6542,12 @@
       "rank": 188,
       "total_repos": 374,
       "attributes": {
-        "popularity": 49,
-        "momentum": 96,
-        "activity": 51,
-        "community": 95,
-        "health": 41,
-        "influence": 25
+        "stars": 49,
+        "new_stars": 96,
+        "pushes": 39,
+        "contributors": 95,
+        "issues_closed": 68,
+        "forks": 25
       }
     },
     {
@@ -6567,12 +6567,12 @@
       "rank": 189,
       "total_repos": 374,
       "attributes": {
-        "popularity": 49,
-        "momentum": 31,
-        "activity": 41,
-        "community": 26,
-        "health": 0,
-        "influence": 71
+        "stars": 49,
+        "new_stars": 31,
+        "pushes": 44,
+        "contributors": 26,
+        "issues_closed": 30,
+        "forks": 71
       }
     },
     {
@@ -6592,12 +6592,12 @@
       "rank": 190,
       "total_repos": 374,
       "attributes": {
-        "popularity": 49,
-        "momentum": 25,
-        "activity": 61,
-        "community": 20,
-        "health": 0,
-        "influence": 42
+        "stars": 49,
+        "new_stars": 25,
+        "pushes": 66,
+        "contributors": 20,
+        "issues_closed": 0,
+        "forks": 42
       }
     },
     {
@@ -6617,12 +6617,12 @@
       "rank": 191,
       "total_repos": 374,
       "attributes": {
-        "popularity": 48,
-        "momentum": 56,
-        "activity": 90,
-        "community": 79,
-        "health": 84,
-        "influence": 90
+        "stars": 48,
+        "new_stars": 56,
+        "pushes": 87,
+        "contributors": 79,
+        "issues_closed": 95,
+        "forks": 90
       }
     },
     {
@@ -6647,12 +6647,12 @@
       "rank": 192,
       "total_repos": 374,
       "attributes": {
-        "popularity": 48,
-        "momentum": 67,
-        "activity": 58,
-        "community": 64,
-        "health": 44,
-        "influence": 60
+        "stars": 48,
+        "new_stars": 67,
+        "pushes": 57,
+        "contributors": 64,
+        "issues_closed": 61,
+        "forks": 60
       }
     },
     {
@@ -6688,12 +6688,12 @@
       "rank": 193,
       "total_repos": 374,
       "attributes": {
-        "popularity": 48,
-        "momentum": 58,
-        "activity": 56,
-        "community": 52,
-        "health": 50,
-        "influence": 57
+        "stars": 48,
+        "new_stars": 58,
+        "pushes": 58,
+        "contributors": 52,
+        "issues_closed": 68,
+        "forks": 57
       }
     },
     {
@@ -6718,12 +6718,12 @@
       "rank": 194,
       "total_repos": 374,
       "attributes": {
-        "popularity": 48,
-        "momentum": 14,
-        "activity": 69,
-        "community": 25,
-        "health": 88,
-        "influence": 77
+        "stars": 48,
+        "new_stars": 14,
+        "pushes": 66,
+        "contributors": 25,
+        "issues_closed": 68,
+        "forks": 77
       }
     },
     {
@@ -6743,12 +6743,12 @@
       "rank": 195,
       "total_repos": 374,
       "attributes": {
-        "popularity": 47,
-        "momentum": 51,
-        "activity": 37,
-        "community": 41,
-        "health": 0,
-        "influence": 35
+        "stars": 47,
+        "new_stars": 51,
+        "pushes": 42,
+        "contributors": 41,
+        "issues_closed": 0,
+        "forks": 35
       }
     },
     {
@@ -6789,12 +6789,12 @@
       "rank": 196,
       "total_repos": 374,
       "attributes": {
-        "popularity": 47,
-        "momentum": 32,
-        "activity": 81,
-        "community": 54,
-        "health": 60,
-        "influence": 46
+        "stars": 47,
+        "new_stars": 32,
+        "pushes": 83,
+        "contributors": 54,
+        "issues_closed": 82,
+        "forks": 46
       }
     },
     {
@@ -6822,12 +6822,12 @@
       "rank": 197,
       "total_repos": 374,
       "attributes": {
-        "popularity": 47,
-        "momentum": 19,
-        "activity": 48,
-        "community": 20,
-        "health": 56,
-        "influence": 74
+        "stars": 47,
+        "new_stars": 19,
+        "pushes": 48,
+        "contributors": 20,
+        "issues_closed": 51,
+        "forks": 74
       }
     },
     {
@@ -6868,12 +6868,12 @@
       "rank": 198,
       "total_repos": 374,
       "attributes": {
-        "popularity": 47,
-        "momentum": 88,
-        "activity": 95,
-        "community": 93,
-        "health": 90,
-        "influence": 66
+        "stars": 47,
+        "new_stars": 88,
+        "pushes": 93,
+        "contributors": 93,
+        "issues_closed": 96,
+        "forks": 66
       }
     },
     {
@@ -6907,12 +6907,12 @@
       "rank": 199,
       "total_repos": 374,
       "attributes": {
-        "popularity": 46,
-        "momentum": 87,
-        "activity": 58,
-        "community": 84,
-        "health": 59,
-        "influence": 48
+        "stars": 46,
+        "new_stars": 87,
+        "pushes": 58,
+        "contributors": 84,
+        "issues_closed": 78,
+        "forks": 48
       }
     },
     {
@@ -6944,12 +6944,12 @@
       "rank": 200,
       "total_repos": 374,
       "attributes": {
-        "popularity": 46,
-        "momentum": 72,
-        "activity": 24,
-        "community": 65,
-        "health": 0,
-        "influence": 33
+        "stars": 46,
+        "new_stars": 72,
+        "pushes": 30,
+        "contributors": 65,
+        "issues_closed": 0,
+        "forks": 33
       }
     },
     {
@@ -6978,12 +6978,12 @@
       "rank": 201,
       "total_repos": 374,
       "attributes": {
-        "popularity": 46,
-        "momentum": 37,
-        "activity": 91,
-        "community": 45,
-        "health": 67,
-        "influence": 71
+        "stars": 46,
+        "new_stars": 37,
+        "pushes": 91,
+        "contributors": 45,
+        "issues_closed": 71,
+        "forks": 71
       }
     },
     {
@@ -7022,12 +7022,12 @@
       "rank": 202,
       "total_repos": 374,
       "attributes": {
-        "popularity": 46,
-        "momentum": 51,
-        "activity": 92,
-        "community": 69,
-        "health": 54,
-        "influence": 73
+        "stars": 46,
+        "new_stars": 51,
+        "pushes": 92,
+        "contributors": 69,
+        "issues_closed": 79,
+        "forks": 73
       }
     },
     {
@@ -7051,12 +7051,12 @@
       "rank": 203,
       "total_repos": 374,
       "attributes": {
-        "popularity": 45,
-        "momentum": 16,
-        "activity": 35,
-        "community": 13,
-        "health": 67,
-        "influence": 74
+        "stars": 45,
+        "new_stars": 16,
+        "pushes": 39,
+        "contributors": 13,
+        "issues_closed": 30,
+        "forks": 74
       }
     },
     {
@@ -7088,12 +7088,12 @@
       "rank": 204,
       "total_repos": 374,
       "attributes": {
-        "popularity": 45,
-        "momentum": 56,
-        "activity": 61,
-        "community": 60,
-        "health": 75,
-        "influence": 42
+        "stars": 45,
+        "new_stars": 56,
+        "pushes": 57,
+        "contributors": 60,
+        "issues_closed": 74,
+        "forks": 42
       }
     },
     {
@@ -7129,12 +7129,12 @@
       "rank": 205,
       "total_repos": 374,
       "attributes": {
-        "popularity": 45,
-        "momentum": 61,
-        "activity": 57,
-        "community": 55,
-        "health": 62,
-        "influence": 14
+        "stars": 45,
+        "new_stars": 61,
+        "pushes": 57,
+        "contributors": 55,
+        "issues_closed": 59,
+        "forks": 14
       }
     },
     {
@@ -7160,12 +7160,12 @@
       "rank": 206,
       "total_repos": 374,
       "attributes": {
-        "popularity": 44,
-        "momentum": 21,
-        "activity": 24,
-        "community": 16,
-        "health": 0,
-        "influence": 39
+        "stars": 44,
+        "new_stars": 21,
+        "pushes": 30,
+        "contributors": 16,
+        "issues_closed": 0,
+        "forks": 39
       }
     },
     {
@@ -7185,12 +7185,12 @@
       "rank": 207,
       "total_repos": 374,
       "attributes": {
-        "popularity": 44,
-        "momentum": 97,
-        "activity": 65,
-        "community": 98,
-        "health": 74,
-        "influence": 20
+        "stars": 44,
+        "new_stars": 97,
+        "pushes": 56,
+        "contributors": 98,
+        "issues_closed": 99,
+        "forks": 20
       }
     },
     {
@@ -7223,12 +7223,12 @@
       "rank": 208,
       "total_repos": 374,
       "attributes": {
-        "popularity": 44,
-        "momentum": 53,
-        "activity": 38,
-        "community": 42,
-        "health": 0,
-        "influence": 37
+        "stars": 44,
+        "new_stars": 53,
+        "pushes": 37,
+        "contributors": 42,
+        "issues_closed": 30,
+        "forks": 37
       }
     },
     {
@@ -7248,12 +7248,12 @@
       "rank": 209,
       "total_repos": 374,
       "attributes": {
-        "popularity": 44,
-        "momentum": 16,
-        "activity": 91,
-        "community": 61,
-        "health": 60,
-        "influence": 53
+        "stars": 44,
+        "new_stars": 16,
+        "pushes": 90,
+        "contributors": 61,
+        "issues_closed": 86,
+        "forks": 53
       }
     },
     {
@@ -7273,12 +7273,12 @@
       "rank": 210,
       "total_repos": 374,
       "attributes": {
-        "popularity": 43,
-        "momentum": 56,
-        "activity": 72,
-        "community": 46,
-        "health": 93,
-        "influence": 82
+        "stars": 43,
+        "new_stars": 56,
+        "pushes": 77,
+        "contributors": 46,
+        "issues_closed": 39,
+        "forks": 82
       }
     },
     {
@@ -7304,12 +7304,12 @@
       "rank": 211,
       "total_repos": 374,
       "attributes": {
-        "popularity": 43,
-        "momentum": 57,
-        "activity": 50,
-        "community": 51,
-        "health": 47,
-        "influence": 10
+        "stars": 43,
+        "new_stars": 57,
+        "pushes": 52,
+        "contributors": 51,
+        "issues_closed": 61,
+        "forks": 10
       }
     },
     {
@@ -7334,12 +7334,12 @@
       "rank": 212,
       "total_repos": 374,
       "attributes": {
-        "popularity": 43,
-        "momentum": 49,
-        "activity": 30,
-        "community": 39,
-        "health": 40,
-        "influence": 1
+        "stars": 43,
+        "new_stars": 49,
+        "pushes": 30,
+        "contributors": 39,
+        "issues_closed": 30,
+        "forks": 1
       }
     },
     {
@@ -7380,12 +7380,12 @@
       "rank": 213,
       "total_repos": 374,
       "attributes": {
-        "popularity": 43,
-        "momentum": 55,
-        "activity": 31,
-        "community": 44,
-        "health": 0,
-        "influence": 29
+        "stars": 43,
+        "new_stars": 55,
+        "pushes": 35,
+        "contributors": 44,
+        "issues_closed": 0,
+        "forks": 29
       }
     },
     {
@@ -7410,12 +7410,12 @@
       "rank": 214,
       "total_repos": 374,
       "attributes": {
-        "popularity": 42,
-        "momentum": 22,
-        "activity": 49,
-        "community": 48,
-        "health": 93,
-        "influence": 80
+        "stars": 42,
+        "new_stars": 22,
+        "pushes": 46,
+        "contributors": 48,
+        "issues_closed": 64,
+        "forks": 80
       }
     },
     {
@@ -7435,12 +7435,12 @@
       "rank": 215,
       "total_repos": 374,
       "attributes": {
-        "popularity": 42,
-        "momentum": 2,
-        "activity": 52,
-        "community": 9,
-        "health": 95,
-        "influence": 7
+        "stars": 42,
+        "new_stars": 2,
+        "pushes": 48,
+        "contributors": 9,
+        "issues_closed": 68,
+        "forks": 7
       }
     },
     {
@@ -7473,12 +7473,12 @@
       "rank": 216,
       "total_repos": 374,
       "attributes": {
-        "popularity": 42,
-        "momentum": 55,
-        "activity": 24,
-        "community": 48,
-        "health": 56,
-        "influence": 16
+        "stars": 42,
+        "new_stars": 55,
+        "pushes": 0,
+        "contributors": 48,
+        "issues_closed": 68,
+        "forks": 16
       }
     },
     {
@@ -7508,12 +7508,12 @@
       "rank": 217,
       "total_repos": 374,
       "attributes": {
-        "popularity": 42,
-        "momentum": 71,
-        "activity": 91,
-        "community": 71,
-        "health": 65,
-        "influence": 39
+        "stars": 42,
+        "new_stars": 71,
+        "pushes": 91,
+        "contributors": 71,
+        "issues_closed": 86,
+        "forks": 39
       }
     },
     {
@@ -7536,12 +7536,12 @@
       "rank": 218,
       "total_repos": 374,
       "attributes": {
-        "popularity": 41,
-        "momentum": 30,
-        "activity": 65,
-        "community": 37,
-        "health": 76,
-        "influence": 81
+        "stars": 41,
+        "new_stars": 30,
+        "pushes": 62,
+        "contributors": 37,
+        "issues_closed": 71,
+        "forks": 81
       }
     },
     {
@@ -7582,12 +7582,12 @@
       "rank": 219,
       "total_repos": 374,
       "attributes": {
-        "popularity": 41,
-        "momentum": 75,
-        "activity": 56,
-        "community": 73,
-        "health": 34,
-        "influence": 37
+        "stars": 41,
+        "new_stars": 75,
+        "pushes": 55,
+        "contributors": 73,
+        "issues_closed": 48,
+        "forks": 37
       }
     },
     {
@@ -7614,12 +7614,12 @@
       "rank": 220,
       "total_repos": 374,
       "attributes": {
-        "popularity": 41,
-        "momentum": 14,
-        "activity": 24,
-        "community": 12,
-        "health": 35,
-        "influence": 59
+        "stars": 41,
+        "new_stars": 14,
+        "pushes": 0,
+        "contributors": 12,
+        "issues_closed": 30,
+        "forks": 59
       }
     },
     {
@@ -7644,12 +7644,12 @@
       "rank": 221,
       "total_repos": 374,
       "attributes": {
-        "popularity": 41,
-        "momentum": 59,
-        "activity": 0,
-        "community": 46,
-        "health": 0,
-        "influence": 38
+        "stars": 41,
+        "new_stars": 59,
+        "pushes": 0,
+        "contributors": 46,
+        "issues_closed": 0,
+        "forks": 38
       }
     },
     {
@@ -7677,12 +7677,12 @@
       "rank": 222,
       "total_repos": 374,
       "attributes": {
-        "popularity": 40,
-        "momentum": 45,
-        "activity": 40,
-        "community": 33,
-        "health": 40,
-        "influence": 13
+        "stars": 40,
+        "new_stars": 45,
+        "pushes": 47,
+        "contributors": 33,
+        "issues_closed": 30,
+        "forks": 13
       }
     },
     {
@@ -7716,12 +7716,12 @@
       "rank": 223,
       "total_repos": 374,
       "attributes": {
-        "popularity": 40,
-        "momentum": 17,
-        "activity": 38,
-        "community": 13,
-        "health": 0,
-        "influence": 43
+        "stars": 40,
+        "new_stars": 17,
+        "pushes": 40,
+        "contributors": 13,
+        "issues_closed": 61,
+        "forks": 43
       }
     },
     {
@@ -7758,12 +7758,12 @@
       "rank": 224,
       "total_repos": 374,
       "attributes": {
-        "popularity": 40,
-        "momentum": 8,
-        "activity": 76,
-        "community": 20,
-        "health": 79,
-        "influence": 44
+        "stars": 40,
+        "new_stars": 8,
+        "pushes": 77,
+        "contributors": 20,
+        "issues_closed": 59,
+        "forks": 44
       }
     },
     {
@@ -7797,12 +7797,12 @@
       "rank": 225,
       "total_repos": 374,
       "attributes": {
-        "popularity": 39,
-        "momentum": 36,
-        "activity": 0,
-        "community": 27,
-        "health": 0,
-        "influence": 28
+        "stars": 39,
+        "new_stars": 36,
+        "pushes": 0,
+        "contributors": 27,
+        "issues_closed": 0,
+        "forks": 28
       }
     },
     {
@@ -7832,12 +7832,12 @@
       "rank": 226,
       "total_repos": 374,
       "attributes": {
-        "popularity": 39,
-        "momentum": 23,
-        "activity": 35,
-        "community": 26,
-        "health": 97,
-        "influence": 78
+        "stars": 39,
+        "new_stars": 23,
+        "pushes": 35,
+        "contributors": 26,
+        "issues_closed": 84,
+        "forks": 78
       }
     },
     {
@@ -7878,12 +7878,12 @@
       "rank": 227,
       "total_repos": 374,
       "attributes": {
-        "popularity": 39,
-        "momentum": 15,
-        "activity": 53,
-        "community": 19,
-        "health": 93,
-        "influence": 66
+        "stars": 39,
+        "new_stars": 15,
+        "pushes": 59,
+        "contributors": 19,
+        "issues_closed": 66,
+        "forks": 66
       }
     },
     {
@@ -7903,12 +7903,12 @@
       "rank": 228,
       "total_repos": 374,
       "attributes": {
-        "popularity": 39,
-        "momentum": 68,
-        "activity": 0,
-        "community": 63,
-        "health": 45,
-        "influence": 68
+        "stars": 39,
+        "new_stars": 68,
+        "pushes": 0,
+        "contributors": 63,
+        "issues_closed": 30,
+        "forks": 68
       }
     },
     {
@@ -7928,12 +7928,12 @@
       "rank": 229,
       "total_repos": 374,
       "attributes": {
-        "popularity": 38,
-        "momentum": 10,
-        "activity": 0,
-        "community": 7,
-        "health": 0,
-        "influence": 44
+        "stars": 38,
+        "new_stars": 10,
+        "pushes": 0,
+        "contributors": 7,
+        "issues_closed": 0,
+        "forks": 44
       }
     },
     {
@@ -7959,12 +7959,12 @@
       "rank": 230,
       "total_repos": 374,
       "attributes": {
-        "popularity": 38,
-        "momentum": 41,
-        "activity": 69,
-        "community": 56,
-        "health": 66,
-        "influence": 83
+        "stars": 38,
+        "new_stars": 41,
+        "pushes": 66,
+        "contributors": 56,
+        "issues_closed": 77,
+        "forks": 83
       }
     },
     {
@@ -7991,12 +7991,12 @@
       "rank": 231,
       "total_repos": 374,
       "attributes": {
-        "popularity": 38,
-        "momentum": 47,
-        "activity": 32,
-        "community": 34,
-        "health": 0,
-        "influence": 24
+        "stars": 38,
+        "new_stars": 47,
+        "pushes": 26,
+        "contributors": 34,
+        "issues_closed": 0,
+        "forks": 24
       }
     },
     {
@@ -8027,12 +8027,12 @@
       "rank": 232,
       "total_repos": 374,
       "attributes": {
-        "popularity": 38,
-        "momentum": 27,
-        "activity": 59,
-        "community": 30,
-        "health": 93,
-        "influence": 79
+        "stars": 38,
+        "new_stars": 27,
+        "pushes": 59,
+        "contributors": 30,
+        "issues_closed": 51,
+        "forks": 79
       }
     },
     {
@@ -8056,12 +8056,12 @@
       "rank": 233,
       "total_repos": 374,
       "attributes": {
-        "popularity": 37,
-        "momentum": 66,
-        "activity": 53,
-        "community": 63,
-        "health": 75,
-        "influence": 31
+        "stars": 37,
+        "new_stars": 66,
+        "pushes": 54,
+        "contributors": 63,
+        "issues_closed": 76,
+        "forks": 31
       }
     },
     {
@@ -8102,12 +8102,12 @@
       "rank": 234,
       "total_repos": 374,
       "attributes": {
-        "popularity": 37,
-        "momentum": 12,
-        "activity": 0,
-        "community": 9,
-        "health": 0,
-        "influence": 63
+        "stars": 37,
+        "new_stars": 12,
+        "pushes": 0,
+        "contributors": 9,
+        "issues_closed": 0,
+        "forks": 63
       }
     },
     {
@@ -8127,12 +8127,12 @@
       "rank": 235,
       "total_repos": 374,
       "attributes": {
-        "popularity": 37,
-        "momentum": 48,
-        "activity": 34,
-        "community": 35,
-        "health": 0,
-        "influence": 59
+        "stars": 37,
+        "new_stars": 48,
+        "pushes": 39,
+        "contributors": 35,
+        "issues_closed": 0,
+        "forks": 59
       }
     },
     {
@@ -8152,12 +8152,12 @@
       "rank": 236,
       "total_repos": 374,
       "attributes": {
-        "popularity": 37,
-        "momentum": 11,
-        "activity": 14,
-        "community": 10,
-        "health": 0,
-        "influence": 16
+        "stars": 37,
+        "new_stars": 11,
+        "pushes": 0,
+        "contributors": 10,
+        "issues_closed": 0,
+        "forks": 16
       }
     },
     {
@@ -8182,12 +8182,12 @@
       "rank": 237,
       "total_repos": 374,
       "attributes": {
-        "popularity": 36,
-        "momentum": 19,
-        "activity": 14,
-        "community": 15,
-        "health": 0,
-        "influence": 32
+        "stars": 36,
+        "new_stars": 19,
+        "pushes": 0,
+        "contributors": 15,
+        "issues_closed": 0,
+        "forks": 32
       }
     },
     {
@@ -8215,12 +8215,12 @@
       "rank": 238,
       "total_repos": 374,
       "attributes": {
-        "popularity": 36,
-        "momentum": 30,
-        "activity": 82,
-        "community": 41,
-        "health": 48,
-        "influence": 14
+        "stars": 36,
+        "new_stars": 30,
+        "pushes": 84,
+        "contributors": 41,
+        "issues_closed": 57,
+        "forks": 14
       }
     },
     {
@@ -8246,12 +8246,12 @@
       "rank": 239,
       "total_repos": 374,
       "attributes": {
-        "popularity": 36,
-        "momentum": 75,
-        "activity": 28,
-        "community": 70,
-        "health": 93,
-        "influence": 36
+        "stars": 36,
+        "new_stars": 75,
+        "pushes": 26,
+        "contributors": 70,
+        "issues_closed": 51,
+        "forks": 36
       }
     },
     {
@@ -8278,12 +8278,12 @@
       "rank": 240,
       "total_repos": 374,
       "attributes": {
-        "popularity": 35,
-        "momentum": 38,
-        "activity": 62,
-        "community": 42,
-        "health": 88,
-        "influence": 47
+        "stars": 35,
+        "new_stars": 38,
+        "pushes": 65,
+        "contributors": 42,
+        "issues_closed": 59,
+        "forks": 47
       }
     },
     {
@@ -8312,12 +8312,12 @@
       "rank": 241,
       "total_repos": 374,
       "attributes": {
-        "popularity": 35,
-        "momentum": 10,
-        "activity": 72,
-        "community": 29,
-        "health": 67,
-        "influence": 77
+        "stars": 35,
+        "new_stars": 10,
+        "pushes": 67,
+        "contributors": 29,
+        "issues_closed": 61,
+        "forks": 77
       }
     },
     {
@@ -8356,12 +8356,12 @@
       "rank": 242,
       "total_repos": 374,
       "attributes": {
-        "popularity": 35,
-        "momentum": 70,
-        "activity": 76,
-        "community": 68,
-        "health": 65,
-        "influence": 13
+        "stars": 35,
+        "new_stars": 70,
+        "pushes": 78,
+        "contributors": 68,
+        "issues_closed": 86,
+        "forks": 13
       }
     },
     {
@@ -8389,12 +8389,12 @@
       "rank": 243,
       "total_repos": 374,
       "attributes": {
-        "popularity": 35,
-        "momentum": 46,
-        "activity": 83,
-        "community": 57,
-        "health": 50,
-        "influence": 50
+        "stars": 35,
+        "new_stars": 46,
+        "pushes": 84,
+        "contributors": 57,
+        "issues_closed": 64,
+        "forks": 50
       }
     },
     {
@@ -8419,12 +8419,12 @@
       "rank": 244,
       "total_repos": 374,
       "attributes": {
-        "popularity": 34,
-        "momentum": 8,
-        "activity": 19,
-        "community": 8,
-        "health": 0,
-        "influence": 49
+        "stars": 34,
+        "new_stars": 8,
+        "pushes": 0,
+        "contributors": 8,
+        "issues_closed": 0,
+        "forks": 49
       }
     },
     {
@@ -8444,12 +8444,12 @@
       "rank": 245,
       "total_repos": 374,
       "attributes": {
-        "popularity": 34,
-        "momentum": 9,
-        "activity": 0,
-        "community": 5,
-        "health": 0,
-        "influence": 0
+        "stars": 34,
+        "new_stars": 9,
+        "pushes": 0,
+        "contributors": 5,
+        "issues_closed": 0,
+        "forks": 0
       }
     },
     {
@@ -8480,12 +8480,12 @@
       "rank": 246,
       "total_repos": 374,
       "attributes": {
-        "popularity": 34,
-        "momentum": 46,
-        "activity": 34,
-        "community": 40,
-        "health": 67,
-        "influence": 8
+        "stars": 34,
+        "new_stars": 46,
+        "pushes": 30,
+        "contributors": 40,
+        "issues_closed": 61,
+        "forks": 8
       }
     },
     {
@@ -8512,12 +8512,12 @@
       "rank": 247,
       "total_repos": 374,
       "attributes": {
-        "popularity": 34,
-        "momentum": 49,
-        "activity": 28,
-        "community": 40,
-        "health": 0,
-        "influence": 19
+        "stars": 34,
+        "new_stars": 49,
+        "pushes": 0,
+        "contributors": 40,
+        "issues_closed": 0,
+        "forks": 19
       }
     },
     {
@@ -8552,12 +8552,12 @@
       "rank": 248,
       "total_repos": 374,
       "attributes": {
-        "popularity": 33,
-        "momentum": 81,
-        "activity": 87,
-        "community": 75,
-        "health": 66,
-        "influence": 14
+        "stars": 33,
+        "new_stars": 81,
+        "pushes": 88,
+        "contributors": 75,
+        "issues_closed": 72,
+        "forks": 14
       }
     },
     {
@@ -8591,12 +8591,12 @@
       "rank": 249,
       "total_repos": 374,
       "attributes": {
-        "popularity": 33,
-        "momentum": 90,
-        "activity": 69,
-        "community": 87,
-        "health": 86,
-        "influence": 24
+        "stars": 33,
+        "new_stars": 90,
+        "pushes": 71,
+        "contributors": 87,
+        "issues_closed": 61,
+        "forks": 24
       }
     },
     {
@@ -8621,12 +8621,12 @@
       "rank": 250,
       "total_repos": 374,
       "attributes": {
-        "popularity": 33,
-        "momentum": 41,
-        "activity": 28,
-        "community": 34,
-        "health": 38,
-        "influence": 56
+        "stars": 33,
+        "new_stars": 41,
+        "pushes": 26,
+        "contributors": 34,
+        "issues_closed": 30,
+        "forks": 56
       }
     },
     {
@@ -8651,12 +8651,12 @@
       "rank": 251,
       "total_repos": 374,
       "attributes": {
-        "popularity": 33,
-        "momentum": 0,
-        "activity": 66,
-        "community": 3,
-        "health": 0,
-        "influence": 20
+        "stars": 33,
+        "new_stars": 0,
+        "pushes": 71,
+        "contributors": 3,
+        "issues_closed": 0,
+        "forks": 20
       }
     },
     {
@@ -8691,12 +8691,12 @@
       "rank": 252,
       "total_repos": 374,
       "attributes": {
-        "popularity": 32,
-        "momentum": 50,
-        "activity": 63,
-        "community": 53,
-        "health": 55,
-        "influence": 22
+        "stars": 32,
+        "new_stars": 50,
+        "pushes": 61,
+        "contributors": 53,
+        "issues_closed": 69,
+        "forks": 22
       }
     },
     {
@@ -8716,12 +8716,12 @@
       "rank": 253,
       "total_repos": 374,
       "attributes": {
-        "popularity": 32,
-        "momentum": 92,
-        "activity": 98,
-        "community": 95,
-        "health": 64,
-        "influence": 37
+        "stars": 32,
+        "new_stars": 92,
+        "pushes": 98,
+        "contributors": 95,
+        "issues_closed": 97,
+        "forks": 37
       }
     },
     {
@@ -8755,12 +8755,12 @@
       "rank": 254,
       "total_repos": 374,
       "attributes": {
-        "popularity": 32,
-        "momentum": 37,
-        "activity": 43,
-        "community": 30,
-        "health": 45,
-        "influence": 10
+        "stars": 32,
+        "new_stars": 37,
+        "pushes": 47,
+        "contributors": 30,
+        "issues_closed": 30,
+        "forks": 10
       }
     },
     {
@@ -8788,12 +8788,12 @@
       "rank": 255,
       "total_repos": 374,
       "attributes": {
-        "popularity": 32,
-        "momentum": 55,
-        "activity": 47,
-        "community": 43,
-        "health": 0,
-        "influence": 11
+        "stars": 32,
+        "new_stars": 55,
+        "pushes": 52,
+        "contributors": 43,
+        "issues_closed": 0,
+        "forks": 11
       }
     },
     {
@@ -8818,12 +8818,12 @@
       "rank": 256,
       "total_repos": 374,
       "attributes": {
-        "popularity": 31,
-        "momentum": 6,
-        "activity": 42,
-        "community": 10,
-        "health": 67,
-        "influence": 30
+        "stars": 31,
+        "new_stars": 6,
+        "pushes": 37,
+        "contributors": 10,
+        "issues_closed": 39,
+        "forks": 30
       }
     },
     {
@@ -8845,12 +8845,12 @@
       "rank": 257,
       "total_repos": 374,
       "attributes": {
-        "popularity": 31,
-        "momentum": 2,
-        "activity": 30,
-        "community": 2,
-        "health": 0,
-        "influence": 70
+        "stars": 31,
+        "new_stars": 2,
+        "pushes": 33,
+        "contributors": 2,
+        "issues_closed": 30,
+        "forks": 70
       }
     },
     {
@@ -8891,12 +8891,12 @@
       "rank": 258,
       "total_repos": 374,
       "attributes": {
-        "popularity": 31,
-        "momentum": 39,
-        "activity": 90,
-        "community": 51,
-        "health": 87,
-        "influence": 18
+        "stars": 31,
+        "new_stars": 39,
+        "pushes": 89,
+        "contributors": 51,
+        "issues_closed": 55,
+        "forks": 18
       }
     },
     {
@@ -8916,12 +8916,12 @@
       "rank": 259,
       "total_repos": 374,
       "attributes": {
-        "popularity": 30,
-        "momentum": 98,
-        "activity": 60,
-        "community": 97,
-        "health": 55,
-        "influence": 15
+        "stars": 30,
+        "new_stars": 98,
+        "pushes": 55,
+        "contributors": 97,
+        "issues_closed": 84,
+        "forks": 15
       }
     },
     {
@@ -8949,12 +8949,12 @@
       "rank": 260,
       "total_repos": 374,
       "attributes": {
-        "popularity": 30,
-        "momentum": 6,
-        "activity": 0,
-        "community": 4,
-        "health": 0,
-        "influence": 75
+        "stars": 30,
+        "new_stars": 6,
+        "pushes": 0,
+        "contributors": 4,
+        "issues_closed": 0,
+        "forks": 75
       }
     },
     {
@@ -8974,12 +8974,12 @@
       "rank": 261,
       "total_repos": 374,
       "attributes": {
-        "popularity": 30,
-        "momentum": 77,
-        "activity": 53,
-        "community": 71,
-        "health": 39,
-        "influence": 25
+        "stars": 30,
+        "new_stars": 77,
+        "pushes": 54,
+        "contributors": 71,
+        "issues_closed": 39,
+        "forks": 25
       }
     },
     {
@@ -8999,12 +8999,12 @@
       "rank": 262,
       "total_repos": 374,
       "attributes": {
-        "popularity": 30,
-        "momentum": 4,
-        "activity": 0,
-        "community": 2,
-        "health": 0,
-        "influence": 75
+        "stars": 30,
+        "new_stars": 4,
+        "pushes": 0,
+        "contributors": 2,
+        "issues_closed": 0,
+        "forks": 75
       }
     },
     {
@@ -9031,12 +9031,12 @@
       "rank": 263,
       "total_repos": 374,
       "attributes": {
-        "popularity": 29,
-        "momentum": 3,
-        "activity": 0,
-        "community": 3,
-        "health": 0,
-        "influence": 55
+        "stars": 29,
+        "new_stars": 3,
+        "pushes": 0,
+        "contributors": 3,
+        "issues_closed": 0,
+        "forks": 55
       }
     },
     {
@@ -9067,12 +9067,12 @@
       "rank": 264,
       "total_repos": 374,
       "attributes": {
-        "popularity": 29,
-        "momentum": 37,
-        "activity": 24,
-        "community": 30,
-        "health": 67,
-        "influence": 61
+        "stars": 29,
+        "new_stars": 37,
+        "pushes": 26,
+        "contributors": 30,
+        "issues_closed": 30,
+        "forks": 61
       }
     },
     {
@@ -9101,12 +9101,12 @@
       "rank": 265,
       "total_repos": 374,
       "attributes": {
-        "popularity": 29,
-        "momentum": 97,
-        "activity": 87,
-        "community": 97,
-        "health": 45,
-        "influence": 18
+        "stars": 29,
+        "new_stars": 97,
+        "pushes": 88,
+        "contributors": 97,
+        "issues_closed": 66,
+        "forks": 18
       }
     },
     {
@@ -9139,12 +9139,12 @@
       "rank": 266,
       "total_repos": 374,
       "attributes": {
-        "popularity": 29,
-        "momentum": 52,
-        "activity": 34,
-        "community": 45,
-        "health": 67,
-        "influence": 30
+        "stars": 29,
+        "new_stars": 52,
+        "pushes": 33,
+        "contributors": 45,
+        "issues_closed": 43,
+        "forks": 30
       }
     },
     {
@@ -9175,12 +9175,12 @@
       "rank": 267,
       "total_repos": 374,
       "attributes": {
-        "popularity": 28,
-        "momentum": 65,
-        "activity": 28,
-        "community": 56,
-        "health": 38,
-        "influence": 3
+        "stars": 28,
+        "new_stars": 65,
+        "pushes": 30,
+        "contributors": 56,
+        "issues_closed": 30,
+        "forks": 3
       }
     },
     {
@@ -9204,12 +9204,12 @@
       "rank": 268,
       "total_repos": 374,
       "attributes": {
-        "popularity": 28,
-        "momentum": 33,
-        "activity": 93,
-        "community": 38,
-        "health": 64,
-        "influence": 53
+        "stars": 28,
+        "new_stars": 33,
+        "pushes": 95,
+        "contributors": 38,
+        "issues_closed": 57,
+        "forks": 53
       }
     },
     {
@@ -9229,12 +9229,12 @@
       "rank": 269,
       "total_repos": 374,
       "attributes": {
-        "popularity": 28,
-        "momentum": 2,
-        "activity": 0,
-        "community": 1,
-        "health": 34,
-        "influence": 55
+        "stars": 28,
+        "new_stars": 2,
+        "pushes": 0,
+        "contributors": 1,
+        "issues_closed": 30,
+        "forks": 55
       }
     },
     {
@@ -9263,12 +9263,12 @@
       "rank": 270,
       "total_repos": 374,
       "attributes": {
-        "popularity": 28,
-        "momentum": 28,
-        "activity": 50,
-        "community": 26,
-        "health": 83,
-        "influence": 56
+        "stars": 28,
+        "new_stars": 28,
+        "pushes": 44,
+        "contributors": 26,
+        "issues_closed": 50,
+        "forks": 56
       }
     },
     {
@@ -9290,12 +9290,12 @@
       "rank": 271,
       "total_repos": 374,
       "attributes": {
-        "popularity": 27,
-        "momentum": 11,
-        "activity": 45,
-        "community": 10,
-        "health": 0,
-        "influence": 78
+        "stars": 27,
+        "new_stars": 11,
+        "pushes": 44,
+        "contributors": 10,
+        "issues_closed": 0,
+        "forks": 78
       }
     },
     {
@@ -9329,12 +9329,12 @@
       "rank": 272,
       "total_repos": 374,
       "attributes": {
-        "popularity": 27,
-        "momentum": 29,
-        "activity": 79,
-        "community": 47,
-        "health": 85,
-        "influence": 21
+        "stars": 27,
+        "new_stars": 29,
+        "pushes": 82,
+        "contributors": 47,
+        "issues_closed": 83,
+        "forks": 21
       }
     },
     {
@@ -9358,12 +9358,12 @@
       "rank": 273,
       "total_repos": 374,
       "attributes": {
-        "popularity": 27,
-        "momentum": 15,
-        "activity": 66,
-        "community": 27,
-        "health": 80,
-        "influence": 92
+        "stars": 27,
+        "new_stars": 15,
+        "pushes": 69,
+        "contributors": 27,
+        "issues_closed": 87,
+        "forks": 92
       }
     },
     {
@@ -9401,12 +9401,12 @@
       "rank": 274,
       "total_repos": 374,
       "attributes": {
-        "popularity": 26,
-        "momentum": 94,
-        "activity": 55,
-        "community": 92,
-        "health": 49,
-        "influence": 1
+        "stars": 26,
+        "new_stars": 94,
+        "pushes": 60,
+        "contributors": 92,
+        "issues_closed": 43,
+        "forks": 1
       }
     },
     {
@@ -9431,12 +9431,12 @@
       "rank": 275,
       "total_repos": 374,
       "attributes": {
-        "popularity": 26,
-        "momentum": 44,
-        "activity": 43,
-        "community": 37,
-        "health": 91,
-        "influence": 21
+        "stars": 26,
+        "new_stars": 44,
+        "pushes": 47,
+        "contributors": 37,
+        "issues_closed": 69,
+        "forks": 21
       }
     },
     {
@@ -9463,12 +9463,12 @@
       "rank": 276,
       "total_repos": 374,
       "attributes": {
-        "popularity": 26,
-        "momentum": 17,
-        "activity": 19,
-        "community": 13,
-        "health": 0,
-        "influence": 45
+        "stars": 26,
+        "new_stars": 17,
+        "pushes": 0,
+        "contributors": 13,
+        "issues_closed": 0,
+        "forks": 45
       }
     },
     {
@@ -9491,12 +9491,12 @@
       "rank": 277,
       "total_repos": 374,
       "attributes": {
-        "popularity": 26,
-        "momentum": 62,
-        "activity": 86,
-        "community": 64,
-        "health": 75,
-        "influence": 5
+        "stars": 26,
+        "new_stars": 62,
+        "pushes": 84,
+        "contributors": 64,
+        "issues_closed": 79,
+        "forks": 5
       }
     },
     {
@@ -9520,12 +9520,12 @@
       "rank": 278,
       "total_repos": 374,
       "attributes": {
-        "popularity": 25,
-        "momentum": 49,
-        "activity": 64,
-        "community": 47,
-        "health": 0,
-        "influence": 85
+        "stars": 25,
+        "new_stars": 49,
+        "pushes": 66,
+        "contributors": 47,
+        "issues_closed": 0,
+        "forks": 85
       }
     },
     {
@@ -9549,12 +9549,12 @@
       "rank": 279,
       "total_repos": 374,
       "attributes": {
-        "popularity": 25,
-        "momentum": 6,
-        "activity": 0,
-        "community": 4,
-        "health": 0,
-        "influence": 72
+        "stars": 25,
+        "new_stars": 6,
+        "pushes": 0,
+        "contributors": 4,
+        "issues_closed": 0,
+        "forks": 72
       }
     },
     {
@@ -9574,12 +9574,12 @@
       "rank": 280,
       "total_repos": 374,
       "attributes": {
-        "popularity": 25,
-        "momentum": 13,
-        "activity": 19,
-        "community": 11,
-        "health": 0,
-        "influence": 48
+        "stars": 25,
+        "new_stars": 13,
+        "pushes": 0,
+        "contributors": 11,
+        "issues_closed": 0,
+        "forks": 48
       }
     },
     {
@@ -9618,12 +9618,12 @@
       "rank": 281,
       "total_repos": 374,
       "attributes": {
-        "popularity": 25,
-        "momentum": 34,
-        "activity": 22,
-        "community": 26,
-        "health": 0,
-        "influence": 29
+        "stars": 25,
+        "new_stars": 34,
+        "pushes": 0,
+        "contributors": 26,
+        "issues_closed": 0,
+        "forks": 29
       }
     },
     {
@@ -9643,12 +9643,12 @@
       "rank": 282,
       "total_repos": 374,
       "attributes": {
-        "popularity": 24,
-        "momentum": 1,
-        "activity": 0,
-        "community": 1,
-        "health": 0,
-        "influence": 85
+        "stars": 24,
+        "new_stars": 1,
+        "pushes": 0,
+        "contributors": 1,
+        "issues_closed": 0,
+        "forks": 85
       }
     },
     {
@@ -9668,12 +9668,12 @@
       "rank": 283,
       "total_repos": 374,
       "attributes": {
-        "popularity": 24,
-        "momentum": 53,
-        "activity": 47,
-        "community": 57,
-        "health": 84,
-        "influence": 74
+        "stars": 24,
+        "new_stars": 53,
+        "pushes": 44,
+        "contributors": 57,
+        "issues_closed": 69,
+        "forks": 74
       }
     },
     {
@@ -9709,12 +9709,12 @@
       "rank": 284,
       "total_repos": 374,
       "attributes": {
-        "popularity": 24,
-        "momentum": 86,
-        "activity": 52,
-        "community": 81,
-        "health": 35,
-        "influence": 56
+        "stars": 24,
+        "new_stars": 86,
+        "pushes": 57,
+        "contributors": 81,
+        "issues_closed": 30,
+        "forks": 56
       }
     },
     {
@@ -9740,12 +9740,12 @@
       "rank": 285,
       "total_repos": 374,
       "attributes": {
-        "popularity": 24,
-        "momentum": 46,
-        "activity": 0,
-        "community": 32,
-        "health": 0,
-        "influence": 66
+        "stars": 24,
+        "new_stars": 46,
+        "pushes": 0,
+        "contributors": 32,
+        "issues_closed": 0,
+        "forks": 66
       }
     },
     {
@@ -9765,12 +9765,12 @@
       "rank": 286,
       "total_repos": 374,
       "attributes": {
-        "popularity": 23,
-        "momentum": 70,
-        "activity": 93,
-        "community": 76,
-        "health": 91,
-        "influence": 22
+        "stars": 23,
+        "new_stars": 70,
+        "pushes": 94,
+        "contributors": 76,
+        "issues_closed": 93,
+        "forks": 22
       }
     },
     {
@@ -9798,12 +9798,12 @@
       "rank": 287,
       "total_repos": 374,
       "attributes": {
-        "popularity": 23,
-        "momentum": 15,
-        "activity": 78,
-        "community": 43,
-        "health": 65,
-        "influence": 80
+        "stars": 23,
+        "new_stars": 15,
+        "pushes": 73,
+        "contributors": 43,
+        "issues_closed": 75,
+        "forks": 80
       }
     },
     {
@@ -9836,12 +9836,12 @@
       "rank": 288,
       "total_repos": 374,
       "attributes": {
-        "popularity": 23,
-        "momentum": 29,
-        "activity": 14,
-        "community": 21,
-        "health": 0,
-        "influence": 6
+        "stars": 23,
+        "new_stars": 29,
+        "pushes": 0,
+        "contributors": 21,
+        "issues_closed": 30,
+        "forks": 6
       }
     },
     {
@@ -9877,12 +9877,12 @@
       "rank": 289,
       "total_repos": 374,
       "attributes": {
-        "popularity": 23,
-        "momentum": 63,
-        "activity": 70,
-        "community": 55,
-        "health": 0,
-        "influence": 65
+        "stars": 23,
+        "new_stars": 63,
+        "pushes": 75,
+        "contributors": 55,
+        "issues_closed": 0,
+        "forks": 65
       }
     },
     {
@@ -9910,12 +9910,12 @@
       "rank": 290,
       "total_repos": 374,
       "attributes": {
-        "popularity": 22,
-        "momentum": 4,
-        "activity": 35,
-        "community": 5,
-        "health": 0,
-        "influence": 61
+        "stars": 22,
+        "new_stars": 4,
+        "pushes": 0,
+        "contributors": 5,
+        "issues_closed": 0,
+        "forks": 61
       }
     },
     {
@@ -9944,12 +9944,12 @@
       "rank": 291,
       "total_repos": 374,
       "attributes": {
-        "popularity": 22,
-        "momentum": 47,
-        "activity": 50,
-        "community": 39,
-        "health": 67,
-        "influence": 1
+        "stars": 22,
+        "new_stars": 47,
+        "pushes": 50,
+        "contributors": 39,
+        "issues_closed": 39,
+        "forks": 1
       }
     },
     {
@@ -9972,12 +9972,12 @@
       "rank": 292,
       "total_repos": 374,
       "attributes": {
-        "popularity": 22,
-        "momentum": 0,
-        "activity": 61,
-        "community": 1,
-        "health": 37,
-        "influence": 5
+        "stars": 22,
+        "new_stars": 0,
+        "pushes": 66,
+        "contributors": 1,
+        "issues_closed": 30,
+        "forks": 5
       }
     },
     {
@@ -10010,12 +10010,12 @@
       "rank": 293,
       "total_repos": 374,
       "attributes": {
-        "popularity": 21,
-        "momentum": 95,
-        "activity": 69,
-        "community": 93,
-        "health": 77,
-        "influence": 12
+        "stars": 21,
+        "new_stars": 95,
+        "pushes": 69,
+        "contributors": 93,
+        "issues_closed": 85,
+        "forks": 12
       }
     },
     {
@@ -10035,12 +10035,12 @@
       "rank": 294,
       "total_repos": 374,
       "attributes": {
-        "popularity": 21,
-        "momentum": 9,
-        "activity": 0,
-        "community": 6,
-        "health": 0,
-        "influence": 71
+        "stars": 21,
+        "new_stars": 9,
+        "pushes": 0,
+        "contributors": 6,
+        "issues_closed": 0,
+        "forks": 71
       }
     },
     {
@@ -10068,12 +10068,12 @@
       "rank": 295,
       "total_repos": 374,
       "attributes": {
-        "popularity": 21,
-        "momentum": 38,
-        "activity": 48,
-        "community": 33,
-        "health": 0,
-        "influence": 2
+        "stars": 21,
+        "new_stars": 38,
+        "pushes": 49,
+        "contributors": 33,
+        "issues_closed": 30,
+        "forks": 2
       }
     },
     {
@@ -10093,12 +10093,12 @@
       "rank": 296,
       "total_repos": 374,
       "attributes": {
-        "popularity": 21,
-        "momentum": 17,
-        "activity": 0,
-        "community": 15,
-        "health": 40,
-        "influence": 34
+        "stars": 21,
+        "new_stars": 17,
+        "pushes": 0,
+        "contributors": 15,
+        "issues_closed": 30,
+        "forks": 34
       }
     },
     {
@@ -10130,12 +10130,12 @@
       "rank": 297,
       "total_repos": 374,
       "attributes": {
-        "popularity": 20,
-        "momentum": 68,
-        "activity": 90,
-        "community": 67,
-        "health": 81,
-        "influence": 7
+        "stars": 20,
+        "new_stars": 68,
+        "pushes": 91,
+        "contributors": 67,
+        "issues_closed": 80,
+        "forks": 7
       }
     },
     {
@@ -10169,12 +10169,12 @@
       "rank": 298,
       "total_repos": 374,
       "attributes": {
-        "popularity": 20,
-        "momentum": 27,
-        "activity": 39,
-        "community": 24,
-        "health": 67,
-        "influence": 75
+        "stars": 20,
+        "new_stars": 27,
+        "pushes": 42,
+        "contributors": 24,
+        "issues_closed": 43,
+        "forks": 75
       }
     },
     {
@@ -10194,12 +10194,12 @@
       "rank": 299,
       "total_repos": 374,
       "attributes": {
-        "popularity": 20,
-        "momentum": 7,
-        "activity": 0,
-        "community": 5,
-        "health": 0,
-        "influence": 47
+        "stars": 20,
+        "new_stars": 7,
+        "pushes": 0,
+        "contributors": 5,
+        "issues_closed": 0,
+        "forks": 47
       }
     },
     {
@@ -10224,12 +10224,12 @@
       "rank": 300,
       "total_repos": 374,
       "attributes": {
-        "popularity": 20,
-        "momentum": 62,
-        "activity": 50,
-        "community": 56,
-        "health": 51,
-        "influence": 6
+        "stars": 20,
+        "new_stars": 62,
+        "pushes": 55,
+        "contributors": 56,
+        "issues_closed": 61,
+        "forks": 6
       }
     },
     {
@@ -10265,12 +10265,12 @@
       "rank": 301,
       "total_repos": 374,
       "attributes": {
-        "popularity": 19,
-        "momentum": 94,
-        "activity": 0,
-        "community": 91,
-        "health": 0,
-        "influence": 0
+        "stars": 19,
+        "new_stars": 94,
+        "pushes": 0,
+        "contributors": 91,
+        "issues_closed": 0,
+        "forks": 0
       }
     },
     {
@@ -10290,12 +10290,12 @@
       "rank": 302,
       "total_repos": 374,
       "attributes": {
-        "popularity": 19,
-        "momentum": 7,
-        "activity": 60,
-        "community": 19,
-        "health": 52,
-        "influence": 54
+        "stars": 19,
+        "new_stars": 7,
+        "pushes": 62,
+        "contributors": 19,
+        "issues_closed": 57,
+        "forks": 54
       }
     },
     {
@@ -10320,12 +10320,12 @@
       "rank": 303,
       "total_repos": 374,
       "attributes": {
-        "popularity": 19,
-        "momentum": 8,
-        "activity": 0,
-        "community": 7,
-        "health": 0,
-        "influence": 66
+        "stars": 19,
+        "new_stars": 8,
+        "pushes": 0,
+        "contributors": 7,
+        "issues_closed": 0,
+        "forks": 66
       }
     },
     {
@@ -10366,12 +10366,12 @@
       "rank": 304,
       "total_repos": 374,
       "attributes": {
-        "popularity": 19,
-        "momentum": 43,
-        "activity": 73,
-        "community": 41,
-        "health": 52,
-        "influence": 3
+        "stars": 19,
+        "new_stars": 43,
+        "pushes": 74,
+        "contributors": 41,
+        "issues_closed": 48,
+        "forks": 3
       }
     },
     {
@@ -10399,12 +10399,12 @@
       "rank": 305,
       "total_repos": 374,
       "attributes": {
-        "popularity": 18,
-        "momentum": 1,
-        "activity": 74,
-        "community": 6,
-        "health": 45,
-        "influence": 50
+        "stars": 18,
+        "new_stars": 1,
+        "pushes": 80,
+        "contributors": 6,
+        "issues_closed": 30,
+        "forks": 50
       }
     },
     {
@@ -10436,12 +10436,12 @@
       "rank": 306,
       "total_repos": 374,
       "attributes": {
-        "popularity": 18,
-        "momentum": 43,
-        "activity": 43,
-        "community": 35,
-        "health": 55,
-        "influence": 6
+        "stars": 18,
+        "new_stars": 43,
+        "pushes": 42,
+        "contributors": 35,
+        "issues_closed": 57,
+        "forks": 6
       }
     },
     {
@@ -10464,12 +10464,12 @@
       "rank": 307,
       "total_repos": 374,
       "attributes": {
-        "popularity": 18,
-        "momentum": 55,
-        "activity": 55,
-        "community": 44,
-        "health": 0,
-        "influence": 7
+        "stars": 18,
+        "new_stars": 55,
+        "pushes": 53,
+        "contributors": 44,
+        "issues_closed": 0,
+        "forks": 7
       }
     },
     {
@@ -10504,12 +10504,12 @@
       "rank": 308,
       "total_repos": 374,
       "attributes": {
-        "popularity": 17,
-        "momentum": 3,
-        "activity": 0,
-        "community": 1,
-        "health": 0,
-        "influence": 45
+        "stars": 17,
+        "new_stars": 3,
+        "pushes": 0,
+        "contributors": 1,
+        "issues_closed": 0,
+        "forks": 45
       }
     },
     {
@@ -10536,12 +10536,12 @@
       "rank": 309,
       "total_repos": 374,
       "attributes": {
-        "popularity": 17,
-        "momentum": 78,
-        "activity": 44,
-        "community": 72,
-        "health": 49,
-        "influence": 4
+        "stars": 17,
+        "new_stars": 78,
+        "pushes": 40,
+        "contributors": 72,
+        "issues_closed": 61,
+        "forks": 4
       }
     },
     {
@@ -10582,12 +10582,12 @@
       "rank": 310,
       "total_repos": 374,
       "attributes": {
-        "popularity": 17,
-        "momentum": 56,
-        "activity": 52,
-        "community": 52,
-        "health": 37,
-        "influence": 17
+        "stars": 17,
+        "new_stars": 56,
+        "pushes": 50,
+        "contributors": 52,
+        "issues_closed": 48,
+        "forks": 17
       }
     },
     {
@@ -10624,12 +10624,12 @@
       "rank": 311,
       "total_repos": 374,
       "attributes": {
-        "popularity": 17,
-        "momentum": 32,
-        "activity": 55,
-        "community": 29,
-        "health": 97,
-        "influence": 2
+        "stars": 17,
+        "new_stars": 32,
+        "pushes": 52,
+        "contributors": 29,
+        "issues_closed": 57,
+        "forks": 2
       }
     },
     {
@@ -10653,12 +10653,12 @@
       "rank": 312,
       "total_repos": 374,
       "attributes": {
-        "popularity": 16,
-        "momentum": 33,
-        "activity": 0,
-        "community": 24,
-        "health": 0,
-        "influence": 50
+        "stars": 16,
+        "new_stars": 33,
+        "pushes": 0,
+        "contributors": 24,
+        "issues_closed": 0,
+        "forks": 50
       }
     },
     {
@@ -10684,12 +10684,12 @@
       "rank": 313,
       "total_repos": 374,
       "attributes": {
-        "popularity": 16,
-        "momentum": 32,
-        "activity": 0,
-        "community": 23,
-        "health": 0,
-        "influence": 20
+        "stars": 16,
+        "new_stars": 32,
+        "pushes": 0,
+        "contributors": 23,
+        "issues_closed": 0,
+        "forks": 20
       }
     },
     {
@@ -10715,12 +10715,12 @@
       "rank": 314,
       "total_repos": 374,
       "attributes": {
-        "popularity": 16,
-        "momentum": 47,
-        "activity": 0,
-        "community": 33,
-        "health": 0,
-        "influence": 20
+        "stars": 16,
+        "new_stars": 47,
+        "pushes": 0,
+        "contributors": 33,
+        "issues_closed": 0,
+        "forks": 20
       }
     },
     {
@@ -10747,12 +10747,12 @@
       "rank": 315,
       "total_repos": 374,
       "attributes": {
-        "popularity": 16,
-        "momentum": 65,
-        "activity": 31,
-        "community": 57,
-        "health": 42,
-        "influence": 23
+        "stars": 16,
+        "new_stars": 65,
+        "pushes": 26,
+        "contributors": 57,
+        "issues_closed": 43,
+        "forks": 23
       }
     },
     {
@@ -10783,12 +10783,12 @@
       "rank": 316,
       "total_repos": 374,
       "attributes": {
-        "popularity": 15,
-        "momentum": 8,
-        "activity": 0,
-        "community": 7,
-        "health": 0,
-        "influence": 32
+        "stars": 15,
+        "new_stars": 8,
+        "pushes": 0,
+        "contributors": 7,
+        "issues_closed": 0,
+        "forks": 32
       }
     },
     {
@@ -10822,12 +10822,12 @@
       "rank": 317,
       "total_repos": 374,
       "attributes": {
-        "popularity": 15,
-        "momentum": 35,
-        "activity": 0,
-        "community": 28,
-        "health": 0,
-        "influence": 23
+        "stars": 15,
+        "new_stars": 35,
+        "pushes": 0,
+        "contributors": 28,
+        "issues_closed": 0,
+        "forks": 23
       }
     },
     {
@@ -10867,12 +10867,12 @@
       "rank": 318,
       "total_repos": 374,
       "attributes": {
-        "popularity": 15,
-        "momentum": 73,
-        "activity": 73,
-        "community": 68,
-        "health": 62,
-        "influence": 23
+        "stars": 15,
+        "new_stars": 73,
+        "pushes": 75,
+        "contributors": 68,
+        "issues_closed": 81,
+        "forks": 23
       }
     },
     {
@@ -10906,12 +10906,12 @@
       "rank": 319,
       "total_repos": 374,
       "attributes": {
-        "popularity": 15,
-        "momentum": 83,
-        "activity": 65,
-        "community": 77,
-        "health": 55,
-        "influence": 13
+        "stars": 15,
+        "new_stars": 83,
+        "pushes": 68,
+        "contributors": 77,
+        "issues_closed": 72,
+        "forks": 13
       }
     },
     {
@@ -10946,12 +10946,12 @@
       "rank": 320,
       "total_repos": 374,
       "attributes": {
-        "popularity": 14,
-        "momentum": 13,
-        "activity": 32,
-        "community": 11,
-        "health": 98,
-        "influence": 65
+        "stars": 14,
+        "new_stars": 13,
+        "pushes": 37,
+        "contributors": 11,
+        "issues_closed": 73,
+        "forks": 65
       }
     },
     {
@@ -10992,12 +10992,12 @@
       "rank": 321,
       "total_repos": 374,
       "attributes": {
-        "popularity": 14,
-        "momentum": 44,
-        "activity": 89,
-        "community": 50,
-        "health": 79,
-        "influence": 17
+        "stars": 14,
+        "new_stars": 44,
+        "pushes": 90,
+        "contributors": 50,
+        "issues_closed": 74,
+        "forks": 17
       }
     },
     {
@@ -11028,12 +11028,12 @@
       "rank": 322,
       "total_repos": 374,
       "attributes": {
-        "popularity": 14,
-        "momentum": 66,
-        "activity": 42,
-        "community": 62,
-        "health": 0,
-        "influence": 38
+        "stars": 14,
+        "new_stars": 66,
+        "pushes": 0,
+        "contributors": 62,
+        "issues_closed": 0,
+        "forks": 38
       }
     },
     {
@@ -11053,12 +11053,12 @@
       "rank": 323,
       "total_repos": 374,
       "attributes": {
-        "popularity": 13,
-        "momentum": 82,
-        "activity": 35,
-        "community": 76,
-        "health": 88,
-        "influence": 46
+        "stars": 13,
+        "new_stars": 82,
+        "pushes": 37,
+        "contributors": 76,
+        "issues_closed": 51,
+        "forks": 46
       }
     },
     {
@@ -11091,12 +11091,12 @@
       "rank": 324,
       "total_repos": 374,
       "attributes": {
-        "popularity": 13,
-        "momentum": 60,
-        "activity": 69,
-        "community": 54,
-        "health": 92,
-        "influence": 3
+        "stars": 13,
+        "new_stars": 60,
+        "pushes": 71,
+        "contributors": 54,
+        "issues_closed": 67,
+        "forks": 3
       }
     },
     {
@@ -11132,12 +11132,12 @@
       "rank": 325,
       "total_repos": 374,
       "attributes": {
-        "popularity": 13,
-        "momentum": 9,
-        "activity": 14,
-        "community": 8,
-        "health": 0,
-        "influence": 25
+        "stars": 13,
+        "new_stars": 9,
+        "pushes": 0,
+        "contributors": 8,
+        "issues_closed": 0,
+        "forks": 25
       }
     },
     {
@@ -11165,12 +11165,12 @@
       "rank": 326,
       "total_repos": 374,
       "attributes": {
-        "popularity": 13,
-        "momentum": 1,
-        "activity": 0,
-        "community": 0,
-        "health": 0,
-        "influence": 68
+        "stars": 13,
+        "new_stars": 1,
+        "pushes": 0,
+        "contributors": 0,
+        "issues_closed": 0,
+        "forks": 68
       }
     },
     {
@@ -11206,12 +11206,12 @@
       "rank": 327,
       "total_repos": 374,
       "attributes": {
-        "popularity": 12,
-        "momentum": 91,
-        "activity": 67,
-        "community": 87,
-        "health": 38,
-        "influence": 8
+        "stars": 12,
+        "new_stars": 91,
+        "pushes": 70,
+        "contributors": 87,
+        "issues_closed": 55,
+        "forks": 8
       }
     },
     {
@@ -11249,12 +11249,12 @@
       "rank": 328,
       "total_repos": 374,
       "attributes": {
-        "popularity": 12,
-        "momentum": 48,
-        "activity": 19,
-        "community": 39,
-        "health": 0,
-        "influence": 11
+        "stars": 12,
+        "new_stars": 48,
+        "pushes": 0,
+        "contributors": 39,
+        "issues_closed": 0,
+        "forks": 11
       }
     },
     {
@@ -11283,12 +11283,12 @@
       "rank": 329,
       "total_repos": 374,
       "attributes": {
-        "popularity": 12,
-        "momentum": 15,
-        "activity": 0,
-        "community": 11,
-        "health": 0,
-        "influence": 19
+        "stars": 12,
+        "new_stars": 15,
+        "pushes": 0,
+        "contributors": 11,
+        "issues_closed": 0,
+        "forks": 19
       }
     },
     {
@@ -11329,12 +11329,12 @@
       "rank": 330,
       "total_repos": 374,
       "attributes": {
-        "popularity": 12,
-        "momentum": 50,
-        "activity": 80,
-        "community": 58,
-        "health": 95,
-        "influence": 27
+        "stars": 12,
+        "new_stars": 50,
+        "pushes": 78,
+        "contributors": 58,
+        "issues_closed": 89,
+        "forks": 27
       }
     },
     {
@@ -11363,12 +11363,12 @@
       "rank": 331,
       "total_repos": 374,
       "attributes": {
-        "popularity": 11,
-        "momentum": 12,
-        "activity": 53,
-        "community": 18,
-        "health": 91,
-        "influence": 47
+        "stars": 11,
+        "new_stars": 12,
+        "pushes": 51,
+        "contributors": 18,
+        "issues_closed": 69,
+        "forks": 47
       }
     },
     {
@@ -11392,12 +11392,12 @@
       "rank": 332,
       "total_repos": 374,
       "attributes": {
-        "popularity": 11,
-        "momentum": 5,
-        "activity": 0,
-        "community": 3,
-        "health": 0,
-        "influence": 52
+        "stars": 11,
+        "new_stars": 5,
+        "pushes": 0,
+        "contributors": 3,
+        "issues_closed": 0,
+        "forks": 52
       }
     },
     {
@@ -11417,12 +11417,12 @@
       "rank": 333,
       "total_repos": 374,
       "attributes": {
-        "popularity": 11,
-        "momentum": 70,
-        "activity": 14,
-        "community": 64,
-        "health": 0,
-        "influence": 43
+        "stars": 11,
+        "new_stars": 70,
+        "pushes": 0,
+        "contributors": 64,
+        "issues_closed": 0,
+        "forks": 43
       }
     },
     {
@@ -11458,12 +11458,12 @@
       "rank": 334,
       "total_repos": 374,
       "attributes": {
-        "popularity": 11,
-        "momentum": 49,
-        "activity": 79,
-        "community": 55,
-        "health": 56,
-        "influence": 22
+        "stars": 11,
+        "new_stars": 49,
+        "pushes": 80,
+        "contributors": 55,
+        "issues_closed": 81,
+        "forks": 22
       }
     },
     {
@@ -11504,12 +11504,12 @@
       "rank": 335,
       "total_repos": 374,
       "attributes": {
-        "popularity": 10,
-        "momentum": 80,
-        "activity": 89,
-        "community": 82,
-        "health": 66,
-        "influence": 50
+        "stars": 10,
+        "new_stars": 80,
+        "pushes": 90,
+        "contributors": 82,
+        "issues_closed": 90,
+        "forks": 50
       }
     },
     {
@@ -11529,12 +11529,12 @@
       "rank": 336,
       "total_repos": 374,
       "attributes": {
-        "popularity": 10,
-        "momentum": 25,
-        "activity": 19,
-        "community": 19,
-        "health": 0,
-        "influence": 26
+        "stars": 10,
+        "new_stars": 25,
+        "pushes": 0,
+        "contributors": 19,
+        "issues_closed": 0,
+        "forks": 26
       }
     },
     {
@@ -11561,12 +11561,12 @@
       "rank": 337,
       "total_repos": 374,
       "attributes": {
-        "popularity": 10,
-        "momentum": 20,
-        "activity": 14,
-        "community": 15,
-        "health": 0,
-        "influence": 2
+        "stars": 10,
+        "new_stars": 20,
+        "pushes": 0,
+        "contributors": 15,
+        "issues_closed": 0,
+        "forks": 2
       }
     },
     {
@@ -11588,12 +11588,12 @@
       "rank": 338,
       "total_repos": 374,
       "attributes": {
-        "popularity": 10,
-        "momentum": 42,
-        "activity": 28,
-        "community": 31,
-        "health": 62,
-        "influence": 3
+        "stars": 10,
+        "new_stars": 42,
+        "pushes": 35,
+        "contributors": 31,
+        "issues_closed": 50,
+        "forks": 3
       }
     },
     {
@@ -11613,12 +11613,12 @@
       "rank": 339,
       "total_repos": 374,
       "attributes": {
-        "popularity": 9,
-        "momentum": 26,
-        "activity": 75,
-        "community": 32,
-        "health": 91,
-        "influence": 43
+        "stars": 9,
+        "new_stars": 26,
+        "pushes": 78,
+        "contributors": 32,
+        "issues_closed": 74,
+        "forks": 43
       }
     },
     {
@@ -11654,12 +11654,12 @@
       "rank": 340,
       "total_repos": 374,
       "attributes": {
-        "popularity": 9,
-        "momentum": 31,
-        "activity": 48,
-        "community": 23,
-        "health": 88,
-        "influence": 28
+        "stars": 9,
+        "new_stars": 31,
+        "pushes": 54,
+        "contributors": 23,
+        "issues_closed": 43,
+        "forks": 28
       }
     },
     {
@@ -11687,12 +11687,12 @@
       "rank": 341,
       "total_repos": 374,
       "attributes": {
-        "popularity": 9,
-        "momentum": 11,
-        "activity": 19,
-        "community": 11,
-        "health": 60,
-        "influence": 47
+        "stars": 9,
+        "new_stars": 11,
+        "pushes": 30,
+        "contributors": 11,
+        "issues_closed": 55,
+        "forks": 47
       }
     },
     {
@@ -11712,12 +11712,12 @@
       "rank": 342,
       "total_repos": 374,
       "attributes": {
-        "popularity": 8,
-        "momentum": 19,
-        "activity": 62,
-        "community": 22,
-        "health": 84,
-        "influence": 52
+        "stars": 8,
+        "new_stars": 19,
+        "pushes": 57,
+        "contributors": 22,
+        "issues_closed": 67,
+        "forks": 52
       }
     },
     {
@@ -11758,12 +11758,12 @@
       "rank": 343,
       "total_repos": 374,
       "attributes": {
-        "popularity": 8,
-        "momentum": 75,
-        "activity": 74,
-        "community": 73,
-        "health": 59,
-        "influence": 13
+        "stars": 8,
+        "new_stars": 75,
+        "pushes": 74,
+        "contributors": 73,
+        "issues_closed": 79,
+        "forks": 13
       }
     },
     {
@@ -11794,12 +11794,12 @@
       "rank": 344,
       "total_repos": 374,
       "attributes": {
-        "popularity": 8,
-        "momentum": 44,
-        "activity": 96,
-        "community": 87,
-        "health": 67,
-        "influence": 99
+        "stars": 8,
+        "new_stars": 44,
+        "pushes": 92,
+        "contributors": 87,
+        "issues_closed": 60,
+        "forks": 99
       }
     },
     {
@@ -11840,12 +11840,12 @@
       "rank": 345,
       "total_repos": 374,
       "attributes": {
-        "popularity": 8,
-        "momentum": 28,
-        "activity": 59,
-        "community": 25,
-        "health": 41,
-        "influence": 2
+        "stars": 8,
+        "new_stars": 28,
+        "pushes": 65,
+        "contributors": 25,
+        "issues_closed": 50,
+        "forks": 2
       }
     },
     {
@@ -11884,12 +11884,12 @@
       "rank": 346,
       "total_repos": 374,
       "attributes": {
-        "popularity": 7,
-        "momentum": 7,
-        "activity": 74,
-        "community": 17,
-        "health": 39,
-        "influence": 64
+        "stars": 7,
+        "new_stars": 7,
+        "pushes": 80,
+        "contributors": 17,
+        "issues_closed": 39,
+        "forks": 64
       }
     },
     {
@@ -11919,12 +11919,12 @@
       "rank": 347,
       "total_repos": 374,
       "attributes": {
-        "popularity": 7,
-        "momentum": 18,
-        "activity": 93,
-        "community": 36,
-        "health": 0,
-        "influence": 25
+        "stars": 7,
+        "new_stars": 18,
+        "pushes": 95,
+        "contributors": 36,
+        "issues_closed": 0,
+        "forks": 25
       }
     },
     {
@@ -11955,12 +11955,12 @@
       "rank": 348,
       "total_repos": 374,
       "attributes": {
-        "popularity": 7,
-        "momentum": 16,
-        "activity": 0,
-        "community": 12,
-        "health": 0,
-        "influence": 6
+        "stars": 7,
+        "new_stars": 16,
+        "pushes": 0,
+        "contributors": 12,
+        "issues_closed": 0,
+        "forks": 6
       }
     },
     {
@@ -11980,12 +11980,12 @@
       "rank": 349,
       "total_repos": 374,
       "attributes": {
-        "popularity": 7,
-        "momentum": 82,
-        "activity": 28,
-        "community": 77,
-        "health": 84,
-        "influence": 29
+        "stars": 7,
+        "new_stars": 82,
+        "pushes": 33,
+        "contributors": 77,
+        "issues_closed": 48,
+        "forks": 29
       }
     },
     {
@@ -12014,12 +12014,12 @@
       "rank": 350,
       "total_repos": 374,
       "attributes": {
-        "popularity": 6,
-        "momentum": 98,
-        "activity": 73,
-        "community": 98,
-        "health": 80,
-        "influence": 27
+        "stars": 6,
+        "new_stars": 98,
+        "pushes": 74,
+        "contributors": 98,
+        "issues_closed": 78,
+        "forks": 27
       }
     },
     {
@@ -12048,12 +12048,12 @@
       "rank": 351,
       "total_repos": 374,
       "attributes": {
-        "popularity": 6,
-        "momentum": 22,
-        "activity": 92,
-        "community": 39,
-        "health": 67,
-        "influence": 57
+        "stars": 6,
+        "new_stars": 22,
+        "pushes": 92,
+        "contributors": 39,
+        "issues_closed": 60,
+        "forks": 57
       }
     },
     {
@@ -12094,12 +12094,12 @@
       "rank": 352,
       "total_repos": 374,
       "attributes": {
-        "popularity": 6,
-        "momentum": 79,
-        "activity": 19,
-        "community": 69,
-        "health": 0,
-        "influence": 8
+        "stars": 6,
+        "new_stars": 79,
+        "pushes": 0,
+        "contributors": 69,
+        "issues_closed": 0,
+        "forks": 8
       }
     },
     {
@@ -12138,12 +12138,12 @@
       "rank": 353,
       "total_repos": 374,
       "attributes": {
-        "popularity": 6,
-        "momentum": 20,
-        "activity": 79,
-        "community": 24,
-        "health": 83,
-        "influence": 15
+        "stars": 6,
+        "new_stars": 20,
+        "pushes": 80,
+        "contributors": 24,
+        "issues_closed": 75,
+        "forks": 15
       }
     },
     {
@@ -12172,12 +12172,12 @@
       "rank": 354,
       "total_repos": 374,
       "attributes": {
-        "popularity": 5,
-        "momentum": 34,
-        "activity": 67,
-        "community": 44,
-        "health": 50,
-        "influence": 36
+        "stars": 5,
+        "new_stars": 34,
+        "pushes": 68,
+        "contributors": 44,
+        "issues_closed": 69,
+        "forks": 36
       }
     },
     {
@@ -12208,12 +12208,12 @@
       "rank": 355,
       "total_repos": 374,
       "attributes": {
-        "popularity": 5,
-        "momentum": 20,
-        "activity": 68,
-        "community": 28,
-        "health": 78,
-        "influence": 51
+        "stars": 5,
+        "new_stars": 20,
+        "pushes": 61,
+        "contributors": 28,
+        "issues_closed": 60,
+        "forks": 51
       }
     },
     {
@@ -12238,12 +12238,12 @@
       "rank": 356,
       "total_repos": 374,
       "attributes": {
-        "popularity": 5,
-        "momentum": 62,
-        "activity": 70,
-        "community": 61,
-        "health": 53,
-        "influence": 1
+        "stars": 5,
+        "new_stars": 62,
+        "pushes": 70,
+        "contributors": 61,
+        "issues_closed": 77,
+        "forks": 1
       }
     },
     {
@@ -12263,12 +12263,12 @@
       "rank": 357,
       "total_repos": 374,
       "attributes": {
-        "popularity": 5,
-        "momentum": 48,
-        "activity": 19,
-        "community": 38,
-        "health": 0,
-        "influence": 39
+        "stars": 5,
+        "new_stars": 48,
+        "pushes": 0,
+        "contributors": 38,
+        "issues_closed": 0,
+        "forks": 39
       }
     },
     {
@@ -12291,12 +12291,12 @@
       "rank": 358,
       "total_repos": 374,
       "attributes": {
-        "popularity": 4,
-        "momentum": 10,
-        "activity": 60,
-        "community": 12,
-        "health": 56,
-        "influence": 55
+        "stars": 4,
+        "new_stars": 10,
+        "pushes": 63,
+        "contributors": 12,
+        "issues_closed": 43,
+        "forks": 55
       }
     },
     {
@@ -12323,12 +12323,12 @@
       "rank": 359,
       "total_repos": 374,
       "attributes": {
-        "popularity": 4,
-        "momentum": 13,
-        "activity": 31,
-        "community": 14,
-        "health": 67,
-        "influence": 51
+        "stars": 4,
+        "new_stars": 13,
+        "pushes": 33,
+        "contributors": 14,
+        "issues_closed": 39,
+        "forks": 51
       }
     },
     {
@@ -12362,12 +12362,12 @@
       "rank": 360,
       "total_repos": 374,
       "attributes": {
-        "popularity": 4,
-        "momentum": 28,
-        "activity": 24,
-        "community": 21,
-        "health": 0,
-        "influence": 29
+        "stars": 4,
+        "new_stars": 28,
+        "pushes": 0,
+        "contributors": 21,
+        "issues_closed": 0,
+        "forks": 29
       }
     },
     {
@@ -12400,12 +12400,12 @@
       "rank": 361,
       "total_repos": 374,
       "attributes": {
-        "popularity": 3,
-        "momentum": 76,
-        "activity": 57,
-        "community": 70,
-        "health": 86,
-        "influence": 30
+        "stars": 3,
+        "new_stars": 76,
+        "pushes": 60,
+        "contributors": 70,
+        "issues_closed": 83,
+        "forks": 30
       }
     },
     {
@@ -12434,12 +12434,12 @@
       "rank": 362,
       "total_repos": 374,
       "attributes": {
-        "popularity": 3,
-        "momentum": 81,
-        "activity": 62,
-        "community": 81,
-        "health": 0,
-        "influence": 76
+        "stars": 3,
+        "new_stars": 81,
+        "pushes": 66,
+        "contributors": 81,
+        "issues_closed": 0,
+        "forks": 76
       }
     },
     {
@@ -12470,12 +12470,12 @@
       "rank": 363,
       "total_repos": 374,
       "attributes": {
-        "popularity": 3,
-        "momentum": 0,
-        "activity": 0,
-        "community": 0,
-        "health": 0,
-        "influence": 16
+        "stars": 3,
+        "new_stars": 0,
+        "pushes": 0,
+        "contributors": 0,
+        "issues_closed": 30,
+        "forks": 16
       }
     },
     {
@@ -12501,12 +12501,12 @@
       "rank": 364,
       "total_repos": 374,
       "attributes": {
-        "popularity": 3,
-        "momentum": 77,
-        "activity": 38,
-        "community": 71,
-        "health": 55,
-        "influence": 24
+        "stars": 3,
+        "new_stars": 77,
+        "pushes": 40,
+        "contributors": 71,
+        "issues_closed": 57,
+        "forks": 24
       }
     },
     {
@@ -12547,12 +12547,12 @@
       "rank": 365,
       "total_repos": 374,
       "attributes": {
-        "popularity": 2,
-        "momentum": 71,
-        "activity": 77,
-        "community": 74,
-        "health": 92,
-        "influence": 9
+        "stars": 2,
+        "new_stars": 71,
+        "pushes": 68,
+        "contributors": 74,
+        "issues_closed": 90,
+        "forks": 9
       }
     },
     {
@@ -12579,12 +12579,12 @@
       "rank": 366,
       "total_repos": 374,
       "attributes": {
-        "popularity": 2,
-        "momentum": 16,
-        "activity": 0,
-        "community": 14,
-        "health": 0,
-        "influence": 51
+        "stars": 2,
+        "new_stars": 16,
+        "pushes": 0,
+        "contributors": 14,
+        "issues_closed": 0,
+        "forks": 51
       }
     },
     {
@@ -12612,12 +12612,12 @@
       "rank": 367,
       "total_repos": 374,
       "attributes": {
-        "popularity": 2,
-        "momentum": 12,
-        "activity": 74,
-        "community": 37,
-        "health": 93,
-        "influence": 87
+        "stars": 2,
+        "new_stars": 12,
+        "pushes": 72,
+        "contributors": 37,
+        "issues_closed": 39,
+        "forks": 87
       }
     },
     {
@@ -12651,12 +12651,12 @@
       "rank": 368,
       "total_repos": 374,
       "attributes": {
-        "popularity": 2,
-        "momentum": 34,
-        "activity": 0,
-        "community": 25,
-        "health": 0,
-        "influence": 16
+        "stars": 2,
+        "new_stars": 34,
+        "pushes": 0,
+        "contributors": 25,
+        "issues_closed": 0,
+        "forks": 16
       }
     },
     {
@@ -12682,12 +12682,12 @@
       "rank": 369,
       "total_repos": 374,
       "attributes": {
-        "popularity": 1,
-        "momentum": 20,
-        "activity": 71,
-        "community": 36,
-        "health": 61,
-        "influence": 79
+        "stars": 1,
+        "new_stars": 20,
+        "pushes": 65,
+        "contributors": 36,
+        "issues_closed": 69,
+        "forks": 79
       }
     },
     {
@@ -12717,12 +12717,12 @@
       "rank": 370,
       "total_repos": 374,
       "attributes": {
-        "popularity": 1,
-        "momentum": 23,
-        "activity": 0,
-        "community": 18,
-        "health": 0,
-        "influence": 42
+        "stars": 1,
+        "new_stars": 23,
+        "pushes": 0,
+        "contributors": 18,
+        "issues_closed": 0,
+        "forks": 42
       }
     },
     {
@@ -12750,12 +12750,12 @@
       "rank": 371,
       "total_repos": 374,
       "attributes": {
-        "popularity": 1,
-        "momentum": 11,
-        "activity": 24,
-        "community": 8,
-        "health": 0,
-        "influence": 10
+        "stars": 1,
+        "new_stars": 11,
+        "pushes": 30,
+        "contributors": 8,
+        "issues_closed": 0,
+        "forks": 10
       }
     },
     {
@@ -12789,12 +12789,12 @@
       "rank": 372,
       "total_repos": 374,
       "attributes": {
-        "popularity": 1,
-        "momentum": 21,
-        "activity": 28,
-        "community": 16,
-        "health": 0,
-        "influence": 11
+        "stars": 1,
+        "new_stars": 21,
+        "pushes": 33,
+        "contributors": 16,
+        "issues_closed": 39,
+        "forks": 11
       }
     },
     {
@@ -12823,12 +12823,12 @@
       "rank": 373,
       "total_repos": 374,
       "attributes": {
-        "popularity": 0,
-        "momentum": 41,
-        "activity": 22,
-        "community": 35,
-        "health": 52,
-        "influence": 12
+        "stars": 0,
+        "new_stars": 41,
+        "pushes": 0,
+        "contributors": 35,
+        "issues_closed": 48,
+        "forks": 12
       }
     },
     {
@@ -12854,12 +12854,12 @@
       "rank": 374,
       "total_repos": 374,
       "attributes": {
-        "popularity": 0,
-        "momentum": 3,
-        "activity": 19,
-        "community": 3,
-        "health": 0,
-        "influence": 11
+        "stars": 0,
+        "new_stars": 3,
+        "pushes": 26,
+        "contributors": 3,
+        "issues_closed": 0,
+        "forks": 11
       }
     }
   ]

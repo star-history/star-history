@@ -146,9 +146,8 @@ export function exportRepoCards(db: Database.Database): void {
       SELECT
         w.repo_name,
         SUM(w.new_stars) AS agg_new_stars,
-        SUM(w.prs_opened + w.pushes) AS agg_activity,
+        SUM(w.pushes) AS agg_pushes,
         SUM(w.unique_contributors) AS agg_contributors,
-        SUM(w.issues_opened) AS agg_issues_opened,
         SUM(w.issues_closed) AS agg_issues_closed
       FROM weekly_stats w
       WHERE w.week IN (SELECT week FROM recent)
@@ -169,9 +168,8 @@ export function exportRepoCards(db: Database.Database): void {
       r.archived,
       r.size,
       COALESCE(a.agg_new_stars, 0) AS agg_new_stars,
-      COALESCE(a.agg_activity, 0) AS agg_activity,
+      COALESCE(a.agg_pushes, 0) AS agg_pushes,
       COALESCE(a.agg_contributors, 0) AS agg_contributors,
-      COALESCE(a.agg_issues_opened, 0) AS agg_issues_opened,
       COALESCE(a.agg_issues_closed, 0) AS agg_issues_closed,
       ROW_NUMBER() OVER (ORDER BY r.stars_total DESC) AS rank
     FROM repos r
@@ -183,15 +181,12 @@ export function exportRepoCards(db: Database.Database): void {
 
   // Compute raw values for percentile ranking
   const rawValues = {
-    popularity: rows.map((r) => r.stars_total as number),
-    momentum: rows.map((r) => r.agg_new_stars as number),
-    activity: rows.map((r) => r.agg_activity as number),
-    community: rows.map((r) => r.agg_contributors as number),
-    health: rows.map((r) => {
-      const opened = r.agg_issues_opened as number;
-      return opened > 0 ? (r.agg_issues_closed as number) / opened : 0;
-    }),
-    influence: rows.map((r) => r.forks_count as number),
+    stars: rows.map((r) => r.stars_total as number),
+    new_stars: rows.map((r) => r.agg_new_stars as number),
+    pushes: rows.map((r) => r.agg_pushes as number),
+    contributors: rows.map((r) => r.agg_contributors as number),
+    issues_closed: rows.map((r) => r.agg_issues_closed as number),
+    forks: rows.map((r) => r.forks_count as number),
   };
 
   // Percentile: fraction of values strictly less than this value, scaled to 0-99
@@ -204,12 +199,12 @@ export function exportRepoCards(db: Database.Database): void {
   }
 
   const sorted = {
-    popularity: [...rawValues.popularity].sort((a, b) => a - b),
-    momentum: [...rawValues.momentum].sort((a, b) => a - b),
-    activity: [...rawValues.activity].sort((a, b) => a - b),
-    community: [...rawValues.community].sort((a, b) => a - b),
-    health: [...rawValues.health].sort((a, b) => a - b),
-    influence: [...rawValues.influence].sort((a, b) => a - b),
+    stars: [...rawValues.stars].sort((a, b) => a - b),
+    new_stars: [...rawValues.new_stars].sort((a, b) => a - b),
+    pushes: [...rawValues.pushes].sort((a, b) => a - b),
+    contributors: [...rawValues.contributors].sort((a, b) => a - b),
+    issues_closed: [...rawValues.issues_closed].sort((a, b) => a - b),
+    forks: [...rawValues.forks].sort((a, b) => a - b),
   };
 
   const cards = rows.map((r, i) => {
@@ -237,12 +232,12 @@ export function exportRepoCards(db: Database.Database): void {
       rank: r.rank,
       total_repos: totalRepos,
       attributes: {
-        popularity: percentile(sorted.popularity, rawValues.popularity[i]),
-        momentum: percentile(sorted.momentum, rawValues.momentum[i]),
-        activity: percentile(sorted.activity, rawValues.activity[i]),
-        community: percentile(sorted.community, rawValues.community[i]),
-        health: percentile(sorted.health, rawValues.health[i]),
-        influence: percentile(sorted.influence, rawValues.influence[i]),
+        stars: percentile(sorted.stars, rawValues.stars[i]),
+        new_stars: percentile(sorted.new_stars, rawValues.new_stars[i]),
+        pushes: percentile(sorted.pushes, rawValues.pushes[i]),
+        contributors: percentile(sorted.contributors, rawValues.contributors[i]),
+        issues_closed: percentile(sorted.issues_closed, rawValues.issues_closed[i]),
+        forks: percentile(sorted.forks, rawValues.forks[i]),
       },
     };
   });

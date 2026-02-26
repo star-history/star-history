@@ -70,3 +70,20 @@ Layout wrappers: `_app.tsx` (per-page `getLayout` pattern), `_document.tsx`.
 - **Blog system**: `pages/blog/[slug].tsx`, `scripts/generateBlogJson.mts`
 - **Layout & nav**: `components/header.tsx`, `components/footer.tsx`, `components/LeftSidebar.tsx`, `components/RightSidebar.tsx`
 - **Styling**: `tailwind.config.js`, `global.css`
+
+## Arena (Data Pipeline)
+
+The `arena/` directory contains the data pipeline that fetches repo stats and exports JSON files consumed by the frontend.
+
+- **Full run**: `cd arena && pnpm run fetch` — fetches from GitHub API + BigQuery, writes to SQLite (`data.db`), and exports JSON files
+- **Re-export only**: `cd arena && pnpm run export` — re-exports JSON files from existing `data.db` without fetching (useful after code changes)
+- **DB is ephemeral**: `createDatabase()` drops all tables and recreates them on every run. The SQLite DB can always be regenerated from source APIs.
+- **Exported JSON files** (written to `frontend/helpers/`): `leaderboard.json`, `weekly-ranking.json`, `repos.json`, `repo-cards.json`
+
+| File | Purpose |
+|------|---------|
+| `fetch.ts` | Main entry point — orchestrates the full pipeline |
+| `github.ts` | GitHub API client to find qualifying repos |
+| `bigquery.ts` | BigQuery client to fetch weekly activity stats |
+| `db.ts` | SQLite schema, inserts, and JSON export functions |
+| `types.ts` | Shared TypeScript types |

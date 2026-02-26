@@ -23,12 +23,12 @@ export interface RepoCardData {
 }
 
 export interface RepoAttributes {
-    popularity: number
-    momentum: number
-    activity: number
-    community: number
-    health: number
-    influence: number
+    stars: number
+    new_stars: number
+    pushes: number
+    contributors: number
+    issues_closed: number
+    forks: number
 }
 
 export interface LegacyRepoRow {

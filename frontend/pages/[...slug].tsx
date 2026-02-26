@@ -29,12 +29,12 @@ function formatDate(dateStr: string): string {
 }
 
 const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string; color: string }[] = [
-    { key: "popularity", label: "Popularity", color: "bg-yellow-400" },
-    { key: "momentum", label: "Momentum", color: "bg-green-500" },
-    { key: "activity", label: "Activity", color: "bg-red-500" },
-    { key: "community", label: "Community", color: "bg-blue-500" },
-    { key: "health", label: "Health", color: "bg-purple-500" },
-    { key: "influence", label: "Influence", color: "bg-orange-500" },
+    { key: "stars", label: "Stars", color: "bg-yellow-400" },
+    { key: "new_stars", label: "New Stars", color: "bg-green-500" },
+    { key: "pushes", label: "Pushes", color: "bg-red-500" },
+    { key: "contributors", label: "Contributors", color: "bg-blue-500" },
+    { key: "issues_closed", label: "Issues Closed", color: "bg-purple-500" },
+    { key: "forks", label: "Forks", color: "bg-orange-500" },
 ]
 
 const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
@@ -253,7 +253,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
                 size: 0,
                 rank: 0,
                 total_repos: 0,
-                attributes: { popularity: 0, momentum: 0, activity: 0, community: 0, health: 0, influence: 0 },
+                attributes: { stars: 0, new_stars: 0, pushes: 0, contributors: 0, issues_closed: 0, forks: 0 },
             },
         },
     }
