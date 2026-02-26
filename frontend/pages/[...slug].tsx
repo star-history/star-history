@@ -5,7 +5,7 @@ import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
-import RadarChart from "../components/Charts/RadarChart"
+import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
 
 const LANGUAGE_COLORS: Record<string, string> = {
     TypeScript: "#3178c6", JavaScript: "#f1e05a", Python: "#3572A5",
@@ -109,10 +109,24 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         </div>
 
-                        {/* Radar Chart */}
+                        {/* Radar Chart + Attribute Bars */}
                         {hasAttributes && (
                             <div className="border-t border-b border-neutral-100 px-4 py-4">
                                 <RadarChart attributes={repo.attributes} />
+                                <div className="mt-4 space-y-2 px-1">
+                                    {ATTRIBUTE_LABELS.map(({ key, label }) => (
+                                        <div key={key} className="flex items-center gap-3">
+                                            <span className="text-xs text-neutral-500 w-24 text-right shrink-0">{label}</span>
+                                            <div className="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden">
+                                                <div
+                                                    className="h-full rounded-full bg-green-500 transition-all"
+                                                    style={{ width: `${Math.min(repo.attributes[key], 100)}%` }}
+                                                />
+                                            </div>
+                                            <span className="text-xs font-mono text-neutral-400 w-8 shrink-0">{repo.attributes[key]}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 

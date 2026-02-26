@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 import RadarChartD3 from "../../shared/packages/radar-chart"
 import type { RepoAttributes } from "../../helpers/repo-data"
 
-const ATTRIBUTE_LABELS: { key: keyof RepoAttributes; label: string }[] = [
+export const ATTRIBUTE_LABELS: { key: keyof RepoAttributes; label: string }[] = [
     { key: "stars", label: "Stars" },
     { key: "new_stars", label: "New Stars" },
     { key: "pushes", label: "Pushes" },
