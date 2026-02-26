@@ -6,10 +6,10 @@
     "private": true,
     "packageManager": "pnpm@9.15.4",
     "scripts": {
-        "generate:blog": "npx tsx scripts/generateBlogJson.mts",
-        "dev": "npm run generate:blog && next dev",
-        "build": "npm run generate:blog && next build && next-sitemap",
-        "start": "npx serve out",
+        "generate:blog": "pnpm exec tsx scripts/generateBlogJson.mts",
+        "dev": "pnpm run generate:blog && next dev",
+        "build": "pnpm run generate:blog && next build && next-sitemap",
+        "start": "pnpm dlx serve out",
         "lint": "next lint",
         "prettier": "prettier --write ."
     },
@@ -55,6 +55,7 @@
         "typescript": "^4.9.5"
     },
     "devDependencies": {
-        "prettier": "^3.2.5"
+        "prettier": "^3.2.5",
+        "tsx": "^4.21.0"
     }
 }
