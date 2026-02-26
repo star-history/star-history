@@ -28,13 +28,13 @@ function formatDate(dateStr: string): string {
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
 
-const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string; color: string }[] = [
-    { key: "stars", label: "Stars", color: "bg-yellow-400" },
-    { key: "new_stars", label: "New Stars", color: "bg-green-500" },
-    { key: "pushes", label: "Pushes", color: "bg-red-500" },
-    { key: "contributors", label: "Contributors", color: "bg-blue-500" },
-    { key: "issues_closed", label: "Issues Closed", color: "bg-purple-500" },
-    { key: "forks", label: "Forks", color: "bg-orange-500" },
+const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string }[] = [
+    { key: "stars", label: "Stars" },
+    { key: "new_stars", label: "New Stars" },
+    { key: "pushes", label: "Pushes" },
+    { key: "contributors", label: "Contributors" },
+    { key: "issues_closed", label: "Issues Closed" },
+    { key: "forks", label: "Forks" },
 ]
 
 const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
@@ -129,14 +129,14 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         {hasAttributes && (
                             <div className="px-5 py-4">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                                    {ATTRIBUTE_CONFIG.map(({ key, label, color }) => {
+                                    {ATTRIBUTE_CONFIG.map(({ key, label }) => {
                                         const value = repo.attributes[key]
                                         return (
                                             <div key={key} className="flex items-center gap-2">
                                                 <span className="text-xs text-neutral-500 w-20 shrink-0">{label}</span>
                                                 <div className="flex-1 h-3 bg-neutral-100 rounded-full overflow-hidden">
                                                     <div
-                                                        className={`h-full rounded-full ${color}`}
+                                                        className="h-full rounded-full bg-green-600"
                                                         style={{ width: `${value}%` }}
                                                     />
                                                 </div>
