@@ -17,7 +17,7 @@ const Index: NextPage<IndexProps> = () => {
     const metadata = {
 		title:       "GitHub Star History",
 		description: "View and compare GitHub star history graph of open source projects.",
-		imageURL:    "https://star-history.com/assets/star-history.webp",
+		imageURL:    "https://star-history.com/assets/star-history-preview.webp",
 	}
 
     return (

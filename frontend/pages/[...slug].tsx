@@ -143,18 +143,23 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             <svg className="absolute top-0 left-3 right-3 h-[3px]" preserveAspectRatio="none" viewBox="0 0 200 3">
                                 <path d="M0,1.5 C8,0.4 16,2.6 30,1.3 C44,0.3 56,2.7 75,1.5 C94,0.4 106,2.6 125,1.5 C144,0.3 156,2.7 175,1.3 C189,0.4 195,2.5 200,1.5" fill="none" stroke="#d4d4d4" strokeWidth="1.5" />
                             </svg>
-                            <div className="flex items-center gap-5 flex-wrap">
-                                <span className="inline-block text-lg text-neutral-800 -rotate-1">
-                                    ⭐ {formatNumber(repo.stars_total)}
-                                </span>
-                                <span className="inline-block text-base text-neutral-600 rotate-[0.5deg]">
-                                    🍴 {formatNumber(repo.forks_count)}
-                                </span>
-                                {repo.created_at && (
-                                    <span className="inline-block text-sm text-neutral-400 -rotate-[0.5deg]">
-                                        since {formatDate(repo.created_at)}
+                            <div className="flex items-center justify-between flex-wrap gap-3">
+                                <div className="flex items-center gap-5 flex-wrap">
+                                    <span className="inline-block text-lg text-neutral-800 -rotate-1">
+                                        ⭐ {formatNumber(repo.stars_total)}
                                     </span>
-                                )}
+                                    <span className="inline-block text-base text-neutral-600 rotate-[0.5deg]">
+                                        🍴 {formatNumber(repo.forks_count)}
+                                    </span>
+                                    {repo.created_at && (
+                                        <span className="inline-block text-sm text-neutral-400 -rotate-[0.5deg]">
+                                            since {formatDate(repo.created_at)}
+                                        </span>
+                                    )}
+                                </div>
+                                <a href="/" className="opacity-60 hover:opacity-100 transition-opacity">
+                                    <img src="/assets/logo-full.svg" alt="star-history" className="h-5" />
+                                </a>
                             </div>
                         </div>
                     </div>

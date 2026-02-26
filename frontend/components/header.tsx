@@ -54,7 +54,7 @@ useEffect(() => {
           <div className="w-full h-full flex flex-row justify-between items-center px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
               <Link href="/" className="header-link px-3">
-                <img className="w-7 h-auto" src="/assets/icon.png" alt="Logo" />
+                <img className="w-7 h-auto" src="/assets/logo-icon.png" alt="Logo" />
               </Link>
               <Link href="/blog" className="header-link text-base">
                 <span className="text-white -2">Blog</span>
