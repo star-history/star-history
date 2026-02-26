@@ -49,7 +49,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         if (hash) {
            
             const reposFromHash = hash.substring(1).split('&');
-            setState({ ...state, repos: reposFromHash.map(name => ({ name, visible: true })) });
+            setState(prev => ({ ...prev, repos: reposFromHash.map(name => ({ name, visible: true })) }));
 
         }
     }, []);
