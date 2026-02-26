@@ -100,17 +100,8 @@ useEffect(() => {
           >
             {headerText}
           </span>
-          <span className="h-12 text-base px-3 w-full flex flex-row justify-start items-center">
-            <a
-              className="github-button -mt-1"
-              href="https://github.com/star-history/star-history"
-              data-show-count="true"
-              aria-label="Star star-history/star-history on GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Star
-            </a>
+          <span className="h-12 text-base px-3 w-full flex flex-row justify-start items-center text-dark">
+            <GitHubStarButton />
           </span>
         </div>
       </AppStateProvider>
