@@ -119,7 +119,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                             <span className="text-xs text-neutral-500 w-24 text-right shrink-0">{label}</span>
                                             <div className="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden">
                                                 <div
-                                                    className="h-full rounded-full bg-green-500 transition-all"
+                                                    className="h-full rounded-full accent-bg transition-all"
                                                     style={{ width: `${Math.min(repo.attributes[key], 100)}%` }}
                                                 />
                                             </div>

@@ -42,7 +42,7 @@ const NotFound: NextPage<NotFoundProps> = ({ minStars }) => {
             <div className="relative w-full min-h-screen flex flex-col justify-center items-center">
                 <p className="text-center leading-8 text-lg text-dark font-medium">Oops! Article not found.</p>
                 <p className="text-center mt-2">
-                    <Link href="/blog" className="text-blue-600 hover:underline">
+                    <Link href="/blog" className="link-action">
                         Back to blog list
                     </Link>
                 </p>
@@ -54,7 +54,7 @@ const NotFound: NextPage<NotFoundProps> = ({ minStars }) => {
         <div className="relative w-full min-h-screen flex flex-col justify-center items-center">
             <p className="text-lg font-medium">404, Not Found.</p>
             <p className="text-sm text-neutral-500 mt-2">
-                <Link href="/" className="text-blue-600 hover:underline">
+                <Link href="/" className="link-action">
                     Go to star-history.com
                 </Link>
             </p>

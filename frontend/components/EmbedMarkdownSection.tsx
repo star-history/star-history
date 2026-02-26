@@ -62,7 +62,7 @@ const EmbedChart: React.FC = () => {
                 <pre className="w-full p-4 font-mono break-all whitespace-pre-wrap text-sm">{embedCode}</pre>
                 <div style={{ display: "flex" }}>
                     <p
-                        className="text-center py-4 bg-green-600 text-white font-mono rounded-b-md cursor-pointer hover:bg-green-700"
+                        className="text-center py-4 accent-bg text-white font-mono rounded-b-md cursor-pointer"
                         style={{
                             width: "70%",
                             borderBottomRightRadius: 0

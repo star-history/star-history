@@ -22,7 +22,7 @@ const Toast: React.FC<ToastProps> = ({ message, type = "normal", duration = 2000
             case "warn":
                 return "bg-orange-400"
             case "succeed":
-                return "bg-green-600"
+                return "accent-bg"
             case "error":
                 return "bg-red-600"
             default:

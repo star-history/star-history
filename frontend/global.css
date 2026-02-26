@@ -38,12 +38,23 @@ body {
         @apply text-xl text-gray-400 cursor-pointer hover:text-gray-500;
     }
 
+    /* ── Accent ── */
+    .accent-bg {
+        @apply bg-green-600 hover:bg-green-700;
+    }
+    .accent-text {
+        @apply text-green-600;
+    }
+    .accent-badge {
+        @apply bg-green-100 text-green-600;
+    }
+
     /* ── Buttons ── */
     .btn {
         @apply px-4 rounded-md cursor-pointer;
     }
     .btn-primary {
-        @apply btn leading-10 bg-green-600 shadow-inner text-white hover:bg-green-700;
+        @apply btn leading-10 accent-bg shadow-inner text-white;
     }
     .btn-secondary {
         @apply rounded leading-9 text-sm px-3 cursor-pointer border text-dark bg-gray-100 hover:bg-gray-200;
@@ -57,6 +68,9 @@ body {
     /* ── Links ── */
     .link {
         @apply text-blue-500 hover:opacity-80;
+    }
+    .link-action {
+        @apply text-blue-600 hover:underline;
     }
     .link-mono {
         @apply font-mono underline text-blue-500 hover:opacity-80;

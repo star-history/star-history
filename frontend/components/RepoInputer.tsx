@@ -232,7 +232,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     return (
         <div className="w-full px-3 shrink-0 flex flex-col justify-start items-center">
             <div className={`w-auto mx-auto mt-6 mb-2 flex flex-row justify-center items-center flex-wrap ${state.latestBlog ? "" : "invisible"}`}>
-                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm bg-green-100 text-green-600 font-medium">
+                <span className="px-2 -mt-px leading-7 rounded mr-2 text-sm accent-badge font-medium">
                     {state.latestBlog?.publishedDate ? (() => {
                         const dateStr = state.latestBlog.publishedDate;
                         return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });

@@ -23,7 +23,7 @@ const LeftSidebar: React.FC = () => {
     const [activeTab, setActiveTab] = useState<Tab>(weeklyRanking.length > 0 ? "weekly" : "alltime")
 
     const items = activeTab === "weekly"
-        ? weeklyRanking.map((r) => ({ name: r.name, metric: `+${formatStars(r.new_stars)}`, metricClass: "text-green-600" }))
+        ? weeklyRanking.map((r) => ({ name: r.name, metric: `+${formatStars(r.new_stars)}`, metricClass: "accent-text" }))
         : leaderboard.map((r) => ({ name: r.name, metric: formatStars(r.stars_total), metricClass: "text-gray-400" }))
 
     return (
