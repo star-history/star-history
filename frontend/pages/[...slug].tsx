@@ -124,31 +124,31 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         {hasAttributes && (
                             <div className="border-t border-neutral-100 px-4 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                                 <RadarChart attributes={repo.attributes} />
-                                <div className="mt-4 space-y-2.5 px-1">
+                                <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 px-1">
                                     {ATTRIBUTE_LABELS.map(({ key, label }, i) => {
                                         const value = repo.attributes[key];
                                         const pct = Math.min(value, 100);
                                         const w = pct * 1.94;
                                         return (
-                                            <div key={key} className="flex items-center gap-3" style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
-                                                <span className="text-xs text-neutral-500 w-24 text-right shrink-0">{label}</span>
-                                                <div className="flex-1 h-3.5">
-                                                    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 12">
+                                            <div key={key} className="flex items-center gap-2" style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
+                                                <span className="text-xs text-neutral-500 w-20 text-right shrink-0">{label}</span>
+                                                <div className="flex-1 h-6">
+                                                    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 20">
                                                         {/* Hand-drawn track */}
                                                         <path
-                                                            d="M2,2 C30,0.5 70,3 100,1.5 C130,0.5 170,3 198,1.5 C199,3 198.5,6 199,9 C198,10.5 170,9 130,11 C100,10 70,11.5 30,10.5 C10,11 2,10 1,9 C0.5,6.5 1,4 2,2 Z"
+                                                            d="M2,2 C30,0.5 70,3.5 100,1.5 C130,0.5 170,3.5 198,1.5 C199,5 198.5,10 199,15.5 C198,17.5 170,15.5 130,18 C100,17 70,18.5 30,17.5 C10,18 2,17 1,15.5 C0.5,11 1,5.5 2,2 Z"
                                                             fill="#f5f5f5" stroke="#d4d4d4" strokeWidth="0.8"
                                                         />
                                                         {/* Hand-drawn fill */}
                                                         {pct > 2 && (
                                                             <path
-                                                                d={`M2,2 C${w*0.3},1 ${w*0.6},3.5 ${w*0.85},2 L${w},2.5 C${w+0.5},4.5 ${w},7 ${w+0.5},9.5 L${w},10 C${w*0.6},9 ${w*0.3},11 2,10 C0,7.5 0,4.5 2,2 Z`}
+                                                                d={`M2,2 C${w*0.3},1 ${w*0.6},4.5 ${w*0.85},2 L${w},2.5 C${w+0.5},6 ${w},11 ${w+0.5},16 L${w},16.5 C${w*0.6},15.5 ${w*0.3},18 2,17 C0,12 0,6 2,2 Z`}
                                                                 fill="#16a34a" opacity="0.85"
                                                             />
                                                         )}
                                                     </svg>
                                                 </div>
-                                                <span className="text-xs text-neutral-400 w-8 shrink-0">{value}</span>
+                                                <span className="text-xs text-neutral-400 w-7 shrink-0">{value}</span>
                                             </div>
                                         );
                                     })}
