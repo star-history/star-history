@@ -61,7 +61,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
 
                         {/* Type bar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500">
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center gap-3">
                                 {repo.language && (
                                     <span className="flex items-center gap-1.5 font-medium">
@@ -74,8 +74,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                 )}
                             </div>
                             {repo.rank > 0 && (
-                                <span className="font-mono font-semibold text-neutral-700">
-                                    <span className="text-neutral-400 font-normal font-sans">Global Rank</span> #{repo.rank}
+                                <span className="font-semibold text-neutral-700">
+                                    <span className="text-neutral-400 font-normal">Global Rank</span> #{repo.rank}
                                 </span>
                             )}
                         </div>
@@ -90,11 +90,26 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                     loading="lazy"
                                 />
                                 <div className="min-w-0 flex-1">
-                                    <h1 className="text-xl font-bold leading-tight">
-                                        <span className="text-neutral-400 font-normal">{repo.owner}</span>
-                                        <span className="text-neutral-300 mx-0.5">/</span>
-                                        <span>{repoShortName}</span>
-                                    </h1>
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <h1 className="text-xl font-bold leading-tight" style={{ fontFamily: '"xkcd", cursive' }}>
+                                            <span className="text-neutral-400 font-normal">{repo.owner}</span>
+                                            <span className="text-neutral-300 mx-0.5">/</span>
+                                            <span>{repoShortName}</span>
+                                        </h1>
+                                        <a href={`https://github.com/${repo.name}`} target="_blank" rel="noopener noreferrer"
+                                            className="text-neutral-400 hover:text-neutral-700 transition-colors text-xl leading-tight"
+                                        >
+                                            <i className="fab fa-github" />
+                                        </a>
+                                        {repo.homepage && (
+                                            <a href={repo.homepage} target="_blank" rel="noopener noreferrer"
+                                                className="text-neutral-400 hover:text-neutral-700 transition-colors text-xs underline decoration-wavy decoration-1 underline-offset-2"
+                                                style={{ fontFamily: '"xkcd", cursive' }}
+                                            >
+                                                Web ↗
+                                            </a>
+                                        )}
+                                    </div>
                                     {repo.description && (
                                         <p className="text-sm text-neutral-600 mt-1.5 leading-relaxed">{repo.description}</p>
                                     )}
@@ -130,33 +145,23 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         )}
 
-                        {/* Footer */}
-                        <div className="flex items-center justify-between px-5 py-3 border-t border-neutral-100 text-sm text-neutral-500">
-                            <div className="flex items-center gap-4 flex-wrap">
-                                <span className="font-mono font-semibold text-neutral-800">⭐ {formatNumber(repo.stars_total)}</span>
-                                <span className="font-mono text-neutral-600">🍴 {formatNumber(repo.forks_count)}</span>
+                        {/* Footer – xkcd-style stats */}
+                        <div className="relative px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
+                            {/* Hand-drawn wobbly top border */}
+                            <svg className="absolute top-0 left-3 right-3 h-[3px]" preserveAspectRatio="none" viewBox="0 0 200 3">
+                                <path d="M0,1.5 C8,0.4 16,2.6 30,1.3 C44,0.3 56,2.7 75,1.5 C94,0.4 106,2.6 125,1.5 C144,0.3 156,2.7 175,1.3 C189,0.4 195,2.5 200,1.5" fill="none" stroke="#d4d4d4" strokeWidth="1.5" />
+                            </svg>
+                            <div className="flex items-center gap-5 flex-wrap">
+                                <span className="inline-block text-lg text-neutral-800 -rotate-1">
+                                    ⭐ {formatNumber(repo.stars_total)}
+                                </span>
+                                <span className="inline-block text-base text-neutral-600 rotate-[0.5deg]">
+                                    🍴 {formatNumber(repo.forks_count)}
+                                </span>
                                 {repo.created_at && (
-                                    <span className="text-neutral-400">📅 {formatDate(repo.created_at)}</span>
-                                )}
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <a
-                                    href={`https://github.com/${repo.name}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-neutral-500 hover:text-neutral-800 transition-colors"
-                                >
-                                    GitHub ↗
-                                </a>
-                                {repo.homepage && (
-                                    <a
-                                        href={repo.homepage}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-neutral-500 hover:text-neutral-800 transition-colors"
-                                    >
-                                        Web ↗
-                                    </a>
+                                    <span className="inline-block text-sm text-neutral-400 -rotate-[0.5deg]">
+                                        since {formatDate(repo.created_at)}
+                                    </span>
                                 )}
                             </div>
                         </div>
