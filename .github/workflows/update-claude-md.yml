@@ -1,0 +1,51 @@
+name: Update CLAUDE.md
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Monday 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update CLAUDE.md via Claude Code
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          allowed_tools: "Read,Glob,Grep,Edit,Write"
+          prompt: |
+            Read the current CLAUDE.md at the repo root. Your job is to regenerate the
+            dynamic sections while keeping the first 3 sections exactly as-is.
+
+            **Sections to preserve verbatim (do NOT modify):**
+            - ## Package Manager
+            - ## Plans
+            - ## Auto-Generated Files (Do NOT commit)
+
+            **Sections to regenerate by inspecting the codebase:**
+            - ## Tech Stack — read frontend/package.json for actual dependency versions
+              (Next.js, React, TypeScript, Tailwind CSS, D3, Axios, etc.)
+            - ## Project Structure — list directories under frontend/ with a short purpose
+            - ## Routes — scan frontend/pages/ for all page files, document route patterns
+            - ## State & Data Flow — trace from URL hash through store, API, chart rendering
+            - ## Key Files for Common Changes — group important files by area
+
+            Rules:
+            1. Output the COMPLETE CLAUDE.md (static + regenerated sections) using the
+               Write tool. Do not omit or summarize any section.
+            2. Use the same markdown table format for Project Structure and Routes.
+            3. Keep descriptions concise — one-line per table row or bullet.
+            4. Only include files/directories that actually exist in the repo.
+            5. Do not add any new sections beyond the ones listed above.
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CLAUDE.md
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "docs: auto-update CLAUDE.md from codebase inspection"
+          git push
