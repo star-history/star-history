@@ -1,4 +1,4 @@
-import { FaTwitter, FaEnvelope, FaGithub } from "react-icons/fa"
+import { FaTwitter, FaEnvelope, FaRss } from "react-icons/fa"
 
 const Footer = () => {
     return (
@@ -8,6 +8,12 @@ const Footer = () => {
                     <div className="h-full text-gray-600">The de facto GitHub star history graph</div>
                     <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="mailto:star@bytebase.com" target="_blank" rel="noopener noreferrer">
                         <FaEnvelope />
+                    </a>
+                    <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
+                        <FaTwitter />
+                    </a>
+                    <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
+                        <FaRss />
                     </a>
                 </div>
                 <div className="flex flex-row flex-wrap items-center space-x-4">

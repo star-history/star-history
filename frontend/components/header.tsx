@@ -71,13 +71,7 @@ useEffect(() => {
                 <span className="text-white">📕 How to use this site</span>
               </Link>
             </div>
-            <div className="h-full hidden md:flex flex-row justify-end items-center space-x-2">
-              <a className="header-link" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-twitter text-2xl text-blue-300"></i>
-              </a>
-              <a className="header-link" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
-                <i className="fas fa-rss text-2xl text-orange-400"></i>
-              </a>
+            <div className="h-full hidden md:flex flex-row justify-end items-center">
               <GitHubStarButton />
             </div>
 
