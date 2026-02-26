@@ -122,7 +122,7 @@ const RadarChart = (
         })
 
     // Draw concentric level polygons (dashed, sketchy)
-    const levels = [20, 40, 60, 80]
+    const levels = [25, 50, 75]
     levels.forEach((level) => {
         const pts = polygonPoints(rScale(level))
         chart.append("path")
