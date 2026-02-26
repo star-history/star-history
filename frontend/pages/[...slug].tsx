@@ -6,6 +6,7 @@ import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
+import { SketchGitHubIcon } from "../components/GitHubStarButton"
 import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -100,9 +101,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                             <span>{repoShortName}</span>
                                         </h1>
                                         <a href={`https://github.com/${repo.name}`} target="_blank" rel="noopener noreferrer"
-                                            className="text-neutral-400 hover:text-neutral-700 transition-colors text-xl leading-tight"
+                                            className="text-neutral-400 hover:text-neutral-700 transition-colors leading-tight"
                                         >
-                                            <i className="fab fa-github" />
+                                            <SketchGitHubIcon size={22} />
                                         </a>
                                     </div>
                                     {repo.description && (
