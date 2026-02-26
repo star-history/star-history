@@ -18,7 +18,7 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 ## Tech Stack
 
-Next.js 14 (Pages Router, static export) · React 18 · TypeScript · Tailwind CSS · D3.js charts · Axios (GitHub API)
+Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2
 
 ## Project Structure
 
@@ -29,14 +29,15 @@ All frontend code lives under `frontend/`.
 | `pages/` | Next.js page routes (Pages Router) |
 | `components/` | React UI components |
 | `store/` | React Context state management with URL hash sync |
-| `shared/common/` | GitHub API client (`api.tsx`) and chart data logic (`chart.tsx`) |
-| `shared/packages/` | D3 chart implementation (`xy-chart.tsx`) |
+| `shared/common/` | GitHub API client (`api.tsx`), chart data logic (`chart.tsx`), utilities |
+| `shared/packages/` | D3 chart implementation (`xy-chart.tsx`) and chart components |
 | `shared/types/` | TypeScript type definitions |
 | `helpers/` | Utilities (storage, toast, formatting, constants) and static data JSON |
-| `styles/` | Tailwind config, global CSS, fonts |
+| `styles/` | Tailwind config, global CSS, fonts (Inter font family) |
 | `server/` | LRU cache for repo star data |
 | `scripts/` | Blog JSON generation script |
-| `public/` | Static assets |
+| `public/` | Static assets and blog images |
+| `plugins/` | Build scripts and utilities |
 
 ## Routes
 
@@ -68,4 +69,4 @@ Layout wrappers: `_app.tsx` (per-page `getLayout` pattern), `_document.tsx`.
 - **Repo detail page**: `pages/[...slug].tsx`, `components/PageShell.tsx`
 - **Blog system**: `pages/blog/[slug].tsx`, `scripts/generateBlogJson.mts`
 - **Layout & nav**: `components/header.tsx`, `components/footer.tsx`, `components/LeftSidebar.tsx`, `components/RightSidebar.tsx`
-- **Styling**: `tailwind.config.js`, `styles/global.css`
+- **Styling**: `tailwind.config.js`, `global.css`
