@@ -75,7 +75,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                             {repo.rank > 0 && (
                                 <span className="font-mono font-semibold text-neutral-700">
-                                    #{repo.rank}
+                                    <span className="text-neutral-400 font-normal font-sans">Global Rank</span> #{repo.rank}
                                 </span>
                             )}
                         </div>
