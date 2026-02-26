@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { AppStateProvider } from "../store"
-import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
-import type { RepoCardData, RepoAttributes } from "../helpers/repo-data"
+import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
+import RadarChart from "../components/Charts/RadarChart"
 
 const LANGUAGE_COLORS: Record<string, string> = {
     TypeScript: "#3178c6", JavaScript: "#f1e05a", Python: "#3572A5",
@@ -27,15 +26,6 @@ function formatDate(dateStr: string): string {
     const d = new Date(dateStr)
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
-
-const ATTRIBUTE_CONFIG: { key: keyof RepoAttributes; label: string }[] = [
-    { key: "stars", label: "Stars" },
-    { key: "new_stars", label: "New Stars" },
-    { key: "pushes", label: "Pushes" },
-    { key: "contributors", label: "Contributors" },
-    { key: "issues_closed", label: "Issues Closed" },
-    { key: "forks", label: "Forks" },
-]
 
 const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const title = `${repo.name} Star History`
@@ -66,8 +56,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                 <meta name="twitter:description" content={description} />
                 <meta name="twitter:image" content={ogImage} />
             </Head>
-            <AppStateProvider initialRepos={[repo.name]}>
-                <PageShell>
+            <PageShell>
                     {/* Card */}
                     <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
 
@@ -120,31 +109,10 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         </div>
 
-                        {/* Chart */}
-                        <div className="border-t border-b border-neutral-100 px-2 py-2 md:px-4 md:py-3">
-                            <StarChartViewer compact />
-                        </div>
-
-                        {/* Attributes */}
+                        {/* Radar Chart */}
                         {hasAttributes && (
-                            <div className="px-5 py-4">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                                    {ATTRIBUTE_CONFIG.map(({ key, label }) => {
-                                        const value = repo.attributes[key]
-                                        return (
-                                            <div key={key} className="flex items-center gap-2">
-                                                <span className="text-xs text-neutral-500 w-20 shrink-0">{label}</span>
-                                                <div className="flex-1 h-3 bg-neutral-100 rounded-full overflow-hidden">
-                                                    <div
-                                                        className="h-full rounded-full bg-green-600"
-                                                        style={{ width: `${value}%` }}
-                                                    />
-                                                </div>
-                                                <span className="text-xs font-mono font-semibold text-neutral-700 w-6 text-right">{value}</span>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
+                            <div className="border-t border-b border-neutral-100 px-4 py-4">
+                                <RadarChart attributes={repo.attributes} />
                             </div>
                         )}
 
@@ -180,7 +148,6 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         </div>
                     </div>
                 </PageShell>
-            </AppStateProvider>
         </>
     )
 }
