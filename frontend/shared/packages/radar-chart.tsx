@@ -250,7 +250,7 @@ const RadarChart = (
     // Draw axis labels last so they sit above everything
     labels.forEach((label, i) => {
         const angle = angleSlice * i - Math.PI / 2
-        const labelRadius = radius + 24
+        const labelRadius = radius + 32
         const x = Math.cos(angle) * labelRadius
         const y = Math.sin(angle) * labelRadius
 

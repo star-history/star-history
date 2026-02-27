@@ -193,15 +193,15 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     <div ref={cardRef} className="relative w-full max-w-5xl aspect-video flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
                         {/* Rank stamp overlay */}
                         {repo.rank > 0 && (
-                            <div className="absolute top-4 right-6 -rotate-12 z-10 w-[160px] h-[160px] opacity-60">
-                                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 160" fill="none" stroke="#dc2626" strokeWidth="3.5">
-                                    <circle cx="80" cy="80" r="76" />
-                                    <circle cx="80" cy="80" r="68" />
+                            <div className="absolute top-3 right-5 -rotate-12 z-10 w-[120px] h-[120px] opacity-80">
+                                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 120 120" fill="none" stroke="#dc2626" strokeWidth="3">
+                                    <circle cx="60" cy="60" r="57" />
+                                    <circle cx="60" cy="60" r="51" />
                                 </svg>
                                 <div className="absolute inset-0 flex flex-col items-center justify-center text-red-600 font-bold">
-                                    <span className="text-xs uppercase tracking-widest">Global Rank</span>
-                                    <span className="text-4xl leading-none">#{repo.rank}</span>
-                                    <span className="text-[10px] font-normal tracking-wide mt-1">{new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                                    <span className="text-[9px] uppercase tracking-widest">Global Rank</span>
+                                    <span className="text-2xl leading-none">#{repo.rank}</span>
+                                    <span className="text-[8px] font-normal tracking-wide mt-0.5">{new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                                 </div>
                             </div>
                         )}
@@ -222,17 +222,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         </div>
 
-                        {/* Radar + ID card */}
-                        <div className="flex flex-col md:flex-row px-4 pb-2 flex-1 min-h-0 justify-center">
-                            <div className="flex flex-col items-center justify-center">
-                                {hasAttributes && (
-                                    <div className="w-full max-w-[420px]">
-                                        <RadarChart attributes={repo.attributes} />
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Right: ID card */}
+                        {/* ID card + Radar */}
+                        <div className="flex flex-col md:flex-row px-4 pb-2 flex-1 min-h-0 justify-center gap-10">
+                            {/* ID card */}
                             <div className="flex items-center pt-12">
                                 <div className="w-full flex flex-col items-center gap-2">
                                     <div className="relative w-full max-w-[180px]">
@@ -272,6 +264,14 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                         )}
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="flex flex-col items-center justify-center">
+                                {hasAttributes && (
+                                    <div className="w-[440px]">
+                                        <RadarChart attributes={repo.attributes} />
+                                    </div>
+                                )}
                             </div>
                         </div>
 
