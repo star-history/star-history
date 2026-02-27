@@ -192,7 +192,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     /* ── Landscape layout ── */
                     <div ref={cardRef} className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
                         {/* Combined header bar: language + stats + rank + logo */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-sm text-neutral-500">
+                        <div className="flex items-center justify-between px-5 py-3 text-sm text-neutral-500">
                             <div className="flex items-center gap-5 flex-wrap">
                                 <span className="text-base text-neutral-800 -rotate-1">
                                     ⭐ {formatNumber(repo.stars_total)}
@@ -206,13 +206,17 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                     </span>
                                 )}
                             </div>
-                            <div className="flex items-center gap-4">
-                                {repo.rank > 0 && (
-                                    <span className="text-xl font-bold text-neutral-800">
-                                        <span className="text-sm text-neutral-400 font-normal mr-1">Global Rank</span>#{repo.rank}
+                            {repo.rank > 0 && (
+                                <span className="inline-block -rotate-6 relative text-3xl font-bold text-red-600 px-5 py-2 opacity-80">
+                                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 60" preserveAspectRatio="none" fill="none" stroke="currentColor" strokeWidth="3">
+                                        <rect x="4" y="4" width="152" height="52" rx="6" ry="6" />
+                                        <rect x="8" y="8" width="144" height="44" rx="4" ry="4" />
+                                    </svg>
+                                    <span className="relative uppercase tracking-wider">
+                                        <span className="text-lg font-bold mr-1">Global Rank</span>#{repo.rank}
                                     </span>
-                                )}
-                            </div>
+                                </span>
+                            )}
                         </div>
 
                         {/* Top: radar (left) + avatar (right) */}
@@ -270,7 +274,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     /* ── Portrait layout ── */
                     <div ref={cardRef} className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
                         {/* Type bar */}
-                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
+                        <div className="flex items-center justify-between px-5 py-3 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center gap-3">
                                 {repo.language && (
                                     <span className="flex items-center gap-1.5 font-medium">
