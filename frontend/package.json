@@ -38,6 +38,7 @@
         "dayjs": "^1.11.10",
         "eslint-config-next": "^14.1.0",
         "gray-matter": "^4.0.3",
+        "html-to-image": "^1.11.13",
         "lodash": "^4.17.21",
         "marked": "^9.1.6",
         "next": "^14.1.0",

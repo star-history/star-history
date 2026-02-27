@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head"
 import Link from "next/link"
-import { useState } from "react"
+import { useCallback, useRef, useState } from "react"
+import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
@@ -64,35 +65,51 @@ const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
     </div>
 )
 
-const LayoutToggle = ({ mode, onChange, wide }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean }) => (
-    <div className={`relative flex items-center justify-center mb-4 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
-        <Link href="/" className="absolute left-0 inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10.5 13L5.5 8L10.5 3" />
-            </svg>
-            Back to home
-        </Link>
+const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean; onDownload: () => void }) => (
+    <div className={`flex items-center mb-4 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
+        <div className="flex-1">
+            <Link href="/" className="inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10.5 13L5.5 8L10.5 3" />
+                </svg>
+                Back to home
+            </Link>
+        </div>
         <div className="inline-flex rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden">
             <button
                 onClick={() => onChange("landscape")}
-                className={`px-3 py-2 transition-colors ${
+                className={`px-2.5 py-1.5 transition-colors ${
                     mode === "landscape" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:bg-neutral-50"
                 }`}
                 title="Landscape"
             >
-                <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="15" viewBox="0 0 24 18" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M2.5,2 C8,1.5 16,2.5 21.5,1.8 C22.5,2.5 22.2,5 22.5,9 C22.2,13 22.8,15 21.5,15.8 C16,16.5 8,15.5 2.5,16 C1.5,15 1.8,12 1.5,9 C1.8,5 1.2,3 2.5,2 Z" />
                 </svg>
             </button>
             <button
                 onClick={() => onChange("portrait")}
-                className={`px-3 py-2 transition-colors ${
+                className={`px-2.5 py-1.5 transition-colors ${
                     mode === "portrait" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:bg-neutral-50"
                 }`}
                 title="Portrait"
             >
-                <svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="13" height="18" viewBox="0 0 16 22" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M2.5,2 C5,1.5 11,2.5 13.5,1.8 C14.5,2.5 14.2,7 14.5,11 C14.2,15 14.8,18 13.5,19.8 C11,20.5 5,19.5 2.5,20 C1.5,19 1.8,15 1.5,11 C1.8,7 1.2,3 2.5,2 Z" />
+                </svg>
+            </button>
+        </div>
+        <div className="flex-1 flex justify-end self-end">
+            <button
+                onClick={onDownload}
+                className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                title="Download as PNG"
+            >
+                <svg width="24" height="24" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11,2.5 C11.3,5 10.8,8 11.2,11.5" />
+                    <path d="M7,8.5 C8.5,10 10,11.5 11.1,12.5 C12,11.5 13.5,10 15,8.5" />
+                    <path d="M3.5,16 C7,16.5 15,15.5 18.5,16.2" />
+                    <path d="M3.5,18.5 C7,19 15,18 18.5,18.7" />
                 </svg>
             </button>
         </div>
@@ -101,6 +118,7 @@ const LayoutToggle = ({ mode, onChange, wide }: { mode: LayoutMode; onChange: (m
 
 const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const [layout, setLayout] = useState<LayoutMode>("landscape")
+    const cardRef = useRef<HTMLDivElement>(null)
     const title = `${repo.name} Star History`
     const description = repo.description
         ? `Star history and stats for ${repo.name}: ${repo.description}`
@@ -109,9 +127,46 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date`
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
     const repoShortName = repo.name.split("/")[1]
-    const avatarUrl = `https://github.com/${repo.owner}.png?size=460`
+    const avatarUrl = `https://avatars.githubusercontent.com/${repo.owner}?s=460`
     const hasAttributes = repo.attributes && Object.values(repo.attributes).some(v => v > 0)
     const isLandscape = layout === "landscape"
+
+    const handleDownload = useCallback(async () => {
+        if (!cardRef.current) return
+        try {
+            // Pre-fetch avatar as base64 to avoid CORS issues during export
+            const imgs = cardRef.current.querySelectorAll("img")
+            const origSrcs: string[] = []
+            await Promise.all(Array.from(imgs).map(async (img, i) => {
+                origSrcs[i] = img.src
+                if (img.src.startsWith("http")) {
+                    try {
+                        const resp = await fetch(img.src)
+                        const blob = await resp.blob()
+                        const dataUrl = await new Promise<string>((resolve) => {
+                            const reader = new FileReader()
+                            reader.onloadend = () => resolve(reader.result as string)
+                            reader.readAsDataURL(blob)
+                        })
+                        img.src = dataUrl
+                    } catch {
+                        // Keep original src if fetch fails
+                    }
+                }
+            }))
+
+            const dataUrl = await toPng(cardRef.current, { cacheBust: true, pixelRatio: 2 })
+            const link = document.createElement("a")
+            link.download = `${repo.name.replace("/", "-")}-stats.png`
+            link.href = dataUrl
+            link.click()
+
+            // Restore original srcs
+            imgs.forEach((img, i) => { img.src = origSrcs[i] })
+        } catch (err) {
+            console.error("Failed to export card as PNG:", err)
+        }
+    }, [repo.name])
 
     return (
         <>
@@ -131,11 +186,11 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                 <meta name="twitter:image" content={ogImage} />
             </Head>
             <PageShell>
-                <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} />
+                <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} onDownload={handleDownload} />
 
                 {isLandscape ? (
-                    /* ── Landscape layout (Pokemon card style) ── */
-                    <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
+                    /* ── Landscape layout ── */
+                    <div ref={cardRef} className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
                         {/* Combined header bar: language + stats + rank + logo */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-sm text-neutral-500">
                             <div className="flex items-center gap-5 flex-wrap">
@@ -213,7 +268,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     </div>
                 ) : (
                     /* ── Portrait layout ── */
-                    <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div ref={cardRef} className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
                         {/* Type bar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center gap-3">
