@@ -66,26 +66,35 @@ const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
 
 const LayoutToggle = ({ mode, onChange, wide }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean }) => (
     <div className={`relative flex items-center justify-center mb-4 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
-        <Link href="/" className="absolute left-0 inline-flex items-center gap-1 text-sm text-neutral-400 hover:text-neutral-600 transition-colors">
+        <Link href="/" className="absolute left-0 inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M10.5 13L5.5 8L10.5 3" />
             </svg>
             Back to home
         </Link>
-        <div className="inline-flex rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden text-sm">
-            {(["landscape", "portrait"] as const).map((m) => (
-                <button
-                    key={m}
-                    onClick={() => onChange(m)}
-                    className={`px-4 py-1.5 transition-colors ${
-                        mode === m
-                            ? "bg-neutral-800 text-white"
-                            : "text-neutral-500 hover:bg-neutral-50"
-                    }`}
-                >
-                    {m.charAt(0).toUpperCase() + m.slice(1)}
-                </button>
-            ))}
+        <div className="inline-flex rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden">
+            <button
+                onClick={() => onChange("landscape")}
+                className={`px-3 py-2 transition-colors ${
+                    mode === "landscape" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:bg-neutral-50"
+                }`}
+                title="Landscape"
+            >
+                <svg width="24" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2.5,2 C8,1.5 16,2.5 21.5,1.8 C22.5,2.5 22.2,5 22.5,9 C22.2,13 22.8,15 21.5,15.8 C16,16.5 8,15.5 2.5,16 C1.5,15 1.8,12 1.5,9 C1.8,5 1.2,3 2.5,2 Z" />
+                </svg>
+            </button>
+            <button
+                onClick={() => onChange("portrait")}
+                className={`px-3 py-2 transition-colors ${
+                    mode === "portrait" ? "bg-neutral-800 text-white" : "text-neutral-500 hover:bg-neutral-50"
+                }`}
+                title="Portrait"
+            >
+                <svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2.5,2 C5,1.5 11,2.5 13.5,1.8 C14.5,2.5 14.2,7 14.5,11 C14.2,15 14.8,18 13.5,19.8 C11,20.5 5,19.5 2.5,20 C1.5,19 1.8,15 1.5,11 C1.8,7 1.2,3 2.5,2 Z" />
+                </svg>
+            </button>
         </div>
     </div>
 )
