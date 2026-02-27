@@ -193,7 +193,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     <div ref={cardRef} className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
                         {/* Combined header bar: language + stats + rank + logo */}
                         <div className="flex items-center justify-between px-5 py-3 text-sm text-neutral-500">
-                            <div className="flex items-center gap-5 flex-wrap">
+                            <div className="flex items-center gap-5 whitespace-nowrap">
                                 <span className="text-base text-neutral-800 -rotate-1">
                                     ⭐ {formatNumber(repo.stars_total)}
                                 </span>
@@ -336,7 +336,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         {/* Footer stats */}
                         <div className="border-t border-neutral-100 px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center justify-between flex-wrap gap-3">
-                                <div className="flex items-center gap-5 flex-wrap">
+                                <div className="flex items-center gap-5 whitespace-nowrap">
                                     <span className="inline-block text-lg text-neutral-800 -rotate-1">
                                         ⭐ {formatNumber(repo.stars_total)}
                                     </span>
