@@ -35,16 +35,16 @@ function formatDate(dateStr: string): string {
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
 
-const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
-    <div className="grid grid-cols-2 gap-x-6 gap-y-5 px-1">
+const AttributeBars = ({ repo, compact }: { repo: RepoCardData; compact?: boolean }) => (
+    <div className={`grid px-1 ${compact ? "grid-cols-3 gap-x-4 gap-y-2" : "grid-cols-2 gap-x-6 gap-y-5"}`}>
         {ATTRIBUTE_LABELS.map(({ key, label }, i) => {
             const value = repo.attributes[key];
             const pct = Math.min(value, 100);
             const w = pct * 1.94;
             return (
-                <div key={key} className="flex items-center gap-3" style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
-                    <span className="text-base text-neutral-500 w-28 text-right shrink-0">{label}</span>
-                    <div className="flex-1 h-10">
+                <div key={key} className={`flex items-center ${compact ? "gap-2" : "gap-3"}`} style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
+                    <span className={`text-neutral-500 text-right shrink-0 ${compact ? "text-xs w-20" : "text-base w-28"}`}>{label}</span>
+                    <div className={`flex-1 ${compact ? "h-6" : "h-10"}`}>
                         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 20">
                             <path
                                 d="M2,2 C30,0.5 70,3.5 100,1.5 C130,0.5 170,3.5 198,1.5 C199,5 198.5,10 199,15.5 C198,17.5 170,15.5 130,18 C100,17 70,18.5 30,17.5 C10,18 2,17 1,15.5 C0.5,11 1,5.5 2,2 Z"
@@ -58,7 +58,7 @@ const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
                             )}
                         </svg>
                     </div>
-                    <span className="text-base text-neutral-400 w-9 shrink-0">{value}</span>
+                    <span className={`text-neutral-400 shrink-0 ${compact ? "text-xs w-7" : "text-base w-9"}`}>{value}</span>
                 </div>
             );
         })}
@@ -66,7 +66,7 @@ const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
 )
 
 const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean; onDownload: () => void }) => (
-    <div className={`flex items-center mb-4 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
+    <div className={`flex items-center mb-2 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
         <div className="flex-1">
             <Link href="/" className="inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -190,9 +190,23 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
 
                 {isLandscape ? (
                     /* ── Landscape layout ── */
-                    <div ref={cardRef} className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
-                        {/* Combined header bar: language + stats + rank + logo */}
-                        <div className="flex items-center justify-between px-5 py-3 text-sm text-neutral-500">
+                    <div ref={cardRef} className="relative w-full max-w-5xl aspect-video flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
+                        {/* Rank stamp overlay */}
+                        {repo.rank > 0 && (
+                            <div className="absolute top-4 right-6 -rotate-12 z-10 w-[160px] h-[160px] opacity-60">
+                                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 160" fill="none" stroke="#dc2626" strokeWidth="3.5">
+                                    <circle cx="80" cy="80" r="76" />
+                                    <circle cx="80" cy="80" r="68" />
+                                </svg>
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-red-600 font-bold">
+                                    <span className="text-xs uppercase tracking-widest">Global Rank</span>
+                                    <span className="text-4xl leading-none">#{repo.rank}</span>
+                                    <span className="text-[10px] font-normal tracking-wide mt-1">{new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                                </div>
+                            </div>
+                        )}
+                        {/* Header bar: stats */}
+                        <div className="flex items-center px-5 pt-4 pb-2 text-sm text-neutral-500">
                             <div className="flex items-center gap-5 whitespace-nowrap">
                                 <span className="text-base text-neutral-800 -rotate-1">
                                     ⭐ {formatNumber(repo.stars_total)}
@@ -206,40 +220,43 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                     </span>
                                 )}
                             </div>
-                            {repo.rank > 0 && (
-                                <span className="inline-block -rotate-6 relative text-3xl font-bold text-red-600 px-5 py-2 opacity-80">
-                                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 60" preserveAspectRatio="none" fill="none" stroke="currentColor" strokeWidth="3">
-                                        <rect x="4" y="4" width="152" height="52" rx="6" ry="6" />
-                                        <rect x="8" y="8" width="144" height="44" rx="4" ry="4" />
-                                    </svg>
-                                    <span className="relative uppercase tracking-wider">
-                                        <span className="text-lg font-bold mr-1">Global Rank</span>#{repo.rank}
-                                    </span>
-                                </span>
-                            )}
                         </div>
 
-                        {/* Top: radar (left) + avatar (right) */}
-                        <div className="flex flex-col md:flex-row px-4 pb-4">
-                            {/* Left half: radar */}
-                            <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
+                        {/* Radar + ID card */}
+                        <div className="flex flex-col md:flex-row px-4 pb-2 flex-1 min-h-0 justify-center">
+                            <div className="flex flex-col items-center justify-center">
                                 {hasAttributes && (
-                                    <RadarChart attributes={repo.attributes} />
+                                    <div className="w-full max-w-[420px]">
+                                        <RadarChart attributes={repo.attributes} />
+                                    </div>
                                 )}
                             </div>
 
-                            {/* Right half: ID card */}
-                            <div className="flex-1 flex items-center justify-center">
-                                <div className="w-full flex flex-col items-center gap-4">
-                                    <img
-                                        src={avatarUrl}
-                                        alt={repo.owner}
-                                        className="w-full max-w-[280px] aspect-square rounded-full"
-                                        loading="lazy"
-                                    />
-                                    <div className="text-center">
+                            {/* Right: ID card */}
+                            <div className="flex items-center pt-12">
+                                <div className="w-full flex flex-col items-center gap-2">
+                                    <div className="relative w-full max-w-[180px]">
+                                        <svg className="absolute w-0 h-0">
+                                            <defs>
+                                                <clipPath id="wobbly-rect" clipPathUnits="objectBoundingBox">
+                                                    <path d="M0.08,0.02 C0.25,0 0.75,0.01 0.92,0.03 C0.97,0.08 0.99,0.25 0.98,0.5 C0.99,0.75 0.97,0.92 0.93,0.97 C0.75,0.99 0.25,1 0.07,0.97 C0.02,0.92 0.01,0.75 0.02,0.5 C0.01,0.25 0.03,0.08 0.08,0.02 Z" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        <img
+                                            src={avatarUrl}
+                                            alt={repo.owner}
+                                            className="w-full aspect-square"
+                                            style={{ clipPath: "url(#wobbly-rect)" }}
+                                            loading="lazy"
+                                        />
+                                        <svg className="absolute inset-[-4px] w-[calc(100%+8px)] h-[calc(100%+8px)]" viewBox="0 0 100 100" fill="none" stroke="#525252" strokeWidth="1.2" strokeLinecap="round">
+                                            <path d="M10,3 C25,1 75,2 90,4 C96,9 98,25 97,50 C98,75 96,91 91,96 C75,98 25,99 9,96 C3,91 2,75 3,50 C2,25 4,9 10,3 Z" />
+                                        </svg>
+                                    </div>
+                                    <div className="text-center max-w-[320px]">
                                         <div className="flex items-center justify-center gap-2">
-                                            <h1 className="text-3xl font-bold leading-tight">
+                                            <h1 className="text-2xl font-bold leading-tight">
                                                 <span className="text-neutral-400 font-normal">{repo.owner}</span>
                                                 <span className="text-neutral-300 mx-0.5">/</span>
                                                 <span>{repoShortName}</span>
@@ -247,11 +264,11 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                                             <a href={`https://github.com/${repo.name}`} target="_blank" rel="noopener noreferrer"
                                                 className="text-neutral-400 hover:text-neutral-700 transition-colors"
                                             >
-                                                <SketchGitHubIcon size={28} />
+                                                <SketchGitHubIcon size={24} />
                                             </a>
                                         </div>
                                         {repo.description && (
-                                            <p className="text-base text-neutral-500 mt-3 leading-relaxed">{repo.description}</p>
+                                            <p className="text-base text-neutral-500 mt-2 leading-relaxed line-clamp-2">{repo.description}</p>
                                         )}
                                     </div>
                                 </div>
@@ -259,11 +276,11 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         </div>
 
                         {/* Bottom: stat bars + logo */}
-                        <div className="px-6 pb-6">
+                        <div className="px-6 pb-4">
                             {hasAttributes && (
-                                <AttributeBars repo={repo} />
+                                <AttributeBars repo={repo} compact />
                             )}
-                            <div className="flex justify-end mt-4">
+                            <div className="flex justify-end mt-2">
                                 <Link href="/" className="opacity-60 hover:opacity-100 transition-opacity">
                                     <img src="/assets/logo-full.svg" alt="star-history" className="h-5" />
                                 </Link>
@@ -272,7 +289,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                     </div>
                 ) : (
                     /* ── Portrait layout ── */
-                    <div ref={cardRef} className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div ref={cardRef} className="w-full max-w-2xl aspect-[4/5] flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden">
                         {/* Type bar */}
                         <div className="flex items-center justify-between px-5 py-3 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center gap-3">
@@ -325,7 +342,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         </div>
 
                         {hasAttributes && (
-                            <div className="border-t border-neutral-100 px-4 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
+                            <div className="border-t border-neutral-100 px-4 py-4 flex-1 min-h-0" style={{ fontFamily: '"xkcd", cursive' }}>
                                 <RadarChart attributes={repo.attributes} />
                                 <div className="mt-4">
                                     <AttributeBars repo={repo} />
@@ -334,17 +351,17 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         )}
 
                         {/* Footer stats */}
-                        <div className="border-t border-neutral-100 px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
+                        <div className="border-t border-neutral-100 px-5 py-4 mt-auto" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center justify-between flex-wrap gap-3">
                                 <div className="flex items-center gap-5 whitespace-nowrap">
-                                    <span className="inline-block text-lg text-neutral-800 -rotate-1">
+                                    <span className="text-lg text-neutral-800 -rotate-1">
                                         ⭐ {formatNumber(repo.stars_total)}
                                     </span>
-                                    <span className="inline-block text-base text-neutral-600 rotate-[0.5deg]">
+                                    <span className="text-base text-neutral-600 rotate-[0.5deg]">
                                         🍴 {formatNumber(repo.forks_count)}
                                     </span>
                                     {repo.created_at && (
-                                        <span className="inline-block text-sm text-neutral-400 -rotate-[0.5deg]">
+                                        <span className="text-sm text-neutral-400 -rotate-[0.5deg]">
                                             since {formatDate(repo.created_at)}
                                         </span>
                                     )}
