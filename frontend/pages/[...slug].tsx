@@ -28,6 +28,7 @@ const XKCD_ROTATIONS = [-0.3, 0.4, -0.2, 0.35, -0.4, 0.25]
 
 interface RepoPageProps {
     repo: RepoCardData
+    minStars: number
 }
 
 function formatDate(dateStr: string): string {
@@ -116,7 +117,7 @@ const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; 
     </div>
 )
 
-const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
+const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const [layout, setLayout] = useState<LayoutMode>("landscape")
     const cardRef = useRef<HTMLDivElement>(null)
     const title = `${repo.name} Star History`
@@ -373,6 +374,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         </div>
                     </div>
                 )}
+                <p className="text-sm text-neutral-400 mt-3" style={{ fontFamily: '"xkcd", cursive' }}>
+                    Tracking repos with {formatNumber(minStars)}+ stars
+                </p>
             </PageShell>
         </>
     )
@@ -399,7 +403,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
-    const { repos: cards } = loadRepoCards()
+    const { repos: cards, min_stars } = loadRepoCards()
 
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {
@@ -410,7 +414,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
     const cardData = cards.find((c) => c.name.toLowerCase() === fullName.toLowerCase())
 
     if (cardData) {
-        return { props: { repo: cardData } }
+        return { props: { repo: cardData, minStars: min_stars } }
     }
 
     // Fallback to legacy repos.json
@@ -448,6 +452,7 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
                 total_repos: 0,
                 attributes: { stars: 0, new_stars: 0, pushes: 0, contributors: 0, issues_closed: 0, forks: 0 },
             },
+            minStars: min_stars,
         },
     }
 }
