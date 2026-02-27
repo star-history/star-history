@@ -32,7 +32,7 @@ const RadarChart: React.FC<Props> = ({ attributes }) => {
 
     return (
         <div className="flex justify-center items-center w-full">
-            <svg ref={svgRef} className="w-full max-w-md h-auto" />
+            <svg ref={svgRef} className="w-full h-auto" />
         </div>
     )
 }

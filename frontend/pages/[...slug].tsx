@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head"
 import Link from "next/link"
+import { useState } from "react"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
@@ -8,6 +9,8 @@ import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
 import { SketchGitHubIcon } from "../components/GitHubStarButton"
 import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
+
+type LayoutMode = "landscape" | "portrait"
 
 const LANGUAGE_COLORS: Record<string, string> = {
     TypeScript: "#3178c6", JavaScript: "#f1e05a", Python: "#3572A5",
@@ -31,7 +34,64 @@ function formatDate(dateStr: string): string {
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
 
+const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
+    <div className="grid grid-cols-2 gap-x-6 gap-y-5 px-1">
+        {ATTRIBUTE_LABELS.map(({ key, label }, i) => {
+            const value = repo.attributes[key];
+            const pct = Math.min(value, 100);
+            const w = pct * 1.94;
+            return (
+                <div key={key} className="flex items-center gap-3" style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
+                    <span className="text-base text-neutral-500 w-28 text-right shrink-0">{label}</span>
+                    <div className="flex-1 h-10">
+                        <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 20">
+                            <path
+                                d="M2,2 C30,0.5 70,3.5 100,1.5 C130,0.5 170,3.5 198,1.5 C199,5 198.5,10 199,15.5 C198,17.5 170,15.5 130,18 C100,17 70,18.5 30,17.5 C10,18 2,17 1,15.5 C0.5,11 1,5.5 2,2 Z"
+                                fill="#f5f5f5" stroke="#d4d4d4" strokeWidth="0.8"
+                            />
+                            {pct > 2 && (
+                                <path
+                                    d={`M2,2 C${w*0.3},1 ${w*0.6},4.5 ${w*0.85},2 L${w},2.5 C${w+0.5},6 ${w},11 ${w+0.5},16 L${w},16.5 C${w*0.6},15.5 ${w*0.3},18 2,17 C0,12 0,6 2,2 Z`}
+                                    fill="#16a34a" opacity="0.85"
+                                />
+                            )}
+                        </svg>
+                    </div>
+                    <span className="text-base text-neutral-400 w-9 shrink-0">{value}</span>
+                </div>
+            );
+        })}
+    </div>
+)
+
+const LayoutToggle = ({ mode, onChange, wide }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean }) => (
+    <div className={`relative flex items-center justify-center mb-4 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
+        <Link href="/" className="absolute left-0 inline-flex items-center gap-1 text-sm text-neutral-400 hover:text-neutral-600 transition-colors">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.5 13L5.5 8L10.5 3" />
+            </svg>
+            Back to home
+        </Link>
+        <div className="inline-flex rounded-lg border border-neutral-200 bg-white shadow-sm overflow-hidden text-sm">
+            {(["landscape", "portrait"] as const).map((m) => (
+                <button
+                    key={m}
+                    onClick={() => onChange(m)}
+                    className={`px-4 py-1.5 transition-colors ${
+                        mode === m
+                            ? "bg-neutral-800 text-white"
+                            : "text-neutral-500 hover:bg-neutral-50"
+                    }`}
+                >
+                    {m.charAt(0).toUpperCase() + m.slice(1)}
+                </button>
+            ))}
+        </div>
+    </div>
+)
+
 const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
+    const [layout, setLayout] = useState<LayoutMode>("landscape")
     const title = `${repo.name} Star History`
     const description = repo.description
         ? `Star history and stats for ${repo.name}: ${repo.description}`
@@ -40,8 +100,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date`
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
     const repoShortName = repo.name.split("/")[1]
-    const avatarUrl = `https://github.com/${repo.owner}.png?size=80`
+    const avatarUrl = `https://github.com/${repo.owner}.png?size=460`
     const hasAttributes = repo.attributes && Object.values(repo.attributes).some(v => v > 0)
+    const isLandscape = layout === "landscape"
 
     return (
         <>
@@ -61,9 +122,89 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                 <meta name="twitter:image" content={ogImage} />
             </Head>
             <PageShell>
-                    {/* Card */}
-                    <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
+                <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} />
 
+                {isLandscape ? (
+                    /* ── Landscape layout (Pokemon card style) ── */
+                    <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden" style={{ fontFamily: '"xkcd", cursive' }}>
+                        {/* Combined header bar: language + stats + rank + logo */}
+                        <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-sm text-neutral-500">
+                            <div className="flex items-center gap-5 flex-wrap">
+                                <span className="text-base text-neutral-800 -rotate-1">
+                                    ⭐ {formatNumber(repo.stars_total)}
+                                </span>
+                                <span className="text-base text-neutral-600 rotate-[0.5deg]">
+                                    🍴 {formatNumber(repo.forks_count)}
+                                </span>
+                                {repo.created_at && (
+                                    <span className="text-sm text-neutral-400 -rotate-[0.5deg]">
+                                        since {formatDate(repo.created_at)}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex items-center gap-4">
+                                {repo.rank > 0 && (
+                                    <span className="text-xl font-bold text-neutral-800">
+                                        <span className="text-sm text-neutral-400 font-normal mr-1">Global Rank</span>#{repo.rank}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Top: radar (left) + avatar (right) */}
+                        <div className="flex flex-col md:flex-row px-4 pb-4">
+                            {/* Left half: radar */}
+                            <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
+                                {hasAttributes && (
+                                    <RadarChart attributes={repo.attributes} />
+                                )}
+                            </div>
+
+                            {/* Right half: ID card */}
+                            <div className="flex-1 flex items-center justify-center">
+                                <div className="w-full flex flex-col items-center gap-4">
+                                    <img
+                                        src={avatarUrl}
+                                        alt={repo.owner}
+                                        className="w-full max-w-[280px] aspect-square rounded-full"
+                                        loading="lazy"
+                                    />
+                                    <div className="text-center">
+                                        <div className="flex items-center justify-center gap-2">
+                                            <h1 className="text-3xl font-bold leading-tight">
+                                                <span className="text-neutral-400 font-normal">{repo.owner}</span>
+                                                <span className="text-neutral-300 mx-0.5">/</span>
+                                                <span>{repoShortName}</span>
+                                            </h1>
+                                            <a href={`https://github.com/${repo.name}`} target="_blank" rel="noopener noreferrer"
+                                                className="text-neutral-400 hover:text-neutral-700 transition-colors"
+                                            >
+                                                <SketchGitHubIcon size={28} />
+                                            </a>
+                                        </div>
+                                        {repo.description && (
+                                            <p className="text-base text-neutral-500 mt-3 leading-relaxed">{repo.description}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Bottom: stat bars + logo */}
+                        <div className="px-6 pb-6">
+                            {hasAttributes && (
+                                <AttributeBars repo={repo} />
+                            )}
+                            <div className="flex justify-end mt-4">
+                                <Link href="/" className="opacity-60 hover:opacity-100 transition-opacity">
+                                    <img src="/assets/logo-full.svg" alt="star-history" className="h-5" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    /* ── Portrait layout ── */
+                    <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
                         {/* Type bar */}
                         <div className="flex items-center justify-between px-5 py-3 border-b border-neutral-100 text-xs text-neutral-500" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center gap-3">
@@ -87,12 +228,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                         {/* Identity */}
                         <div className="px-5 pt-5 pb-4">
                             <div className="flex items-start gap-3">
-                                <img
-                                    src={avatarUrl}
-                                    alt={repo.owner}
-                                    className="w-12 h-12 rounded-full shrink-0"
-                                    loading="lazy"
-                                />
+                                <img src={avatarUrl} alt={repo.owner} className="w-12 h-12 rounded-full shrink-0" loading="lazy" />
                                 <div className="min-w-0 flex-1">
                                     <div className="flex items-center gap-2 flex-wrap">
                                         <h1 className="text-xl font-bold leading-tight" style={{ fontFamily: '"xkcd", cursive' }}>
@@ -120,43 +256,16 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         </div>
 
-                        {/* Radar Chart + Attribute Bars */}
                         {hasAttributes && (
                             <div className="border-t border-neutral-100 px-4 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                                 <RadarChart attributes={repo.attributes} />
-                                <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 px-1">
-                                    {ATTRIBUTE_LABELS.map(({ key, label }, i) => {
-                                        const value = repo.attributes[key];
-                                        const pct = Math.min(value, 100);
-                                        const w = pct * 1.94;
-                                        return (
-                                            <div key={key} className="flex items-center gap-2" style={{ transform: `rotate(${XKCD_ROTATIONS[i % XKCD_ROTATIONS.length]}deg)` }}>
-                                                <span className="text-xs text-neutral-500 w-20 text-right shrink-0">{label}</span>
-                                                <div className="flex-1 h-6">
-                                                    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 20">
-                                                        {/* Hand-drawn track */}
-                                                        <path
-                                                            d="M2,2 C30,0.5 70,3.5 100,1.5 C130,0.5 170,3.5 198,1.5 C199,5 198.5,10 199,15.5 C198,17.5 170,15.5 130,18 C100,17 70,18.5 30,17.5 C10,18 2,17 1,15.5 C0.5,11 1,5.5 2,2 Z"
-                                                            fill="#f5f5f5" stroke="#d4d4d4" strokeWidth="0.8"
-                                                        />
-                                                        {/* Hand-drawn fill */}
-                                                        {pct > 2 && (
-                                                            <path
-                                                                d={`M2,2 C${w*0.3},1 ${w*0.6},4.5 ${w*0.85},2 L${w},2.5 C${w+0.5},6 ${w},11 ${w+0.5},16 L${w},16.5 C${w*0.6},15.5 ${w*0.3},18 2,17 C0,12 0,6 2,2 Z`}
-                                                                fill="#16a34a" opacity="0.85"
-                                                            />
-                                                        )}
-                                                    </svg>
-                                                </div>
-                                                <span className="text-xs text-neutral-400 w-7 shrink-0">{value}</span>
-                                            </div>
-                                        );
-                                    })}
+                                <div className="mt-4">
+                                    <AttributeBars repo={repo} />
                                 </div>
                             </div>
                         )}
 
-                        {/* Footer – xkcd-style stats */}
+                        {/* Footer stats */}
                         <div className="border-t border-neutral-100 px-5 py-4" style={{ fontFamily: '"xkcd", cursive' }}>
                             <div className="flex items-center justify-between flex-wrap gap-3">
                                 <div className="flex items-center gap-5 flex-wrap">
@@ -178,7 +287,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo }) => {
                             </div>
                         </div>
                     </div>
-                </PageShell>
+                )}
+            </PageShell>
         </>
     )
 }
