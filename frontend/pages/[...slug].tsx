@@ -22,9 +22,11 @@ const SVG_ATTRS: Record<string, string> = {
     "fill-opacity": "fillOpacity",
     "text-anchor": "textAnchor",
     "dominant-baseline": "dominantBaseline",
+    "clip-path": "clipPath",
+    "clip-rule": "clipRule",
 }
 
-const SVG_TAGS = new Set(["svg", "path", "circle", "rect", "line", "text", "g"])
+const SVG_TAGS = new Set(["svg", "path", "circle", "rect", "line", "text", "g", "image", "clipPath", "defs"])
 
 function vnodeToReact(node: any, key?: number): ReactNode {
     if (node == null || typeof node === "boolean") return null
