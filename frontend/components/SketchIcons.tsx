@@ -56,7 +56,7 @@ export const WobblyClipDefs = ({ id }: { id: string }) => (
 )
 
 export const SketchStarIcon = ({ size = 18 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block align-text-bottom">
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block" style={{ verticalAlign: "-3px" }}>
     <defs>
       <filter id="xkcdify-star" filterUnits="userSpaceOnUse" x="-2" y="-2" width="28" height="28">
         <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
