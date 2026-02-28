@@ -244,12 +244,11 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                         {state.latestBlog?.title}
                     </Link>
                 </div>
-                <span className="mx-2 text-gray-300">|</span>
                 <a
                     href="https://newsletter.star-history.com/subscribe"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:underline flex items-center gap-1"
+                    className="ml-3 text-gray-700 hover:underline flex items-center gap-1"
                 >
                    <SketchMailboxIcon /> Subscribe
                 </a>
