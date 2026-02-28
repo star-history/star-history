@@ -18,6 +18,26 @@ function h(type: string, props: Record<string, any> | null, ...children: any[]):
   };
 }
 
+/** Build an organic wax-blob path (slightly irregular circle). */
+function waxBlobPath(cx: number, cy: number, r: number): string {
+  const points = 64;
+  const step = (Math.PI * 2) / points;
+  const parts: string[] = [];
+  for (let i = 0; i <= points; i++) {
+    const a = step * i;
+    // Gentle organic wobble via layered sines
+    const wobble = r
+      + 3.5 * Math.sin(a * 3 + 1.2)
+      + 2 * Math.sin(a * 5 + 0.7)
+      + 1.5 * Math.cos(a * 7 + 2.1);
+    const x = cx + Math.cos(a) * wobble;
+    const y = cy + Math.sin(a) * wobble;
+    parts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)},${y.toFixed(1)}`);
+  }
+  parts.push("Z");
+  return parts.join(" ");
+}
+
 export interface Landscape1Data {
   name: string;
   description: string | null;
@@ -30,7 +50,6 @@ export interface Landscape1Data {
   radarSvgBase64: string | null;
   attributes: { stars: number; new_stars: number; pushes: number; contributors: number; issues_closed: number; forks: number } | null;
   rank: number | null;
-  total_repos: number | null;
   logoBase64: string;
 }
 
@@ -45,15 +64,6 @@ const LANG_COLORS: Record<string, string> = {
   OCaml: "#3be133",
 };
 
-const ATTR_LABELS: { key: string; label: string }[] = [
-  { key: "stars", label: "Stars" },
-  { key: "new_stars", label: "New Stars" },
-  { key: "forks", label: "Forks" },
-  { key: "contributors", label: "Contributors" },
-  { key: "pushes", label: "Pushes" },
-  { key: "issues_closed", label: "Issues" },
-];
-
 function fmt(n: number): string {
   if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
   if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "k";
@@ -62,6 +72,28 @@ function fmt(n: number): string {
 
 function fmtDate(s: string): string {
   return new Date(s).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
+const WOBBLY_PATH = "M10,3 C25,1 75,2 90,4 C96,9 98,25 97,50 C98,75 96,91 91,96 C75,98 25,99 9,96 C3,91 2,75 3,50 C2,25 4,9 10,3 Z";
+
+const SEAL_LAYER_BASE = {
+  position: "absolute" as const, width: 160, height: 160,
+  display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center",
+};
+
+function sealTextLayer(
+  rank: number, date: string,
+  colors: { label: string; rank: string; date: string },
+  offset: { top: number; left: number },
+  opacity?: number,
+) {
+  return h(
+    "div",
+    { style: { ...SEAL_LAYER_BASE, top: offset.top, left: offset.left, ...(opacity != null ? { opacity } : {}) } },
+    h("span", { style: { fontSize: 12, textTransform: "uppercase", letterSpacing: "0.18em", color: colors.label } }, "Rank"),
+    h("span", { style: { fontSize: 42, fontWeight: "bold", lineHeight: 1, color: colors.rank } }, `#${rank}`),
+    h("span", { style: { fontSize: 9, marginTop: 4, color: colors.date, letterSpacing: "0.05em" } }, date),
+  );
 }
 
 export function buildLandscape1(data: Landscape1Data) {
@@ -80,25 +112,49 @@ export function buildLandscape1(data: Landscape1Data) {
       },
     },
 
-    // Rank stamp (top-right, rotated)
+    // Sealing wax rank badge (top-right)
     data.rank && data.rank > 0
       ? h(
           "div",
           {
             style: {
-              position: "absolute", top: 24, right: 40,
+              position: "absolute", top: 10, right: 24,
               display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              width: 110, height: 110,
-              border: "3px solid #dc2626", borderRadius: 55,
-              transform: "rotate(-12deg)", opacity: 0.8,
-              color: "#dc2626",
+              width: 160, height: 160,
+              transform: "rotate(-8deg)",
             },
           },
-          h("span", { style: { fontSize: 9, textTransform: "uppercase", letterSpacing: "0.1em" } }, "Global Rank"),
-          h("span", { style: { fontSize: 28, fontWeight: "bold", lineHeight: 1 } }, `#${data.rank}`),
-          data.total_repos
-            ? h("span", { style: { fontSize: 8, marginTop: 2 } }, `of ${fmt(data.total_repos)}`)
-            : null,
+          // Wax blob shape
+          h(
+            "svg",
+            {
+              viewBox: "0 0 160 160",
+              width: 160, height: 160,
+              style: { position: "absolute", top: 0, left: 0 },
+            },
+            // Shadow — soft offset
+            h("path", { d: waxBlobPath(83, 83, 68), fill: "#00000018" }),
+            // Main wax body — rich crimson
+            h("path", { d: waxBlobPath(80, 80, 68), fill: "#7a1818" }),
+            // Broad highlight — upper-left lighter zone
+            h("ellipse", { cx: "66", cy: "64", rx: "38", ry: "30", fill: "#a52828", opacity: "0.45" }),
+            // Specular dot — small bright reflection
+            h("ellipse", { cx: "60", cy: "58", rx: "10", ry: "7", fill: "#d44", opacity: "0.4" }),
+            // Inner groove ring
+            h("circle", { cx: "80", cy: "80", r: "52", fill: "none", stroke: "#5a1010", "stroke-width": "1.8", opacity: "0.5" }),
+            // Inner groove highlight
+            h("circle", { cx: "80", cy: "80", r: "51", fill: "none", stroke: "#c4956a", "stroke-width": "0.6", opacity: "0.25" }),
+          ),
+          // Embossed gold text — three layers: shadow, body, highlight
+          ...(() => {
+            const date = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+            const dark = "#4a1a08";
+            return [
+              sealTextLayer(data.rank!, date, { label: dark, rank: dark, date: dark }, { top: 1.5, left: 1 }),
+              sealTextLayer(data.rank!, date, { label: "#c8940e", rank: "#daa520", date: "#c8940e" }, { top: 0, left: 0 }),
+              sealTextLayer(data.rank!, date, { label: "#ffe066", rank: "#ffe066", date: "#ffe066" }, { top: -0.5, left: -0.5 }, 0.45),
+            ];
+          })(),
         )
       : null,
 
@@ -110,36 +166,40 @@ export function buildLandscape1(data: Landscape1Data) {
       // Left column: avatar + info
       h(
         "div",
-        { style: { display: "flex", flexDirection: "column", flex: 1 } },
+        { style: { display: "flex", flexDirection: "column", flex: 1, justifyContent: "center" } },
 
         // Avatar + name
         h(
           "div",
-          { style: { display: "flex", alignItems: "flex-start" } },
-          // Wobbly-framed avatar
+          { style: { display: "flex", alignItems: "center" } },
+          // Wobbly-framed avatar (fixed 140×140 square)
           h(
-            "div",
-            { style: { display: "flex", position: "relative", width: 120, height: 120, flexShrink: 0 } },
-            h("img", {
-              src: data.avatarBase64,
-              width: 120, height: 120,
-              style: { borderRadius: 14 },
-            }),
-            h(
-              "svg",
-              {
-                viewBox: "0 0 100 100",
-                width: 128, height: 128,
-                style: { position: "absolute", top: -4, left: -4 },
-              },
-              h("path", {
-                d: "M10,3 C25,1 75,2 90,4 C96,9 98,25 97,50 C98,75 96,91 91,96 C75,98 25,99 9,96 C3,91 2,75 3,50 C2,25 4,9 10,3 Z",
-                fill: "none",
-                stroke: "#525252",
-                "stroke-width": "1.2",
-                "stroke-linecap": "round",
-              }),
+            "svg",
+            {
+              viewBox: "0 0 100 100",
+              width: 140, height: 140,
+              style: { flexShrink: 0 },
+            },
+            h("defs", null,
+              h("clipPath", { id: "wobbly-clip" },
+                h("path", {
+                  d: WOBBLY_PATH,
+                }),
+              ),
             ),
+            h("image", {
+              href: data.avatarBase64,
+              x: "0", y: "0", width: "100", height: "100",
+              preserveAspectRatio: "xMidYMid slice",
+              "clip-path": "url(#wobbly-clip)",
+            }),
+            h("path", {
+              d: WOBBLY_PATH,
+              fill: "none",
+              stroke: "#525252",
+              "stroke-width": "1.2",
+              "stroke-linecap": "round",
+            }),
           ),
           h(
             "div",
@@ -184,51 +244,92 @@ export function buildLandscape1(data: Landscape1Data) {
           ),
         ),
 
-        // Large stats
+        // Stats: absolute numbers
         h(
           "div",
-          { style: { display: "flex", alignItems: "baseline", gap: 40, marginTop: "auto", paddingTop: 24 } },
+          { style: { display: "flex", alignItems: "baseline", gap: 40, marginTop: 60 } },
           h(
             "div",
-            { style: { display: "flex", flexDirection: "column" } },
+            { style: { display: "flex", alignItems: "center", gap: 8 } },
+            h(
+              "svg",
+              { viewBox: "0 0 24 24", width: 28, height: 28 },
+              h("path", {
+                d: "M12 2L14.9 8.6L22 9.3L16.8 14L18.2 21L12 17.3L5.8 21L7.2 14L2 9.3L9.1 8.6Z",
+                fill: "#facc15", stroke: "#a3a3a3", "stroke-width": "1.2", "stroke-linecap": "round", "stroke-linejoin": "round",
+              }),
+            ),
             h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#171717" } }, fmt(data.stars)),
-            h("span", { style: { fontSize: 18, color: "#737373", marginTop: 2 } }, "stars"),
           ),
           h(
             "div",
-            { style: { display: "flex", flexDirection: "column" } },
+            { style: { display: "flex", alignItems: "center", gap: 8 } },
+            h(
+              "svg",
+              { viewBox: "0 0 32 24", width: 36, height: 28 },
+              // Fork: tines
+              h("path", { d: "M3 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              h("path", { d: "M7 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              h("path", { d: "M11 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              h("path", { d: "M15 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              // Fork: neck
+              h("path", { d: "M3 10C3 13 5 14 9 14C13 14 15 13 15 10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              // Fork: handle
+              h("path", { d: "M9 14V22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.8", "stroke-linecap": "round" }),
+              // Knife: blade
+              h("path", { d: "M22 2C22 2 25 3 25 8C25 11 24 13 23 14", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round", "stroke-linejoin": "round" }),
+              h("path", { d: "M22 2V14", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
+              // Knife: handle
+              h("path", { d: "M22 14V22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.8", "stroke-linecap": "round" }),
+            ),
             h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#525252" } }, fmt(data.forks)),
-            h("span", { style: { fontSize: 18, color: "#737373", marginTop: 2 } }, "forks"),
           ),
+          data.attributes
+            ? h(
+                "div",
+                { style: { display: "flex", alignItems: "center", gap: 8 } },
+                h(
+                  "svg",
+                  { viewBox: "0 0 32 24", width: 36, height: 28 },
+                  // Left person: head + body
+                  h("circle", { cx: "7", cy: "6", r: "3.5", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3" }),
+                  h("path", { d: "M1 22C1 17 3.5 14 7 14C10.5 14 13 17 13 22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3", "stroke-linecap": "round" }),
+                  // Right person: head + body (slightly behind)
+                  h("circle", { cx: "22", cy: "6", r: "3.5", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3" }),
+                  h("path", { d: "M16 22C16 17 18.5 14 22 14C25.5 14 28 17 28 22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3", "stroke-linecap": "round" }),
+                ),
+                h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#525252" } }, String(data.attributes.contributors)),
+              )
+            : null,
         ),
 
-        // Attribute progress bars (compact row)
+        // Stats: weekly numbers
         data.attributes
           ? h(
               "div",
-              { style: { display: "flex", flexWrap: "wrap", gap: "6px 24px", marginTop: 18 } },
-              ...ATTR_LABELS.map(({ key, label }) => {
-                const value = (data.attributes as any)[key] as number;
-                return h(
-                  "div",
-                  { style: { display: "flex", alignItems: "center", gap: 8, width: 180 } },
-                  h("span", { style: { fontSize: 13, color: "#737373", width: 80, textAlign: "right" } }, label),
-                  h(
-                    "div",
-                    { style: { display: "flex", flex: 1, height: 10, backgroundColor: "#f5f5f5", borderRadius: 5, overflow: "hidden" } },
-                    h("div", {
-                      style: {
-                        width: `${Math.min(value, 99)}%`,
-                        height: "100%",
-                        backgroundColor: "#16a34a",
-                        borderRadius: 5,
-                        opacity: 0.85,
-                      },
-                    }),
-                  ),
-                  h("span", { style: { fontSize: 12, color: "#a3a3a3", width: 24 } }, String(value)),
-                );
-              }),
+              { style: { display: "flex", alignItems: "center", gap: 20, marginTop: 14, paddingTop: 14, borderTop: "1.5px solid #f0f0f0" } },
+              h("span", { style: { fontSize: 16, color: "#a3a3a3", textTransform: "uppercase", letterSpacing: "0.08em" } }, "Weekly"),
+              h("span", { style: { fontSize: 16, color: "#e5e5e5" } }, "|"),
+              h(
+                "div",
+                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.new_stars)),
+                h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "stars"),
+              ),
+              h("span", { style: { fontSize: 14, color: "#d4d4d4" } }, "\u00b7"),
+              h(
+                "div",
+                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.pushes)),
+                h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "pushes"),
+              ),
+              h("span", { style: { fontSize: 14, color: "#d4d4d4" } }, "\u00b7"),
+              h(
+                "div",
+                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.issues_closed)),
+                h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "issues closed"),
+              ),
             )
           : null,
       ),
@@ -237,21 +338,21 @@ export function buildLandscape1(data: Landscape1Data) {
       data.radarSvgBase64
         ? h(
             "div",
-            { style: { display: "flex", alignItems: "center", justifyContent: "center", width: 380, flexShrink: 0 } },
+            { style: { display: "flex", alignItems: "center", justifyContent: "center", width: 580, flexShrink: 0 } },
             h("img", {
               src: data.radarSvgBase64,
-              width: 360, height: 360,
+              width: 560, height: 560,
             }),
           )
         : null,
     ),
 
-    // Branding footer
+    // Branding footer (pinned bottom-right)
     h(
       "div",
-      { style: { display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 8, marginTop: 12 } },
-      h("img", { src: data.logoBase64, width: 20, height: 20 }),
-      h("span", { style: { fontSize: 16, color: "#a3a3a3" } }, "star-history.com"),
+      { style: { position: "absolute", bottom: 20, right: 48, display: "flex", alignItems: "center", gap: 8 } },
+      h("img", { src: data.logoBase64, width: 18, height: 18, style: { opacity: 0.6 } }),
+      h("span", { style: { fontSize: 15, color: "#b5b5b5", letterSpacing: "0.02em" } }, "star-history.com"),
     ),
   );
 }

@@ -130,7 +130,6 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
         radarSvgBase64,
         attributes: hasAttributes ? repo.attributes : null,
         rank: repo.rank,
-        total_repos: repo.total_repos,
         logoBase64: "/assets/logo-icon.png",
     }), [repo, radarSvgBase64, hasAttributes])
 
@@ -148,10 +147,6 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const handleDownload = useCallback(async () => {
         if (!cardRef.current) return
         try {
-            // Remove scale so html-to-image captures at native 1200×630
-            const prevTransform = cardRef.current.style.transform
-            cardRef.current.style.transform = "none"
-
             const imgs = cardRef.current.querySelectorAll("img")
             const origSrcs: string[] = []
             await Promise.all(Array.from(imgs).map(async (img, i) => {
@@ -172,15 +167,22 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 }
             }))
 
-            const dataUrl = await toPng(cardRef.current, { cacheBust: true, pixelRatio: 2 })
+            // Capture at native 1200×630 without modifying the DOM
+            const dataUrl = await toPng(cardRef.current, {
+                cacheBust: true,
+                pixelRatio: 2,
+                width: 1200,
+                height: 630,
+                style: { transform: "none" },
+            })
+
+            // Restore image srcs
+            imgs.forEach((img, i) => { img.src = origSrcs[i] })
+
             const link = document.createElement("a")
             link.download = `${repo.name.replace("/", "-")}-stats.png`
             link.href = dataUrl
             link.click()
-
-            // Restore
-            imgs.forEach((img, i) => { img.src = origSrcs[i] })
-            cardRef.current.style.transform = prevTransform
         } catch (err) {
             console.error("Failed to export card as PNG:", err)
         }

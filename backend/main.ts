@@ -72,7 +72,6 @@ const startServer = async () => {
           avatarBase64,
           attributes: cardData?.attributes ?? null,
           rank: cardData?.rank ?? null,
-          total_repos: cardData?.total_repos ?? null,
         });
         ctx.type = "image/svg+xml;charset=utf-8";
         ctx.set("cache-control", "max-age=86400");

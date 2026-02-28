@@ -16,7 +16,6 @@ export interface OgCardInput {
   avatarBase64: string;
   attributes: RepoAttributes | null;
   rank: number | null;
-  total_repos: number | null;
 }
 
 // ---------- Assets (loaded once at init) ----------
