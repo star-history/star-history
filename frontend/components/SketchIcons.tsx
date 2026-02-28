@@ -45,6 +45,16 @@ export const SketchLightBulbIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 )
 
+export const WobblyClipDefs = ({ id }: { id: string }) => (
+  <svg className="absolute w-0 h-0">
+    <defs>
+      <clipPath id={id} clipPathUnits="objectBoundingBox">
+        <path d="M0.03,0.02 C0.1,0.005 0.2,0.04 0.32,0.015 C0.44,0.0 0.52,0.035 0.62,0.01 C0.74,0.0 0.85,0.035 0.95,0.02 C0.985,0.06 0.99,0.2 0.985,0.5 C0.99,0.8 0.985,0.94 0.95,0.98 C0.85,0.995 0.74,0.965 0.62,0.99 C0.52,0.97 0.44,1.0 0.32,0.98 C0.2,0.995 0.1,0.97 0.03,0.98 C0.01,0.94 0.015,0.8 0.02,0.5 C0.015,0.2 0.01,0.06 0.03,0.02 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
 export const SketchMailboxIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block">
     <defs>

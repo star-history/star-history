@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { sponsorList, randomSponsors } from "../helpers/sponsor"
 import Link from "next/link"
+import { WobblyClipDefs } from "./SketchIcons"
 
 type Sponsor = {
     className?: string
@@ -29,10 +30,9 @@ const BytebaseBanner: React.FC<Sponsor> = ({ className }) => {
                     </Link>
                     - {sponsor.landingSlogan}
                 </p>
-                <Link href={sponsor.link} target="_blank">
-                    <div className="hover:opacity-80">
-                        <img className="w-auto max-w-full" src={sponsor.landingImage} alt={sponsor.name} />
-                    </div>
+                <Link href={sponsor.link} target="_blank" className="relative hover:opacity-80">
+                    <WobblyClipDefs id="wobbly-sponsor" />
+                    <img className="w-auto max-w-full" src={sponsor.landingImage} alt={sponsor.name} style={{ clipPath: "url(#wobbly-sponsor)" }} />
                 </Link>
             </div>
         </div>
