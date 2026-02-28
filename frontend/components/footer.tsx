@@ -1,4 +1,5 @@
-import { FaTwitter, FaEnvelope, FaRss } from "react-icons/fa"
+import { FaEnvelope, FaRss } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 
 const Footer = () => {
     return (
@@ -9,8 +10,8 @@ const Footer = () => {
                     <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="mailto:star@bytebase.com" target="_blank" rel="noopener noreferrer">
                         <FaEnvelope />
                     </a>
-                    <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="https://twitter.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
-                        <FaTwitter />
+                    <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="https://x.com/StarHistoryHQ" target="_blank" rel="noopener noreferrer">
+                        <FaXTwitter />
                     </a>
                     <a className="h-full flex flex-row justify-center items-center ml-2 text-lg hover:opacity-80" href="https://rss.beehiiv.com/feeds/BbNzf9ozGZ.xml" target="_blank" rel="noopener noreferrer">
                         <FaRss />

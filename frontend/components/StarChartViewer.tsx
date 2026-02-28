@@ -279,7 +279,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         text += `${addtionLink}%0A%0A`
         text += `${encodeURIComponent("#starhistory #GitHub #OpenSource ")} via @StarHistoryHQ`
 
-        const tweetShareLink = `https://twitter.com/intent/tweet?text=${text}`
+        const tweetShareLink = `https://x.com/intent/tweet?text=${text}`
         window.open(tweetShareLink, "_blank")
     }
 
@@ -450,7 +450,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                     className="ml-2 mb-2 btn-secondary"
                                     onClick={handleShareToTwitterBtnClick}
                                 >
-                                    <i className="fab fa-twitter"></i> Share on Twitter{" "}
+                                    <i className="fab fa-x-twitter"></i> Share{" "}
                                 </button>
                             </div>
                         </div>
