@@ -36,7 +36,6 @@ Code shared between frontend and backend. Both import from here: frontend via `@
 | `common/api.tsx` | GitHub API client (star history fetching, pagination, token auth) |
 | `common/chart.tsx` | Chart data transformation (supports `insertZeroPoint` option) |
 | `packages/xy-chart.tsx` | D3 XY chart renderer (lobster emoji gated on `envType: "browser"`) |
-| `packages/radar-chart.tsx` | D3 interactive radar chart |
 | `packages/radar-svg.ts` | Pure-math radar SVG string generator (no D3, for satori/OG cards) |
 | `packages/card-landscape1.tsx` | OG card layout builder |
 | `packages/types.tsx` | D3 chart types, color palettes (`colors`, `darkColors`, `colorsCompact`) |
