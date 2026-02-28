@@ -56,6 +56,13 @@ const LeftSidebar: React.FC = () => {
                                     <span className="text-xs text-gray-400 w-4 shrink-0">
                                         {i + 1}
                                     </span>
+                                    <img
+                                        src={`https://github.com/${item.name.split("/")[0]}.png?size=32`}
+                                        alt=""
+                                        width={16}
+                                        height={16}
+                                        className="rounded-full shrink-0"
+                                    />
                                     <span className="truncate text-gray-700 group-hover:text-blue-600">
                                         {repoName}{item.name === "openclaw/openclaw" && " 🦞"}
                                     </span>
