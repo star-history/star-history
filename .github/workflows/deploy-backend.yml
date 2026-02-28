@@ -1,4 +1,4 @@
-name: Build and Push Backend Docker Image
+name: Deploy Backend to GKE
 
 on:
   push:
