@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react"
 import StarXYChart from "./Charts/StarXYChart"
 import TokenSettingDialog from "./TokenSettingDialog"
 import GenerateEmbedCodeDialog from "./GenerateEmbedCodeDialog"
+import { SketchPuzzleIcon } from "./SketchIcons"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
@@ -427,8 +428,8 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                     href="https://chrome.google.com/webstore/detail/iijibbcdddbhokfepbblglfgdglnccfn"
                                     target="_blank"
                                 >
-                                    <img className="w-5 h-auto mr-1" src="/assets/free.svg" alt="" />
-                                    <span className="text-dark">Get Chrome Extension</span>
+                                    <SketchPuzzleIcon size={20} />
+                                    <span className="text-dark ml-1">Get Chrome Extension</span>
                                 </a>
                             </div>
                             <div className="flex flex-row flex-wrap justify-end items-center mb-2">
