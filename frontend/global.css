@@ -89,6 +89,15 @@ body {
         @apply sticky top-28 flex flex-col w-full h-fit;
     }
 
+    /* ── Logo spin on hover ── */
+    .logo-spin:hover {
+        animation: spin-once 0.6s ease-in-out;
+    }
+    @keyframes spin-once {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
     /* ── Lobster walk animation ── */
     .lobster-walk {
         animation: lobster-walk-lg 32s linear infinite;
