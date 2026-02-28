@@ -168,10 +168,19 @@ export function buildLandscape1(data: Landscape1Data) {
         "div",
         { style: { display: "flex", flexDirection: "column", flex: 1, justifyContent: "center" } },
 
-        // Avatar + name
+        // Name (full width, above avatar row)
         h(
           "div",
-          { style: { display: "flex", alignItems: "center" } },
+          { "data-repo-name": true, style: { display: "flex", alignItems: "baseline", fontSize: 34, fontWeight: "bold", whiteSpace: "nowrap" } },
+          h("span", { style: { color: "#a3a3a3", fontWeight: "normal" } }, owner),
+          h("span", { style: { color: "#d4d4d4", margin: "0 5px" } }, "/"),
+          h("span", { style: { color: "#171717" } }, repoName),
+        ),
+
+        // Avatar + description row
+        h(
+          "div",
+          { style: { display: "flex", alignItems: "flex-start", marginTop: 16 } },
           // Wobbly-framed avatar (fixed 140×140 square)
           h(
             "svg",
@@ -204,19 +213,11 @@ export function buildLandscape1(data: Landscape1Data) {
           h(
             "div",
             { style: { display: "flex", flexDirection: "column", marginLeft: 24, flex: 1 } },
-            // Name
-            h(
-              "div",
-              { "data-repo-name": true, style: { display: "flex", alignItems: "baseline", fontSize: 34, fontWeight: "bold" } },
-              h("span", { style: { color: "#a3a3a3", fontWeight: "normal" } }, owner),
-              h("span", { style: { color: "#d4d4d4", margin: "0 5px" } }, "/"),
-              h("span", { style: { color: "#171717" } }, repoName),
-            ),
             // Description
             data.description
               ? h(
                   "span",
-                  { style: { fontSize: 20, color: "#525252", marginTop: 14, lineHeight: 1.5 } },
+                  { style: { fontSize: 20, color: "#525252", lineHeight: 1.5 } },
                   data.description.length > 120
                     ? data.description.slice(0, 117) + "..."
                     : data.description,
