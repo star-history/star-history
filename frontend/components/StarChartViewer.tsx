@@ -7,15 +7,15 @@ import { SketchPuzzleIcon } from "./SketchIcons"
 import EmbedMarkdownSection from "./EmbedMarkdownSection"
 import { useAppStore } from "store"
 import { FaSpinner } from "react-icons/fa"
-import { XYChartData } from "shared/packages/xy-chart"
-import { convertDataToChartData, getRepoData } from "shared/common/chart"
+import { XYChartData } from "@shared/packages/xy-chart"
+import { convertDataToChartData, getRepoData } from "@shared/common/chart"
 import toast from "helpers/toast"
 import { ChartMode, RepoData, LegendPosition } from "@shared/types/chart"
 
 const VALID_LEGEND_POSITIONS: LegendPosition[] = ["top-left", "bottom-right"]
 import BytebaseBanner from "./SponsorView"
 import utils from "@shared/common/utils"
-import api from "shared/common/api"
+import api from "@shared/common/api"
 
 interface State {
     chartMode: "Date" | "Timeline"
@@ -110,7 +110,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
             } else {
                 setState((prevState) => ({
                     ...prevState,
-                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode)
+                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, { insertZeroPoint: true })
                 }))
             }
         },

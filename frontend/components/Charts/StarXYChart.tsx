@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import XYChart, { XYChartData } from "../../shared/packages/xy-chart"
+import XYChart, { XYChartData } from "@shared/packages/xy-chart"
 import { MIN_CHART_WIDTH } from "../../helpers/consts"
 import { LegendPosition } from "@shared/types/chart"
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import RadarChartD3 from "../../shared/packages/radar-chart"
+import RadarChartD3 from "@shared/packages/radar-chart"
 import type { RepoAttributes } from "../../helpers/repo-data"
 
 export const ATTRIBUTE_LABELS: { key: keyof RepoAttributes; label: string }[] = [
