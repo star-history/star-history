@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@koa/cors": "5.0.0",
-    "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.6.3",
     "d3-axis": "^2.1.0",
     "d3-scale": "^3.3.0",

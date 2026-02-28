@@ -105,7 +105,7 @@ export function exportLeaderboard(db: Database.Database, limit = 20): void {
     "SELECT name, stars_total FROM repos ORDER BY stars_total DESC LIMIT ?"
   ).all(limit) as { name: string; stars_total: number }[];
 
-  const outPath = path.join(__dirname, "..", "frontend", "helpers", "leaderboard.json");
+  const outPath = path.join(__dirname, "data", "leaderboard.json");
   writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
   console.log(`Exported top ${rows.length} repos to leaderboard.json`);
 }
@@ -120,7 +120,7 @@ export function exportWeeklyRanking(db: Database.Database, limit = 20): void {
     LIMIT ?
   `).all(limit) as { name: string; new_stars: number; stars_total: number }[];
 
-  const outPath = path.join(__dirname, "..", "frontend", "helpers", "weekly-ranking.json");
+  const outPath = path.join(__dirname, "data", "weekly-ranking.json");
   writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
   console.log(`Exported top ${rows.length} repos by weekly stars to weekly-ranking.json`);
 }
@@ -131,7 +131,7 @@ export function exportRepos(db: Database.Database): void {
             homepage, forks_count, open_issues_count, created_at, archived
      FROM repos ORDER BY stars_total DESC`
   ).all();
-  const outPath = path.join(__dirname, "..", "frontend", "helpers", "repos.json");
+  const outPath = path.join(__dirname, "data", "repos.json");
   writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
   console.log(`Exported ${rows.length} repos to repos.json`);
 }
@@ -243,7 +243,7 @@ export function exportRepoCards(db: Database.Database): void {
   });
 
   const output = { min_stars: MIN_STARS, repos: cards };
-  const outPath = path.join(__dirname, "..", "frontend", "helpers", "repo-cards.json");
+  const outPath = path.join(__dirname, "data", "repo-cards.json");
   writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
   console.log(`Exported ${cards.length} repo cards to repo-cards.json`);
 }

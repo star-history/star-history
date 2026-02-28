@@ -15,13 +15,15 @@ import {
   getBase64Image,
 } from "./utils.js";
 import { getNextToken, initTokenFromEnv } from "./token.js";
-import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const.js";
+import { CHART_SIZES, MAX_REQUEST_AMOUNT } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
+import { initRepoData, getRepoCard } from "./repo-data.js";
 import fetch from "node-fetch";
 
 const startServer = async () => {
   await initTokenFromEnv();
   initOgAssets();
+  initRepoData();
 
   const app = new Koa();
   app.use(cors());
@@ -36,54 +38,16 @@ const startServer = async () => {
   // Example request link:
   // /svg?repos=star-history/star-history&type=timeline&logscale&legend=bottom-right
   router.get("/svg", async (ctx) => {
-    const theme = `${ctx.query["theme"]}`;
-    const transparent = `${ctx.query["transparent"]}`
     const repos = `${ctx.query["repos"]}`.split(",");
-    const typeParam = `${ctx.query["type"]}`;
-    const timelineParam = ctx.query["timeline"];
-    const dateParam = ctx.query["date"];
-    const logscaleParam = ctx.query["logscale"];
-    const legendParam = `${ctx.query["legend"]}`;
-    let type: ChartMode = "Date";
-    let size = `${ctx.query["size"]}`;
-
-    // Parse chart type - support both type=timeline/date (preferred) and naked timeline/date (backward compatibility)
-    if (typeParam && typeParam !== "undefined") {
-      const lowerType = typeParam.toLowerCase();
-      if (lowerType === "timeline") {
-        type = "Timeline";
-      } else if (lowerType === "date") {
-        type = "Date";
-      }
-    } else if (timelineParam !== undefined) {
-      // Backward compatibility: naked timeline parameter
-      type = "Timeline";
-    } else if (dateParam !== undefined) {
-      // Backward compatibility: naked date parameter
-      type = "Date";
-    }
-
-    // Parse logscale parameter - presence of parameter means enabled
-    const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
-
-    // Parse legend position parameter
-    let legendPosition: "top-left" | "bottom-right" = "top-left";
-    if (legendParam === "bottom-right") {
-      legendPosition = "bottom-right";
-    }
-
-    if (!CHART_SIZES.includes(size)) {
-      size = "laptop";
-    }
 
     if (repos.length === 0) {
       ctx.throw(400, `${http.STATUS_CODES[400]}: Repo name required`);
       return;
     }
 
-    // Card-style OG image: returns a 1200×630 PNG
+    // Landscape1 card: returns a 1200×630 SVG with radar chart and attributes
     const style = `${ctx.query["style"]}`;
-    if (style === "card") {
+    if (style === "landscape1") {
       const repo = repos[0];
       const token = getNextToken();
       try {
@@ -96,7 +60,8 @@ const startServer = async () => {
         }
         const gh = (await res.json()) as any;
         const avatarBase64 = await getBase64Image(`${gh.owner.avatar_url}&s=200`);
-        const png = await renderOgCard({
+        const cardData = getRepoCard(repo);
+        const svg = await renderOgCard({
           name: gh.full_name,
           description: gh.description,
           stars: gh.stargazers_count,
@@ -105,15 +70,53 @@ const startServer = async () => {
           license: gh.license?.spdx_id || null,
           created_at: gh.created_at,
           avatarBase64,
+          attributes: cardData?.attributes ?? null,
+          rank: cardData?.rank ?? null,
+          total_repos: cardData?.total_repos ?? null,
         });
-        ctx.type = "image/png";
+        ctx.type = "image/svg+xml;charset=utf-8";
         ctx.set("cache-control", "max-age=86400");
-        ctx.body = png;
+        ctx.body = svg;
       } catch (error: any) {
         const status = error.status || 500;
         ctx.throw(status, `Failed to generate card: ${error.message}`);
       }
       return;
+    }
+
+    // --- Star history chart params (only relevant when style is not set) ---
+    const theme = `${ctx.query["theme"]}`;
+    const transparent = `${ctx.query["transparent"]}`;
+    const typeParam = `${ctx.query["type"]}`;
+    const timelineParam = ctx.query["timeline"];
+    const dateParam = ctx.query["date"];
+    const logscaleParam = ctx.query["logscale"];
+    const legendParam = `${ctx.query["legend"]}`;
+    let type: ChartMode = "Date";
+    let size = `${ctx.query["size"]}`;
+
+    if (typeParam && typeParam !== "undefined") {
+      const lowerType = typeParam.toLowerCase();
+      if (lowerType === "timeline") {
+        type = "Timeline";
+      } else if (lowerType === "date") {
+        type = "Date";
+      }
+    } else if (timelineParam !== undefined) {
+      type = "Timeline";
+    } else if (dateParam !== undefined) {
+      type = "Date";
+    }
+
+    const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
+
+    let legendPosition: "top-left" | "bottom-right" = "top-left";
+    if (legendParam === "bottom-right") {
+      legendPosition = "bottom-right";
+    }
+
+    if (!CHART_SIZES.includes(size)) {
+      size = "laptop";
     }
 
     const repoData = [];

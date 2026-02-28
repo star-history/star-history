@@ -142,7 +142,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     ]
     const description = descParts.join("").slice(0, 160)
     const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
-    const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date&style=card`
+    const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&style=landscape1`
     const tweetText = `${repo.name} - ${formatNumber(repo.stars_total)} stars on GitHub`
     const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(tweetText)}`
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
