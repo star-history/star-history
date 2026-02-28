@@ -136,10 +136,6 @@ export function buildLandscape1(data: Landscape1Data) {
             h("path", { d: waxBlobPath(83, 83, 68), fill: "#44000028" }),
             // Main wax body
             h("path", { d: waxBlobPath(80, 80, 68), fill: "#e13129" }),
-            // Broad highlight — upper-left lighter zone
-            h("ellipse", { cx: "66", cy: "64", rx: "38", ry: "30", fill: "#f04a42", opacity: "0.45" }),
-            // Specular dot — small bright reflection
-            h("ellipse", { cx: "60", cy: "58", rx: "10", ry: "7", fill: "#f87870", opacity: "0.4" }),
             // Inner groove ring
             h("circle", { cx: "80", cy: "80", r: "52", fill: "none", stroke: "#b02420", "stroke-width": "1.8", opacity: "0.5" }),
             // Inner groove highlight
