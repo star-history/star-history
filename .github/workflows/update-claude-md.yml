@@ -33,6 +33,7 @@ jobs:
         with:
           mode: "agent"
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ steps.app-token.outputs.token }}
           allowed_tools: "Read,Glob,Grep,Edit,Write"
           direct_prompt: |
             Read the current CLAUDE.md at the repo root. Your job is to regenerate the
