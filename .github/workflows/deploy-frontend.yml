@@ -34,13 +34,23 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: frontend/pnpm-lock.yaml
+          cache-dependency-path: |
+            arena/pnpm-lock.yaml
+            frontend/pnpm-lock.yaml
 
-      - name: Install dependencies
+      - name: Install arena dependencies
+        run: pnpm install
+        working-directory: arena
+
+      - name: Export arena data
+        run: pnpm run export
+        working-directory: arena
+
+      - name: Install frontend dependencies
         run: pnpm install
         working-directory: frontend
 
-      - name: Build
+      - name: Build frontend
         run: pnpm run build
         working-directory: frontend
 
