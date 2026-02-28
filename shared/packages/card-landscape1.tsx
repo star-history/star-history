@@ -310,7 +310,6 @@ export function buildLandscape1(data: Landscape1Data) {
               "div",
               { style: { display: "flex", alignItems: "center", gap: 20, marginTop: 14, paddingTop: 14, borderTop: "1.5px solid #f0f0f0" } },
               h("span", { style: { fontSize: 16, color: "#a3a3a3", textTransform: "uppercase", letterSpacing: "0.08em" } }, "Weekly"),
-              h("span", { style: { fontSize: 16, color: "#e5e5e5" } }, "|"),
               h(
                 "div",
                 { title: `New stars: ${data.attributes.new_stars} · Top ${100 - data.attributes.new_stars}%`, style: { display: "flex", alignItems: "baseline", gap: 5 } },
