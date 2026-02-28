@@ -1,26 +1,47 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head"
 import Link from "next/link"
-import { useCallback, useRef } from "react"
+import { createElement, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import type { ReactNode } from "react"
 import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
-import { SketchStarIcon, SketchForkIcon } from "../components/SketchIcons"
-import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
+import { buildLandscape1 } from "shared/packages/card-landscape1"
+import { renderRadarSvg } from "shared/packages/radar-svg"
 
-const LANGUAGE_COLORS: Record<string, string> = {
-    TypeScript: "#3178c6", JavaScript: "#f1e05a", Python: "#3572A5",
-    Go: "#00ADD8", Rust: "#dea584", Java: "#b07219", "C++": "#f34b7d",
-    C: "#555555", "C#": "#178600", Ruby: "#701516", PHP: "#4F5D95",
-    Swift: "#F05138", Kotlin: "#A97BFF", Dart: "#00B4AB", Shell: "#89e051",
-    Lua: "#000080", Scala: "#c22d40", Elixir: "#6e4a7e", Haskell: "#5e5086",
-    Zig: "#ec915c", Vue: "#41b883", HTML: "#e34c26", CSS: "#563d7c",
-    R: "#198CE7", Svelte: "#ff3e00", MDX: "#fcb32c", Nix: "#7e7eff",
-    OCaml: "#3be133",
+// --- VDOM-to-React conversion (buildLandscape1 returns a Satori-compatible VDOM tree) ---
+
+const SVG_ATTRS: Record<string, string> = {
+    "stroke-width": "strokeWidth",
+    "stroke-linecap": "strokeLinecap",
+    "stroke-linejoin": "strokeLinejoin",
+    "stroke-dasharray": "strokeDasharray",
+    "fill-opacity": "fillOpacity",
+    "text-anchor": "textAnchor",
+    "dominant-baseline": "dominantBaseline",
 }
+
+const SVG_TAGS = new Set(["svg", "path", "circle", "rect", "line", "text", "g"])
+
+function vnodeToReact(node: any, key?: number): ReactNode {
+    if (node == null || typeof node === "boolean") return null
+    if (typeof node === "string" || typeof node === "number") return node
+    if (!node.type) return null
+    const { children, ...attrs } = node.props || {}
+    if (SVG_TAGS.has(node.type)) {
+        for (const k of Object.keys(attrs)) {
+            if (SVG_ATTRS[k]) { attrs[SVG_ATTRS[k]] = attrs[k]; delete attrs[k] }
+        }
+    }
+    if (key !== undefined) attrs.key = key
+    const kids = children == null ? [] : Array.isArray(children) ? children : [children]
+    return createElement(node.type, attrs, ...kids.map((c: any, i: number) => vnodeToReact(c, i)))
+}
+
+// --- Page ---
 
 interface RepoPageProps {
     repo: RepoCardData
@@ -31,26 +52,6 @@ function formatDate(dateStr: string): string {
     const d = new Date(dateStr)
     return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
-
-const AttributeBars = ({ repo }: { repo: RepoCardData }) => (
-    <div className="flex flex-wrap gap-x-6 gap-y-1.5">
-        {ATTRIBUTE_LABELS.map(({ key, label }) => {
-            const value = repo.attributes[key];
-            return (
-                <div key={key} className="flex items-center gap-2 w-[180px]">
-                    <span className="text-[13px] text-neutral-500 w-20 text-right shrink-0">{label}</span>
-                    <div className="flex-1 h-2.5 bg-neutral-100 rounded-full overflow-hidden">
-                        <div
-                            className="h-full bg-green-600 rounded-full"
-                            style={{ width: `${Math.min(value, 99)}%`, opacity: 0.85 }}
-                        />
-                    </div>
-                    <span className="text-xs text-neutral-400 w-6 shrink-0">{value}</span>
-                </div>
-            );
-        })}
-    </div>
-)
 
 const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: string }) => (
     <div className="flex items-center mb-2 w-full max-w-5xl" style={{ fontFamily: '"xkcd", cursive' }}>
@@ -89,6 +90,9 @@ const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: s
 
 const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const cardRef = useRef<HTMLDivElement>(null)
+    const wrapperRef = useRef<HTMLDivElement>(null)
+    const [scale, setScale] = useState(1)
+
     const title = `${repo.name} GitHub Star History - ${formatNumber(repo.stars_total)} Stars`
     const descParts = [
         `Star history and stats for ${repo.name}`,
@@ -103,15 +107,51 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&style=landscape1`
     const tweetText = `${repo.name} - ${formatNumber(repo.stars_total)} stars on GitHub`
     const tweetUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(tweetText)}`
-    const repoShortName = repo.name.split("/")[1]
-    const avatarUrl = `https://avatars.githubusercontent.com/${repo.owner}?s=460`
-    const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
+
     const hasAttributes = repo.attributes && Object.values(repo.attributes).some(v => v > 0)
+
+    // Build radar SVG as data-URL (same as backend og-card.ts)
+    const radarSvgBase64 = useMemo(() => {
+        if (!hasAttributes) return null
+        const svg = renderRadarSvg(repo.attributes, 400)
+        return `data:image/svg+xml;base64,${btoa(svg)}`
+    }, [repo.attributes, hasAttributes])
+
+    // Build the shared VDOM layout — same code path as the /svg?style=landscape1 endpoint
+    const cardVNode = useMemo(() => buildLandscape1({
+        name: repo.name,
+        description: repo.description,
+        stars: repo.stars_total,
+        forks: repo.forks_count,
+        language: repo.language,
+        license: repo.license,
+        created_at: repo.created_at,
+        avatarBase64: `https://avatars.githubusercontent.com/${repo.owner}?s=460`,
+        radarSvgBase64,
+        attributes: hasAttributes ? repo.attributes : null,
+        rank: repo.rank,
+        total_repos: repo.total_repos,
+        logoBase64: "/assets/logo-icon.png",
+    }), [repo, radarSvgBase64, hasAttributes])
+
+    // Scale the native 1200×630 card to fit the container
+    useEffect(() => {
+        const el = wrapperRef.current
+        if (!el) return
+        const update = () => setScale(el.clientWidth / 1200)
+        update()
+        const observer = new ResizeObserver(() => update())
+        observer.observe(el)
+        return () => observer.disconnect()
+    }, [])
 
     const handleDownload = useCallback(async () => {
         if (!cardRef.current) return
         try {
-            // Pre-fetch avatar as base64 to avoid CORS issues during export
+            // Remove scale so html-to-image captures at native 1200×630
+            const prevTransform = cardRef.current.style.transform
+            cardRef.current.style.transform = "none"
+
             const imgs = cardRef.current.querySelectorAll("img")
             const origSrcs: string[] = []
             await Promise.all(Array.from(imgs).map(async (img, i) => {
@@ -138,8 +178,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
             link.href = dataUrl
             link.click()
 
-            // Restore original srcs
+            // Restore
             imgs.forEach((img, i) => { img.src = origSrcs[i] })
+            cardRef.current.style.transform = prevTransform
         } catch (err) {
             console.error("Failed to export card as PNG:", err)
         }
@@ -194,103 +235,12 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
             <PageShell>
                 <Toolbar onDownload={handleDownload} tweetUrl={tweetUrl} />
 
-                <div ref={cardRef} className="relative w-full max-w-5xl aspect-video flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden px-12 py-10" style={{ fontFamily: '"xkcd", cursive' }}>
-                    {/* Rank stamp */}
-                    {repo.rank > 0 && (
-                        <div className="absolute top-6 right-10 -rotate-12 z-10 w-[110px] h-[110px] rounded-full border-[3px] border-red-600 opacity-80 flex flex-col items-center justify-center text-red-600">
-                            <span className="text-[9px] uppercase tracking-widest">Global Rank</span>
-                            <span className="text-[28px] font-bold leading-none">#{repo.rank}</span>
-                            {repo.total_repos > 0 && (
-                                <span className="text-[8px] mt-0.5">of {formatNumber(repo.total_repos)}</span>
-                            )}
-                        </div>
-                    )}
-
-                    {/* Main row: left info + right radar */}
-                    <div className="flex flex-1 gap-8 min-h-0">
-                        {/* Left column */}
-                        <div className="flex flex-col flex-1 min-w-0">
-                            {/* Avatar + name row */}
-                            <div className="flex items-start">
-                                <div className="relative w-[120px] h-[120px] shrink-0">
-                                    <img
-                                        src={avatarUrl}
-                                        alt={repo.owner}
-                                        className="w-[120px] h-[120px] rounded-[14px]"
-                                        loading="lazy"
-                                    />
-                                    <svg className="absolute -inset-1 w-[128px] h-[128px]" viewBox="0 0 100 100" fill="none" stroke="#525252" strokeWidth="1.2" strokeLinecap="round">
-                                        <path d="M10,3 C25,1 75,2 90,4 C96,9 98,25 97,50 C98,75 96,91 91,96 C75,98 25,99 9,96 C3,91 2,75 3,50 C2,25 4,9 10,3 Z" />
-                                    </svg>
-                                </div>
-                                <div className="flex flex-col ml-6 flex-1 min-w-0">
-                                    <h1 className="flex items-baseline text-[34px] font-bold leading-tight">
-                                        <span className="text-neutral-400 font-normal">{repo.owner}</span>
-                                        <span className="text-neutral-300 mx-1">/</span>
-                                        <span className="text-neutral-900">{repoShortName}</span>
-                                    </h1>
-                                    {repo.description && (
-                                        <p className="text-xl text-neutral-600 mt-3.5 leading-relaxed">
-                                            {repo.description.length > 120 ? repo.description.slice(0, 117) + "..." : repo.description}
-                                        </p>
-                                    )}
-                                    <div className="flex items-center gap-4 mt-3.5 text-lg text-neutral-500">
-                                        {repo.language && (
-                                            <span className="flex items-center gap-1.5">
-                                                {langColor && <span className="w-[11px] h-[11px] rounded-full inline-block" style={{ backgroundColor: langColor }} />}
-                                                {repo.language}
-                                            </span>
-                                        )}
-                                        {repo.license && <span>{repo.license}</span>}
-                                        {repo.created_at && (
-                                            <span className="text-neutral-400">since {formatDate(repo.created_at)}</span>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Large stats — pushed to bottom */}
-                            <div className="flex items-baseline gap-10 mt-auto pt-6">
-                                <div className="flex flex-col">
-                                    <span className="text-[44px] font-bold text-neutral-900 leading-none flex items-center gap-2">
-                                        <SketchStarIcon size={36} />{formatNumber(repo.stars_total)}
-                                    </span>
-                                    <span className="text-lg text-neutral-500 mt-0.5">stars</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[44px] font-bold text-neutral-600 leading-none flex items-center gap-2">
-                                        <SketchForkIcon size={36} />{formatNumber(repo.forks_count)}
-                                    </span>
-                                    <span className="text-lg text-neutral-500 mt-0.5">forks</span>
-                                </div>
-                            </div>
-
-                            {/* Attribute bars */}
-                            {hasAttributes && (
-                                <div className="mt-4">
-                                    <AttributeBars repo={repo} />
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Right column: radar chart */}
-                        {hasAttributes && (
-                            <div className="flex items-center justify-center w-[380px] shrink-0">
-                                <div className="w-[360px] h-[360px]">
-                                    <RadarChart attributes={repo.attributes} />
-                                </div>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* Footer */}
-                    <div className="flex justify-end items-center gap-2 mt-3">
-                        <Link href="/" className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                            <img src="/assets/logo-icon.png" alt="" className="h-5 w-5" />
-                            <span className="text-base text-neutral-400">star-history.com</span>
-                        </Link>
+                <div ref={wrapperRef} className="w-full max-w-5xl rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "1200/630" }}>
+                    <div ref={cardRef} style={{ width: 1200, height: 630, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+                        {vnodeToReact(cardVNode)}
                     </div>
                 </div>
+
                 {repo.name.toLowerCase() === "openclaw/openclaw" && (
                     <div className="relative w-full max-w-5xl h-16 mt-4">
                         <img
