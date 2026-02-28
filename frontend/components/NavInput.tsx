@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
 import { GITHUB_REPO_URL_REG } from "../helpers/consts"
-import repos from "@arena-data/repos.json"
+import reposData from "@arena-data/repos.json"
 
-const repoList = repos as { name: string; stars_total: number }[]
+const repoList = (reposData as any).repos as { name: string; stars_total: number }[]
 
 function formatStars(count: number): string {
     if (count >= 1000) {
