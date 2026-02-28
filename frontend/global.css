@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +7,6 @@
 @font-face {
     font-family: "xkcd";
     src: url("./styles/xkcd.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Inter";
-    src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
 }
 
 html,
