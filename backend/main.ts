@@ -1,4 +1,5 @@
 import http from "http";
+import path from "path";
 import Koa from "koa";
 import Router from "koa-router";
 import cors from "@koa/cors";
@@ -17,13 +18,13 @@ import {
 import { getNextToken, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, MAX_REQUEST_AMOUNT } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
-import { initRepoData, getRepoCard } from "./repo-data.js";
+import { loadRepos } from "../shared/common/repo-data.js";
 import fetch from "node-fetch";
 
 const startServer = async () => {
   await initTokenFromEnv();
   initOgAssets();
-  initRepoData();
+  const repoStore = loadRepos(path.join(process.cwd(), "data", "repos.json"));
 
   const app = new Koa();
   app.use(cors());
@@ -49,7 +50,7 @@ const startServer = async () => {
     const style = `${ctx.query["style"]}`;
     if (style === "landscape1") {
       const repo = repos[0];
-      const cardData = getRepoCard(repo);
+      const cardData = repoStore.getRepo(repo);
       if (!cardData) {
         ctx.throw(404, `Repo not found in arena dataset: ${repo}`);
         return;

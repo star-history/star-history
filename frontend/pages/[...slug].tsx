@@ -5,9 +5,10 @@ import { createElement, useCallback, useEffect, useMemo, useRef, useState } from
 import type { ReactNode } from "react"
 import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import path from "path"
 import { formatNumber } from "../helpers/format"
-import { loadRepos } from "../helpers/repo-data"
-import type { RepoCardData } from "../helpers/repo-data"
+import { loadRepos } from "@shared/common/repo-data"
+import type { RepoCardData } from "@shared/types/arena"
 import PageShell from "../components/PageShell"
 import { buildLandscape1 } from "@shared/packages/card-landscape1"
 import { renderRadarSvg } from "@shared/packages/radar-svg"
@@ -274,8 +275,10 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
 
 // --- Data loading ---
 
+const REPOS_PATH = path.join(process.cwd(), "..", "arena", "data", "repos.json")
+
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { repos } = loadRepos()
+    const { repos } = loadRepos(REPOS_PATH)
 
     const paths = repos.map((repo) => ({
         params: { slug: repo.name.toLowerCase().split("/") },
@@ -285,21 +288,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
-    const { repos, min_stars } = loadRepos()
+    const store = loadRepos(REPOS_PATH)
 
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {
         return { notFound: true }
     }
 
-    const fullName = slug.join("/")
-    const repo = repos.find((r) => r.name.toLowerCase() === fullName.toLowerCase())
+    const repo = store.getRepo(slug.join("/"))
 
     if (!repo) {
         return { notFound: true }
     }
 
-    return { props: { repo, minStars: min_stars } }
+    return { props: { repo, minStars: store.min_stars } }
 }
 
 export default RepoPage
