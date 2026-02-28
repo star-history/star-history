@@ -24,7 +24,25 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 ## Project Structure
 
-The repo has three main directories: `frontend/`, `backend/`, and `arena/`.
+The repo has four main directories: `shared/`, `frontend/`, `backend/`, and `arena/`.
+
+### Shared (`shared/`)
+
+Code shared between frontend and backend. Both import from here: frontend via `@shared/*` tsconfig alias, backend via `../shared/` relative paths. A root `package.json` provides shared dependencies (axios, d3, dayjs, lodash).
+
+| Directory | Purpose |
+|-----------|---------|
+| `common/utils.tsx` | Cross-platform utilities (date formatting, clipboard, etc.) |
+| `common/api.tsx` | GitHub API client (star history fetching, pagination, token auth) |
+| `common/chart.tsx` | Chart data transformation (supports `insertZeroPoint` option) |
+| `packages/xy-chart.tsx` | D3 XY chart renderer (lobster emoji gated on `envType: "browser"`) |
+| `packages/radar-chart.tsx` | D3 interactive radar chart |
+| `packages/radar-svg.ts` | Pure-math radar SVG string generator (no D3, for satori/OG cards) |
+| `packages/card-landscape1.tsx` | OG card layout builder |
+| `packages/types.tsx` | D3 chart types, color palettes (`colors`, `darkColors`, `colorsCompact`) |
+| `packages/components/` | ToolTip component |
+| `packages/utils/` | D3 draw utilities (axis, labels, legend, watermark, filters, fonts) |
+| `types/chart.tsx` | TypeScript types (ChartMode, RepoData, StarRecord, etc.) |
 
 ### Frontend
 
@@ -35,9 +53,6 @@ All frontend code lives under `frontend/`.
 | `pages/` | Next.js page routes (Pages Router) |
 | `components/` | React UI components |
 | `store/` | React Context state management with URL hash sync |
-| `shared/common/` | GitHub API client (`api.tsx`), chart data logic (`chart.tsx`), utilities |
-| `shared/packages/` | D3 chart implementation (`xy-chart.tsx`), radar chart, components |
-| `shared/types/` | TypeScript type definitions |
 | `helpers/` | Utilities (storage, toast, formatting, constants) and static data JSON |
 | `styles/` | Tailwind config, global CSS, fonts (Inter font family) |
 | `server/` | LRU cache for repo star data |
@@ -63,14 +78,14 @@ Layout wrappers: `_app.tsx` (per-page `getLayout` pattern), `_document.tsx`.
 
 1. **URL hash** (`#repo1&repo2&type=date&logscale`) → parsed in `store/index.tsx`
 2. `RepoInputer` manages repo list → triggers `StarChartViewer`
-3. `shared/common/api.tsx` fetches star history from GitHub API (with pagination & token auth)
-4. `shared/common/chart.tsx` transforms data to D3-compatible format
-5. `shared/packages/xy-chart.tsx` renders the SVG chart via D3
+3. `@shared/common/api.tsx` fetches star history from GitHub API (with pagination & token auth)
+4. `@shared/common/chart.tsx` transforms data to D3-compatible format (frontend passes `{ insertZeroPoint: true }`)
+5. `@shared/packages/xy-chart.tsx` renders the SVG chart via D3
 
 ## Key Files for Common Changes
 
-- **Chart rendering**: `shared/packages/xy-chart.tsx`, `components/StarChartViewer.tsx`, `components/Charts/StarXYChart.tsx`
-- **GitHub API**: `shared/common/api.tsx`
+- **Chart rendering**: `@shared/packages/xy-chart.tsx`, `components/StarChartViewer.tsx`, `components/Charts/StarXYChart.tsx`
+- **GitHub API**: `@shared/common/api.tsx`
 - **State management**: `store/index.tsx`
 - **Repo detail page**: `pages/[...slug].tsx`, `components/PageShell.tsx`
 - **Blog system**: `pages/blog/[slug].tsx`, `scripts/generateBlogJson.mts`
@@ -92,7 +107,6 @@ The `backend/` directory is a Koa.js server (deployed as `api.star-history.com`)
 | `cache.ts` | LRU cache (10K repos, 1GB, 24h TTL) for star records |
 | `token.ts` | GitHub token rotation |
 | `utils.ts` | SVG manipulation, image conversion helpers |
-| `shared/` | Code shared with frontend (API client, chart data, D3 chart, types) |
 | `assets/` | Fonts (xkcd.ttf, Inter.ttf) and logo for OG card rendering |
 
 ## Arena (Data Pipeline)

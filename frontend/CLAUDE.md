@@ -28,14 +28,14 @@ This is a **Next.js 14 + TypeScript** application for visualizing GitHub reposit
 - Repo list and chart mode synced with URL hash
 - Client-side caching using Map-based storage
 
-**Chart System**: Custom D3 implementation
-- `shared/packages/xy-chart.tsx` - Core D3 chart component
-- `shared/common/chart.tsx` - Data transformation and API orchestration
+**Chart System**: Custom D3 implementation (code lives in root `shared/`, imported via `@shared/`)
+- `@shared/packages/xy-chart.tsx` - Core D3 chart component
+- `@shared/common/chart.tsx` - Data transformation and API orchestration
 - `components/Charts/StarXYChart.tsx` - React wrapper component
 - Supports two modes: Date (calendar time) and Timeline (days since first star)
 
-**GitHub API Integration**: 
-- `shared/common/api.tsx` handles pagination and rate limiting
+**GitHub API Integration**:
+- `@shared/common/api.tsx` handles pagination and rate limiting
 - Token-based authentication support
 - Comprehensive error handling for 401/403/404/501 responses
 
@@ -47,11 +47,9 @@ This is a **Next.js 14 + TypeScript** application for visualizing GitHub reposit
 
 ### Key Directories
 - `components/` - React UI components (charts, dialogs, etc.)
-- `shared/common/` - API integration and chart data logic
-- `shared/packages/` - D3 chart implementation
-- `shared/types/` - TypeScript definitions
 - `store/` - React Context state management
 - `helpers/` - Utilities (storage, toast, constants)
+- Chart code, API client, and types live in root `shared/` (see root CLAUDE.md)
 
 ### Chart Features
 - SVG export to PNG functionality

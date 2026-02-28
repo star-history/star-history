@@ -19,21 +19,18 @@ This is a Koa.js backend server that generates SVG charts of GitHub repository s
 
 ### Core Flow
 1. **Token Management** (`token.ts`): Validates and rotates GitHub API tokens from environment file
-2. **API Requests** (`shared/common/api.tsx`): Fetches star history data from GitHub API 
+2. **API Requests** (`../shared/common/api.tsx`): Fetches star history data from GitHub API
 3. **Caching** (`cache.ts`): LRU cache (10K repos, 1GB max, 24h TTL) for star records and logo URLs
-4. **Chart Generation** (`shared/packages/xy-chart.js`): D3-based SVG chart rendering via JSDOM
+4. **Chart Generation** (`../shared/packages/xy-chart.tsx`): D3-based SVG chart rendering via JSDOM
 5. **SVG Optimization**: Uses SVGO to minimize bandwidth
 
 ### Key Components
 - **Main Server** (`main.ts`): Single `/svg` endpoint that accepts query params (repos, type, size, theme, transparent)
-- **Data Processing** (`shared/common/chart.tsx`): Converts API data to chart format, handles Date vs Timeline modes
+- **Data Processing** (`../shared/common/chart.tsx`): Converts API data to chart format, handles Date vs Timeline modes
 - **Utilities** (`utils.ts`): Image conversion, SVG manipulation, size calculations
 
-### Shared Directory
-The `shared/` directory contains code shared with the frontend:
-- `common/`: API clients, chart data processing, utilities
-- `packages/`: Chart rendering components (xy-chart)
-- `types/`: TypeScript definitions for chart data structures
+### Shared Code
+Chart code, API client, and types live in root `shared/` (shared with frontend). Backend imports via `../shared/` relative paths. See root CLAUDE.md for the full shared directory listing.
 
 ### Chart Types
 - **Date Mode**: X-axis shows actual dates
