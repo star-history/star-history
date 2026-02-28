@@ -76,6 +76,24 @@ export const SketchStarIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 )
 
+export const SketchForkIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block align-text-bottom">
+    <defs>
+      <filter id="xkcdify-fork" filterUnits="userSpaceOnUse" x="-2" y="-2" width="28" height="28">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
+        <feDisplacementMap scale="3" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise" />
+      </filter>
+    </defs>
+    <g filter="url(#xkcdify-fork)">
+      <circle cx="7" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="17" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="7" cy="19" r="2.5" stroke="currentColor" strokeWidth="1.3" />
+      <path d="M7 7.5V16.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M17 7.5V10C17 12 14.5 13 12 13C9.5 13 7 12 7 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+    </g>
+  </svg>
+)
+
 export const SketchMailboxIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block">
     <defs>

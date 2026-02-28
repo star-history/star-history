@@ -8,7 +8,7 @@ import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
-import { SketchGitHubIcon } from "../components/SketchIcons"
+import { SketchGitHubIcon, SketchStarIcon, SketchForkIcon } from "../components/SketchIcons"
 import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
 
 type LayoutMode = "landscape" | "portrait"
@@ -255,10 +255,10 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                         <div className="flex items-center px-5 pt-4 pb-2 text-sm text-neutral-500">
                             <div className="flex items-center gap-5 whitespace-nowrap">
                                 <span className="text-base text-neutral-800 -rotate-1">
-                                    ⭐ {formatNumber(repo.stars_total)}
+                                    <SketchStarIcon size={18} /> {formatNumber(repo.stars_total)}
                                 </span>
                                 <span className="text-base text-neutral-600 rotate-[0.5deg]">
-                                    🍴 {formatNumber(repo.forks_count)}
+                                    <SketchForkIcon size={18} /> {formatNumber(repo.forks_count)}
                                 </span>
                                 {repo.created_at && (
                                     <span className="text-sm text-neutral-400 -rotate-[0.5deg]">
@@ -401,10 +401,10 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                             <div className="flex items-center justify-between flex-wrap gap-3">
                                 <div className="flex items-center gap-5 whitespace-nowrap">
                                     <span className="text-lg text-neutral-800 -rotate-1">
-                                        ⭐ {formatNumber(repo.stars_total)}
+                                        <SketchStarIcon size={18} /> {formatNumber(repo.stars_total)}
                                     </span>
                                     <span className="text-base text-neutral-600 rotate-[0.5deg]">
-                                        🍴 {formatNumber(repo.forks_count)}
+                                        <SketchForkIcon size={18} /> {formatNumber(repo.forks_count)}
                                     </span>
                                     {repo.created_at && (
                                         <span className="text-sm text-neutral-400 -rotate-[0.5deg]">
