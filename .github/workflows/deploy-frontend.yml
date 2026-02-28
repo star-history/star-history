@@ -7,10 +7,14 @@ on:
       - main
     paths:
       - 'frontend/**'
+      - 'shared/**'
+      - 'arena/**'
       - '.github/workflows/deploy-frontend.yml'
   pull_request:
     paths:
       - 'frontend/**'
+      - 'shared/**'
+      - 'arena/**'
       - '.github/workflows/deploy-frontend.yml'
 
 jobs:
