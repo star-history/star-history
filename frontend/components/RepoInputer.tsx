@@ -3,7 +3,7 @@ import { head } from "lodash"
 import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import toast from "../helpers/toast"
 import { useAppStore } from "../store"
-import { FaExternalLinkAlt } from "react-icons/fa"
+import { SketchExternalLinkIcon } from "./SketchIcons"
 import Link from "next/link"
 import { Blog } from "helpers/types/blog"
 import blogs from "helpers/blog.json"
@@ -285,8 +285,8 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                             >
                                 {item.name}
                             </span>
-                            <a href={`https://github.com/${item.name}`} target="_blank" className="flex items-center">
-                                <FaExternalLinkAlt className="fas fa-external-link-alt fa-sm text-gray-400 hover:text-green-600" />
+                            <a href={`https://github.com/${item.name}`} target="_blank" className="flex items-center text-gray-400 hover:text-green-600">
+                                <SketchExternalLinkIcon />
                             </a>
                         </div>
                     ))}
