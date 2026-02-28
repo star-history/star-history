@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useAppStore } from "../store"
 import utils from "../shared/common/utils"
 import toast from "../helpers/toast"
+import { SketchStarIcon } from "./SketchIcons"
 
 const EmbedChart: React.FC = () => {
     const store = useAppStore()
@@ -44,7 +45,7 @@ const EmbedChart: React.FC = () => {
     return (
         <div className="w-full h-auto mb-12 px-3 mx-auto max-w-4xl flex flex-col justify-start items-center">
             <p className="leading-8 mb-3">
-                🌟 Show real-time chart on {repoText}{" "}
+                <SketchStarIcon size={18} /> Show real-time chart on {repoText}{" "}
                 {singleRepo ? (
                     <a className="link-mono" href={`https://github.com/${singleRepo}/blob/master/README.md`} target="_blank">
                         README.md
