@@ -97,7 +97,7 @@ useEffect(() => {
                 <span className="text-white flex items-center gap-1"><SketchLightBulbIcon /> How to use this site</span>
               </Link>
             </div>
-            <div className="h-full hidden md:flex flex-row justify-end items-center">
+            <div className="h-full hidden md:flex flex-row justify-end items-center px-3">
               <GitHubStarButton />
             </div>
 
