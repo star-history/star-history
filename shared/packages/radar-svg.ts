@@ -13,8 +13,8 @@ interface RepoAttributes {
   forks: number;
 }
 
-const LABELS = ["Stars", "New Stars", "Forks", "Contributors", "Pushes", "Issues Closed"];
-const KEYS: (keyof RepoAttributes)[] = ["stars", "new_stars", "forks", "contributors", "pushes", "issues_closed"];
+const LABELS = ["Stars", "New Stars", "Issues Closed", "Contributors", "Pushes", "Forks"];
+const KEYS: (keyof RepoAttributes)[] = ["stars", "new_stars", "issues_closed", "contributors", "pushes", "forks"];
 
 // Seeded PRNG so the wobble is deterministic.
 function createRng(seed: number) {
@@ -73,7 +73,7 @@ function sketchyPolygonPath(
 }
 
 export function renderRadarSvg(attributes: RepoAttributes, size = 400): string {
-  const margin = 50;
+  const margin = 70;
   const radius = (size - margin * 2) / 2;
   const cx = size / 2;
   const cy = size / 2;
@@ -155,11 +155,11 @@ export function renderRadarSvg(attributes: RepoAttributes, size = 400): string {
   // Axis labels
   for (let i = 0; i < numAxes; i++) {
     const angle = angleSlice * i - Math.PI / 2;
-    const labelRadius = radius + 28;
+    const labelRadius = radius + (i === 1 || i === 2 ? 40 : 28);
     const x = Math.cos(angle) * labelRadius;
     const y = Math.sin(angle) * labelRadius;
     parts.push(
-      `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="14" fill="#555" stroke="none">${LABELS[i]}</text>`
+      `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle" dominant-baseline="central" font-size="17" fill="#555" stroke="none">${LABELS[i]}</text>`
     );
   }
 
