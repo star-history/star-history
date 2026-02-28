@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
-import leaderboard from "../../arena/data/leaderboard.json"
-import weeklyRankingData from "../../arena/data/weekly-ranking.json"
+import leaderboard from "../helpers/leaderboard.json"
+import weeklyRankingData from "../helpers/weekly-ranking.json"
 
 const weeklyRanking = weeklyRankingData as { name: string; new_stars: number; stars_total: number }[]
 
