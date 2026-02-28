@@ -1,14 +1,14 @@
 const path = require("path");
 
 const sharedDir = path.resolve(__dirname, "../shared");
-const arenaDataDir = path.resolve(__dirname, "../arena/data");
+const ghDataDir = path.resolve(__dirname, "../gh/data");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "export",
     webpack: (config, { defaultLoaders }) => {
         config.resolve.alias["@shared"] = sharedDir;
-        config.resolve.alias["@arena-data"] = arenaDataDir;
+        config.resolve.alias["@gh-data"] = ghDataDir;
         // Ensure shared/ code can resolve packages from frontend/node_modules,
         // and preserve bare-import resolution (e.g. "store", "helpers/toast")
         // by including the frontend directory itself as a module root.

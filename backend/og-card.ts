@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { buildLandscape1 } from "../shared/packages/card-landscape1.js";
 import { renderRadarSvg } from "../shared/packages/radar-svg.js";
-import type { RepoAttributes } from "../shared/types/arena.js";
+import type { RepoAttributes } from "../shared/types/gh.js";
 
 export interface OgCardInput {
   name: string;

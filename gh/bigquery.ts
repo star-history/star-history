@@ -16,7 +16,7 @@ function loadCredentials(): Record<string, string> {
     return JSON.parse(readFileSync(keyPath, "utf-8"));
   } catch {
     throw new Error(
-      "GCP credentials not found. Set GCP_SERVICE_ACCOUNT_BIGQUERY env var or place arena/gcp-service-account.json"
+      "GCP credentials not found. Set GCP_SERVICE_ACCOUNT_BIGQUERY env var or place gh/gcp-service-account.json"
     );
   }
 }

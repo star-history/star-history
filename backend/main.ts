@@ -51,7 +51,7 @@ const startServer = async () => {
       const repo = repos[0];
       const cardData = repoStore.getRepo(repo);
       if (!cardData) {
-        ctx.throw(404, `Repo not found in arena dataset: ${repo}`);
+        ctx.throw(404, `Repo not found in gh dataset: ${repo}`);
         return;
       }
       const token = getNextToken();

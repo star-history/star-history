@@ -18,8 +18,8 @@ RUN cd backend && pnpm i
 COPY shared/ ./shared/
 COPY backend/ ./backend/
 
-# Copy arena data
-COPY arena/data/repos.json ./arena/data/repos.json
+# Copy gh data
+COPY gh/data/repos.json ./gh/data/repos.json
 
 # Build the application
 RUN cd backend && pnpm build

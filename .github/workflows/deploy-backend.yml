@@ -8,13 +8,13 @@ on:
     paths:
       - 'backend/**'
       - 'shared/**'
-      - 'arena/**'
+      - 'gh/**'
       - '.github/workflows/deploy-backend.yml'
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,28 +31,28 @@ jobs:
           cache: pnpm
           cache-dependency-path: |
             pnpm-lock.yaml
-            arena/pnpm-lock.yaml
+            gh/pnpm-lock.yaml
 
       - name: Install shared dependencies
         run: pnpm install
 
-      - name: Install arena dependencies
+      - name: Install gh dependencies
         run: pnpm install
-        working-directory: arena
+        working-directory: gh
 
-      - name: Generate arena data
+      - name: Generate gh data
         run: pnpm run generate
-        working-directory: arena
+        working-directory: gh
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -62,7 +62,7 @@ jobs:
           tags: bytebase/star-history:backend-latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:

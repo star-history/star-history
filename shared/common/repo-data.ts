@@ -1,10 +1,10 @@
 import fs from "fs";
 import path from "path";
-import type { RepoCardData } from "../types/arena.js";
+import type { RepoCardData } from "../types/gh.js";
 
 const DEFAULT_MIN_STARS = 50000;
 
-const REPOS_PATH = path.join(process.cwd(), "..", "arena", "data", "repos.json");
+const REPOS_PATH = path.join(process.cwd(), "..", "gh", "data", "repos.json");
 
 export interface RepoStore {
   min_stars: number;

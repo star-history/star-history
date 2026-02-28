@@ -1,4 +1,4 @@
-name: Arena Fetch
+name: GH Fetch
 
 on:
   workflow_dispatch:
@@ -22,31 +22,31 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: arena/pnpm-lock.yaml
+          cache-dependency-path: gh/pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: arena
+        working-directory: gh
 
-      - name: Fetch arena data
+      - name: Fetch gh data
         run: pnpm run fetch ${{ inputs.week }}
-        working-directory: arena
+        working-directory: gh
         env:
           GITHUB_TOKENS: ${{ secrets.GITHUB_TOKENS }}
           GCP_SERVICE_ACCOUNT_BIGQUERY: ${{ secrets.GCP_SERVICE_ACCOUNT_BIGQUERY }}
 
       - name: Show results
         run: |
-          ls -lh arena/data.db
-          sqlite3 arena/data.db "SELECT COUNT(*) || ' repos' FROM repos;"
-          sqlite3 arena/data.db "SELECT COUNT(*) || ' stat rows' FROM weekly_stats;"
-          sqlite3 arena/data.db "SELECT name, stars_total FROM repos ORDER BY stars_total DESC LIMIT 10;"
+          ls -lh gh/data.db
+          sqlite3 gh/data.db "SELECT COUNT(*) || ' repos' FROM repos;"
+          sqlite3 gh/data.db "SELECT COUNT(*) || ' stat rows' FROM weekly_stats;"
+          sqlite3 gh/data.db "SELECT name, stars_total FROM repos ORDER BY stars_total DESC LIMIT 10;"
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add arena/data.db arena/data/
+          git add gh/data.db gh/data/
           git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "data(arena): update $(date +%Y-W%V) arena stats"
+          git commit -m "data(gh): update $(date +%Y-W%V) gh stats"
           git push

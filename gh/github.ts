@@ -25,7 +25,7 @@ function loadTokens(): void {
 
   if (tokens.length === 0) {
     throw new Error(
-      "No GitHub tokens found. Set GITHUB_TOKENS env var or place arena/github-token.env"
+      "No GitHub tokens found. Set GITHUB_TOKENS env var or place gh/github-token.env"
     );
   }
 

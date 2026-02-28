@@ -24,7 +24,7 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 ## Project Structure
 
-The repo has four main directories: `shared/`, `frontend/`, `backend/`, and `arena/`.
+The repo has four main directories: `shared/`, `frontend/`, `backend/`, and `gh/`.
 
 ### Shared (`shared/`)
 
@@ -109,12 +109,12 @@ The `backend/` directory is a Koa.js server (deployed as `api.star-history.com`)
 | `utils.ts` | SVG manipulation, image conversion helpers |
 | `assets/` | Fonts (xkcd.ttf, Inter.ttf) and logo for OG card rendering |
 
-## Arena (Data Pipeline)
+## GH (Data Pipeline)
 
-The `arena/` directory contains the data pipeline that fetches repo stats and exports JSON files consumed by the frontend.
+The `gh/` directory contains the data pipeline that fetches repo stats and exports JSON files consumed by the frontend.
 
-- **Full run**: `cd arena && pnpm run fetch` — fetches from GitHub API + BigQuery, writes to SQLite (`data.db`), and exports JSON files
-- **Generate only**: `cd arena && pnpm run generate` — generates JSON files from existing `data.db` without fetching (useful after code changes)
+- **Full run**: `cd gh && pnpm run fetch` — fetches from GitHub API + BigQuery, writes to SQLite (`data.db`), and exports JSON files
+- **Generate only**: `cd gh && pnpm run generate` — generates JSON files from existing `data.db` without fetching (useful after code changes)
 - **DB is ephemeral**: `createDatabase()` drops all tables and recreates them on every run. The SQLite DB can always be regenerated from source APIs.
 - **Exported JSON files** (written to `frontend/helpers/`): `leaderboard.json`, `weekly-ranking.json`, `repos.json`, `repo-cards.json`
 

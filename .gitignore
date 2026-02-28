@@ -32,10 +32,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
-arena/gcp-service-account.json
-arena/github-token.env
-arena/*.db-shm
-arena/*.db-wal
+gh/gcp-service-account.json
+gh/github-token.env
+gh/*.db-shm
+gh/*.db-wal
 
 # vercel
 .vercel
@@ -49,4 +49,4 @@ token.env
 
 # generated files
 frontend/helpers/blog.json
-arena/data/
+gh/data/

@@ -8,13 +8,13 @@ on:
     paths:
       - 'frontend/**'
       - 'shared/**'
-      - 'arena/**'
+      - 'gh/**'
       - '.github/workflows/deploy-frontend.yml'
   pull_request:
     paths:
       - 'frontend/**'
       - 'shared/**'
-      - 'arena/**'
+      - 'gh/**'
       - '.github/workflows/deploy-frontend.yml'
 
 jobs:
@@ -40,19 +40,19 @@ jobs:
           cache: pnpm
           cache-dependency-path: |
             pnpm-lock.yaml
-            arena/pnpm-lock.yaml
+            gh/pnpm-lock.yaml
             frontend/pnpm-lock.yaml
 
       - name: Install shared dependencies
         run: pnpm install
 
-      - name: Install arena dependencies
+      - name: Install gh dependencies
         run: pnpm install
-        working-directory: arena
+        working-directory: gh
 
-      - name: Generate arena data
+      - name: Generate gh data
         run: pnpm run generate
-        working-directory: arena
+        working-directory: gh
 
       - name: Install frontend dependencies
         run: pnpm install
