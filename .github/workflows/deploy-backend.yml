@@ -7,6 +7,8 @@ on:
       - main
     paths:
       - 'backend/**'
+      - 'shared/**'
+      - 'arena/**'
       - '.github/workflows/deploy-backend.yml'
 
 jobs:
@@ -16,7 +18,35 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: |
+            pnpm-lock.yaml
+            arena/pnpm-lock.yaml
+
+      - name: Install shared dependencies
+        run: pnpm install
+
+      - name: Install arena dependencies
+        run: pnpm install
+        working-directory: arena
+
+      - name: Generate arena data
+        run: pnpm run generate
+        working-directory: arena
+
+      - name: Copy arena data into backend
+        run: mkdir -p backend/data && cp arena/data/repo-cards.json backend/data/
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       

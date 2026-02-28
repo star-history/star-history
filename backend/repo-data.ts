@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import type { RepoCardData } from "./arena-types.js";
 
-const DATA_PATH = path.join(process.cwd(), "..", "arena", "data", "repo-cards.json");
+const DATA_PATH = path.join(process.cwd(), "data", "repo-cards.json");
 
 let repoMap: Map<string, RepoCardData> | null = null;
 

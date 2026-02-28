@@ -50,3 +50,4 @@ token.env
 # generated files
 frontend/helpers/blog.json
 arena/data/
+backend/data/

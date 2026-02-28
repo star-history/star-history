@@ -49,6 +49,11 @@ const startServer = async () => {
     const style = `${ctx.query["style"]}`;
     if (style === "landscape1") {
       const repo = repos[0];
+      const cardData = getRepoCard(repo);
+      if (!cardData) {
+        ctx.throw(404, `Repo not found in arena dataset: ${repo}`);
+        return;
+      }
       const token = getNextToken();
       try {
         const res = await fetch(`https://api.github.com/repos/${repo}`, {
@@ -60,7 +65,6 @@ const startServer = async () => {
         }
         const gh = (await res.json()) as any;
         const avatarBase64 = await getBase64Image(`${gh.owner.avatar_url}&s=200`);
-        const cardData = getRepoCard(repo);
         const svg = await renderOgCard({
           name: gh.full_name,
           description: gh.description,
@@ -70,8 +74,8 @@ const startServer = async () => {
           license: gh.license?.spdx_id || null,
           created_at: gh.created_at,
           avatarBase64,
-          attributes: cardData?.attributes ?? null,
-          rank: cardData?.rank ?? null,
+          attributes: cardData.attributes,
+          rank: cardData.rank,
         });
         ctx.type = "image/svg+xml;charset=utf-8";
         ctx.set("cache-control", "max-age=86400");
