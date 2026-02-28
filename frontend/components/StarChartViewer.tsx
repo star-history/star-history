@@ -244,7 +244,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         svgElement.remove()
     }
 
-    const handleShareToTwitterBtnClick = async () => {
+    const handleShareBtnClick = async () => {
         const repos = store.repos
 
         if (repos.length === 0) {
@@ -448,7 +448,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                 </button>
                                 <button
                                     className="ml-2 mb-2 btn-secondary"
-                                    onClick={handleShareToTwitterBtnClick}
+                                    onClick={handleShareBtnClick}
                                 >
                                     <i className="fab fa-x-twitter"></i> Share{" "}
                                 </button>

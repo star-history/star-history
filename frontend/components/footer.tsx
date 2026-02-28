@@ -53,7 +53,7 @@ const Footer = () => {
                             Bytebase
                         </a>
                         , originally built by{" "}
-                        <a className="link" href="https://twitter.com/tim_qian" target="_blank" rel="noopener noreferrer">
+                        <a className="link" href="https://x.com/tim_qian" target="_blank" rel="noopener noreferrer">
                             @tim_qian
                         </a>
                     </span>

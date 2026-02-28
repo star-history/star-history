@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import leaderboard from "../helpers/leaderboard.json"
 import weeklyRankingData from "../helpers/weekly-ranking.json"
@@ -66,7 +66,26 @@ const LeftSidebar: React.FC = () => {
                                     <span className="truncate text-gray-700 group-hover:text-blue-600">
                                         {repoName}
                                     </span>
-                                    <span className="flex-1 min-w-0" />
+                                    {item.name === "openclaw/openclaw" ? (
+                                        <span className="flex-1 min-w-0 relative h-6 lobster-container">
+                                            <img
+                                                src="/assets/lobster.png"
+                                                alt="🦞"
+                                                width={20}
+                                                height={20}
+                                                className="lobster-static absolute top-0 bottom-0 my-auto left-0"
+                                            />
+                                            <img
+                                                src="/assets/lobster-animated.gif"
+                                                alt="🦞"
+                                                width={20}
+                                                height={20}
+                                                className="lobster-animated absolute top-0 bottom-0 my-auto left-0"
+                                            />
+                                        </span>
+                                    ) : (
+                                        <span className="flex-1 min-w-0" />
+                                    )}
                                     <span className={`text-xs shrink-0 ${item.metricClass}`}>
                                         {item.metric}
                                     </span>

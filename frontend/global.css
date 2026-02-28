@@ -91,9 +91,23 @@ body {
 
     /* ── Lobster walk animation ── */
     .lobster-walk {
-        animation: lobster-walk 32s linear infinite;
+        animation: lobster-walk-lg 32s linear infinite;
     }
-    @keyframes lobster-walk {
+    .lobster-container .lobster-static { display: block; }
+    .lobster-container .lobster-animated { display: none; }
+    .group:hover .lobster-container .lobster-static { display: none; }
+    .group:hover .lobster-container .lobster-animated {
+        display: block;
+        animation: lobster-walk-sm 32s linear infinite;
+    }
+    @keyframes lobster-walk-sm {
+        0% { left: 0; transform: scaleX(1); }
+        49.9% { transform: scaleX(1); }
+        50% { left: calc(100% - 20px); transform: scaleX(-1); }
+        99.9% { transform: scaleX(-1); }
+        100% { left: 0; transform: scaleX(1); }
+    }
+    @keyframes lobster-walk-lg {
         0% { left: 0; transform: scaleX(1); }
         49.9% { transform: scaleX(1); }
         50% { left: calc(100% - 64px); transform: scaleX(-1); }
