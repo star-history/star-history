@@ -8,7 +8,7 @@ import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
-import { SketchGitHubIcon } from "../components/GitHubStarButton"
+import { SketchGitHubIcon } from "../components/SketchIcons"
 import RadarChart, { ATTRIBUTE_LABELS } from "../components/Charts/RadarChart"
 
 type LayoutMode = "landscape" | "portrait"

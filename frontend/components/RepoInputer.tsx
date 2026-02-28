@@ -7,6 +7,7 @@ import { FaExternalLinkAlt } from "react-icons/fa"
 import Link from "next/link"
 import { Blog } from "helpers/types/blog"
 import blogs from "helpers/blog.json"
+import { SketchMailboxIcon } from "./SketchIcons"
 
 interface State {
     repo: string
@@ -248,9 +249,9 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                     href="https://newsletter.star-history.com/subscribe"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 hover:underline"
+                    className="text-gray-700 hover:underline flex items-center gap-1"
                 >
-                   🗞️ Subscribe
+                   <SketchMailboxIcon /> Subscribe
                 </a>
             </div>
             <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">

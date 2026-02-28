@@ -4,32 +4,7 @@ import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Link from "next/link";
 import { AppStateProvider, useAppStore } from "../store";
-
-const SketchLightBulbIcon = ({ size = 18 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="xkcdify-bulb" filterUnits="userSpaceOnUse" x="-2" y="-2" width="28" height="28">
-        <feTurbulence type="fractalNoise" baseFrequency="0.04" result="noise" />
-        <feDisplacementMap scale="3" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise" />
-      </filter>
-    </defs>
-    <g filter="url(#xkcdify-bulb)">
-      {/* Bulb glass */}
-      <path
-        d="M12 2C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17h8v-2.3c1.8-1.2 3-3.3 3-5.7 0-3.9-3.1-7-7-7z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Base rings */}
-      <path d="M9 19h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M10 21h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Filament */}
-      <path d="M10 12L12 8L14 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-    </g>
-  </svg>
-);
+import { SketchLightBulbIcon } from "./SketchIcons";
 
 const Header: React.FC = () => {
   const store = useAppStore()
