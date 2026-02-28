@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import toast from "../helpers/toast"
-import utils from "../shared/common/utils"
+import utils from "@shared/common/utils"
 import { useAppStore } from "../store"
 import Dialog from "./Dialog"
 import { FaTimesCircle } from "react-icons/fa"

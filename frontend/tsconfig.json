@@ -2,13 +2,16 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@shared/*": [
+        "../shared/*"
+      ],
       "@components/*": [
         "components/*"
       ],
       "@styles/*": [
         "styles/*"
       ]
-    }, // <-- Add this comma
+    },
     "target": "es5",
     "lib": [
       "dom",

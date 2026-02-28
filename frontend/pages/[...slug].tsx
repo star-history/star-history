@@ -9,8 +9,8 @@ import { formatNumber } from "../helpers/format"
 import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
-import { buildLandscape1 } from "shared/packages/card-landscape1"
-import { renderRadarSvg } from "shared/packages/radar-svg"
+import { buildLandscape1 } from "@shared/packages/card-landscape1"
+import { renderRadarSvg } from "@shared/packages/radar-svg"
 
 // --- VDOM-to-React conversion (buildLandscape1 returns a Satori-compatible VDOM tree) ---
 

@@ -6,7 +6,7 @@ import { optimize, Config } from 'svgo';
 import { JSDOM } from "jsdom";
 import XYChart from "./shared/packages/xy-chart.js";
 import { convertDataToChartData, getRepoData } from "./shared/common/chart.js";
-import { ChartMode } from "./shared/types/chart.js";
+import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
 import cache from "./cache.js";
 import {

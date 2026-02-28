@@ -1,6 +1,6 @@
 import { LRUCache } from "lru-cache";
-import utils from "../shared/common/utils";
-import type { StarRecord } from "../shared/types/chart";
+import utils from "@shared/common/utils";
+import type { StarRecord } from "@shared/types/chart";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.

@@ -1,8 +1,8 @@
 import satori from "satori";
 import fs from "fs";
 import path from "path";
-import { buildLandscape1 } from "./shared/packages/card-landscape1.js";
-import { renderRadarSvg } from "./shared/packages/radar-svg.js";
+import { buildLandscape1 } from "../shared/packages/card-landscape1.js";
+import { renderRadarSvg } from "../shared/packages/radar-svg.js";
 import type { RepoAttributes } from "./arena-types.js";
 
 export interface OgCardInput {

@@ -10,11 +10,11 @@ import { FaSpinner } from "react-icons/fa"
 import { XYChartData } from "shared/packages/xy-chart"
 import { convertDataToChartData, getRepoData } from "shared/common/chart"
 import toast from "helpers/toast"
-import { ChartMode, RepoData, LegendPosition } from "shared/types/chart"
+import { ChartMode, RepoData, LegendPosition } from "@shared/types/chart"
 
 const VALID_LEGEND_POSITIONS: LegendPosition[] = ["top-left", "bottom-right"]
 import BytebaseBanner from "./SponsorView"
-import utils from "shared/common/utils"
+import utils from "@shared/common/utils"
 import api from "shared/common/api"
 
 interface State {

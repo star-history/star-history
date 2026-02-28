@@ -17,6 +17,8 @@
     "./*.ts",
     "./shared/**/*.ts",
     "./shared/**/*.tsx",
+    "../shared/**/*.ts",
+    "../shared/**/*.tsx",
     "../arena/types.ts"
   ]
 }

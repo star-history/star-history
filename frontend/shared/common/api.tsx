@@ -1,5 +1,5 @@
 import axios from "axios"
-import utils from "./utils"
+import utils from "@shared/common/utils"
 
 const API_PER_PAGE = 100  // GitHub API max items per request
 

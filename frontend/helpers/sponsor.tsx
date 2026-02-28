@@ -1,5 +1,5 @@
 import { sampleSize } from "lodash"
-import utils from "../shared/common/utils"
+import utils from "@shared/common/utils"
 
 interface Sponsor {
     // The name of the sponsor

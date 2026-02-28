@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import storage from "../helpers/storage";
-import { ChartMode, LegendPosition } from "../shared/types/chart";
+import { ChartMode, LegendPosition } from "@shared/types/chart";
 import { useRouter } from "next/router";
 
 interface AppState {
