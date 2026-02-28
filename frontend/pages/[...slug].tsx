@@ -101,17 +101,6 @@ const LayoutToggle = ({ mode, onChange, wide, onDownload, tweetUrl }: { mode: La
             </button>
         </div>
         <div className="flex-1 flex justify-end self-end gap-3">
-            <a
-                href={tweetUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-neutral-600 transition-colors"
-                title="Share on X"
-            >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-            </a>
             <button
                 onClick={onDownload}
                 className="text-neutral-400 hover:text-neutral-600 transition-colors"
@@ -124,6 +113,14 @@ const LayoutToggle = ({ mode, onChange, wide, onDownload, tweetUrl }: { mode: La
                     <path d="M3.5,18.5 C7,19 15,18 18.5,18.7" />
                 </svg>
             </button>
+            <a
+                href={tweetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-neutral-600 transition-colors text-sm border border-neutral-200 rounded-lg px-2.5 py-1.5"
+            >
+                Share on <span className="font-bold">X</span>
+            </a>
         </div>
     </div>
 )
