@@ -1,6 +1,7 @@
 name: Deploy Backend to GKE
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
