@@ -120,10 +120,16 @@ const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; 
 const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const [layout, setLayout] = useState<LayoutMode>("landscape")
     const cardRef = useRef<HTMLDivElement>(null)
-    const title = `${repo.name} Star History`
-    const description = repo.description
-        ? `Star history and stats for ${repo.name}: ${repo.description}`
-        : `View the star history chart for ${repo.name} on GitHub.`
+    const title = `${repo.name} GitHub Star History - ${formatNumber(repo.stars_total)} Stars`
+    const descParts = [
+        `Star history and stats for ${repo.name}`,
+        repo.description ? `: ${repo.description}` : "",
+        `. ${formatNumber(repo.stars_total)} stars`,
+        repo.forks_count ? `, ${formatNumber(repo.forks_count)} forks` : "",
+        repo.language ? `. Built with ${repo.language}` : "",
+        repo.created_at ? `. Created ${formatDate(repo.created_at)}` : "",
+    ]
+    const description = descParts.join("").slice(0, 160)
     const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date`
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
@@ -180,11 +186,40 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:image" content={ogImage} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:site_name" content="Star History" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:url" content={canonicalUrl} />
                 <meta name="twitter:title" content={title} />
                 <meta name="twitter:description" content={description} />
                 <meta name="twitter:image" content={ogImage} />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareSourceCode",
+                        "name": repo.name,
+                        "description": repo.description || undefined,
+                        "codeRepository": `https://github.com/${repo.name}`,
+                        "programmingLanguage": repo.language || undefined,
+                        "license": repo.license || undefined,
+                        "dateCreated": repo.created_at || undefined,
+                        "url": canonicalUrl,
+                        "interactionStatistic": [
+                            {
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/LikeAction",
+                                "userInteractionCount": repo.stars_total,
+                            },
+                            {
+                                "@type": "InteractionCounter",
+                                "interactionType": "https://schema.org/ForkAction",
+                                "userInteractionCount": repo.forks_count,
+                            },
+                        ],
+                    }) }}
+                />
             </Head>
             <PageShell>
                 <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} onDownload={handleDownload} />
