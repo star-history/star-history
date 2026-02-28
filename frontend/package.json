@@ -7,7 +7,7 @@
     "packageManager": "pnpm@9.15.4",
     "scripts": {
         "generate:blog": "pnpm exec tsx scripts/generateBlogJson.mts",
-        "dev": "pnpm run generate:blog && next dev",
+        "dev": "pnpm run generate:blog && next dev --turbo",
         "build": "pnpm run generate:blog && next build && next-sitemap",
         "start": "pnpm dlx serve out",
         "lint": "next lint",
