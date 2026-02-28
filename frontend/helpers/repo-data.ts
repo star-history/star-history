@@ -8,19 +8,21 @@ export const DEFAULT_MIN_STARS = 50000
 
 export function loadRepoCards(): { min_stars: number; repos: RepoCardData[] } {
     try {
-        const filePath = path.join(process.cwd(), "helpers", "repo-cards.json")
+        const filePath = path.join(process.cwd(), "..", "arena", "data", "repo-cards.json")
         const data = JSON.parse(fs.readFileSync(filePath, "utf-8"))
         return { min_stars: data.min_stars ?? DEFAULT_MIN_STARS, repos: data.repos ?? [] }
-    } catch {
+    } catch (err) {
+        console.warn("Failed to load repo-cards.json:", err)
         return { min_stars: DEFAULT_MIN_STARS, repos: [] }
     }
 }
 
 export function loadLegacyRepos(): LegacyRepoRow[] {
     try {
-        const filePath = path.join(process.cwd(), "helpers", "repos.json")
+        const filePath = path.join(process.cwd(), "..", "arena", "data", "repos.json")
         return JSON.parse(fs.readFileSync(filePath, "utf-8"))
-    } catch {
+    } catch (err) {
+        console.warn("Failed to load repos.json:", err)
         return []
     }
 }

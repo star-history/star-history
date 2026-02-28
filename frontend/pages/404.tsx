@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 import type { GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
-import { DEFAULT_MIN_STARS, loadRepoCards } from "../helpers/repo-data"
+import { loadRepoCards } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
 
 interface NotFoundProps {

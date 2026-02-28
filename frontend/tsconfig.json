@@ -5,6 +5,9 @@
       "@shared/*": [
         "../shared/*"
       ],
+      "@arena-data/*": [
+        "../arena/data/*"
+      ],
       "@components/*": [
         "components/*"
       ],
