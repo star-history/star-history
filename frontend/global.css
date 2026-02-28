@@ -89,6 +89,18 @@ body {
         @apply sticky top-28 flex flex-col w-full h-fit;
     }
 
+    /* ── Lobster walk animation ── */
+    .lobster-walk {
+        animation: lobster-walk 4s linear infinite;
+    }
+    @keyframes lobster-walk {
+        0% { left: 0; transform: scaleX(1); }
+        49.9% { transform: scaleX(1); }
+        50% { left: calc(100% - 24px); transform: scaleX(-1); }
+        99.9% { transform: scaleX(-1); }
+        100% { left: 0; transform: scaleX(1); }
+    }
+
     /* ── Code block with shadow ── */
     .code-block {
         @apply relative w-full h-auto border px-4 py-3 rounded-md shadow-inner;
