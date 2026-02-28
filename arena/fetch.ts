@@ -1,4 +1,4 @@
-import { createDatabase, insertRepos, insertStats, exportLeaderboard, exportWeeklyRanking, exportRepos, exportRepoCards } from "./db.js";
+import { createDatabase, insertRepos, insertStats, exportLeaderboard, exportWeeklyRanking, exportRepos } from "./db.js";
 import { fetchQualifyingRepos } from "./github.js";
 import { fetchRepoStats } from "./bigquery.js";
 
@@ -109,7 +109,6 @@ async function main() {
   exportLeaderboard(db);
   exportWeeklyRanking(db);
   exportRepos(db);
-  exportRepoCards(db);
   db.close();
 
   console.log(`\nDone! ${qualifyingRepos.length} repos, ${allStats.length} stat rows written to data.db`);

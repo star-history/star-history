@@ -1,6 +1,3 @@
-// Types duplicated from ../../arena/types.ts so the frontend builds
-// without depending on files outside its own directory.
-
 export interface RepoAttributes {
   stars: number;
   new_stars: number;
@@ -27,18 +24,4 @@ export interface RepoCardData {
   rank: number;
   total_repos: number;
   attributes: RepoAttributes;
-}
-
-export interface LegacyRepoRow {
-  name: string;
-  stars_total: number;
-  description: string | null;
-  language: string | null;
-  topics: string | null;
-  license: string | null;
-  homepage: string | null;
-  forks_count: number;
-  open_issues_count: number;
-  created_at: string | null;
-  archived: number;
 }

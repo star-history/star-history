@@ -44,20 +44,6 @@ export interface RepoCardData {
   attributes: RepoAttributes;
 }
 
-export interface LegacyRepoRow {
-  name: string;
-  stars_total: number;
-  description: string | null;
-  language: string | null;
-  topics: string | null;
-  license: string | null;
-  homepage: string | null;
-  forks_count: number;
-  open_issues_count: number;
-  created_at: string | null;
-  archived: number;
-}
-
 export interface RepoStats {
   repo_name: string;
   week: string;

@@ -16,7 +16,6 @@
   "include": [
     "./*.ts",
     "../shared/**/*.ts",
-    "../shared/**/*.tsx",
-    "../arena/types.ts"
+    "../shared/**/*.tsx"
   ]
 }

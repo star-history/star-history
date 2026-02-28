@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-import type { RepoCardData } from "./arena-types.js";
+import type { RepoCardData } from "../shared/types/arena.js";
 
-const DATA_PATH = path.join(process.cwd(), "data", "repo-cards.json");
+const DATA_PATH = path.join(process.cwd(), "data", "repos.json");
 
 let repoMap: Map<string, RepoCardData> | null = null;
 
@@ -14,9 +14,9 @@ export function initRepoData(): void {
     for (const r of repos) {
       repoMap.set(r.name.toLowerCase(), r);
     }
-    console.log(`Loaded ${repoMap.size} repo cards from repo-cards.json`);
+    console.log(`Loaded ${repoMap.size} repos from repos.json`);
   } catch (err) {
-    console.warn("Failed to load repo-cards.json:", err);
+    console.warn("Failed to load repos.json:", err);
     repoMap = new Map();
   }
 }

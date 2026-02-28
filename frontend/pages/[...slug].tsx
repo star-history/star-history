@@ -6,7 +6,7 @@ import type { ReactNode } from "react"
 import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
-import { loadRepoCards, loadLegacyRepos } from "../helpers/repo-data"
+import { loadRepos } from "../helpers/repo-data"
 import type { RepoCardData } from "../helpers/repo-data"
 import PageShell from "../components/PageShell"
 import { buildLandscape1 } from "@shared/packages/card-landscape1"
@@ -275,25 +275,17 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
 // --- Data loading ---
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { repos: cards } = loadRepoCards()
-    const legacyRepos = loadLegacyRepos()
-    const cardNames = new Set(cards.map(c => c.name.toLowerCase()))
+    const { repos } = loadRepos()
 
-    const paths = cards.map((card) => ({
-        params: { slug: card.name.toLowerCase().split("/") },
+    const paths = repos.map((repo) => ({
+        params: { slug: repo.name.toLowerCase().split("/") },
     }))
-
-    for (const repo of legacyRepos) {
-        if (!cardNames.has(repo.name.toLowerCase())) {
-            paths.push({ params: { slug: repo.name.toLowerCase().split("/") } })
-        }
-    }
 
     return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
-    const { repos: cards, min_stars } = loadRepoCards()
+    const { repos, min_stars } = loadRepos()
 
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {
@@ -301,50 +293,13 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
     }
 
     const fullName = slug.join("/")
-    const cardData = cards.find((c) => c.name.toLowerCase() === fullName.toLowerCase())
+    const repo = repos.find((r) => r.name.toLowerCase() === fullName.toLowerCase())
 
-    if (cardData) {
-        return { props: { repo: cardData, minStars: min_stars } }
-    }
-
-    // Fallback to legacy repos.json
-    const legacyRepos = loadLegacyRepos()
-    const repoData = legacyRepos.find((r) => r.name.toLowerCase() === fullName.toLowerCase())
-
-    if (!repoData) {
+    if (!repo) {
         return { notFound: true }
     }
 
-    let topics: string[] = []
-    try {
-        topics = repoData.topics ? JSON.parse(repoData.topics) : []
-    } catch {
-        topics = []
-    }
-
-    return {
-        props: {
-            repo: {
-                name: repoData.name,
-                owner: repoData.name.split("/")[0],
-                stars_total: repoData.stars_total,
-                description: repoData.description,
-                language: repoData.language,
-                topics,
-                license: repoData.license,
-                homepage: repoData.homepage,
-                forks_count: repoData.forks_count,
-                open_issues_count: repoData.open_issues_count,
-                created_at: repoData.created_at,
-                archived: repoData.archived === 1,
-                size: 0,
-                rank: 0,
-                total_repos: 0,
-                attributes: { stars: 0, new_stars: 0, pushes: 0, contributors: 0, issues_closed: 0, forks: 0 },
-            },
-            minStars: min_stars,
-        },
-    }
+    return { props: { repo, minStars: min_stars } }
 }
 
 export default RepoPage

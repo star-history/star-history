@@ -126,17 +126,6 @@ export function exportWeeklyRanking(db: Database.Database, limit = 20): void {
 }
 
 export function exportRepos(db: Database.Database): void {
-  const rows = db.prepare(
-    `SELECT name, stars_total, description, language, topics, license,
-            homepage, forks_count, open_issues_count, created_at, archived
-     FROM repos ORDER BY stars_total DESC`
-  ).all();
-  const outPath = path.join(__dirname, "data", "repos.json");
-  writeFileSync(outPath, JSON.stringify(rows, null, 2) + "\n");
-  console.log(`Exported ${rows.length} repos to repos.json`);
-}
-
-export function exportRepoCards(db: Database.Database): void {
   // Aggregate weekly_stats over last 8 weeks per repo
   const rows = db.prepare(`
     WITH recent AS (
@@ -243,9 +232,9 @@ export function exportRepoCards(db: Database.Database): void {
   });
 
   const output = { min_stars: MIN_STARS, repos: cards };
-  const outPath = path.join(__dirname, "data", "repo-cards.json");
+  const outPath = path.join(__dirname, "data", "repos.json");
   writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
-  console.log(`Exported ${cards.length} repo cards to repo-cards.json`);
+  console.log(`Exported ${cards.length} repos to repos.json`);
 }
 
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {
