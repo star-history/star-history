@@ -1,5 +1,4 @@
 import http from "http";
-import path from "path";
 import Koa from "koa";
 import Router from "koa-router";
 import cors from "@koa/cors";
@@ -24,7 +23,7 @@ import fetch from "node-fetch";
 const startServer = async () => {
   await initTokenFromEnv();
   initOgAssets();
-  const repoStore = loadRepos(path.join(process.cwd(), "data", "repos.json"));
+  const repoStore = loadRepos();
 
   const app = new Koa();
   app.use(cors());

@@ -5,7 +5,6 @@ import { createElement, useCallback, useEffect, useMemo, useRef, useState } from
 import type { ReactNode } from "react"
 import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import path from "path"
 import { formatNumber } from "../helpers/format"
 import { loadRepos } from "@shared/common/repo-data"
 import type { RepoCardData } from "@shared/types/arena"
@@ -275,10 +274,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
 
 // --- Data loading ---
 
-const REPOS_PATH = path.join(process.cwd(), "..", "arena", "data", "repos.json")
-
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { repos } = loadRepos(REPOS_PATH)
+    const { repos } = loadRepos()
 
     const paths = repos.map((repo) => ({
         params: { slug: repo.name.toLowerCase().split("/") },
@@ -288,7 +285,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) => {
-    const store = loadRepos(REPOS_PATH)
+    const store = loadRepos()
 
     const slug = params?.slug
     if (!Array.isArray(slug) || slug.length !== 2) {

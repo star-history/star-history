@@ -44,9 +44,6 @@ jobs:
         run: pnpm run generate
         working-directory: arena
 
-      - name: Copy arena data into backend
-        run: mkdir -p backend/data && cp arena/data/repos.json backend/data/
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       
@@ -59,7 +56,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: .
           file: ./backend/Dockerfile
           push: true
           tags: bytebase/star-history:backend-latest

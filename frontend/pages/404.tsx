@@ -1,7 +1,6 @@
 import { useRouter } from "next/router"
 import Link from "next/link"
 import type { GetStaticProps, NextPage } from "next"
-import path from "path"
 import { formatNumber } from "../helpers/format"
 import { loadRepos } from "@shared/common/repo-data"
 import PageShell from "../components/PageShell"
@@ -64,7 +63,7 @@ const NotFound: NextPage<NotFoundProps> = ({ minStars }) => {
 }
 
 export const getStaticProps: GetStaticProps<NotFoundProps> = async () => {
-    const { min_stars: minStars } = loadRepos(path.join(process.cwd(), "..", "arena", "data", "repos.json"))
+    const { min_stars: minStars } = loadRepos()
     return { props: { minStars } }
 }
 
