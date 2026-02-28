@@ -419,6 +419,17 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                         </div>
                     </div>
                 )}
+                {repo.name.toLowerCase() === "openclaw/openclaw" && (
+                    <div className="relative w-full max-w-5xl h-16 mt-4">
+                        <img
+                            src="/assets/lobster-animated.gif"
+                            alt="🦞"
+                            width={64}
+                            height={64}
+                            className="absolute top-0 left-0 lobster-walk"
+                        />
+                    </div>
+                )}
                 <p className="text-sm text-neutral-400 mt-3" style={{ fontFamily: '"xkcd", cursive' }}>
                     Tracking repos with {formatNumber(minStars)}+ stars
                 </p>

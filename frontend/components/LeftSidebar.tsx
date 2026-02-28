@@ -66,19 +66,7 @@ const LeftSidebar: React.FC = () => {
                                     <span className="truncate text-gray-700 group-hover:text-blue-600">
                                         {repoName}
                                     </span>
-                                    {item.name === "openclaw/openclaw" ? (
-                                        <span className="flex-1 min-w-0 relative h-6">
-                                            <img
-                                                src="/assets/lobster-animated.gif"
-                                                alt="🦞"
-                                                width={24}
-                                                height={24}
-                                                className="absolute top-0 left-0 lobster-walk"
-                                            />
-                                        </span>
-                                    ) : (
-                                        <span className="flex-1 min-w-0" />
-                                    )}
+                                    <span className="flex-1 min-w-0" />
                                     <span className={`text-xs shrink-0 ${item.metricClass}`}>
                                         {item.metric}
                                     </span>
