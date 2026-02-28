@@ -207,7 +207,7 @@ export function buildLandscape1(data: Landscape1Data) {
             // Name
             h(
               "div",
-              { style: { display: "flex", alignItems: "baseline", fontSize: 34, fontWeight: "bold" } },
+              { "data-repo-name": true, style: { display: "flex", alignItems: "baseline", fontSize: 34, fontWeight: "bold" } },
               h("span", { style: { color: "#a3a3a3", fontWeight: "normal" } }, owner),
               h("span", { style: { color: "#d4d4d4", margin: "0 5px" } }, "/"),
               h("span", { style: { color: "#171717" } }, repoName),
@@ -250,7 +250,7 @@ export function buildLandscape1(data: Landscape1Data) {
           { style: { display: "flex", alignItems: "baseline", gap: 40, marginTop: 60 } },
           h(
             "div",
-            { style: { display: "flex", alignItems: "center", gap: 8 } },
+            { title: `Stars: ${data.stars.toLocaleString()}` + (data.attributes ? ` · Top ${100 - data.attributes.stars}%` : ""), style: { display: "flex", alignItems: "center", gap: 8 } },
             h(
               "svg",
               { viewBox: "0 0 24 24", width: 28, height: 28 },
@@ -263,7 +263,7 @@ export function buildLandscape1(data: Landscape1Data) {
           ),
           h(
             "div",
-            { style: { display: "flex", alignItems: "center", gap: 8 } },
+            { title: `Forks: ${data.forks.toLocaleString()}` + (data.attributes ? ` · Top ${100 - data.attributes.forks}%` : ""), style: { display: "flex", alignItems: "center", gap: 8 } },
             h(
               "svg",
               { viewBox: "0 0 32 24", width: 36, height: 28 },
@@ -287,7 +287,7 @@ export function buildLandscape1(data: Landscape1Data) {
           data.attributes
             ? h(
                 "div",
-                { style: { display: "flex", alignItems: "center", gap: 8 } },
+                { title: `Contributors: ${data.attributes.contributors} · Top ${100 - data.attributes.contributors}%`, style: { display: "flex", alignItems: "center", gap: 8 } },
                 h(
                   "svg",
                   { viewBox: "0 0 32 24", width: 36, height: 28 },
@@ -312,21 +312,21 @@ export function buildLandscape1(data: Landscape1Data) {
               h("span", { style: { fontSize: 16, color: "#e5e5e5" } }, "|"),
               h(
                 "div",
-                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                { title: `New stars: ${data.attributes.new_stars} · Top ${100 - data.attributes.new_stars}%`, style: { display: "flex", alignItems: "baseline", gap: 5 } },
                 h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.new_stars)),
                 h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "stars"),
               ),
               h("span", { style: { fontSize: 14, color: "#d4d4d4" } }, "\u00b7"),
               h(
                 "div",
-                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                { title: `Pushes: ${data.attributes.pushes} · Top ${100 - data.attributes.pushes}%`, style: { display: "flex", alignItems: "baseline", gap: 5 } },
                 h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.pushes)),
                 h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "pushes"),
               ),
               h("span", { style: { fontSize: 14, color: "#d4d4d4" } }, "\u00b7"),
               h(
                 "div",
-                { style: { display: "flex", alignItems: "baseline", gap: 5 } },
+                { title: `Issues closed: ${data.attributes.issues_closed} · Top ${100 - data.attributes.issues_closed}%`, style: { display: "flex", alignItems: "baseline", gap: 5 } },
                 h("span", { style: { fontSize: 34, fontWeight: "bold", color: "#525252" } }, String(data.attributes.issues_closed)),
                 h("span", { style: { fontSize: 15, color: "#a3a3a3" } }, "issues closed"),
               ),

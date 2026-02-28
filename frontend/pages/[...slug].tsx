@@ -237,7 +237,15 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
             <PageShell>
                 <Toolbar onDownload={handleDownload} tweetUrl={tweetUrl} />
 
-                <div ref={wrapperRef} className="w-full max-w-5xl rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "1200/630" }}>
+                <div
+                    ref={wrapperRef}
+                    className="w-full max-w-5xl rounded-2xl shadow-xl overflow-hidden [&_[data-repo-name]]:cursor-pointer [&_[data-repo-name]:hover]:underline"
+                    style={{ aspectRatio: "1200/630" }}
+                    onClick={(e) => {
+                        const target = (e.target as HTMLElement).closest?.("[data-repo-name]")
+                        if (target) window.open(`https://github.com/${repo.name}`, "_blank", "noopener")
+                    }}
+                >
                     <div ref={cardRef} style={{ width: 1200, height: 630, transform: `scale(${scale})`, transformOrigin: "top left" }}>
                         {vnodeToReact(cardVNode)}
                     </div>
