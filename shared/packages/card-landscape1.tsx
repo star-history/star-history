@@ -90,7 +90,7 @@ function sealTextLayer(
   return h(
     "div",
     { style: { ...SEAL_LAYER_BASE, top: offset.top, left: offset.left, ...(opacity != null ? { opacity } : {}) } },
-    h("span", { style: { fontSize: 12, textTransform: "uppercase", letterSpacing: "0.18em", color: colors.label } }, "Rank"),
+    h("span", { style: { fontSize: 10, textTransform: "uppercase", letterSpacing: "0.14em", color: colors.label } }, "Global Rank"),
     h("span", { style: { fontSize: 42, fontWeight: "bold", lineHeight: 1, color: colors.rank } }, `#${rank}`),
     h("span", { style: { fontSize: 9, marginTop: 4, color: colors.date, letterSpacing: "0.05em" } }, date),
   );
@@ -133,26 +133,26 @@ export function buildLandscape1(data: Landscape1Data) {
               style: { position: "absolute", top: 0, left: 0 },
             },
             // Shadow — soft offset
-            h("path", { d: waxBlobPath(83, 83, 68), fill: "#00000018" }),
-            // Main wax body — rich crimson
-            h("path", { d: waxBlobPath(80, 80, 68), fill: "#7a1818" }),
+            h("path", { d: waxBlobPath(83, 83, 68), fill: "#44000028" }),
+            // Main wax body
+            h("path", { d: waxBlobPath(80, 80, 68), fill: "#e13129" }),
             // Broad highlight — upper-left lighter zone
-            h("ellipse", { cx: "66", cy: "64", rx: "38", ry: "30", fill: "#a52828", opacity: "0.45" }),
+            h("ellipse", { cx: "66", cy: "64", rx: "38", ry: "30", fill: "#f04a42", opacity: "0.45" }),
             // Specular dot — small bright reflection
-            h("ellipse", { cx: "60", cy: "58", rx: "10", ry: "7", fill: "#d44", opacity: "0.4" }),
+            h("ellipse", { cx: "60", cy: "58", rx: "10", ry: "7", fill: "#f87870", opacity: "0.4" }),
             // Inner groove ring
-            h("circle", { cx: "80", cy: "80", r: "52", fill: "none", stroke: "#5a1010", "stroke-width": "1.8", opacity: "0.5" }),
+            h("circle", { cx: "80", cy: "80", r: "52", fill: "none", stroke: "#b02420", "stroke-width": "1.8", opacity: "0.5" }),
             // Inner groove highlight
-            h("circle", { cx: "80", cy: "80", r: "51", fill: "none", stroke: "#c4956a", "stroke-width": "0.6", opacity: "0.25" }),
+            h("circle", { cx: "80", cy: "80", r: "51", fill: "none", stroke: "#e8a070", "stroke-width": "0.6", opacity: "0.25" }),
           ),
           // Embossed gold text — three layers: shadow, body, highlight
           ...(() => {
             const date = new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-            const dark = "#4a1a08";
+            const dark = "#6e1510";
             return [
               sealTextLayer(data.rank!, date, { label: dark, rank: dark, date: dark }, { top: 1.5, left: 1 }),
-              sealTextLayer(data.rank!, date, { label: "#c8940e", rank: "#daa520", date: "#c8940e" }, { top: 0, left: 0 }),
-              sealTextLayer(data.rank!, date, { label: "#ffe066", rank: "#ffe066", date: "#ffe066" }, { top: -0.5, left: -0.5 }, 0.45),
+              sealTextLayer(data.rank!, date, { label: "#e8b830", rank: "#f0c838", date: "#e8b830" }, { top: 0, left: 0 }),
+              sealTextLayer(data.rank!, date, { label: "#ffe870", rank: "#ffe870", date: "#ffe870" }, { top: -0.5, left: -0.5 }, 0.45),
             ];
           })(),
         )
