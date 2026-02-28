@@ -29,4 +29,4 @@ EXPOSE 3000
 
 # Start the application
 WORKDIR /app/backend
-CMD ["node", "./dist/main.js"]
+CMD ["node", "./dist/backend/main.js"]
