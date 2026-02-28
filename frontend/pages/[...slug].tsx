@@ -80,9 +80,9 @@ const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: s
                 href={tweetUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-neutral-600 transition-colors text-sm border border-neutral-200 rounded-lg px-2.5 py-1.5"
+                className="btn-secondary"
             >
-                Share on <span className="font-bold">X</span>
+                <i className="fab fa-x-twitter"></i> Share
             </a>
         </div>
     </div>
