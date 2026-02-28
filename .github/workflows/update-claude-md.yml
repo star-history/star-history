@@ -4,11 +4,6 @@ on:
   schedule:
     - cron: "0 9 * * 1" # Monday 09:00 UTC
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/update-claude-md.yml'
 
 permissions:
   contents: write
