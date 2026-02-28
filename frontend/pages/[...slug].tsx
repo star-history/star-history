@@ -66,7 +66,7 @@ const AttributeBars = ({ repo, compact }: { repo: RepoCardData; compact?: boolea
     </div>
 )
 
-const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean; onDownload: () => void }) => (
+const LayoutToggle = ({ mode, onChange, wide, onDownload, tweetUrl }: { mode: LayoutMode; onChange: (m: LayoutMode) => void; wide: boolean; onDownload: () => void; tweetUrl: string }) => (
     <div className={`flex items-center mb-2 w-full ${wide ? "max-w-5xl" : "max-w-2xl"}`} style={{ fontFamily: '"xkcd", cursive' }}>
         <div className="flex-1">
             <Link href="/" className="inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
@@ -100,7 +100,18 @@ const LayoutToggle = ({ mode, onChange, wide, onDownload }: { mode: LayoutMode; 
                 </svg>
             </button>
         </div>
-        <div className="flex-1 flex justify-end self-end">
+        <div className="flex-1 flex justify-end self-end gap-3">
+            <a
+                href={tweetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                title="Share on X"
+            >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
             <button
                 onClick={onDownload}
                 className="text-neutral-400 hover:text-neutral-600 transition-colors"
@@ -131,7 +142,9 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     ]
     const description = descParts.join("").slice(0, 160)
     const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
-    const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&type=Date`
+    const ogImage = `https://star-history.com/og/${repo.name.replace("/", "-").toLowerCase()}.png`
+    const tweetText = `${repo.name} - ${formatNumber(repo.stars_total)} stars on GitHub`
+    const tweetUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(tweetText)}`
     const langColor = repo.language ? LANGUAGE_COLORS[repo.language] ?? "#6b7280" : null
     const repoShortName = repo.name.split("/")[1]
     const avatarUrl = `https://avatars.githubusercontent.com/${repo.owner}?s=460`
@@ -222,7 +235,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 />
             </Head>
             <PageShell>
-                <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} onDownload={handleDownload} />
+                <LayoutToggle mode={layout} onChange={setLayout} wide={isLandscape} onDownload={handleDownload} tweetUrl={tweetUrl} />
 
                 {isLandscape ? (
                     /* ── Landscape layout ── */

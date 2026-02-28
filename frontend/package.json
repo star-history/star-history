@@ -7,8 +7,9 @@
     "packageManager": "pnpm@9.15.4",
     "scripts": {
         "generate:blog": "pnpm exec tsx scripts/generateBlogJson.mts",
+        "generate:og": "pnpm exec tsx scripts/generateOgImages.tsx",
         "dev": "pnpm run generate:blog && next dev",
-        "build": "pnpm run generate:blog && next build && next-sitemap",
+        "build": "pnpm run generate:blog && pnpm run generate:og && next build && next-sitemap",
         "start": "pnpm dlx serve out",
         "lint": "next lint",
         "prettier": "prettier --write ."
@@ -56,7 +57,9 @@
         "typescript": "^4.9.5"
     },
     "devDependencies": {
+        "@resvg/resvg-js": "^2.6.2",
         "prettier": "^3.2.5",
+        "satori": "^0.12.0",
         "tsx": "^4.21.0"
     }
 }
