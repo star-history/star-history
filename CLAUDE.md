@@ -18,9 +18,15 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 ## Tech Stack
 
-Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2 · FontAwesome ^6.4.2 · Lodash ^4.17.21 · Dayjs ^1.11.10 · Gray-matter ^4.0.3 · Marked ^9.1.6
+**Frontend:** Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2 · FontAwesome ^6.4.2 · Lodash ^4.17.21 · Dayjs ^1.11.10 · Gray-matter ^4.0.3 · Marked ^9.1.6
+
+**Backend:** Koa.js · TypeScript · D3.js (server-side SVG) · JSDOM · SVGO · Satori + @resvg/resvg-js (OG card images) · LRU cache
 
 ## Project Structure
+
+The repo has three main directories: `frontend/`, `backend/`, and `arena/`.
+
+### Frontend
 
 All frontend code lives under `frontend/`.
 
@@ -70,6 +76,24 @@ Layout wrappers: `_app.tsx` (per-page `getLayout` pattern), `_document.tsx`.
 - **Blog system**: `pages/blog/[slug].tsx`, `scripts/generateBlogJson.mts`
 - **Layout & nav**: `components/header.tsx`, `components/footer.tsx`, `components/LeftSidebar.tsx`, `components/RightSidebar.tsx`
 - **Styling**: `tailwind.config.js`, `global.css`
+
+## Backend (API Server)
+
+The `backend/` directory is a Koa.js server (deployed as `api.star-history.com`) that generates star history SVG charts and OG card images.
+
+- **Dev**: `cd backend && pnpm dev`
+- **Build**: `cd backend && pnpm build`
+- Requires `token.env` with GitHub tokens (one per line)
+
+| File | Purpose |
+|------|---------|
+| `main.ts` | Koa server with `/svg` endpoint (query params: `repos`, `type`, `style`, `size`, `theme`) |
+| `og-card.ts` | Satori-based OG card image renderer (`style=card` → 1200×630 PNG) |
+| `cache.ts` | LRU cache (10K repos, 1GB, 24h TTL) for star records |
+| `token.ts` | GitHub token rotation |
+| `utils.ts` | SVG manipulation, image conversion helpers |
+| `shared/` | Code shared with frontend (API client, chart data, D3 chart, types) |
+| `assets/` | Fonts (xkcd.ttf, Inter.ttf) and logo for OG card rendering |
 
 ## Arena (Data Pipeline)
 

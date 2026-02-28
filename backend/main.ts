@@ -16,9 +16,12 @@ import {
 } from "./utils.js";
 import { getNextToken, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const.js";
+import { initOgAssets, renderOgCard } from "./og-card.js";
+import fetch from "node-fetch";
 
 const startServer = async () => {
   await initTokenFromEnv();
+  initOgAssets();
 
   const app = new Koa();
   app.use(cors());
@@ -75,6 +78,41 @@ const startServer = async () => {
 
     if (repos.length === 0) {
       ctx.throw(400, `${http.STATUS_CODES[400]}: Repo name required`);
+      return;
+    }
+
+    // Card-style OG image: returns a 1200×630 PNG
+    const style = `${ctx.query["style"]}`;
+    if (style === "card") {
+      const repo = repos[0];
+      const token = getNextToken();
+      try {
+        const res = await fetch(`https://api.github.com/repos/${repo}`, {
+          headers: { Authorization: `token ${token}`, Accept: "application/json" },
+        });
+        if (!res.ok) {
+          ctx.throw(res.status, `GitHub API: ${res.statusText}`);
+          return;
+        }
+        const gh = (await res.json()) as any;
+        const avatarBase64 = await getBase64Image(`${gh.owner.avatar_url}&s=200`);
+        const png = await renderOgCard({
+          name: gh.full_name,
+          description: gh.description,
+          stars: gh.stargazers_count,
+          forks: gh.forks_count,
+          language: gh.language,
+          license: gh.license?.spdx_id || null,
+          created_at: gh.created_at,
+          avatarBase64,
+        });
+        ctx.type = "image/png";
+        ctx.set("cache-control", "max-age=86400");
+        ctx.body = png;
+      } catch (error: any) {
+        const status = error.status || 500;
+        ctx.throw(status, `Failed to generate card: ${error.message}`);
+      }
       return;
     }
 
