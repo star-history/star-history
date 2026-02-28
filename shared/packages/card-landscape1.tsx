@@ -244,26 +244,26 @@ export function buildLandscape1(data: Landscape1Data) {
         // Stats: absolute numbers
         h(
           "div",
-          { style: { display: "flex", alignItems: "baseline", gap: 40, marginTop: 60 } },
+          { style: { display: "flex", alignItems: "center", gap: 24, marginTop: 60 } },
           h(
             "div",
             { title: `Stars: ${data.stars.toLocaleString()}` + (data.attributes ? ` · Top ${100 - data.attributes.stars}%` : ""), style: { display: "flex", alignItems: "center", gap: 8 } },
             h(
               "svg",
-              { viewBox: "0 0 24 24", width: 28, height: 28 },
+              { viewBox: "0 0 24 24", width: 24, height: 24 },
               h("path", {
                 d: "M12 2L14.9 8.6L22 9.3L16.8 14L18.2 21L12 17.3L5.8 21L7.2 14L2 9.3L9.1 8.6Z",
                 fill: "#facc15", stroke: "#a3a3a3", "stroke-width": "1.2", "stroke-linecap": "round", "stroke-linejoin": "round",
               }),
             ),
-            h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#171717" } }, fmt(data.stars)),
+            h("span", { style: { fontSize: 36, fontWeight: "bold", color: "#171717" } }, fmt(data.stars)),
           ),
           h(
             "div",
             { title: `Forks: ${data.forks.toLocaleString()}` + (data.attributes ? ` · Top ${100 - data.attributes.forks}%` : ""), style: { display: "flex", alignItems: "center", gap: 8 } },
             h(
               "svg",
-              { viewBox: "0 0 32 24", width: 36, height: 28 },
+              { viewBox: "0 0 32 24", width: 30, height: 24 },
               // Fork: tines
               h("path", { d: "M3 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
               h("path", { d: "M7 2V10", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.4", "stroke-linecap": "round" }),
@@ -279,7 +279,7 @@ export function buildLandscape1(data: Landscape1Data) {
               // Knife: handle
               h("path", { d: "M22 14V22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.8", "stroke-linecap": "round" }),
             ),
-            h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#525252" } }, fmt(data.forks)),
+            h("span", { style: { fontSize: 36, fontWeight: "bold", color: "#525252" } }, fmt(data.forks)),
           ),
           data.attributes
             ? h(
@@ -287,7 +287,7 @@ export function buildLandscape1(data: Landscape1Data) {
                 { title: `Contributors: ${data.attributes.contributors} · Top ${100 - data.attributes.contributors}%`, style: { display: "flex", alignItems: "center", gap: 8 } },
                 h(
                   "svg",
-                  { viewBox: "0 0 32 24", width: 36, height: 28 },
+                  { viewBox: "0 0 32 24", width: 30, height: 24 },
                   // Left person: head + body
                   h("circle", { cx: "7", cy: "6", r: "3.5", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3" }),
                   h("path", { d: "M1 22C1 17 3.5 14 7 14C10.5 14 13 17 13 22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3", "stroke-linecap": "round" }),
@@ -295,7 +295,7 @@ export function buildLandscape1(data: Landscape1Data) {
                   h("circle", { cx: "22", cy: "6", r: "3.5", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3" }),
                   h("path", { d: "M16 22C16 17 18.5 14 22 14C25.5 14 28 17 28 22", fill: "none", stroke: "#a3a3a3", "stroke-width": "1.3", "stroke-linecap": "round" }),
                 ),
-                h("span", { style: { fontSize: 44, fontWeight: "bold", color: "#525252" } }, String(data.attributes.contributors)),
+                h("span", { style: { fontSize: 36, fontWeight: "bold", color: "#525252" } }, String(data.attributes.contributors)),
               )
             : null,
         ),
