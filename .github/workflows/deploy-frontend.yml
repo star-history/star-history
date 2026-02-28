@@ -35,8 +35,12 @@ jobs:
           node-version: 20
           cache: pnpm
           cache-dependency-path: |
+            pnpm-lock.yaml
             arena/pnpm-lock.yaml
             frontend/pnpm-lock.yaml
+
+      - name: Install shared dependencies
+        run: pnpm install
 
       - name: Install arena dependencies
         run: pnpm install
