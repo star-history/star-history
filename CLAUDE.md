@@ -114,7 +114,7 @@ The `backend/` directory is a Koa.js server (deployed as `api.star-history.com`)
 The `arena/` directory contains the data pipeline that fetches repo stats and exports JSON files consumed by the frontend.
 
 - **Full run**: `cd arena && pnpm run fetch` — fetches from GitHub API + BigQuery, writes to SQLite (`data.db`), and exports JSON files
-- **Re-export only**: `cd arena && pnpm run export` — re-exports JSON files from existing `data.db` without fetching (useful after code changes)
+- **Generate only**: `cd arena && pnpm run generate` — generates JSON files from existing `data.db` without fetching (useful after code changes)
 - **DB is ephemeral**: `createDatabase()` drops all tables and recreates them on every run. The SQLite DB can always be regenerated from source APIs.
 - **Exported JSON files** (written to `frontend/helpers/`): `leaderboard.json`, `weekly-ranking.json`, `repos.json`, `repo-cards.json`
 

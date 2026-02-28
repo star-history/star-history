@@ -42,8 +42,8 @@ jobs:
         run: pnpm install
         working-directory: arena
 
-      - name: Export arena data
-        run: pnpm run export
+      - name: Generate arena data
+        run: pnpm run generate
         working-directory: arena
 
       - name: Install frontend dependencies
