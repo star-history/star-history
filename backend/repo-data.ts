@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { RepoCardData } from "../arena/types.js";
+import type { RepoCardData } from "./arena-types.js";
 
 const DATA_PATH = path.join(process.cwd(), "..", "arena", "data", "repo-cards.json");
 
