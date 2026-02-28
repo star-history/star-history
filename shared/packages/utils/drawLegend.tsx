@@ -1,5 +1,5 @@
 import { D3Selection, LegendPosition } from "../types"
-import { uniq } from "lodash"
+import uniq from "lodash/uniq"
 
 interface DrawLegendConfig {
     items: {

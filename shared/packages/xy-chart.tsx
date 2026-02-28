@@ -3,7 +3,7 @@ import { select } from "d3-selection"
 import { line, curveMonotoneX } from "d3-shape"
 import { AxisScale } from "d3-axis";
 import dayjs from "dayjs"
-import { uniq } from "lodash"
+import uniq from "lodash/uniq"
 import ToolTip from "./components/ToolTip"
 import { drawXAxis, drawYAxis } from "./utils/drawAxis"
 import addFilter from "./utils/addFilter"
