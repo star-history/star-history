@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "description": "Shared dependencies for star-history shared/ code",
+  "dependencies": {
+    "axios": "^1.8.2",
+    "d3-axis": "^2.1.0",
+    "d3-scale": "^3.3.0",
+    "d3-selection": "^2.0.0",
+    "d3-shape": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/d3-axis": "^2.1.0",
+    "@types/d3-scale": "^3.3.0",
+    "@types/d3-selection": "^2.0.0",
+    "@types/d3-shape": "^2.1.0",
+    "@types/lodash": "^4.14.200"
+  }
+}

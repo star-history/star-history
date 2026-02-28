@@ -9,6 +9,14 @@ const nextConfig = {
     webpack: (config, { defaultLoaders }) => {
         config.resolve.alias["@shared"] = sharedDir;
         config.resolve.alias["@arena-data"] = arenaDataDir;
+        // Ensure shared/ code can resolve packages from frontend/node_modules,
+        // and preserve bare-import resolution (e.g. "store", "helpers/toast")
+        // by including the frontend directory itself as a module root.
+        config.resolve.modules = [
+            __dirname,
+            path.resolve(__dirname, "node_modules"),
+            "node_modules",
+        ];
         config.module.rules.push({
             test: /\.(ts|tsx)$/,
             include: [sharedDir],
