@@ -4,6 +4,8 @@
  * (as a data:image/svg+xml;base64 src) or direct rendering.
  */
 
+import { xkcdFontUrl } from "./utils/fontData"
+
 interface RepoAttributes {
   stars: number;
   new_stars: number;
@@ -94,6 +96,14 @@ export function renderRadarSvg(attributes: RepoAttributes, size = 400): string {
   // SVG open
   parts.push(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" style="font-family:xkcd,cursive;background:transparent">`
+  );
+
+  // Embed xkcd font inline so it renders when used as a data:image/svg+xml URL.
+  // Unlike the xy-chart (which is either an inline DOM SVG or served directly),
+  // this SVG is embedded as a base64 <img> src inside the satori OG card layout,
+  // so it's sandboxed and cannot access page CSS or external fonts.
+  parts.push(
+    `<defs><style type="text/css">@font-face { font-family: "xkcd"; src: url(${xkcdFontUrl}) format("woff"); }</style></defs>`
   );
 
   // Translate group to center
