@@ -24,12 +24,9 @@ COPY backend/ ./backend/
 # Copy gh data
 COPY gh/data/repos.json ./gh/data/repos.json
 
-# Build the application
-RUN cd backend && pnpm build
-
 # Expose port
 EXPOSE 3000
 
 # Start the application
 WORKDIR /app/backend
-CMD ["node", "./dist/backend/main.js"]
+CMD ["npx", "tsx", "main.ts"]
