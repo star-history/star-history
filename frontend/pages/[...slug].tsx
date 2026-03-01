@@ -51,7 +51,7 @@ interface RepoPageProps {
     minStars: number
 }
 
-const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: string }) => (
+const Toolbar = ({ onDownload, downloading, tweetUrl }: { onDownload: () => void; downloading: boolean; tweetUrl: string }) => (
     <div className="flex items-center mb-2 w-full max-w-5xl" style={{ fontFamily: '"xkcd", cursive' }}>
         <div className="flex-1">
             <Link href="/" className="inline-flex items-center gap-1.5 text-lg text-neutral-400 hover:text-neutral-600 transition-colors">
@@ -62,9 +62,15 @@ const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: s
             </Link>
         </div>
         <div className="flex items-center gap-3">
+            {downloading && (
+                <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M12 2a10 10 0 0 1 10 10" />
+                </svg>
+            )}
             <button
                 onClick={onDownload}
-                className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                disabled={downloading}
+                className="text-neutral-400 hover:text-neutral-600 transition-colors disabled:opacity-40"
                 title="Download as PNG"
             >
                 <svg width="24" height="24" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
@@ -90,6 +96,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const cardRef = useRef<HTMLDivElement>(null)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const [scale, setScale] = useState(1)
+    const [downloading, setDownloading] = useState(false)
     const [radarPos, setRadarPos] = useState<{ left: number; top: number; width: number; height: number } | null>(null)
     const [statTooltip, setStatTooltip] = useState<{ left: number; top: number; line1: string; line2: string } | null>(null)
 
@@ -225,7 +232,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     }, [])
 
     const handleDownload = useCallback(async () => {
-        if (!cardRef.current) return
+        if (!cardRef.current || downloading) return
+        setDownloading(true)
         try {
             const imgs = cardRef.current.querySelectorAll("img")
             const origSrcs: string[] = []
@@ -266,8 +274,10 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
             link.click()
         } catch (err) {
             console.error("Failed to export card as PNG:", err)
+        } finally {
+            setDownloading(false)
         }
-    }, [repo.name])
+    }, [repo.name, downloading])
 
     return (
         <>
@@ -317,7 +327,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 />
             </Head>
             <PageShell>
-                <Toolbar onDownload={handleDownload} tweetUrl={tweetUrl} />
+                <Toolbar onDownload={handleDownload} downloading={downloading} tweetUrl={tweetUrl} />
 
                 <div
                     ref={wrapperRef}
