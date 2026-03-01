@@ -30,7 +30,8 @@ COPY gh/data/repos.json ./gh/data/repos.json
 RUN cd backend && pnpm build && \
     mkdir -p /app/dist && \
     cp -r /app/backend/dist/backend /app/dist/app && \
-    cp -r /app/backend/dist/shared /app/dist/shared
+    cp -r /app/backend/dist/shared /app/dist/shared && \
+    ln -s /app/backend/node_modules /app/dist/app/node_modules
 
 # Expose port
 EXPOSE 3000
