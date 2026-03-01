@@ -81,6 +81,23 @@ Layout wrappers: `_app.tsx` (per-page `getLayout` pattern), `_document.tsx`.
 4. `@shared/common/chart.tsx` transforms data to D3-compatible format (frontend passes `{ insertZeroPoint: true }`)
 5. `@shared/packages/xy-chart.tsx` renders the SVG chart via D3
 
+## Visual Style Guide
+
+The project uses an **xkcd / hand-drawn aesthetic**. All interactive overlays and UI chrome rendered on charts or cards must follow these conventions:
+
+**Tooltip style** (reference: `shared/packages/components/ToolTip.tsx`):
+- White background at 90% opacity, black 2px stroke, 5px border-radius
+- `xkcdify` SVG filter on the background rect (feTurbulence fractalNoise + feDisplacementMap scale=5)
+- Font: `font-family: "xkcd", cursive`, 15px, bold for titles
+- Color indicator: 8×8 rect with 2px border-radius, matching the data series color
+- Always use this same tooltip style for any new hover/interactive element across charts and cards
+
+**Frame / stroke style**:
+- Borders and outlines use the `xkcdify` SVG filter for a sketchy, wobbly look
+- Stroke: black (`#000`) for light theme, white (`#fff`) for dark theme, 2px width
+- Border-radius: 5px (`rx="5" ry="5"`)
+- Never use clean/straight borders on chart or card UI — always apply the xkcdify filter
+
 ## Key Files for Common Changes
 
 - **Chart rendering**: `@shared/packages/xy-chart.tsx`, `components/StarChartViewer.tsx`, `components/Charts/StarXYChart.tsx`

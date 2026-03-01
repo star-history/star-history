@@ -9,6 +9,7 @@ import { formatNumber } from "../helpers/format"
 import { loadRepos } from "@shared/common/repo-data"
 import type { RepoCardData } from "@shared/types/gh"
 import PageShell from "../components/PageShell"
+import InteractiveRadar from "../components/InteractiveRadar"
 import { buildLandscape1 } from "@shared/packages/card-landscape1"
 import { renderRadarSvg } from "@shared/packages/radar-svg"
 
@@ -50,11 +51,6 @@ interface RepoPageProps {
     minStars: number
 }
 
-function formatDate(dateStr: string): string {
-    const d = new Date(dateStr)
-    return d.toLocaleDateString("en-US", { month: "short", year: "numeric" })
-}
-
 const Toolbar = ({ onDownload, tweetUrl }: { onDownload: () => void; tweetUrl: string }) => (
     <div className="flex items-center mb-2 w-full max-w-5xl" style={{ fontFamily: '"xkcd", cursive' }}>
         <div className="flex-1">
@@ -94,6 +90,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const cardRef = useRef<HTMLDivElement>(null)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const [scale, setScale] = useState(1)
+    const [radarPos, setRadarPos] = useState<{ left: number; top: number; width: number; height: number } | null>(null)
+    const [statTooltip, setStatTooltip] = useState<{ left: number; top: number; line1: string; line2: string } | null>(null)
 
     const title = `${repo.name} - ${formatNumber(repo.stars_total)} Stars`
     const weeklyParts = [
@@ -143,6 +141,89 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
         return () => observer.disconnect()
     }, [])
 
+    // Compute radar image position within the card (in native 1200×630 coordinates)
+    useEffect(() => {
+        const card = cardRef.current
+        if (!card || !hasAttributes) return
+        const img = card.querySelector('img[width="560"]') as HTMLElement | null
+        if (!img) return
+        const cardRect = card.getBoundingClientRect()
+        const imgRect = img.getBoundingClientRect()
+        const s = cardRect.width / 1200
+        setRadarPos({
+            left: (imgRect.left - cardRect.left) / s,
+            top: (imgRect.top - cardRect.top) / s,
+            width: imgRect.width / s,
+            height: imgRect.height / s,
+        })
+    }, [scale, hasAttributes])
+
+    // Show xkcd-style tooltip on stat elements that have a title attribute
+    useEffect(() => {
+        const card = cardRef.current
+        if (!card) return
+
+        let activeEl: HTMLElement | null = null
+        let originalTitle = ""
+
+        const restore = () => {
+            if (activeEl && originalTitle) {
+                activeEl.setAttribute("title", originalTitle)
+            }
+            activeEl = null
+            originalTitle = ""
+        }
+
+        const handleOver = (e: MouseEvent) => {
+            // Still inside the active element (title already removed, so closest won't find it)
+            if (activeEl && activeEl.contains(e.target as Node)) return
+
+            const el = (e.target as HTMLElement).closest?.("[title]") as HTMLElement | null
+
+            restore()
+
+            if (!el) {
+                setStatTooltip(null)
+                return
+            }
+
+            const title = el.getAttribute("title")!
+            const parts = title.split(" \u00b7 ")
+            if (parts.length !== 2) return
+
+            activeEl = el
+            originalTitle = title
+            el.removeAttribute("title")
+
+            const cardRect = card.getBoundingClientRect()
+            const elRect = el.getBoundingClientRect()
+            const s = cardRect.width / 1200
+
+            setStatTooltip({
+                left: (elRect.left + elRect.width / 2 - cardRect.left) / s,
+                top: (elRect.top - cardRect.top) / s,
+                line1: parts[0],
+                line2: parts[1],
+            })
+        }
+
+        const handleOut = (e: MouseEvent) => {
+            if (!activeEl) return
+            const related = e.relatedTarget as Node | null
+            if (related && activeEl.contains(related)) return
+            restore()
+            setStatTooltip(null)
+        }
+
+        card.addEventListener("mouseover", handleOver)
+        card.addEventListener("mouseout", handleOut)
+        return () => {
+            card.removeEventListener("mouseover", handleOver)
+            card.removeEventListener("mouseout", handleOut)
+            restore()
+        }
+    }, [])
+
     const handleDownload = useCallback(async () => {
         if (!cardRef.current) return
         try {
@@ -173,6 +254,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 width: 1200,
                 height: 630,
                 style: { transform: "none" },
+                filter: (node) => !(node instanceof HTMLElement && node.hasAttribute("data-html2image-ignore")),
             })
 
             // Restore image srcs
@@ -193,6 +275,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <link rel="canonical" href={canonicalUrl} />
+                <meta property="og:locale" content="en_US" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:title" content={title} />
@@ -245,8 +328,59 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                         if (target) window.open(`https://github.com/${repo.name}`, "_blank", "noopener")
                     }}
                 >
-                    <div ref={cardRef} style={{ width: 1200, height: 630, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+                    <div ref={cardRef} style={{ width: 1200, height: 630, transform: `scale(${scale})`, transformOrigin: "top left", position: "relative" }}>
                         {vnodeToReact(cardVNode)}
+                        {hasAttributes && radarPos && (
+                            <div
+                                data-html2image-ignore=""
+                                style={{
+                                    position: "absolute",
+                                    left: radarPos.left,
+                                    top: radarPos.top,
+                                    width: radarPos.width,
+                                    height: radarPos.height,
+                                    pointerEvents: "none",
+                                }}
+                            >
+                                <InteractiveRadar
+                                    attributes={repo.attributes}
+                                    rawValues={{
+                                        stars: formatNumber(repo.stars_total),
+                                        forks: formatNumber(repo.forks_count),
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {statTooltip && (
+                            <div
+                                data-html2image-ignore=""
+                                style={{
+                                    position: "absolute",
+                                    left: statTooltip.left,
+                                    top: statTooltip.top,
+                                    transform: "translate(-50%, -100%) translateY(-12px)",
+                                    pointerEvents: "none",
+                                    zIndex: 10,
+                                }}
+                            >
+                                <svg width="200" height="60" style={{ margin: "-5px" }}>
+                                    <defs>
+                                        <filter id="xkcdify-tip-stat" x="-5%" y="-5%" width="110%" height="110%">
+                                            <feTurbulence type="fractalNoise" baseFrequency="0.05" result="noise" />
+                                            <feDisplacementMap scale="5" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="noise" />
+                                        </filter>
+                                    </defs>
+                                    <rect x="5" y="5" width="190" height="50" fill="white" fillOpacity={0.9} stroke="black" strokeWidth={2} rx={5} ry={5} filter="url(#xkcdify-tip-stat)" />
+                                    <rect x="15" y="16" width="8" height="8" fill="#16a34a" rx={2} ry={2} />
+                                    <text x="27" y="24" fontSize="15px" fontWeight="bold" fill="black" style={{ fontFamily: '"xkcd", cursive' }}>
+                                        {statTooltip.line1}
+                                    </text>
+                                    <text x="15" y="44" fontSize="15px" fill="black" style={{ fontFamily: '"xkcd", cursive' }}>
+                                        {statTooltip.line2}
+                                    </text>
+                                </svg>
+                            </div>
+                        )}
                     </div>
                 </div>
 
