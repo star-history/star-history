@@ -162,12 +162,12 @@ export function buildLandscape1(data: Landscape1Data) {
       // Left column: avatar + info
       h(
         "div",
-        { style: { display: "flex", flexDirection: "column", flex: 1, justifyContent: "center" } },
+        { style: { display: "flex", flexDirection: "column", flex: 1, minWidth: 0, justifyContent: "center" } },
 
         // Name (full width, above avatar row)
         h(
           "div",
-          { "data-repo-name": true, style: { display: "flex", alignItems: "baseline", fontSize: 34, fontWeight: "bold", whiteSpace: "nowrap" } },
+          { "data-repo-name": true, style: { display: "flex", alignItems: "baseline", flexWrap: "wrap", fontSize: 34, fontWeight: "bold" } },
           h("span", { style: { color: "#a3a3a3", fontWeight: "normal" } }, owner),
           h("span", { style: { color: "#d4d4d4", margin: "0 5px" } }, "/"),
           h("span", { style: { color: "#171717" } }, repoName),
