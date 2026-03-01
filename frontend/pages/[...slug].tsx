@@ -333,7 +333,11 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
                     }) }}
                 />
             </Head>
-            <PageShell>
+            <PageShell header={
+                <Link href="/">
+                    <img src="/assets/logo-full.svg" alt="Star History" className="h-8 mb-4" />
+                </Link>
+            }>
                 <Toolbar onDownload={handleDownload} downloading={downloading} tweetUrl={tweetUrl} />
 
                 <div
