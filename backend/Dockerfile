@@ -25,16 +25,11 @@ COPY backend/ ./backend/
 COPY gh/data/repos.json ./gh/data/repos.json
 
 # Build the application
-# tsc outputs to backend/dist/{backend,shared}/ due to rootDir="../"
-# K8s command expects /app/dist/app/main.js, so copy output to match
-RUN cd backend && pnpm build && \
-    mkdir -p /app/dist && \
-    cp -r /app/backend/dist/backend /app/dist/app && \
-    cp -r /app/backend/dist/shared /app/dist/shared && \
-    ln -s /app/backend/node_modules /app/dist/app/node_modules
+RUN cd backend && pnpm build
 
 # Expose port
 EXPOSE 3000
 
 # Start the application
-CMD ["node", "/app/dist/app/main.js"]
+WORKDIR /app/backend
+CMD ["node", "./dist/backend/main.js"]
