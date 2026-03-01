@@ -1,5 +1,8 @@
 FROM node:20-alpine
 
+ARG GIT_COMMIT
+LABEL org.opencontainers.image.revision=${GIT_COMMIT}
+
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 

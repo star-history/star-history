@@ -60,6 +60,8 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: bytebase/star-history:backend-latest
+          build-args: |
+            GIT_COMMIT=${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
