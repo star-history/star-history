@@ -46,9 +46,16 @@ function vnodeToReact(node: any, key?: number): ReactNode {
 
 // --- Page ---
 
+interface NavRepo {
+    name: string
+    rank: number
+}
+
 interface RepoPageProps {
     repo: RepoCardData
     minStars: number
+    prevRepo: NavRepo | null
+    nextRepo: NavRepo | null
 }
 
 const Toolbar = ({ onDownload, downloading, tweetUrl }: { onDownload: () => void; downloading: boolean; tweetUrl: string }) => (
@@ -92,7 +99,7 @@ const Toolbar = ({ onDownload, downloading, tweetUrl }: { onDownload: () => void
     </div>
 )
 
-const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
+const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo }) => {
     const cardRef = useRef<HTMLDivElement>(null)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const [scale, setScale] = useState(1)
@@ -405,7 +412,34 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
                         />
                     </div>
                 )}
-                <p className="text-sm text-neutral-400 mt-3" style={{ fontFamily: '"xkcd", cursive' }}>
+
+                <div className="flex items-center justify-between w-full max-w-5xl mt-3 text-sm text-neutral-400" style={{ fontFamily: '"xkcd", cursive' }}>
+                    <div className="w-1/3">
+                        {prevRepo && (
+                            <Link href={`/${prevRepo.name.toLowerCase()}`} className="inline-flex items-center gap-1.5 hover:text-neutral-600 transition-colors">
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M10.5 13L5.5 8L10.5 3" />
+                                </svg>
+                                <span>#{prevRepo.rank} {prevRepo.name.split("/")[1]}</span>
+                            </Link>
+                        )}
+                    </div>
+                    <div className="w-1/3 text-center">
+                        #{repo.rank} of {formatNumber(repo.total_repos)}
+                    </div>
+                    <div className="w-1/3 text-right">
+                        {nextRepo && (
+                            <Link href={`/${nextRepo.name.toLowerCase()}`} className="inline-flex items-center gap-1.5 hover:text-neutral-600 transition-colors justify-end">
+                                <span>{nextRepo.name.split("/")[1]} #{nextRepo.rank}</span>
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M5.5 3L10.5 8L5.5 13" />
+                                </svg>
+                            </Link>
+                        )}
+                    </div>
+                </div>
+
+                <p className="text-sm text-neutral-400 mt-1" style={{ fontFamily: '"xkcd", cursive' }}>
                     Tracking repos with {formatNumber(minStars)}+ stars
                 </p>
             </PageShell>
@@ -439,7 +473,18 @@ export const getStaticProps: GetStaticProps<RepoPageProps> = async ({ params }) 
         return { notFound: true }
     }
 
-    return { props: { repo, minStars: store.min_stars } }
+    const idx = store.repos.findIndex(r => r.name.toLowerCase() === slug.join("/").toLowerCase())
+    const prev = idx > 0 ? store.repos[idx - 1] : null
+    const next = idx >= 0 && idx < store.repos.length - 1 ? store.repos[idx + 1] : null
+
+    return {
+        props: {
+            repo,
+            minStars: store.min_stars,
+            prevRepo: prev ? { name: prev.name, rank: prev.rank } : null,
+            nextRepo: next ? { name: next.name, rank: next.rank } : null,
+        },
+    }
 }
 
 export default RepoPage
