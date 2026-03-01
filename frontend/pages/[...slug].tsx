@@ -439,7 +439,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
                     </div>
                 </div>
 
-                <p className="text-sm text-neutral-400 mt-1" style={{ fontFamily: '"xkcd", cursive' }}>
+                <p className="text-sm text-neutral-400 mt-1">
                     Tracking repos with {formatNumber(minStars)}+ stars
                 </p>
             </PageShell>
