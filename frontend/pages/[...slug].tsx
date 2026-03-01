@@ -95,16 +95,13 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars }) => {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const [scale, setScale] = useState(1)
 
-    const title = `${repo.name} GitHub Star History - ${formatNumber(repo.stars_total)} Stars`
-    const descParts = [
-        `Star history and stats for ${repo.name}`,
-        repo.description ? `: ${repo.description}` : "",
-        `. ${formatNumber(repo.stars_total)} stars`,
-        repo.forks_count ? `, ${formatNumber(repo.forks_count)} forks` : "",
-        repo.language ? `. Built with ${repo.language}` : "",
-        repo.created_at ? `. Created ${formatDate(repo.created_at)}` : "",
-    ]
-    const description = descParts.join("").slice(0, 160)
+    const title = `${repo.name} - ${formatNumber(repo.stars_total)} Stars`
+    const weeklyParts = [
+        repo.attributes?.new_stars ? `+${formatNumber(repo.attributes.new_stars)} stars` : "",
+        repo.attributes?.pushes ? `${formatNumber(repo.attributes.pushes)} pushes` : "",
+        repo.attributes?.contributors ? `${formatNumber(repo.attributes.contributors)} contributors` : "",
+    ].filter(Boolean)
+    const description = weeklyParts.length ? `This week: ${weeklyParts.join(", ")}` : `Star history and stats for ${repo.name}`
     const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
     const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&style=landscape1`
     const tweetText = `${repo.name} - ${formatNumber(repo.stars_total)} stars on GitHub`
