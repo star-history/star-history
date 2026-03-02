@@ -10,7 +10,7 @@ import logger from "./logger.js";
 import cache, { ogCardCache, svgCache } from "./cache.js";
 import {
   getChartWidthWithSize,
-  replaceSVGContentFilterWithCamelcase,
+  fixJsdomSvgCasing,
   getBase64Image,
 } from "./utils.js";
 import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
@@ -254,7 +254,7 @@ const startServer = async () => {
     }
 
     // Optimizing SVG to save bandwidth
-    const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
+    const svgContent = fixJsdomSvgCasing(svg.outerHTML);
     const options: Config = {
       multipass: true, // Apply optimizations multiple times
     };
