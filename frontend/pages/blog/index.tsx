@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react"
 import Head from "next/head"
 import Header from "../../components/header"
 import Footer from "../../components/footer"
@@ -9,27 +7,26 @@ import Link from "next/link"
 import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
 import { AppStateProvider } from "store"
+import { SketchMailboxIcon } from "../../components/SketchIcons"
 
 interface Blog {
     slug: string
     title: string
     description: string
-    author: string
     publishedDate: string
     featured?: boolean
-    featureImage?: string
 }
 
+const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr)
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+}
+
+const blogs = blogData as Blog[]
+const featured = blogs.find((b) => b.featured)
+const rest = blogs.filter((b) => b !== featured)
+
 const BlogPage: NextPageWithLayout = () => {
-    const [isLoading, setIsLoading] = useState(true)
-    const [blogs, setBlogs] = useState<Blog[]>([])
-
-    useEffect(() => {
-        const blogList = blogData as Blog[]
-        setBlogs(blogList)
-        setIsLoading(false)
-    }, [])
-
     return (
         <AppStateProvider>
             <Head>
@@ -38,41 +35,47 @@ const BlogPage: NextPageWithLayout = () => {
             <div className="relative w-full h-auto min-h-screen flex flex-col overflow-x-hidden">
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px] xl:grid-cols-[240px_1fr_288px] lg:gap-8 xl:gap-24">
-                        <div className="hidden xl:block"></div>
+                    <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px] lg:gap-8">
                         <div className="w-full flex flex-col justify-start">
                             <section className="w-full h-auto flex flex-col justify-start items-start">
-                            <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
-                                Star History Blog
-                            </h1>
-                            {isLoading && (
-                                <div className="grow w-full flex flex-col justify-center items-center">
-                                    <i className="fas fa-spinner animate-spin text-4xl z-10"></i>
-                                </div>
-                            )}
-                            {!isLoading && blogs.length === 0 && (
+                            <div className="mt-8 px-2 py-6 w-full flex items-baseline gap-4">
+                                <h1 className="text-4xl font-bold text-dark">Star History Blog</h1>
+                                <a
+                                    href="https://newsletter.star-history.com/subscribe"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-gray-700 hover:underline"
+                                >
+                                    <SketchMailboxIcon /> Subscribe
+                                </a>
+                            </div>
+                            {blogs.length === 0 && (
                                 <div className="w-full h-10 flex flex-col justify-center items-center">
                                     <p className="text-center leading-8 text-lg text-dark font-medium">Oops! No article found.</p>
                                 </div>
                             )}
-                            {!isLoading && blogs.length > 0 && (
-                                <div className="w-full flex flex-col justify-start items-center">
-                                    <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                                        {blogs.map((blog) => (
-                                            <div key={blog.slug} className="h-auto flex flex-col border rounded-md">
-                                                {blog.featureImage && (
-                                                    <Link href={`/blog/${encodeURIComponent(blog.slug)}`}>
-                                                        <img className="h-48 w-full object-cover rounded-t-md" src={blog.featureImage} alt="" />
-                                                    </Link>
+                            {blogs.length > 0 && (
+                                <div className="w-full px-2 flex flex-col justify-start items-start mb-16">
+                                    {featured && (
+                                        <Link href={`/blog/${featured.slug}`} className="w-full group mb-2">
+                                            <div className="py-6 border-b border-gray-200">
+                                                <p className="text-xs font-medium uppercase tracking-wide text-gray-400 mb-2">Featured</p>
+                                                <h2 className="text-2xl font-semibold text-dark group-hover:underline">{featured.title}</h2>
+                                                {featured.description && (
+                                                    <p className="mt-2 text-gray-600">{featured.description}</p>
                                                 )}
-                                                <div className="w-full p-6 py-4 flex flex-col justify-start">
-                                                    <Link href={`/blog/${blog.slug}`}>
-                                                        <p className="text-xl font-normal text-dark">{blog.title}</p>
-                                                    </Link>
-                                                </div>
+                                                <p className="mt-2 text-sm text-gray-500">{formatDate(featured.publishedDate)}</p>
                                             </div>
-                                        ))}
-                                    </div>
+                                        </Link>
+                                    )}
+                                    {rest.map((blog) => (
+                                        <Link key={blog.slug} href={`/blog/${blog.slug}`} className="w-full group">
+                                            <div className="py-4 border-b border-gray-200 flex items-center justify-between gap-4">
+                                                <h2 className="text-lg font-medium text-dark group-hover:underline truncate">{blog.title}</h2>
+                                                <span className="text-sm text-gray-500 shrink-0">{formatDate(blog.publishedDate)}</span>
+                                            </div>
+                                        </Link>
+                                    ))}
                                 </div>
                             )}
                         </section>

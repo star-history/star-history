@@ -92,9 +92,8 @@ const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, t
                             </div>
                         ) : (
                             <div className="w-full flex flex-col justify-start">
-                                <div className="w-full mt-6 h-full flex flex-col justify-start items-center">
-                                    <img className="hidden md:block w-full max-w-4xl object-scale-down" src={blog.featureImage || ""} alt="" />
-                                    <div className="w-full max-w-4xl mt-8 md:mt-10 justify-center">
+                                <div className="w-full mt-8 h-full flex flex-col justify-start items-center">
+                                    <div className="w-full max-w-4xl">
                                         <h1 className="text-3xl md:text-4xl leading-snug font-semibold text-dark">{blog.title}</h1>
                                     </div>
                                     <div className="w-full max-w-4xl mt-3 mb-2 flex flex-row items-center text-sm text-gray-500">
@@ -108,6 +107,9 @@ const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, t
                                             })}
                                         </time>
                                     </div>
+                                    {blog.featureImage && (
+                                        <img className="w-full max-w-4xl mt-6 object-scale-down rounded" src={blog.featureImage} alt="" />
+                                    )}
                                     <div className="mt-8 w-full max-w-4xl prose prose-indigo prose-lg" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                                 </div>
 
