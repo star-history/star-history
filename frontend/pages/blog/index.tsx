@@ -38,7 +38,8 @@ const BlogPage: NextPageWithLayout = () => {
             <div className="relative w-full h-auto min-h-screen flex flex-col">
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full md:max-w-5xl lg:max-w-7xl px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px]">
+                    <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[240px_1fr_288px] lg:gap-24">
+                        <div className="hidden lg:block"></div>
                         <div className="w-full flex flex-col justify-start">
                             <section className="w-full h-auto flex flex-col justify-start items-start">
                             <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
@@ -77,7 +78,7 @@ const BlogPage: NextPageWithLayout = () => {
                         </section>
                         <BytebaseBanner className="mb-8" />
                         </div>
-                        <div className="w-full hidden lg:block">
+                        <div className="hidden lg:block">
                             <RightSidebar />
                         </div>
                     </div>
