@@ -54,6 +54,16 @@ export const markTokenExhausted = (token: string) => {
   logger.warn(`Token ${token.slice(0, 8)}... rate-limited, cooling down for ${COOLDOWN_MS / 60000}m`);
 };
 
+// Return token pool stats for observability.
+export const getTokenStats = () => {
+  const now = Date.now();
+  let exhaustedCount = 0;
+  exhaustedUntil.forEach((until) => {
+    if (now < until) exhaustedCount++;
+  });
+  return { total: savedTokens.length, exhausted: exhaustedCount };
+};
+
 // Get the next available token, skipping rate-limited ones.
 // Returns null if all tokens are exhausted.
 export const getNextToken = (): string | null => {

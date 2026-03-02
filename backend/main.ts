@@ -13,7 +13,7 @@ import {
   fixJsdomSvgCasing,
   getBase64Image,
 } from "./utils.js";
-import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
+import { getNextToken, markTokenExhausted, getTokenStats, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
@@ -26,14 +26,32 @@ const startServer = async () => {
   const app = new Hono();
   app.use(cors());
 
+  // Request logging middleware
+  app.use(async (c, next) => {
+    const start = Date.now();
+    await next();
+    const ms = Date.now() - start;
+    logger.info(`${c.req.method} ${c.req.path} ${c.res.status} ${ms}ms`);
+  });
+
   app.onError((err, c) => {
-    logger.error("server error: ", err);
+    logger.error(`server error: ${err.stack || err}`);
     return c.text("Internal Server Error", 500);
   });
 
-  // Health check endpoint
+  // Health check endpoint with cache and token stats
   app.get("/healthz", (c) => {
-    return c.json({ status: "OK", commit: process.env.GIT_COMMIT || "unknown" }, 200);
+    const tokens = getTokenStats();
+    return c.json({
+      status: "OK",
+      commit: process.env.GIT_COMMIT || "unknown",
+      cache: {
+        starData: { size: cache.size, calculatedSize: cache.calculatedSize },
+        svgChart: { size: svgCache.size, calculatedSize: svgCache.calculatedSize },
+        ogCard: { size: ogCardCache.size, calculatedSize: ogCardCache.calculatedSize },
+      },
+      tokens,
+    }, 200);
   });
 
   // Normalize /svg query params for CDN cache efficiency.
