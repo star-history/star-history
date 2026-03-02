@@ -8,13 +8,13 @@ import XYChart from "../shared/packages/xy-chart.js";
 import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
 import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
-import cache, { ogCardCache, svgCache } from "./cache.js";
+import cache, { ogCardCache, svgCache, recordCacheHit, recordCacheMiss, getAllCacheStats } from "./cache.js";
 import {
   getChartWidthWithSize,
   fixJsdomSvgCasing,
   getBase64Image,
 } from "./utils.js";
-import { getNextToken, markTokenExhausted, getTokenStats, initTokenFromEnv } from "./token.js";
+import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
@@ -41,18 +41,12 @@ const startServer = async () => {
     return c.text("Internal Server Error", 500);
   });
 
-  // Health check endpoint with cache and token stats
+  // Health check endpoint with cache stats
   app.get("/healthz", (c) => {
-    const tokens = getTokenStats();
     return c.json({
       status: "OK",
       commit: process.env.GIT_COMMIT || "unknown",
-      cache: {
-        starData: { size: cache.size, calculatedSize: cache.calculatedSize },
-        svgChart: { size: svgCache.size, calculatedSize: svgCache.calculatedSize },
-        ogCard: { size: ogCardCache.size, calculatedSize: ogCardCache.calculatedSize },
-      },
-      tokens,
+      cache: getAllCacheStats(),
     }, 200);
   });
 
@@ -99,11 +93,13 @@ const startServer = async () => {
 
       const cachedCard = ogCardCache.get(repo);
       if (cachedCard) {
+        recordCacheHit("ogCard");
         return c.body(cachedCard, 200, {
           "Content-Type": "image/svg+xml;charset=utf-8",
           "Cache-Control": "public, s-maxage=86400, max-age=86400",
         });
       }
+      recordCacheMiss("ogCard");
 
       const token = getNextToken();
       if (!token) {
@@ -182,11 +178,13 @@ const startServer = async () => {
     const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}`;
     const cachedSvg = svgCache.get(svgCacheKey);
     if (cachedSvg) {
+      recordCacheHit("svgChart");
       return c.body(cachedSvg, 200, {
         "Content-Type": "image/svg+xml;charset=utf-8",
         "Cache-Control": "public, s-maxage=86400, max-age=86400",
       });
     }
+    recordCacheMiss("svgChart");
 
     const repoData = [];
     const nodataRepos = [];
@@ -195,12 +193,14 @@ const startServer = async () => {
       const cacheData = cache.get(repo);
 
       if (cacheData) {
+        recordCacheHit("starData");
         repoData.push({
           repo,
           starRecords: cacheData.starRecords,
           logoUrl: cacheData.logoUrl,
         });
       } else {
+        recordCacheMiss("starData");
         nodataRepos.push(repo);
       }
     }
