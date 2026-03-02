@@ -7,7 +7,7 @@ import XYChart from "../shared/packages/xy-chart.js";
 import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
 import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
-import cache from "./cache.js";
+import cache, { ogCardCache } from "./cache.js";
 import {
   getChartWidthWithSize,
   replaceSVGContentFilterWithCamelcase,
@@ -73,6 +73,15 @@ const startServer = async () => {
       if (!cardData) {
         return c.text(`Repo not found in gh dataset: ${repo}`, 404);
       }
+
+      const cachedCard = ogCardCache.get(repo);
+      if (cachedCard) {
+        return c.body(cachedCard, 200, {
+          "Content-Type": "image/svg+xml;charset=utf-8",
+          "Cache-Control": "public, s-maxage=86400, max-age=86400",
+        });
+      }
+
       const token = getNextToken();
       try {
         const res = await fetch(`https://api.github.com/repos/${repo}`, {
@@ -95,6 +104,7 @@ const startServer = async () => {
           attributes: cardData.attributes,
           rank: cardData.rank,
         });
+        ogCardCache.set(repo, svg);
         return c.body(svg, 200, {
           "Content-Type": "image/svg+xml;charset=utf-8",
           "Cache-Control": "public, s-maxage=86400, max-age=86400",

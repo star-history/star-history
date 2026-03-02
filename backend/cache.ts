@@ -29,4 +29,14 @@ const options = {
 
 const cache = new LRUCache<string, RepoData>(options);
 
+// Cache for rendered OG card SVGs, keyed by repo name.
+// OG cards are ~100-200KB each; 1000 entries ≈ 100-200MB max.
+export const ogCardCache = new LRUCache<string, string>({
+  max: 1000,
+  maxSize: 200 * 1024 * 1024,
+  sizeCalculation: (value: string) => Buffer.byteLength(value),
+  ttl: 1000 * 60 * 60 * 24,
+  updateAgeOnGet: false,
+});
+
 export default cache;
