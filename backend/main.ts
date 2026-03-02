@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { compress } from "hono/compress";
 import { serve } from "@hono/node-server";
 import { optimize, Config } from 'svgo';
 import { JSDOM } from "jsdom";
@@ -25,6 +26,7 @@ const startServer = async () => {
 
   const app = new Hono();
   app.use(cors());
+  app.use(compress());
 
   // Request logging middleware
   app.use(async (c, next) => {
