@@ -35,11 +35,11 @@ const BlogPage: NextPageWithLayout = () => {
             <Head>
                 <title>Star History Blog</title>
             </Head>
-            <div className="relative w-full h-auto min-h-screen flex flex-col">
+            <div className="relative w-full h-auto min-h-screen flex flex-col overflow-x-hidden">
                 <Header />
                 <div className="w-full h-auto grow flex flex-row justify-center">
-                    <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[240px_1fr_288px] lg:gap-24">
-                        <div className="hidden lg:block"></div>
+                    <div className="w-full px-4 h-auto grow lg:grid lg:grid-cols-[1fr_288px] xl:grid-cols-[240px_1fr_288px] lg:gap-8 xl:gap-24">
+                        <div className="hidden xl:block"></div>
                         <div className="w-full flex flex-col justify-start">
                             <section className="w-full h-auto flex flex-col justify-start items-start">
                             <h1 className="mt-12 p-8 text-4xl font-bold text-dark" style={{ fontFamily: "xkcd" }}>
@@ -76,7 +76,7 @@ const BlogPage: NextPageWithLayout = () => {
                                 </div>
                             )}
                         </section>
-                        <BytebaseBanner className="mb-8" />
+                        <BytebaseBanner className="mb-8 hidden lg:block" />
                         </div>
                         <div className="hidden lg:block">
                             <RightSidebar />
