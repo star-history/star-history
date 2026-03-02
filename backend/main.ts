@@ -7,7 +7,7 @@ import XYChart from "../shared/packages/xy-chart.js";
 import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
 import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
-import cache, { ogCardCache } from "./cache.js";
+import cache, { ogCardCache, svgCache } from "./cache.js";
 import {
   getChartWidthWithSize,
   replaceSVGContentFilterWithCamelcase,
@@ -158,6 +158,16 @@ const startServer = async () => {
       size = "laptop";
     }
 
+    // Check rendered SVG cache before any data fetching or rendering.
+    const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}`;
+    const cachedSvg = svgCache.get(svgCacheKey);
+    if (cachedSvg) {
+      return c.body(cachedSvg, 200, {
+        "Content-Type": "image/svg+xml;charset=utf-8",
+        "Cache-Control": "public, s-maxage=86400, max-age=86400",
+      });
+    }
+
     const repoData = [];
     const nodataRepos = [];
 
@@ -249,6 +259,7 @@ const startServer = async () => {
       multipass: true, // Apply optimizations multiple times
     };
     const optimized = optimize(svgContent, options).data;
+    svgCache.set(svgCacheKey, optimized);
 
     return c.body(optimized, 200, {
       "Content-Type": "image/svg+xml;charset=utf-8",

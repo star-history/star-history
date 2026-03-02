@@ -39,4 +39,14 @@ export const ogCardCache = new LRUCache<string, string>({
   updateAgeOnGet: false,
 });
 
+// Cache for rendered chart SVGs, keyed by normalized query string.
+// Avoids redundant D3 rendering + SVGO optimization for identical requests.
+export const svgCache = new LRUCache<string, string>({
+  max: 2000,
+  maxSize: 400 * 1024 * 1024,
+  sizeCalculation: (value: string) => Buffer.byteLength(value),
+  ttl: 1000 * 60 * 60 * 24,
+  updateAgeOnGet: false,
+});
+
 export default cache;
