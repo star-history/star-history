@@ -6,7 +6,7 @@
     "outDir": "dist",
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": false,
+    "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
