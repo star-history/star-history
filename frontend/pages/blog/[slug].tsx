@@ -11,7 +11,6 @@ import { GetStaticPropsContext, GetStaticPaths } from "next"
 import path from "path"
 import fs from "fs/promises"
 import blogs from "helpers/blog.json"
-import { AppStateProvider } from "store"
 import Head from "next/head"
 import { SITE_URL } from "../../helpers/consts"
 
@@ -45,7 +44,7 @@ function slugify(text: string): string {
 
 const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, tocItems }) => {
     return (
-        <AppStateProvider>
+        <>
             <Head>
                 <title>{blog ? `${blog.title}` : "GitHub Star History"}</title>
                 {
@@ -142,7 +141,7 @@ const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, t
                 </div>
                 <Footer />
             </div>
-        </AppStateProvider>
+        </>
     )
 }
 

@@ -6,7 +6,6 @@ import RightSidebar from "../../components/RightSidebar"
 import Link from "next/link"
 import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
-import { AppStateProvider } from "store"
 import { SketchMailboxIcon } from "../../components/SketchIcons"
 import { NEWSLETTER_URL } from "../../helpers/consts"
 
@@ -29,7 +28,7 @@ const rest = blogs.filter((b) => b !== featured)
 
 const BlogPage: NextPageWithLayout = () => {
     return (
-        <AppStateProvider>
+        <>
             <Head>
                 <title>Star History Blog</title>
             </Head>
@@ -89,7 +88,7 @@ const BlogPage: NextPageWithLayout = () => {
                 </div>
                 <Footer />
             </div>
-        </AppStateProvider>
+        </>
     )
 }
 

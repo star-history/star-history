@@ -1,54 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GitHubStarButton from "./GitHubStarButton";
 import TokenSettingDialog from "./TokenSettingDialog";
 import Link from "next/link";
-import { AppStateProvider, useAppStore } from "../store";
+import { useAppStore } from "../store";
 import { SketchLightBulbIcon } from "./SketchIcons";
 
 const Header: React.FC = () => {
   const store = useAppStore()
   const [showSetTokenDialog, setShowSetTokenDialog] = useState(false);
-  const [headerText, setHeaderText] = useState("Add access token");
-  const [state, setState] = useState<State>({
-    showDropMenu: false,
-    showSetTokenDialog: false,
-  });
+  const [showDropMenu, setShowDropMenu] = useState(false);
 
-  interface State {
-    showDropMenu: boolean;
-    showSetTokenDialog: boolean;
-    tokenCache?: string;
-  }
-
-  const handleSetTokenBtnClick = () => {
-    setShowSetTokenDialog(true);
-  };
-
-  const handleToggleDropMenuBtnClick = () => {
-    setState((prevState) => ({
-      ...prevState,
-      showDropMenu: !prevState.showDropMenu,
-    }));
-  };
-
-  const handleSetTokenDialogClose = () => {
-    setShowSetTokenDialog(false);
-  };
-
-useEffect(() => {
-  setHeaderText(store.token ? "Edit access token" : "Add access token")
-}, [store.token]);
+  const headerText = store.token ? "Edit access token" : "Add access token";
 
   return (
     <>
       {showSetTokenDialog && (
         <TokenSettingDialog
-          onClose={handleSetTokenDialogClose}
+          onClose={() => setShowSetTokenDialog(false)}
           tokenCache={false}
         />
       )}
 
-      <AppStateProvider>
         <header className="w-full h-14 shrink-0 flex flex-row justify-center items-center bg-dark text-light">
           <div className="w-full h-full flex flex-row justify-between items-center px-4">
             <div className="h-full bg-dark flex flex-row justify-start items-center">
@@ -60,7 +32,7 @@ useEffect(() => {
               </Link>
               <span
                 className="header-link cursor-pointer text-white text-base"
-                onClick={handleSetTokenBtnClick}
+                onClick={() => setShowSetTokenDialog(true)}
               >
                 {headerText}
               </span>
@@ -77,21 +49,21 @@ useEffect(() => {
             <div className="h-full flex md:hidden flex-row justify-end items-center">
               <button
                 aria-label="Toggle menu"
-                aria-expanded={state.showDropMenu}
+                aria-expanded={showDropMenu}
                 className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800 bg-transparent border-none"
-                onClick={handleToggleDropMenuBtnClick}
+                onClick={() => setShowDropMenu((prev) => !prev)}
               >
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 rotate-45" : "-mt-1"}`}></span>
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "hidden" : ""}`}></span>
-                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 -rotate-45" : "mt-1"}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showDropMenu ? "w-6 rotate-45" : "-mt-1"}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showDropMenu ? "hidden" : ""}`}></span>
+                <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${showDropMenu ? "w-6 -rotate-45" : "mt-1"}`}></span>
               </button>
             </div>
           </div>
         </header>
-        <div className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${state.showDropMenu ? "flex" : "hidden"}`}>
+        <div className={`w-full h-auto py-2 flex md:hidden flex-col justify-start items-start shadow-lg border-b ${showDropMenu ? "flex" : "hidden"}`}>
           <span
             className="h-12 px-3 text-base w-full flex flex-row justify-start items-center cursor-pointer font-semibold text-dark mr-2 hover:bg-gray-100 hover:text-blue-500"
-            onClick={handleSetTokenBtnClick}
+            onClick={() => setShowSetTokenDialog(true)}
           >
             {headerText}
           </span>
@@ -99,7 +71,6 @@ useEffect(() => {
             <GitHubStarButton />
           </span>
         </div>
-      </AppStateProvider>
     </>
   );
 };

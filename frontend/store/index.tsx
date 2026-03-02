@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import storage from "../helpers/storage";
 import { ChartMode, LegendPosition } from "@shared/types/chart";
 import { useRouter } from "next/router";
@@ -36,12 +36,11 @@ const AppStateContext = createContext<AppStateContextProps | undefined>(undefine
 
 export const AppStateProvider: React.FC<{
     children: React.ReactNode;
-    initialRepos?: string[];
-}> = ({ children, initialRepos }) => {
+}> = ({ children }) => {
     const [state, setState] = useState<AppState>({
         isFetching: false,
         token: "",
-        repos: initialRepos || [],
+        repos: [],
         chartMode: "Date",
         useLogScale: false,
         legendPosition: "top-left",
@@ -87,17 +86,17 @@ export const AppStateProvider: React.FC<{
                 }
             }
 
-            setState({
-                ...state,
+            setState((prev) => ({
+                ...prev,
                 isFetching: false,
                 token: accessTokenCache || "",
-                repos: repos.length > 0 ? repos : state.repos, // Ensure repos are not overwritten if not provided in the URL hash
-                chartMode: chartMode,
-                useLogScale: useLogScale,
-                legendPosition: legendPosition,
-            });
+                repos: repos.length > 0 ? repos : prev.repos,
+                chartMode,
+                useLogScale,
+                legendPosition,
+            }));
         };
-    
+
         // Fetch data and set initial state
         fetchData();
 
@@ -114,12 +113,13 @@ export const AppStateProvider: React.FC<{
             router.events.off("hashChangeComplete", handleHashChange);
         };
     }, [router]);
-    
-   const actions: AppStateContextProps["actions"] = {
+
+    const actions = useMemo<AppStateContextProps["actions"]>(() => ({
         addRepo: (repo: string) => {
-            if (!state.repos.includes(repo)) {
-                setState((prev) => ({ ...prev, repos: [...prev.repos, repo] }));
-            }
+            setState((prev) => {
+                if (prev.repos.includes(repo)) return prev;
+                return { ...prev, repos: [...prev.repos, repo] };
+            });
         },
         delRepo: (repo: string) => {
             setState((prev) => ({ ...prev, repos: prev.repos.filter((r) => r !== repo) }));
@@ -142,9 +142,9 @@ export const AppStateProvider: React.FC<{
         setLegendPosition: (legendPosition: LegendPosition) => {
             setState((prev) => ({ ...prev, legendPosition }));
         },
-    };
+    }), []);
 
-    const store: AppStateContextProps = {
+    const store = useMemo<AppStateContextProps>(() => ({
         isFetching: state.isFetching,
         repos: state.repos,
         chartMode: state.chartMode,
@@ -153,7 +153,7 @@ export const AppStateProvider: React.FC<{
         token: state.token,
         state,
         actions,
-    };
+    }), [state, actions]);
 
     return <AppStateContext.Provider value={store}>{children}</AppStateContext.Provider>;
 };
