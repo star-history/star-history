@@ -32,7 +32,7 @@ export const initTokenFromEnv = async () => {
       await api.getRepoStargazersCount("star-history/star-history", token);
       savedTokens.push(token);
     } catch (error) {
-      logger.error(`Token ${token} is unusable`, error);
+      logger.error(`Token ${token.slice(0, 8)}...${token.slice(-4)} is unusable`, error);
     }
   }
 

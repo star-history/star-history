@@ -24,9 +24,12 @@ export const getChartWidthWithSize = (size: string) => {
 };
 
 export async function getBase64Image(url: string): Promise<string> {
-  const imageUrlData = await fetch(url);
-  const buffer = await imageUrlData.arrayBuffer();
+  const res = await fetch(url);
+  if (!res.ok) {
+    return "";
+  }
+  const buffer = await res.arrayBuffer();
   const stringifiedBuffer = Buffer.from(buffer).toString("base64");
-  const contentType = imageUrlData.headers.get("content-type");
+  const contentType = res.headers.get("content-type");
   return `data:${contentType};base64,${stringifiedBuffer}`;
 }

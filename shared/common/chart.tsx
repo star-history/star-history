@@ -76,8 +76,10 @@ export const getRepoData = async (repos: string[], token = "", maxRequestAmount 
 
     for (const repo of repos) {
         try {
-            const starRecords = await api.getRepoStarRecords(repo, token, maxRequestAmount)
-            const logo = await api.getRepoLogoUrl(repo, token)
+            const [starRecords, logo] = await Promise.all([
+                api.getRepoStarRecords(repo, token, maxRequestAmount),
+                api.getRepoLogoUrl(repo, token),
+            ])
             repoDataCacheMap.set(repo, { star: starRecords, logo })
         } catch (error: any) {
             let message = ""
