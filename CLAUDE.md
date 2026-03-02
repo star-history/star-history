@@ -20,7 +20,7 @@ The following files are auto-generated and gitignored. Never `git add -f` them:
 
 **Frontend:** Next.js ^14.1.0 (Pages Router, static export) · React ^18.2.0 · TypeScript ^4.9.5 · Tailwind CSS ^3.4.0 · D3.js (axis, scale, selection, shape) · Axios ^1.8.2 · FontAwesome ^6.5.1 · Lodash ^4.17.21 · Dayjs ^1.11.10 · Gray-matter ^4.0.3 · Marked ^9.1.6
 
-**Backend:** Hono ^4.7.4 · @hono/node-server · TypeScript 4.8.4 · D3.js (server-side SVG) · JSDOM 20.0.2 · SVGO ^3.2.0 · Satori ^0.12.0 · LRU cache 7.14.1
+**Backend:** Hono ^4.7.4 · @hono/node-server · TypeScript ^5.7.0 · D3.js (server-side SVG) · JSDOM 20.0.2 · SVGO ^3.2.0 · Satori ^0.12.0 · LRU cache 7.14.1
 
 ## Project Structure
 
