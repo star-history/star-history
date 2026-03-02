@@ -92,6 +92,7 @@ const startServer = async () => {
       try {
         const res = await fetch(`https://api.github.com/repos/${repo}`, {
           headers: { Authorization: `token ${token}`, Accept: "application/json" },
+          signal: AbortSignal.timeout(15000),
         });
         if (res.status === 403) {
           markTokenExhausted(token);

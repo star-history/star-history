@@ -2,6 +2,7 @@ import axios from "axios"
 import utils from "./utils"
 
 const API_PER_PAGE = 100  // GitHub API max items per request
+const REQUEST_TIMEOUT_MS = 15000  // 15s timeout for GitHub API calls
 
 namespace api {
     export async function getRepoStargazers(repo: string, token?: string, page?: number) {
@@ -14,7 +15,8 @@ namespace api {
             headers: {
                 Accept: "application/vnd.github.v3.star+json",
                 Authorization: token ? `token ${token}` : ""
-            }
+            },
+            timeout: REQUEST_TIMEOUT_MS,
         })
     }
 
@@ -23,7 +25,8 @@ namespace api {
             headers: {
                 Accept: "application/vnd.github.v3.star+json",
                 Authorization: token ? `token ${token}` : ""
-            }
+            },
+            timeout: REQUEST_TIMEOUT_MS,
         })
 
         return data.stargazers_count
@@ -117,7 +120,8 @@ namespace api {
             headers: {
                 Accept: "application/vnd.github.v3.star+json",
                 Authorization: token ? `token ${token}` : ""
-            }
+            },
+            timeout: REQUEST_TIMEOUT_MS,
         })
 
         return data.avatar_url
