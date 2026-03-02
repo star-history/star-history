@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
 import { Blog } from "helpers/types/blog"
 import blogs from "helpers/blog.json"
+import { SITE_URL } from "../../helpers/consts"
 
 interface Route {
   url: string;
@@ -40,7 +41,7 @@ const generateSitemap = async () => {
   const routes = [...staticRoutes];
   const blogRoutes = await getBlogsRoutes();
   routes.push(...blogRoutes);
-  const baseUrl = "https://star-history.com";
+  const baseUrl = SITE_URL;
   const routeXMLTags: string[] = [];
 
   for (const route of routes) {

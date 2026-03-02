@@ -13,6 +13,7 @@ import fs from "fs/promises"
 import blogs from "helpers/blog.json"
 import { AppStateProvider } from "store"
 import Head from "next/head"
+import { SITE_URL } from "../../helpers/consts"
 
 interface Blog {
     title: string
@@ -55,17 +56,17 @@ const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, t
 
                             {/* Open Graph / Facebook */}
                             <meta property="og:type" content="website" />
-                            <meta property="og:url" content={`https://star-history.com/blog/${blog.slug}`} />
+                            <meta property="og:url" content={`${SITE_URL}/blog/${blog.slug}`} />
                             <meta property="og:title" content={blog.title} />
                             <meta property="og:description" content={blog.description} />
-                            <meta property="og:image" content={`https://star-history.com${blog.featureImage}`} />
+                            <meta property="og:image" content={`${SITE_URL}${blog.featureImage}`} />
 
                             {/* Twitter */}
                             <meta name="twitter:card" content="summary_large_image" />
-                            <meta name="twitter:url" content={`https://star-history.com/blog/${blog.slug}`} />
+                            <meta name="twitter:url" content={`${SITE_URL}/blog/${blog.slug}`} />
                             <meta name="twitter:title" content={blog.title} />
                             <meta name="twitter:description" content={blog.description} />
-                            <meta name="twitter:image" content={`https://star-history.com${blog.featureImage}`} />
+                            <meta name="twitter:image" content={`${SITE_URL}${blog.featureImage}`} />
                         </>
                     )
                 }
@@ -108,7 +109,7 @@ const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, t
                                         </time>
                                     </div>
                                     {blog.featureImage && (
-                                        <img className="w-full max-w-4xl mt-6 object-scale-down rounded" src={blog.featureImage} alt="" />
+                                        <img className="w-full max-w-4xl mt-6 object-scale-down rounded" src={blog.featureImage} alt={blog.title} />
                                     )}
                                     <div className="mt-8 w-full max-w-4xl prose prose-indigo prose-lg" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                                 </div>

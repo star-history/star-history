@@ -24,7 +24,7 @@ const NotFound: NextPage<NotFoundProps> = ({ minStars }) => {
             <PageShell>
                 <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="px-5 py-16 text-center">
-                        <p className="text-4xl mb-3">🔭</p>
+                        <p className="text-4xl mb-3" role="img" aria-label="Telescope">🔭</p>
                         <h1 className="text-lg font-semibold text-neutral-800">
                             <span className="font-mono">{repoName}</span> not found
                         </h1>

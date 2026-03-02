@@ -75,14 +75,16 @@ useEffect(() => {
             </div>
 
             <div className="h-full flex md:hidden flex-row justify-end items-center">
-              <span
-                className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800"
+              <button
+                aria-label="Toggle menu"
+                aria-expanded={state.showDropMenu}
+                className="relative h-full w-10 px-3 flex flex-row justify-center items-center cursor-pointer font-semibold text-light hover:bg-zinc-800 bg-transparent border-none"
                 onClick={handleToggleDropMenuBtnClick}
               >
                 <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 rotate-45" : "-mt-1"}`}></span>
                 <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "hidden" : ""}`}></span>
                 <span className={`w-4 transition-all h-px bg-light absolute top-1/2 ${state.showDropMenu ? "w-6 -rotate-45" : "mt-1"}`}></span>
-              </span>
+              </button>
             </div>
           </div>
         </header>

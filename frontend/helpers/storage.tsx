@@ -52,12 +52,4 @@ namespace storage {
     }
 }
 
-export class Storage {
-    getRepos(): string[] {
-        // Implement the logic to get the repositories here
-        // For now, let's return an empty array
-        return []
-    }
-}
-
 export default storage

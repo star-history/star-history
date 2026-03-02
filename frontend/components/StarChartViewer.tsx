@@ -36,7 +36,6 @@ interface State {
     showSetTokenDialog: boolean
     showGenEmbedCodeDialog: boolean
     showEmbedCodeDialog: boolean
-    showEmbedChartGuideDialog: boolean
 }
 
 interface StarChartViewerProps {
@@ -56,7 +55,6 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         showEmbedCodeDialog: false,
         showSetTokenDialog: false,
         showGenEmbedCodeDialog: false,
-        showEmbedChartGuideDialog: false
     })
 
     const containerElRef = useRef<HTMLDivElement>(null)
@@ -88,7 +86,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                 if (error.status === 401 || error.status === 403) {
                     setState((prevState) => ({ ...prevState, showSetTokenDialog: true }))
                 } else if (error.status === 404 || error.status === 501) {
-                    store.delRepo(error.repo)
+                    store.actions.delRepo(error.repo)
                 }
             }
             store.actions.setIsFetching(false)

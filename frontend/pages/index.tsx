@@ -8,37 +8,33 @@ import { AppStateProvider } from "../store"
 import type { NextPage } from "next"
 import StarChartViewer from "../components/StarChartViewer"
 import Head from "next/head"
+import { SITE_URL } from "../helpers/consts"
 
-interface IndexProps {}
-
-const Index: NextPage<IndexProps> = () => {
+const Index: NextPage = () => {
     const [isChartVisible, setChartVisibility] = useState(false) // Start with false since chart is not visible by default
 
     const metadata = {
 		title:       "GitHub Star History",
 		description: "View and compare GitHub star history graph of open source projects.",
-		imageURL:    "https://star-history.com/assets/star-history-preview.webp",
+		imageURL:    `${SITE_URL}/assets/star-history-preview.webp`,
 	}
 
     return (
         <>
             <Head>
                 <title>{metadata.title}</title>
-                <meta name="description" content="GitHub Star History" />
-
-                {/* Standard Meta Tags */}
                 <meta name="description" content={metadata.description} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://star-history.com" />
+                <meta property="og:url" content={SITE_URL} />
                 <meta property="og:title" content={metadata.title} />
                 <meta property="og:description" content={metadata.description} />
                 <meta property="og:image" content={metadata.imageURL} />
 
                 {/* Twitter */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:url" content="https://star-history.com" />
+                <meta name="twitter:url" content={SITE_URL} />
                 <meta name="twitter:title" content={metadata.title} />
                 <meta name="twitter:description" content={metadata.description} />
                 <meta name="twitter:image" content={metadata.imageURL} />

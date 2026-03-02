@@ -23,7 +23,7 @@ export default function TokenSettingDialog({ onClose, tokenCache }: TokenSetting
     }, [tokenCache, store.token, hasToken, token])
 
     const handleSaveTokenBtnClick = () => {
-        store.setToken(token);
+        store.actions.setToken(token);
         storage.set({
             accessTokenCache: token
         });

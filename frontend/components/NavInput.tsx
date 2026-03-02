@@ -2,15 +2,9 @@ import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
 import { GITHUB_REPO_URL_REG } from "../helpers/consts"
 import reposData from "@gh-data/repos.json"
+import { formatNumber } from "../helpers/format"
 
 const repoList = (reposData as any).repos as { name: string; stars_total: number }[]
-
-function formatStars(count: number): string {
-    if (count >= 1000) {
-        return `${(count / 1000).toFixed(1).replace(/\.0$/, "")}k`
-    }
-    return String(count)
-}
 
 export default function NavInput() {
     const router = useRouter()
@@ -123,9 +117,11 @@ export default function NavInput() {
                 </button>
             </div>
             {showDropdown && results.length > 0 && (
-                <ul className="absolute z-10 w-full mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg overflow-hidden">
+                <ul role="listbox" className="absolute z-10 w-full mt-1 bg-white border border-neutral-200 rounded-lg shadow-lg overflow-hidden">
                     {results.map((repo, i) => (
                         <li
+                            role="option"
+                            aria-selected={i === highlightIndex}
                             key={repo.name}
                             onMouseDown={(e) => {
                                 e.preventDefault()
@@ -138,7 +134,7 @@ export default function NavInput() {
                         >
                             <span className="text-neutral-800 truncate">{repo.name}</span>
                             <span className="text-neutral-400 text-xs ml-2 shrink-0">
-                                &#9733; {formatStars(repo.stars_total)}
+                                &#9733; {formatNumber(repo.stars_total)}
                             </span>
                         </li>
                     ))}

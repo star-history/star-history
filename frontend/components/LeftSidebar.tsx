@@ -3,27 +3,12 @@ import Link from "next/link"
 import leaderboardData from "@gh-data/leaderboard.json"
 import weeklyRankingData from "@gh-data/weekly-ranking.json"
 import starCountData from "@gh-data/star-count.json"
+import { formatNumber } from "../helpers/format"
+import { EASTER_EGG_REPOS } from "../helpers/consts"
 
 const leaderboard = leaderboardData as { updated_at: string; repos: { name: string; stars_total: number }[] }
 const weeklyRanking = weeklyRankingData as { updated_at: string; repos: { name: string; new_stars: number; stars_total: number }[] }
 const starCount = starCountData as { updated_at: string; tiers: { threshold: number; label: string; count: number }[] }
-
-function formatStars(count: number): string {
-    if (count >= 1000) {
-        return `${(count / 1000).toFixed(1).replace(/\.0$/, "")}k`
-    }
-    return String(count)
-}
-
-function formatCount(count: number): string {
-    if (count >= 1_000_000) {
-        return `${(count / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`
-    }
-    if (count >= 1_000) {
-        return `${(count / 1_000).toFixed(1).replace(/\.0$/, "")}K`
-    }
-    return String(count)
-}
 
 type Tab = "weekly" | "alltime" | "pyramid"
 
@@ -37,8 +22,8 @@ const LeftSidebar: React.FC = () => {
     const [activeTab, setActiveTab] = useState<Tab>(weeklyRanking.repos.length > 0 ? "weekly" : "alltime")
 
     const items = activeTab === "weekly"
-        ? weeklyRanking.repos.map((r) => ({ name: r.name, metric: `+${formatStars(r.new_stars)}`, metricClass: "accent-text" }))
-        : leaderboard.repos.map((r) => ({ name: r.name, metric: formatStars(r.stars_total), metricClass: "text-gray-400" }))
+        ? weeklyRanking.repos.map((r) => ({ name: r.name, metric: `+${formatNumber(r.new_stars)}`, metricClass: "accent-text" }))
+        : leaderboard.repos.map((r) => ({ name: r.name, metric: formatNumber(r.stars_total), metricClass: "text-gray-400" }))
 
     const updatedAt = activeTab === "weekly" ? weeklyRanking.updated_at
         : activeTab === "alltime" ? leaderboard.updated_at
@@ -73,7 +58,7 @@ const LeftSidebar: React.FC = () => {
                                             ★ {tier.label}
                                         </span>
                                         <span className="text-gray-400">
-                                            {formatCount(tier.count)}
+                                            {formatNumber(tier.count)}
                                         </span>
                                     </div>
                                     <div
@@ -110,18 +95,18 @@ const LeftSidebar: React.FC = () => {
                                         <span className="truncate text-gray-700 group-hover:text-blue-600">
                                             {repoName}
                                         </span>
-                                        {item.name === "openclaw/openclaw" ? (
+                                        {EASTER_EGG_REPOS.has(item.name.toLowerCase()) ? (
                                             <span className="flex-1 min-w-0 relative h-6 lobster-container">
                                                 <img
                                                     src="/assets/lobster.png"
-                                                    alt="🦞"
+                                                    alt="Lobster"
                                                     width={20}
                                                     height={20}
                                                     className="lobster-static absolute top-0 bottom-0 my-auto left-0"
                                                 />
                                                 <img
                                                     src="/assets/lobster-animated.gif"
-                                                    alt="🦞"
+                                                    alt="Lobster"
                                                     width={20}
                                                     height={20}
                                                     className="lobster-animated absolute top-0 bottom-0 my-auto left-0"

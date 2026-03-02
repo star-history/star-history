@@ -3,6 +3,7 @@ import { useAppStore } from "../store"
 import utils from "@shared/common/utils"
 import toast from "../helpers/toast"
 import { SketchStarIcon } from "./SketchIcons"
+import { API_URL } from "../helpers/consts"
 
 const EmbedChart: React.FC = () => {
     const store = useAppStore()
@@ -14,23 +15,18 @@ const EmbedChart: React.FC = () => {
 
     const repoText = singleRepo ? singleRepo.split("/")[1] : "your repository's"
 
-    // Build query parameters
     const buildQueryParams = (theme?: string) => {
-        const chartModeParam = store.chartMode === "Date" ? "date" : "timeline"
-        let params = `repos=${store.repos.join(",")}&type=${chartModeParam}`
-        if (theme) {
-            params += `&theme=${theme}`
-        }
-        if (store.useLogScale) {
-            params += `&logscale`
-        }
+        const type = store.chartMode === "Date" ? "date" : "timeline"
+        let params = `repos=${store.repos.join(",")}&type=${type}`
+        if (theme) params += `&theme=${theme}`
+        if (store.useLogScale) params += `&logscale`
         params += `&legend=${store.legendPosition}`
         return params
     }
 
-    const embedCode = `## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?${buildQueryParams()})](${typeof window !== "undefined" ? window.location.href : ""})`
+    const embedCode = `## Star History\n\n[![Star History Chart](${API_URL}/svg?${buildQueryParams()})](${typeof window !== "undefined" ? window.location.href : ""})`
 
-    const embedDarkModeCode = `## Star History\n\n<a href="${typeof window !== "undefined" ? window.location.href : ""}">\n <picture>\n   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?${buildQueryParams("dark")}" />\n   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?${buildQueryParams()}" />\n   <img alt="Star History Chart" src="https://api.star-history.com/svg?${buildQueryParams()}" />\n </picture>\n</a>`
+    const embedDarkModeCode = `## Star History\n\n<a href="${typeof window !== "undefined" ? window.location.href : ""}">\n <picture>\n   <source media="(prefers-color-scheme: dark)" srcset="${API_URL}/svg?${buildQueryParams("dark")}" />\n   <source media="(prefers-color-scheme: light)" srcset="${API_URL}/svg?${buildQueryParams()}" />\n   <img alt="Star History Chart" src="${API_URL}/svg?${buildQueryParams()}" />\n </picture>\n</a>`
 
     const handleCopyBtnClick = () => {
         utils.copyTextToClipboard(embedCode)

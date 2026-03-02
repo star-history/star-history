@@ -8,6 +8,7 @@ import blogData from "helpers/blog.json"
 import { NextPageWithLayout } from "pages/_app"
 import { AppStateProvider } from "store"
 import { SketchMailboxIcon } from "../../components/SketchIcons"
+import { NEWSLETTER_URL } from "../../helpers/consts"
 
 interface Blog {
     slug: string
@@ -41,7 +42,7 @@ const BlogPage: NextPageWithLayout = () => {
                             <div className="mt-8 px-2 py-6 w-full flex items-baseline gap-4">
                                 <h1 className="text-4xl font-bold text-dark">Star History Blog</h1>
                                 <a
-                                    href="https://newsletter.star-history.com/subscribe"
+                                    href={NEWSLETTER_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1 text-gray-700 hover:underline"

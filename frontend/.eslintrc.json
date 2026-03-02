@@ -1,5 +1,5 @@
 {
-    "extends": ["next/core-web-vitals", "next/core-web-vitals", "eslint:recommended"],
+    "extends": ["next/core-web-vitals", "eslint:recommended"],
     "globals": {
         "React": "readonly",
         "JSX": true,

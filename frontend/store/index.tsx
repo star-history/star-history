@@ -13,8 +13,6 @@ interface AppState {
 }
 
 interface AppStateContextProps {
-    setToken(token: string): void;
-    delRepo(repo: string): void;
     isFetching: boolean;
     repos: string[];
     chartMode: ChartMode;
@@ -155,8 +153,6 @@ export const AppStateProvider: React.FC<{
         token: state.token,
         state,
         actions,
-        setToken: actions.setToken,
-        delRepo: actions.delRepo,
     };
 
     return <AppStateContext.Provider value={store}>{children}</AppStateContext.Provider>;

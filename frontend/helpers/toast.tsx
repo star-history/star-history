@@ -1,15 +1,8 @@
 import React from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import Toast from "../components/Toast"
 
 type ToastType = "succeed" | "warn" | "error" | "normal"
-
-interface ToastProps {
-    message: string
-    type: ToastType
-    duration: number
-    destroy: () => void
-}
 
 interface ToastCallbacks {
     destroy: () => void
@@ -18,20 +11,14 @@ interface ToastCallbacks {
 function show(message: string, type: ToastType, duration: number): ToastCallbacks {
     const tempDiv = document.createElement("div")
     document.body.appendChild(tempDiv)
+    const root = createRoot(tempDiv)
 
     const destroy = () => {
-        ReactDOM.unmountComponentAtNode(tempDiv)
+        root.unmount()
         tempDiv.remove()
     }
 
-    const toastProps: ToastProps = {
-        message,
-        type,
-        duration,
-        destroy
-    }
-
-    ReactDOM.render(<Toast {...toastProps} />, tempDiv)
+    root.render(<Toast message={message} type={type} duration={duration} destroy={destroy} />)
 
     return { destroy }
 }

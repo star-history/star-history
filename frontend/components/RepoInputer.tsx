@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { head } from "lodash"
-import { GITHUB_REPO_URL_REG } from "../helpers/consts"
+import { GITHUB_REPO_URL_REG, NEWSLETTER_URL } from "../helpers/consts"
 import toast from "../helpers/toast"
 import { useAppStore } from "../store"
 import { SketchExternalLinkIcon } from "./SketchIcons"
@@ -245,7 +245,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                     </Link>
                 </div>
                 <a
-                    href="https://newsletter.star-history.com/subscribe"
+                    href={NEWSLETTER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-3 text-gray-700 hover:underline flex items-center gap-1"

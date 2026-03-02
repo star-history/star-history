@@ -3,15 +3,19 @@ import Head from "next/head"
 import Link from "next/link"
 import { createElement, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { ReactNode } from "react"
-import { toPng } from "html-to-image"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { formatNumber } from "../helpers/format"
 import { loadRepos } from "@shared/common/repo-data"
 import type { RepoCardData } from "@shared/types/gh"
 import PageShell from "../components/PageShell"
+import toast from "../helpers/toast"
+import { SITE_URL, API_URL, EASTER_EGG_REPOS } from "../helpers/consts"
 import InteractiveRadar from "../components/InteractiveRadar"
 import { buildLandscape1 } from "@shared/packages/card-landscape1"
 import { renderRadarSvg } from "@shared/packages/radar-svg"
+
+const CARD_WIDTH = 1200
+const CARD_HEIGHT = 630
 
 // --- VDOM-to-React conversion (buildLandscape1 returns a Satori-compatible VDOM tree) ---
 
@@ -29,8 +33,18 @@ const SVG_ATTRS: Record<string, string> = {
 
 const SVG_TAGS = new Set(["svg", "path", "circle", "rect", "line", "text", "g", "image", "clipPath", "defs"])
 
-function vnodeToReact(node: any, key?: number): ReactNode {
-    if (node == null || typeof node === "boolean") return null
+interface SatoriVNode {
+    type: string
+    props?: {
+        children?: SatoriVNode | SatoriVNode[] | string | number | null
+        [key: string]: unknown
+    }
+}
+
+type VNodeInput = SatoriVNode | string | number | null | undefined
+
+function vnodeToReact(node: VNodeInput, key?: number): ReactNode {
+    if (node == null) return null
     if (typeof node === "string" || typeof node === "number") return node
     if (!node.type) return null
     const { children, ...attrs } = node.props || {}
@@ -41,7 +55,7 @@ function vnodeToReact(node: any, key?: number): ReactNode {
     }
     if (key !== undefined) attrs.key = key
     const kids = children == null ? [] : Array.isArray(children) ? children : [children]
-    return createElement(node.type, attrs, ...kids.map((c: any, i: number) => vnodeToReact(c, i)))
+    return createElement(node.type, attrs, ...kids.map((c: VNodeInput, i: number) => vnodeToReact(c, i)))
 }
 
 // --- Page ---
@@ -114,8 +128,8 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
         repo.attributes?.contributors ? `${formatNumber(repo.attributes.contributors)} contributors` : "",
     ].filter(Boolean)
     const description = weeklyParts.length ? `This week: ${weeklyParts.join(", ")}` : `Star history and stats for ${repo.name}`
-    const canonicalUrl = `https://star-history.com/${repo.name.toLowerCase()}`
-    const ogImage = `https://api.star-history.com/svg?repos=${repo.name}&style=landscape1`
+    const canonicalUrl = `${SITE_URL}/${repo.name.toLowerCase()}`
+    const ogImage = `${API_URL}/svg?repos=${repo.name}&style=landscape1`
     const tweetText = `${repo.name} - ${formatNumber(repo.stars_total)} stars on GitHub`
     const tweetUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(tweetText)}`
 
@@ -126,7 +140,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
         if (!hasAttributes) return null
         const svg = renderRadarSvg(repo.attributes, 400)
         return `data:image/svg+xml;base64,${btoa(svg)}`
-    }, [repo.attributes, hasAttributes])
+    }, [repo.attributes])
 
     // Build the shared VDOM layout — same code path as the /svg?style=landscape1 endpoint
     const cardVNode = useMemo(() => buildLandscape1({
@@ -142,13 +156,13 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
         attributes: hasAttributes ? repo.attributes : null,
         rank: repo.rank,
         logoBase64: "/assets/logo-icon.png",
-    }), [repo, radarSvgBase64, hasAttributes])
+    }), [repo, radarSvgBase64])
 
     // Scale the native 1200×630 card to fit the container
     useEffect(() => {
         const el = wrapperRef.current
         if (!el) return
-        const update = () => setScale(el.clientWidth / 1200)
+        const update = () => setScale(el.clientWidth / CARD_WIDTH)
         update()
         const observer = new ResizeObserver(() => update())
         observer.observe(el)
@@ -163,7 +177,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
         if (!img) return
         const cardRect = card.getBoundingClientRect()
         const imgRect = img.getBoundingClientRect()
-        const s = cardRect.width / 1200
+        const s = cardRect.width / CARD_WIDTH
         setRadarPos({
             left: (imgRect.left - cardRect.left) / s,
             top: (imgRect.top - cardRect.top) / s,
@@ -211,7 +225,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
 
             const cardRect = card.getBoundingClientRect()
             const elRect = el.getBoundingClientRect()
-            const s = cardRect.width / 1200
+            const s = cardRect.width / CARD_WIDTH
 
             setStatTooltip({
                 left: (elRect.left + elRect.width / 2 - cardRect.left) / s,
@@ -263,11 +277,12 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
             }))
 
             // Capture at native 1200×630 without modifying the DOM
+            const { toPng } = await import("html-to-image")
             const dataUrl = await toPng(cardRef.current, {
                 cacheBust: true,
                 pixelRatio: 2,
-                width: 1200,
-                height: 630,
+                width: CARD_WIDTH,
+                height: CARD_HEIGHT,
                 style: { transform: "none" },
                 filter: (node) => !(node instanceof HTMLElement && node.hasAttribute("data-html2image-ignore")),
             })
@@ -281,6 +296,7 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
             link.click()
         } catch (err) {
             console.error("Failed to export card as PNG:", err)
+            toast.error("Failed to download PNG. Please try again.")
         } finally {
             setDownloading(false)
         }
@@ -343,13 +359,13 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
                 <div
                     ref={wrapperRef}
                     className="w-full max-w-5xl rounded-2xl shadow-xl overflow-hidden [&_[data-repo-name]]:cursor-pointer [&_[data-repo-name]:hover]:underline"
-                    style={{ aspectRatio: "1200/630" }}
+                    style={{ aspectRatio: `${CARD_WIDTH}/${CARD_HEIGHT}` }}
                     onClick={(e) => {
                         const target = (e.target as HTMLElement).closest?.("[data-repo-name]")
                         if (target) window.open(`https://github.com/${repo.name}`, "_blank", "noopener")
                     }}
                 >
-                    <div ref={cardRef} style={{ width: 1200, height: 630, transform: `scale(${scale})`, transformOrigin: "top left", position: "relative" }}>
+                    <div ref={cardRef} style={{ width: CARD_WIDTH, height: CARD_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left", position: "relative" }}>
                         {vnodeToReact(cardVNode)}
                         {hasAttributes && radarPos && (
                             <div
@@ -405,11 +421,11 @@ const RepoPage: NextPage<RepoPageProps> = ({ repo, minStars, prevRepo, nextRepo 
                     </div>
                 </div>
 
-                {repo.name.toLowerCase() === "openclaw/openclaw" && (
+                {EASTER_EGG_REPOS.has(repo.name.toLowerCase()) && (
                     <div className="relative w-full max-w-5xl h-16 mt-4">
                         <img
                             src="/assets/lobster-animated.gif"
-                            alt="🦞"
+                            alt="Lobster"
                             width={64}
                             height={64}
                             className="absolute top-0 left-0 lobster-walk"
