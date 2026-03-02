@@ -90,18 +90,18 @@ const LeftSidebar: React.FC = () => {
                 ) : (
                     <ol className="space-y-0.5">
                         {items.map((item, i) => {
-                            const repoName = item.name.split("/")[1]
+                            const [orgName, repoName] = item.name.split("/")
                             return (
-                                <li key={item.name}>
+                                <li key={item.name} className="relative group">
                                     <Link
                                         href={`/${item.name.toLowerCase()}`}
-                                        className="flex items-center gap-2 py-1 text-sm group cursor-pointer"
+                                        className="flex items-center gap-2 py-1 text-sm cursor-pointer"
                                     >
                                         <span className="text-xs text-gray-400 w-4 shrink-0">
                                             {i + 1}
                                         </span>
                                         <img
-                                            src={`https://github.com/${item.name.split("/")[0]}.png?size=32`}
+                                            src={`https://github.com/${orgName}.png?size=32`}
                                             alt=""
                                             width={16}
                                             height={16}
@@ -134,6 +134,9 @@ const LeftSidebar: React.FC = () => {
                                             {item.metric}
                                         </span>
                                     </Link>
+                                    <span className="pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-2 hidden group-hover:block whitespace-nowrap rounded bg-gray-800 px-2 py-1 text-xs text-white shadow z-10">
+                                        {item.name} {item.metric}
+                                    </span>
                                 </li>
                             )
                         })}
