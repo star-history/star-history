@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { compress } from "hono/compress";
 import { serve } from "@hono/node-server";
-import { optimize, Config } from 'svgo';
+import { optimize } from 'svgo';
 import { JSDOM } from "jsdom";
 import XYChart from "../shared/packages/xy-chart.js";
 import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
@@ -18,6 +18,11 @@ import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
+
+const SVG_HEADERS = {
+  "Content-Type": "image/svg+xml;charset=utf-8",
+  "Cache-Control": "public, s-maxage=86400, max-age=86400",
+} as const;
 
 const startServer = async () => {
   await initTokenFromEnv();
@@ -94,10 +99,7 @@ const startServer = async () => {
       const cachedCard = ogCardCache.get(repo);
       if (cachedCard) {
         recordCacheHit("ogCard");
-        return c.body(cachedCard, 200, {
-          "Content-Type": "image/svg+xml;charset=utf-8",
-          "Cache-Control": "public, s-maxage=86400, max-age=86400",
-        });
+        return c.body(cachedCard, 200, SVG_HEADERS);
       }
       recordCacheMiss("ogCard");
 
@@ -131,10 +133,7 @@ const startServer = async () => {
           rank: cardData.rank,
         });
         ogCardCache.set(repo, svg);
-        return c.body(svg, 200, {
-          "Content-Type": "image/svg+xml;charset=utf-8",
-          "Cache-Control": "public, s-maxage=86400, max-age=86400",
-        });
+        return c.body(svg, 200, SVG_HEADERS);
       } catch (error: any) {
         const status = error.status || 500;
         return c.text(`Failed to generate card: ${error.message}`, status);
@@ -179,10 +178,7 @@ const startServer = async () => {
     const cachedSvg = svgCache.get(svgCacheKey);
     if (cachedSvg) {
       recordCacheHit("svgChart");
-      return c.body(cachedSvg, 200, {
-        "Content-Type": "image/svg+xml;charset=utf-8",
-        "Cache-Control": "public, s-maxage=86400, max-age=86400",
-      });
+      return c.body(cachedSvg, 200, SVG_HEADERS);
     }
     recordCacheMiss("svgChart");
 
@@ -274,20 +270,11 @@ const startServer = async () => {
       return c.text(`Failed to generate chart, ${error}`, 500);
     }
 
-    // Optimizing SVG to save bandwidth
     const svgContent = fixJsdomSvgCasing(svg.outerHTML);
-    const options: Config = {
-      multipass: true, // Apply optimizations multiple times
-    };
-    const optimized = optimize(svgContent, options).data;
+    const optimized = optimize(svgContent, { multipass: true }).data;
     svgCache.set(svgCacheKey, optimized);
 
-    return c.body(optimized, 200, {
-      "Content-Type": "image/svg+xml;charset=utf-8",
-      // s-maxage tells Cloudflare's CDN to cache at the edge for 24h.
-      // Consistent with the ttl in cache.ts.
-      "Cache-Control": "public, s-maxage=86400, max-age=86400",
-    });
+    return c.body(optimized, 200, SVG_HEADERS);
   });
 
   const banner = `

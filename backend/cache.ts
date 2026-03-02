@@ -14,22 +14,19 @@ interface RepoData {
 
 // --- Hit/miss counters ---
 
-interface CacheCounters {
-  hits: number;
-  misses: number;
-}
+type CacheName = "starData" | "svgChart" | "ogCard";
 
-const counters: Record<string, CacheCounters> = {
+const counters: Record<CacheName, { hits: number; misses: number }> = {
   starData: { hits: 0, misses: 0 },
   svgChart: { hits: 0, misses: 0 },
   ogCard: { hits: 0, misses: 0 },
 };
 
-export function recordCacheHit(name: string) {
+export function recordCacheHit(name: CacheName) {
   counters[name].hits++;
 }
 
-export function recordCacheMiss(name: string) {
+export function recordCacheMiss(name: CacheName) {
   counters[name].misses++;
 }
 
@@ -43,7 +40,7 @@ function formatBytes(bytes: number): string {
   return `${value.toFixed(1)} ${units[i]}`;
 }
 
-function cacheStats(name: string, c: LRUCache<string, unknown>) {
+function cacheStats(name: CacheName, c: LRUCache<string, unknown>) {
   const { hits, misses } = counters[name];
   const total = hits + misses;
   return {
@@ -65,40 +62,31 @@ export function getAllCacheStats() {
 
 // --- Caches ---
 
-// Actually, we don't need LRU, but the memory control.
-const options = {
-  // the number of most recently used items to keep,
-  max: 10000,
-  // max cache memory cost bytes: about 1024MB.
-  maxSize: 1024 * 1024 * 1024,
-  // calc cache size with its bytes.
-  sizeCalculation: (value: RepoData) => {
-    return utils.calcBytes(value);
-  },
-  // max 24 hours to live.
-  ttl: 1000 * 60 * 60 * 24,
-  updateAgeOnGet: false,
-};
+const TTL_24H = 1000 * 60 * 60 * 24;
 
-const cache = new LRUCache<string, RepoData>(options);
+const cache = new LRUCache<string, RepoData>({
+  max: 10000,
+  maxSize: 1024 * 1024 * 1024,
+  sizeCalculation: (value: RepoData) => utils.calcBytes(value),
+  ttl: TTL_24H,
+  updateAgeOnGet: false,
+});
 
 // Cache for rendered OG card SVGs, keyed by repo name.
-// OG cards are ~100-200KB each; 1000 entries ≈ 100-200MB max.
 export const ogCardCache = new LRUCache<string, string>({
   max: 1000,
   maxSize: 200 * 1024 * 1024,
   sizeCalculation: (value: string) => Buffer.byteLength(value),
-  ttl: 1000 * 60 * 60 * 24,
+  ttl: TTL_24H,
   updateAgeOnGet: false,
 });
 
 // Cache for rendered chart SVGs, keyed by normalized query string.
-// Avoids redundant D3 rendering + SVGO optimization for identical requests.
 export const svgCache = new LRUCache<string, string>({
   max: 2000,
   maxSize: 400 * 1024 * 1024,
   sizeCalculation: (value: string) => Buffer.byteLength(value),
-  ttl: 1000 * 60 * 60 * 24,
+  ttl: TTL_24H,
   updateAgeOnGet: false,
 });
 
