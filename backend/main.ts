@@ -36,6 +36,26 @@ const startServer = async () => {
     return c.json({ status: "OK", commit: process.env.GIT_COMMIT || "unknown" }, 200);
   });
 
+  // Normalize /svg query params for CDN cache efficiency.
+  // Redirects to the canonical URL so Cloudflare caches one entry per unique chart.
+  app.get("/svg", async (c, next) => {
+    const url = new URL(c.req.url);
+    const params = url.searchParams;
+    const repos = params.get("repos");
+    if (!repos) {
+      return await next();
+    }
+
+    // Lowercase repo names (GitHub is case-insensitive)
+    const normalized = repos.split(",").map((r) => r.trim().toLowerCase()).filter(Boolean).join(",");
+    if (normalized !== repos) {
+      params.set("repos", normalized);
+      return c.redirect(`${url.pathname}?${params.toString()}`, 301);
+    }
+
+    return await next();
+  });
+
   // Example request link:
   // /svg?repos=star-history/star-history&type=timeline&logscale&legend=bottom-right
   app.get("/svg", async (c) => {
@@ -77,7 +97,7 @@ const startServer = async () => {
         });
         return c.body(svg, 200, {
           "Content-Type": "image/svg+xml;charset=utf-8",
-          "Cache-Control": "max-age=86400",
+          "Cache-Control": "public, s-maxage=86400, max-age=86400",
         });
       } catch (error: any) {
         const status = error.status || 500;
@@ -205,8 +225,9 @@ const startServer = async () => {
 
     return c.body(optimized, 200, {
       "Content-Type": "image/svg+xml;charset=utf-8",
-      // Consistent with the ttl in cache.ts
-      "Cache-Control": "max-age=86400",
+      // s-maxage tells Cloudflare's CDN to cache at the edge for 24h.
+      // Consistent with the ttl in cache.ts.
+      "Cache-Control": "public, s-maxage=86400, max-age=86400",
     });
   });
 
