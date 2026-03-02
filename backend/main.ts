@@ -14,7 +14,7 @@ import {
   getBase64Image,
 } from "./utils.js";
 import { getNextToken, initTokenFromEnv } from "./token.js";
-import { CHART_SIZES, MAX_REQUEST_AMOUNT } from "./const.js";
+import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
 
@@ -63,7 +63,10 @@ const startServer = async () => {
     if (!reposParam) {
       return c.text("Repo name required", 400);
     }
-    const repos = reposParam.split(",");
+    const repos = reposParam.split(",").filter(Boolean);
+    if (repos.length > MAX_REPOS_PER_REQUEST) {
+      return c.text(`Too many repos: max ${MAX_REPOS_PER_REQUEST} per request`, 400);
+    }
 
     // Landscape1 card: returns a 1200x630 SVG with radar chart and attributes
     const style = c.req.query("style") ?? "";

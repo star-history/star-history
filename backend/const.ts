@@ -5,3 +5,6 @@ export const CHART_SIZES = ["mobile", "laptop", "desktop"];
 // We can reduce the request amount by change MAX_REQUEST_AMOUNT,
 // the default value is the same as frontend.
 export const MAX_REQUEST_AMOUNT = 16;
+
+// Maximum number of repos allowed per /svg request.
+export const MAX_REPOS_PER_REQUEST = 20;
