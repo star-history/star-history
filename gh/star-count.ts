@@ -1,21 +1,7 @@
-import { writeFileSync, mkdirSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import { formatDate } from "./db.js";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT_DIR = path.join(__dirname, "data");
-const OUT_PATH = path.join(OUT_DIR, "star-count.json");
-
 interface Tier {
   threshold: number;
   label: string;
   count: number;
-}
-
-interface StarCountData {
-  updated_at: string;
-  tiers: Tier[];
 }
 
 const THRESHOLDS: { threshold: number; label: string }[] = [
@@ -33,7 +19,7 @@ const THRESHOLDS: { threshold: number; label: string }[] = [
 
 export async function fetchStarCount(
   githubFetch: (url: string) => Promise<any>
-): Promise<StarCountData> {
+): Promise<Tier[]> {
   console.log("\n[Star Count] Fetching repo counts by star threshold...");
 
   const tiers: Tier[] = [];
@@ -50,15 +36,5 @@ export async function fetchStarCount(
     console.log(`[Star Count]   ${label}: ${count.toLocaleString()} repos`);
   }
 
-  const today = formatDate(new Date());
-  const result: StarCountData = {
-    updated_at: today,
-    tiers,
-  };
-
-  mkdirSync(OUT_DIR, { recursive: true });
-  writeFileSync(OUT_PATH, JSON.stringify(result, null, 2) + "\n");
-  console.log(`[Star Count] Wrote ${OUT_PATH}`);
-
-  return result;
+  return tiers;
 }

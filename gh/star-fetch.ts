@@ -1,4 +1,4 @@
-import { createDatabase, insertRepos, insertStats, formatDate, getWeeklyDate, exportLeaderboard, exportWeeklyRanking, exportRepos } from "./db.js";
+import { createDatabase, insertRepos, insertStats, insertStarCounts, formatDate, getWeeklyDate, exportLeaderboard, exportWeeklyRanking, exportRepos, exportStarCounts } from "./db.js";
 import { fetchQualifyingRepos, githubFetch as ghFetch } from "./github.js";
 import { fetchRepoStats } from "./bigquery.js";
 import { fetchStarCount } from "./star-count.js";
@@ -102,18 +102,21 @@ async function main() {
     allStats.push(...stats);
   }
 
+  // Fetch star counts by threshold (independent of SQLite data)
+  const starCountTiers = await fetchStarCount(ghFetch);
+
   // Write to SQLite
   console.log("\nWriting to SQLite...");
+  const today = formatDate(new Date());
   const db = createDatabase();
   insertRepos(db, qualifyingRepos);
   insertStats(db, allStats);
-  exportLeaderboard(db, formatDate(new Date()));
+  insertStarCounts(db, starCountTiers);
+  exportLeaderboard(db, today);
   exportWeeklyRanking(db, getWeeklyDate(db));
   exportRepos(db);
+  exportStarCounts(db, today);
   db.close();
-
-  // Fetch star counts by threshold (independent of SQLite pipeline)
-  await fetchStarCount(ghFetch);
 
   console.log(`\nDone! ${qualifyingRepos.length} repos, ${allStats.length} stat rows written to star.db`);
 }

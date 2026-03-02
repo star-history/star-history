@@ -105,6 +105,12 @@ export function createDatabase(): Database.Database {
       FOREIGN KEY (repo_name) REFERENCES repos(name)
     );
 
+    CREATE TABLE star_counts (
+      threshold INTEGER PRIMARY KEY,
+      label TEXT NOT NULL,
+      count INTEGER NOT NULL
+    );
+
     CREATE INDEX idx_repos_owner ON repos(owner);
     CREATE INDEX idx_repos_stars ON repos(stars_total DESC);
     CREATE INDEX idx_repos_language ON repos(language);
@@ -281,6 +287,27 @@ export function exportRepos(db: Database.Database): void {
   const outPath = path.join(DATA_DIR, "repos.json");
   writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
   console.log(`Exported ${cards.length} repos to repos.json`);
+}
+
+export function insertStarCounts(db: Database.Database, tiers: { threshold: number; label: string; count: number }[]): void {
+  const stmt = db.prepare("INSERT INTO star_counts (threshold, label, count) VALUES (?, ?, ?)");
+  const insertMany = db.transaction((items: typeof tiers) => {
+    for (const t of items) {
+      stmt.run(t.threshold, t.label, t.count);
+    }
+  });
+  insertMany(tiers);
+}
+
+export function exportStarCounts(db: Database.Database, updatedAt: string): void {
+  const rows = db.prepare(
+    "SELECT threshold, label, count FROM star_counts ORDER BY threshold DESC"
+  ).all() as { threshold: number; label: string; count: number }[];
+
+  const output = { updated_at: updatedAt, tiers: rows };
+  const outPath = path.join(DATA_DIR, "star-count.json");
+  writeFileSync(outPath, JSON.stringify(output, null, 2) + "\n");
+  console.log(`Exported ${rows.length} star count tiers to star-count.json`);
 }
 
 export function insertStats(db: Database.Database, stats: RepoStats[]): void {
