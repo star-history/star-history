@@ -26,6 +26,8 @@ interface Blog {
 
 interface State {
     blog: Blog
+    prevBlog: Blog | null
+    nextBlog: Blog | null
     parsedBlogHTML?: string
     tocItems: TocItem[]
 }
@@ -40,7 +42,7 @@ function slugify(text: string): string {
         .trim()
 }
 
-const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
+const BlogPost: React.FC<State> = ({ blog, prevBlog, nextBlog, parsedBlogHTML, tocItems }) => {
     return (
         <AppStateProvider>
             <Head>
@@ -109,6 +111,23 @@ const BlogPost: React.FC<State> = ({ blog, parsedBlogHTML, tocItems }) => {
                                     <div className="mt-8 w-full max-w-4xl prose prose-indigo prose-lg" dangerouslySetInnerHTML={{ __html: parsedBlogHTML || "" }} />
                                 </div>
 
+                                {(prevBlog || nextBlog) && (
+                                    <nav className="w-full max-w-4xl mx-auto mt-12 flex justify-between items-start gap-4 text-sm">
+                                        {prevBlog ? (
+                                            <Link href={`/blog/${prevBlog.slug}`} className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 min-w-0 max-w-[48%]">
+                                                <i className="fas fa-chevron-left shrink-0"></i>
+                                                <span className="truncate">{prevBlog.title}</span>
+                                            </Link>
+                                        ) : <span />}
+                                        {nextBlog ? (
+                                            <Link href={`/blog/${nextBlog.slug}`} className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 min-w-0 max-w-[48%] ml-auto text-right">
+                                                <span className="truncate">{nextBlog.title}</span>
+                                                <i className="fas fa-chevron-right shrink-0"></i>
+                                            </Link>
+                                        ) : <span />}
+                                    </nav>
+                                )}
+
                                 <SponsorFooterBanner className="mt-16 mb-8 hidden lg:block" />
                             </div>
                         )
@@ -128,6 +147,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     let returnObj = {
         props: {
             blog: null as Blog | null,
+            prevBlog: null as Blog | null,
+            nextBlog: null as Blog | null,
             parsedBlogHTML: "",
             tocItems: [] as TocItem[]
         }
@@ -135,11 +156,15 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     try {
         const blogSlug = context.params?.slug as string
-        const blog = blogs.find((blog) => blog.slug === blogSlug)
+        const blogIndex = blogs.findIndex((b) => b.slug === blogSlug)
 
-        if (!blog) {
+        if (blogIndex === -1) {
             return returnObj
         }
+
+        const blog = blogs[blogIndex] as Blog
+        const prevBlog = blogIndex < blogs.length - 1 ? (blogs[blogIndex + 1] as Blog) : null
+        const nextBlog = blogIndex > 0 ? (blogs[blogIndex - 1] as Blog) : null
 
         const filePath = path.join(process.cwd(), "public", `blog/${blogSlug}.md`)
         const fileContent = await fs.readFile(filePath, "utf8")
@@ -196,6 +221,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         returnObj = {
             props: {
                 blog: blog,
+                prevBlog,
+                nextBlog,
                 parsedBlogHTML,
                 tocItems
             }
