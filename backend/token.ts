@@ -14,6 +14,10 @@ const envFilePath = process.env.ENVPATH || ENV_PATH_IN_RENDER;
 const savedTokens: string[] = [];
 let index = 0;
 
+// Tokens that hit rate limit are cooled down for 15 minutes.
+const COOLDOWN_MS = 15 * 60 * 1000;
+const exhaustedUntil = new Map<string, number>();
+
 export const initTokenFromEnv = async () => {
   if (!fs.existsSync(envFilePath)) {
     logger.error("Token file not found with path ", envFilePath);
@@ -44,8 +48,24 @@ export const initTokenFromEnv = async () => {
   logger.info(`Usable token amount: ${savedTokens.length}`);
 };
 
-// Get the next token for requests.
-export const getNextToken = () => {
-  index = (index + 1) % savedTokens.length;
-  return savedTokens[index];
+// Mark a token as rate-limited so it is skipped for COOLDOWN_MS.
+export const markTokenExhausted = (token: string) => {
+  exhaustedUntil.set(token, Date.now() + COOLDOWN_MS);
+  logger.warn(`Token ${token.slice(0, 8)}... rate-limited, cooling down for ${COOLDOWN_MS / 60000}m`);
+};
+
+// Get the next available token, skipping rate-limited ones.
+// Returns null if all tokens are exhausted.
+export const getNextToken = (): string | null => {
+  const now = Date.now();
+  for (let i = 0; i < savedTokens.length; i++) {
+    index = (index + 1) % savedTokens.length;
+    const token = savedTokens[index];
+    const until = exhaustedUntil.get(token);
+    if (!until || now >= until) {
+      if (until) exhaustedUntil.delete(token);
+      return token;
+    }
+  }
+  return null;
 };

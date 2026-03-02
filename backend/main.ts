@@ -13,7 +13,7 @@ import {
   replaceSVGContentFilterWithCamelcase,
   getBase64Image,
 } from "./utils.js";
-import { getNextToken, initTokenFromEnv } from "./token.js";
+import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
 import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
@@ -86,10 +86,16 @@ const startServer = async () => {
       }
 
       const token = getNextToken();
+      if (!token) {
+        return c.text("All GitHub API tokens are rate-limited, try again later", 503);
+      }
       try {
         const res = await fetch(`https://api.github.com/repos/${repo}`, {
           headers: { Authorization: `token ${token}`, Accept: "application/json" },
         });
+        if (res.status === 403) {
+          markTokenExhausted(token);
+        }
         if (!res.ok) {
           return c.text(`GitHub API: ${res.statusText}`, res.status as any);
         }
@@ -170,6 +176,9 @@ const startServer = async () => {
 
     if (nodataRepos.length > 0) {
       const token = getNextToken();
+      if (!token) {
+        return c.text("All GitHub API tokens are rate-limited, try again later", 503);
+      }
 
       try {
         const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
@@ -187,6 +196,10 @@ const startServer = async () => {
         const status = error.status || 400;
         const message =
           error.message || "Some unexpected error happened, try again later";
+
+        if (status === 403) {
+          markTokenExhausted(token);
+        }
 
         return c.text(message, status);
       }
