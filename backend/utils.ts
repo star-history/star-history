@@ -27,7 +27,7 @@ export const getChartWidthWithSize = (size: string) => {
 };
 
 export async function getBase64Image(url: string): Promise<string> {
-  const res = await fetch(url);
+  const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
   if (!res.ok) {
     return "";
   }

@@ -214,7 +214,8 @@ const startServer = async () => {
       try {
         const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
 
-        for (const d of data) {
+        // Fetch all logos in parallel (bounded by MAX_REPOS_PER_REQUEST)
+        await Promise.all(data.map(async (d) => {
           d.logoUrl = await getBase64Image(`${d.logoUrl}&size=22`);
           cache.set(d.repo, {
             starRecords: d.starRecords,
@@ -222,7 +223,7 @@ const startServer = async () => {
             logoUrl: d.logoUrl,
           });
           repoData.push(d);
-        }
+        }));
       } catch (error: any) {
         const status = error.status || 400;
         const message =
