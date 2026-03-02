@@ -38,13 +38,6 @@ const Footer = () => {
                             DBHub{" "}
                         </a>
                     </div>
-                    <div className="flex flex-row link-footer">
-                        <img className="h-4 mt-2 mr-1" src="/assets/arfak.webp" alt="arfak" />
-                        <a href="https://www.arfak.ai" target="_blank" rel="noopener noreferrer">
-                            {" "}
-                            Arfak{" "}
-                        </a>
-                    </div>
                 </div>
                 <div className="text-xs leading-8 flex flex-row flex-nowrap justify-end items-center">
                     <span className="text-gray-600">
