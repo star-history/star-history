@@ -49,8 +49,11 @@ const LeftSidebar: React.FC = () => {
                 </div>
                 {activeTab === "pyramid" ? (
                     <div className="space-y-2 mt-1">
-                        {starCount.tiers.map((tier) => {
-                            const widthPct = (tier.count / starCount.tiers[starCount.tiers.length - 1].count) * 100
+                        {starCount.tiers.filter((tier) => tier.threshold > 1).map((tier, _, filtered) => {
+                            const total = starCount.tiers.find((t) => t.threshold === 0)?.count ?? filtered[filtered.length - 1].count
+                            const widthPct = (tier.count / filtered[filtered.length - 1].count) * 100
+                            const pct = (tier.count / total) * 100
+                            const pctLabel = pct < 0.0001 ? `${pct.toFixed(5)}%` : pct < 0.001 ? `${pct.toFixed(4)}%` : pct < 0.01 ? `${pct.toFixed(3)}%` : pct < 0.1 ? `${pct.toFixed(2)}%` : `${pct.toFixed(1)}%`
                             return (
                                 <div key={tier.threshold}>
                                     <div className="flex items-baseline justify-between text-xs mb-0.5">
@@ -58,7 +61,7 @@ const LeftSidebar: React.FC = () => {
                                             ★ {tier.label}
                                         </span>
                                         <span className="text-gray-400">
-                                            {formatNumber(tier.count)}
+                                            {formatNumber(tier.count)} <span className="text-gray-300">({pctLabel})</span>
                                         </span>
                                     </div>
                                     <div

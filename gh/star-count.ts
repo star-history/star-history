@@ -15,6 +15,7 @@ const THRESHOLDS: { threshold: number; label: string }[] = [
   { threshold: 500, label: "500+" },
   { threshold: 100, label: "100+" },
   { threshold: 1, label: "1+" },
+  { threshold: 0, label: "0+" },
 ];
 
 export async function fetchStarCount(
