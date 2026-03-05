@@ -26,9 +26,22 @@
 
 </div>
 
+[![star-history/star-history - Star History Chart](https://api.star-history.com/image?repos=star-history/star-history&style=landscape1)](https://star-history.com/star-history/star-history)
+
+👆 **THIS** is a also a **`live`** chart created with the following html: 👇
+
+<div align="left">
+  
+```html
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=star-history/star-history&style=landscape1" />
+  <img alt="Star History Chart" src="https://api.star-history.com/image?repos=star-history/star-history&style=landscape1" />
+</picture>
+```
+
 </div>
 
----
+</div>
 
 ## 🎁 Sponsors
 
