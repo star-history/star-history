@@ -28,7 +28,7 @@
 
 [![star-history/star-history - Star History Chart](https://api.star-history.com/image?repos=star-history/star-history&style=landscape1)](https://star-history.com/star-history/star-history)
 
-👆 **THIS** is a also a **`live`** chart created with the following html: 👇
+👆 **THIS** is a also a **`live`** chart with global rank and weekly stats: 👇
 
 <div align="left">
   
