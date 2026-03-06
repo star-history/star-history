@@ -63,18 +63,6 @@
 
 <a href="https://serpapi.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/serpapi/landing.webp" /></a>
 
-## 💜 Token Contributor
-
-We need zero-scope individual tokens to bypass GitHub API rate limiter, thanks to all our donators:
-
-[mrnossiom](https://github.com/mrnossiom), [Vaishnav-sabari-girish](https://github.com/Vaishnav-Sabari-Girish), [kutovoys](https://github.com/kutovoys), [zayn](https://github.com/DSYZayn)
-
-To contribute:
-
-1. Go to https://github.com/settings/tokens to generate a **Classic** token.
-1. Specify a token name, do not touch any permissions (all OFF by default), and create.
-1. Email the token to `star`@`bytebase.com`.
-
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
