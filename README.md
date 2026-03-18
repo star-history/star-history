@@ -4,7 +4,11 @@
 
 # :sparkles: Star History :sparkles:
 
-[**star-history.com**](https://star-history.com), **the missing GitHub star history graph of GitHub repos.**
+[**star-history.com**](https://star-history.com), **the de facto GitHub star history graph.**
+
+<img src="https://raw.githubusercontent.com/star-history/star-history/main/assets/nvidia-gtc-2026.webp" />
+
+---
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=star-history/star-history&type=Date&theme=dark" />
