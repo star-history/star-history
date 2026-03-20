@@ -67,6 +67,12 @@
 
 <a href="https://serpapi.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/serpapi/landing.webp" /></a>
 
+### CodeRabbit
+
+[CodeRabbit](https://coderabbit.link/sh) AI code reviews for teams that move fast (but don’t break things)
+
+<a href="https://coderabbit.link/sh"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/coderabbit/landing.webp" /></a>
+
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
