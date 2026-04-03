@@ -10,11 +10,13 @@
 
 ---
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=star-history/star-history&type=Date&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=star-history/star-history&type=Date" />
-  <img alt="Star History Chart" src="https://api.star-history.com/image?repos=star-history/star-history&type=Date" />
-</picture>
+<a href="https://www.star-history.com/?repos=star-history%2Fstar-history&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
+ </picture>
+</a>
 
 👆 **THIS** is a **`live`** chart created with the following html: 👇
 
@@ -22,15 +24,21 @@
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=star-history/star-history&type=Date&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=star-history/star-history&type=Date" />
-  <img alt="Star History Chart" src="https://api.star-history.com/image?repos=star-history/star-history&type=Date" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
+  <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
 </picture>
 ```
 
 </div>
 
-[![star-history/star-history - Star History Chart](https://api.star-history.com/image?repos=star-history/star-history&style=landscape1)](https://star-history.com/star-history/star-history)
+<a href="https://star-history.com/star-history/star-history">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
+ </picture>
+</a>
 
 👆 **THIS** is also a **`live`** chart with global rank and weekly stats: 👇
 
@@ -38,8 +46,9 @@
   
 ```html
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=star-history/star-history&style=landscape1" />
-  <img alt="Star History Chart" src="https://api.star-history.com/image?repos=star-history/star-history&style=landscape1" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
+  <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
 </picture>
 ```
 
