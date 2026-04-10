@@ -2,8 +2,6 @@
 
 🧩 [**Also available as a Chrome extension**](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)
 
-<div />
-
 <a href="https://www.star-history.com/star-history/star-history">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=star-history/star-history&theme=dark" />
@@ -17,6 +15,8 @@
 [**star-history.com**](https://star-history.com), **the de facto GitHub star history graph.**
 
 <img src="https://raw.githubusercontent.com/star-history/star-history/main/assets/nvidia-gtc-2026.webp" />
+
+</div>
 
 ---
 
