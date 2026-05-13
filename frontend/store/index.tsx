@@ -43,7 +43,7 @@ export const AppStateProvider: React.FC<{
         repos: [],
         chartMode: "Date",
         useLogScale: false,
-        legendPosition: "top-left",
+        legendPosition: "auto",
     });
 
     const router = useRouter();
@@ -55,9 +55,9 @@ export const AppStateProvider: React.FC<{
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
-            let legendPosition: LegendPosition = "top-left";
+            let legendPosition: LegendPosition = "auto";
 
-            const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
+            const validLegendPositions: LegendPosition[] = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"];
 
             for (const value of params) {
                 if (value.startsWith("type=")) {
