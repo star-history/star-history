@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import storage from "../helpers/storage";
 import { ChartMode, LegendPosition } from "@shared/types/chart";
+import { isValidIsoDateString } from "@shared/common/chart";
 import { useRouter } from "next/router";
 
 interface AppState {
@@ -88,8 +89,8 @@ export const AppStateProvider: React.FC<{
                     }
                 } else if (value.startsWith("from=")) {
                     const candidate = value.split("=")[1];
-                    // Accept only YYYY-MM-DD format that parses to a valid date
-                    if (/^\d{4}-\d{2}-\d{2}$/.test(candidate) && !isNaN(Date.parse(candidate))) {
+                    // Accept only YYYY-MM-DD that is a real calendar date (rejects e.g. 2023-02-29).
+                    if (isValidIsoDateString(candidate)) {
                         startDate = candidate;
                     }
                 } else {

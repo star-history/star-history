@@ -11,6 +11,20 @@ export interface ChartDataOptions {
 // Normalize a star-record date string (yyyy/MM/dd or YYYY-MM-DD) to YYYY-MM-DD for safe string comparison.
 const normDateStr = (date: string): string => date.replace(/\//g, "-")
 
+// Strictly validate a YYYY-MM-DD string as a real calendar date.
+// Date.parse normalizes invalid days (e.g. "2023-02-29" -> Mar 1), so round-trip the components to reject those.
+export const isValidIsoDateString = (s: string): boolean => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false
+    const [y, m, d] = s.split("-").map(Number)
+    const dt = new Date(Date.UTC(y, m - 1, d))
+    return (
+        !isNaN(dt.getTime()) &&
+        dt.getUTCFullYear() === y &&
+        dt.getUTCMonth() === m - 1 &&
+        dt.getUTCDate() === d
+    )
+}
+
 // Convert an optional startDate (Date object or YYYY-MM-DD string) to a normalized YYYY-MM-DD string.
 const toIsoDateString = (date: Date | string | null | undefined): string | null => {
     if (!date) return null

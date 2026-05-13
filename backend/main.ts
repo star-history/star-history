@@ -5,7 +5,7 @@ import { serve } from "@hono/node-server";
 import { optimize } from 'svgo';
 import { JSDOM } from "jsdom";
 import XYChart from "../shared/packages/xy-chart.js";
-import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
+import { convertDataToChartData, getRepoData, isValidIsoDateString } from "../shared/common/chart.js";
 import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
 import cache, { ogCardCache, svgCache, recordCacheHit, recordCacheMiss, getAllCacheStats } from "./cache.js";
@@ -152,10 +152,10 @@ const startServer = async () => {
 
     let startDate: string | null = null;
     if (fromParam) {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(fromParam) && !isNaN(Date.parse(fromParam))) {
+      if (isValidIsoDateString(fromParam)) {
         startDate = fromParam;
       } else {
-        return c.text("Invalid 'from' parameter: expected YYYY-MM-DD", 400);
+        return c.text("Invalid 'from' parameter: expected a real calendar date in YYYY-MM-DD form", 400);
       }
     }
 
