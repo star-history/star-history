@@ -164,9 +164,11 @@ const startServer = async () => {
 
     const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
 
-    let legendPosition: "top-left" | "bottom-right" = "top-left";
-    if (legendParam === "bottom-right") {
-      legendPosition = "bottom-right";
+    const ALLOWED_LEGEND = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"] as const;
+    type LegendPos = (typeof ALLOWED_LEGEND)[number];
+    let legendPosition: LegendPos = "auto";
+    if ((ALLOWED_LEGEND as readonly string[]).includes(legendParam)) {
+      legendPosition = legendParam as LegendPos;
     }
 
     if (!CHART_SIZES.includes(size)) {

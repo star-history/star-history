@@ -4,7 +4,7 @@ export type D3Selection = Selection<SVGSVGElement | SVGGElement, unknown, null, 
 
 export type Position = "down_right" | "down_left" | "up_right" | "up_left"
 
-export type LegendPosition = "top-left" | "bottom-right"
+export type LegendPosition = "auto" | "top-left" | "top-right" | "bottom-left" | "bottom-right"
 
 export const colors = [
     "#dd4528", "#28a3dd", "#f3db52", "#ed84b5", "#4ab74e", "#9179c0", "#8e6d5a", "#f19839", "#949494",
