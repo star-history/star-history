@@ -192,10 +192,9 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
     } else {
         const datasets: XYData[] = reposStarData.map((item) => {
             const { repo, starRecords } = item
-            const filtered = startDateStr ? starRecords.filter((r) => normDateStr(r.date) >= startDateStr) : starRecords
 
-            const started = filtered[0]?.date ?? starRecords[0].date
-            const chartData = filtered.map((item) => {
+            const started = starRecords[0].date
+            const chartData = starRecords.map((item) => {
                 return {
                     x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(started)),
                     y: Number(item.count)
@@ -256,11 +255,9 @@ export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMod
         return { datasets }
     } else {
         const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
-            const filtered = startDateStr ? starRecords.filter((r) => normDateStr(r.date) >= startDateStr) : starRecords
-            const origin = filtered[0]?.date ?? starRecords[0].date
-            const chartData = filtered.map((item) => {
+            const chartData = starRecords.map((item) => {
                 return {
-                    x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(origin)),
+                    x: utils.getTimeStampByDate(new Date(item.date)) - utils.getTimeStampByDate(new Date(starRecords[0].date)),
                     y: Number(item.count)
                 }
             })

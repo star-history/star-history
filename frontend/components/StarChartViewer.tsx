@@ -340,6 +340,9 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
     const handleToggleChartBtnClick = React.useCallback(() => {
         const newChartMode = state.chartMode === "Date" ? "Timeline" : "Date"
         store.actions.setChartMode(newChartMode)
+        if (newChartMode === "Timeline") {
+            store.actions.setStartDate(null)
+        }
 
         setState((prevState) => {
             return { ...prevState, chartMode: newChartMode }
@@ -406,24 +409,26 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                             </div>
                         </div>
                         <div className="absolute top-0 right-1 p-2 flex flex-row flex-wrap justify-end items-center">
-                            <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
-                                <label className="mr-1 whitespace-nowrap">Date from:</label>
-                                <input
-                                    className="border border-gray-300 rounded px-1 text-sm leading-6"
-                                    type="date"
-                                    value={store.state.startDate ?? ""}
-                                    max={new Date().toISOString().slice(0, 10)}
-                                    onChange={(e) => store.actions.setStartDate(e.target.value || null)}
-                                />
-                                {store.state.startDate && (
-                                    <button
-                                        className="ml-1 text-xs text-gray-500 hover:text-dark"
-                                        onClick={() => store.actions.setStartDate(null)}
-                                    >
-                                        Clear
-                                    </button>
-                                )}
-                            </div>
+                            {state.chartMode !== "Timeline" && (
+                                <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                                    <label className="mr-1 whitespace-nowrap">Date from:</label>
+                                    <input
+                                        className="border border-gray-300 rounded px-1 text-sm leading-6"
+                                        type="date"
+                                        value={store.state.startDate ?? ""}
+                                        max={new Date().toISOString().slice(0, 10)}
+                                        onChange={(e) => store.actions.setStartDate(e.target.value || null)}
+                                    />
+                                    {store.state.startDate && (
+                                        <button
+                                            className="ml-1 text-xs text-gray-500 hover:text-dark"
+                                            onClick={() => store.actions.setStartDate(null)}
+                                        >
+                                            Clear
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                             <div
                                 className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                                 onClick={handleToggleLogScaleBtnClick}

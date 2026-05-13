@@ -91,7 +91,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                     hash += "&logscale"
                 }
                 hash += `&legend=${store.state.legendPosition}`
-                if (store.state.startDate) {
+                if (store.state.startDate && store.state.chartMode !== "Timeline") {
                     hash += `&from=${store.state.startDate}`
                 }
             }
