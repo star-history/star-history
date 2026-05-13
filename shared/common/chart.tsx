@@ -5,6 +5,31 @@ import utils from "./utils"
 
 export interface ChartDataOptions {
     insertZeroPoint?: boolean
+    startDate?: Date | string | null
+}
+
+// Normalize a star-record date string (yyyy/MM/dd or YYYY-MM-DD) to YYYY-MM-DD for safe string comparison.
+const normDateStr = (date: string): string => date.replace(/\//g, "-")
+
+// Strictly validate a YYYY-MM-DD string as a real calendar date.
+// Date.parse normalizes invalid days (e.g. "2023-02-29" -> Mar 1), so round-trip the components to reject those.
+export const isValidIsoDateString = (s: string): boolean => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false
+    const [y, m, d] = s.split("-").map(Number)
+    const dt = new Date(Date.UTC(y, m - 1, d))
+    return (
+        !isNaN(dt.getTime()) &&
+        dt.getUTCFullYear() === y &&
+        dt.getUTCMonth() === m - 1 &&
+        dt.getUTCDate() === d
+    )
+}
+
+// Convert an optional startDate (Date object or YYYY-MM-DD string) to a normalized YYYY-MM-DD string.
+const toIsoDateString = (date: Date | string | null | undefined): string | null => {
+    if (!date) return null
+    if (date instanceof Date) return date.toISOString().slice(0, 10)
+    return date
 }
 
 export const DEFAULT_MAX_REQUEST_AMOUNT = 15
@@ -145,10 +170,13 @@ export const getRepoData = async (repos: string[], token = "", maxRequestAmount 
 }
 
 export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartMode: ChartMode, options?: ChartDataOptions): XYChartData => {
+    const startDateStr = toIsoDateString(options?.startDate)
+
     if (chartMode === "Date") {
         const datasets: XYData[] = reposStarData.map((item) => {
             const { repo, starRecords } = item
-            const chartData = starRecords.map((item) => {
+            const filtered = startDateStr ? starRecords.filter((r) => normDateStr(r.date) >= startDateStr) : starRecords
+            const chartData = filtered.map((item) => {
                 return {
                     x: new Date(item.date),
                     y: Number(item.count)
@@ -209,9 +237,12 @@ export const convertStarDataToChartData = (reposStarData: RepoStarData[], chartM
 }
 
 export const convertDataToChartData = (repoData: RepoData[], chartMode: ChartMode, options?: ChartDataOptions): XYChartData => {
+    const startDateStr = toIsoDateString(options?.startDate)
+
     if (chartMode === "Date") {
         const datasets: XYData[] = repoData.map(({ repo, starRecords, logoUrl }) => {
-            const chartData = starRecords.map((item) => {
+            const filtered = startDateStr ? starRecords.filter((r) => normDateStr(r.date) >= startDateStr) : starRecords
+            const chartData = filtered.map((item) => {
                 return {
                     x: new Date(item.date),
                     y: Number(item.count)
