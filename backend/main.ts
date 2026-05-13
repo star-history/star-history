@@ -146,8 +146,18 @@ const startServer = async () => {
     const typeParam = c.req.query("type") ?? "";
     const logscaleParam = c.req.query("logscale");
     const legendParam = c.req.query("legend") ?? "";
+    const fromParam = c.req.query("from") ?? "";
     let type: ChartMode = "Date";
     let size = c.req.query("size") ?? "";
+
+    let startDate: string | null = null;
+    if (fromParam) {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(fromParam) && !isNaN(Date.parse(fromParam))) {
+        startDate = fromParam;
+      } else {
+        return c.text("Invalid 'from' parameter: expected YYYY-MM-DD", 400);
+      }
+    }
 
     if (typeParam) {
       const lowerType = typeParam.toLowerCase();
@@ -174,7 +184,7 @@ const startServer = async () => {
     }
 
     // Check rendered SVG cache before any data fetching or rendering.
-    const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}`;
+    const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}|${startDate ?? ""}`;
     const cachedSvg = svgCache.get(svgCacheKey);
     if (cachedSvg) {
       recordCacheHit("svgChart");
@@ -254,7 +264,7 @@ const startServer = async () => {
           title: "Star History",
           xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
-          data: convertDataToChartData(repoData, type),
+          data: convertDataToChartData(repoData, type, { startDate }),
           showDots: false,
           transparent: transparent.toLowerCase() === "true",
           theme: theme === "dark" ? "dark" : "light",

@@ -10,6 +10,7 @@ interface AppState {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    startDate: string | null;
 }
 
 interface AppStateContextProps {
@@ -18,6 +19,7 @@ interface AppStateContextProps {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    startDate: string | null;
     token: string;
     state: AppState;
     actions: {
@@ -29,6 +31,7 @@ interface AppStateContextProps {
         setChartMode(chartMode: ChartMode): void;
         setUseLogScale(useLogScale: boolean): void;
         setLegendPosition(legendPosition: LegendPosition): void;
+        setStartDate(date: string | null): void;
     };
 }
 
@@ -44,6 +47,7 @@ export const AppStateProvider: React.FC<{
         chartMode: "Date",
         useLogScale: false,
         legendPosition: "top-left",
+        startDate: null,
     });
 
     const router = useRouter();
@@ -56,6 +60,7 @@ export const AppStateProvider: React.FC<{
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
             let legendPosition: LegendPosition = "top-left";
+            let startDate: string | null = null;
 
             const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
 
@@ -81,6 +86,12 @@ export const AppStateProvider: React.FC<{
                     if (validLegendPositions.includes(position)) {
                         legendPosition = position;
                     }
+                } else if (value.startsWith("from=")) {
+                    const candidate = value.split("=")[1];
+                    // Accept only YYYY-MM-DD format that parses to a valid date
+                    if (/^\d{4}-\d{2}-\d{2}$/.test(candidate) && !isNaN(Date.parse(candidate))) {
+                        startDate = candidate;
+                    }
                 } else {
                     repos.push(value);
                 }
@@ -94,6 +105,7 @@ export const AppStateProvider: React.FC<{
                 chartMode,
                 useLogScale,
                 legendPosition,
+                startDate,
             }));
         };
 
@@ -142,6 +154,9 @@ export const AppStateProvider: React.FC<{
         setLegendPosition: (legendPosition: LegendPosition) => {
             setState((prev) => ({ ...prev, legendPosition }));
         },
+        setStartDate: (date: string | null) => {
+            setState((prev) => ({ ...prev, startDate: date }));
+        },
     }), []);
 
     const store = useMemo<AppStateContextProps>(() => ({
@@ -150,6 +165,7 @@ export const AppStateProvider: React.FC<{
         chartMode: state.chartMode,
         useLogScale: state.useLogScale,
         legendPosition: state.legendPosition,
+        startDate: state.startDate,
         token: state.token,
         state,
         actions,

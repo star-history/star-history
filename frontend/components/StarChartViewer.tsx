@@ -108,7 +108,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
             } else {
                 setState((prevState) => ({
                     ...prevState,
-                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, { insertZeroPoint: true })
+                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, { insertZeroPoint: true, startDate: store.state.startDate })
                 }))
             }
         },
@@ -160,6 +160,25 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [store.repos])
+
+    // Re-compute chart from cache when startDate changes (no network request needed)
+    useEffect(() => {
+        if (store.repos.length === 0) return
+        const repoData: RepoData[] = []
+        for (const repo of store.repos) {
+            const cached = state.repoCacheMap.get(repo)
+            if (cached) {
+                repoData.push({ repo, starRecords: cached.starData, logoUrl: cached.logoUrl })
+            }
+        }
+        if (repoData.length > 0) {
+            setState((prevState) => ({
+                ...prevState,
+                chartData: convertDataToChartData(repoData, state.chartMode, { insertZeroPoint: true, startDate: store.state.startDate })
+            }))
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [store.state.startDate])
 
     const handleCopyLinkBtnClick = async () => {
         try {
@@ -386,7 +405,25 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                 </label>
                             </div>
                         </div>
-                        <div className="absolute top-0 right-1 p-2 flex flex-row">
+                        <div className="absolute top-0 right-1 p-2 flex flex-row flex-wrap justify-end items-center">
+                            <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                                <label className="mr-1 whitespace-nowrap">Date from:</label>
+                                <input
+                                    className="border border-gray-300 rounded px-1 text-sm leading-6"
+                                    type="date"
+                                    value={store.state.startDate ?? ""}
+                                    max={new Date().toISOString().slice(0, 10)}
+                                    onChange={(e) => store.actions.setStartDate(e.target.value || null)}
+                                />
+                                {store.state.startDate && (
+                                    <button
+                                        className="ml-1 text-xs text-gray-500 hover:text-dark"
+                                        onClick={() => store.actions.setStartDate(null)}
+                                    >
+                                        Clear
+                                    </button>
+                                )}
+                            </div>
                             <div
                                 className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                                 onClick={handleToggleLogScaleBtnClick}
@@ -399,7 +436,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                 onClick={handleToggleChartBtnClick}
                             >
                                 <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
-                                {state.chartMode === "Timeline" ? "Align timeline" : "Align timeline"}
+                                Align timeline
                             </div>
                         </div>
                     </>
