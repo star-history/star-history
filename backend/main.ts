@@ -150,6 +150,7 @@ const startServer = async () => {
     let type: ChartMode = "Date";
     let size = c.req.query("size") ?? "";
 
+    // #527: Date-from validation
     let startDate: string | null = null;
     if (fromParam) {
       if (isValidIsoDateString(fromParam)) {
@@ -174,16 +175,19 @@ const startServer = async () => {
 
     const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
 
-    let legendPosition: "top-left" | "bottom-right" = "top-left";
-    if (legendParam === "bottom-right") {
-      legendPosition = "bottom-right";
+    // #529: Extended legend positioning (5 values: auto, top-left, top-right, bottom-left, bottom-right)
+    const ALLOWED_LEGEND = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"] as const;
+    type LegendPos = (typeof ALLOWED_LEGEND)[number];
+    let legendPosition: LegendPos = "auto";
+    if ((ALLOWED_LEGEND as readonly string[]).includes(legendParam)) {
+      legendPosition = legendParam as LegendPos;
     }
 
     if (!CHART_SIZES.includes(size)) {
       size = "laptop";
     }
 
-    // Check rendered SVG cache before any data fetching or rendering.
+    // Combined cache key: includes both legendPosition (#529) and startDate (#527)
     const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}|${startDate ?? ""}`;
     const cachedSvg = svgCache.get(svgCacheKey);
     if (cachedSvg) {
