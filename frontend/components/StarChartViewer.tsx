@@ -12,7 +12,7 @@ import { convertDataToChartData, getRepoData } from "@shared/common/chart"
 import toast from "helpers/toast"
 import { ChartMode, RepoData, LegendPosition } from "@shared/types/chart"
 
-const VALID_LEGEND_POSITIONS: LegendPosition[] = ["top-left", "bottom-right"]
+const VALID_LEGEND_POSITIONS: LegendPosition[] = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"]
 import BytebaseBanner from "./SponsorView"
 import utils from "@shared/common/utils"
 import api from "@shared/common/api"
@@ -48,7 +48,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
     const [state, setState] = useState<State>({
         chartMode: "Date",
         useLogScale: false,
-        legendPosition: "top-left",
+        legendPosition: "auto",
         repoCacheMap: new Map(),
         chartData: undefined,
         isGeneratingImage: false,
@@ -108,7 +108,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
             } else {
                 setState((prevState) => ({
                     ...prevState,
-                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, { insertZeroPoint: true })
+                    chartData: convertDataToChartData(repoData, chartMode ?? state.chartMode, { insertZeroPoint: true, startDate: store.state.startDate })
                 }))
             }
         },
@@ -122,7 +122,7 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
             const useLogScale = hash.includes("logscale") || hash.includes("LogScale");
 
             // Parse legend position from hash
-            let legendPosition: LegendPosition = "top-left";
+            let legendPosition: LegendPosition = "auto";
             const legendRegex = new RegExp(`legend=(${VALID_LEGEND_POSITIONS.join("|")})`);
             const legendMatch = hash.match(legendRegex);
             if (legendMatch) {
@@ -161,6 +161,25 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [store.repos])
 
+    // Re-compute chart from cache when startDate changes (no network request needed)
+    useEffect(() => {
+        if (store.repos.length === 0) return
+        const repoData: RepoData[] = []
+        for (const repo of store.repos) {
+            const cached = state.repoCacheMap.get(repo)
+            if (cached) {
+                repoData.push({ repo, starRecords: cached.starData, logoUrl: cached.logoUrl })
+            }
+        }
+        if (repoData.length > 0) {
+            setState((prevState) => ({
+                ...prevState,
+                chartData: convertDataToChartData(repoData, state.chartMode, { insertZeroPoint: true, startDate: store.state.startDate })
+            }))
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [store.state.startDate])
+
     const handleCopyLinkBtnClick = async () => {
         try {
             await utils.copyTextToClipboard(window.location.href)
@@ -179,7 +198,6 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         const svgElement = containerElRef.current?.querySelector("svg")?.cloneNode(true) as SVGSVGElement
         svgElement.querySelectorAll(".chart-tooltip-dot").forEach((d) => d.remove())
         svgElement.querySelectorAll(".browser-only").forEach((d) => d.remove())
-        // convert images from url href to data url href
         for (const i of Array.from(svgElement.querySelectorAll("image"))) {
             const url = i.getAttribute("href")
             if (url) {
@@ -208,7 +226,6 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
         }, 2000)
 
         try {
-            // Get image's width and height from the container, because the svg's width is set to 100%
             const { width: imgWidth, height: imgHeight } = containerElRef.current.getBoundingClientRect()
             const canvas = document.createElement("canvas")
             const scale = Math.floor(window.devicePixelRatio * 2)
@@ -222,7 +239,6 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
             ctx.fillStyle = "white"
             ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-            // draw chart image
             const chartDataURL = utils.convertSVGToDataURL(svgElement)
             const chartImage = new Image()
             chartImage.src = chartDataURL
@@ -321,6 +337,9 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
     const handleToggleChartBtnClick = React.useCallback(() => {
         const newChartMode = state.chartMode === "Date" ? "Timeline" : "Date"
         store.actions.setChartMode(newChartMode)
+        if (newChartMode === "Timeline") {
+            store.actions.setStartDate(null)
+        }
 
         setState((prevState) => {
             return { ...prevState, chartMode: newChartMode }
@@ -364,29 +383,41 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                         <div className="absolute top-0 left-1 p-2 flex flex-row">
                             <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
                                 <span className="mr-2">Legend</span>
-                                <label className="mr-2 cursor-pointer hover:opacity-80 flex items-center">
-                                    <input
-                                        className="mr-1"
-                                        type="radio"
-                                        name="legendPosition"
-                                        checked={state.legendPosition === "top-left"}
-                                        onChange={() => handleLegendPositionChange("top-left")}
-                                    />
-                                    Top left
-                                </label>
-                                <label className="cursor-pointer hover:opacity-80 flex items-center">
-                                    <input
-                                        className="mr-1"
-                                        type="radio"
-                                        name="legendPosition"
-                                        checked={state.legendPosition === "bottom-right"}
-                                        onChange={() => handleLegendPositionChange("bottom-right")}
-                                    />
-                                    Bottom right
-                                </label>
+                                {(["auto", "top-left", "top-right", "bottom-left", "bottom-right"] as LegendPosition[]).map((pos) => (
+                                    <label key={pos} className="mr-2 cursor-pointer hover:opacity-80 flex items-center">
+                                        <input
+                                            className="mr-1"
+                                            type="radio"
+                                            name="legendPosition"
+                                            checked={state.legendPosition === pos}
+                                            onChange={() => handleLegendPositionChange(pos)}
+                                        />
+                                        {pos === "auto" ? "Auto" : pos === "top-left" ? "Top left" : pos === "top-right" ? "Top right" : pos === "bottom-left" ? "Bottom left" : "Bottom right"}
+                                    </label>
+                                ))}
                             </div>
                         </div>
-                        <div className="absolute top-0 right-1 p-2 flex flex-row">
+                        <div className="absolute top-0 right-1 p-2 flex flex-row flex-wrap justify-end items-center">
+                            {state.chartMode !== "Timeline" && (
+                                <div className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 z-10 text-dark select-none">
+                                    <label className="mr-1 whitespace-nowrap">Date from:</label>
+                                    <input
+                                        className="border border-gray-300 rounded px-1 text-sm leading-6"
+                                        type="date"
+                                        value={store.state.startDate ?? ""}
+                                        max={new Date().toISOString().slice(0, 10)}
+                                        onChange={(e) => store.actions.setStartDate(e.target.value || null)}
+                                    />
+                                    {store.state.startDate && (
+                                        <button
+                                            className="ml-1 text-xs text-gray-500 hover:text-dark"
+                                            onClick={() => store.actions.setStartDate(null)}
+                                        >
+                                            Clear
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                             <div
                                 className="flex flex-row justify-center items-center rounded leading-8 text-sm px-3 cursor-pointer z-10 text-dark select-none hover:bg-gray-100"
                                 onClick={handleToggleLogScaleBtnClick}
@@ -399,13 +430,12 @@ function StarChartViewer({ compact = false }: StarChartViewerProps) {
                                 onClick={handleToggleChartBtnClick}
                             >
                                 <input className="mr-2" type="checkbox" checked={state.chartMode === "Timeline"} />
-                                {state.chartMode === "Timeline" ? "Align timeline" : "Align timeline"}
+                                Align timeline
                             </div>
                         </div>
                     </>
                 )}
                 <div id="capture">{state.chartData && state.chartData.datasets.length > 0 && <StarXYChart classname={`w-full h-auto ${compact ? "" : "mt-6"}`} data={state.chartData} chartMode={state.chartMode} useLogScale={state.useLogScale} legendPosition={state.legendPosition} />}</div>
-                {/* ... rest of the JSX here */}
                 {state.showSetTokenDialog && (
                     <TokenSettingDialog
                         onClose={handleSetTokenDialogClose}
