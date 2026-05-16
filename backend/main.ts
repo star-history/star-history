@@ -5,7 +5,7 @@ import { serve } from "@hono/node-server";
 import { optimize } from 'svgo';
 import { JSDOM } from "jsdom";
 import XYChart from "../shared/packages/xy-chart.js";
-import { convertDataToChartData, getRepoData } from "../shared/common/chart.js";
+import { convertDataToChartData, getRepoData, isValidIsoDateString } from "../shared/common/chart.js";
 import { ChartMode } from "../shared/types/chart.js";
 import logger from "./logger.js";
 import cache, { ogCardCache, svgCache, recordCacheHit, recordCacheMiss, getAllCacheStats } from "./cache.js";
@@ -146,8 +146,19 @@ const startServer = async () => {
     const typeParam = c.req.query("type") ?? "";
     const logscaleParam = c.req.query("logscale");
     const legendParam = c.req.query("legend") ?? "";
+    const fromParam = c.req.query("from") ?? "";
     let type: ChartMode = "Date";
     let size = c.req.query("size") ?? "";
+
+    // #527: Date-from validation
+    let startDate: string | null = null;
+    if (fromParam) {
+      if (isValidIsoDateString(fromParam)) {
+        startDate = fromParam;
+      } else {
+        return c.text("Invalid 'from' parameter: expected a real calendar date in YYYY-MM-DD form", 400);
+      }
+    }
 
     if (typeParam) {
       const lowerType = typeParam.toLowerCase();
@@ -164,17 +175,20 @@ const startServer = async () => {
 
     const useLogScale = logscaleParam !== undefined && logscaleParam !== "false";
 
-    let legendPosition: "top-left" | "bottom-right" = "top-left";
-    if (legendParam === "bottom-right") {
-      legendPosition = "bottom-right";
+    // #529: Extended legend positioning (5 values: auto, top-left, top-right, bottom-left, bottom-right)
+    const ALLOWED_LEGEND = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"] as const;
+    type LegendPos = (typeof ALLOWED_LEGEND)[number];
+    let legendPosition: LegendPos = "auto";
+    if ((ALLOWED_LEGEND as readonly string[]).includes(legendParam)) {
+      legendPosition = legendParam as LegendPos;
     }
 
     if (!CHART_SIZES.includes(size)) {
       size = "laptop";
     }
 
-    // Check rendered SVG cache before any data fetching or rendering.
-    const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}`;
+    // Combined cache key: includes both legendPosition (#529) and startDate (#527)
+    const svgCacheKey = `${repos.join(",")}|${type}|${size}|${theme}|${transparent}|${legendPosition}|${useLogScale}|${startDate ?? ""}`;
     const cachedSvg = svgCache.get(svgCacheKey);
     if (cachedSvg) {
       recordCacheHit("svgChart");
@@ -254,7 +268,7 @@ const startServer = async () => {
           title: "Star History",
           xLabel: type === "Date" ? "Date" : "Timeline",
           yLabel: "GitHub Stars",
-          data: convertDataToChartData(repoData, type),
+          data: convertDataToChartData(repoData, type, { startDate }),
           showDots: false,
           transparent: transparent.toLowerCase() === "true",
           theme: theme === "dark" ? "dark" : "light",
