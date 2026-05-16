@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import storage from "../helpers/storage";
 import { ChartMode, LegendPosition } from "@shared/types/chart";
+import { isValidIsoDateString } from "@shared/common/chart";
 import { useRouter } from "next/router";
 
 interface AppState {
@@ -10,6 +11,7 @@ interface AppState {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    startDate: string | null;
 }
 
 interface AppStateContextProps {
@@ -18,6 +20,7 @@ interface AppStateContextProps {
     chartMode: ChartMode;
     useLogScale: boolean;
     legendPosition: LegendPosition;
+    startDate: string | null;
     token: string;
     state: AppState;
     actions: {
@@ -29,6 +32,7 @@ interface AppStateContextProps {
         setChartMode(chartMode: ChartMode): void;
         setUseLogScale(useLogScale: boolean): void;
         setLegendPosition(legendPosition: LegendPosition): void;
+        setStartDate(date: string | null): void;
     };
 }
 
@@ -43,7 +47,8 @@ export const AppStateProvider: React.FC<{
         repos: [],
         chartMode: "Date",
         useLogScale: false,
-        legendPosition: "top-left",
+        legendPosition: "auto",
+        startDate: null,
     });
 
     const router = useRouter();
@@ -55,13 +60,13 @@ export const AppStateProvider: React.FC<{
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
-            let legendPosition: LegendPosition = "top-left";
+            let legendPosition: LegendPosition = "auto";
+            let startDate: string | null = null;
 
-            const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
+            const validLegendPositions: LegendPosition[] = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"];
 
             for (const value of params) {
                 if (value.startsWith("type=")) {
-                    // Preferred format: type=timeline or type=date
                     const typeValue = value.split("=")[1].toLowerCase();
                     if (typeValue === "date") {
                         chartMode = "Date";
@@ -69,10 +74,8 @@ export const AppStateProvider: React.FC<{
                         chartMode = "Timeline";
                     }
                 } else if (value === "date" || value === "Date") {
-                    // Backward compatibility: naked date parameter
                     chartMode = "Date";
                 } else if (value === "timeline" || value === "Timeline") {
-                    // Backward compatibility: naked timeline parameter
                     chartMode = "Timeline";
                 } else if (value === "logscale" || value === "LogScale") {
                     useLogScale = true;
@@ -80,6 +83,11 @@ export const AppStateProvider: React.FC<{
                     const position = value.split("=")[1] as LegendPosition;
                     if (validLegendPositions.includes(position)) {
                         legendPosition = position;
+                    }
+                } else if (value.startsWith("from=")) {
+                    const candidate = value.split("=")[1];
+                    if (isValidIsoDateString(candidate)) {
+                        startDate = candidate;
                     }
                 } else {
                     repos.push(value);
@@ -94,13 +102,12 @@ export const AppStateProvider: React.FC<{
                 chartMode,
                 useLogScale,
                 legendPosition,
+                startDate,
             }));
         };
 
-        // Fetch data and set initial state
         fetchData();
 
-        // Listen for hash changes using Next.js router
         const handleHashChange = (url: string) => {
             if (url.includes("#")) {
                 fetchData();
@@ -108,7 +115,6 @@ export const AppStateProvider: React.FC<{
         };
         router.events.on("hashChangeComplete", handleHashChange);
 
-        // Cleanup the event listener
         return () => {
             router.events.off("hashChangeComplete", handleHashChange);
         };
@@ -142,6 +148,9 @@ export const AppStateProvider: React.FC<{
         setLegendPosition: (legendPosition: LegendPosition) => {
             setState((prev) => ({ ...prev, legendPosition }));
         },
+        setStartDate: (date: string | null) => {
+            setState((prev) => ({ ...prev, startDate: date }));
+        },
     }), []);
 
     const store = useMemo<AppStateContextProps>(() => ({
@@ -150,6 +159,7 @@ export const AppStateProvider: React.FC<{
         chartMode: state.chartMode,
         useLogScale: state.useLogScale,
         legendPosition: state.legendPosition,
+        startDate: state.startDate,
         token: state.token,
         state,
         actions,
