@@ -1,5 +1,10 @@
+import { AxisScale } from "d3-axis"
 import { D3Selection, LegendPosition } from "../types"
 import uniq from "lodash/uniq"
+
+interface LegendDataset {
+    data: { x: Date | number; y: number }[]
+}
 
 interface DrawLegendConfig {
     items: {
@@ -12,9 +17,68 @@ interface DrawLegendConfig {
     legendPosition: LegendPosition
     chartWidth: number
     chartHeight: number
+    datasets?: LegendDataset[]
+    xScale?: AxisScale<number | Date>
+    yScale?: AxisScale<number>
 }
 
-const drawLegend = (selection: D3Selection, { items, strokeColor, backgroundColor, legendPosition, chartWidth, chartHeight }: DrawLegendConfig) => {
+type Corner = "top-left" | "top-right" | "bottom-left" | "bottom-right"
+
+const CORNER_PREFERENCE: Corner[] = ["top-left", "top-right", "bottom-right", "bottom-left"]
+
+const cornerRect = (corner: Corner, chartWidth: number, chartHeight: number, w: number, h: number) => {
+    // Margins match the original top-left (8/5) and bottom-right (8/15) offsets.
+    switch (corner) {
+        case "top-left":
+            return { x: 8, y: 5 }
+        case "top-right":
+            return { x: chartWidth - w - 8, y: 5 }
+        case "bottom-left":
+            return { x: 8, y: chartHeight - h - 15 }
+        case "bottom-right":
+            return { x: chartWidth - w - 8, y: chartHeight - h - 15 }
+    }
+}
+
+const pickAutoCorner = (
+    chartWidth: number,
+    chartHeight: number,
+    w: number,
+    h: number,
+    datasets: LegendDataset[],
+    xScale: AxisScale<number | Date>,
+    yScale: AxisScale<number>
+): Corner => {
+    const points: { x: number; y: number }[] = []
+    datasets.forEach((ds) => {
+        ds.data.forEach((d) => {
+            const px = xScale(d.x as number | Date) as number
+            const py = yScale(d.y) as number
+            if (Number.isFinite(px) && Number.isFinite(py)) {
+                points.push({ x: px, y: py })
+            }
+        })
+    })
+
+    let bestCorner: Corner = "top-left"
+    let bestScore = Infinity
+    for (const corner of CORNER_PREFERENCE) {
+        const { x, y } = cornerRect(corner, chartWidth, chartHeight, w, h)
+        let score = 0
+        for (const p of points) {
+            if (p.x >= x && p.x <= x + w && p.y >= y && p.y <= y + h) score++
+        }
+        if (score < bestScore) {
+            bestScore = score
+            bestCorner = corner
+            if (score === 0) break // perfect corner — preference order wins ties
+        }
+    }
+    return bestCorner
+}
+
+const drawLegend = (selection: D3Selection, config: DrawLegendConfig) => {
+    const { items, strokeColor, backgroundColor, legendPosition, chartWidth, chartHeight, datasets, xScale, yScale } = config
     const legendXPadding = 7
     const legendYPadding = 6
     const xkcdCharWidth = 7
@@ -38,14 +102,19 @@ const drawLegend = (selection: D3Selection, { items, strokeColor, backgroundColo
     const backgroundWidth = Math.max(bboxWidth + legendXPadding * 2, maxTextLength * xkcdCharWidth + colorBlockWidth + legendXPadding * 2 + 6 + (shouldDrawLogo ? legendXPadding + logoSize : 0))
     const backgroundHeight = items.length * xkcdCharHeight + legendYPadding * 2
 
-    // Calculate position based on legendPosition
-    let legendX = 8
-    let legendY = 5
-
-    if (legendPosition === "bottom-right") {
-        legendX = chartWidth - backgroundWidth - 8
-        legendY = chartHeight - backgroundHeight - 15
+    // Resolve final corner. "auto" scores all four; explicit values pass through.
+    let resolved: Corner
+    if (legendPosition === "auto") {
+        if (datasets && xScale && yScale) {
+            resolved = pickAutoCorner(chartWidth, chartHeight, backgroundWidth, backgroundHeight, datasets, xScale, yScale)
+        } else {
+            resolved = "top-left"
+        }
+    } else {
+        resolved = legendPosition
     }
+
+    const { x: legendX, y: legendY } = cornerRect(resolved, chartWidth, chartHeight, backgroundWidth, backgroundHeight)
 
     items.forEach((item, i) => {
         // draw color dot
