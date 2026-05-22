@@ -79,7 +79,7 @@ const getDefaultOptions = (transparent: boolean): XYChartOptions => {
         fontFamily: "xkcd",
         backgroundColor: transparent ? "transparent" : "white",
         strokeColor: "black",
-        legendPosition: "top-left"
+        legendPosition: "auto"
     }
 }
 
@@ -428,9 +428,12 @@ const XYChart = (
         items: legendItems,
         strokeColor: options.strokeColor,
         backgroundColor: options.backgroundColor,
-        legendPosition: options.legendPosition || "top-left",
+        legendPosition: options.legendPosition || "auto",
         chartWidth,
-        chartHeight
+        chartHeight,
+        datasets: data.datasets,
+        xScale,
+        yScale
     })
 }
 
