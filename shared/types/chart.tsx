@@ -1,6 +1,6 @@
 export type ChartMode = "Date" | "Timeline"
 
-export type LegendPosition = "top-left" | "bottom-right"
+export type LegendPosition = "auto" | "top-left" | "top-right" | "bottom-left" | "bottom-right"
 
 export interface StarRecord {
     date: string
