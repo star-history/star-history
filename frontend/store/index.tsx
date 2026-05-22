@@ -47,7 +47,7 @@ export const AppStateProvider: React.FC<{
         repos: [],
         chartMode: "Date",
         useLogScale: false,
-        legendPosition: "top-left",
+        legendPosition: "auto",
         startDate: null,
     });
 
@@ -60,14 +60,13 @@ export const AppStateProvider: React.FC<{
             const repos: string[] = [];
             let chartMode: ChartMode = "Date";
             let useLogScale = false;
-            let legendPosition: LegendPosition = "top-left";
+            let legendPosition: LegendPosition = "auto";
             let startDate: string | null = null;
 
-            const validLegendPositions: LegendPosition[] = ["top-left", "bottom-right"];
+            const validLegendPositions: LegendPosition[] = ["auto", "top-left", "top-right", "bottom-left", "bottom-right"];
 
             for (const value of params) {
                 if (value.startsWith("type=")) {
-                    // Preferred format: type=timeline or type=date
                     const typeValue = value.split("=")[1].toLowerCase();
                     if (typeValue === "date") {
                         chartMode = "Date";
@@ -75,10 +74,8 @@ export const AppStateProvider: React.FC<{
                         chartMode = "Timeline";
                     }
                 } else if (value === "date" || value === "Date") {
-                    // Backward compatibility: naked date parameter
                     chartMode = "Date";
                 } else if (value === "timeline" || value === "Timeline") {
-                    // Backward compatibility: naked timeline parameter
                     chartMode = "Timeline";
                 } else if (value === "logscale" || value === "LogScale") {
                     useLogScale = true;
@@ -89,7 +86,6 @@ export const AppStateProvider: React.FC<{
                     }
                 } else if (value.startsWith("from=")) {
                     const candidate = value.split("=")[1];
-                    // Accept only YYYY-MM-DD that is a real calendar date (rejects e.g. 2023-02-29).
                     if (isValidIsoDateString(candidate)) {
                         startDate = candidate;
                     }
@@ -110,10 +106,8 @@ export const AppStateProvider: React.FC<{
             }));
         };
 
-        // Fetch data and set initial state
         fetchData();
 
-        // Listen for hash changes using Next.js router
         const handleHashChange = (url: string) => {
             if (url.includes("#")) {
                 fetchData();
@@ -121,7 +115,6 @@ export const AppStateProvider: React.FC<{
         };
         router.events.on("hashChangeComplete", handleHashChange);
 
-        // Cleanup the event listener
         return () => {
             router.events.off("hashChangeComplete", handleHashChange);
         };
