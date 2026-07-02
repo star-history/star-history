@@ -112,12 +112,6 @@
 
 <a href="https://serpapi.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/serpapi/landing.webp" /></a>
 
-### PaddleOCR
-
-[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR?utm_source=star-history) is a production-ready OCR & document AI for end-to-end text extraction and document understanding.
-
-<a href="https://github.com/PaddlePaddle/PaddleOCR?utm_source=star-history"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/paddleocr/landing.webp" /></a>
-
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
