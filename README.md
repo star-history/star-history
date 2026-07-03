@@ -112,6 +112,12 @@
 
 <a href="https://serpapi.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/serpapi/landing.webp" /></a>
 
+### pgplex
+
+[pgplex](https://www.pgplex.com/?utm_source=starhistory) is the Postgres toolchain for humans and agents
+
+<a href="https://www.pgplex.com/?utm_source=starhistory"><img src="https://raw.githubusercontent.com/star-history/star-history/main/frontend/public/assets/ft/pgplex/landing.webp" /></a>
+
 ## ✨ Features
 
 - **Unique** **`sketch xkcd`** feeling **chart**;
