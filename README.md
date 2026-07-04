@@ -142,6 +142,8 @@
 
 ## 🏗 Development
 
+> We do not accept external contribution.
+
 **`Star-history`** is built using a **modern tech stack**: **`Next.js`** + **`TailwindCSS`**.
 
 ### Prerequisites
