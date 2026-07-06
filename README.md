@@ -42,16 +42,6 @@
 
 </div>
 
-<a href="https://star-history.com/star-history/star-history">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
- </picture>
-</a>
-
-👆 **THIS** is also a **`live`** chart with global rank and weekly stats: 👇
-
 <div align="left">
   
 ```html
