@@ -20,39 +20,21 @@
 
 ---
 
+👇 **THIS** is a **`live`** chart. Follow [instruction](https://www.star-history.com/blog/how-to-use-github-star-history#how-to-embed-the-chart-in-your-readme) to embed yours.
+
 <a href="https://www.star-history.com/?repos=star-history%2Fstar-history&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
  </picture>
 </a>
 
-👆 **THIS** is a **`live`** chart created with the following html: 👇
-
-<div align="left">
-
-```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
-  <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left" />
-</picture>
-```
-
-</div>
-
 <div align="left">
   
-```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
-  <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&style=landscape1" />
-</picture>
-```
+👇 **THIS** is also a **`live`** badge with global rank. Follow [instruction]() to embed yours.
 
-<p align="center">
+<p align="left">
  <a href="https://www.star-history.com/star-history/star-history">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=star-history/star-history&theme=dark" />
@@ -61,24 +43,6 @@
   </picture>
  </a>
 </p>
-
-👆 **THIS** is also a **`live`** badge with global rank: 👇
-
-<div align="left">
-  
-```html
-<p align="center">
- <a href="https://www.star-history.com/star-history/star-history">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=star-history/star-history&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=star-history/star-history" />
-    <img alt="Star History Rank" src="https://api.star-history.com/badge?repo=star-history/star-history" />
-  </picture>
- </a>
-</p>
-```
-
-</div>
 
 </div>
 
