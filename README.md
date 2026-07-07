@@ -32,7 +32,7 @@
 
 <div align="left">
   
-👇 **THIS** is also a **`live`** badge with global rank. Follow [instruction]() to embed yours.
+👇 **THIS** is also a **`live`** badge with global rank. Follow [instruction](https://www.star-history.com/star-history/star-history#badges) to embed yours.
 
 <p align="left">
  <a href="https://www.star-history.com/star-history/star-history">
