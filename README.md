@@ -24,9 +24,9 @@
 
 <a href="https://www.star-history.com/?repos=star-history%2Fstar-history&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=F5dEuGqWUMlBg5F6BK1S3x5EPx38FoUSLm4664WBzB28T40OSw0KSceROvHg9gnD2P7T7zm6H37ZVeC2fkUduZ5Z4l0FNwcFiBPFet9-tFLg7IFvjnH5Wi7Y8jHRtqSQc47ZQSihQg0OcZUZV7ZAVuOj99n2qWxjPkhaU5IZ5_NccOB8nTI3B3A7P7_H" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&theme=dark&legend=top-left&sealed_token=EDoqUFabWwOM7xAPsXAHWcmj-Qw11JdDsjQcejbySUl87A0X82dBNHjH2lJHSDicNIC3yD2r21TxH91cCMRzrkNof9un9_KQVeqMGPRYkiXQR7bSWspSWA" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=EDoqUFabWwOM7xAPsXAHWcmj-Qw11JdDsjQcejbySUl87A0X82dBNHjH2lJHSDicNIC3yD2r21TxH91cCMRzrkNof9un9_KQVeqMGPRYkiXQR7bSWspSWA" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=star-history/star-history&type=date&legend=top-left&sealed_token=EDoqUFabWwOM7xAPsXAHWcmj-Qw11JdDsjQcejbySUl87A0X82dBNHjH2lJHSDicNIC3yD2r21TxH91cCMRzrkNof9un9_KQVeqMGPRYkiXQR7bSWspSWA" />
  </picture>
 </a>
 
