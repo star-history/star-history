@@ -81,7 +81,7 @@ Star History is free to use, but it uses GitHub API to retrieve repository metad
 
 -   Note: give it a name for identification.
 -   Expiration: how long should it be valid for?
--   Select scopes: access boundary for this token, for Star History, **repo** access will do.
+-   Select scopes / repository permissions: access boundary for this token. For classic tokens, **repo** access will do. For fine-grained tokens, select the target repository and grant **Contents → Read-only** if a no-permission token fails with `Resource not accessible by personal access token`.
 
 When you are done, click **Generate token** at the bottom of the page.
 
@@ -101,7 +101,7 @@ When you are done, click **Generate token** at the bottom of the page.
 
 ![embed](/assets/blog/how-to-use-github-star-history/embed.webp)
 
-2. You need to add your personal access token first. Copy the iframe snippet and paste it into your [README.md](http://README.md)
+2. You need to add your personal access token first. Copy the iframe snippet and paste it into your [README.md](http://README.md). If GitHub shows a broken or stale image even after the chart URL works directly, update or add a harmless version query like `&v=20260713` so GitHub re-fetches the SVG.
 
 ![copy-iframe-readme](/assets/blog/how-to-use-github-star-history/copy-iframe-readme.webp)
 
