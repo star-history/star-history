@@ -29,9 +29,15 @@ const SVG_ATTRS: Record<string, string> = {
     "dominant-baseline": "dominantBaseline",
     "clip-path": "clipPath",
     "clip-rule": "clipRule",
+    "stop-color": "stopColor",
+    "stop-opacity": "stopOpacity",
 }
 
-const SVG_TAGS = new Set(["svg", "path", "circle", "rect", "line", "text", "g", "image", "clipPath", "defs"])
+const SVG_TAGS = new Set([
+    "svg", "path", "circle", "rect", "line", "text", "g", "image", "clipPath", "defs",
+    "linearGradient", "radialGradient", "stop",
+    "filter", "feGaussianBlur", "feTurbulence", "feColorMatrix", "feComposite",
+])
 
 interface SatoriVNode {
     type: string
