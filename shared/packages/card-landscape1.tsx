@@ -203,11 +203,11 @@ export function buildLandscape1(data: Landscape1Data) {
             // Rim shading between scallops and milled ring for depth
             h("circle", { cx: "80", cy: "80", r: "58", fill: "none", stroke: "#7c5714", "stroke-width": "5", opacity: "0.16" }),
             // Milled ring — engraved ticks with an embossed highlight twin
-            h("circle", { cx: "80", cy: "80", r: "54", fill: "none", stroke: "#8a621a", "stroke-width": "2.2", "stroke-dasharray": "2 2.1", opacity: "0.85" }),
-            h("circle", { cx: "80.6", cy: "80.7", r: "54", fill: "none", stroke: "#fff3c0", "stroke-width": "0.8", "stroke-dasharray": "2 2.1", opacity: "0.5" }),
+            h("circle", { cx: "80", cy: "80", r: "55.5", fill: "none", stroke: "#8a621a", "stroke-width": "2.2", "stroke-dasharray": "2 2.1", opacity: "0.85" }),
+            h("circle", { cx: "80.6", cy: "80.7", r: "55.5", fill: "none", stroke: "#fff3c0", "stroke-width": "0.8", "stroke-dasharray": "2 2.1", opacity: "0.5" }),
             // Inner stamped disc with groove
-            h("circle", { cx: "80", cy: "80", r: "47", fill: "url(#sh-seal-disc)", stroke: "#8a621a", "stroke-width": "1", opacity: "1" }),
-            h("circle", { cx: "80", cy: "80", r: "45.5", fill: "none", stroke: "#ffefad", "stroke-width": "1", opacity: "0.5" }),
+            h("circle", { cx: "80", cy: "80", r: "51", fill: "url(#sh-seal-disc)", stroke: "#8a621a", "stroke-width": "1", opacity: "1" }),
+            h("circle", { cx: "80", cy: "80", r: "49.5", fill: "none", stroke: "#ffefad", "stroke-width": "1", opacity: "0.5" }),
             // Grain texture across the whole seal
             h("path", { d: rosettePath(80, 80, 61, 6.5, 32), fill: "#6e4f12", filter: "url(#sh-seal-grain)", opacity: "0.25" }),
           ),
