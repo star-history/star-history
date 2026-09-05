@@ -11,6 +11,7 @@
         "build": "pnpm run generate:blog && next build && next-sitemap",
         "start": "pnpm dlx serve out",
         "lint": "next lint",
+        "test:api": "node --import tsx --test ../shared/common/api.test.tsx",
         "prettier": "prettier --write ."
     },
     "dependencies": {

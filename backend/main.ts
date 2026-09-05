@@ -15,7 +15,7 @@ import {
   getBase64Image,
 } from "./utils.js";
 import { getNextToken, markTokenExhausted, initTokenFromEnv } from "./token.js";
-import { CHART_SIZES, MAX_REQUEST_AMOUNT, MAX_REPOS_PER_REQUEST } from "./const.js";
+import { CHART_SIZES, MAX_CONCURRENT_REQUESTS, MAX_REPOS_PER_REQUEST } from "./const.js";
 import { initOgAssets, renderOgCard } from "./og-card.js";
 import { loadRepos } from "../shared/common/repo-data.js";
 
@@ -208,7 +208,7 @@ const startServer = async () => {
       }
 
       try {
-        const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
+        const data = await getRepoData(nodataRepos, token, MAX_CONCURRENT_REQUESTS);
 
         // Fetch all logos in parallel (bounded by MAX_REPOS_PER_REQUEST)
         await Promise.all(data.map(async (d) => {

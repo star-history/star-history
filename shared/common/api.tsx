@@ -1,19 +1,32 @@
 import axios from "axios"
 import utils from "./utils"
 
-const API_PER_PAGE = 100  // GitHub API max items per request
+const API_PER_PAGE = 30  // GitHub star history API max weeks per request
+const DAY_MS = 24 * 60 * 60 * 1000
 const REQUEST_TIMEOUT_MS = 15000  // 15s timeout for GitHub API calls
 
-namespace api {
-    export async function getRepoStargazers(repo: string, token?: string, page?: number) {
-        let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${API_PER_PAGE}`
+interface StarHistoryWeek {
+    week: number
+    total: number
+    days: number[]
+}
 
-        if (page !== undefined) {
-            url = `${url}&page=${page}`
+function getLinkedPage(link: string, relation: string): number | undefined {
+    for (const part of link.split(",")) {
+        const match = /<([^>]+)>;\s*rel="([^"]+)"/.exec(part)
+        if (match?.[2] === relation) {
+            const page = Number(new URL(match[1]).searchParams.get("page"))
+            if (Number.isInteger(page) && page > 0) return page
         }
-        return axios.get(url, {
+    }
+}
+
+namespace api {
+    export async function getRepoStarHistory(repo: string, token?: string, page = 1) {
+        return axios.get<StarHistoryWeek[]>(`https://api.github.com/repos/${repo}/stargazers/history?per_page=${API_PER_PAGE}&page=${page}`, {
             headers: {
-                Accept: "application/vnd.github.v3.star+json",
+                Accept: "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2026-03-10",
                 Authorization: token ? `token ${token}` : ""
             },
             timeout: REQUEST_TIMEOUT_MS,
@@ -32,85 +45,44 @@ namespace api {
         return data.stargazers_count
     }
 
-    export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number) {
-        const patchRes = await getRepoStargazers(repo, token)
+    export async function getRepoStarRecords(repo: string, token: string, maxConcurrentRequests: number) {
+        let response = await getRepoStarHistory(repo, token)
+        const weeks = [...response.data]
+        const concurrency = Number.isFinite(maxConcurrentRequests) ? Math.max(1, Math.floor(maxConcurrentRequests)) : 1
 
-        const headerLink = patchRes.headers["link"] || ""
-
-        let pageCount = 1
-        const regResult = /next.*&page=(\d*).*last/.exec(headerLink)
-
-        if (regResult) {
-            if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
-                pageCount = Number(regResult[1])
-            }
+        // Every page is required: these buckets contain increments, not cumulative totals.
+        // Bound concurrency instead of sampling pages and silently dropping stars.
+        let nextPage = getLinkedPage(response.headers["link"] || "", "next")
+        while (nextPage !== undefined) {
+            if (nextPage > 100) throw new Error("GitHub star history exceeds the API pagination limit")
+            const lastPage = getLinkedPage(response.headers["link"] || "", "last") || nextPage
+            const pages = utils.range(nextPage, Math.min(lastPage, nextPage + concurrency - 1, 100))
+            const responses = await Promise.all(pages.map((page) => getRepoStarHistory(repo, token, page)))
+            responses.forEach(({ data }) => weeks.push(...data))
+            response = responses[responses.length - 1]
+            nextPage = getLinkedPage(response.headers["link"] || "", "next")
         }
 
-        if (pageCount === 1 && patchRes?.data?.length === 0) {
-            throw {
-                status: patchRes.status,
-                data: []
-            }
-        }
-
-        const requestPages: number[] = []
-        if (pageCount < maxRequestAmount) {
-            requestPages.push(...utils.range(1, pageCount))
-        } else {
-            utils.range(1, maxRequestAmount).map((i) => {
-                requestPages.push(Math.round((i * pageCount) / maxRequestAmount) - 1)
-            })
-            if (!requestPages.includes(1)) {
-                requestPages[0] = 1;
-            }
-        }
-
-        const resArray = await Promise.all(
-            requestPages.map((page) => {
-                return getRepoStargazers(repo, token, page)
-            })
-        )
-
-        const starRecordsMap: Map<string, number> = new Map()
-
-        if (requestPages.length < maxRequestAmount) {
-            const starRecordsData: {
-                starred_at: string
-            }[] = []
-            resArray.map((res) => {
-                const { data } = res
-                starRecordsData.push(...data)
-            })
-            for (let i = 0; i < starRecordsData.length; ) {
-                starRecordsMap.set(utils.getDateString(starRecordsData[i].starred_at), i + 1)
-                i += Math.floor(starRecordsData.length / maxRequestAmount) || 1
-            }
-        } else {
-            resArray.map(({ data }, index) => {
-                if (data.length > 0) {
-                    const starRecord = data[0]
-                    // Calculate actual star position based on API page size and position in page
-                    const pageStartPosition = API_PER_PAGE * (requestPages[index] - 1)
-                    starRecordsMap.set(utils.getDateString(starRecord.starred_at), pageStartPosition)
-                }
-            })
-        }
-
-        const starAmount = await getRepoStargazersCount(repo, token)
-        starRecordsMap.set(utils.getDateString(Date.now()), starAmount)
-
-        const starRecords: {
-            date: string
-            count: number
-        }[] = []
-
-        starRecordsMap.forEach((v, k) => {
-            starRecords.push({
-                date: k,
-                count: v
+        const starRecords: { date: string; count: number }[] = []
+        let count = 0
+        const now = Date.now()
+        // Pages and weeks are newest first; days within each week start on Sunday.
+        weeks.reverse().forEach((week) => {
+            week.days.forEach((stars, day) => {
+                const timestamp = week.week * 1000 + day * DAY_MS
+                if (timestamp > now) return
+                count += stars
+                // Do not move the timeline's origin back before the first star.
+                if (count > 0) starRecords.push({ date: utils.getDateString(timestamp), count })
             })
         })
 
+        if (starRecords.length === 0) {
+            throw { status: response.status, data: [] }
+        }
+
+        const starAmount = await getRepoStargazersCount(repo, token)
+        starRecords.push({ date: utils.getDateString(now), count: starAmount })
         return starRecords
     }
 
