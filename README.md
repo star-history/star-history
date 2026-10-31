@@ -127,7 +127,7 @@ Load the built `./dist` folder as **unpacked project** to chrome extensions page
 
 ### API Server
 
-**API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embeded into **`GitHub readme`**.
+**API server** is an **`experimental feature`**. It's mainly used to **generate chart `SVG`** image file that can be embedded into **`GitHub readme`**.
 
 ```shell
 cd backend && pnpm i && pnpm dev
