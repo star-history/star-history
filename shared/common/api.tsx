@@ -3,6 +3,12 @@ import utils from "./utils"
 
 const API_PER_PAGE = 100  // GitHub API max items per request
 const REQUEST_TIMEOUT_MS = 15000  // 15s timeout for GitHub API calls
+const SEARCH_RESULT_LIMIT = 8  // max repo suggestions shown in the input dropdown
+
+export interface RepoSearchResult {
+    fullName: string
+    stars: number
+}
 
 namespace api {
     export async function getRepoStargazers(repo: string, token?: string, page?: number) {
@@ -30,6 +36,27 @@ namespace api {
         })
 
         return data.stargazers_count
+    }
+
+    export async function searchRepos(query: string, token?: string): Promise<RepoSearchResult[]> {
+        const { data } = await axios.get("https://api.github.com/search/repositories", {
+            params: {
+                q: `${query} in:name`,
+                sort: "stars",
+                order: "desc",
+                per_page: SEARCH_RESULT_LIMIT,
+            },
+            headers: {
+                Accept: "application/vnd.github+json",
+                Authorization: token ? `token ${token}` : ""
+            },
+            timeout: REQUEST_TIMEOUT_MS,
+        })
+
+        return ((data?.items || []) as { full_name: string; stargazers_count: number }[]).map((item) => ({
+            fullName: item.full_name,
+            stars: item.stargazers_count,
+        }))
     }
 
     export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number) {
