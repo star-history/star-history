@@ -8,6 +8,9 @@ import Link from "next/link"
 import { Blog } from "helpers/types/blog"
 import blogs from "helpers/blog.json"
 import { SketchMailboxIcon } from "./SketchIcons"
+import api, { RepoSearchResult } from "@shared/common/api"
+import { formatNumber } from "../helpers/format"
+import { FaSpinner } from "react-icons/fa"
 
 interface State {
     repo: string
@@ -16,6 +19,11 @@ interface State {
         visible: boolean
     }[]
     latestBlog?: Blog
+    suggestions: RepoSearchResult[]
+    showSuggestions: boolean
+    highlightedIndex: number
+    isSearching: boolean
+    searchError: boolean
 }
 
 interface RepoInputerProps {
@@ -27,10 +35,17 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     const store = useAppStore()
     const [state, setState] = useState<State>({
         repo: "",
-        repos: []
+        repos: [],
+        suggestions: [],
+        showSuggestions: false,
+        highlightedIndex: -1,
+        isSearching: false,
+        searchError: false,
     })
 
     const inputElRef = useRef<HTMLInputElement | null>(null)
+    const containerElRef = useRef<HTMLDivElement | null>(null)
+    const searchSeqRef = useRef(0)
 
     useEffect(() => {
         const latest = (blogs as Blog[]).find(blog => blog.featured);
@@ -99,11 +114,70 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
         handleWatch()
     }, [store.state.repos, store.state.chartMode, store.state.useLogScale, store.state.legendPosition, state.repos])
 
-    const handleAddRepoBtnClick = () => {
+    // Fuzzy-search GitHub repos while typing and show full name + star count suggestions.
+    useEffect(() => {
+        const query = state.repo.trim()
+        const seq = ++searchSeqRef.current
+
+        setState((prev) => ({ ...prev, highlightedIndex: -1, searchError: false }))
+
+        if (query.length < 2 || GITHUB_REPO_URL_REG.test(query)) {
+            setState((prev) => ({
+                ...prev,
+                suggestions: [],
+                showSuggestions: false,
+                isSearching: false,
+            }))
+            return
+        }
+
+        const timer = setTimeout(async () => {
+            setState((prev) => ({ ...prev, isSearching: true, showSuggestions: true }))
+            try {
+                const suggestions = await api.searchRepos(query, store.token)
+                if (seq !== searchSeqRef.current) {
+                    return
+                }
+                setState((prev) => ({
+                    ...prev,
+                    suggestions,
+                    showSuggestions: suggestions.length > 0,
+                }))
+            } catch (e) {
+                if (seq !== searchSeqRef.current) {
+                    return
+                }
+                setState((prev) => ({
+                    ...prev,
+                    suggestions: [],
+                    showSuggestions: true,
+                    searchError: true,
+                }))
+            } finally {
+                if (seq === searchSeqRef.current) {
+                    setState((prev) => ({ ...prev, isSearching: false }))
+                }
+            }
+        }, 400)
+
+        return () => clearTimeout(timer)
+    }, [state.repo, store.token])
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (containerElRef.current && !containerElRef.current.contains(e.target as Node)) {
+                setState((prev) => ({ ...prev, showSuggestions: false, highlightedIndex: -1 }))
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => document.removeEventListener("mousedown", handleClickOutside)
+    }, [])
+
+    const handleAddRepos = (rawReposInput: string) => {
         if (store.isFetching) {
             return
         }
-        let rawRepos = state.repo
+        let rawRepos = rawReposInput
         if (rawRepos === "" && state.repos.length === 0) {
             rawRepos = "star-history/star-history"
         }
@@ -147,7 +221,7 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                         store.actions.setRepos(state.repos.filter((r) => r.visible).map((r) => r.name))
                         setChartVisibility(true)
                     }
-                    setState((prev) => ({ ...prev, repo: "" }))
+                    setState((prev) => ({ ...prev, repo: "", showSuggestions: false }))
                     return
                 }
             }
@@ -164,7 +238,16 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
             store.actions.addRepo(repo)
             setChartVisibility(true)
         }
-        setState((prev) => ({ ...prev, repo: "" }))
+        setState((prev) => ({ ...prev, repo: "", suggestions: [], showSuggestions: false }))
+    }
+
+    const handleAddRepoBtnClick = () => {
+        handleAddRepos(state.repo)
+    }
+
+    const handleSuggestionSelect = (repoName: string) => {
+        handleAddRepos(repoName)
+        inputElRef.current?.focus()
     }
 
     const handleToggleRepoItemVisible = React.useCallback(
@@ -224,11 +307,44 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
     }
 
     const handleInputerKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Escape") {
+            setState((prev) => ({ ...prev, showSuggestions: false, highlightedIndex: -1 }))
+            return
+        }
+
+        if (state.showSuggestions && state.suggestions.length > 0) {
+            if (event.key === "ArrowDown") {
+                event.preventDefault()
+                setState((prev) => ({
+                    ...prev,
+                    highlightedIndex: Math.min(prev.highlightedIndex + 1, prev.suggestions.length - 1),
+                }))
+                return
+            }
+            if (event.key === "ArrowUp") {
+                event.preventDefault()
+                setState((prev) => ({ ...prev, highlightedIndex: Math.max(prev.highlightedIndex - 1, -1) }))
+                return
+            }
+            if (event.key === "Enter") {
+                event.preventDefault()
+                if (state.highlightedIndex >= 0) {
+                    handleSuggestionSelect(state.suggestions[state.highlightedIndex].fullName)
+                } else {
+                    handleAddRepoBtnClick()
+                }
+                return
+            }
+        }
+
         if (event.key === "Enter") {
             event.preventDefault()
             handleAddRepoBtnClick()
         }
     }
+
+    const isDropdownVisible =
+        state.showSuggestions && (state.isSearching || state.searchError || state.suggestions.length > 0)
 
     return (
         <div className="w-full px-3 shrink-0 flex flex-col justify-start items-center">
@@ -253,23 +369,69 @@ export default function RepoInputer({ setChartVisibility }: RepoInputerProps) {
                    <SketchMailboxIcon /> Subscribe
                 </a>
             </div>
-            <div className="w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4 flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
-                <input
-                    ref={inputElRef}
-                    value={state.repo}
-                    onChange={(e) => setState((prev) => ({ ...prev, repo: e.target.value }))}
-                    className="w-auto h-9 px-2 grow shrink text-dark outline-none rounded rounded-r-none placeholder:text-gray-300 focus:shadow-focus"
-                    type="text"
-                    placeholder={state.repos.length > 0 ? "...add next repository" : "star-history or star-history/star-history or https://github.com/star-history/star-history"}
-                    onPaste={handleInputerPasted}
-                    onKeyDown={handleInputerKeyDown}
-                />
-                <button
-                    className={`h-9 pl-4 pr-4 whitespace-nowrap w-auto text-black border-l border-black hover:bg-zinc-700 hover:text-white ${store.isFetching ? "cursor-wait" : ""}`}
-                    onClick={handleAddRepoBtnClick}
-                >
-                    View star history
-                </button>
+            <div ref={containerElRef} className="relative w-auto sm:w-full grow max-w-3xl 2xl:max-w-4xl mt-4">
+                <div className="w-full flex flex-row justify-center items-center shadow-inner border border-solid border-black rounded">
+                    <input
+                        ref={inputElRef}
+                        value={state.repo}
+                        onChange={(e) => setState((prev) => ({ ...prev, repo: e.target.value }))}
+                        className="w-auto h-9 px-2 grow shrink text-dark outline-none rounded rounded-r-none placeholder:text-gray-300 focus:shadow-focus"
+                        type="text"
+                        placeholder={state.repos.length > 0 ? "...add next repository" : "star-history or star-history/star-history or https://github.com/star-history/star-history"}
+                        onPaste={handleInputerPasted}
+                        onKeyDown={handleInputerKeyDown}
+                        onFocus={() => {
+                            if (state.suggestions.length > 0) {
+                                setState((prev) => ({ ...prev, showSuggestions: true }))
+                            }
+                        }}
+                    />
+                    <button
+                        className={`h-9 pl-4 pr-4 whitespace-nowrap w-auto text-black border-l border-black hover:bg-zinc-700 hover:text-white ${store.isFetching ? "cursor-wait" : ""}`}
+                        onClick={handleAddRepoBtnClick}
+                    >
+                        View star history
+                    </button>
+                </div>
+                {isDropdownVisible && (
+                    <ul
+                        role="listbox"
+                        className="absolute left-0 right-0 top-full z-20 mt-1 bg-white border border-black rounded shadow-lg overflow-hidden"
+                    >
+                        {state.isSearching && (
+                            <li className="flex flex-row items-center px-3 py-2 text-sm text-gray-500">
+                                <FaSpinner className="animate-spin mr-2" />
+                                Searching GitHub...
+                            </li>
+                        )}
+                        {!state.isSearching && state.searchError && (
+                            <li className="px-3 py-2 text-sm text-gray-500">
+                                GitHub search is unavailable. Press Enter to view it directly.
+                            </li>
+                        )}
+                        {!state.isSearching &&
+                            state.suggestions.map((suggestion, i) => (
+                                <li
+                                    role="option"
+                                    aria-selected={i === state.highlightedIndex}
+                                    key={suggestion.fullName}
+                                    onMouseDown={(e) => {
+                                        e.preventDefault()
+                                        handleSuggestionSelect(suggestion.fullName)
+                                    }}
+                                    onMouseEnter={() => setState((prev) => ({ ...prev, highlightedIndex: i }))}
+                                    className={`flex flex-row items-center justify-between px-3 py-2 text-sm cursor-pointer ${
+                                        i === state.highlightedIndex ? "bg-gray-100" : "hover:bg-gray-50"
+                                    }`}
+                                >
+                                    <span className="text-dark truncate">{suggestion.fullName}</span>
+                                    <span className="text-gray-400 text-xs ml-2 shrink-0">
+                                        &#9733; {formatNumber(suggestion.stars)}
+                                    </span>
+                                </li>
+                            ))}
+                    </ul>
+                )}
             </div>
             <div className="w-full mt-4 flex flex-row justify-center items-center">
                 <div className={`w-full max-w-2xl flex flex-row flex-wrap justify-center items-center ${state.repos.length > 0 ? "" : "invisible"}`}>
